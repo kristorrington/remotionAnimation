@@ -5,3 +5,10 @@ dist
 
 # Ignore the output video from Git but not videos you import into src/.
 out
+
+# Local Claude settings (machine-specific)
+.claude/settings.local.json
+
+# Source footage & proxies — large / personal, keep local (see AGENTS.md §8)
+/_talking-head-4k.mp4
+/public/talking-head*.mp4
