@@ -2,7 +2,7 @@
 
 Single source of truth for generating videos here. Any AI model (or human) should
 read this before writing animation code. For deep Remotion API details, also see
-the skill at `.claude/skills/remotion-best-practices/` (SKILL.md + `rules/`).
+the skill at `.agents/skills/remotion-best-practices/` (SKILL.md + `rules/`).
 
 Stack: **Remotion 4.x + React + TypeScript**, **1920×1080 @ 30fps**.
 
