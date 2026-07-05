@@ -12,3 +12,7 @@ out
 # Source footage & proxies — large / personal, keep local (see AGENTS.md §8)
 /_talking-head-4k.mp4
 /public/talking-head*.mp4
+/_footage-backup/
+
+# Local whisper.cpp tool clone (large, machine-specific)
+/whisper.cpp/

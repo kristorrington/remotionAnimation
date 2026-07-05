@@ -19,7 +19,7 @@ export const hermesHookSchema = z.object({
 export const HermesHook: React.FC<z.infer<typeof hermesHookSchema>> = ({ showCaptions }) => {
   return (
     <AbsoluteFill style={{ backgroundColor: "#020202" }}>
-      <Sequence from={0} durationInFrames={63}>
+      <Sequence  durationInFrames={63}>
         <AgentSearchReveal />
       </Sequence>
       <Sequence from={63} durationInFrames={211}>
@@ -30,7 +30,7 @@ export const HermesHook: React.FC<z.infer<typeof hermesHookSchema>> = ({ showCap
       </Sequence>
 
       {showCaptions ? (
-        <Sequence from={0} durationInFrames={520}>
+        <Sequence  durationInFrames={520}>
           <HermesCaptions />
         </Sequence>
       ) : null}

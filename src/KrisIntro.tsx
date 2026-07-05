@@ -208,7 +208,7 @@ export const KrisIntro: React.FC = () => {
 
   return (
     <AbsoluteFill style={{ backgroundColor: BG, opacity: fadeOut }}>
-      <Sequence from={0} durationInFrames={durationInFrames}>
+      <Sequence  durationInFrames={durationInFrames}>
         <GridBackground />
       </Sequence>
 

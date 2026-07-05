@@ -19,7 +19,7 @@ export const hookIntroSchema = z.object({
 export const HookIntro: React.FC<z.infer<typeof hookIntroSchema>> = ({ showCaptions }) => {
   return (
     <AbsoluteFill style={{ backgroundColor: "#020202" }}>
-      <Sequence from={0} durationInFrames={55}>
+      <Sequence  durationInFrames={55}>
         <DarkCinematicReveal />
       </Sequence>
       <Sequence from={55} durationInFrames={45}>
@@ -30,7 +30,7 @@ export const HookIntro: React.FC<z.infer<typeof hookIntroSchema>> = ({ showCapti
       </Sequence>
 
       {showCaptions ? (
-        <Sequence from={0} durationInFrames={140}>
+        <Sequence  durationInFrames={140}>
           <HookCaptions />
         </Sequence>
       ) : null}

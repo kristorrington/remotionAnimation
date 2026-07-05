@@ -47,7 +47,10 @@ export const CUTAWAY_WINDOWS: { from: number; dur: number }[] = [
   { from: 1626, dur: 560 },
 ];
 
-export const PolicyRiskVideo: React.FC = () => {
+// Visual-only track (cards + compare + outro, NO audio). Reused by the vertical
+// shorts' bottom panel so the animations play there in sync, without re-triggering
+// the SFX/music that live in PolicyRiskVideo below.
+export const PolicyRiskVisuals: React.FC = () => {
   return (
     <AbsoluteFill>
       {CARDS.map((c) => (
@@ -72,6 +75,14 @@ export const PolicyRiskVideo: React.FC = () => {
       <Sequence from={13560} durationInFrames={890} premountFor={30}>
         <Fable5Outro durationInFrames={890} kicker="BUILD WITH AI AGENTS?" tag="Model the failure now — before it's forced on you" />
       </Sequence>
+    </AbsoluteFill>
+  );
+};
+
+export const PolicyRiskVideo: React.FC = () => {
+  return (
+    <AbsoluteFill>
+      <PolicyRiskVisuals />
 
       {/* ===== BACKGROUND MUSIC (public/music/*.MP3) ================================
           Cut into short low beds over KEY sections only — music enters for the
@@ -83,34 +94,34 @@ export const PolicyRiskVideo: React.FC = () => {
       <MusicBed src={staticFile("music/outro.MP3")}   from={13560} durationInFrames={900}  volume={0.075} fadeInFrames={45} />{/* outro / subscribe */}
 
       {/* ===== SOUND EFFECTS =====
-          Levels sit UNDER the (boosted) VO so the voice always leads; the export
-          loudnorm master then lifts the whole mix to ~-14 LUFS. */}
+          Clearly audible but under the (×3 boosted) VO — the voice leads, the
+          hits land. The export loudnorm master lifts the mix to ~-14 LUFS. */}
       {/* whoosh on every cutaway + compare + outro */}
       {[...CARDS.map((c) => c.from), 1626, 13560].map((f) => (
-        <SfxCue key={`w-${f}`} from={f} src={SFX.whoosh} volume={0.26} />
+        <SfxCue key={`w-${f}`} from={f} src={SFX.whoosh} volume={0.45} />
       ))}
-      {/* soft tick as each card bullet appears */}
+      {/* tick as each card bullet appears */}
       {CARDS.flatMap((c) => (c.itemDelays ?? []).map((d) => (
-        <SfxCue key={`t-${c.from}-${d}`} from={c.from + d + 6} src={SFX.switch} volume={0.13} />
+        <SfxCue key={`t-${c.from}-${d}`} from={c.from + d + 6} src={SFX.switch} volume={0.25} />
       )))}
       {/* whip as the June-9 compare columns snap in */}
       {[1860, 1974].map((f) => (
-        <SfxCue key={`wp-${f}`} from={f} src={SFX.whip} volume={0.2} />
+        <SfxCue key={`wp-${f}`} from={f} src={SFX.whip} volume={0.35} />
       ))}
       {/* page-turn on the structural pivots — "3 reads" and the decision rule */}
       {[7173, 12210].map((f) => (
-        <SfxCue key={`pt-${f}`} from={f} src={SFX.pageTurn} volume={0.2} />
+        <SfxCue key={`pt-${f}`} from={f} src={SFX.pageTurn} volume={0.35} />
       ))}
       {/* dings on the punch beats */}
       {[1495, 6686, 7056, 12089, 13377, 13560].map((f) => (
-        <SfxCue key={`d-${f}`} from={f} src={SFX.ding} volume={0.26} />
+        <SfxCue key={`d-${f}`} from={f} src={SFX.ding} volume={0.45} />
       ))}
       {/* dramatic hits: "went dark", "both models pulled", "it can be silent", panic-switch "NO" */}
       {[628, 4230, 10826, 11396].map((f) => (
-        <SfxCue key={`s-${f}`} from={f} src={SFX.shutter} volume={0.24} />
+        <SfxCue key={`s-${f}`} from={f} src={SFX.shutter} volume={0.4} />
       ))}
       {/* deep boom on THE turn — "a national-security issue" */}
-      <SfxCue from={2777} src={SFX.boom} volume={0.24} />
+      <SfxCue from={2777} src={SFX.boom} volume={0.45} />
     </AbsoluteFill>
   );
 };

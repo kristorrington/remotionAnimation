@@ -17,7 +17,7 @@ export const HermesVideo: React.FC = () => {
   return (
     <AbsoluteFill>
       {/* 0:00–0:17 — INTRO HOOK (problem → solution), reuses the standalone hook */}
-      <Sequence from={0} durationInFrames={520} premountFor={30}>
+      <Sequence  durationInFrames={520} premountFor={30}>
         <HermesHook showCaptions={false} />
       </Sequence>
 

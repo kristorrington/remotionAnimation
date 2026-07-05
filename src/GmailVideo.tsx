@@ -14,7 +14,7 @@ export const GmailVideo: React.FC = () => {
   return (
     <AbsoluteFill>
       {/* 0:00–0:19 — INTRO HOOK */}
-      <Sequence from={0} durationInFrames={584} premountFor={30}>
+      <Sequence  durationInFrames={584} premountFor={30}>
         <GmailHook />
       </Sequence>
 

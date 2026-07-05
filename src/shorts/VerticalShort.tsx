@@ -1,0 +1,128 @@
+import React from "react";
+import { AbsoluteFill, interpolate, Sequence, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { ShortSpec } from "./types";
+import { ThemeProvider } from "../theme";
+import { VerticalStage } from "./VerticalStage";
+import { AnimationPanel } from "./AnimationPanel";
+import { TopBar } from "./TopBar";
+import { HookTitle } from "./HookTitle";
+import { Captions } from "./Captions";
+import { CAPTIONS } from "./captionsData";
+import { ShortOutro } from "./ShortOutro";
+import { LowerThird } from "./LowerThird";
+import { MusicBed } from "../components/MusicBed";
+import { SFX, SfxCue } from "../components/Sfx";
+
+const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+const ANIM_H = 838; // height of the top animation band when split (~44%)
+const FULL_H = 1920; // seam all the way down = animation takes the whole screen
+const OUTRO = 96; // last ~3.2s
+
+// One 1080×1920 short. Cartoon animations on TOP, talking head on BOTTOM, with a
+// dynamic reframe: FULL-SCREEN face for the hook + CTA, SPLIT for the body, and
+// FULL-SCREEN ANIMATION during `spec.fullscreen` spans (reveals / punchlines /
+// payoffs — CLAUDE.md §9: never force every beat into split). Text stays off the
+// face; sound fires on every visual change; the brand style comes from
+// spec.style ("cinematic" default | "bold").
+export const VerticalShort: React.FC<{ spec: ShortSpec }> = ({ spec }) => {
+  const { durationInFrames: dur } = useVideoConfig();
+  const frame = useCurrentFrame();
+
+  const hookHold = 66; // ~2.2s
+  const seamStart = hookHold - 16;
+  const seamEnd = hookHold + 4;
+
+  // seam keyframes: hook (face OR full animation) → split → [full-anim spans]
+  // → split → CTA (face)
+  const spans = spec.fullscreen ?? [];
+  const seamIn: number[] = [0, seamStart, seamEnd];
+  const seamOut: number[] = spec.animHook ? [FULL_H, FULL_H, ANIM_H] : [0, 0, ANIM_H];
+  for (const s of spans) {
+    seamIn.push(s.from - 12, s.from, s.to, s.to + 12);
+    seamOut.push(ANIM_H, FULL_H, FULL_H, ANIM_H);
+  }
+  seamIn.push(dur - 104, dur - 84, dur);
+  seamOut.push(ANIM_H, 0, 0);
+  const seamY = interpolate(frame, seamIn, seamOut, CLAMP);
+  const animOpacity = interpolate(seamY, [30, 260], [0, 1], CLAMP);
+
+  // identity strip: dodge full-anim spans (it is designed to sit over the set wall)
+  let lowerThirdFrom = seamEnd + 6;
+  for (const s of spans) {
+    if (lowerThirdFrom + 150 > s.from - 12 && lowerThirdFrom < s.to + 12) lowerThirdFrom = s.to + 18;
+  }
+
+  return (
+    <ThemeProvider style={spec.style}>
+      <AbsoluteFill style={{ backgroundColor: "black" }}>
+        {/* BOTTOM — talking head; grows to full screen when seamY → 0. Min height
+            1px keeps the video mounted during full-anim spans so the VO plays on. */}
+        <div style={{ position: "absolute", top: seamY, left: 0, width: 1080, height: Math.max(1920 - seamY, 1), overflow: "hidden" }}>
+          <VerticalStage source={spec.source} from={spec.from} />
+        </div>
+
+        {/* TOP — animated beat scenes; slides in for the split, zooms up when
+            the animation takes the full screen */}
+        <div style={{ position: "absolute", top: 0, left: 0, width: 1080, height: Math.max(seamY, 1), overflow: "hidden", opacity: animOpacity }}>
+          <AnimationPanel beats={spec.beats} zoom={interpolate(seamY, [ANIM_H, FULL_H], [1, 1.32], CLAMP)} />
+        </div>
+
+        {/* captions: split mode ONLY, docked on the seam — not during the hook
+            (the hook is the text) and not during the CTA. Less clutter.
+            clipFrom includes seamEnd: useCurrentFrame() RESETS inside a Sequence,
+            so the absolute-timed captions must add the Sequence's start back or
+            every word lags the audio by the hook length. */}
+        <Sequence from={seamEnd} durationInFrames={dur - OUTRO - seamEnd}>
+          <Captions words={CAPTIONS} clipFrom={spec.from + seamEnd} centerY={interpolate(seamY, [0, ANIM_H, FULL_H], [1452, ANIM_H, 1560], CLAMP)} />
+        </Sequence>
+
+        {/* progress bar + "what this is about" topic banner */}
+        <TopBar topic={spec.topic} />
+
+        {/* hook, over the full-screen face */}
+        <Sequence  durationInFrames={hookHold} premountFor={20}>
+          <HookTitle text={spec.hook} hold={hookHold} />
+        </Sequence>
+
+        {/* identity lower-third, once the split settles (dodges full-anim spans) */}
+        <Sequence from={lowerThirdFrom} durationInFrames={150} premountFor={20}>
+          <LowerThird dur={150} />
+        </Sequence>
+
+        {/* CTA over the full-screen face at the end */}
+        <Sequence from={dur - OUTRO} durationInFrames={OUTRO} premountFor={20}>
+          <ShortOutro text={spec.outro} dur={OUTRO} />
+        </Sequence>
+
+        {/* ===== SOUND — a hit on every visual change, VO always leads ===== */}
+        {spec.music && (
+          <MusicBed src={staticFile(spec.music)} from={0} durationInFrames={dur} volume={0.05} fadeInFrames={20} fadeOutFrames={40} />
+        )}
+        {/* hook: typewriter clicks under the word-slam (max 6 words) */}
+        {spec.hook.split(" ").slice(0, 6).map((_, i) => (
+          <SfxCue key={`hk-${i}`} from={3 + i * 3} src={SFX.click} volume={0.32} />
+        ))}
+        {/* whoosh on every reframe (hook→split, split↔full-anim, →CTA) */}
+        <SfxCue from={seamStart + 6} src={SFX.whoosh} volume={0.4} />
+        <SfxCue from={dur - 98} src={SFX.whoosh} volume={0.4} />
+        {spans.map((s) => (
+          <React.Fragment key={`fs-${s.from}`}>
+            <SfxCue from={s.from - 10} src={SFX.whoosh} volume={0.4} />
+            <SfxCue from={s.to} src={SFX.whoosh} volume={0.35} />
+          </React.Fragment>
+        ))}
+        {/* per cartoon beat: a whoosh + an alternating accent, plus a boom on beat 0 */}
+        {spec.beats.map((b, i) => (
+          <React.Fragment key={`sfx-${b.at}`}>
+            <SfxCue from={b.at} src={SFX.whoosh} volume={0.45} />
+            <SfxCue from={b.at} src={i === 0 ? SFX.boom : i % 2 ? SFX.whip : SFX.ding} volume={i === 0 ? 0.5 : 0.35} />
+            <SfxCue from={b.at + 6} src={SFX.switch} volume={0.25} />
+          </React.Fragment>
+        ))}
+        {/* CTA: low boom on the reveal + ding as the button pops */}
+        <SfxCue from={dur - OUTRO} src={SFX.boom} volume={0.4} />
+        <SfxCue from={dur - OUTRO + 14} src={SFX.ding} volume={0.45} />
+      </AbsoluteFill>
+    </ThemeProvider>
+  );
+};

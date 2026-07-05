@@ -34,7 +34,7 @@ export const KrisHero: React.FC = () => {
       </Sequence>
 
       {/* Act 1 — shockwave ring, flash and glow bleed. */}
-      <Sequence from={0} durationInFrames={45}>
+      <Sequence  durationInFrames={45}>
         <ShockwaveRing />
       </Sequence>
 

@@ -42,12 +42,12 @@ export const TutorialOverlays: React.FC = () => {
   return (
     <AbsoluteFill>
       {/* ===== INTRO + OVERVIEW — branded full-screen moment (0:00–0:32) ===== */}
-      <Sequence from={0} durationInFrames={960} premountFor={30}>
+      <Sequence  durationInFrames={960} premountFor={30}>
         <AnimatedBackground durationInFrames={960} />
 
         {/* HOOK — choreographed to line 1's words: charge-up → ignite on
             "this" (f53) → supernova on "or this" (f63) → title on "using AI" (f74) */}
-        <Sequence from={0} durationInFrames={125}>
+        <Sequence  durationInFrames={125}>
           <OpeningHook />
         </Sequence>
         <Sequence from={125} durationInFrames={167}>

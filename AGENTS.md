@@ -4,6 +4,11 @@ Single source of truth for generating videos here. Any AI model (or human) shoul
 read this before writing animation code. For deep Remotion API details, also see
 the skill at `.agents/skills/remotion-best-practices/` (SKILL.md + `rules/`).
 
+**Producing a full video from a new transcript + talking-head recording?
+Start at §11 — THE PIPELINE.** It is the end-to-end, repeatable process
+(intake → overlay track → combined final cut → shorts → QC) with the decision
+rules inline; §1–§10 are the reference it points into.
+
 Stack: **Remotion 4.x + React + TypeScript**, **1920×1080 @ 30fps**.
 
 ---
@@ -115,6 +120,12 @@ in the same SVG style if nothing fits.
   the clip at.
 - Leave **transparent gaps** between segments for the footage.
 - `SectionCard`'s title slams at local `f6–16`, so set `from ≈ phraseFrame − 6`.
+- **The outro/subscribe card is an element too — anchor it to the SPOKEN
+  "subscribe", not the end of the last content card.** A wrap-up monologue can
+  run 15–20s after the visuals "feel" done; placing the subscribe screen when
+  the cards end drops it on top of still-narrated payoff. Find "subscribe" in the
+  whisper data, set `from ≈ subscribeFrame − 6`, run it to the footage end, and
+  cover the run-up with its own card(s). (See §8 for the combined-cut detail.)
 
 ---
 
@@ -182,10 +193,13 @@ positive), `tension.MP3` (stakes / deadline), `outro.MP3` (payoff / subscribe).
   often quiet; **measure the source** (`ffmpeg -i src -af volumedetect -f null -`)
   and if it peaks low (e.g. −14 dB) boost it in-comp: `<OffthreadVideo volume={3}>`
   so the voice peaks around −3 to −6 dB.
-- **Then SFX sit UNDER the boosted VO.** Against a quiet VO the "normal" 0.3–0.5
-  SFX levels overpower the voice — drop them (whoosh ≈ 0.26, ticks ≈ 0.13, music
-  ≈ 0.06–0.08) so the voice always wins. Balance is *relative*, so fix it in-comp
-  (loudnorm only changes overall level, not balance).
+- **Then SFX sit UNDER the boosted VO — but clearly audible.** With the VO
+  boosted to peak ≈ −3 dB, use whoosh/ding ≈ 0.45, whip/page-turn/shutter ≈
+  0.35–0.4, boom ≈ 0.45, ticks ≈ 0.25, music ≈ 0.06–0.09. (First pass used
+  0.13–0.26 and the SFX were inaudible in the final mix — don't repeat that.)
+  Balance is *relative*, so fix it in-comp (loudnorm only changes overall
+  level, not balance). QC by EAR: play a card transition — if you can't hear
+  the whoosh under the voice, raise SFX before rendering.
 - **Always master the final export to ~−14 LUFS** (YouTube). Remotion does **not**
   normalize — a raw render measured **−29 LUFS** here (≈ inaudible at normal
   volume). Add a loudnorm pass at mux time:
@@ -248,15 +262,49 @@ Keep the presenter present during cutaways with a **corner PiP** (reference:
 
 - A small rounded "webcam" of the **same footage/frame** bottom-right while a
   full-screen cutaway covers the main shot — so the viewer never fully loses the
-  presenter. Drive it from an exported `CUTAWAY_WINDOWS` (the card `from`/`dur`
-  list); exclude the outro so the subscribe screen is clean. Punch the footage
-  ~1.18 inside the box so the face reads at small size; fade/scale in at the edges.
+  presenter. Punch the footage ~1.18 inside the box so the face reads small;
+  exclude the outro so the subscribe screen is clean.
+- **MERGE covers into continuous spans — do NOT render one PiP per card.** A
+  fresh `CornerPip` per cutaway fades out at each card's end and back in at the
+  next → a visible flicker at every topic change; and short talking gaps
+  (1.5–4.5s) between cards briefly cut to the full face. Fix both by unioning the
+  covers (+ short gaps) into continuous spans and rendering **one PiP + one
+  bridge background per span**, so the PiP mounts once and holds steady across
+  the whole span (the cards still animate on top; gaps within the span show the
+  bridge bg + steady PiP, never the full face):
+
+  ```tsx
+  const PIP_GAP_MAX = 180; // ≤6s gaps stay bridged (steady PiP); >6s = real
+                           //   talking beat → full face returns (intended)
+  const spans: { from: number; to: number }[] = [];
+  for (const c of COVERS_NO_OUTRO) {        // sorted; outro excluded from PiP
+    const last = spans[spans.length - 1];
+    if (last && c.from - last.to <= PIP_GAP_MAX) last.to = Math.max(last.to, c.from + c.dur);
+    else spans.push({ from: c.from, to: c.from + c.dur });
+  }
+  // render, UNDER <Slug>Video (cards paint on top), ONE per span:
+  //   <AnimatedBackground durationInFrames={s.to-s.from} fade={false} />   (bridge)
+  //   <CornerPip from={s.from} dur={s.to-s.from} />                        (steady PiP)
+  ```
+  This supersedes the old per-window `BRIDGES`/`CUTAWAY_WINDOWS.map(<CornerPip>)`
+  approach — one span-level PiP means zero mid-span remounts.
 - **Sync gotcha (important):** the PiP lives in a `<Sequence from={F}>`, and a
   video inside a Sequence **restarts at 0:00** when the Sequence begins — so the
   corner clip lip-syncs minutes behind the main footage. Fix it by playing from
-  the absolute frame: `<OffthreadVideo trimBefore={F} …>` (F = the window's
+  the absolute frame: `<OffthreadVideo trimBefore={F} …>` (F = the span's
   `from`). Then the PiP shows video-frame `F + localFrame` = the absolute frame,
   matching the main track and the VO.
+
+**The outro / subscribe card is anchored to the SPOKEN "subscribe", NOT the end
+of the cards.** The outro must not appear until the narrator actually says it,
+and then it runs to the end of the footage. Find the frame with the whisper data
+(`captionsData.ts`), set the outro `from ≈ subscribeFrame − 6`, and give the
+run-up content its OWN card(s) through the narration — do not let the subscribe
+screen fill a gap where the VO is still delivering the payoff. Measured failure
+in PolicyRisk: "please subscribe" is spoken at frame **14106**, but the outro
+was placed at **13560** — ~18s early, sitting on top of the still-narrated
+"three questions" wrap-up. Right timing: a payoff card holds 13546→~14090, then
+the outro fires at ~14090 and runs to the footage end (14453).
 
 Transitions (reference: [CutFlash.tsx](src/components/CutFlash.tsx) +
 `@remotion/transitions`, pinned to the Remotion version):
@@ -271,15 +319,27 @@ Transitions (reference: [CutFlash.tsx](src/components/CutFlash.tsx) +
 
 ## 9. Environment gotchas (do not "fix" these)
 
-- **Node 25 + webpack hashing.** [remotion.config.ts](remotion.config.ts) sets
-  `cache: false` and `output.hashFunction: "sha256"` to dodge a crash where Node
-  25 feeds `undefined` into webpack's hash (`ERR_INVALID_ARG_TYPE` in
-  `FileSystemInfo`). Leave those. Do **not** re-add `snapshot.managedPaths: []` —
-  it force-hashes every dependency file and re-triggers the same crash whenever a
-  package is installed.
+- **Node 25 + webpack hashing.** [remotion.config.ts](remotion.config.ts) makes
+  webpack snapshot by **file timestamp instead of content hash**
+  (`snapshot.module/resolve/... = { timestamp: true, hash: false }`), plus
+  `cache: false` and `output.hashFunction: "sha256"`. This dodges a crash where
+  Node 25 feeds `undefined` into webpack's snapshot content-hashing
+  (`ERR_INVALID_ARG_TYPE` in `FileSystemInfo.js` → `Hash.update`) — which becomes
+  **deterministic** (every bundle/`npm run dev`/render fails), not just transient,
+  once enough deps accumulate. Leave the whole block. Do **not** set
+  `snapshot.managedPaths: []` — that force-hashes every dependency and re-triggers
+  it.
 - **Remote audio fails in Studio** (CORS) — always localize into `public/`.
 - **Transient still-render crashes** on Node 25 (`Node.js v25.6.1` + exit) —
   just re-run; it's not a code error.
+- **Text/borders that silently don't paint.** The render browser can skip
+  rasterizing plain (non-composited) text and borders inside layered cards —
+  the element takes layout space but renders nothing. Force a compositing
+  layer: `transform: "translateZ(0)"` on the element (elements with any
+  transform/filter always paint). Also: **avoid glyphs outside the loaded latin
+  subsets** (`◆`, `↗` — draw shapes with CSS instead; `→`/`—`/`✓` are proven
+  safe) and keep bare text spans at **fontWeight ≥ 600**. If text is missing in
+  a still, suspect these three in that order.
 - **Heavy source footage → make a proxy.** A 4K HEVC file decodes far too slowly
   to render (minutes → hours) and bloats every bundle copy. Transcode once to a
   1080p H.264 proxy and point the composition at it:
@@ -296,15 +356,180 @@ Transitions (reference: [CutFlash.tsx](src/components/CutFlash.tsx) +
 
 ---
 
-## 10. Workflow for a new video
+## 10. Vertical shorts (TikTok / Reels / YouTube Shorts)
 
-1. Paste the transcript → compute frames (`sec × 30`).
-2. Decide the tracks: cutaway and/or annotations and/or standalone clips.
-3. Reuse components from §4; theme new ones on the §3 palette.
-4. Anchor every title/item to its **spoken** frame (§5).
-5. Add sound (§6): whoosh per card, a tick per bullet, shutters on the big
-   beats, and three `MusicBed`s (calm / tension / outro).
-6. Register in `Root.tsx`, `npx tsc --noEmit`, render stills to verify.
-7. To ship a finished cut, combine with footage (§8): wrapper composition +
-   `FootageDirector` (punch-ins / grade / grain) + `CutFlash` transitions, then
-   render the H.264 MP4.
+Self-contained system in [src/shorts/](src/shorts/) — **read
+[src/shorts/README.md](src/shorts/README.md) before touching it**; it is the
+source of truth for the format. The essentials:
+
+- **One short = one `ShortSpec`** in `src/shorts/specs.ts` (start frame, hook,
+  topic, cartoon `beats`, CTA) — it auto-registers as a 1080×1920 composition.
+  Master toggle: `SHORTS_ENABLED` in `src/shorts/index.tsx`.
+- **Layout:** full-screen face for the hook (word-slam entrance + typewriter
+  clicks) → animated split (cartoon-beat panel on top, talking head below) →
+  full-screen face for the CTA. Progress bar + topic banner pinned on top;
+  whisper captions in an opaque pill (docked on the seam in split mode, chest in
+  full-screen); an identity lower-third in the opening seconds and the channel
+  handle under the CTA button (brand text lives in `src/brand.ts`); text never
+  covers the face.
+- **Beats obey the golden rule:** appear when SPOKEN, never before. Derive
+  spoken frames from the main video's `CARDS`; the first beat may be a
+  non-spoiling scene-setter so the panel opens populated.
+- **Sound fires from the spec automatically** (hook clicks, reframe whooshes,
+  per-beat whoosh + accent + tick, CTA boom + ding, one low music bed).
+- **Captions:** `node scripts/transcribe.mjs` (whisper) regenerates word-level
+  captions into `src/shorts/captionsData.ts` after new footage.
+- Pick moments with the **viral-scoring rubric** in the shorts README.
+
+---
+
+## 11. THE PIPELINE — any transcript + talking head → final video + shorts
+
+This is the complete, repeatable process. Inputs: **(a)** a transcript,
+**(b)** a same-take talking-head recording, **(c)** brand text in
+[src/brand.ts](src/brand.ts). Outputs: a finished landscape MP4 and 3–4
+post-ready vertical shorts. Follow the phases in order; the IF/ELSE lines are
+the decisions. `<Slug>` = the new video's name (e.g. `PolicyRisk`).
+
+### Phase 0 — Intake & preflight
+
+1. **Footage in.** Put the recording at `public/talking-head.mp4`.
+   - IF a previous video's footage is there → move it to `_footage-backup/`
+     first (gitignored). One "active" footage file at a time; the whisper
+     captions and shorts always describe the CURRENT file.
+   - IF the source is 4K, HEVC, or > ~200 MB → transcode a proxy FIRST (§9
+     command), keep the original in `_footage-backup/`. ELSE use as-is.
+2. **Probe it:** `ffprobe public/talking-head.mp4` → note duration + fps.
+   - IF fps ≠ 30 → add `-r 30` to the proxy transcode so everything stays
+     frame = sec × 30. Total frames `N = round(duration_seconds × 30)`.
+3. **Transcript.**
+   - IF the transcript has per-line timestamps → use them directly
+     (frame = seconds × 30).
+   - ELSE (no timestamps) → run `node scripts/transcribe.mjs` now and read the
+     word timings from `src/shorts/captionsData.ts` (absolute frames). This
+     also pre-generates the shorts captions.
+4. **Audio level:** `ffmpeg -i public/talking-head.mp4 -af volumedetect -f null -`
+   - IF max_volume ≤ −10 dB → the VO needs an in-comp boost; note the factor
+     (≈ −14 dB peaked → `volume={3}`). ELSE `volume={1}` is fine.
+
+### Phase 1 — The overlay track (`src/<Slug>Video.tsx`)
+
+Copy `PolicyRiskVideo.tsx` as the template. It must export THREE things:
+`<Slug>Visuals` (cards only, NO audio), `<Slug>Video` (visuals + sound), and
+`CUTAWAY_WINDOWS` (the `{from, dur}` list of every full-screen cover).
+
+1. **Choose track types.**
+   - IF the video is a talking-head explainer → one cutaway track (this phase).
+   - IF it includes a screen-recording demo → ALSO build an annotation track
+     (chips / prompts / checklists, §2) for those minutes.
+   - IF one moment must be dropped anywhere on an editor timeline → make it a
+     standalone zero-based clip instead.
+2. **Build the `CARDS` array** — one entry per conceptual beat:
+   - `from ≈ spokenFrame − 6` (title slams at local f6–16). NEVER earlier —
+     the §5 golden rule. `itemDelays[i] = itemSpokenFrame − from`.
+   - IF the narration contrasts two things → `CompareCard` with
+     `leftDelay`/`rightDelay` on the spoken phrases.
+   - IF a beat is a date/timeline → `Fable5Timeline` pattern.
+   - Card duration: hold until the topic moves on — and **keep holding while the
+     VO is still on that point** (a card that ends mid-explanation drops to the
+     face awkwardly). The LAST content card must run right up to the spoken
+     "subscribe"; don't leave a long uncovered wrap-up. Gaps ≤ ~6s between covers
+     are fine — Phase 2 bridges them with a steady PiP (no face-flash).
+3. **Icons:** every card gets one. IF a concept matches an existing icon in
+   [Cartoons.tsx](src/components/Cartoons.tsx) (see §4 list) → use it and don't
+   repeat an icon on adjacent cards. ELSE add a new SVG icon in the same style
+   (100×100 viewBox, frame-driven animation) and add it to the §4 list.
+4. **Sound (§6):** whoosh per card, tick per bullet (generated from
+   `itemDelays`), ding on payoffs, shutter on 2–3 dramatic lines, ONE boom on
+   the single biggest turn. Music: short low beds (vol 0.06–0.09) over the
+   hook / stakes / payoff sections only, faded out, cut up (§6).
+5. **Register** in `Root.tsx` (transparent defaults, `durationInFrames = N`),
+   `npx tsc --noEmit`, render 2–3 stills at busy frames to verify.
+6. IF the user edits externally (Premiere/Resolve) → render the transparent
+   ProRes 4444 `.mov` (§7) and STOP here. ELSE continue.
+
+### Phase 2 — The combined final cut (`src/<Slug>Final.tsx`)
+
+Copy `PolicyRiskFinal.tsx` as the template; it composites, in order:
+`FootageDirector` → per-span bridge backgrounds → `<Slug>Video` → per-span
+`CornerPip`s → `CutFlash`es.
+
+1. **FootageDirector schedule:** place jump-cuts inside the VISIBLE gaps
+   between cutaways. Subtle only: `scale 1.0–1.12` (1.0 IS a framing), small
+   negative `y` when punched. Grade/vignette/grain come free.
+2. **Spans + PiP (see §8):** MERGE the covers (+ gaps ≤ `PIP_GAP_MAX` ≈ 180f/6s)
+   into continuous spans; render **one bridge bg + one `CornerPip` per span**
+   (not per card) so the PiP holds steady — no per-card flicker, and short
+   talking gaps stay covered instead of flashing the full face. Exclude the
+   outro from the PiP spans. PiP MUST use `trimBefore={span.from}` (§8 sync).
+   IF a real >6s talking beat still feels like a flash → raise `PIP_GAP_MAX`.
+3. **Outro timing (see §8):** anchor the subscribe/outro card to the frame the
+   VO says "subscribe" (whisper data), `from ≈ subscribeFrame − 6`, running to
+   the footage end. Give the run-up payoff its own card(s); never let the
+   subscribe screen sit over still-narrated content.
+4. **Flashes:** `CutFlash` at 4–6 of the biggest turns only, peak ≤ 0.6.
+5. **Audio:** set the footage `volume={boost}` from Phase 0.4; SFX sit under
+   the boosted VO (§6 "Mix & master" levels).
+6. **Register** (NO transparent defaults, `durationInFrames = N`), typecheck,
+   verify stills: one gap frame (face), one card frame (cover), one bridge.
+7. **Render** with the split chain (§9): muted video at concurrency 12 →
+   audio-only at concurrency 4 → mux + `loudnorm=I=-14` master. Output
+   `out/<Slug>Final.mp4`; never overwrite a previous deliverable — version the
+   filename.
+   - IF FFmpeg exits `3221225794` at the stitch → you skipped the split chain.
+   - IF webpack `ERR_INVALID_ARG_TYPE` → §9; re-run, config already guards.
+   - IF the render ETA looks absurd (>2× realtime per pass) → check for
+     orphaned `chrome-headless-shell`/node render processes and kill them.
+8. **Verify the file:** `ffprobe` shows video + audio streams; `ebur128` shows
+   ≈ −14 LUFS; spot-check a talking frame and a card frame.
+
+### Phase 3 — Shorts (3–4 per video)
+
+Everything lives in [src/shorts/](src/shorts/) and is data-driven — you write
+`ShortSpec`s, no new components. Full detail: [src/shorts/README.md](src/shorts/README.md).
+
+1. **Captions:** IF `scripts/transcribe.mjs` hasn't run against THIS footage →
+   run it now (`node scripts/transcribe.mjs`).
+2. **Mine the transcript** with the rubric (hook / payoff / charge / visual
+   mappability / first-second). Score candidates; take the top 3–4.
+3. **Per short, write a `ShortSpec`** in `specs.ts`:
+   - `from` = a strong spoken line (never cold lead-in); `id` = `Short-<Name>`.
+   - `hook` ≤ 6 words, threat/curiosity framing; `topic` = 2–3 word banner.
+   - `beats`: one cartoon card per key phrase, `at = spokenFrame − from`
+     (golden rule — derive from `CARDS` itemDelays or the caption dump).
+     IF the opening narration is a lead-in → beat 0 may be a non-spoiling
+     scene-setter. IF the VO has a crisp list → quick-fire beats (~40–60f).
+     IF a narration run is long → one card holds; its motion carries it.
+   - **Loop ending:** dump the tail words from `captionsData.ts` (snippet in
+     the shorts README); set `durationInFrames` ≈ last word's `to` + 15 on an
+     OPEN line (question / consequence that re-arms the hook). NEVER cut
+     mid-sentence. IF no good loop line exists near the target length →
+     extend/shrink the clip to the nearest one (25–40s is all fine).
+4. **Typecheck + stills:** hook frame (~30), a split frame (~300), a
+   quick-fire frame, the CTA (last 60f). Check: text never on the face,
+   captions docked on the seam, beats match what's being said.
+5. **Write the publish copy** in `src/shorts/PUBLISH.md` — a YouTube title
+   (≤60 chars, hook words first, `#Shorts`) and description (hook line, what
+   the viewer learns, a comment-bait question, follow CTA, 4–6 hashtags) per
+   short. The format rules live at the top of that file. A spec without
+   publish copy isn't done.
+6. **Render each short:**
+   `npx remotion render Short-<Name> out/_raw.mp4 --concurrency=8`, then
+   loudnorm-master to `out/Short-<Name>.mp4` (§6). One 9:16 file posts to
+   TikTok + Reels + Shorts.
+
+### Phase 4 — Definition of done (QC gate, all must pass)
+
+- [ ] No text appears before its phrase is spoken (main video AND shorts) —
+      including the **outro/subscribe card**: it must not appear before the VO
+      says "subscribe" (verify against the whisper data), and it runs to the end.
+- [ ] No full-face flash or PiP flicker between adjacent cutaways: PiP is ONE
+      element per merged span (not per card), and gaps ≤ `PIP_GAP_MAX` (~6s)
+      stay bridged. Scrub every card→card change and every short gap.
+- [ ] PiP lip-sync matches the VO (`trimBefore={span.from}` set).
+- [ ] Finals measure ≈ −14 LUFS; VO leads; SFX under it; music felt not heard.
+- [ ] Shorts: face never covered; captions on the seam; loop ending on an open
+      line; lower-third + handle present; every beat has sound; title +
+      description written in `src/shorts/PUBLISH.md`.
+- [ ] `npx tsc --noEmit` clean; deliverables in `out/`, versioned, never
+      overwriting a previous cut.

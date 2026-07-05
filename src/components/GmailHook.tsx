@@ -154,7 +154,7 @@ export const GmailHook: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: "#020202" }}>
       <AnimatedBackground durationInFrames={584} />
-      <Sequence from={0} durationInFrames={185}>
+      <Sequence  durationInFrames={185}>
         <Beat1 />
       </Sequence>
       <Sequence from={185} durationInFrames={199}>

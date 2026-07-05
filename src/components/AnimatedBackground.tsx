@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { BLUE, CYAN } from "./overlayUI";
+import { useTheme } from "../theme";
 
 // Deterministic PRNG (mulberry32) — identical particles every render.
 const mulberry32 = (seed: number) => {
@@ -36,22 +37,69 @@ const buildMotes = (): Mote[] => {
 
 type Props = {
   durationInFrames: number;
+  // Optional faint scattered background words (bold style only) — rotated,
+  // dimmed, e.g. the topic's key terms floating behind the card.
+  words?: string[];
+  // false = stay fully opaque for the whole duration (no fade envelope). Used by
+  // gap BRIDGES: they sit under two crossfading cards, and if the bridge fades
+  // too, the footage bleeds through the stack mid-transition.
+  fade?: boolean;
 };
 
-// A cinematic, on-brand animated backdrop for full-screen "moment" sequences
-// (hook, key-term pops, outro). Aurora glows drift, a HUD grid parallaxes, motes
-// rise, and a vignette focuses the centre. Everything is frame-driven — no CSS
-// animation. A fade envelope keeps the edges clean against transparent gaps.
-export const AnimatedBackground: React.FC<Props> = ({ durationInFrames }) => {
+// The full-screen backdrop for "moment" sequences, themed:
+//   cinematic — aurora glows, HUD grid, rising motes, vignette (all frame-driven)
+//   bold      — flat slate with a soft vignette and optional scattered words
+// A fade envelope keeps the edges clean against transparent gaps in both.
+export const AnimatedBackground: React.FC<Props> = ({ durationInFrames, words, fade = true }) => {
   const frame = useCurrentFrame();
   const motes = useMemo(buildMotes, []);
+  const theme = useTheme();
 
-  const envelope = interpolate(
-    frame,
-    [0, 12, durationInFrames - 14, durationInFrames],
-    [0, 1, 1, 0],
-    { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
-  );
+  const envelope = fade
+    ? interpolate(
+        frame,
+        [0, 12, durationInFrames - 14, durationInFrames],
+        [0, 1, 1, 0],
+        { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+      )
+    : 1;
+
+  if (theme.flat) {
+    const drift = Math.sin(frame * 0.02) * 6;
+    return (
+      <AbsoluteFill style={{ opacity: envelope }}>
+        <AbsoluteFill style={{ backgroundColor: theme.bg }} />
+        {words?.map((w, i) => {
+          const rand = mulberry32(0x51ab + i * 977);
+          const x = 6 + rand() * 78;
+          const y = 6 + rand() * 82;
+          const rot = -14 + rand() * 28;
+          return (
+            <span
+              key={`${w}-${i}`}
+              style={{
+                position: "absolute",
+                left: `${x}%`,
+                top: `${y}%`,
+                transform: `rotate(${rot}deg) translateY(${drift * (i % 2 ? 1 : -1)}px)`,
+                fontFamily: theme.fontDisplay,
+                fontWeight: theme.titleWeight,
+                fontSize: 44 + rand() * 26,
+                letterSpacing: 1,
+                color: theme.textDim,
+                opacity: 0.35,
+                textTransform: "uppercase",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {w}
+            </span>
+          );
+        })}
+        <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 45%, transparent 55%, rgba(0,0,0,0.28) 100%)" }} />
+      </AbsoluteFill>
+    );
+  }
 
   // Drifting aurora blobs.
   const aX = 32 + 12 * Math.sin(frame * 0.012);

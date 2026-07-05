@@ -36,6 +36,146 @@ export const ClaudeMark: React.FC<{ size?: number }> = ({ size = 130 }) => {
   );
 };
 
+// The DeepSeek whale — gently "swims" (float + tilt) in a rounded app-tile (the
+// source PNG has a white background, so we frame it as an intentional icon tile)
+// with a blue glow. No full spin (a spinning whale looks silly).
+export const DeepSeekMark: React.FC<{ size?: number }> = ({ size = 140 }) => {
+  const frame = useCurrentFrame();
+  const y = 6 * Math.sin(frame * 0.06);
+  const tilt = 4 * Math.sin(frame * 0.05);
+  const pulse = 1 + 0.04 * Math.sin(frame * 0.12);
+  return (
+    <div
+      style={{
+        width: size,
+        height: size,
+        borderRadius: size * 0.24,
+        background: "#FFFFFF",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden",
+        transform: `translateY(${y}px) rotate(${tilt}deg) scale(${pulse})`,
+        boxShadow: `0 0 ${size * 0.22}px rgba(77,107,254,0.6), 0 14px 34px rgba(0,0,0,0.45)`,
+      }}
+    >
+      <Img src={staticFile("deepseek-logo.png")} style={{ width: size * 0.9, height: size * 0.9, objectFit: "contain" }} />
+    </div>
+  );
+};
+
+// Model "thinking" spinner — an arc sweeps around a faint track.
+export const IconThinking: React.FC<{ size?: number }> = ({ size = 120 }) => {
+  const frame = useCurrentFrame();
+  const dash = 2 * Math.PI * 30;
+  return (
+    <Svg size={size}>
+      <circle cx="50" cy="50" r="30" stroke="rgba(6,182,212,0.2)" strokeWidth="8" />
+      <circle cx="50" cy="50" r="30" stroke={CYAN} strokeWidth="8" strokeDasharray={`${dash * 0.28} ${dash}`} transform={`rotate(${frame * 6} 50 50)`} />
+    </Svg>
+  );
+};
+
+// Clock — minute hand sweeps fast, hour hand slow (time passing / latency).
+export const IconClock: React.FC<{ size?: number }> = ({ size = 120 }) => {
+  const frame = useCurrentFrame();
+  return (
+    <Svg size={size}>
+      <circle cx="50" cy="50" r="34" stroke={BLUE} strokeWidth="6" />
+      <line x1="50" y1="50" x2="50" y2="28" stroke={WHITE} strokeWidth="5" transform={`rotate(${frame * 6} 50 50)`} />
+      <line x1="50" y1="50" x2="66" y2="50" stroke={CYAN} strokeWidth="5" transform={`rotate(${frame * 0.5} 50 50)`} />
+      <circle cx="50" cy="50" r="4" fill={CYAN} />
+    </Svg>
+  );
+};
+
+// Lightning bolt — pulses (speed / energy).
+export const IconBolt: React.FC<{ size?: number }> = ({ size = 120 }) => {
+  const frame = useCurrentFrame();
+  const p = 0.6 + 0.4 * Math.sin(frame * 0.3);
+  return (
+    <Svg size={size}>
+      <path d="M54 12 L28 54 H46 L42 88 L74 42 H52 Z" fill={AMBER} stroke={AMBER} strokeWidth="4" opacity={p} style={{ filter: `drop-shadow(0 0 ${10 * p}px ${AMBER})` }} />
+    </Svg>
+  );
+};
+
+// Rocket — bobs, flame flickers (faster).
+export const IconRocket: React.FC<{ size?: number }> = ({ size = 120 }) => {
+  const frame = useCurrentFrame();
+  const y = -3 * Math.sin(frame * 0.3);
+  const flame = 6 + 5 * Math.abs(Math.sin(frame * 0.6));
+  return (
+    <Svg size={size}>
+      <g transform={`translate(0 ${y})`}>
+        <path d="M50 16 C64 26 66 44 62 60 H38 C34 44 36 26 50 16 Z" fill={WHITE} stroke={BLUE} strokeWidth="4" />
+        <circle cx="50" cy="38" r="6" fill={CYAN} />
+        <path d="M38 60 L30 74 L42 66 Z" fill={BLUE} />
+        <path d="M62 60 L70 74 L58 66 Z" fill={BLUE} />
+        <path d={`M44 62 L50 ${68 + flame} L56 62 Z`} fill={AMBER} />
+      </g>
+    </Svg>
+  );
+};
+
+// Cost dropping — a coin with a descending arrow.
+export const IconCoinDown: React.FC<{ size?: number }> = ({ size = 120 }) => {
+  const frame = useCurrentFrame();
+  const dy = 3 * Math.sin(frame * 0.2);
+  return (
+    <Svg size={size}>
+      <circle cx="50" cy="44" r="28" stroke={GREEN} strokeWidth="6" fill="rgba(52,211,153,0.12)" />
+      <g transform={`translate(0 ${dy})`}>
+        <line x1="50" y1="30" x2="50" y2="54" stroke={GREEN} strokeWidth="7" />
+        <path d="M38 44 L50 58 L62 44" stroke={GREEN} strokeWidth="7" />
+      </g>
+    </Svg>
+  );
+};
+
+// Padlock springing open (unlocked / now usable).
+export const IconUnlock: React.FC<{ size?: number }> = ({ size = 120 }) => {
+  const frame = useCurrentFrame();
+  const open = Math.max(0, Math.min(1, (frame - 8) / 16));
+  const glow = 0.5 + 0.5 * Math.sin(frame * 0.2);
+  return (
+    <Svg size={size}>
+      <rect x="30" y="48" width="40" height="34" rx="6" stroke={GREEN} strokeWidth="6" fill="rgba(52,211,153,0.1)" />
+      <path d="M38 48 V38 A12 12 0 0 1 62 38 V44" stroke={GREEN} strokeWidth="6" transform={`rotate(${-34 * open} 38 48)`} />
+      <circle cx="50" cy="63" r="5" fill={GREEN} opacity={glow} />
+    </Svg>
+  );
+};
+
+// Two-lobe brain with a pulsing core (intelligence / reasoning).
+export const IconBrain: React.FC<{ size?: number }> = ({ size = 120 }) => {
+  const frame = useCurrentFrame();
+  const p = 0.55 + 0.45 * Math.sin(frame * 0.2);
+  return (
+    <Svg size={size}>
+      <path d="M40 24 C28 24 22 34 26 42 C18 46 18 58 28 62 C28 72 40 78 47 70 V30 C47 26 44 24 40 24 Z" stroke={BLUE} strokeWidth="5" fill="rgba(59,130,246,0.1)" />
+      <path d="M60 24 C72 24 78 34 74 42 C82 46 82 58 72 62 C72 72 60 78 53 70 V30 C53 26 56 24 60 24 Z" stroke={CYAN} strokeWidth="5" fill="rgba(6,182,212,0.1)" />
+      <circle cx="50" cy="48" r="5" fill={WHITE} opacity={p} style={{ filter: `drop-shadow(0 0 ${8 * p}px ${CYAN})` }} />
+    </Svg>
+  );
+};
+
+// Error triangle — pulses and shakes (something broke).
+export const IconError: React.FC<{ size?: number }> = ({ size = 120 }) => {
+  const frame = useCurrentFrame();
+  const p = 0.55 + 0.45 * Math.sin(frame * 0.4);
+  const shake = 1.6 * Math.sin(frame * 0.9);
+  return (
+    <Svg size={size}>
+      <g transform={`translate(${shake} 0)`}>
+        <path d="M50 16 L86 80 H14 Z" stroke={RED} strokeWidth="6" fill="rgba(239,68,68,0.12)" opacity={0.6 + 0.4 * p} />
+        <line x1="50" y1="40" x2="50" y2="62" stroke={RED} strokeWidth="7" />
+        <circle cx="50" cy="72" r="3.5" fill={RED} />
+      </g>
+    </Svg>
+  );
+};
+
 // Blocked request — no-entry sign, pulsing.
 export const IconBlock: React.FC<{ size?: number }> = ({ size = 120 }) => {
   const frame = useCurrentFrame();

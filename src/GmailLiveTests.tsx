@@ -33,7 +33,7 @@ export const GmailLiveTests: React.FC = () => {
   return (
     <AbsoluteFill>
       {/* ===== TEST 1 — LIST LABELS ===== */}
-      <Sequence from={0} durationInFrames={210} premountFor={30}>
+      <Sequence  durationInFrames={210} premountFor={30}>
         <ActionBadge text="TEST 1 · LIST LABELS" pos="tl" durationInFrames={210} />
       </Sequence>
       <Sequence from={60} durationInFrames={320} premountFor={30}>

@@ -14,6 +14,10 @@ import { GmailLiveTests } from "./GmailLiveTests";
 import { Fable5Video } from "./Fable5Video";
 import { PolicyRiskVideo } from "./PolicyRiskVideo";
 import { PolicyRiskFinal } from "./PolicyRiskFinal";
+import { DSparkVideo } from "./DSparkVideo";
+import { DSparkFinal } from "./DSparkFinal";
+import { ShortsCompositions, SHORTS_ENABLED } from "./shorts";
+import { StyleDemo } from "./StyleDemo";
 
 // Default this composition to a transparent ProRes 4444 export so it composites
 // cleanly over screen-recorded footage straight from Studio's render button.
@@ -31,6 +35,40 @@ const transparentDefaults: CalculateMetadataFunction<
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      {/* Vertical shorts (TikTok / Reels / Shorts) — toggle in src/shorts/index.tsx */}
+      {SHORTS_ENABLED && <ShortsCompositions />}
+
+      <Composition
+        // Style reference — the "bold" brand look on landscape cards.
+        id="StyleDemoBold"
+        component={StyleDemo}
+        durationInFrames={360}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      <Composition
+        // DeepSeek DSpark explainer — transparent cutaway overlay track.
+        id="DSparkVideo"
+        component={DSparkVideo}
+        durationInFrames={11967}
+        fps={30}
+        width={1920}
+        height={1080}
+        calculateMetadata={transparentDefaults}
+      />
+
+      <Composition
+        // DeepSeek DSpark — FINAL combined cut (footage + overlay + PiP), H.264 MP4.
+        id="DSparkFinal"
+        component={DSparkFinal}
+        durationInFrames={11967}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
       <Composition
         // Fable 5 explainer — transparent cutaway overlay track.
         id="Fable5Video"
