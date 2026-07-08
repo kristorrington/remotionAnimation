@@ -353,7 +353,10 @@ Shorts use even STRONGER cartoon/action animation than long-form:
 - Final beat = a payoff or a **loop back to the hook** (loops = free replays).
 - **Every short OPENS on full-screen animation**: `animHook: true` on EVERY
   spec, with a scene-setting beat at frame ~8 (it may precede its spoken
-  anchor) so the screen is never empty under the hook.
+  anchor) so the screen is never empty under the hook. The opening holds
+  **~3.2s** (`hookHold = 96` in VerticalShort) — enough to read hook + context;
+  never cut it shorter. First `fullscreen` span starts ≥ ~1.5s after the hook
+  settles (`from ≥ ~145`) so the face never blips in-and-out.
 - **Cold-viewer context is mandatory** when the short names a product/model/
   event the hook doesn't explain: `ShortSpec.context` — ONE unboxed, dim,
   sentence-case line under the hook (≤ ~45 chars, single line), e.g.

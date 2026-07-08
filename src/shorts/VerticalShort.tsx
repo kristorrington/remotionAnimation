@@ -41,7 +41,7 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
   const { durationInFrames: dur } = useVideoConfig();
   const frame = useCurrentFrame();
 
-  const hookHold = 66; // ~2.2s
+  const hookHold = 96; // ~3.2s — the full-screen opening needs room to breathe (2.2s was too quick)
   const seamStart = hookHold - 16;
   const seamEnd = hookHold + 4;
 

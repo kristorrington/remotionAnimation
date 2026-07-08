@@ -63,8 +63,9 @@ export const SHORTS: ShortSpec[] = [
       { at: 1123, scene: "conveyor", labels: ["SONNET"], tint: "#06B6D4", text: "EVEN CHEAPER?" }, // "Sonnet…even cheaper" abs 13152
       { at: 1215, scene: "emote", pose: "pointing", accent: "#E8B84B", tint: "#F59E0B", text: "THE 20% MATTERS?", sub: "then Fable", emoji: "💰" }, // "missing 20%…matters" abs 13244
     ],
-    // full-anim: the 2× reveal + the 80/20 decision payoff
-    fullscreen: [{ from: 138, to: 330 }, { from: 796, to: 1010 }],
+    // full-anim: the 2× reveal + the 80/20 decision payoff (first span starts
+    // ≥ ~1.5s after the longer hook settles so the face never blips)
+    fullscreen: [{ from: 156, to: 330 }, { from: 796, to: 1010 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
   },

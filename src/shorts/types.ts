@@ -62,7 +62,7 @@ export type ShortSpec = {
   // the video answers ("WOULD YOU EVEN NOTICE?") — an open loop that keeps
   // people watching. Complement the hook, don't repeat it. Keep ≤ ~24 chars.
   topic: string;
-  // Scroll-stopping line, held over the first ~2.2s. IF the hook alone doesn't
+  // Scroll-stopping line, held over the first ~3.2s. IF the hook alone doesn't
   // tell a cold viewer what the video is about, make the `topic` question carry
   // the subject ("IS YOUR AI BEING SWAPPED?") AND set `context` below.
   hook: string;
@@ -77,7 +77,8 @@ export type ShortSpec = {
   // (face hidden, VO keeps playing). Use for reveals, punchlines, big numbers and
   // payoffs where the metaphor carries the beat better than the face — never
   // force every beat into split-screen (CLAUDE.md §9). Constraints: sorted,
-  // non-overlapping, from ≥ ~82 (after the hook split settles), to ≤
+  // non-overlapping, from ≥ ~112 (after the hook split settles; leave the
+  // split ~1.5s before the first span so the face never blips), to ≤
   // durationInFrames − 116 (before the CTA close), ≥ 24 frames between spans.
   fullscreen?: { from: number; to: number }[];
   // Animation-first hook: the short OPENS on full-screen animation (under the

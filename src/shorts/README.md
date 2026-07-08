@@ -73,13 +73,14 @@ platform-UI safe zones (preview-only; can never render).
   (VO keeps playing — the video stays mounted at 1px), captions drop to y≈1560,
   the lower-third auto-defers past overlapping spans, and a whoosh fires on each
   boundary. Use for reveals, punchlines, big numbers, quick-fire runs, payoffs.
-  Constraints: sorted + non-overlapping, `from ≥ ~82`, `to ≤ dur − 116`, ≥ 24f
+  Constraints: sorted + non-overlapping, `from ≥ ~112` (leave the split ~1.5s
+  after the hook settles so the face never blips), `to ≤ dur − 116`, ≥ 24f
   between spans (the seam keyframes must stay strictly increasing).
 - **Text never covers the face:** captions on the chest, emphasis pops in the top
   band, hook over the hairline, CTA in the lower third.
 - **Retention furniture:** `TopBar` (progress bar + the `topic` question banner
   — a short, INFORMATIVE curiosity question that names the subject, e.g. "IS
-  YOUR AI BEING SWAPPED?"), `HookTitle` (word-slam, first ~2.2s), `Captions`
+  YOUR AI BEING SWAPPED?"), `HookTitle` (word-slam, first ~3.2s), `Captions`
   (whisper karaoke in an opaque pill, **split mode only** — docked on the seam;
   never during the hook or CTA, so the open stays clean),
   `LowerThird` (identity strip just below the seam, left, over the set wall —
