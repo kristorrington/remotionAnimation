@@ -7,7 +7,7 @@ import { CornerPip } from "./components/CornerPip";
 import { AnimatedBackground } from "./components/AnimatedBackground";
 
 // Final combined cut: talking head + PolicyRiskVideo animation track + PiP + flashes.
-const FOOTAGE = "talking-head.mp4";
+const FOOTAGE = "talking-head-040726.mp4";
 
 // Every full-screen cover in the timeline (cards + compare + outro). Used to find
 // the SHORT gaps between them, where the big talking-head face would otherwise

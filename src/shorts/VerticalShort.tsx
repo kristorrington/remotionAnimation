@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, interpolate, Sequence, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, getRemotionEnvironment, interpolate, Sequence, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { ShortSpec } from "./types";
 import { ThemeProvider } from "../theme";
 import { VerticalStage } from "./VerticalStage";
@@ -7,7 +7,7 @@ import { AnimationPanel } from "./AnimationPanel";
 import { TopBar } from "./TopBar";
 import { HookTitle } from "./HookTitle";
 import { Captions } from "./Captions";
-import { CAPTIONS } from "./captionsData";
+import { captionsFor } from "./captionsRegistry";
 import { ShortOutro } from "./ShortOutro";
 import { LowerThird } from "./LowerThird";
 import { MusicBed } from "../components/MusicBed";
@@ -24,7 +24,20 @@ const OUTRO = 96; // last ~3.2s
 // payoffs — CLAUDE.md §9: never force every beat into split). Text stays off the
 // face; sound fires on every visual change; the brand style comes from
 // spec.style ("cinematic" default | "bold").
-export const VerticalShort: React.FC<{ spec: ShortSpec }> = ({ spec }) => {
+// Platform-UI safe zones (right ~12%, bottom ~18%) — flip `showSafeZones` in
+// the Studio props panel while designing; it can never appear in a render.
+const SafeZones: React.FC = () => {
+  if (getRemotionEnvironment().isRendering) return null;
+  return (
+    <AbsoluteFill style={{ pointerEvents: "none" }}>
+      <div style={{ position: "absolute", top: 0, bottom: 0, right: 0, width: "12%", background: "rgba(255,90,241,0.12)", borderLeft: "2px dashed #FF5AF1" }} />
+      <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "18%", background: "rgba(255,90,241,0.12)", borderTop: "2px dashed #FF5AF1" }} />
+      <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 190, borderBottom: "2px dashed rgba(255,90,241,0.5)" }} />
+    </AbsoluteFill>
+  );
+};
+
+export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean }> = ({ spec, showSafeZones = false }) => {
   const { durationInFrames: dur } = useVideoConfig();
   const frame = useCurrentFrame();
 
@@ -73,11 +86,11 @@ export const VerticalShort: React.FC<{ spec: ShortSpec }> = ({ spec }) => {
             so the absolute-timed captions must add the Sequence's start back or
             every word lags the audio by the hook length. */}
         <Sequence from={seamEnd} durationInFrames={dur - OUTRO - seamEnd}>
-          <Captions words={CAPTIONS} clipFrom={spec.from + seamEnd} centerY={interpolate(seamY, [0, ANIM_H, FULL_H], [1452, ANIM_H, 1560], CLAMP)} />
+          <Captions words={captionsFor(spec.source)} clipFrom={spec.from + seamEnd} centerY={interpolate(seamY, [0, ANIM_H, FULL_H], [1452, ANIM_H, 1560], CLAMP)} />
         </Sequence>
 
-        {/* progress bar + "what this is about" topic banner */}
-        <TopBar topic={spec.topic} />
+        {/* progress bar (with beat milestone ticks) + topic banner */}
+        <TopBar topic={spec.topic} beats={spec.beats.map((b) => b.at / dur)} />
 
         {/* hook, over the full-screen face */}
         <Sequence  durationInFrames={hookHold} premountFor={20}>
@@ -93,6 +106,13 @@ export const VerticalShort: React.FC<{ spec: ShortSpec }> = ({ spec }) => {
         <Sequence from={dur - OUTRO} durationInFrames={OUTRO} premountFor={20}>
           <ShortOutro text={spec.outro} dur={OUTRO} />
         </Sequence>
+
+        {/* loop-seam ease: dip the last frames toward dark so the platform
+            auto-replay (last frame → first frame) never visibly jumps */}
+        <AbsoluteFill style={{ pointerEvents: "none", background: "black", opacity: interpolate(frame, [dur - 9, dur], [0, 0.35], CLAMP) }} />
+
+        {/* design-time safe zones (platform UI) — preview-only, never renders */}
+        {showSafeZones && <SafeZones />}
 
         {/* ===== SOUND — a hit on every visual change, VO always leads ===== */}
         {spec.music && (

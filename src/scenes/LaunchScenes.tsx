@@ -4,13 +4,14 @@ import { FONT } from "../components/overlayUI";
 import { SceneShell, SceneHeadline } from "./SceneShell";
 import { ModelBlock, SpeedModule, SpeedTrails } from "../motion/objects";
 import { Sparks, CYAN, WHITE, GREEN, AMBER } from "../motion/subjects";
+import { LightLeak } from "../motion/cinematics";
 import { DeepSeekMark } from "../components/Cartoons";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
 // HERO: the DSpark speed module flies in, BOLTS onto the V4 block, powers up —
 // then the whole rig accelerates off with speed trails. Title rides below.
-export const HeroLaunchScene: React.FC<{ durationInFrames: number; kicker?: string; title: string }> = ({ durationInFrames, kicker, title }) => {
+export const HeroLaunchScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; logo?: React.ReactNode; blockLabel?: string; moduleLabel?: string }> = ({ durationInFrames, kicker, title, logo, blockLabel = "V4", moduleLabel = "DSPARK" }) => {
   const frame = useCurrentFrame();
   const boltAt = 34;
   const launchAt = 110;
@@ -20,18 +21,18 @@ export const HeroLaunchScene: React.FC<{ durationInFrames: number; kicker?: stri
   const rigX = antic + dash;
   const showTrails = frame >= launchAt + 4;
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0xd5}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0xd5} depth impacts={[boltAt + 26, launchAt]}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 40 }}>
         <div style={{ opacity: interpolate(frame, [0, 12], [0, 1], CLAMP) }}>
-          <DeepSeekMark size={110} />
+          {logo ?? <DeepSeekMark size={110} />}
         </div>
         {/* the rig: block + bolted module */}
         <div style={{ position: "relative", height: 200, width: 900 }}>
           <div style={{ position: "absolute", left: 250, top: 0, transform: `translateX(${rigX}px)` }}>
             <div style={{ position: "relative" }}>
-              <ModelBlock label="V4" width={300} />
+              <ModelBlock label={blockLabel} width={300} />
               <div style={{ position: "absolute", left: -150, top: 56 }}>
-                <SpeedModule at={boltAt} />
+                <SpeedModule at={boltAt} label={moduleLabel} />
               </div>
               {showTrails && (
                 <div style={{ position: "absolute", left: -210, top: 66 }}>
@@ -43,26 +44,28 @@ export const HeroLaunchScene: React.FC<{ durationInFrames: number; kicker?: stri
         </div>
         <SceneHeadline kicker={kicker} title={title} titleSize={96} />
       </div>
+      {/* the ONE premium light-leak moment of the video — the hero launch */}
+      <LightLeak at={launchAt} dur={56} warm={false} />
     </SceneShell>
   );
 };
 
 // A SPEED LAYER: the module powers up ON the block (activation focus) while a
 // turbo gauge needle sweeps up. No launch — this beat is about the layer itself.
-export const SpeedLayerScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; subtitle?: string }> = ({ durationInFrames, kicker, title, subtitle }) => {
+export const SpeedLayerScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; subtitle?: string; blockLabel?: string; moduleLabel?: string; tint?: string }> = ({ durationInFrames, kicker, title, subtitle, blockLabel = "V4", moduleLabel = "DSPARK", tint }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const needle = spring({ frame: frame - 60, fps, config: { stiffness: 60, damping: 13 }, durationInFrames: 50 });
   const deg = interpolate(needle, [0, 1], [-80, 62]);
   const subOp = interpolate(frame, [26, 38], [0, 1], CLAMP);
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0xa7}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0xa7} tint={tint}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 42 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 70 }}>
           <div style={{ position: "relative" }}>
-            <ModelBlock label="V4" width={280} />
+            <ModelBlock label={blockLabel} width={280} />
             <div style={{ position: "absolute", left: -140, top: 52 }}>
-              <SpeedModule at={14} />
+              <SpeedModule at={14} label={moduleLabel} />
             </div>
           </div>
           {/* turbo gauge */}
@@ -124,7 +127,7 @@ export const SameCoreScene: React.FC<{ durationInFrames: number; kicker?: string
 
 // JUST FASTER: two lanes, the SAME brain block — the top one crawls, the bottom
 // one flies with trails. Same brain, faster path.
-export const RaceFasterScene: React.FC<{ durationInFrames: number; kicker?: string; title: string }> = ({ durationInFrames, kicker, title }) => {
+export const RaceFasterScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; slowLabel?: string; fastLabel?: string; blockLabel?: string }> = ({ durationInFrames, kicker, title, slowLabel = "BEFORE", fastLabel = "WITH DSPARK", blockLabel = "V4" }) => {
   const frame = useCurrentFrame();
   const loop = durationInFrames * 0.55;
   const slowX = interpolate(frame % loop, [0, loop], [0, 300]);
@@ -135,7 +138,7 @@ export const RaceFasterScene: React.FC<{ durationInFrames: number; kicker?: stri
       <span style={{ position: "absolute", left: 4, top: 8, fontFamily: FONT, fontWeight: 800, fontSize: 22, letterSpacing: 2, color: fast ? CYAN : "rgba(255,255,255,0.5)" }}>{label}</span>
       <div style={{ position: "absolute", left: 130 + x, top: 14 }}>
         <div style={{ position: "relative" }}>
-          <ModelBlock label="V4" width={fast ? 150 : 150} />
+          <ModelBlock label={blockLabel} width={150} />
           {fast && <div style={{ position: "absolute", left: -150, top: 26 }}><SpeedTrails width={150} /></div>}
         </div>
       </div>
@@ -145,8 +148,8 @@ export const RaceFasterScene: React.FC<{ durationInFrames: number; kicker?: stri
     <SceneShell durationInFrames={durationInFrames} particleSeed={0xc4}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 34 }}>
         <div style={{ position: "relative", width: 1240, height: 300 }}>
-          {lane("BEFORE", slowX, false, 0)}
-          {lane("WITH DSPARK", fastX, true, 160)}
+          {lane(slowLabel, slowX, false, 0)}
+          {lane(fastLabel, fastX, true, 160)}
         </div>
         <SceneHeadline kicker={kicker} title={title} titleSize={92} />
       </div>

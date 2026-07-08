@@ -2,45 +2,39 @@ import React from "react";
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { FONT } from "../components/overlayUI";
 import { SceneShell, SceneHeadline } from "./SceneShell";
-import { CartoonRobot, Sparks, CYAN, WHITE, RED, AMBER, GREEN, PANEL } from "../motion/subjects";
+import { CartoonRobot, Sparks, SpeechBubble, RobotPose, CYAN, WHITE, RED, AMBER, GREEN } from "../motion/subjects";
 import { SpeedTrails } from "../motion/objects";
 import { WarningBadge, ImpactStamp } from "../motion/primitives";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
-// A comic speech bubble that pops in at `at`.
-const Bubble: React.FC<{ text: string; at: number; color?: string; flip?: boolean }> = ({ text, at, color = CYAN, flip }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const e = spring({ frame: frame - at, fps, config: { stiffness: 260, damping: 13, mass: 0.6 }, durationInFrames: 14 });
-  const op = interpolate(frame, [at, at + 6], [0, 1], CLAMP);
-  return (
-    <div style={{ opacity: op, transform: `scale(${interpolate(e, [0, 1], [0.3, 1])}) rotate(${flip ? 3 : -3}deg)`, position: "relative", padding: "16px 26px", borderRadius: 18, background: PANEL, border: `4px solid ${color}`, boxShadow: `0 12px 30px rgba(0,0,0,0.45)` }}>
-      <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 42, color: WHITE, whiteSpace: "nowrap" }}>{text}</span>
-      <div style={{ position: "absolute", bottom: -16, [flip ? "right" : "left"]: 44, width: 0, height: 0, borderLeft: "12px solid transparent", borderRight: "12px solid transparent", borderTop: `18px solid ${color}` }} />
-    </div>
-  );
-};
-
-// TWO REACTIONS: two robots act it out — one panics ("AGI?!"), one shrugs
-// ("who cares") — then "THE POINT" stamps in the middle that both missed.
-export const ReactionsScene: React.FC<{ durationInFrames: number; kicker?: string; leftAt?: number; rightAt?: number; pointAt?: number }> = ({ durationInFrames, kicker = "TWO REACTIONS", leftAt = 100, rightAt = 172, pointAt = 262 }) => {
+// TWO REACTIONS: two robots act out opposing takes, then the stamp lands in the
+// middle. Defaults = the DSpark "AGI?! vs who cares" beat; fully reusable via props.
+export const ReactionsScene: React.FC<{
+  durationInFrames: number; kicker?: string; leftAt?: number; rightAt?: number; pointAt?: number;
+  leftBubble?: string; rightBubble?: string; leftPose?: RobotPose; rightPose?: RobotPose;
+  leftAccent?: string; rightAccent?: string; stamp?: string; stampColor?: string; tint?: string;
+}> = ({
+  durationInFrames, kicker = "TWO REACTIONS", leftAt = 100, rightAt = 172, pointAt = 262,
+  leftBubble = "AGI?!", rightBubble = "who cares", leftPose = "alarmed", rightPose = "shrug",
+  leftAccent = RED, rightAccent = AMBER, stamp = "THE POINT", stampColor = GREEN, tint,
+}) => {
   const frame = useCurrentFrame();
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0x21}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x21} tint={tint}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
         <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 26, letterSpacing: 8, color: CYAN, opacity: interpolate(frame, [0, 10], [0, 1], CLAMP) }}>{kicker}</span>
         <div style={{ display: "flex", alignItems: "flex-end", gap: 120, marginTop: 8 }}>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
-            <Bubble text="AGI?!" at={leftAt} color={RED} />
-            <CartoonRobot pose={frame >= leftAt ? "alarmed" : "idle"} size={250} accent={RED} />
+            <SpeechBubble text={leftBubble} at={leftAt} color={leftAccent} shout={leftPose === "alarmed"} />
+            <CartoonRobot pose={frame >= leftAt ? leftPose : "idle"} size={250} accent={leftAccent} />
           </div>
           <div style={{ paddingBottom: 90 }}>
-            <ImpactStamp text="THE POINT" at={pointAt} color={GREEN} />
+            <ImpactStamp text={stamp} at={pointAt} color={stampColor} />
           </div>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
-            <Bubble text="who cares" at={rightAt} color={AMBER} flip />
-            <CartoonRobot pose={frame >= rightAt ? "shrug" : "idle"} size={250} accent={AMBER} />
+            <SpeechBubble text={rightBubble} at={rightAt} color={rightAccent} flip />
+            <CartoonRobot pose={frame >= rightAt ? rightPose : "idle"} size={250} accent={rightAccent} />
           </div>
         </div>
       </div>
@@ -76,14 +70,15 @@ export const BoredMattersScene: React.FC<{ durationInFrames: number; kicker?: st
 // AGENTS, LESS PAINFUL: an agent robot slides along a track and BUMPS into walls
 // (LATENCY / COST / TOOLS). The speed layer sweeps in, two walls drop — the robot
 // moves on faster, but one smaller wall stays. Improved, not magical.
-export const ObstacleRunScene: React.FC<{ durationInFrames: number; kicker?: string; title: string }> = ({ durationInFrames, kicker, title }) => {
+export const ObstacleRunScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; walls?: { label: string; drops: boolean }[] }> = ({ durationInFrames, kicker, title, walls: wallsProp }) => {
   const frame = useCurrentFrame();
   const clearAt = Math.round(durationInFrames * 0.52);
-  const walls = [
-    { label: "LATENCY", x: 380, drops: true },
-    { label: "COST", x: 660, drops: true },
-    { label: "TOOLS", x: 940, drops: false },
+  const wallDefs = wallsProp ?? [
+    { label: "LATENCY", drops: true },
+    { label: "COST", drops: true },
+    { label: "TOOLS", drops: false },
   ];
+  const walls = wallDefs.map((w, i) => ({ ...w, x: 380 + i * 280 }));
   // robot advances, pauses at first wall bumping, then proceeds after clear
   const phase1 = interpolate(frame, [10, 60], [0, 300], CLAMP); // reach wall 1
   const bump = frame > 60 && frame < clearAt ? Math.abs(Math.sin(frame * 0.25)) * 10 : 0;
@@ -125,7 +120,7 @@ export const ObstacleRunScene: React.FC<{ durationInFrames: number; kicker?: str
 
 // NOT MAGIC: a magic wand swings in and gets REJECTED by the guard shield —
 // denied labels bounce off. Speed doesn't fix quality.
-export const NotMagicScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; badges: { label: string; at: number }[] }> = ({ durationInFrames, kicker, title, badges }) => {
+export const NotMagicScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; badges: { label: string; at: number }[]; tint?: string }> = ({ durationInFrames, kicker, title, badges, tint }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const wandIn = spring({ frame: frame - 14, fps, config: { stiffness: 150, damping: 13 }, durationInFrames: 22 });
@@ -136,7 +131,7 @@ export const NotMagicScene: React.FC<{ durationInFrames: number; kicker?: string
   const wandRot = rejected ? -34 : interpolate(wandIn, [0, 1], [-60, -18]);
   const shieldPulse = 0.6 + 0.4 * Math.sin(frame * 0.3);
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0x66}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x66} tint={tint}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 36 }}>
         <div style={{ position: "relative", width: 900, height: 260, display: "flex", alignItems: "center", justifyContent: "center" }}>
           {/* wand */}

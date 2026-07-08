@@ -3,7 +3,7 @@ import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { FONT } from "../components/overlayUI";
 import { SceneShell, SceneHeadline } from "./SceneShell";
 import { CartoonRobot, Sparks, Puff, CYAN, WHITE, RED, AMBER, GREEN, PANEL } from "../motion/subjects";
-import { ModelBlock, SpeedTrails, TokenCoin, CostMeterClimb } from "../motion/objects";
+import { ModelBlock, SpeedTrails, TokenCoin, CostMeterClimb, ConveyorBelt } from "../motion/objects";
 import { ImpactStamp, WarningBadge } from "../motion/primitives";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -42,20 +42,6 @@ const chipStyle = (color: string): React.CSSProperties => ({
   fontFamily: FONT, fontWeight: 800, fontSize: 24, letterSpacing: 1, color: WHITE, transform: "translateZ(0)", whiteSpace: "nowrap",
 });
 
-// A conveyor belt strip with moving tread dashes. Speed in px/frame.
-const Belt: React.FC<{ width: number; speed: number }> = ({ width, speed }) => {
-  const frame = useCurrentFrame();
-  return (
-    <svg width={width} height={26} viewBox={`0 0 ${width} 26`}>
-      <rect x={0} y={4} width={width} height={18} rx={9} fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.22)" strokeWidth={2} />
-      {Array.from({ length: Math.ceil(width / 46) }, (_, i) => {
-        const x = (i * 46 + frame * speed) % width;
-        return <line key={i} x1={x} y1={8} x2={x + 18} y2={18} stroke={CYAN} strokeWidth={3} opacity={0.5} />;
-      })}
-    </svg>
-  );
-};
-
 // FASTER ≠ CHEAPER BILL — the belt speeds up, API-call cards stream faster, and
 // the bill printer prints FASTER too. Cause and effect: speed feeds the bill.
 export const BillPrinterScene: React.FC<{ durationInFrames: number; kicker?: string; title: string }> = ({ durationInFrames, kicker, title }) => {
@@ -74,7 +60,7 @@ export const BillPrinterScene: React.FC<{ durationInFrames: number; kicker?: str
             {cards.map((x, i) => (
               <div key={i} style={{ position: "absolute", left: x - 20, top: 0, ...chipStyle(CYAN) }}>API CALL</div>
             ))}
-            <div style={{ position: "absolute", top: 70, left: 0 }}><Belt width={beltW} speed={speed} /></div>
+            <div style={{ position: "absolute", top: 70, left: 0 }}><ConveyorBelt width={beltW} speed={speed} /></div>
             <div style={{ position: "absolute", left: -170, top: 26 }}><SpeedTrails width={150} /></div>
           </div>
           {/* the bill printer keeps pace */}
@@ -101,18 +87,18 @@ export const BillPrinterScene: React.FC<{ durationInFrames: number; kicker?: str
 
 // GET CHEAPER? — the cost meter DROPS at small scale… then hidden loops, retries
 // and tool calls pump coins straight back in and it climbs past where it started.
-export const HiddenCostScene: React.FC<{ durationInFrames: number; kicker?: string; title: string }> = ({ durationInFrames, kicker, title }) => {
+export const HiddenCostScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; chipLabels?: [string, string, string]; chipAts?: [number, number, number]; tint?: string }> = ({ durationInFrames, kicker, title, chipLabels = ["RETRY", "LOOP", "TOOL CALLS"], chipAts, tint }) => {
   const frame = useCurrentFrame();
   const riseAt = Math.round(durationInFrames * 0.38);
   const level = interpolate(frame, [10, riseAt - 20, riseAt + 60, durationInFrames - 30], [0.55, 0.28, 0.6, 0.92], CLAMP);
   const chips = [
-    { label: "RETRY", at: riseAt },
-    { label: "LOOP", at: riseAt + 45 },
-    { label: "TOOL CALLS", at: riseAt + 90 },
+    { label: chipLabels[0], at: chipAts?.[0] ?? riseAt },
+    { label: chipLabels[1], at: chipAts?.[1] ?? riseAt + 45 },
+    { label: chipLabels[2], at: chipAts?.[2] ?? riseAt + 90 },
   ];
   const coins = Array.from({ length: 8 }, (_, i) => riseAt + 10 + i * 22);
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0x82}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x82} tint={tint}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 40 }}>
         <div style={{ display: "flex", alignItems: "flex-end", gap: 70 }}>
           <CartoonRobot pose={frame < riseAt ? "idle" : "worried"} size={210} accent={frame < riseAt ? GREEN : AMBER} />
@@ -141,7 +127,7 @@ export const HiddenCostScene: React.FC<{ durationInFrames: number; kicker?: stri
 
 // SPEED ≠ SUCCESS — a boosted rocket flies FAST, straight into the WRONG ANSWER
 // wall. Fast, and still failed.
-export const SpeedWallScene: React.FC<{ durationInFrames: number; kicker?: string; title: string }> = ({ durationInFrames, kicker, title }) => {
+export const SpeedWallScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; wallLabel?: string; rocketLabel?: string }> = ({ durationInFrames, kicker, title, wallLabel = "WRONG ANSWER", rocketLabel = "FAST" }) => {
   const frame = useCurrentFrame();
   const hitAt = 88;
   const antic = interpolate(frame, [30, 44], [0, -34], CLAMP);
@@ -152,14 +138,14 @@ export const SpeedWallScene: React.FC<{ durationInFrames: number; kicker?: strin
   const rot = crashed ? Math.min((frame - hitAt) * 2.4, 38) : 0;
   const wallShake = crashed && frame < hitAt + 14 ? Math.sin(frame * 1.3) * 6 : 0;
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0x93}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x93} mood="danger" depth impacts={[hitAt]}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 30 }}>
         <div style={{ position: "relative", width: 1340, height: 320 }}>
           <div style={{ position: "absolute", left: 0, right: 0, bottom: 30, height: 4, background: "rgba(255,255,255,0.16)" }} />
           {/* the wall */}
           <div style={{ position: "absolute", right: 120, bottom: 34, transform: `translateX(${wallShake}px)` }}>
             <div style={{ width: 34, height: 230, background: "rgba(239,68,68,0.5)", border: `4px solid ${RED}`, borderRadius: 8 }} />
-            <span style={{ position: "absolute", top: -44, left: -80, width: 200, textAlign: "center", fontFamily: FONT, fontWeight: 800, fontSize: 26, color: WHITE, transform: "translateZ(0)" }}>WRONG ANSWER</span>
+            <span style={{ position: "absolute", top: -44, left: -80, width: 200, textAlign: "center", fontFamily: FONT, fontWeight: 800, fontSize: 26, color: WHITE, transform: "translateZ(0)" }}>{wallLabel}</span>
             {crashed && <div style={{ position: "absolute", top: 40, left: 14, width: 5, height: 120, background: RED, transform: "rotate(14deg)", opacity: 0.8 }} />}
           </div>
           {/* the rocket */}
@@ -171,7 +157,7 @@ export const SpeedWallScene: React.FC<{ durationInFrames: number; kicker?: strin
                 <path d="M158 26 C 196 34 196 66 158 74 Z" fill={CYAN} opacity={0.9} />
                 <path d="M22 26 L40 6 L66 26 Z" fill={CYAN} opacity={0.85} />
                 <path d="M22 74 L40 94 L66 74 Z" fill={CYAN} opacity={0.85} />
-                <text x={86} y={58} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={22} fill={WHITE}>FAST</text>
+                <text x={86} y={58} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={22} fill={WHITE}>{rocketLabel}</text>
               </svg>
             </div>
             {!crashed && frame > 46 && <div style={{ position: "absolute", left: -160, top: 26 }}><SpeedTrails width={150} /></div>}
@@ -187,12 +173,13 @@ export const SpeedWallScene: React.FC<{ durationInFrames: number; kicker?: strin
 
 // CHEAPER TO SERVE — the "got smarter" meter tries to rise and gets crossed out;
 // the serve-cost meter actually DROPS. The real story, animated.
-export const CheaperToServeScene: React.FC<{ durationInFrames: number; kicker?: string; title: string }> = ({ durationInFrames, kicker, title }) => {
+export const CheaperToServeScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; leftLabel?: string; rightLabel?: string }> = ({ durationInFrames, kicker, title, leftLabel = "SMARTER?", rightLabel = "COST TO SERVE" }) => {
   const frame = useCurrentFrame();
-  const smart = interpolate(frame, [20, 70, 100], [0.2, 0.42, 0.38], CLAMP);
-  const crossAt = 105;
-  const serveStart = 170;
-  const serve = interpolate(frame, [serveStart, serveStart + 110], [0.82, 0.24], CLAMP);
+  // timings scale with the beat so short cards still land the check
+  const crossAt = Math.round(durationInFrames * 0.28);
+  const serveStart = Math.round(durationInFrames * 0.44);
+  const smart = interpolate(frame, [20, crossAt - 30, crossAt - 5], [0.2, 0.42, 0.38], CLAMP);
+  const serve = interpolate(frame, [serveStart, serveStart + durationInFrames * 0.28], [0.82, 0.24], CLAMP);
   const meter = (label: string, level: number, color: string) => (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
       <div style={{ width: 70, height: 280, borderRadius: 16, border: "3px solid rgba(255,255,255,0.25)", background: "rgba(8,12,20,0.8)", position: "relative", overflow: "hidden" }}>
@@ -206,15 +193,15 @@ export const CheaperToServeScene: React.FC<{ durationInFrames: number; kicker?: 
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 44 }}>
         <div style={{ display: "flex", alignItems: "flex-end", gap: 130 }}>
           <div style={{ position: "relative" }}>
-            {meter("SMARTER?", smart, RED)}
+            {meter(leftLabel, smart, RED)}
             <div style={{ position: "absolute", top: 60, left: -20 }}>
               <Mark kind="cross" at={crossAt} size={120} />
             </div>
           </div>
           <div style={{ position: "relative" }}>
-            {meter("COST TO SERVE", serve, GREEN)}
+            {meter(rightLabel, serve, GREEN)}
             <div style={{ position: "absolute", top: 60, left: -14 }}>
-              <Mark kind="check" at={serveStart + 120} size={120} />
+              <Mark kind="check" at={Math.round(serveStart + durationInFrames * 0.3)} size={120} />
             </div>
             <div style={{ position: "absolute", left: 90, bottom: 40 }}>
               <TokenCoin at={serveStart + 40} fallH={200} size={44} />
@@ -264,7 +251,7 @@ export const LessPainScene: React.FC<{ durationInFrames: number; kicker?: string
 
 // BENCHMARKS LIE — the shiny scoreboard placard DROPS, revealing the messy
 // real-world workflow behind it while the siren spins up.
-export const BenchmarksLieScene: React.FC<{ durationInFrames: number; kicker?: string; title: string }> = ({ durationInFrames, kicker, title }) => {
+export const BenchmarksLieScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; messLabels?: [string, string, string] }> = ({ durationInFrames, kicker, title, messLabels = ["RETRY LOOP", "TOOL FAIL", "TIMEOUT"] }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const revealAt = Math.round(durationInFrames * 0.4);
@@ -275,12 +262,12 @@ export const BenchmarksLieScene: React.FC<{ durationInFrames: number; kicker?: s
   const revealed = frame >= revealAt;
   const siren = revealed ? 0.4 + 0.6 * Math.abs(Math.sin((frame - revealAt) * 0.4)) : 0;
   const mess = [
-    { label: "RETRY LOOP", x: -180, y: -30, rot: -8 },
-    { label: "TOOL FAIL", x: 40, y: 40, rot: 6 },
-    { label: "TIMEOUT", x: -60, y: 110, rot: -4 },
+    { label: messLabels[0], x: -180, y: -30, rot: -8 },
+    { label: messLabels[1], x: 40, y: 40, rot: 6 },
+    { label: messLabels[2], x: -60, y: 110, rot: -4 },
   ];
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0xc8}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0xc8} mood="danger" impacts={[revealAt]}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 40 }}>
         <div style={{ position: "relative", width: 700, height: 360 }}>
           {/* the messy reality (behind) */}
@@ -336,7 +323,7 @@ export const MigrateStopScene: React.FC<{ durationInFrames: number; kicker?: str
     <div style={{ ...chipStyle(color), fontSize: 28 }}>{label}</div>
   );
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0xd2}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0xd2} depth impacts={[stopAt]}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 26 }}>
         <div style={{ position: "relative", width: 1400, height: 380 }}>
           <div style={{ position: "absolute", left: 0, right: 0, bottom: 42, height: 5, background: "rgba(255,255,255,0.16)" }} />
@@ -381,7 +368,7 @@ export const MigrateStopScene: React.FC<{ durationInFrames: number; kicker?: str
 
 // 20–30% OR SKIP — the decision gate: a 5% result hits the trapdoor; a 25%
 // result opens the gate and sails through with trails.
-export const ThresholdGateScene: React.FC<{ durationInFrames: number; kicker?: string; title: string }> = ({ durationInFrames, kicker, title }) => {
+export const ThresholdGateScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; failLabel?: string; passLabel?: string; zoneLabel?: string; skipStamp?: string; tint?: string }> = ({ durationInFrames, kicker, title, failLabel = "5%", passLabel = "25%", zoneLabel = "20–30%", skipStamp = "SKIP", tint }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const gateX = 760;
@@ -404,7 +391,7 @@ export const ThresholdGateScene: React.FC<{ durationInFrames: number; kicker?: s
     <div style={{ position: "absolute", left: x, bottom: 96, ...chipStyle(color), fontSize: 30, ...extra }}>{label}</div>
   );
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0xe3}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0xe3} tint={tint}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 30 }}>
         <div style={{ position: "relative", width: 1340, height: 340 }}>
           {/* ground with a trapdoor segment before the gate */}
@@ -415,13 +402,13 @@ export const ThresholdGateScene: React.FC<{ durationInFrames: number; kicker?: s
           <div style={{ position: "absolute", left: gateX, bottom: 90 }}>
             <div style={{ position: "absolute", left: 0, bottom: 0, width: 14, height: 210, background: "rgba(255,255,255,0.22)", borderRadius: 6 }} />
             <div style={{ position: "absolute", left: -150, bottom: 130, transform: `translateY(${gateY}px)`, width: 160, height: 16, borderRadius: 8, background: passed ? GREEN : AMBER, boxShadow: `0 0 14px ${passed ? GREEN : AMBER}` }} />
-            <div style={{ position: "absolute", left: -66, bottom: 226, ...chipStyle(GREEN), fontSize: 22 }}>20–30%</div>
+            <div style={{ position: "absolute", left: -66, bottom: 226, ...chipStyle(GREEN), fontSize: 22 }}>{zoneLabel}</div>
           </div>
-          {/* attempt 1: 5% falls through */}
-          {frame < dropAt + 28 && card("5%", x1, { transform: `translateY(${fall1}px) rotate(${rot1}deg) translateZ(0)`, opacity: card1Op }, RED)}
+          {/* attempt 1: the small/vague one falls through */}
+          {frame < dropAt + 28 && card(failLabel, x1, { transform: `translateY(${fall1}px) rotate(${rot1}deg) translateZ(0)`, opacity: card1Op }, RED)}
           {frame >= dropAt && frame < startAt2 - 10 && (
             <div style={{ position: "absolute", left: 180, top: 6 }}>
-              <ImpactStamp text="SKIP" at={dropAt + 12} color={RED} />
+              <ImpactStamp text={skipStamp} at={dropAt + 12} color={RED} />
             </div>
           )}
           <Puff at={dropAt + 20} x={gateX - 140} y={330} size={150} />
@@ -429,7 +416,7 @@ export const ThresholdGateScene: React.FC<{ durationInFrames: number; kicker?: s
           {frame >= startAt2 && (
             <div style={{ position: "absolute", left: x2, bottom: 96 }}>
               <div style={{ position: "relative" }}>
-                <div style={{ ...chipStyle(GREEN), fontSize: 30 }}>25%</div>
+                <div style={{ ...chipStyle(GREEN), fontSize: 30 }}>{passLabel}</div>
                 {passed && <div style={{ position: "absolute", left: -140, top: 6 }}><SpeedTrails width={130} color={GREEN} /></div>}
               </div>
             </div>
@@ -505,7 +492,7 @@ export const WorkOverTokensScene: React.FC<{ durationInFrames: number; kicker?: 
   const lean = crossed ? 0 : 7;
   const coins = Array.from({ length: 6 }, (_, i) => 20 + i * 34);
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0x105}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x105} mood="win" impacts={[crossAt]}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 30 }}>
         <div style={{ position: "relative", width: 1340, height: 340 }}>
           <div style={{ position: "absolute", left: 0, right: 0, bottom: 40, height: 4, background: "rgba(255,255,255,0.16)" }} />
@@ -558,7 +545,7 @@ export const FinishCheckScene: React.FC<{ durationInFrames: number; kicker?: str
   const crossed = frame >= 96;
   const hand = interpolate(frame, [14, 96], [0, 300], CLAMP);
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0x116}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x116} mood="win" impacts={[96]}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 40 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 80 }}>
           {/* stopwatch */}

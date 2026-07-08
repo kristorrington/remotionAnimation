@@ -16,17 +16,31 @@ export const SFX = {
   shutterOld: staticFile("sfx/shutter-old.wav"), // vintage camera flash — alt accent
 } as const;
 
+// Subtle pitch variation so a repeated sample never sounds machine-gunned:
+// rotate rates by index (`rate={vary(i)}`) — same file, three slightly
+// different pitches. Drop extra samples into the arrays below to widen it.
+export const vary = (i: number) => [1, 0.94, 1.07][i % 3];
+
+// Sample pools per role — add files to a pool and pick(pool, i) rotates them.
+export const SFX_POOLS = {
+  whoosh: [SFX.whoosh],
+  accent: [SFX.ding, SFX.whip, SFX.switch],
+} as const;
+export const pick = (pool: readonly string[], i: number) => pool[i % pool.length];
+
 // A one-shot sound effect fired at an absolute frame. Wrapped in a short
-// Sequence so the clip is trimmed to its trigger window.
+// Sequence so the clip is trimmed to its trigger window. `rate` shifts the
+// pitch/speed slightly (use vary(i) for repeated samples).
 export const SfxCue: React.FC<{
   from: number;
   src: string;
   volume?: number;
   durationInFrames?: number;
-}> = ({ from, src, volume = 0.5, durationInFrames = 30 }) => {
+  rate?: number;
+}> = ({ from, src, volume = 0.5, durationInFrames = 30, rate }) => {
   return (
     <Sequence from={from} durationInFrames={durationInFrames}>
-      <Audio src={src} volume={volume} />
+      <Audio src={src} volume={volume} playbackRate={rate ?? 1} />
     </Sequence>
   );
 };

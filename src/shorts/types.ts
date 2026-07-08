@@ -20,7 +20,8 @@ export type BeatSceneKey =
   | "reject"     // a badge bounces off the guard shield
   | "retry"      // a call card loops the retry wheel, erroring each lap
   | "check"      // one big object gets a verdict stamped (quick-fire beats)
-  | "race";      // same block, two lanes, trails on the fast one
+  | "race"       // same block, two lanes, trails on the fast one
+  | "racks";     // server racks + fans (physical-infrastructure beats)
 
 // A "beat" = one tiny animated scene in the animation zone. `at` is relative to
 // the CLIP start. Beats should tile the whole clip so the zone is never empty.
@@ -33,13 +34,17 @@ export type Beat = {
   icon?: IconKey; // legacy icon card fallback — max ~1 per short
   pose?: RobotPose; // emote
   accent?: string;
+  tint?: string; // ambient wash colour for this beat (TintWash); falls back to a rotating palette
   labels?: string[]; // queue cards / lane names / chips
   badge?: string; // reject: the label that bounces off
   obj?: "clock" | "shield" | "coin" | "bug" | "gauge" | "brain"; // check
   verdict?: "check" | "warn" | "cross"; // check / testbench
   trails?: boolean; // bolt: speed trails after landing
   warn?: string; // bolt: amber warning tag
+  blockLabel?: string; // bolt: the machine block's plate (default "V4")
+  moduleLabel?: string; // bolt: the bolt-on module's label (default "DSPARK")
   stamp?: string; // coins: impact stamp text
+  emoji?: string; // meme punch: ONE emoji pops with the beat (use ~1 per short)
 };
 
 // One short = one data entry. To turn a viral transcript moment into a Short,
@@ -73,6 +78,9 @@ export type ShortSpec = {
   // HookTitle) instead of the full-screen face. Use when the first beat's gag
   // IS the hook. Requires a beat at/near frame 0 so the screen is never empty.
   animHook?: boolean;
+  // A/B hook test: registers a second composition (`<id>-B`) identical except
+  // for this hook line. Render both, post both, keep the winner.
+  hookAlt?: string;
   outro: string; // CTA shown in the last ~3s (e.g. "FOLLOW FOR MORE")
   music?: string; // optional low bed in public/music/ (e.g. "music/tension.MP3")
   style?: VideoStyle; // brand look — "cinematic" (default) or "bold"

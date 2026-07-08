@@ -36,33 +36,54 @@ export const ClaudeMark: React.FC<{ size?: number }> = ({ size = 130 }) => {
   );
 };
 
-// The DeepSeek whale — gently "swims" (float + tilt) in a rounded app-tile (the
-// source PNG has a white background, so we frame it as an intentional icon tile)
-// with a blue glow. No full spin (a spinning whale looks silly).
-export const DeepSeekMark: React.FC<{ size?: number }> = ({ size = 140 }) => {
+// The standard treatment for ANY logo asset from the manifest: gentle float +
+// tilt + pulse with a brand-colored glow. `mode: "tile"` frames it on a white
+// rounded app-tile (for logos with a baked white background — record which in
+// the asset manifest); `mode: "transparent"` shows the raw image.
+export const LogoBadge: React.FC<{ src: string; size?: number; mode?: "tile" | "transparent"; glow?: string; float?: boolean }> = ({ src, size = 140, mode = "transparent", glow = "rgba(6,182,212,0.55)", float = true }) => {
   const frame = useCurrentFrame();
-  const y = 6 * Math.sin(frame * 0.06);
-  const tilt = 4 * Math.sin(frame * 0.05);
-  const pulse = 1 + 0.04 * Math.sin(frame * 0.12);
+  const y = float ? 6 * Math.sin(frame * 0.06) : 0;
+  const tilt = float ? 4 * Math.sin(frame * 0.05) : 0;
+  const pulse = float ? 1 + 0.04 * Math.sin(frame * 0.12) : 1;
+  if (mode === "tile") {
+    return (
+      <div
+        style={{
+          width: size,
+          height: size,
+          borderRadius: size * 0.24,
+          background: "#FFFFFF",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+          transform: `translateY(${y}px) rotate(${tilt}deg) scale(${pulse})`,
+          boxShadow: `0 0 ${size * 0.22}px ${glow}, 0 14px 34px rgba(0,0,0,0.45)`,
+        }}
+      >
+        <Img src={src} style={{ width: size * 0.9, height: size * 0.9, objectFit: "contain" }} />
+      </div>
+    );
+  }
   return (
-    <div
+    <Img
+      src={src}
       style={{
         width: size,
         height: size,
-        borderRadius: size * 0.24,
-        background: "#FFFFFF",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        overflow: "hidden",
+        objectFit: "contain",
         transform: `translateY(${y}px) rotate(${tilt}deg) scale(${pulse})`,
-        boxShadow: `0 0 ${size * 0.22}px rgba(77,107,254,0.6), 0 14px 34px rgba(0,0,0,0.45)`,
+        filter: `drop-shadow(0 0 ${size * 0.18}px ${glow})`,
       }}
-    >
-      <Img src={staticFile("deepseek-logo.png")} style={{ width: size * 0.9, height: size * 0.9, objectFit: "contain" }} />
-    </div>
+    />
   );
 };
+
+// The DeepSeek whale — gently "swims" in a rounded app-tile (the source PNG has
+// a white background) with a blue glow. No full spin (a spinning whale looks silly).
+export const DeepSeekMark: React.FC<{ size?: number }> = ({ size = 140 }) => (
+  <LogoBadge src={staticFile("deepseek-logo.png")} size={size} mode="tile" glow="rgba(77,107,254,0.6)" />
+);
 
 // Model "thinking" spinner — an arc sweeps around a faint track.
 export const IconThinking: React.FC<{ size?: number }> = ({ size = 120 }) => {

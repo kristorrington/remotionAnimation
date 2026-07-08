@@ -11,6 +11,18 @@
       "usedIn": ["DSparkVideo hero launch scene", "DSparkVideo outro", "all 5 DSpark shorts (deepseek icon beats)"],
       "attributionRequired": false,
       "concerns": "Source URL unknown (user-uploaded). Prefer an official SVG from DeepSeek brand assets for future videos."
+    },
+    {
+      "filename": "dspark-speedups.json",
+      "localPath": "public/assets/external/charts/dspark-speedups.json",
+      "type": "chart",
+      "sourceUrl": null,
+      "sourceName": "DeepSeek DSpark announcement (reported claims, via video transcript)",
+      "dateAccessed": "2026-07-06",
+      "usageNote": "Extracted claim numbers for native Remotion chart recreation (CLAUDE.md 10.3) — data-as-asset, no third-party chart image used",
+      "usedIn": ["TemplateLab chart demos"],
+      "attributionRequired": false,
+      "concerns": "Numbers come from the narration's reported claims; attach the official announcement URL when citing on screen in a published video"
     }
   ]
 }

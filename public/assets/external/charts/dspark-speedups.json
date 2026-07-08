@@ -1,0 +1,11 @@
+{
+  "title": "Reported DSpark speedup (per user)",
+  "unit": "%",
+  "source": { "name": "DeepSeek DSpark announcement (reported claims)", "url": null },
+  "data": [
+    { "label": "V4 Flash", "series": "low end", "value": 60 },
+    { "label": "V4 Flash", "series": "high end", "value": 85 },
+    { "label": "V4 Pro", "series": "low end", "value": 57 },
+    { "label": "V4 Pro", "series": "high end", "value": 78 }
+  ]
+}

@@ -1,11 +1,19 @@
 import React from "react";
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
+import { fitText } from "@remotion/layout-utils";
 import { FONT } from "../components/overlayUI";
-import { CartoonRobot, ThoughtBubble, Sparks, RobotPose, CYAN, WHITE, RED, AMBER, GREEN, PANEL } from "../motion/subjects";
-import { ModelBlock, SpeedModule, SpeedTrails, TokenCoin, CostMeterClimb, PromptQueue, CardStackDrop } from "../motion/objects";
+import { CartoonRobot, ThoughtBubble, Sparks, SpeechBubble, RobotPose, CYAN, WHITE, RED, AMBER, GREEN, PANEL } from "../motion/subjects";
+import { ModelBlock, SpeedModule, SpeedTrails, TokenCoin, CostMeterClimb, PromptQueue, CardStackDrop, ConveyorBelt, RetryWheel, ServerRack } from "../motion/objects";
 import { StalledBar, ImpactStamp } from "../motion/primitives";
 import { IconBrain, IconClock, IconGuard, IconPrice, IconBug, IconGauge } from "../components/Cartoons";
+import { TintWash } from "../scenes/SceneShell";
 import { Beat } from "./types";
+
+// Per-beat ambient tints — every beat SHIFTS the wash colour (the beats
+// crossfade, so the gradient sweeps with each 1.5–3s reset; never the same
+// navy twice in a row). Explicit `Beat.tint` wins; the palette rotation covers
+// archived specs that predate the field.
+const BEAT_TINTS = ["#06B6D4", "#F59E0B", "#34D399", "#EF4444"];
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
@@ -16,30 +24,26 @@ const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 // and center their action, so one component works in both layouts.
 // ============================================================================
 
-// Big mobile label under the action. 1–4 words; sub is a small chip.
+// Big mobile label under the action. 1–4 words; sub is a small chip. The label
+// STAMPS down (scale overshoot) and the chip slaps in tilted — meme energy,
+// not a slide-up fade. The text is auto-fitted so long labels shrink instead
+// of crossing the borders. 92 is the MAX size; the fit width covers the WORST
+// case: the full-anim spans zoom the whole panel ×1.32 (VerticalShort) and the
+// stamp overshoots ×1.12 — 730 × 1.32 × 1.12 ≈ 1079 ≤ the 1080 frame.
 const BeatLabel: React.FC<{ text: string; sub?: string; accent?: string }> = ({ text, sub, accent = CYAN }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const y = interpolate(spring({ frame: frame - 2, fps, config: { stiffness: 260, damping: 17 }, durationInFrames: 12 }), [0, 1], [44, 0]);
-  const op = interpolate(frame, [3, 10], [0, 1], CLAMP);
-  return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14, opacity: op, transform: `translateY(${y}px) translateZ(0)`, padding: "0 40px", textAlign: "center" }}>
-      <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 92, lineHeight: 1.02, color: WHITE, textShadow: "0 6px 30px rgba(0,0,0,0.6)" }}>{text}</span>
-      {sub ? <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 30, letterSpacing: 3, color: accent, border: `3px solid ${accent}55`, borderRadius: 12, padding: "6px 18px", background: "rgba(8,12,20,0.7)" }}>{sub}</span> : null}
-    </div>
+  const fitted = React.useMemo(
+    () => Math.min(92, fitText({ text, withinWidth: 730, fontFamily: FONT, fontWeight: 900 }).fontSize),
+    [text],
   );
-};
-
-// Comic speech bubble (pops at `at`, beat-local).
-const Bubble: React.FC<{ text: string; at?: number; color?: string }> = ({ text, at = 8, color = CYAN }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const e = spring({ frame: frame - at, fps, config: { stiffness: 260, damping: 13, mass: 0.6 }, durationInFrames: 14 });
-  const op = interpolate(frame, [at, at + 6], [0, 1], CLAMP);
+  const e = spring({ frame: frame - 2, fps, config: { stiffness: 300, damping: 13, mass: 0.7 }, durationInFrames: 14 });
+  const subPop = spring({ frame: frame - 8, fps, config: { stiffness: 280, damping: 12 }, durationInFrames: 14 });
+  const op = interpolate(frame, [2, 8], [0, 1], CLAMP);
   return (
-    <div style={{ opacity: op, transform: `scale(${interpolate(e, [0, 1], [0.3, 1])}) rotate(-3deg)`, position: "relative", padding: "14px 24px", borderRadius: 18, background: PANEL, border: `4px solid ${color}` }}>
-      <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 40, color: WHITE, whiteSpace: "nowrap" }}>{text}</span>
-      <div style={{ position: "absolute", bottom: -16, left: 44, width: 0, height: 0, borderLeft: "12px solid transparent", borderRight: "12px solid transparent", borderTop: `18px solid ${color}` }} />
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14, opacity: op, transform: `scale(${interpolate(e, [0, 1], [1.12, 1])}) translateZ(0)`, padding: "0 40px", textAlign: "center" }}>
+      <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: fitted, lineHeight: 1.02, color: WHITE, textShadow: "0 6px 30px rgba(0,0,0,0.6)", whiteSpace: "nowrap" }}>{text}</span>
+      {sub ? <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 30, letterSpacing: 3, color: accent, border: `3px solid ${accent}55`, borderRadius: 12, padding: "6px 18px", background: "rgba(8,12,20,0.7)", opacity: frame < 8 ? 0 : 1, transform: `rotate(-2deg) scale(${interpolate(subPop, [0, 1], [1.5, 1])})` }}>{sub}</span> : null}
     </div>
   );
 };
@@ -83,14 +87,21 @@ const Verdict: React.FC<{ kind: "check" | "warn" | "cross"; at: number; size?: n
 };
 
 // ---------------------------------------------------------------------------
-// emote — a big robot acts out the emotion; the bubble/label carry the words.
-const EmoteBeat: React.FC<{ beat: Beat }> = ({ beat }) => (
-  <Wrap gap={30}>
-    {beat.sub ? <Bubble text={beat.sub} color={beat.accent ?? CYAN} /> : null}
-    <CartoonRobot pose={beat.pose ?? "idle"} size={400} accent={beat.accent ?? CYAN} />
-    <BeatLabel text={beat.text} accent={beat.accent} />
-  </Wrap>
-);
+// emote — a big robot POPS in and acts out the emotion; bubble/label carry the words.
+const EmoteBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const e = spring({ frame: frame - 2, fps, config: { stiffness: 260, damping: 12, mass: 0.8 }, durationInFrames: 16 });
+  return (
+    <Wrap gap={30}>
+      {beat.sub ? <SpeechBubble text={beat.sub} at={8} fontSize={40} color={beat.accent ?? CYAN} /> : null}
+      <div style={{ transform: `scale(${interpolate(e, [0, 1], [0.5, 1])})` }}>
+        <CartoonRobot pose={beat.pose ?? "idle"} size={400} accent={beat.accent ?? CYAN} />
+      </div>
+      <BeatLabel text={beat.text} accent={beat.accent} />
+    </Wrap>
+  );
+};
 
 // queue — the bottleneck: robot waits → prompt cards queue → brain thinks slowly.
 const QueueBeat: React.FC<{ beat: Beat }> = ({ beat }) => (
@@ -146,9 +157,9 @@ const BoltBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
   return (
     <Wrap gap={54}>
       <div style={{ position: "relative", transform: "scale(1.25)" }}>
-        <ModelBlock label="V4" width={300} />
+        <ModelBlock label={beat.blockLabel ?? "V4"} width={300} />
         <div style={{ position: "absolute", left: -150, top: 56 }}>
-          <SpeedModule at={8} />
+          <SpeedModule at={8} label={beat.moduleLabel ?? "DSPARK"} />
         </div>
         {showTrails ? (
           <div style={{ position: "absolute", left: -215, top: 66 }}>
@@ -181,7 +192,11 @@ const CoinsBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
             </div>
           ))}
         </div>
-        <CostMeterClimb level={level} height={300} label="COST" />
+        <CostMeterClimb level={level} height={300} label={beat.labels?.[0] ?? "COST"} />
+        {/* the robot watches the meter climb and panics past the red line */}
+        <div style={{ marginLeft: 34 }}>
+          <CartoonRobot pose={level > 0.7 ? "alarmed" : "worried"} size={200} accent={level > 0.7 ? RED : CYAN} lookX={-7} />
+        </div>
       </div>
       <BeatLabel text={beat.text} sub={beat.sub} accent={level > 0.7 ? RED : GREEN} />
       {beat.stamp ? <ImpactStamp text={beat.stamp} at={Math.round(dur * 0.6)} color={AMBER} /> : null}
@@ -292,7 +307,7 @@ const TestBenchBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => 
           {labels.slice(0, 2).map((l, i) => {
             const e = spring({ frame: frame - outAt - i * 8, fps, config: { stiffness: 220, damping: 15 }, durationInFrames: 16 });
             return (
-              <div key={l} style={{ opacity: interpolate(e, [0, 0.4], [0, 1]), transform: `translateY(${interpolate(e, [0, 1], [40, 0])}px)`, padding: "12px 24px", borderRadius: 12, background: PANEL, border: `4px solid ${i === 0 ? "rgba(255,255,255,0.35)" : CYAN}` }}>
+              <div key={l} style={{ opacity: interpolate(e, [0, 0.4], [0, 1]), transform: `translateY(${interpolate(e, [0, 1], [40, 0])}px) rotate(${i === 0 ? -2 : 2}deg) scale(${interpolate(e, [0, 1], [1.35, 1])})`, padding: "12px 24px", borderRadius: 12, background: PANEL, border: `4px solid ${i === 0 ? "rgba(255,255,255,0.35)" : CYAN}` }}>
                 <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 30, letterSpacing: 1, color: i === 0 ? "rgba(255,255,255,0.7)" : WHITE }}>{l}</span>
               </div>
             );
@@ -314,12 +329,9 @@ const ConveyorBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
   const split = labels.length >= 2;
   const splitAt = Math.round(dur * 0.35);
   const belt = (y: number, w: number, x = 0) => (
-    <svg width={w} height={26} viewBox={`0 0 ${w} 26`} style={{ position: "absolute", left: x, top: y }}>
-      <rect x={0} y={4} width={w} height={18} rx={9} fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" strokeWidth={2} />
-      {Array.from({ length: Math.ceil(w / 46) }, (_, i) => (
-        <line key={i} x1={((i * 46 + frame * 4) % w)} y1={8} x2={((i * 46 + frame * 4) % w) + 18} y2={18} stroke={CYAN} strokeWidth={3} opacity={0.5} />
-      ))}
-    </svg>
+    <div style={{ position: "absolute", left: x, top: y }}>
+      <ConveyorBelt width={w} speed={4} />
+    </div>
   );
   const card = (label: string, x: number, y: number, color: string) => (
     <div style={{ position: "absolute", left: x, top: y, padding: "10px 18px", borderRadius: 10, background: PANEL, border: `4px solid ${color}`, transform: `translateY(${2 * Math.sin(frame * 0.3)}px)` }}>
@@ -413,31 +425,17 @@ const RejectBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
   );
 };
 
-// retry — a request card loops around the retry wheel, flashing an error each lap.
-const RetryBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
-  const frame = useCurrentFrame();
-  const angle = frame * 0.09;
-  const lap = Math.floor((angle % (Math.PI * 2)) / (Math.PI * 2) * 100);
-  const flash = lap > 88 ? 1 : 0;
-  const cx = 0;
-  const r = 150;
-  return (
-    <Wrap gap={50}>
-      <div style={{ position: "relative", width: 460, height: 400, display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <svg width={400} height={400} viewBox="0 0 400 400" style={{ overflow: "visible" }}>
-          <path d="M 200 50 A 150 150 0 1 1 80 110" stroke={flash ? RED : AMBER} strokeWidth={12} fill="none" strokeLinecap="round" strokeDasharray="30 22" strokeDashoffset={-frame * 3} />
-          <path d="M 62 70 L 84 116 L 112 82 Z" fill={flash ? RED : AMBER} />
-          <text x={200} y={212} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={40} fill={flash ? RED : WHITE}>RETRY</text>
-        </svg>
-        {/* the card orbiting the wheel */}
-        <div style={{ position: "absolute", left: 200 + cx + r * Math.sin(angle) - 60, top: 200 - r * Math.cos(angle) - 26, padding: "8px 16px", borderRadius: 10, background: PANEL, border: `4px solid ${flash ? RED : CYAN}` }}>
-          <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 22, color: WHITE }}>CALL</span>
-        </div>
-      </div>
-      <BeatLabel text={beat.text} accent={AMBER} />
-    </Wrap>
-  );
-};
+// retry — a request card loops around the shared retry wheel while a confused
+// robot watches it go round.
+const RetryBeat: React.FC<{ beat: Beat }> = ({ beat }) => (
+  <Wrap gap={50}>
+    <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+      <RetryWheel size={400} />
+      <CartoonRobot pose="confused" size={190} accent={AMBER} lookX={-7} />
+    </div>
+    <BeatLabel text={beat.text} accent={AMBER} />
+  </Wrap>
+);
 
 // check — one big animated object gets a verdict stamped on it (quick-fire beats).
 const CheckBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
@@ -466,7 +464,7 @@ const CheckBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
           {beat.labels.map((l, i) => {
             const e = spring({ frame: frame - stampAt - i * 8, fps, config: { stiffness: 220, damping: 15 }, durationInFrames: 14 });
             return (
-              <div key={l} style={{ opacity: interpolate(e, [0, 0.4], [0, 1]), transform: `translateY(${interpolate(e, [0, 1], [30, 0])}px)`, padding: "10px 20px", borderRadius: 12, background: PANEL, border: `3px solid ${CYAN}` }}>
+              <div key={l} style={{ opacity: interpolate(e, [0, 0.4], [0, 1]), transform: `translateY(${interpolate(e, [0, 1], [30, 0])}px) rotate(${[-3, 2, -2][i % 3]}deg) scale(${interpolate(e, [0, 1], [1.4, 1])})`, padding: "10px 20px", borderRadius: 12, background: PANEL, border: `3px solid ${CYAN}` }}>
                 <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 28, letterSpacing: 2, color: WHITE }}>{l}</span>
               </div>
             );
@@ -507,6 +505,30 @@ const RaceBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
   );
 };
 
+// racks — physical infrastructure: server racks hum, one runs hot, fans spin.
+const RacksBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => (
+  <Wrap gap={46}>
+    <div style={{ display: "flex", alignItems: "flex-end", gap: 40 }}>
+      <ServerRack width={210} />
+      <ServerRack width={210} overheatAt={Math.round(dur * 0.35)} />
+    </div>
+    <BeatLabel text={beat.text} sub={beat.sub} accent={AMBER} />
+  </Wrap>
+);
+
+// Meme punch: ONE oversized emoji pops with the beat (animated-meme energy).
+const EmojiPop: React.FC<{ emoji: string }> = ({ emoji }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const e = spring({ frame: frame - 4, fps, config: { stiffness: 300, damping: 12, mass: 0.7 }, durationInFrames: 14 });
+  const wob = Math.sin(frame * 0.2) * 5;
+  return (
+    <div style={{ position: "absolute", top: 40, right: 70, transform: `scale(${interpolate(e, [0, 1], [0.2, 1])}) rotate(${-8 + wob}deg)`, opacity: interpolate(e, [0, 0.3], [0, 1]) }}>
+      <span style={{ fontSize: 130, filter: "drop-shadow(0 10px 24px rgba(0,0,0,0.5))" }}>{emoji}</span>
+    </div>
+  );
+};
+
 // Router: one animated scene per beat.
 export const BeatSceneView: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
   const frame = useCurrentFrame();
@@ -525,8 +547,15 @@ export const BeatSceneView: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur
       case "retry": return <RetryBeat beat={beat} />;
       case "check": return <CheckBeat beat={beat} dur={dur} />;
       case "race": return <RaceBeat beat={beat} dur={dur} />;
+      case "racks": return <RacksBeat beat={beat} dur={dur} />;
       default: return null;
     }
   };
-  return <AbsoluteFill style={{ opacity: op }}>{scene()}</AbsoluteFill>;
+  return (
+    <AbsoluteFill style={{ opacity: op }}>
+      <TintWash tint={beat.tint ?? BEAT_TINTS[beat.at % BEAT_TINTS.length]} seed={beat.at} />
+      {scene()}
+      {beat.emoji ? <EmojiPop emoji={beat.emoji} /> : null}
+    </AbsoluteFill>
+  );
 };

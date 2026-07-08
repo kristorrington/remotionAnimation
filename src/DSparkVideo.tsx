@@ -2,7 +2,8 @@ import React from "react";
 import { AbsoluteFill, Sequence, staticFile } from "remotion";
 import { CompareCard } from "./components/CompareCard";
 import { Fable5Outro } from "./components/Fable5Outro";
-import { SFX, SfxCue } from "./components/Sfx";
+import { SFX, SfxCue, vary } from "./components/Sfx";
+import { sceneActionCues } from "./motion/sfx-cues";
 import { MusicBed } from "./components/MusicBed";
 import { WaitingScene } from "./scenes/WaitingScene";
 import { SystemBreakScene } from "./scenes/SystemBreakScene";
@@ -189,8 +190,8 @@ export const DSparkVideo: React.FC = () => {
       <MusicBed src={staticFile("music/outro.MP3")}   from={11661} durationInFrames={306}  volume={0.075} fadeInFrames={45} />
 
       {/* ===== SOUND EFFECTS — audible under the boosted VO (§6 levels) ===== */}
-      {[...CARDS.map((c) => c.from), 254, 3875, 11661].map((f) => (
-        <SfxCue key={`w-${f}`} from={f} src={SFX.whoosh} volume={0.45} />
+      {[...CARDS.map((c) => c.from), 254, 3875, 11661].map((f, i) => (
+        <SfxCue key={`w-${f}`} from={f} src={SFX.whoosh} volume={0.45} rate={vary(i)} />
       ))}
       {CARDS.flatMap((c) => (c.itemDelays ?? []).map((d) => (
         <SfxCue key={`t-${c.from}-${d}`} from={c.from + d + 6} src={SFX.switch} volume={0.25} />
@@ -204,22 +205,15 @@ export const DSparkVideo: React.FC = () => {
       {[3962, 4181, 6455, 9507, 11534].map((f) => (
         <SfxCue key={`d-${f}`} from={f} src={SFX.ding} volume={0.45} />
       ))}
-      {/* metaphor-scene action hits: crash / placard drop / stop sign / gate pass /
-          pipe fixed / finish-line crossings / pain pops / cost climb-back */}
-      {[5584, 8377, 8657].map((f) => (
-        <SfxCue key={`mb-${f}`} from={f} src={SFX.boom} volume={0.4} />
-      ))}
-      {[9719, 10367, 10757, 11390].map((f) => (
-        <SfxCue key={`md-${f}`} from={f} src={SFX.ding} volume={0.4} />
-      ))}
-      {[5209, 7722, 7772, 7822, 9585].map((f) => (
-        <SfxCue key={`mw-${f}`} from={f} src={SFX.whip} volume={0.3} />
+      {/* per-scene ACTION hits, derived from each scene's own timing formulas
+          (src/motion/sfx-cues.ts) — retime a scene and its sound follows */}
+      {CARDS.flatMap((c) => sceneActionCues(c.scene, c.from, c.dur)).map((cue, i) => (
+        <SfxCue key={`ac-${cue.at}-${cue.type}`} from={cue.at} src={SFX[cue.type]} volume={cue.type === "boom" ? 0.4 : cue.type === "whip" ? 0.3 : 0.4} rate={vary(i)} />
       ))}
       {[629, 1339, 5502].map((f) => (
         <SfxCue key={`s-${f}`} from={f} src={SFX.shutter} volume={0.4} />
       ))}
       <SfxCue from={4851} src={SFX.boom} volume={0.4} />
-      <SfxCue from={10278} src={SFX.boom} volume={0.45} />
     </AbsoluteFill>
   );
 };

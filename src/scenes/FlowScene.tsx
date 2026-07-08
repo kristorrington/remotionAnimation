@@ -14,12 +14,14 @@ export const FlowScene: React.FC<{
   retry?: [number, number];
   retryLabel?: string;
   accent?: string;
-}> = ({ durationInFrames, kicker, title, nodes, retry, retryLabel = "Wrong", accent = "#06B6D4" }) => {
+  nodeAts?: number[];
+  tint?: string;
+}> = ({ durationInFrames, kicker, title, nodes, retry, retryLabel = "Wrong", accent = "#06B6D4", nodeAts, tint }) => {
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0x4f}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x4f} tint={tint}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 60 }}>
         <SceneHeadline kicker={kicker} title={title} titleSize={88} accent={accent} />
-        <WorkflowChain nodes={nodes} retry={retry} retryColor={AMBER} retryLabel={retryLabel} startAt={24} width={1360} />
+        <WorkflowChain nodes={nodes} retry={retry} retryColor={AMBER} retryLabel={retryLabel} startAt={24} width={1360} nodeAts={nodeAts} />
       </div>
     </SceneShell>
   );

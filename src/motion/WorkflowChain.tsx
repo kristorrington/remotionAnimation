@@ -62,7 +62,8 @@ const Connector: React.FC<{ x1: number; x2: number; y: number; delay: number; da
 
 // Prompt → Model → Tool → Output as an animated node chain. Optionally flash a
 // node (error) and draw a retry loop arc from one node back to another.
-export const WorkflowChain: React.FC<{ nodes: NodeSpec[]; retry?: [number, number]; retryColor?: string; retryLabel?: string; startAt?: number; width?: number }> = ({ nodes, retry, retryColor = RED, retryLabel = "RETRY", startAt = 0, width = 1500 }) => {
+// `nodeAts` pins each node to a spoken frame (falls back to a quick stagger).
+export const WorkflowChain: React.FC<{ nodes: NodeSpec[]; retry?: [number, number]; retryColor?: string; retryLabel?: string; startAt?: number; width?: number; nodeAts?: number[] }> = ({ nodes, retry, retryColor = RED, retryLabel = "RETRY", startAt = 0, width = 1500, nodeAts }) => {
   const frame = useCurrentFrame();
   const n = nodes.length;
   const gap = n > 1 ? (width - n * NODE_W) / (n - 1) : 0;
@@ -88,7 +89,7 @@ export const WorkflowChain: React.FC<{ nodes: NodeSpec[]; retry?: [number, numbe
     <div style={{ position: "relative", width, height: BAND_H + (retry ? 120 : 0), margin: "0 auto" }}>
       {/* connectors first (behind nodes) */}
       {nodes.slice(0, -1).map((_, i) => (
-        <Connector key={`c-${i}`} x1={xOf(i) + NODE_W} x2={xOf(i + 1)} y={cy} delay={startAt + 10 + i * 12} danger={nodes[i + 1].state === "error"} />
+        <Connector key={`c-${i}`} x1={xOf(i) + NODE_W} x2={xOf(i + 1)} y={cy} delay={nodeAts ? nodeAts[i + 1] - 12 : startAt + 10 + i * 12} danger={nodes[i + 1].state === "error"} />
       ))}
       {/* retry loop */}
       {retryPath && (
@@ -104,7 +105,7 @@ export const WorkflowChain: React.FC<{ nodes: NodeSpec[]; retry?: [number, numbe
       )}
       {/* nodes on top */}
       {nodes.map((node, i) => (
-        <WorkflowNode key={`n-${i}`} node={node} x={xOf(i)} delay={startAt + i * 12} />
+        <WorkflowNode key={`n-${i}`} node={node} x={xOf(i)} delay={nodeAts?.[i] ?? startAt + i * 12} />
       ))}
     </div>
   );

@@ -183,4 +183,219 @@ export const CardStackDrop: React.FC<{ drops: number[]; labels?: string[]; colla
   );
 };
 
+// A conveyor belt strip with moving tread dashes. THE shared belt — scenes must
+// not re-implement it. `speed` px/frame; `accelerate` ramps speed over `dur`.
+export const ConveyorBelt: React.FC<{ width: number; speed?: number; accelerate?: { to: number; dur: number }; color?: string; y?: number }> = ({ width, speed = 4, accelerate, color = CYAN }) => {
+  const frame = useCurrentFrame();
+  const v = accelerate ? interpolate(frame, [0, accelerate.dur], [speed, accelerate.to], CLAMP) : speed;
+  return (
+    <svg width={width} height={26} viewBox={`0 0 ${width} 26`}>
+      <rect x={0} y={4} width={width} height={18} rx={9} fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.22)" strokeWidth={2} />
+      {Array.from({ length: Math.ceil(width / 46) }, (_, i) => {
+        const x = (i * 46 + frame * v) % width;
+        return <line key={i} x1={x} y1={8} x2={x + 18} y2={18} stroke={color} strokeWidth={3} opacity={0.5} />;
+      })}
+    </svg>
+  );
+};
+
+// A Jenga-style tower: one block gets PULLED OUT at `pullAt`, the tower leans,
+// and (optionally) collapses at `collapseAt`. Risk-of-change, dramatised.
+export const JengaTower: React.FC<{ pullAt: number; collapseAt?: number; rows?: number; pullRow?: number; blockW?: number; blockH?: number; labels?: string[] }> = ({ pullAt, collapseAt, rows = 6, pullRow = 2, blockW = 200, blockH = 40, labels }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const pull = spring({ frame: frame - pullAt, fps, config: { stiffness: 90, damping: 16 }, durationInFrames: 26 });
+  const pulledX = interpolate(pull, [0, 1], [0, blockW * 1.5]);
+  const pulled = frame >= pullAt;
+  const collapsed = collapseAt !== undefined && frame >= collapseAt;
+  const ct = collapseAt !== undefined ? Math.min((frame - collapseAt) / 20, 1) : 0;
+  const lean = collapsed ? 0 : pulled ? Math.min(1, (frame - pullAt) / 30) * 5 * Math.sin(frame * 0.14) : 0;
+  const rand = mulberry32(0xbeef);
+  const scatter = Array.from({ length: rows }, () => ({ dx: (rand() - 0.5) * 360, rot: (rand() - 0.5) * 120, dy: 30 + rand() * 70 }));
+  return (
+    <div style={{ position: "relative", width: blockW * 1.6, height: rows * (blockH + 4) + 30 }}>
+      <div style={{ position: "absolute", bottom: 0, left: 0, transform: `rotate(${lean}deg)`, transformOrigin: "bottom center", width: blockW }}>
+        {Array.from({ length: rows }, (_, i) => {
+          const isPulled = i === pullRow;
+          const sc = scatter[i];
+          const cx = collapsed && ct > 0 ? interpolate(ct, [0, 1], [0, sc.dx]) : 0;
+          const cy = collapsed && ct > 0 ? interpolate(ct, [0, 1], [0, sc.dy]) : 0;
+          const crot = collapsed && ct > 0 ? interpolate(ct, [0, 1], [0, sc.rot]) : 0;
+          return (
+            <div key={i} style={{ position: "absolute", bottom: i * (blockH + 4), left: 0, width: blockW, height: blockH, transform: `translate(${(isPulled ? pulledX : 0) + cx}px, ${cy}px) rotate(${crot}deg)`, opacity: isPulled && pull > 0.9 ? Math.max(0, 1 - (frame - pullAt - 24) / 16) : 1, borderRadius: 8, background: PANEL, border: `3px solid ${isPulled ? AMBER : collapsed ? RED : CYAN}`, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 8px 18px rgba(0,0,0,0.4)" }}>
+              <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 19, letterSpacing: 1, color: WHITE }}>{labels?.[i] ?? (isPulled ? "ONE CHANGE" : "PROD")}</span>
+            </div>
+          );
+        })}
+      </div>
+      {collapseAt !== undefined && <Puff at={collapseAt + 8} x={blockW / 2} y={rows * (blockH + 4)} size={200} />}
+      {collapseAt !== undefined && <Sparks at={collapseAt} x={blockW / 2} y={rows * (blockH + 2) - 60} color={RED} size={140} />}
+    </div>
+  );
+};
+
+// A bucket with a level that LEAKS from a hole (drip stream + falling level).
+// `patchAt` bolts a patch over the hole — the leak stops, the level holds.
+export const LeakingBucket: React.FC<{ level?: number; patchAt?: number; width?: number; label?: string }> = ({ level = 0.75, patchAt, width = 190, label = "BUDGET" }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const patched = patchAt !== undefined && frame >= patchAt;
+  const drain = patched ? Math.max(0.3, level - (patchAt ?? 0) * 0.001) : Math.max(0.18, level - frame * 0.001);
+  const h = width * 0.95;
+  const patch = patchAt !== undefined ? spring({ frame: frame - patchAt, fps, config: { stiffness: 240, damping: 14 }, durationInFrames: 14 }) : 0;
+  return (
+    <div style={{ position: "relative", width: width + 90, height: h + 70 }}>
+      <svg width={width} height={h} viewBox="0 0 100 95" style={{ overflow: "visible" }}>
+        {/* bucket */}
+        <path d="M14 12 L86 12 L78 88 L22 88 Z" fill="rgba(8,12,20,0.85)" stroke="#8899AA" strokeWidth={5} strokeLinejoin="round" />
+        {/* liquid */}
+        <path d={`M${18 + (1 - drain) * 3} ${16 + (1 - drain) * 66} L${82 - (1 - drain) * 3} ${16 + (1 - drain) * 66} L78 88 L22 88 Z`} fill={GREEN} opacity={0.5} />
+        {/* hole + drips */}
+        <circle cx={76} cy={66} r={4} fill={patched ? "transparent" : "#05070C"} stroke={patched ? "transparent" : "#8899AA"} strokeWidth={2} />
+        {!patched && [0, 0.35, 0.7].map((o, i) => {
+          const t = (frame * 0.03 + o) % 1;
+          return <circle key={i} cx={80 + t * 16} cy={68 + t * t * 90} r={4 * (1 - t * 0.4)} fill={GREEN} opacity={(1 - t) * 0.85} />;
+        })}
+        {/* the patch */}
+        {patchAt !== undefined && frame >= patchAt && (
+          <g transform={`translate(${interpolate(patch, [0, 1], [40, 0])} ${interpolate(patch, [0, 1], [-40, 0])})`}>
+            <rect x={68} y={58} width={18} height={16} rx={3} fill={PANEL} stroke={CYAN} strokeWidth={3} />
+            <circle cx={72} cy={62} r={1.6} fill={CYAN} />
+            <circle cx={82} cy={70} r={1.6} fill={CYAN} />
+          </g>
+        )}
+      </svg>
+      {patchAt !== undefined && <Sparks at={patchAt + 8} x={width * 0.78} y={h * 0.68} color={CYAN} size={100} />}
+      <span style={{ position: "absolute", left: 0, width, textAlign: "center", bottom: 26, fontFamily: FONT, fontWeight: 800, fontSize: 22, letterSpacing: 2, color: WHITE, transform: "translateZ(0)" }}>{label}</span>
+    </div>
+  );
+};
+
+// A row of request "cars" bunching up behind a blocker — impatient nudges, honk
+// flashes. An alternative latency metaphor to PromptQueue.
+export const TrafficJam: React.FC<{ cars?: string[]; at?: number; width?: number }> = ({ cars = ["REQ", "REQ", "REQ", "REQ"], at = 0, width = 560 }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  return (
+    <div style={{ position: "relative", width, height: 110 }}>
+      <div style={{ position: "absolute", left: 0, right: 0, bottom: 8, height: 4, background: "rgba(255,255,255,0.16)" }} />
+      {cars.map((label, i) => {
+        const e = spring({ frame: frame - at - i * 8, fps, config: { stiffness: 150, damping: 15 }, durationInFrames: 18 });
+        const baseX = width - 120 - i * 118;
+        const nudge = Math.max(0, Math.sin(frame * 0.13 + i * 1.7)) * 10;
+        const honk = (frame + i * 23) % 96 < 5;
+        return (
+          <div key={i} style={{ position: "absolute", left: interpolate(e, [0, 1], [baseX - 240, baseX]) + nudge, bottom: 14, opacity: interpolate(e, [0, 0.3], [0, 1], CLAMP) }}>
+            <svg width={104} height={62} viewBox="0 0 104 62" style={{ overflow: "visible" }}>
+              <path d="M8 42 L14 24 Q18 14 30 14 L66 14 Q78 14 84 26 L96 42 Q100 44 98 50 L6 50 Q4 44 8 42 Z" fill={PANEL} stroke={i === 0 ? AMBER : CYAN} strokeWidth={4} />
+              <circle cx={28} cy={52} r={9} fill="#0a0f18" stroke={i === 0 ? AMBER : CYAN} strokeWidth={3.5} />
+              <circle cx={76} cy={52} r={9} fill="#0a0f18" stroke={i === 0 ? AMBER : CYAN} strokeWidth={3.5} />
+              <text x={50} y={40} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={16} fill={WHITE}>{label}</text>
+              {honk && <text x={80} y={10} fontFamily={FONT} fontWeight={900} fontSize={16} fill={AMBER}>!</text>}
+            </svg>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+// A server rack: LED activity patterns + spinning fans; `overheatAt` flips it
+// into a red alarm state (fast fans, red LEDs, heat shimmer lines).
+export const ServerRack: React.FC<{ width?: number; units?: number; overheatAt?: number }> = ({ width = 220, units = 4, overheatAt }) => {
+  const frame = useCurrentFrame();
+  const hot = overheatAt !== undefined && frame >= overheatAt;
+  const fanSpeed = hot ? 34 : 9;
+  const h = units * 54 + 24;
+  return (
+    <svg width={width} height={(h / 160) * width * 0.9} viewBox={`0 0 160 ${h}`} style={{ overflow: "visible" }}>
+      <rect x={6} y={6} width={148} height={h - 12} rx={12} fill={PANEL} stroke={hot ? RED : BLUE} strokeWidth={5} />
+      {Array.from({ length: units }, (_, u) => {
+        const y = 18 + u * 54;
+        return (
+          <g key={u}>
+            <rect x={16} y={y} width={128} height={42} rx={6} fill="rgba(8,12,20,0.9)" stroke="rgba(255,255,255,0.18)" strokeWidth={2} />
+            {/* LEDs */}
+            {[0, 1, 2, 3, 4].map((l) => {
+              const on = hot ? (frame + l * 3) % 10 < 5 : (frame * 0.4 + l * 7 + u * 13) % 17 < 8;
+              return <circle key={l} cx={28 + l * 14} cy={y + 12} r={3.4} fill={on ? (hot ? RED : GREEN) : "rgba(255,255,255,0.12)"} />;
+            })}
+            {/* fan */}
+            <g transform={`rotate(${frame * fanSpeed} 122 ${y + 21})`}>
+              {[0, 120, 240].map((a) => (
+                <path key={a} d={`M122 ${y + 21} L${122 + 11 * Math.cos((a * Math.PI) / 180)} ${y + 21 + 11 * Math.sin((a * Math.PI) / 180)}`} stroke={hot ? RED : CYAN} strokeWidth={3.5} strokeLinecap="round" />
+              ))}
+            </g>
+            <circle cx={122} cy={y + 21} r={14} fill="none" stroke={hot ? RED : CYAN} strokeWidth={2.5} />
+            {/* slots */}
+            <rect x={28} y={y + 24} width={70} height={5} rx={2.5} fill="rgba(255,255,255,0.14)" />
+            <rect x={28} y={y + 33} width={54} height={5} rx={2.5} fill="rgba(255,255,255,0.1)" />
+          </g>
+        );
+      })}
+      {/* heat shimmer when overheating */}
+      {hot && [0, 1, 2].map((i) => {
+        const t = (frame * 0.03 + i * 0.33) % 1;
+        return <path key={i} d={`M${40 + i * 40} ${8 - t * 26} q6 -8 0 -14`} stroke={RED} strokeWidth={3} fill="none" opacity={(1 - t) * 0.7} strokeLinecap="round" />;
+      })}
+    </svg>
+  );
+};
+
+// A lock gate that SLAMS shut (or springs open) at `at` — access granted/denied.
+export const LockGate: React.FC<{ at: number; action?: "close" | "open"; size?: number; label?: string }> = ({ at, action = "close", size = 200, label }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const e = spring({ frame: frame - at, fps, config: { stiffness: 260, damping: 13 }, durationInFrames: 16 });
+  const t = action === "close" ? e : 1 - e;
+  const shackleY = interpolate(t, [0, 1], [-26, 0]);
+  const closed = t > 0.6;
+  const color = action === "close" ? RED : GREEN;
+  const slam = impulseLocal(frame, at + 8);
+  return (
+    <div style={{ position: "relative", transform: `translateX(${slam}px)` }}>
+      <svg width={size} height={size * 1.1} viewBox="0 0 100 110" style={{ overflow: "visible" }}>
+        {/* shackle */}
+        <path d={`M30 ${46 + shackleY} V34 a20 20 0 0 1 40 0 v${12 - shackleY}`} stroke={closed ? color : "#8899AA"} strokeWidth={9} fill="none" strokeLinecap="round" />
+        {/* body */}
+        <rect x={18} y={46} width={64} height={52} rx={12} fill={PANEL} stroke={closed ? color : "#8899AA"} strokeWidth={6} style={{ filter: closed ? `drop-shadow(0 0 12px ${color})` : undefined }} />
+        <circle cx={50} cy={68} r={8} fill={closed ? color : "rgba(255,255,255,0.25)"} />
+        <rect x={47} y={72} width={6} height={14} rx={3} fill={closed ? color : "rgba(255,255,255,0.25)"} />
+      </svg>
+      <Sparks at={at + 8} x={size / 2} y={size * 0.5} color={color} size={size * 0.7} />
+      {label ? <span style={{ position: "absolute", left: -20, right: -20, textAlign: "center", bottom: -30, fontFamily: FONT, fontWeight: 800, fontSize: 22, letterSpacing: 2, color: WHITE, transform: "translateZ(0)" }}>{label}</span> : null}
+    </div>
+  );
+};
+
+// A request card looping the RETRY wheel, flashing red each lap. THE shared
+// retry metaphor (also used by the shorts' retry beat).
+export const RetryWheel: React.FC<{ size?: number; label?: string; cardLabel?: string }> = ({ size = 400, label = "RETRY", cardLabel = "CALL" }) => {
+  const frame = useCurrentFrame();
+  const angle = frame * 0.09;
+  const lapT = (angle % (Math.PI * 2)) / (Math.PI * 2);
+  const flash = lapT > 0.88;
+  const r = size * 0.375;
+  const c = size / 2;
+  return (
+    <div style={{ position: "relative", width: size, height: size }}>
+      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ overflow: "visible" }}>
+        <circle cx={c} cy={c} r={r} stroke={flash ? RED : AMBER} strokeWidth={size * 0.03} fill="none" strokeDasharray={`${size * 0.075} ${size * 0.055}`} strokeDashoffset={-frame * 3} opacity={0.9} />
+        <path d={`M ${c - r * 0.92} ${c - r * 0.45} L ${c - r * 0.62} ${c - r * 0.2} L ${c - r * 0.55} ${c - r * 0.62} Z`} fill={flash ? RED : AMBER} />
+        <text x={c} y={c + size * 0.03} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={size * 0.1} fill={flash ? RED : WHITE}>{label}</text>
+      </svg>
+      <div style={{ position: "absolute", left: c + r * Math.sin(angle) - size * 0.15, top: c - r * Math.cos(angle) - size * 0.065, padding: `${size * 0.02}px ${size * 0.04}px`, borderRadius: 10, background: PANEL, border: `4px solid ${flash ? RED : CYAN}` }}>
+        <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: size * 0.055, color: WHITE }}>{cardLabel}</span>
+      </div>
+    </div>
+  );
+};
+
+// tiny local impact helper (decaying shake) — avoids importing back into subjects
+const impulseLocal = (frame: number, at: number, strength = 5, decay = 12) => {
+  const t = frame - at;
+  if (t < 0) return 0;
+  return Math.sin(t * 0.9) * strength * Math.max(0, 1 - t / decay);
+};
+
 export { SpeedTrails };

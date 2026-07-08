@@ -49,6 +49,15 @@ verdicts) · `conveyor` (belt → two timed lanes, or DONE + check) · `reject`
 Legacy `icon` cards ([CartoonBeat.tsx](CartoonBeat.tsx)) are a fallback — max ~1
 per short.
 
+**Extras:** `Beat.emoji` pops ONE oversized meme emoji with the beat (use ~1 per
+short — animated-meme energy, not confetti). `ShortSpec.hookAlt` auto-registers
+a `<id>-B` composition (same clip, different hook) for A/B testing.
+The TopBar progress bar shows a milestone tick per beat automatically. The last
+~9 frames dip toward dark so the platform auto-replay (last frame → first) never
+visibly jumps — pair that with a loop-back line (see "Loop endings"). While
+designing, flip `showSafeZones` in the Studio props panel to overlay the
+platform-UI safe zones (preview-only; can never render).
+
 ### Layout — dynamic split / full-screen (built for retention)
 - **Animated cartoon cards on TOP** (`AnimationPanel` → `ShortAnimation`): one
   `CartoonBeat` per beat (springing icon + shock-ring + phrase) over a cinematic

@@ -2,9 +2,10 @@ import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { useTheme } from "../theme";
 
-// Retention furniture pinned to the top: a progress bar (completion nudge) and a
+// Retention furniture pinned to the top: a progress bar (completion nudge) with
+// beat MILESTONE ticks (visible pacing — the viewer sees beats coming) and a
 // small persistent "what this is about" topic banner. Themed via useTheme().
-export const TopBar: React.FC<{ topic: string }> = ({ topic }) => {
+export const TopBar: React.FC<{ topic: string; beats?: number[] }> = ({ topic, beats }) => {
   const frame = useCurrentFrame();
   const { durationInFrames } = useVideoConfig();
   const t = useTheme();
@@ -13,8 +14,13 @@ export const TopBar: React.FC<{ topic: string }> = ({ topic }) => {
 
   return (
     <AbsoluteFill style={{ pointerEvents: "none" }}>
-      {/* progress bar */}
+      {/* progress track, fill, then milestone ticks on top */}
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 8, background: "rgba(255,255,255,0.08)" }} />
       <div style={{ position: "absolute", top: 0, left: 0, height: 8, width: `${progress}%`, background: t.accent, boxShadow: t.glow ? `0 0 16px ${t.accent}` : undefined }} />
+      {(beats ?? []).map((p, i) => {
+        const passed = progress / 100 >= p;
+        return <div key={i} style={{ position: "absolute", top: 0, left: `${p * 100}%`, width: 4, height: 8, background: passed ? "rgba(8,12,20,0.85)" : "rgba(255,255,255,0.4)" }} />;
+      })}
       {/* topic banner */}
       <div style={{ position: "absolute", top: 34, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
         <div

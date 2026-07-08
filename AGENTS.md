@@ -288,6 +288,12 @@ Keep the presenter present during cutaways with a **corner PiP** (reference:
   ```
   This supersedes the old per-window `BRIDGES`/`CUTAWAY_WINDOWS.map(<CornerPip>)`
   approach — one span-level PiP means zero mid-span remounts.
+- **Full-screen (no-PiP) spans:** mark hook/gag/system/payoff beats `fullscreen`
+  in the overlay's BEATS table and export them (see `MODEL_ROUTING_FULLSCREEN`
+  in `src/ModelRoutingVideo.tsx`). The Final subtracts those windows from its
+  PiP spans (keep `PIP_MIN ≈ 90` so no PiP segment flickers in for under 3s).
+  The animation owns the whole screen there — reference: `ModelRoutingFinal.tsx`,
+  rule in CLAUDE.md §8.
 - **Sync gotcha (important):** the PiP lives in a `<Sequence from={F}>`, and a
   video inside a Sequence **restarts at 0:00** when the Sequence begins — so the
   corner clip lip-syncs minutes behind the main footage. Fix it by playing from
@@ -345,6 +351,26 @@ Transitions (reference: [CutFlash.tsx](src/components/CutFlash.tsx) +
   1080p H.264 proxy and point the composition at it:
   `npx remotion ffmpeg -y -i _source-4k.mp4 -vf scale=1920:1080 -c:v libx264 -crf 20 -preset veryfast -c:a aac -b:a 192k public/talking-head.mp4`.
   Keep the 4K original as a backup **outside** `public/`.
+- **Footage rotation (multi-video repo).** `public/talking-head.mp4` is always
+  the CURRENT video. When new footage arrives: (1) rename the old proxy to
+  `talking-head-DDMMYY.mp4` and repoint the old video's `FOOTAGE` const + its
+  shorts `source:` fields; (2) freeze the old whisper words as
+  `src/shorts/captions-DDMMYY.ts` and register them in
+  `src/shorts/captionsRegistry.ts` (captions are per-source — `transcribe.mjs`
+  always overwrites `captionsData.ts` for the current footage); (3) re-run
+  `node scripts/transcribe.mjs` and `node scripts/voice-levels.mjs`.
+- **Archiving previous videos (RULE — do this in the SAME change that starts a
+  new video).** The Studio sidebar must only show TOOLS (TemplateLab,
+  StyleDemoBold) + the CURRENT video's overlay/Final + its shorts. When a new
+  video starts: (1) move the outgoing video's `<Composition>` entries from
+  `Root.tsx` into `ArchivedVideoCompositions` in `src/archive/index.tsx`
+  (imports switch `./X` → `../X`; keep them grouped under a dated comment);
+  (2) move its `ShortSpec`s from `src/shorts/specs.ts` to
+  `src/shorts/archivedSpecs.ts` (`ARCHIVED_SHORTS`); (3) register the new
+  video's comps in `Root.tsx` marked `CURRENT:`. Nothing is deleted — archived
+  comps/shorts still render by flipping `SHOW_ARCHIVE = true` in
+  `src/archive/index.tsx` (footage rotation + captionsRegistry keep them
+  correct). Do the footage rotation (above) as part of the same change.
 - **Render crash `0xC0000142` / `3221225794` at the FFmpeg stitch** (many-core
   Windows). With lots of audio tags (100+ SFX/music cues) Remotion burst-spawns
   FFmpeg subprocesses during the audio mix and Windows hits a process-init limit.
@@ -352,6 +378,25 @@ Transitions (reference: [CutFlash.tsx](src/components/CutFlash.tsx) +
   at full concurrency, then an audio-only pass (`out/audio.mp3`) at
   `--concurrency=4`, then `remotion ffmpeg -i video.mp4 -i audio.mp3 -c:v copy -c:a aac out.mp4`.
   A single-pass render at `--concurrency=8` often survives too.
+- **delayRender timeout: `Loading <Img> with src=blob:…` at some mid-video
+  frame.** That "Img" is `OffthreadVideo`'s internal frame delivery — extraction
+  from the footage stalled past the timeout (heavy CPU load from high
+  concurrency or orphaned `chrome-headless-shell` processes). Fixes, in order:
+  the config sets `Config.setTimeoutInMilliseconds(300000)` (or pass
+  `--timeout=300000`); kill orphaned render processes; drop `--concurrency`
+  (e.g. 8 → 4) if it recurs.
+- **THE PROJECT LIVES AT `C:\ANIMATION_WORK\my-project` — NEVER inside
+  OneDrive.** History (07/2026): the project originally lived in OneDrive; its
+  filter driver choked on multi-GB footage churn and made every file op crawl
+  (bundling 813ms → 137s, renders dying mid-video, `git status` taking
+  minutes), and files copied out during a sync storm silently arrived as
+  null bytes. The workspace **including the git repo** was therefore moved to
+  `C:\ANIMATION_WORK\my-project` (remote: github.com/kristorrington/
+  remotionAnimation). Rules: do ALL work — editing, rendering, git commits and
+  pushes — in `C:\ANIMATION_WORK\my-project`. Do NOT sync files to the old
+  OneDrive copy (`…\OneDrive\Desktop\ANIMATION_DEMO\my-project`); it is a
+  dead snapshot the user may delete. Keep `_footage-backup/` (multi-GB 4K
+  masters) at `C:\ANIMATION_WORK\_footage-backup`, outside any synced folder.
 - `AbsoluteFill` is `flex-direction: column` (see §3).
 
 ---
@@ -408,6 +453,9 @@ the decisions. `<Slug>` = the new video's name (e.g. `PolicyRisk`).
    - ELSE (no timestamps) → run `node scripts/transcribe.mjs` now and read the
      word timings from `src/shorts/captionsData.ts` (absolute frames). This
      also pre-generates the shorts captions.
+   - ALSO run `node scripts/voice-levels.mjs` (per-frame VO loudness →
+     `src/motion/voiceLevels.ts`) so `useVoiceLevel`/`VoiceGlow` react to THIS
+     footage's voice.
 4. **Audio level:** `ffmpeg -i public/talking-head.mp4 -af volumedetect -f null -`
    - IF max_volume ≤ −10 dB → the VO needs an in-comp boost; note the factor
      (≈ −14 dB peaked → `volume={3}`). ELSE `volume={1}` is fine.
@@ -531,5 +579,7 @@ Everything lives in [src/shorts/](src/shorts/) and is data-driven — you write
 - [ ] Shorts: face never covered; captions on the seam; loop ending on an open
       line; lower-third + handle present; every beat has sound; title +
       description written in `src/shorts/PUBLISH.md`.
+- [ ] `node scripts/check-assets.mjs` passes (every external asset manifested,
+      no orphans, all `staticFile("assets/external/…")` references resolve).
 - [ ] `npx tsc --noEmit` clean; deliverables in `out/`, versioned, never
       overwriting a previous cut.

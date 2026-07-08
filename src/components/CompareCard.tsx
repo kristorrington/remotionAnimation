@@ -8,6 +8,7 @@ import {
 } from "remotion";
 import { DROP_SHADOW, FONT, WHITE } from "./overlayUI";
 import { AnimatedBackground } from "./AnimatedBackground";
+import { TintWash } from "../scenes/SceneShell";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const GREEN = "#34D399";
@@ -51,12 +52,14 @@ export const CompareCard: React.FC<{
   leftDelay?: number;
   rightDelay?: number;
   durationInFrames: number;
-}> = ({ kicker, left, right, leftDelay = 8, rightDelay = 22, durationInFrames }) => {
+  tint?: string;
+}> = ({ kicker, left, right, leftDelay = 8, rightDelay = 22, durationInFrames, tint }) => {
   const frame = useCurrentFrame();
   const kOp = interpolate(frame, [0, 12], [0, 1], CLAMP);
   return (
     <AbsoluteFill style={{ justifyContent: "center", alignItems: "center" }}>
       <AnimatedBackground durationInFrames={durationInFrames} />
+      {tint && <TintWash tint={tint} seed={0x44} />}
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 34 }}>
         {kicker ? <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 30, letterSpacing: 8, color: "#06B6D4", opacity: kOp, filter: DROP_SHADOW }}>{kicker}</span> : null}
         <div style={{ display: "flex", gap: 40, alignItems: "stretch" }}>

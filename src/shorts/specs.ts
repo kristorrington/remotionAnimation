@@ -1,127 +1,143 @@
 import { ShortSpec } from "./types";
 
 // ============================================================================
-// THE SHORTS — mined from the DeepSeek "DSpark" video. Each = one vertical clip.
-// `from` = start frame in the source footage (sec × 30). `beats[].at` is anchored
-// to the WHISPER word times in captionsData.ts (NOT line timestamps). Loop endings
-// cut on an open line. See README.md for the method + rubric.
-// Every beat is an animated SUBJECT scene (BeatScenes.tsx); `text` is a label
-// (1–4 words) — captions carry the speech. CLAUDE.md §9.
+// THE SHORTS — CURRENT video only (previous videos live in archivedSpecs.ts).
+// `from` = start frame in the source footage (sec × 30). `beats[].at` is
+// anchored to the WHISPER word times in captionsData.ts (NOT line timestamps).
+// Loop endings cut on an open line. Every beat is an animated SUBJECT scene
+// (BeatScenes.tsx); `text` is a label (1–4 words) — captions carry the speech.
+// See README.md for the method + rubric. CLAUDE.md §9.
 // ============================================================================
 export const SHORTS: ShortSpec[] = [
+  // ==========================================================================
+  // MODEL-ROUTING video (talking-head.mp4) — whisper frames from the
+  // regenerated captionsData.ts.
+  // ==========================================================================
   {
-    id: "Short-Waiting",
-    label: "Why agents feel slow — it's not intelligence, it's waiting",
+    id: "Short-EffortDial",
+    label: "Max effort on a tiny job = hiring a senior architect to rename a button",
     source: "talking-head.mp4",
-    from: 1127, // "the problem with AI agents… is not just intelligence. It's waiting." (0:37.6)
-    // LOOP: ends on "…it feels like the product is broken." (abs 1903) → replays into the hook.
-    durationInFrames: 800, // ~27s
-    topic: "IS IT SLOW OR JUST WAITING?",
-    hook: "WHY YOUR AI AGENT FEELS SLOW",
-    beats: [
-      { at: 79, scene: "emote", pose: "shrug", text: "NOT INTELLIGENCE" }, // "intelligence" abs 1206
-      { at: 131, scene: "queue", labels: ["PROMPT", "TOOL", "RETRY"], text: "WAITING" }, // "It's waiting" abs 1258
-      { at: 236, scene: "check", obj: "clock", verdict: "warn", text: "TOOL CALLS" }, // "tool to call" abs 1363
-      { at: 331, scene: "retry", text: "RETRIES" }, // "the agent to realize it messed up" abs 1458
-      { at: 541, scene: "stack", text: "IT COMPOUNDS" }, // "one model call feels fine" abs 1668
-      { at: 703, scene: "emote", pose: "alarmed", accent: "#EF4444", text: "BROKEN" }, // "ten calls… broken" abs 1830
-    ],
-    // full-anim: the "WAITING" bottleneck reveal + the compounding collapse
-    fullscreen: [{ from: 131, to: 236 }, { from: 541, to: 680 }],
-    outro: "FOLLOW FOR MORE",
-    music: "music/tension.MP3",
-  },
-  {
-    id: "Short-SpeedTrap",
-    label: "Speed won't fix a broken AI — a faster failure is still a failure",
-    source: "talking-head.mp4",
-    from: 5057, // "So the question is not, is D-Spark faster?" (2:48.6)
-    // LOOP: ends on "…is still a problem." (abs 5735) → replays into the hook.
-    durationInFrames: 696, // ~23s
-    topic: "FASTER — BUT IS IT BETTER?",
-    hook: "SPEED WON'T FIX A BROKEN AI",
-    beats: [
-      { at: 64, scene: "bolt", trails: true, text: "FASTER?", sub: "wrong question" }, // "is D-Spark faster?" abs 5121
-      { at: 151, scene: "coins", text: "CHEAPER?" }, // "does my workflow get cheaper?" abs 5208
-      { at: 348, scene: "reject", badge: "FAILED TASK", text: "STILL FAILED" }, // "a faster failed task is still failed" abs 5405
-      { at: 458, scene: "check", obj: "bug", verdict: "cross", text: "STILL WRONG" }, // "faster hallucination…" abs 5515
-      { at: 584, scene: "emote", pose: "alarmed", accent: "#EF4444", text: "STILL BREAKS" }, // "breaks your app" abs 5641
-    ],
-    // full-anim: the "faster, still failed/wrong" punchline run needs full attention
-    fullscreen: [{ from: 348, to: 576 }],
-    outro: "FOLLOW FOR MORE",
-    music: "music/tension.MP3",
-  },
-  {
-    id: "Short-TestFirst",
-    label: "Don't switch AI models on hype — test with 3 questions",
-    source: "talking-head.mp4",
-    from: 8571, // "Do not migrate because of DSpark. Test." (4:45.7)
-    // LOOP: ends on "…if only the benchmark looks good, wait." (abs 9372) → replays into the hook.
-    durationInFrames: 819, // ~27s
-    topic: "IS THE NEW MODEL WORTH IT?",
-    hook: "DON'T SWITCH AI MODELS YET",
-    // the migrate gag IS the hook — open on full-screen animation
+    from: 4656, // "That is like hiring a senior architect to rename a label on a button" (2:35.2)
+    // LOOP: ends on "…being wrong is expensive. Not annoying — expensive." (abs 6014) → replays into the gag.
+    durationInFrames: 1358, // ~45s
+    topic: "HOW MUCH THINKING?",
+    hook: "YOU'RE OVERPAYING YOUR AI",
+    // the architect gag IS the hook — open on full-screen animation
     animHook: true,
     beats: [
-      { at: 6, scene: "migrate", text: "DON'T MIGRATE" }, // "Do not migrate" abs 8571
-      { at: 84, scene: "testbench", labels: ["CURRENT", "DSPARK"], text: "TEST FIRST" }, // "Test" abs 8655
-      { at: 184, scene: "conveyor", labels: ["CURRENT", "DSPARK"], text: "ONE WORKFLOW" }, // "Take one workflow…" abs 8755
-      { at: 413, scene: "check", obj: "gauge", labels: ["TIME", "SUCCESS", "COST"], text: "MEASURE 3" }, // abs 8984
-      { at: 479, scene: "check", obj: "clock", verdict: "check", text: "FASTER?" }, // "finish faster?" abs 9050
-      { at: 539, scene: "check", obj: "shield", verdict: "check", text: "SUCCEED?" }, // "still succeed?" abs 9110
-      { at: 602, scene: "check", obj: "coin", verdict: "check", text: "COST LESS?" }, // "cost less?" abs 9173
-      { at: 708, scene: "emote", pose: "celebrate", accent: "#34D399", text: "SHIP IT" }, // abs 9199
+      { at: 8, scene: "emote", pose: "pointing", accent: "#E8B84B", tint: "#F59E0B", text: "SENIOR ARCHITECT", sub: "renames a button" }, // "senior architect" abs 4700
+      { at: 180, scene: "coins", tint: "#EF4444", text: "STUPIDLY EXPENSIVE" }, // "stupidly expensive" abs 4836
+      { at: 308, scene: "check", obj: "clock", verdict: "check", tint: "#34D399", text: "LOW = QUICK CHECKS" }, // "Low" abs 4964
+      { at: 496, scene: "conveyor", labels: ["NORMAL WORK"], tint: "#06B6D4", text: "MEDIUM = BALANCE" }, // "Medium" abs 5152
+      { at: 671, scene: "check", obj: "gauge", verdict: "check", tint: "#34D399", text: "HIGH = JUDGMENT" }, // "High" abs 5327
+      { at: 822, scene: "bolt", trails: true, blockLabel: "OPUS", moduleLabel: "XHIGH", tint: "#06B6D4", text: "XHIGH = AGENTS" }, // "Extra high" abs 5478
+      { at: 1115, scene: "reject", badge: "DEFAULT", tint: "#EF4444", text: "MAX ≠ DEFAULT", emoji: "💸" }, // "max should not be your default" abs 5771
+      { at: 1235, scene: "emote", pose: "alarmed", accent: "#EF4444", tint: "#F59E0B", text: "WRONG = EXPENSIVE" }, // "being wrong is expensive" abs 5891
     ],
-    // full-anim: the quick-fire 3-question checklist — cramped in split
-    fullscreen: [{ from: 413, to: 648 }],
+    // full-anim: the level run-through + the XHIGH bolt payoff
+    fullscreen: [{ from: 308, to: 520 }, { from: 822, to: 1010 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
   },
   {
-    id: "Short-Numbers",
-    label: "The DSpark speed numbers — and why they're not a bill cut",
+    id: "Short-8020",
+    label: "Fable is 2× the price — the 80/20 rule decides when it's worth it",
     source: "talking-head.mp4",
-    from: 3878, // "The reported claim is that DSpark can make V4 Flash…" (2:09.3)
-    // LOOP: ends on "…that's not how production works." (abs 4707) → replays into the hook.
-    durationInFrames: 848, // ~28s
-    topic: "IS IT ACTUALLY CHEAPER?",
-    hook: "85% FASTER ISN'T 85% CHEAPER",
-    // the speed-layer bolt-on IS the scene-setter — open on full-screen animation
+    from: 12029, // "Now here is the cost trap." (6:41)
+    // LOOP: ends on "…that is the clean decision rule." (abs 13442) → replays into the trap.
+    durationInFrames: 1413, // ~47s
+    topic: "IS FABLE WORTH 2×?",
+    hook: "FABLE 5 IS 2× THE PRICE",
+    hookAlt: "STOP PAYING DOUBLE FOR AI", // A/B variant → Short-8020-B
+    // the coin trap IS the hook — open on full-screen animation
     animHook: true,
     beats: [
-      { at: 12, scene: "bolt", text: "DSPARK", sub: "speed layer" }, // scene-setter
-      { at: 153, scene: "bolt", trails: true, warn: "NOT ALWAYS CHEAPER", text: "60–85%", sub: "V4 FLASH" }, // abs 4031
-      { at: 387, scene: "race", text: "57–78%", sub: "V4 PRO" }, // abs 4265
-      { at: 588, scene: "emote", pose: "worried", accent: "#F59E0B", text: "CAREFUL" }, // abs 4466
-      { at: 718, scene: "coins", text: "NOT 85% OFF" }, // "your bill drops by 85%" abs 4596
+      { at: 8, scene: "coins", tint: "#F59E0B", text: "THE COST TRAP" }, // "cost trap" abs 12071
+      { at: 138, scene: "check", obj: "coin", verdict: "warn", tint: "#EF4444", text: "2× THE PRICE" }, // "double Opus 4.8" abs 12167
+      { at: 415, scene: "retry", tint: "#F59E0B", text: "× EFFORT × RETRIES" }, // "effort level, retries, tool calls" abs 12444
+      { at: 618, scene: "check", obj: "brain", verdict: "check", tint: "#34D399", text: "ONE CLEAN PASS?" }, // "one clean pass" abs 12647
+      { at: 678, scene: "emote", pose: "shrug", accent: "#F59E0B", tint: "#06B6D4", text: "OPUS DID THE SAME" }, // "waste if Opus…" abs 12707
+      { at: 796, scene: "check", obj: "gauge", verdict: "check", tint: "#34D399", text: "80%? USE OPUS" }, // "the 80…rule" abs 12825
+      { at: 1123, scene: "conveyor", labels: ["SONNET"], tint: "#06B6D4", text: "EVEN CHEAPER?" }, // "Sonnet…even cheaper" abs 13152
+      { at: 1215, scene: "emote", pose: "pointing", accent: "#E8B84B", tint: "#F59E0B", text: "THE 20% MATTERS?", sub: "then Fable", emoji: "💰" }, // "missing 20%…matters" abs 13244
     ],
-    // full-anim: the 60–85% number IS the hook payoff — give it the whole screen
-    fullscreen: [{ from: 153, to: 380 }],
+    // full-anim: the 2× reveal + the 80/20 decision payoff
+    fullscreen: [{ from: 138, to: 330 }, { from: 796, to: 1010 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
   },
   {
-    id: "Short-Infra",
-    label: "DSpark is an infrastructure moment, not an AI moment",
+    id: "Short-RouteByRisk",
+    label: "Route by risk, not ego — some tasks barely need Opus",
     source: "talking-head.mp4",
-    from: 10147, // "So here's the actual takeaway. DSpark is not an AGI moment." (5:38.2)
-    // LOOP: ends on "…say their workflows got cheaper." (abs 10892) → replays into the hook.
-    durationInFrames: 763, // ~25s
-    topic: "AGI OR JUST PLUMBING?",
-    hook: "IT'S NOT AN AI MOMENT",
+    from: 8533, // "Fourth, route by risk, not ego." (4:44.4)
+    // LOOP: ends on "…Opus at medium or high is probably enough." (abs 9655) → replays into the rule.
+    durationInFrames: 1122, // ~37s
+    topic: "PICKING AI BY EGO?",
+    hook: "STOP PAYING FOR EGO",
     beats: [
-      { at: 19, scene: "emote", pose: "idle", text: "THE TAKEAWAY" }, // "the actual takeaway" abs 10166
-      { at: 94, scene: "reject", badge: "AGI", text: "NOT AGI" }, // "not an AGI moment" abs 10241
-      { at: 136, scene: "bolt", trails: true, text: "INFRASTRUCTURE" }, // abs 10283
-      { at: 287, scene: "coins", text: "NEW ECONOMICS" }, // "change the economics" abs 10434
-      { at: 382, scene: "conveyor", labels: ["DONE"], text: "WORK WINS" }, // "faster completed work…" abs 10529
-      { at: 460, scene: "emote", pose: "shrug", text: "IGNORE HYPE" }, // "ignore the AGI screaming" abs 10607
-      { at: 724, scene: "check", obj: "gauge", verdict: "check", text: "CHEAPER?" }, // abs 10871
+      { at: 88, scene: "emote", pose: "pointing", tint: "#06B6D4", text: "RISK, NOT EGO" }, // "not ego" abs 8621
+      { at: 162, scene: "coins", tint: "#F59E0B", text: "WASTED SPEND" }, // "waste money" abs 8695
+      { at: 255, scene: "reject", badge: "FEELS SAFER", tint: "#EF4444", text: "NOT SMARTER" }, // "feels safer" abs 8788
+      { at: 413, scene: "emote", pose: "shrug", tint: "#06B6D4", text: "DOESN'T NEED FABLE", emoji: "🤷" }, // "do not need Fable" abs 8946
+      { at: 592, scene: "check", obj: "brain", verdict: "warn", tint: "#F59E0B", text: "BARELY NEEDS OPUS" }, // "barely need Opus" abs 9125
+      { at: 636, scene: "queue", labels: ["EXTRACT", "FORMAT", "CLASSIFY"], tint: "#06B6D4", text: "CHEAP LANE" }, // "extraction, formatting…" abs 9169
+      { at: 799, scene: "conveyor", labels: ["SONNET", "HAIKU"], tint: "#34D399", text: "HANDLED" }, // "Sonnet or haiku" abs 9332
+      { at: 950, scene: "check", obj: "gauge", verdict: "check", tint: "#06B6D4", text: "OPUS IS ENOUGH" }, // "Opus at medium or high" abs 9552
     ],
-    // full-anim: the "not AGI → infrastructure" reveal is the whole short
-    fullscreen: [{ from: 94, to: 280 }],
+    // full-anim: the cheap-lane run — the payoff of the whole rule
+    fullscreen: [{ from: 636, to: 860 }],
+    outro: "FOLLOW FOR MORE",
+    music: "music/tension.MP3",
+  },
+  {
+    id: "Short-AccessWindow",
+    label: "Fable access has already been weird — build a fallback routing rule",
+    source: "talking-head.mp4",
+    from: 10800, // "Fifth, watch access and cost with an eagle eye." (6:00)
+    // LOOP: ends on "…not which model is best — which model is just enough." (abs 12020) → replays into the rule.
+    durationInFrames: 1220, // ~41s
+    topic: "WHAT IF IT VANISHES?",
+    hook: "YOUR BEST AI CAN DISAPPEAR",
+    beats: [
+      { at: 90, scene: "emote", pose: "thinking", tint: "#06B6D4", text: "WATCH ACCESS" }, // "eagle eye" abs 10890
+      { at: 200, scene: "check", obj: "shield", verdict: "cross", tint: "#EF4444", text: "RESTRICTED" }, // "it was restricted" abs 11000
+      { at: 241, scene: "check", obj: "shield", verdict: "check", tint: "#34D399", text: "THEN IT'S BACK" }, // "came back" abs 11041
+      { at: 398, scene: "check", obj: "clock", verdict: "warn", tint: "#F59E0B", text: "WEEKLY LIMITS" }, // "part of the weekly usage" abs 11198
+      { at: 471, scene: "coins", tint: "#EF4444", text: "USAGE CREDITS", emoji: "😬" }, // "usage credits" abs 11271
+      { at: 624, scene: "stack", tint: "#F59E0B", text: "IT BREAKS" }, // "that is going to break" abs 11424
+      { at: 784, scene: "check", obj: "brain", verdict: "check", tint: "#34D399", text: "A ROUTING RULE" }, // "routing rule" abs 11584
+      { at: 880, scene: "bolt", trails: true, blockLabel: "OPUS", moduleLabel: "XHIGH", tint: "#06B6D4", text: "THE FALLBACK" }, // "try Opus extra high" abs 11680
+      { at: 997, scene: "check", obj: "gauge", verdict: "check", tint: "#34D399", text: "STEP DOWN" }, // "step down to high" abs 11797
+    ],
+    // full-anim: credits raining + the workflow break
+    fullscreen: [{ from: 471, to: 680 }],
+    outro: "FOLLOW FOR MORE",
+    music: "music/tension.MP3",
+  },
+  {
+    id: "Short-LeakedPrompt",
+    label: "The 'leaked' Fable prompt is a rumor — steal the behaviour instead",
+    source: "talking-head.mp4",
+    from: 1980, // "copy the process, not the leak prompt" (1:06)
+    // LOOP: ends on "…that is exactly the point." (abs 3105) → replays into the hook.
+    durationInFrames: 1125, // ~38s
+    topic: "IS THE LEAK REAL?",
+    hook: "THE 'LEAKED' FABLE PROMPT",
+    beats: [
+      { at: 127, scene: "emote", pose: "confused", tint: "#06B6D4", text: "A 'LEAKED' PROMPT?" }, // "Fable system prompt" abs 2107
+      { at: 224, scene: "reject", badge: "OFFICIAL", tint: "#EF4444", text: "JUST A RUMOR", emoji: "🤨" }, // "like a rumor" abs 2204
+      { at: 301, scene: "check", obj: "brain", verdict: "cross", tint: "#F59E0B", text: "DON'T COPY-PASTE" }, // "don't copy it word for word" abs 2281
+      { at: 413, scene: "stack", tint: "#EF4444", text: "DON'T BUILD ON IT" }, // "build your workflow around a leak" abs 2393
+      { at: 692, scene: "emote", pose: "pointing", accent: "#34D399", tint: "#34D399", text: "STEAL THE BEHAVIOUR" }, // "worth stealing" abs 2672
+      { at: 780, scene: "check", obj: "clock", verdict: "cross", tint: "#06B6D4", text: "NO STALE FACTS" }, // "don't trust stale knowledge" abs 2760
+      { at: 838, scene: "testbench", labels: ["ASSUMPTIONS", "REALITY"], tint: "#F59E0B", text: "VERIFY FIRST" }, // "don't assume a file exists" abs 2818
+      { at: 1008, scene: "emote", pose: "celebrate", accent: "#34D399", tint: "#34D399", text: "GOOD AGENT BEHAVIOUR" }, // "good agent behavior" abs 3010
+    ],
+    // full-anim: the workflow-on-a-leak collapse + the steal reveal
+    fullscreen: [{ from: 413, to: 610 }, { from: 692, to: 790 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
   },
 ];
+

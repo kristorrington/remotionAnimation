@@ -175,6 +175,67 @@ export const AnimatedCounter: React.FC<{ to: number; from?: number; at?: number;
   );
 };
 
+// Odometer-style counter: each digit column ROLLS continuously (carries and
+// all), with comma grouping. Use for money/scale numbers; AnimatedCounter
+// remains for simple percentages.
+export const Odometer: React.FC<{ to: number; at?: number; dur?: number; size?: number; color?: string; prefix?: string; suffix?: string }> = ({ to, at = 0, dur = 44, size = 88, color = WHITE, prefix = "", suffix = "" }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const e = spring({ frame: frame - at, fps, config: { stiffness: 70, damping: 24 }, durationInFrames: dur });
+  const v = to * e;
+  const digitCount = Math.max(1, Math.floor(Math.log10(Math.max(1, to))) + 1);
+  const h = size * 1.08;
+  const cell = (k: number) => {
+    // continuous roll: offset of this power-of-ten column (handles carries)
+    const off = (v / Math.pow(10, k)) % 10;
+    return (
+      <span key={k} style={{ display: "inline-block", height: h, overflow: "hidden", verticalAlign: "bottom" }}>
+        <span style={{ display: "inline-block", transform: `translateY(${-off * h}px)` }}>
+          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((d, i) => (
+            <span key={i} style={{ display: "block", height: h, lineHeight: `${h}px` }}>{d}</span>
+          ))}
+        </span>
+      </span>
+    );
+  };
+  const cells: React.ReactNode[] = [];
+  for (let k = digitCount - 1; k >= 0; k--) {
+    cells.push(cell(k));
+    if (k > 0 && k % 3 === 0) cells.push(<span key={`c-${k}`} style={{ display: "inline-block" }}>,</span>);
+  }
+  return (
+    <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: size, letterSpacing: -1, color, textShadow: `0 0 24px ${color}55`, transform: "translateZ(0)", display: "inline-flex", alignItems: "flex-end" }}>
+      {prefix}{cells}{suffix}
+    </span>
+  );
+};
+
+// A callout arrow that DRAWS ON toward a target, then its 1–2 word label pops.
+// For annotating screenshots/charts instead of adding more static text.
+export const LabelArrow: React.FC<{ label: string; at?: number; angle?: number; length?: number; color?: string }> = ({ label, at = 0, angle = 35, length = 150, color = CYAN }) => {
+  const frame = useCurrentFrame();
+  const draw = interpolate(frame, [at, at + 16], [0, 1], CLAMP);
+  const labelOp = interpolate(frame, [at + 12, at + 20], [0, 1], CLAMP);
+  const rad = (angle * Math.PI) / 180;
+  const x2 = Math.cos(rad) * length;
+  const y2 = Math.sin(rad) * length;
+  const hx = x2 * draw;
+  const hy = y2 * draw;
+  return (
+    <div style={{ position: "relative", width: 0, height: 0 }}>
+      <svg width={Math.abs(x2) + 40} height={Math.abs(y2) + 40} viewBox={`0 0 ${Math.abs(x2) + 40} ${Math.abs(y2) + 40}`} style={{ position: "absolute", left: Math.min(0, x2) - 20, top: Math.min(0, y2) - 20, overflow: "visible" }}>
+        <line x1={20 - Math.min(0, x2)} y1={20 - Math.min(0, y2)} x2={20 - Math.min(0, x2) + hx} y2={20 - Math.min(0, y2) + hy} stroke={color} strokeWidth={6} strokeLinecap="round" style={{ filter: `drop-shadow(0 0 8px ${color})` }} />
+        {draw > 0.85 && (
+          <path d={`M ${20 - Math.min(0, x2) + hx} ${20 - Math.min(0, y2) + hy} l ${-14 * Math.cos(rad - 0.5)} ${-14 * Math.sin(rad - 0.5)} M ${20 - Math.min(0, x2) + hx} ${20 - Math.min(0, y2) + hy} l ${-14 * Math.cos(rad + 0.5)} ${-14 * Math.sin(rad + 0.5)}`} stroke={color} strokeWidth={6} strokeLinecap="round" fill="none" />
+        )}
+      </svg>
+      <div style={{ position: "absolute", left: x2 > 0 ? -30 : 10, top: y2 > 0 ? -46 : 10, opacity: labelOp, padding: "6px 16px", borderRadius: 10, background: "rgba(8,12,20,0.85)", border: `2px solid ${color}`, whiteSpace: "nowrap", transform: "translateZ(0)" }}>
+        <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 26, letterSpacing: 1, color: WHITE }}>{label}</span>
+      </div>
+    </div>
+  );
+};
+
 // A floating glass UI panel that bobs gently (depth + life behind content).
 export const FloatingPanel: React.FC<{ children: React.ReactNode; delay?: number; depth?: number; accent?: string; style?: React.CSSProperties }> = ({ children, delay = 0, depth = 1, accent = CYAN, style }) => {
   const frame = useCurrentFrame();

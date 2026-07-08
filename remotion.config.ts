@@ -8,6 +8,12 @@ import { enableTailwind } from '@remotion/tailwind-v4';
 
 Config.setVideoImageFormat("jpeg");
 Config.setOverwriteOutput(true);
+// OffthreadVideo frame extraction from the footage can stall past the 30s
+// default under load (or when OneDrive rehydrates the file), killing renders
+// with "Loading <Img> with src=blob:…" delayRender timeouts. Also covers
+// browser page-load on this OneDrive-throttled tree (cldflt slows every file
+// op ~2-5x even with OneDrive.exe stopped). Generous on purpose.
+Config.setTimeoutInMilliseconds(300000);
 Config.overrideWebpackConfig((config) => {
   const withTailwind = enableTailwind(config);
   // Node 25 feeds `undefined` into webpack's snapshot CONTENT hashing

@@ -191,7 +191,16 @@ screens" — it is **tiny animated scenes**.
 
 **Subjects** (`src/motion/subjects.tsx`) — characters with agency:
 - `CartoonRobot` — poses: `idle | waiting | sleepy | alarmed | shrug | celebrate |
-  worried`; blinks, bobs, hops, squashes; `accent` color; `lookX` eyes.
+  worried | walking | thinking | confused | facepalm | pointing`; blinks, bobs,
+  hops, squashes; `accent` color; `lookX`/`lookY` eye-targeting (make it WATCH
+  the action).
+- `BugCharacter` (`crawl | attack | squashed`) — the antagonist for bug/failure
+  beats. `TinyDev` (`typing | panic | happy`) — the human proxy.
+- `SpeechBubble` — THE shared comic bubble (`shout` variant); never re-implement.
+- `MoveAlong` — walks a subject between two points (auto-flip + step puffs).
+- `poseTimeline(frame, [[at, pose]…])` — one-line reaction beats;
+  `impulse(frame, at)` — decaying hit shake; `useCartoonSpring(at)` — shared
+  entrance squash-and-stretch physics.
 - `ThoughtBubble` (animated dots), `Zzz`, `AlarmLines`, `Sweat` — attach to a subject.
 - `Sparks` (impact burst at `at`), `Puff` (dust on landing).
 
@@ -202,6 +211,33 @@ screens" — it is **tiny animated scenes**.
 - `TokenCoin` — drops with squash; `CostMeterClimb` — green→amber→red level meter.
 - `PromptQueue` — labelled request cards queueing (staggered entry, impatient nudge).
 - `CardStackDrop` — cards drop/stack/wobble, then scatter-collapse at `collapseAt`.
+- `ConveyorBelt` — THE shared belt (speed ramps); `RetryWheel` — THE shared
+  retry loop; `JengaTower` — pull one block → wobble → collapse (risk-of-change);
+  `LeakingBucket` — drains until the patch bolts on; `TrafficJam` — requests
+  bunch + honk (2nd latency metaphor); `ServerRack` — LEDs/fans + `overheatAt`;
+  `LockGate` — slams shut or springs open.
+
+**Cinematics** (`src/motion/cinematics.tsx`) — camera feel & continuity:
+- `SceneShell` props: `mood` (`danger` red pulse / `win` green sweep), `depth`
+  (background grid + drifting props), `impacts=[frames]` (the CAMERA shakes on
+  hits — use on every crash/slam/collapse), `tint` (ambient TOPIC hue — see the
+  background-tint rule in §8).
+- `LightLeak` — ONE premium moment per video (hero launch / final takeaway).
+- `ExitWrap` — scene exits (`push | fade | puff | drop`) instead of hard cuts.
+- `exitRight`/`enterLeft` — carry a subject across adjacent scenes (continuity).
+- `DebugZones` — Studio-only bounding boxes to catch text/action overlaps.
+
+**Text & sync**: `SceneHeadline` auto-fits long titles (never wraps); `Odometer`
+(rolling-digit counter for money/scale), `LabelArrow` (draw-on callout for
+screenshots/charts), `WordPop`/`SpokenWordPop` (pop ONE spoken word, whisper-timed).
+
+**Sound**: scenes' action beats live in `src/motion/sfx-cues.ts` (retiming a
+scene retimes its sound); `SfxCue rate={vary(i)}` pitch-varies repeated samples;
+VO-reactive glow via `useVoiceLevel`/`VoiceGlow` (run `node scripts/voice-levels.mjs`
+after new footage).
+
+**Preview catalog**: the `TemplateLab` composition shows every component (~3s
+each) — scrub it in Studio before designing scenes.
 
 **Scenes** (`src/scenes/`) — full-screen, sit on `SceneShell` (bg + particles +
 light sweep + camera push):
@@ -256,7 +292,24 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   the spoken emphasis word sells the meaning.
 - Every **30–45s** a larger visual reset (new scene MODE / metaphor / background
   treatment). Never two consecutive scenes in the same mode with the same layout.
-- Sync animation beats tightly to the transcript; nothing lags the VO.
+- Sync animation beats tightly to the transcript; nothing lags the VO. **Every
+  in-scene element with an `at` (chips, checks, stamps, dial stops, cards, flow
+  nodes) must be pinned to its whisper word frame** — never a hardcoded stagger
+  like `140 + i * 60`. If a shared scene has fixed internal timing, add
+  per-element `at`/`nodeAts`/`chipAts` props instead of accepting drift.
+- **Background tints match the topic** (`SceneShell tint`): green =
+  savings/win, amber = cost/effort, red = trap/danger, cyan = system/process.
+  Adjacent scenes should not share a tint — it's part of the visual reset.
+- **Layout must breathe**: main subject groups sit ≥ ~110px apart at 1080p;
+  absolutely-positioned props (coins, modules, stamps) never cover labels or
+  the headline; piles/stacks actually stack (offset every item) — never render
+  N items at identical coordinates.
+- **Full-screen animation spans (no PiP):** the final cut must not show the
+  corner PiP wall-to-wall. Mark hook, gag, system and payoff beats as
+  `fullscreen` in the overlay's BEATS table and export the spans; the Final
+  subtracts them from its PiP segments (min PiP segment ~3s — no flicker).
+  Explanation/receipt beats keep the PiP. Aim for roughly a third of the
+  runtime full-screen so the edit feels like a cartoon, not a presentation.
 - Reusable components over one-off messy code; preserve render performance.
 
 ---
@@ -293,7 +346,11 @@ Shorts use even STRONGER cartoon/action animation than long-form:
 reject / retry / check / race`) routed via `Beat.scene`; the legacy icon card is
 a fallback (max ~1 per short). `ShortSpec.fullscreen` spans give the animation
 the whole screen; `ShortSpec.animHook` opens the short on full-screen animation
-under the hook title.
+under the hook title. Also: `Beat.emoji` pops ONE meme emoji on a beat (~1 per
+short); the progress bar shows beat milestone ticks automatically;
+`ShortSpec.hookAlt` registers a `<id>-B` composition for A/B hook testing; the
+final ~9 frames dip to dark so the auto-replay loop never visibly jumps; toggle
+`showSafeZones` in Studio props to see platform-UI safe zones (never renders).
 
 ### Short-scene acceptance checklist (every beat)
 
@@ -357,6 +414,24 @@ public data.
 images, stock photos, or creator-made graphics unless the licence clearly allows
 reuse. Prefer official sources: brand asset pages, documentation, GitHub repos,
 press kits, screenshots of official pages.
+
+**Tooling (use it — don't do §10 by hand):**
+- `node scripts/fetch-assets.mjs <wishlist.json>` — downloads whitelisted brand
+  files and captures page screenshots (headless Chrome/Edge) into
+  `public/assets/external/…`, never overwrites, and auto-appends manifest
+  entries. Licence judgement stays human: only put official sources in the wishlist.
+- `node scripts/check-assets.mjs` — preflight before render: every manifest
+  entry has its file + fields, no orphan files, every `staticFile("assets/external/…")`
+  reference resolves and is manifested.
+- **Data-as-assets:** extracted chart numbers live in
+  `public/assets/external/charts/*.json` (with `sourceUrl` + `dateAccessed`,
+  manifested like any asset); chart components import the JSON directly.
+- **Components:** `SourceScreenshot` (browser-chrome card + pan/zoom to the crop
+  + highlight sweep — the ONLY way screenshots appear), `LogoBadge`
+  (tile/transparent treatment for any manifest logo), chart kit in
+  `src/motion/charts.tsx` (`BarsIn`, `LineDraw`, `DonutFill`, `BarRace` + the
+  `SourceChip` citation that must travel with every recreated chart), and
+  `StatReceiptScene` (one big cited number).
 
 ### 10.1 Asset research pass
 Before designing scenes, search the web for assets matching the transcript topic:

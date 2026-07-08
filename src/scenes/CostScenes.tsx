@@ -4,30 +4,42 @@ import { FONT } from "../components/overlayUI";
 import { SceneShell, SceneHeadline } from "./SceneShell";
 import { CardStackDrop, TokenCoin, CostMeterClimb } from "../motion/objects";
 import { CartoonRobot, CYAN, WHITE, GREEN } from "../motion/subjects";
+import { ImpactStamp } from "../motion/primitives";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
-// CALLS STACK UP: call cards physically DROP onto a pile; the stack wobbles as it
-// grows and finally COLLAPSES onto a worried little robot. Escalation, dramatised.
-export const StackCollapseScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; drops?: number[]; collapseAt?: number }> = ({
+// CALLS STACK UP: call cards physically DROP onto a pile; the stack wobbles as
+// it grows and (optionally) COLLAPSES onto a worried robot. With no `collapseAt`
+// the stack HOLDS — a solid build (labels + celebrate + optional stamp).
+export const StackCollapseScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; drops?: number[]; collapseAt?: number; labels?: string[]; stamp?: string; stampAt?: number; accent?: string }> = ({
   durationInFrames,
   kicker,
   title,
   drops = [6, 40, 63, 100, 130, 160, 180, 195],
-  collapseAt = 205,
+  collapseAt,
+  labels,
+  stamp,
+  stampAt,
+  accent = "#F59E0B",
 }) => {
   const frame = useCurrentFrame();
-  const collapsed = frame >= collapseAt;
+  const collapsed = collapseAt !== undefined && frame >= collapseAt;
+  const built = collapseAt === undefined && frame >= (drops[drops.length - 1] ?? 0) + 24;
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0x91}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x91} impacts={collapseAt !== undefined ? [collapseAt] : []} mood={collapseAt === undefined ? "win" : "neutral"}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
         <div style={{ display: "flex", alignItems: "flex-end", gap: 0 }}>
-          <CardStackDrop drops={drops} collapseAt={collapseAt} />
+          <CardStackDrop drops={drops} collapseAt={collapseAt} labels={labels} />
           <div style={{ marginLeft: -70, marginBottom: 6 }}>
-            <CartoonRobot pose={collapsed ? "alarmed" : "worried"} size={180} />
+            <CartoonRobot pose={collapsed ? "alarmed" : built ? "celebrate" : "worried"} size={180} accent={built ? GREEN : CYAN} />
           </div>
+          {stamp ? (
+            <div style={{ marginLeft: 40, marginBottom: 120 }}>
+              <ImpactStamp text={stamp} at={stampAt ?? Math.round(durationInFrames * 0.6)} color={GREEN} />
+            </div>
+          ) : null}
         </div>
-        <SceneHeadline kicker={kicker} title={title} titleSize={88} accent="#F59E0B" />
+        <SceneHeadline kicker={kicker} title={title} titleSize={88} accent={collapseAt === undefined ? GREEN : accent} />
       </div>
     </SceneShell>
   );
