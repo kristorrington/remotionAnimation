@@ -299,7 +299,18 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   per-element `at`/`nodeAts`/`chipAts` props instead of accepting drift.
 - **Background tints match the topic** (`SceneShell tint`): green =
   savings/win, amber = cost/effort, red = trap/danger, cyan = system/process.
-  Adjacent scenes should not share a tint — it's part of the visual reset.
+  Tints are BOLD (`TintWash`: ~25% alpha, three gradient geometries rotated by
+  `particleSeed`) — a scene must never read as "the same dark navy". EVERY
+  scene in a final cut gets a tint (pass it through shared scenes if missing),
+  and adjacent scenes never share one — it's part of the visual reset.
+- **Proportions kill the slide look**: subjects LARGE (robots ~230–300px,
+  machine blocks ~390–440px wide), `SceneHeadline` titleSize ~60–64 (never
+  80+ — if the text dominates the frame it's a presentation), something
+  animating from frame 0 (idle bob, pop-in subject with `Puff`, running belt —
+  never dead air before the first whisper anchor), and supporting chips as
+  rotated STICKERS that spring-slam in (scale ~1.5–1.8 → 1, ±2–5° tilt,
+  scattered offsets) — never a flat fading row. Camera `impacts` + a subject
+  hop/kick on every landing, bolt, stamp and check.
 - **Layout must breathe**: main subject groups sit ≥ ~110px apart at 1080p;
   absolutely-positioned props (coins, modules, stamps) never cover labels or
   the headline; piles/stacks actually stack (offset every item) — never render
@@ -340,14 +351,33 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   visual punchline. NOT like: cropped long-form slides · talking head under a
   title card · text-heavy presentation clips · title/subtitle/icon templates.
 - Final beat = a payoff or a **loop back to the hook** (loops = free replays).
+- **Every short OPENS on full-screen animation**: `animHook: true` on EVERY
+  spec, with a scene-setting beat at frame ~8 (it may precede its spoken
+  anchor) so the screen is never empty under the hook.
+- **Cold-viewer context is mandatory** when the short names a product/model/
+  event the hook doesn't explain: `ShortSpec.context` — ONE unboxed, dim,
+  sentence-case line under the hook (≤ ~45 chars, single line), e.g.
+  "Fable 5 = Claude's newest, priciest model". The `topic` banner carries the
+  SUBJECT (e.g. "CLAUDE'S EFFORT DIAL"), not a vague tease, and fades in only
+  AFTER the hook so the opening stays minimal (hook + context only — never
+  three stacked boxes). Beats that name-drop cold get a clarifying `sub`
+  bubble ("the ½-price Claude").
+- **Every beat sets `Beat.tint`** — beats crossfade, so the wash colour sweeps
+  with each 1.5–3s reset; no two adjacent beats share a colour.
+- **Never hand-size big text**: beat labels go through `BeatLabel`'s auto-fit
+  (≤ 730px), because full-anim spans zoom the panel ×1.32 and text must never
+  cross the frame borders.
 
 **In code** (`src/shorts/`): every beat is a `BeatScenes.tsx` subject scene
 (`emote / queue / stack / bolt / coins / migrate / testbench / conveyor /
 reject / retry / check / race`) routed via `Beat.scene`; the legacy icon card is
 a fallback (max ~1 per short). `ShortSpec.fullscreen` spans give the animation
 the whole screen; `ShortSpec.animHook` opens the short on full-screen animation
-under the hook title. Also: `Beat.emoji` pops ONE meme emoji on a beat (~1 per
-short); the progress bar shows beat milestone ticks automatically;
+under the hook title (house default — set it on every short). Also:
+`ShortSpec.context` renders the plain-words setup line under the hook;
+`Beat.tint` drives the per-beat `TintWash`; `Beat.emoji` pops ONE meme emoji on
+a beat (~1 per short); the progress bar shows beat milestone ticks
+automatically and fades in with the topic banner after the hook;
 `ShortSpec.hookAlt` registers a `<id>-B` composition for A/B hook testing; the
 final ~9 frames dip to dark so the auto-replay loop never visibly jumps; toggle
 `showSafeZones` in Studio props to see platform-UI safe zones (never renders).

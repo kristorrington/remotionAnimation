@@ -81,8 +81,10 @@ export type ShortSpec = {
   // durationInFrames − 116 (before the CTA close), ≥ 24 frames between spans.
   fullscreen?: { from: number; to: number }[];
   // Animation-first hook: the short OPENS on full-screen animation (under the
-  // HookTitle) instead of the full-screen face. Use when the first beat's gag
-  // IS the hook. Requires a beat at/near frame 0 so the screen is never empty.
+  // HookTitle) instead of the full-screen face. HOUSE DEFAULT: set this on
+  // EVERY short (big action in the first second beats a face fading in).
+  // Requires a beat at/near frame ~8 so the screen is never empty; that beat
+  // is scene-setting and may precede its spoken anchor.
   animHook?: boolean;
   // A/B hook test: registers a second composition (`<id>-B`) identical except
   // for this hook line. Render both, post both, keep the winner.

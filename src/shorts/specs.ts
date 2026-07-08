@@ -78,8 +78,10 @@ export const SHORTS: ShortSpec[] = [
     topic: "WHICH CLAUDE FOR WHAT?",
     hook: "STOP PAYING FOR EGO",
     context: "Claude has cheap and premium model tiers",
+    // every short OPENS on full-screen animation under the hook
+    animHook: true,
     beats: [
-      { at: 88, scene: "emote", pose: "pointing", tint: "#06B6D4", text: "RISK, NOT EGO" }, // "not ego" abs 8621
+      { at: 8, scene: "emote", pose: "pointing", tint: "#06B6D4", text: "RISK, NOT EGO" }, // scene-setting under the hook; spoken "not ego" abs 8621
       { at: 162, scene: "coins", tint: "#F59E0B", text: "WASTED SPEND" }, // "waste money" abs 8695
       { at: 255, scene: "reject", badge: "FEELS SAFER", tint: "#EF4444", text: "NOT SMARTER" }, // "feels safer" abs 8788
       { at: 413, scene: "emote", pose: "shrug", tint: "#06B6D4", text: "DOESN'T NEED FABLE", sub: "the premium tier", emoji: "🤷" }, // "do not need Fable" abs 8946
@@ -103,8 +105,10 @@ export const SHORTS: ShortSpec[] = [
     topic: "IF FABLE 5 VANISHES?",
     hook: "YOUR BEST AI CAN DISAPPEAR",
     context: "Fable 5 = Claude's top model",
+    // every short OPENS on full-screen animation under the hook
+    animHook: true,
     beats: [
-      { at: 90, scene: "emote", pose: "thinking", tint: "#06B6D4", text: "WATCH ACCESS", sub: "to Fable 5" }, // "eagle eye" abs 10890
+      { at: 8, scene: "emote", pose: "thinking", tint: "#06B6D4", text: "WATCH ACCESS", sub: "to Fable 5" }, // scene-setting under the hook; spoken "eagle eye" abs 10890
       { at: 200, scene: "check", obj: "shield", verdict: "cross", tint: "#EF4444", text: "RESTRICTED" }, // "it was restricted" abs 11000
       { at: 241, scene: "check", obj: "shield", verdict: "check", tint: "#34D399", text: "THEN IT'S BACK" }, // "came back" abs 11041
       { at: 398, scene: "check", obj: "clock", verdict: "warn", tint: "#F59E0B", text: "WEEKLY LIMITS" }, // "part of the weekly usage" abs 11198
@@ -129,8 +133,11 @@ export const SHORTS: ShortSpec[] = [
     topic: "CLAUDE'S 'LEAKED' PROMPT",
     hook: "THE 'LEAKED' FABLE PROMPT",
     context: "Fable 5 = Claude's newest model",
+    // every short OPENS on full-screen animation under the hook
+    animHook: true,
     beats: [
-      { at: 127, scene: "emote", pose: "confused", tint: "#06B6D4", text: "A 'LEAKED' PROMPT?", sub: "for Claude Fable 5" }, // "Fable system prompt" abs 2107
+      { at: 8, scene: "emote", pose: "confused", tint: "#06B6D4", text: "A 'LEAKED' PROMPT?", sub: "for Claude Fable 5" }, // scene-setting under the hook
+      { at: 127, scene: "check", obj: "brain", verdict: "warn", tint: "#F59E0B", text: "FABLE'S PROMPT?" }, // "Fable system prompt" abs 2107
       { at: 224, scene: "reject", badge: "OFFICIAL", tint: "#EF4444", text: "JUST A RUMOR", emoji: "🤨" }, // "like a rumor" abs 2204
       { at: 301, scene: "check", obj: "brain", verdict: "cross", tint: "#F59E0B", text: "DON'T COPY-PASTE" }, // "don't copy it word for word" abs 2281
       { at: 413, scene: "stack", tint: "#EF4444", text: "DON'T BUILD ON IT" }, // "build your workflow around a leak" abs 2393
