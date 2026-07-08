@@ -370,6 +370,12 @@ Shorts use even STRONGER cartoon/action animation than long-form:
 - **Never hand-size big text**: beat labels go through `BeatLabel`'s auto-fit
   (≤ 730px), because full-anim spans zoom the panel ×1.32 and text must never
   cross the frame borders.
+- **ALWAYS proofread the captions before shipping a short.** Whisper mangles
+  product names ("Anthropic" → "Thorpek", "Claude" → "cloud"). After every
+  whisper run: `transcribe.mjs` auto-fixes known mishears (extend its
+  `JOINS`/`FIX` maps whenever a new one appears) and prints a REVIEW list of
+  ambiguous ones — resolve every flagged word in context, then scrub each
+  short's captions in Studio before rendering.
 
 **In code** (`src/shorts/`): every beat is a `BeatScenes.tsx` subject scene
 (`emote / queue / stack / bolt / coins / migrate / testbench / conveyor /

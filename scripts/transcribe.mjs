@@ -77,10 +77,20 @@ const main = async () => {
       }
     }
   }
-  const FIX = { anthropic: "Anthropic", fable: "Fable", mythos: "Mythos", miffos: "Mythos", claude: "Claude" };
+  const FIX = { anthropic: "Anthropic", thorpek: "Anthropic", fable: "Fable", mythos: "Mythos", miffos: "Mythos", claude: "Claude" };
   for (const w of words) {
     const base = norm(w.text);
     if (FIX[base]) w.text = w.text.replace(/[\p{L}\p{N}]+/u, FIX[base]);
+  }
+
+  // Words that are OFTEN brand mishears but can also be legit (e.g. whisper
+  // hears "Claude" as "cloud") — never auto-replace; print them with
+  // timestamps so every flagged word gets a manual look before shipping.
+  const REVIEW = ["cloud", "clod", "claud", "opis", "sonet", "fabel"];
+  const flagged = words.filter((w) => REVIEW.includes(norm(w.text)));
+  if (flagged.length) {
+    console.warn(`REVIEW: ${flagged.length} possible brand mishear(s) — check each in context:`);
+    for (const w of flagged) console.warn(`  "${w.text}" @ ${(w.from / FPS).toFixed(1)}s (frame ${w.from})`);
   }
 
   console.log(`4/4 writing ${words.length} words -> src/shorts/captionsData.ts`);
