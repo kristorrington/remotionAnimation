@@ -59,6 +59,7 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     // ——— Claude-wealth scenes (fractions track the instance props used) ———
     case "questionFlip":
       if (dur === 330) cues.push({ at: 130, type: "whip" }); // routing instance: crossAt=130
+      else if (dur === 232) cues.push({ at: 106, type: "whip" }); // countdown instance: crossAt=106
       else cues.push({ at: Math.round(dur * 0.62), type: "whip" }); // the cross-out
       break;
     case "toolStack":
@@ -114,13 +115,57 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "routingLanes": {
       const inst = dur === 890
         ? { cards: [41, 65, 320, 418, 560, 796], escalate: 850 }
-        : { cards: [46, 166, 267, 386], escalate: 480 };
+        : dur === 445
+          ? { cards: [83, 155, 245, 395], escalate: 70 } // countdown instance
+          : { cards: [46, 166, 267, 386], escalate: 480 };
       inst.cards.forEach((c) => cues.push({ at: c + 14, type: "switch" })); // cards land on lanes
       cues.push({ at: inst.escalate + 10, type: "boom" }); // fable gate opens
       break;
     }
     case "accessWindow":
-      cues.push({ at: 164, type: "boom" }, { at: 199, type: "whip" }, { at: 435, type: "switch" }); // slam, reopen, credits
+      if (dur === 292) cues.push({ at: 36, type: "boom" }, { at: 172, type: "switch" }); // countdown instance: slam, credits
+      else cues.push({ at: 164, type: "boom" }, { at: 199, type: "whip" }, { at: 435, type: "switch" }); // slam, reopen, credits
+      break;
+    // ——— Fable-countdown scenes (timings track the overlay instance props) ———
+    case "cdHook":
+      cues.push({ at: 148, type: "whip" }, { at: 242, type: "boom" }); // panel slams, gate slams
+      break;
+    case "cdPrice":
+      cues.push({ at: 8, type: "whip" }, { at: 96, type: "boom" }); // $10 in, $50 lands
+      break;
+    case "cdExtension":
+      cues.push({ at: 123, type: "whip" }); // the window flag lands on July 12
+      break;
+    case "cdPromo":
+      cues.push({ at: 88, type: "switch" }, { at: 186, type: "ding" }); // donut fills, nothing-to-claim check
+      break;
+    case "cdCapacity":
+      cues.push({ at: 32, type: "switch" }, { at: 76, type: "switch" }, { at: 160, type: "switch" }, { at: 128, type: "whip" }); // chips + overheat
+      break;
+    case "cdDrama":
+      [40, 109, 141, 183].forEach((s) => cues.push({ at: s, type: "whip" })); // station hops
+      cues.push({ at: 281, type: "boom" }); // DRAMA stamp
+      break;
+    case "cdJune":
+      [75, 513, 552].forEach((s) => cues.push({ at: s, type: "switch" })); // date cards slam
+      break;
+    case "cdClassifier":
+      cues.push({ at: 177, type: "whip" }, { at: 265, type: "ding" }, { at: 326, type: "boom" }); // bounce, 99%, crack
+      break;
+    case "cdJenga":
+      cues.push({ at: 222, type: "boom" }, { at: 324, type: "switch" }, { at: 354, type: "switch" }, { at: 380, type: "switch" }); // pull + risk stickers
+      break;
+    case "cdReroute":
+      cues.push({ at: 103, type: "boom" }, { at: 191, type: "whip" }); // the arm flips the card, the reveal
+      break;
+    case "cdSpecialist":
+      cues.push({ at: 30, type: "whip" }, { at: 170, type: "whip" }, { at: 304, type: "switch" }, { at: 359, type: "switch" }); // pop-in, handoff, chips
+      break;
+    case "cdWording":
+      cues.push({ at: 61, type: "whip" }, { at: 192, type: "ding" }, { at: 230, type: "boom" }); // cross, check, THE SIGNAL
+      break;
+    case "takeaway":
+      cues.push({ at: 132, type: "boom" }); // LEVERAGE stamp
       break;
     case "rateCard":
       cues.push({ at: 16, type: "whip" }, { at: 360, type: "switch" }, { at: 400, type: "switch" }, { at: 440, type: "switch" }); // bars in, multipliers

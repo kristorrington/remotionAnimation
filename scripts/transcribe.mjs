@@ -77,7 +77,11 @@ const main = async () => {
       }
     }
   }
-  const FIX = { anthropic: "Anthropic", thorpek: "Anthropic", fable: "Fable", mythos: "Mythos", miffos: "Mythos", claude: "Claude" };
+  const FIX = {
+    anthropic: "Anthropic", anthropics: "Anthropic", thorpek: "Anthropic", thorpey: "Anthropic",
+    anthorpey: "Anthropic", fable: "Fable", mythos: "Mythos", miffos: "Mythos", mifos: "Mythos",
+    misaris: "Messaros", claude: "Claude",
+  };
   for (const w of words) {
     const base = norm(w.text);
     if (FIX[base]) w.text = w.text.replace(/[\p{L}\p{N}]+/u, FIX[base]);

@@ -40,7 +40,7 @@ const GRAIN = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 // The talking-head footage, "directed": punch-in jump cuts + a slow push, a warm
 // cinematic grade, a vignette and animated grain. Sits *under* the animation track
 // so the cards keep their own palette; only the footage is treated.
-export const FootageDirector: React.FC<{ footage: string }> = ({ footage }) => {
+export const FootageDirector: React.FC<{ footage: string; volume?: number }> = ({ footage, volume = 3 }) => {
   const frame = useCurrentFrame();
 
   // Which framing segment are we in, and how far through it?
@@ -69,9 +69,10 @@ export const FootageDirector: React.FC<{ footage: string }> = ({ footage }) => {
       >
         <OffthreadVideo
           src={staticFile(footage)}
-          // Source VO is recorded quiet (peaks ~-14 dB); lift it so it leads the
-          // mix over the SFX. Final loudness is set by a loudnorm master at export.
-          volume={3}
+          // Source VO is often recorded quiet; lift it so it leads the mix over
+          // the SFX (per-video boost from the volumedetect probe — AGENTS §6).
+          // Final loudness is set by a loudnorm master at export.
+          volume={volume}
           style={{
             width: "100%",
             height: "100%",

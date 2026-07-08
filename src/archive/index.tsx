@@ -18,6 +18,8 @@ import { DSparkVideo } from "../DSparkVideo";
 import { DSparkFinal } from "../DSparkFinal";
 import { ClaudeWealthVideo, CLAUDE_WEALTH_DUR } from "../ClaudeWealthVideo";
 import { ClaudeWealthFinal } from "../ClaudeWealthFinal";
+import { ModelRoutingVideo, MODEL_ROUTING_DUR } from "../ModelRoutingVideo";
+import { ModelRoutingFinal } from "../ModelRoutingFinal";
 
 // ============================================================================
 // THE ARCHIVE — compositions from PREVIOUS videos. When a new video starts,
@@ -41,6 +43,25 @@ const transparentDefaults: CalculateMetadataFunction<
 export const ArchivedVideoCompositions: React.FC = () => {
   return (
     <>
+      {/* ── Model routing: Opus vs Fable 5 (July 2026) ── */}
+      <Composition
+        id="ModelRoutingVideo"
+        component={ModelRoutingVideo}
+        durationInFrames={MODEL_ROUTING_DUR}
+        fps={30}
+        width={1920}
+        height={1080}
+        calculateMetadata={transparentDefaults}
+      />
+      <Composition
+        id="ModelRoutingFinal"
+        component={ModelRoutingFinal}
+        durationInFrames={MODEL_ROUTING_DUR}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
       {/* ── Claude wealth-stories (July 2026) ── */}
       <Composition
         id="ClaudeWealthVideo"

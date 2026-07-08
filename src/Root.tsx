@@ -3,8 +3,8 @@ import { CalculateMetadataFunction, Composition } from "remotion";
 import { ShortsCompositions, SHORTS_ENABLED } from "./shorts";
 import { StyleDemo } from "./StyleDemo";
 import { TemplateLab, TEMPLATE_LAB_DUR } from "./TemplateLab";
-import { ModelRoutingVideo, MODEL_ROUTING_DUR } from "./ModelRoutingVideo";
-import { ModelRoutingFinal } from "./ModelRoutingFinal";
+import { FableCountdownVideo, FABLE_COUNTDOWN_DUR } from "./FableCountdownVideo";
+import { FableCountdownFinal } from "./FableCountdownFinal";
 import { ArchivedVideoCompositions, SHOW_ARCHIVE } from "./archive";
 
 // Default this composition to a transparent ProRes 4444 export so it composites
@@ -51,10 +51,10 @@ export const RemotionRoot: React.FC = () => {
       />
 
       <Composition
-        // CURRENT: Model-routing (Opus vs Fable) — transparent overlay track.
-        id="ModelRoutingVideo"
-        component={ModelRoutingVideo}
-        durationInFrames={MODEL_ROUTING_DUR}
+        // CURRENT: Fable-countdown (July 12 window) — transparent overlay track.
+        id="FableCountdownVideo"
+        component={FableCountdownVideo}
+        durationInFrames={FABLE_COUNTDOWN_DUR}
         fps={30}
         width={1920}
         height={1080}
@@ -62,10 +62,10 @@ export const RemotionRoot: React.FC = () => {
       />
 
       <Composition
-        // CURRENT: Model-routing — the finished combined cut (footage + overlay).
-        id="ModelRoutingFinal"
-        component={ModelRoutingFinal}
-        durationInFrames={MODEL_ROUTING_DUR}
+        // CURRENT: Fable-countdown — the finished combined cut (footage + overlay).
+        id="FableCountdownFinal"
+        component={FableCountdownFinal}
+        durationInFrames={FABLE_COUNTDOWN_DUR}
         fps={30}
         width={1920}
         height={1080}
