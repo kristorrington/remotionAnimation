@@ -5,13 +5,16 @@ import { useTheme } from "../theme";
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
 // The scroll-stopping line. Words slam in one by one (stagger = motion in the
-// first second), the last word in the theme accent.
-export const HookTitle: React.FC<{ text: string; hold: number }> = ({ text, hold }) => {
+// first second), the last word in the theme accent. `context` is ONE plain-
+// words setup line under the hook (sentence case, not shouty) so a cold viewer
+// knows what the video is about — e.g. "Fable 5 = Claude's new top model."
+export const HookTitle: React.FC<{ text: string; hold: number; context?: string }> = ({ text, hold, context }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = useTheme();
   const words = text.split(" ");
   const out = interpolate(frame, [hold - 14, hold], [1, 0], CLAMP);
+  const ctxIn = spring({ frame: frame - 12, fps, config: { stiffness: 220, damping: 16 }, durationInFrames: 16 });
 
   return (
     <AbsoluteFill style={{ justifyContent: "flex-start", alignItems: "center", padding: "170px 56px 0", opacity: out }}>
@@ -44,6 +47,23 @@ export const HookTitle: React.FC<{ text: string; hold: number }> = ({ text, hold
           );
         })}
       </div>
+      {context ? (
+        <div
+          style={{
+            marginTop: 30,
+            maxWidth: 920,
+            padding: "12px 28px",
+            borderRadius: 14,
+            background: "rgba(8,12,20,0.78)",
+            border: `2px solid ${t.accent}66`,
+            opacity: interpolate(ctxIn, [0, 0.4], [0, 1]),
+            transform: `translateY(${interpolate(ctxIn, [0, 1], [26, 0])}px)`,
+            textAlign: "center",
+          }}
+        >
+          <span style={{ fontFamily: t.fontDisplay, fontWeight: 700, fontSize: 34, lineHeight: 1.25, letterSpacing: 0.5, color: "rgba(255,255,255,0.92)" }}>{context}</span>
+        </div>
+      ) : null}
     </AbsoluteFill>
   );
 };

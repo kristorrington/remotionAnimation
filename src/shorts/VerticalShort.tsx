@@ -92,9 +92,10 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
         {/* progress bar (with beat milestone ticks) + topic banner */}
         <TopBar topic={spec.topic} beats={spec.beats.map((b) => b.at / dur)} />
 
-        {/* hook, over the full-screen face */}
+        {/* hook, over the full-screen face — with the plain-words context line
+            so a cold viewer knows what the video is about */}
         <Sequence  durationInFrames={hookHold} premountFor={20}>
-          <HookTitle text={spec.hook} hold={hookHold} />
+          <HookTitle text={spec.hook} hold={hookHold} context={spec.context} />
         </Sequence>
 
         {/* identity lower-third, once the split settles (dodges full-anim spans) */}

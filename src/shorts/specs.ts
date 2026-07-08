@@ -20,8 +20,9 @@ export const SHORTS: ShortSpec[] = [
     from: 4656, // "That is like hiring a senior architect to rename a label on a button" (2:35.2)
     // LOOP: ends on "…being wrong is expensive. Not annoying — expensive." (abs 6014) → replays into the gag.
     durationInFrames: 1358, // ~45s
-    topic: "HOW MUCH THINKING?",
+    topic: "CLAUDE'S EFFORT DIAL",
     hook: "YOU'RE OVERPAYING YOUR AI",
+    context: "Claude lets you set how hard the AI thinks — most people max it",
     // the architect gag IS the hook — open on full-screen animation
     animHook: true,
     beats: [
@@ -46,8 +47,9 @@ export const SHORTS: ShortSpec[] = [
     from: 12029, // "Now here is the cost trap." (6:41)
     // LOOP: ends on "…that is the clean decision rule." (abs 13442) → replays into the trap.
     durationInFrames: 1413, // ~47s
-    topic: "IS FABLE WORTH 2×?",
+    topic: "CLAUDE'S 2× PRICE MODEL",
     hook: "FABLE 5 IS 2× THE PRICE",
+    context: "Fable 5 = Claude's new top model. Opus 4.8 = ½ the price.",
     hookAlt: "STOP PAYING DOUBLE FOR AI", // A/B variant → Short-8020-B
     // the coin trap IS the hook — open on full-screen animation
     animHook: true,
@@ -56,7 +58,7 @@ export const SHORTS: ShortSpec[] = [
       { at: 138, scene: "check", obj: "coin", verdict: "warn", tint: "#EF4444", text: "2× THE PRICE" }, // "double Opus 4.8" abs 12167
       { at: 415, scene: "retry", tint: "#F59E0B", text: "× EFFORT × RETRIES" }, // "effort level, retries, tool calls" abs 12444
       { at: 618, scene: "check", obj: "brain", verdict: "check", tint: "#34D399", text: "ONE CLEAN PASS?" }, // "one clean pass" abs 12647
-      { at: 678, scene: "emote", pose: "shrug", accent: "#F59E0B", tint: "#06B6D4", text: "OPUS DID THE SAME" }, // "waste if Opus…" abs 12707
+      { at: 678, scene: "emote", pose: "shrug", accent: "#F59E0B", tint: "#06B6D4", text: "OPUS DID THE SAME", sub: "the ½-price Claude" }, // "waste if Opus…" abs 12707
       { at: 796, scene: "check", obj: "gauge", verdict: "check", tint: "#34D399", text: "80%? USE OPUS" }, // "the 80…rule" abs 12825
       { at: 1123, scene: "conveyor", labels: ["SONNET"], tint: "#06B6D4", text: "EVEN CHEAPER?" }, // "Sonnet…even cheaper" abs 13152
       { at: 1215, scene: "emote", pose: "pointing", accent: "#E8B84B", tint: "#F59E0B", text: "THE 20% MATTERS?", sub: "then Fable", emoji: "💰" }, // "missing 20%…matters" abs 13244
@@ -73,13 +75,14 @@ export const SHORTS: ShortSpec[] = [
     from: 8533, // "Fourth, route by risk, not ego." (4:44.4)
     // LOOP: ends on "…Opus at medium or high is probably enough." (abs 9655) → replays into the rule.
     durationInFrames: 1122, // ~37s
-    topic: "PICKING AI BY EGO?",
+    topic: "WHICH CLAUDE FOR WHAT?",
     hook: "STOP PAYING FOR EGO",
+    context: "Claude's model tiers: Haiku → Sonnet → Opus → Fable 5 ($$$$)",
     beats: [
       { at: 88, scene: "emote", pose: "pointing", tint: "#06B6D4", text: "RISK, NOT EGO" }, // "not ego" abs 8621
       { at: 162, scene: "coins", tint: "#F59E0B", text: "WASTED SPEND" }, // "waste money" abs 8695
       { at: 255, scene: "reject", badge: "FEELS SAFER", tint: "#EF4444", text: "NOT SMARTER" }, // "feels safer" abs 8788
-      { at: 413, scene: "emote", pose: "shrug", tint: "#06B6D4", text: "DOESN'T NEED FABLE", emoji: "🤷" }, // "do not need Fable" abs 8946
+      { at: 413, scene: "emote", pose: "shrug", tint: "#06B6D4", text: "DOESN'T NEED FABLE", sub: "the premium tier", emoji: "🤷" }, // "do not need Fable" abs 8946
       { at: 592, scene: "check", obj: "brain", verdict: "warn", tint: "#F59E0B", text: "BARELY NEEDS OPUS" }, // "barely need Opus" abs 9125
       { at: 636, scene: "queue", labels: ["EXTRACT", "FORMAT", "CLASSIFY"], tint: "#06B6D4", text: "CHEAP LANE" }, // "extraction, formatting…" abs 9169
       { at: 799, scene: "conveyor", labels: ["SONNET", "HAIKU"], tint: "#34D399", text: "HANDLED" }, // "Sonnet or haiku" abs 9332
@@ -97,10 +100,11 @@ export const SHORTS: ShortSpec[] = [
     from: 10800, // "Fifth, watch access and cost with an eagle eye." (6:00)
     // LOOP: ends on "…not which model is best — which model is just enough." (abs 12020) → replays into the rule.
     durationInFrames: 1220, // ~41s
-    topic: "WHAT IF IT VANISHES?",
+    topic: "IF FABLE 5 VANISHES?",
     hook: "YOUR BEST AI CAN DISAPPEAR",
+    context: "Fable 5 (Claude's top model) already went dark once",
     beats: [
-      { at: 90, scene: "emote", pose: "thinking", tint: "#06B6D4", text: "WATCH ACCESS" }, // "eagle eye" abs 10890
+      { at: 90, scene: "emote", pose: "thinking", tint: "#06B6D4", text: "WATCH ACCESS", sub: "to Fable 5" }, // "eagle eye" abs 10890
       { at: 200, scene: "check", obj: "shield", verdict: "cross", tint: "#EF4444", text: "RESTRICTED" }, // "it was restricted" abs 11000
       { at: 241, scene: "check", obj: "shield", verdict: "check", tint: "#34D399", text: "THEN IT'S BACK" }, // "came back" abs 11041
       { at: 398, scene: "check", obj: "clock", verdict: "warn", tint: "#F59E0B", text: "WEEKLY LIMITS" }, // "part of the weekly usage" abs 11198
@@ -122,10 +126,11 @@ export const SHORTS: ShortSpec[] = [
     from: 1980, // "copy the process, not the leak prompt" (1:06)
     // LOOP: ends on "…that is exactly the point." (abs 3105) → replays into the hook.
     durationInFrames: 1125, // ~38s
-    topic: "IS THE LEAK REAL?",
+    topic: "CLAUDE'S 'LEAKED' PROMPT",
     hook: "THE 'LEAKED' FABLE PROMPT",
+    context: "A 'leaked' system prompt for Claude's Fable 5 is going around",
     beats: [
-      { at: 127, scene: "emote", pose: "confused", tint: "#06B6D4", text: "A 'LEAKED' PROMPT?" }, // "Fable system prompt" abs 2107
+      { at: 127, scene: "emote", pose: "confused", tint: "#06B6D4", text: "A 'LEAKED' PROMPT?", sub: "for Claude Fable 5" }, // "Fable system prompt" abs 2107
       { at: 224, scene: "reject", badge: "OFFICIAL", tint: "#EF4444", text: "JUST A RUMOR", emoji: "🤨" }, // "like a rumor" abs 2204
       { at: 301, scene: "check", obj: "brain", verdict: "cross", tint: "#F59E0B", text: "DON'T COPY-PASTE" }, // "don't copy it word for word" abs 2281
       { at: 413, scene: "stack", tint: "#EF4444", text: "DON'T BUILD ON IT" }, // "build your workflow around a leak" abs 2393
