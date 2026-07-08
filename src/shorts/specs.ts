@@ -22,7 +22,7 @@ export const SHORTS: ShortSpec[] = [
     durationInFrames: 1358, // ~45s
     topic: "CLAUDE'S EFFORT DIAL",
     hook: "YOU'RE OVERPAYING YOUR AI",
-    context: "Claude lets you set how hard the AI thinks — most people max it",
+    context: "Claude lets you pick how hard the AI thinks",
     // the architect gag IS the hook — open on full-screen animation
     animHook: true,
     beats: [
@@ -49,7 +49,7 @@ export const SHORTS: ShortSpec[] = [
     durationInFrames: 1413, // ~47s
     topic: "CLAUDE'S 2× PRICE MODEL",
     hook: "FABLE 5 IS 2× THE PRICE",
-    context: "Fable 5 = Claude's new top model. Opus 4.8 = ½ the price.",
+    context: "Fable 5 = Claude's newest, priciest model",
     hookAlt: "STOP PAYING DOUBLE FOR AI", // A/B variant → Short-8020-B
     // the coin trap IS the hook — open on full-screen animation
     animHook: true,
@@ -77,7 +77,7 @@ export const SHORTS: ShortSpec[] = [
     durationInFrames: 1122, // ~37s
     topic: "WHICH CLAUDE FOR WHAT?",
     hook: "STOP PAYING FOR EGO",
-    context: "Claude's model tiers: Haiku → Sonnet → Opus → Fable 5 ($$$$)",
+    context: "Claude has cheap and premium model tiers",
     beats: [
       { at: 88, scene: "emote", pose: "pointing", tint: "#06B6D4", text: "RISK, NOT EGO" }, // "not ego" abs 8621
       { at: 162, scene: "coins", tint: "#F59E0B", text: "WASTED SPEND" }, // "waste money" abs 8695
@@ -102,7 +102,7 @@ export const SHORTS: ShortSpec[] = [
     durationInFrames: 1220, // ~41s
     topic: "IF FABLE 5 VANISHES?",
     hook: "YOUR BEST AI CAN DISAPPEAR",
-    context: "Fable 5 (Claude's top model) already went dark once",
+    context: "Fable 5 = Claude's top model",
     beats: [
       { at: 90, scene: "emote", pose: "thinking", tint: "#06B6D4", text: "WATCH ACCESS", sub: "to Fable 5" }, // "eagle eye" abs 10890
       { at: 200, scene: "check", obj: "shield", verdict: "cross", tint: "#EF4444", text: "RESTRICTED" }, // "it was restricted" abs 11000
@@ -128,7 +128,7 @@ export const SHORTS: ShortSpec[] = [
     durationInFrames: 1125, // ~38s
     topic: "CLAUDE'S 'LEAKED' PROMPT",
     hook: "THE 'LEAKED' FABLE PROMPT",
-    context: "A 'leaked' system prompt for Claude's Fable 5 is going around",
+    context: "Fable 5 = Claude's newest model",
     beats: [
       { at: 127, scene: "emote", pose: "confused", tint: "#06B6D4", text: "A 'LEAKED' PROMPT?", sub: "for Claude Fable 5" }, // "Fable system prompt" abs 2107
       { at: 224, scene: "reject", badge: "OFFICIAL", tint: "#EF4444", text: "JUST A RUMOR", emoji: "🤨" }, // "like a rumor" abs 2204

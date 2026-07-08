@@ -50,18 +50,14 @@ export const HookTitle: React.FC<{ text: string; hold: number; context?: string 
       {context ? (
         <div
           style={{
-            marginTop: 30,
-            maxWidth: 920,
-            padding: "12px 28px",
-            borderRadius: 14,
-            background: "rgba(8,12,20,0.78)",
-            border: `2px solid ${t.accent}66`,
-            opacity: interpolate(ctxIn, [0, 0.4], [0, 1]),
-            transform: `translateY(${interpolate(ctxIn, [0, 1], [26, 0])}px)`,
+            marginTop: 24,
+            maxWidth: 900,
             textAlign: "center",
+            opacity: interpolate(ctxIn, [0, 0.4], [0, 1]),
+            transform: `translateY(${interpolate(ctxIn, [0, 1], [20, 0])}px)`,
           }}
         >
-          <span style={{ fontFamily: t.fontDisplay, fontWeight: 700, fontSize: 34, lineHeight: 1.25, letterSpacing: 0.5, color: "rgba(255,255,255,0.92)" }}>{context}</span>
+          <span style={{ fontFamily: t.fontDisplay, fontWeight: 600, fontSize: 30, lineHeight: 1.3, letterSpacing: 0.4, color: "rgba(255,255,255,0.78)", textShadow: "0 4px 24px rgba(0,0,0,0.9)" }}>{context}</span>
         </div>
       ) : null}
     </AbsoluteFill>

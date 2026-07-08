@@ -66,11 +66,11 @@ export type ShortSpec = {
   // tell a cold viewer what the video is about, make the `topic` question carry
   // the subject ("IS YOUR AI BEING SWAPPED?") AND set `context` below.
   hook: string;
-  // ONE plain-words setup line shown under the hook (sentence case). Names the
-  // subject for cold viewers who don't know the product/model being discussed —
-  // e.g. "Fable 5 = Claude's new top model. Opus = ½ price." Keep ≤ ~55 chars.
-  // REQUIRED whenever the short references a product, model or event that the
-  // hook doesn't explain by itself.
+  // ONE plain-words setup line shown under the hook (sentence case, unboxed,
+  // dim — it must not compete with the hook). Names the subject for cold
+  // viewers, e.g. "Fable 5 = Claude's newest, priciest model". Keep ≤ ~45
+  // chars so it stays a SINGLE line. REQUIRED whenever the short references a
+  // product, model or event that the hook doesn't explain by itself.
   context?: string;
   beats: Beat[]; // big key-phrase pops on the punch lines (lower third)
   // Layout: spans (clip-local frames) where the ANIMATION takes the FULL screen

@@ -89,8 +89,11 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
           <Captions words={captionsFor(spec.source)} clipFrom={spec.from + seamEnd} centerY={interpolate(seamY, [0, ANIM_H, FULL_H], [1452, ANIM_H, 1560], CLAMP)} />
         </Sequence>
 
-        {/* progress bar (with beat milestone ticks) + topic banner */}
-        <TopBar topic={spec.topic} beats={spec.beats.map((b) => b.at / dur)} />
+        {/* progress bar (with beat milestone ticks) + topic banner — fades in
+            AFTER the hook so the opening stays minimal (hook + context only) */}
+        <AbsoluteFill style={{ pointerEvents: "none", opacity: interpolate(frame, [hookHold - 8, hookHold + 8], [0, 1], CLAMP) }}>
+          <TopBar topic={spec.topic} beats={spec.beats.map((b) => b.at / dur)} />
+        </AbsoluteFill>
 
         {/* hook, over the full-screen face — with the plain-words context line
             so a cold viewer knows what the video is about */}
