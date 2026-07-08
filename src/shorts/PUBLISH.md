@@ -243,6 +243,96 @@ Follow @kristorrington for AI automation that survives the real world.
 
 ---
 
+# Fable-countdown video (free window ends July 12)
+
+## Short-PriceReal
+
+**Title**
+```
+Free Fable 5 Ends July 12 — Then $10 In, $50 Out #Shorts
+```
+
+**Description**
+```
+Fable 5's free window ends July 12 — after that it's $10 per million input tokens and $50 per million output tokens in usage credits.
+
+So the question isn't "should you use Fable 5" — it's what's actually worth spending it on. Use it where a smarter model changes the result. Don't waste it on routine prompts, small edits or basic summaries, because after July 12 every run is a cost decision.
+
+What are you burning your window on? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #Fable5 #AICosts #Anthropic #Shorts
+```
+
+---
+
+## Short-MessyLaunch
+
+**Title**
+```
+Fable 5 Had the Messiest AI Launch of 2026 #Shorts
+```
+
+**Description**
+```
+Launched. Restricted. Back. Then shoved behind a countdown — that's a lot of drama for one model.
+
+The important part happened in June: on June 12 the US government applied export controls to Fable 5 and Mythos 5, Anthropic said it couldn't verify nationality in real time and shut it down. June 30 the controls lifted, July 1 it came back globally — with a new safety classifier Anthropic says blocks the reported technique in over 99% of cases. Clean number, messy controversy.
+
+Would you build on a model with this launch history? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #Fable5 #Anthropic #TechNews #Shorts
+```
+
+---
+
+## Short-Swapped
+
+**Title**
+```
+Your Fable 5 Request Might Run on a Different Model #Shorts
+```
+
+**Description**
+```
+Anthropic can still route risky Fable 5 requests away to other models — and if that happens, you may not be getting the model you thought you were using.
+
+That's the part most people miss: Fable 5 isn't just expensive, it's conditional. Access depends on your plan, usage depends on weekly limits, and some requests depend on safety routing. Use it — just don't blindly build your entire workflow around it, especially for security, compliance or sensitive code.
+
+Would you notice if your request got rerouted? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #Fable5 #Anthropic #AIAgents #Shorts
+```
+
+---
+
+## Short-Specialist
+
+**Title**
+```
+Don't Waste Your Free Fable 5 Days — Do This Instead #Shorts
+```
+
+**Description**
+```
+Don't burn your Fable 5 limit just because the timer is running out — that's how you waste the free window.
+
+Treat it like a knowledgeable specialist instead: bring it in for the hardest parts, then move the rest back to Opus or Sonnet. That's probably your workflow after July 12 anyway — Fable for the expensive thinking, cheaper models for the execution. Before July 12: your hardest unfinished work. After: only when the output beats the credit cost.
+
+What's the hardest problem you'd throw at it? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #Fable5 #AIAutomation #AICosts #Shorts
+```
+
+---
+
 # Model-routing video (Opus vs Fable 5)
 
 ## Short-EffortDial
