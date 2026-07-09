@@ -115,7 +115,7 @@ export const SHORTS: ShortSpec[] = [
       { at: 840, scene: "check", obj: "coin", verdict: "warn", tint: "#F59E0B", text: "AFTER: WORTH IT?" }, // "after July 12" abs 8741
     ],
     // full-anim: the specialist handoff + the decision rule
-    fullscreen: [{ from: 234, to: 400 }, { from: 700, to: 871 }],
+    fullscreen: [{ from: 234, to: 400 }, { from: 700, to: 855 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
   },

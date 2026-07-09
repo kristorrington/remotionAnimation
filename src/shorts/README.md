@@ -74,8 +74,10 @@ platform-UI safe zones (preview-only; can never render).
   the lower-third auto-defers past overlapping spans, and a whoosh fires on each
   boundary. Use for reveals, punchlines, big numbers, quick-fire runs, payoffs.
   Constraints: sorted + non-overlapping, `from ≥ ~112` (leave the split ~1.5s
-  after the hook settles so the face never blips), `to ≤ dur − 116`, ≥ 24f
-  between spans (the seam keyframes must stay strictly increasing).
+  after the hook settles so the face never blips), `to ≤ dur − 120` (touching
+  the CTA window collides with its seam keyframes), ≥ 24f between spans.
+  VerticalShort now nudges colliding keyframes by a frame instead of crashing,
+  but respect the constraints — a nudge means the layout is fighting itself.
 - **Text never covers the face:** captions on the chest, emphasis pops in the top
   band, hook over the hairline, CTA in the lower third.
 - **Retention furniture:** `TopBar` (progress bar + the `topic` question banner

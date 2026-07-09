@@ -79,7 +79,8 @@ export type ShortSpec = {
   // force every beat into split-screen (CLAUDE.md §9). Constraints: sorted,
   // non-overlapping, from ≥ ~112 (after the hook split settles; leave the
   // split ~1.5s before the first span so the face never blips), to ≤
-  // durationInFrames − 116 (before the CTA close), ≥ 24 frames between spans.
+  // durationInFrames − 120 (a span touching the CTA window collides with its
+  // seam keyframes), ≥ 24 frames between spans.
   fullscreen?: { from: number; to: number }[];
   // Animation-first hook: the short OPENS on full-screen animation (under the
   // HookTitle) instead of the full-screen face. HOUSE DEFAULT: set this on

@@ -46,16 +46,25 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
   const seamEnd = hookHold + 4;
 
   // seam keyframes: hook (face OR full animation) → split → [full-anim spans]
-  // → split → CTA (face)
+  // → split → CTA (face). pushKey keeps the input range STRICTLY increasing —
+  // a span that touches the CTA window (or another keyframe) gets nudged by a
+  // frame instead of crashing interpolate().
   const spans = spec.fullscreen ?? [];
   const seamIn: number[] = [0, seamStart, seamEnd];
   const seamOut: number[] = spec.animHook ? [FULL_H, FULL_H, ANIM_H] : [0, 0, ANIM_H];
+  const pushKey = (t: number, v: number) => {
+    seamIn.push(Math.max(t, seamIn[seamIn.length - 1] + 1));
+    seamOut.push(v);
+  };
   for (const s of spans) {
-    seamIn.push(s.from - 12, s.from, s.to, s.to + 12);
-    seamOut.push(ANIM_H, FULL_H, FULL_H, ANIM_H);
+    pushKey(s.from - 12, ANIM_H);
+    pushKey(s.from, FULL_H);
+    pushKey(s.to, FULL_H);
+    pushKey(s.to + 12, ANIM_H);
   }
-  seamIn.push(dur - 104, dur - 84, dur);
-  seamOut.push(ANIM_H, 0, 0);
+  pushKey(dur - 104, ANIM_H);
+  pushKey(dur - 84, 0);
+  pushKey(dur, 0);
   const seamY = interpolate(frame, seamIn, seamOut, CLAMP);
   const animOpacity = interpolate(seamY, [30, 260], [0, 1], CLAMP);
 
