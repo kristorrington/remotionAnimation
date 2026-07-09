@@ -2,7 +2,7 @@ import React from "react";
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { FONT } from "../components/overlayUI";
 import { SceneShell, SceneHeadline } from "./SceneShell";
-import { CartoonRobot, Sparks, Puff, impulse, poseTimeline, RobotPose, CYAN, WHITE, RED, AMBER, GREEN, PANEL } from "../motion/subjects";
+import { CartoonRobot, Sparks, Puff, impulse, poseTimeline, RobotPose, glassCard, CYAN, WHITE, RED, AMBER, GREEN, PANEL } from "../motion/subjects";
 import { ModelBlock, SpeedModule, TokenCoin, ConveyorBelt, LockGate } from "../motion/objects";
 import { ImpactStamp, HighlightSweep } from "../motion/primitives";
 import { BarsIn, DonutFill, ChartData } from "../motion/charts";
@@ -11,7 +11,7 @@ import { ClaudeMark } from "../components/Cartoons";
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
 const chip = (color: string, fontSize = 24): React.CSSProperties => ({
-  padding: "8px 18px", borderRadius: 10, background: PANEL, border: `3px solid ${color}`,
+  padding: "8px 18px", borderRadius: 10, ...glassCard(color),
   fontFamily: FONT, fontWeight: 800, fontSize, letterSpacing: 1, color: WHITE, transform: "translateZ(0)", whiteSpace: "nowrap",
 });
 

@@ -2,7 +2,7 @@ import React from "react";
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { fitText } from "@remotion/layout-utils";
 import { FONT } from "../components/overlayUI";
-import { CartoonRobot, ThoughtBubble, Sparks, SpeechBubble, RobotPose, CYAN, WHITE, RED, AMBER, GREEN, PANEL } from "../motion/subjects";
+import { CartoonRobot, ThoughtBubble, Sparks, SpeechBubble, RobotPose, glassCard, CYAN, WHITE, RED, AMBER, GREEN, PANEL } from "../motion/subjects";
 import { ModelBlock, SpeedModule, SpeedTrails, TokenCoin, CostMeterClimb, PromptQueue, CardStackDrop, ConveyorBelt, RetryWheel, ServerRack } from "../motion/objects";
 import { StalledBar, ImpactStamp } from "../motion/primitives";
 import { IconBrain, IconClock, IconGuard, IconPrice, IconBug, IconGauge } from "../components/Cartoons";
@@ -14,6 +14,16 @@ import { Beat } from "./types";
 // navy twice in a row). Explicit `Beat.tint` wins; the palette rotation covers
 // archived specs that predate the field.
 const BEAT_TINTS = ["#06B6D4", "#F59E0B", "#34D399", "#EF4444"];
+
+// Shared glass-gradient fill for the one-off SVG machines (PREMIUM finish).
+const GLASS_DEFS = (
+  <defs>
+    <linearGradient id="beatGlass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="#1b2438" />
+      <stop offset="100%" stopColor="#0a101d" />
+    </linearGradient>
+  </defs>
+);
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
@@ -43,7 +53,7 @@ const BeatLabel: React.FC<{ text: string; sub?: string; accent?: string }> = ({ 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14, opacity: op, transform: `scale(${interpolate(e, [0, 1], [1.12, 1])}) translateZ(0)`, padding: "0 40px", textAlign: "center" }}>
       <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: fitted, lineHeight: 1.02, color: WHITE, textShadow: "0 6px 30px rgba(0,0,0,0.6)", whiteSpace: "nowrap" }}>{text}</span>
-      {sub ? <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 30, letterSpacing: 3, color: accent, border: `3px solid ${accent}55`, borderRadius: 12, padding: "6px 18px", background: "rgba(8,12,20,0.7)", opacity: frame < 8 ? 0 : 1, transform: `rotate(-2deg) scale(${interpolate(subPop, [0, 1], [1.5, 1])})` }}>{sub}</span> : null}
+      {sub ? <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 30, letterSpacing: 3, color: accent, borderRadius: 12, padding: "6px 18px", ...glassCard(accent), opacity: frame < 8 ? 0 : 1, transform: `rotate(-2deg) scale(${interpolate(subPop, [0, 1], [1.5, 1])})` }}>{sub}</span> : null}
     </div>
   );
 };
@@ -112,7 +122,7 @@ const QueueBeat: React.FC<{ beat: Beat }> = ({ beat }) => (
       </div>
       <PromptQueue labels={(beat.labels ?? ["PROMPT", "TOOL", "RETRY"]).slice(0, 3)} at={4} cardW={108} />
       <div style={{ position: "relative", marginLeft: 14 }}>
-        <div style={{ width: 160, height: 160, borderRadius: 24, border: "4px solid #3B82F6", background: "rgba(12,18,30,0.9)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 0 26px rgba(59,130,246,0.3)" }}>
+        <div style={{ width: 160, height: 160, borderRadius: 24, display: "flex", alignItems: "center", justifyContent: "center", ...glassCard("#3B82F6") }}>
           <IconBrain size={110} />
         </div>
         <div style={{ position: "absolute", top: -80, right: -46 }}>
@@ -220,7 +230,7 @@ const MigrateBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
   const hop = Math.abs(Math.sin(frame * 0.22)) * 8;
   const pose: RobotPose = frame < stopAt ? "idle" : frame < turnAt ? "alarmed" : "celebrate";
   const sign = (label: string, color: string) => (
-    <div style={{ padding: "10px 18px", borderRadius: 10, border: `4px solid ${color}`, background: PANEL, transform: "translateZ(0)" }}>
+    <div style={{ padding: "10px 18px", borderRadius: 10, ...glassCard(color, 2.5), transform: "translateZ(0)" }}>
       <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 30, letterSpacing: 2, color: WHITE }}>{label}</span>
     </div>
   );
@@ -285,7 +295,9 @@ const TestBenchBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => 
         <div style={{ position: "relative", transform: `translateX(${shake}px)` }}>
           {/* the machine */}
           <svg width={360} height={230} viewBox="0 0 360 230" style={{ overflow: "visible" }}>
-            <rect x={30} y={30} width={300} height={170} rx={24} fill={PANEL} stroke={CYAN} strokeWidth={6} />
+            {GLASS_DEFS}
+            <rect x={30} y={30} width={300} height={170} rx={24} fill="url(#beatGlass)" stroke={CYAN} strokeWidth={3} />
+            <rect x={40} y={37} width={280} height={8} rx={4} fill="rgba(255,255,255,0.06)" />
             <rect x={0} y={95} width={44} height={44} rx={8} fill="#0a0f18" stroke={CYAN} strokeWidth={4} />
             {[0, 1, 2].map((i) => (
               <circle key={i} cx={90 + i * 40} cy={62} r={9} fill={[GREEN, AMBER, CYAN][i]} opacity={0.4 + 0.6 * Math.max(0, Math.sin(frame * 0.3 - i))} />
@@ -296,7 +308,7 @@ const TestBenchBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => 
           </svg>
           {/* workflow card slides into the hopper */}
           {!swallowed && (
-            <div style={{ position: "absolute", left: inX, top: 88, padding: "14px 20px", borderRadius: 12, background: PANEL, border: `4px solid ${AMBER}` }}>
+            <div style={{ position: "absolute", left: inX, top: 88, padding: "14px 20px", borderRadius: 12, ...glassCard(AMBER, 2.5) }}>
               <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 26, color: WHITE }}>WORKFLOW</span>
             </div>
           )}
@@ -307,7 +319,7 @@ const TestBenchBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => 
           {labels.slice(0, 2).map((l, i) => {
             const e = spring({ frame: frame - outAt - i * 8, fps, config: { stiffness: 220, damping: 15 }, durationInFrames: 16 });
             return (
-              <div key={l} style={{ opacity: interpolate(e, [0, 0.4], [0, 1]), transform: `translateY(${interpolate(e, [0, 1], [40, 0])}px) rotate(${i === 0 ? -2 : 2}deg) scale(${interpolate(e, [0, 1], [1.35, 1])})`, padding: "12px 24px", borderRadius: 12, background: PANEL, border: `4px solid ${i === 0 ? "rgba(255,255,255,0.35)" : CYAN}` }}>
+              <div key={l} style={{ opacity: interpolate(e, [0, 0.4], [0, 1]), transform: `translateY(${interpolate(e, [0, 1], [40, 0])}px) rotate(${i === 0 ? -2 : 2}deg) scale(${interpolate(e, [0, 1], [1.35, 1])})`, padding: "12px 24px", borderRadius: 12, ...glassCard(i === 0 ? "rgba(255,255,255,0.35)" : CYAN) }}>
                 <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 30, letterSpacing: 1, color: i === 0 ? "rgba(255,255,255,0.7)" : WHITE }}>{l}</span>
               </div>
             );
@@ -334,7 +346,7 @@ const ConveyorBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
     </div>
   );
   const card = (label: string, x: number, y: number, color: string) => (
-    <div style={{ position: "absolute", left: x, top: y, padding: "10px 18px", borderRadius: 10, background: PANEL, border: `4px solid ${color}`, transform: `translateY(${2 * Math.sin(frame * 0.3)}px)` }}>
+    <div style={{ position: "absolute", left: x, top: y, padding: "10px 18px", borderRadius: 10, ...glassCard(color), transform: `translateY(${2 * Math.sin(frame * 0.3)}px)` }}>
       <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 24, color: WHITE, whiteSpace: "nowrap" }}>{label}</span>
     </div>
   );
@@ -375,7 +387,7 @@ const ConveyorBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
             {belt(160, 700, 40)}
             {card(labels[0] === "DONE" ? "WORKFLOW" : labels[0], interpolate(frame, [4, dur * 0.6], [40, 560], CLAMP), 118, CYAN)}
             {/* done tray + check */}
-            <div style={{ position: "absolute", right: 40, top: 96, width: 170, height: 110, borderRadius: 14, border: `4px solid ${GREEN}`, background: "rgba(52,211,153,0.1)", display: "flex", alignItems: "flex-end", justifyContent: "center", paddingBottom: 8 }}>
+            <div style={{ position: "absolute", right: 40, top: 96, width: 170, height: 110, borderRadius: 14, border: `2px solid ${GREEN}AA`, background: "rgba(52,211,153,0.1)", boxShadow: `inset 0 1px 0 rgba(255,255,255,0.08), 0 0 16px ${GREEN}22`, display: "flex", alignItems: "flex-end", justifyContent: "center", paddingBottom: 8 }}>
               <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 24, letterSpacing: 2, color: GREEN }}>DONE</span>
             </div>
             <div style={{ position: "absolute", right: 80, top: 40 }}>
@@ -406,7 +418,7 @@ const RejectBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
     <Wrap gap={48}>
       <div style={{ position: "relative", width: 760, height: 340, display: "flex", alignItems: "center", justifyContent: "center" }}>
         {/* the badge */}
-        <div style={{ position: "absolute", left: 370 + approach + bounce, top: 120 + fallY, transform: `rotate(${rot}deg)`, padding: "14px 26px", borderRadius: 14, background: PANEL, border: `5px solid ${RED}`, opacity: badgeOp }}>
+        <div style={{ position: "absolute", left: 370 + approach + bounce, top: 120 + fallY, transform: `rotate(${rot}deg)`, padding: "14px 26px", borderRadius: 14, ...glassCard(RED, 2.5), opacity: badgeOp }}>
           <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 40, color: WHITE, whiteSpace: "nowrap" }}>{beat.badge ?? "HYPE"}</span>
         </div>
         {/* the shield */}
@@ -464,7 +476,7 @@ const CheckBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
           {beat.labels.map((l, i) => {
             const e = spring({ frame: frame - stampAt - i * 8, fps, config: { stiffness: 220, damping: 15 }, durationInFrames: 14 });
             return (
-              <div key={l} style={{ opacity: interpolate(e, [0, 0.4], [0, 1]), transform: `translateY(${interpolate(e, [0, 1], [30, 0])}px) rotate(${[-3, 2, -2][i % 3]}deg) scale(${interpolate(e, [0, 1], [1.4, 1])})`, padding: "10px 20px", borderRadius: 12, background: PANEL, border: `3px solid ${CYAN}` }}>
+              <div key={l} style={{ opacity: interpolate(e, [0, 0.4], [0, 1]), transform: `translateY(${interpolate(e, [0, 1], [30, 0])}px) rotate(${[-3, 2, -2][i % 3]}deg) scale(${interpolate(e, [0, 1], [1.4, 1])})`, padding: "10px 20px", borderRadius: 12, ...glassCard(CYAN) }}>
                 <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 28, letterSpacing: 2, color: WHITE }}>{l}</span>
               </div>
             );

@@ -2,7 +2,7 @@ import React from "react";
 import { Sequence, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { FONT } from "../components/overlayUI";
 import { SceneShell, SceneHeadline } from "./SceneShell";
-import { CartoonRobot, Sparks, Puff, impulse, poseTimeline, RobotPose, CYAN, WHITE, RED, AMBER, GREEN } from "../motion/subjects";
+import { CartoonRobot, Sparks, Puff, impulse, poseTimeline, RobotPose, glassCard, CYAN, WHITE, RED, AMBER, GREEN } from "../motion/subjects";
 import { ModelBlock, ConveyorBelt, ServerRack, JengaTower, TokenCoin, CostMeterClimb } from "../motion/objects";
 import { ImpactStamp, Odometer, HighlightSweep, WarningBadge } from "../motion/primitives";
 import { DonutFill } from "../motion/charts";
@@ -12,12 +12,10 @@ const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const GOLD = "#E8B84B";
 
 // Premium finish: glass-gradient fill, thin alpha border, inner highlight —
-// never flat clip-art panels (they read childish).
+// never flat clip-art panels (they read childish). glassCard handles rgba
+// border colours safely.
 const chip = (color: string, fontSize = 24): React.CSSProperties => ({
-  padding: "9px 20px", borderRadius: 11,
-  background: "linear-gradient(180deg, rgba(20,27,44,0.95), rgba(8,12,20,0.88))",
-  border: `2px solid ${color}AA`,
-  boxShadow: `0 10px 24px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.08), 0 0 18px ${color}22`,
+  padding: "9px 20px", borderRadius: 11, ...glassCard(color),
   fontFamily: FONT, fontWeight: 800, fontSize, letterSpacing: 1.5, color: WHITE, transform: "translateZ(0)", whiteSpace: "nowrap",
 });
 

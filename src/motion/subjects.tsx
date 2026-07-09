@@ -23,6 +23,20 @@ export type RobotPose =
 
 // Pick the active pose from a sorted [frame, pose] timeline — one-line reaction
 // beats: poseTimeline(frame, [[0,"idle"],[wakeAt,"alarmed"]]).
+// PREMIUM finish shared by every card-like element (CLAUDE.md §12): glass
+// gradient + thin alpha border + inner highlight — never flat PANEL fills
+// with thick solid borders. Hex colors get an alpha edge + soft glow; rgba
+// colors pass through untouched.
+export const GLASS = "linear-gradient(180deg, rgba(20,27,44,0.95), rgba(8,12,20,0.88))";
+export const glassCard = (color: string, borderW = 2): React.CSSProperties => {
+  const hex = color.startsWith("#");
+  return {
+    background: GLASS,
+    border: `${borderW}px solid ${hex ? `${color}AA` : color}`,
+    boxShadow: `0 10px 24px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.08)${hex ? `, 0 0 16px ${color}22` : ""}`,
+  };
+};
+
 export const poseTimeline = (frame: number, steps: [number, RobotPose][]): RobotPose => {
   let pose: RobotPose = steps[0]?.[1] ?? "idle";
   for (const [at, p] of steps) if (frame >= at) pose = p;
@@ -227,7 +241,7 @@ export const SpeechBubble: React.FC<{ text: string; at?: number; color?: string;
   const op = interpolate(frame, [at, at + 6], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const rage = shout ? Math.sin(frame * 1.1) * 1.6 : 0;
   return (
-    <div style={{ opacity: op, transform: `translate(${rage}px, 0) scale(${interpolate(e, [0, 1], [0.3, 1])}) rotate(${flip ? 3 : -3}deg)`, position: "relative", padding: shout ? "18px 28px" : "14px 24px", borderRadius: 18, background: PANEL, border: `4px solid ${c}`, boxShadow: "0 12px 30px rgba(0,0,0,0.45)" }}>
+    <div style={{ opacity: op, transform: `translate(${rage}px, 0) scale(${interpolate(e, [0, 1], [0.3, 1])}) rotate(${flip ? 3 : -3}deg)`, position: "relative", padding: shout ? "18px 28px" : "14px 24px", borderRadius: 18, ...glassCard(c, 2.5) }}>
       <span style={{ fontFamily: FONT, fontWeight: 900, fontSize, color: WHITE, whiteSpace: "nowrap" }}>{text}</span>
       <div style={{ position: "absolute", bottom: -16, [flip ? "right" : "left"]: 44, width: 0, height: 0, borderLeft: "12px solid transparent", borderRight: "12px solid transparent", borderTop: `18px solid ${c}` }} />
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { FONT } from "../components/overlayUI";
-import { Sparks, Puff, SpeedTrails, CYAN, BLUE, WHITE, RED, AMBER, GREEN, PANEL } from "./subjects";
+import { Sparks, Puff, SpeedTrails, glassCard, CYAN, BLUE, WHITE, RED, AMBER, GREEN, PANEL } from "./subjects";
 
 // ============================================================================
 // CARTOON OBJECT LIBRARY — mechanical subjects (model blocks, boosters, coins,
@@ -9,6 +9,17 @@ import { Sparks, Puff, SpeedTrails, CYAN, BLUE, WHITE, RED, AMBER, GREEN, PANEL 
 // ============================================================================
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+
+// Shared glass-gradient fill for SVG machine shells (PREMIUM finish, CLAUDE.md
+// §12). Same id in every svg is safe — the defs are identical everywhere.
+const GLASS_DEFS = (
+  <defs>
+    <linearGradient id="objGlass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="#1b2438" />
+      <stop offset="100%" stopColor="#0a101d" />
+    </linearGradient>
+  </defs>
+);
 
 const mulberry32 = (seed: number) => {
   let a = seed >>> 0;
@@ -27,7 +38,9 @@ export const ModelBlock: React.FC<{ label?: string; width?: number; coreColor?: 
   const h = width * 0.62;
   return (
     <svg width={width} height={h} viewBox="0 0 300 186" style={{ overflow: "visible" }}>
-      <rect x={8} y={10} width={284} height={156} rx={22} fill={PANEL} stroke={BLUE} strokeWidth={5} />
+      {GLASS_DEFS}
+      <rect x={8} y={10} width={284} height={156} rx={22} fill="url(#objGlass)" stroke={BLUE} strokeWidth={3} />
+      <rect x={18} y={17} width={264} height={9} rx={4.5} fill="rgba(255,255,255,0.06)" />
       {/* rivets */}
       {[30, 270].map((x) => [34, 142].map((y) => <circle key={`${x}-${y}`} cx={x} cy={y} r={4} fill="rgba(255,255,255,0.25)" />))}
       {/* brain core */}
@@ -64,7 +77,8 @@ export const SpeedModule: React.FC<{ at: number; width?: number; label?: string 
       <svg width={width} height={width * 0.55} viewBox="0 0 170 94" style={{ overflow: "visible" }}>
         {/* flame (after landing) */}
         {landed && <path d={`M156 38 L${156 + flame} 47 L156 56 Z`} fill={AMBER} opacity={0.9} />}
-        <rect x={6} y={20} width={140} height={54} rx={16} fill={PANEL} stroke={CYAN} strokeWidth={5} style={{ filter: landed ? `drop-shadow(0 0 ${14 * glow}px ${CYAN})` : undefined }} />
+        {GLASS_DEFS}
+        <rect x={6} y={20} width={140} height={54} rx={16} fill="url(#objGlass)" stroke={CYAN} strokeWidth={3} style={{ filter: landed ? `drop-shadow(0 0 ${14 * glow}px ${CYAN})` : undefined }} />
         {/* fins */}
         <path d="M18 20 L34 4 L58 20 Z" fill={CYAN} opacity={0.85} />
         <path d="M18 74 L34 90 L58 74 Z" fill={CYAN} opacity={0.85} />
@@ -104,7 +118,7 @@ export const CostMeterClimb: React.FC<{ level: number; height?: number; label?: 
   const alarm = l > 0.85 ? 0.5 + 0.5 * Math.sin(frame * 0.5) : 0;
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
-      <div style={{ width: 74, height, borderRadius: 18, border: "3px solid rgba(255,255,255,0.25)", background: "rgba(8,12,20,0.8)", position: "relative", overflow: "hidden", boxShadow: alarm ? `0 0 ${26 * alarm}px ${RED}` : undefined }}>
+      <div style={{ width: 74, height, borderRadius: 18, border: "2px solid rgba(255,255,255,0.22)", background: "linear-gradient(180deg, rgba(16,22,36,0.9), rgba(8,12,20,0.82))", position: "relative", overflow: "hidden", boxShadow: `inset 0 1px 0 rgba(255,255,255,0.08), 0 10px 24px rgba(0,0,0,0.4)${alarm ? `, 0 0 ${26 * alarm}px ${RED}` : ""}` }}>
         <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: `${l * 100}%`, background: `linear-gradient(180deg, ${color}, ${color}88)`, boxShadow: `0 0 18px ${color}` }} />
         {[0.25, 0.5, 0.75].map((m) => (
           <div key={m} style={{ position: "absolute", bottom: `${m * 100}%`, left: 0, right: 0, height: 2, background: "rgba(255,255,255,0.18)" }} />
@@ -129,7 +143,7 @@ export const PromptQueue: React.FC<{ labels: string[]; at?: number; cardW?: numb
         const x = i === 0 ? nudge : 0;
         return (
           <div key={label} style={{ opacity: interpolate(e, [0, 0.4], [0, 1], CLAMP), transform: `translate(${interpolate(e, [0, 1], [-120, 0]) + x}px, ${bob}px)` }}>
-            <div style={{ width: cardW, padding: "16px 10px", borderRadius: 12, background: PANEL, border: `3px solid ${i === 0 ? AMBER : CYAN}`, textAlign: "center", boxShadow: "0 10px 24px rgba(0,0,0,0.4)" }}>
+            <div style={{ width: cardW, padding: "16px 10px", borderRadius: 12, textAlign: "center", ...glassCard(i === 0 ? AMBER : CYAN) }}>
               <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 22, color: WHITE, letterSpacing: 1 }}>{label}</span>
             </div>
           </div>
@@ -167,7 +181,7 @@ export const CardStackDrop: React.FC<{ drops: number[]; labels?: string[]; colla
           const crot = collapsed ? interpolate(Math.min(ct / 20, 1), [0, 1], [0, sc.rot]) : 0;
           const hot = i >= drops.length - 2;
           return (
-            <div key={d} style={{ position: "absolute", bottom: 0, left: 0, width: cardW, height: cardH, transform: `translate(${cx}px, ${y + cy}px) rotate(${crot}deg) scale(1, ${squash})`, borderRadius: 10, background: PANEL, border: `3px solid ${collapsed || hot ? RED : CYAN}`, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 8px 20px rgba(0,0,0,0.45)" }}>
+            <div key={d} style={{ position: "absolute", bottom: 0, left: 0, width: cardW, height: cardH, transform: `translate(${cx}px, ${y + cy}px) rotate(${crot}deg) scale(1, ${squash})`, borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", ...glassCard(collapsed || hot ? RED : CYAN) }}>
               <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 20, color: WHITE, letterSpacing: 1 }}>{labels?.[i] ?? `CALL ${i + 1}`}</span>
             </div>
           );
@@ -222,7 +236,7 @@ export const JengaTower: React.FC<{ pullAt: number; collapseAt?: number; rows?: 
           const cy = collapsed && ct > 0 ? interpolate(ct, [0, 1], [0, sc.dy]) : 0;
           const crot = collapsed && ct > 0 ? interpolate(ct, [0, 1], [0, sc.rot]) : 0;
           return (
-            <div key={i} style={{ position: "absolute", bottom: i * (blockH + 4), left: 0, width: blockW, height: blockH, transform: `translate(${(isPulled ? pulledX : 0) + cx}px, ${cy}px) rotate(${crot}deg)`, opacity: isPulled && pull > 0.9 ? Math.max(0, 1 - (frame - pullAt - 24) / 16) : 1, borderRadius: 8, background: PANEL, border: `3px solid ${isPulled ? AMBER : collapsed ? RED : CYAN}`, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 8px 18px rgba(0,0,0,0.4)" }}>
+            <div key={i} style={{ position: "absolute", bottom: i * (blockH + 4), left: 0, width: blockW, height: blockH, transform: `translate(${(isPulled ? pulledX : 0) + cx}px, ${cy}px) rotate(${crot}deg)`, opacity: isPulled && pull > 0.9 ? Math.max(0, 1 - (frame - pullAt - 24) / 16) : 1, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", ...glassCard(isPulled ? AMBER : collapsed ? RED : CYAN) }}>
               <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 19, letterSpacing: 1, color: WHITE }}>{labels?.[i] ?? (isPulled ? "ONE CHANGE" : "PROD")}</span>
             </div>
           );
@@ -287,7 +301,8 @@ export const TrafficJam: React.FC<{ cars?: string[]; at?: number; width?: number
         return (
           <div key={i} style={{ position: "absolute", left: interpolate(e, [0, 1], [baseX - 240, baseX]) + nudge, bottom: 14, opacity: interpolate(e, [0, 0.3], [0, 1], CLAMP) }}>
             <svg width={104} height={62} viewBox="0 0 104 62" style={{ overflow: "visible" }}>
-              <path d="M8 42 L14 24 Q18 14 30 14 L66 14 Q78 14 84 26 L96 42 Q100 44 98 50 L6 50 Q4 44 8 42 Z" fill={PANEL} stroke={i === 0 ? AMBER : CYAN} strokeWidth={4} />
+              {GLASS_DEFS}
+              <path d="M8 42 L14 24 Q18 14 30 14 L66 14 Q78 14 84 26 L96 42 Q100 44 98 50 L6 50 Q4 44 8 42 Z" fill="url(#objGlass)" stroke={i === 0 ? AMBER : CYAN} strokeWidth={3} />
               <circle cx={28} cy={52} r={9} fill="#0a0f18" stroke={i === 0 ? AMBER : CYAN} strokeWidth={3.5} />
               <circle cx={76} cy={52} r={9} fill="#0a0f18" stroke={i === 0 ? AMBER : CYAN} strokeWidth={3.5} />
               <text x={50} y={40} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={16} fill={WHITE}>{label}</text>
@@ -309,7 +324,9 @@ export const ServerRack: React.FC<{ width?: number; units?: number; overheatAt?:
   const h = units * 54 + 24;
   return (
     <svg width={width} height={(h / 160) * width * 0.9} viewBox={`0 0 160 ${h}`} style={{ overflow: "visible" }}>
-      <rect x={6} y={6} width={148} height={h - 12} rx={12} fill={PANEL} stroke={hot ? RED : BLUE} strokeWidth={5} />
+      {GLASS_DEFS}
+      <rect x={6} y={6} width={148} height={h - 12} rx={12} fill="url(#objGlass)" stroke={hot ? RED : BLUE} strokeWidth={3} />
+      <rect x={12} y={10} width={136} height={6} rx={3} fill="rgba(255,255,255,0.06)" />
       {Array.from({ length: units }, (_, u) => {
         const y = 18 + u * 54;
         return (
@@ -357,8 +374,10 @@ export const LockGate: React.FC<{ at: number; action?: "close" | "open"; size?: 
       <svg width={size} height={size * 1.1} viewBox="0 0 100 110" style={{ overflow: "visible" }}>
         {/* shackle */}
         <path d={`M30 ${46 + shackleY} V34 a20 20 0 0 1 40 0 v${12 - shackleY}`} stroke={closed ? color : "#8899AA"} strokeWidth={9} fill="none" strokeLinecap="round" />
+        {GLASS_DEFS}
         {/* body */}
-        <rect x={18} y={46} width={64} height={52} rx={12} fill={PANEL} stroke={closed ? color : "#8899AA"} strokeWidth={6} style={{ filter: closed ? `drop-shadow(0 0 12px ${color})` : undefined }} />
+        <rect x={18} y={46} width={64} height={52} rx={12} fill="url(#objGlass)" stroke={closed ? color : "#8899AA"} strokeWidth={3.5} style={{ filter: closed ? `drop-shadow(0 0 12px ${color})` : undefined }} />
+        <rect x={23} y={50} width={54} height={5} rx={2.5} fill="rgba(255,255,255,0.07)" />
         <circle cx={50} cy={68} r={8} fill={closed ? color : "rgba(255,255,255,0.25)"} />
         <rect x={47} y={72} width={6} height={14} rx={3} fill={closed ? color : "rgba(255,255,255,0.25)"} />
       </svg>
@@ -384,7 +403,7 @@ export const RetryWheel: React.FC<{ size?: number; label?: string; cardLabel?: s
         <path d={`M ${c - r * 0.92} ${c - r * 0.45} L ${c - r * 0.62} ${c - r * 0.2} L ${c - r * 0.55} ${c - r * 0.62} Z`} fill={flash ? RED : AMBER} />
         <text x={c} y={c + size * 0.03} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={size * 0.1} fill={flash ? RED : WHITE}>{label}</text>
       </svg>
-      <div style={{ position: "absolute", left: c + r * Math.sin(angle) - size * 0.15, top: c - r * Math.cos(angle) - size * 0.065, padding: `${size * 0.02}px ${size * 0.04}px`, borderRadius: 10, background: PANEL, border: `4px solid ${flash ? RED : CYAN}` }}>
+      <div style={{ position: "absolute", left: c + r * Math.sin(angle) - size * 0.15, top: c - r * Math.cos(angle) - size * 0.065, padding: `${size * 0.02}px ${size * 0.04}px`, borderRadius: 10, ...glassCard(flash ? RED : CYAN) }}>
         <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: size * 0.055, color: WHITE }}>{cardLabel}</span>
       </div>
     </div>
