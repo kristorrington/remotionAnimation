@@ -3,8 +3,8 @@ import { CalculateMetadataFunction, Composition } from "remotion";
 import { ShortsCompositions, SHORTS_ENABLED } from "./shorts";
 import { StyleDemo } from "./StyleDemo";
 import { TemplateLab, TEMPLATE_LAB_DUR } from "./TemplateLab";
-import { FableCountdownVideo, FABLE_COUNTDOWN_DUR } from "./FableCountdownVideo";
-import { FableCountdownFinal } from "./FableCountdownFinal";
+import { SideHustleVideo, SIDE_HUSTLE_DUR } from "./SideHustleVideo";
+import { SideHustleFinal } from "./SideHustleFinal";
 import { ArchivedVideoCompositions, SHOW_ARCHIVE } from "./archive";
 
 // Default this composition to a transparent ProRes 4444 export so it composites
@@ -51,10 +51,10 @@ export const RemotionRoot: React.FC = () => {
       />
 
       <Composition
-        // CURRENT: Fable-countdown (July 12 window) — transparent overlay track.
-        id="FableCountdownVideo"
-        component={FableCountdownVideo}
-        durationInFrames={FABLE_COUNTDOWN_DUR}
+        // CURRENT: Side-hustles (5 beginner paths) — transparent overlay track.
+        id="SideHustleVideo"
+        component={SideHustleVideo}
+        durationInFrames={SIDE_HUSTLE_DUR}
         fps={30}
         width={1920}
         height={1080}
@@ -62,10 +62,10 @@ export const RemotionRoot: React.FC = () => {
       />
 
       <Composition
-        // CURRENT: Fable-countdown — the finished combined cut (footage + overlay).
-        id="FableCountdownFinal"
-        component={FableCountdownFinal}
-        durationInFrames={FABLE_COUNTDOWN_DUR}
+        // CURRENT: Side-hustles — the finished combined cut (footage + overlay).
+        id="SideHustleFinal"
+        component={SideHustleFinal}
+        durationInFrames={SIDE_HUSTLE_DUR}
         fps={30}
         width={1920}
         height={1080}

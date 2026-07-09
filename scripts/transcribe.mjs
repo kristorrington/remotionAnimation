@@ -90,7 +90,7 @@ const main = async () => {
   // Words that are OFTEN brand mishears but can also be legit (e.g. whisper
   // hears "Claude" as "cloud") — never auto-replace; print them with
   // timestamps so every flagged word gets a manual look before shipping.
-  const REVIEW = ["cloud", "clod", "claud", "opis", "sonet", "fabel"];
+  const REVIEW = ["cloud", "clouds", "cloudside", "clod", "clods", "claud", "clawed", "clout", "opis", "sonet", "fabel"];
   const flagged = words.filter((w) => REVIEW.includes(norm(w.text)));
   if (flagged.length) {
     console.warn(`REVIEW: ${flagged.length} possible brand mishear(s) — check each in context:`);

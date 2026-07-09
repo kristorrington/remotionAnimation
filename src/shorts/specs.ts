@@ -10,159 +10,99 @@ import { ShortSpec } from "./types";
 // ============================================================================
 export const SHORTS: ShortSpec[] = [
   // ==========================================================================
-  // FABLE-COUNTDOWN video (talking-head.mp4) — whisper frames from
-  // captionsData.ts.
+  // SIDE-HUSTLES video (talking-head.mp4) — anchors from the SRT (sec × 30);
+  // tighten against captionsData.ts word times if any label feels early/late.
   // ==========================================================================
   {
-    id: "Short-PriceReal",
-    label: "Free window ends July 12 — then $10/M in, $50/M out",
+    id: "Short-ThreeBuyers",
+    label: "If you can't name three people who'd pay, you have an idea, not an offer",
     source: "talking-head.mp4",
-    from: 613, // "and that is where the price gets very real" (0:20.4)
-    // LOOP: ends on "…every Fable 5 run becomes a cost decision." (abs 1514) → replays into the price.
-    durationInFrames: 916, // ~31s
-    topic: "5 DAYS OF FREE FABLE 5",
-    hook: "YOUR FREE AI EXPIRES SOON",
-    hookAlt: "FABLE 5 GOES PAID JULY 12", // A/B variant → Short-PriceReal-B
-    context: "Fable 5 free access ends July 12",
+    from: 12846, // "name three people who could pay for this exact service this month" (7:08.2)
+    // LOOP: ends on "…start selling your services." (abs 13709) → replays into the test.
+    durationInFrames: 878, // ~29s
+    topic: "THE 3-PEOPLE TEST",
+    hook: "NO BUYERS = NO BUSINESS",
+    context: "The test before you build any AI side hustle",
     beats: [
-      { at: 8, scene: "coins", tint: "#F59E0B", text: "THE PRICE GETS REAL" }, // scene-setting under the hook; "price gets very real" abs 645
-      { at: 73, scene: "check", obj: "coin", verdict: "warn", tint: "#EF4444", text: "$10 / M INPUT" }, // "$10 per million input" abs 692
-      { at: 153, scene: "emote", pose: "alarmed", accent: "#EF4444", tint: "#F59E0B", text: "$50 / M OUTPUT", emoji: "💸" }, // "$50 per million output" abs 772
-      { at: 263, scene: "check", obj: "brain", verdict: "check", tint: "#06B6D4", text: "WORTH IT?" }, // "should you use fable 5" abs 882
-      { at: 476, scene: "conveyor", labels: ["CLEAN RULES"], tint: "#34D399", text: "MY CLEAN RULES" }, // "clean rules" abs 1093
-      { at: 576, scene: "bolt", trails: true, blockLabel: "FABLE 5", moduleLabel: "RESULT", tint: "#06B6D4", text: "CHANGES THE RESULT?" }, // "smarter model changes the result" abs 1195
-      { at: 636, scene: "reject", badge: "ROUTINE PROMPTS", tint: "#EF4444", text: "DON'T WASTE IT" }, // "routine prompts" abs 1255
-      { at: 751, scene: "check", obj: "clock", verdict: "warn", tint: "#F59E0B", text: "AFTER JULY 12" }, // "after July 12th" abs 1370
+      { at: 8, scene: "emote", pose: "pointing", tint: "#06B6D4", text: "NAME THREE PEOPLE" }, // spoken at open (abs 12851)
+      { at: 118, scene: "check", obj: "brain", verdict: "warn", tint: "#F59E0B", text: "WHO PAYS THIS MONTH?" }, // "this month" abs 12964
+      { at: 165, scene: "reject", badge: "SOMEDAY", tint: "#EF4444", text: "NOT SOMEDAY" }, // "not some day" abs 13010
+      { at: 310, scene: "emote", pose: "facepalm", tint: "#F59E0B", text: "CAN'T NAME THREE?" }, // "if you can't name three people" abs 13160
+      { at: 356, scene: "stamp", verdict: "cross", badge: "YOUR PLAN", tint: "#EF4444", text: "JUST AN IDEA" }, // "an idea with a name" abs 13268 (stamp slams ~396)
+      { at: 444, scene: "emote", pose: "pointing", tint: "#34D399", text: "START WITH THE BUYER" }, // "flip it start with the buyer" abs 13290
+      { at: 583, scene: "hourglass", tint: "#F59E0B", text: "30-DAY PROOF WINDOW" }, // "give yourself a 30 day proof window" abs 13429
+      { at: 700, scene: "doors", labels: ["WRITE", "RESEARCH", "AUTOMATE", "BOTS"], value: 0, tint: "#06B6D4", text: "PICK ONE. GO." }, // "pick one of the five options and go" abs 13515
     ],
-    // full-anim: the $50 shock + the don't-waste-it payoff
-    fullscreen: [{ from: 190, to: 300 }, { from: 640, to: 780 }],
+    // full-anim: the someday/idea gauntlet + the pick-one payoff
+    fullscreen: [{ from: 190, to: 470 }, { from: 656, to: 758 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
   },
   {
-    id: "Short-MessyLaunch",
-    label: "Launched, restricted, back, countdown — the messiest launch yet",
+    id: "Short-FivePaths",
+    label: "Five beginner Claude side hustles — no code, no pretending",
     source: "talking-head.mp4",
-    from: 3865, // "Still, the timing is messy." (2:08.8)
-    // LOOP: ends on "…the controversy is not clean." (abs 5290) → replays into "timing is messy".
-    durationInFrames: 1440, // ~48s
-    topic: "FABLE 5'S WEIRD LAUNCH",
-    hook: "THE MESSIEST AI LAUNCH YET",
-    context: "Fable 5 = Claude's new top model",
+    from: 490, // "I'm walking you through five Claude side hustles…" (0:16.3)
+    // LOOP: ends on "…your fastest path to money." (abs 1606) → replays into the five.
+    durationInFrames: 1131, // ~38s
+    topic: "5 CLAUDE SIDE HUSTLES",
+    hook: "FIVE AI HUSTLES, ZERO CODE",
+    context: "Beginner Claude side hustles — no coding needed",
     beats: [
-      { at: 8, scene: "emote", pose: "confused", tint: "#06B6D4", text: "A MESSY LAUNCH" }, // scene-setting under the hook; "timing is messy" abs 3920
-      { at: 154, scene: "bolt", trails: true, blockLabel: "FABLE 5", moduleLabel: "LAUNCH", tint: "#34D399", text: "LAUNCHED" }, // "it launched" abs 4025
-      { at: 184, scene: "check", obj: "shield", verdict: "cross", tint: "#EF4444", text: "RESTRICTED" }, // "got restricted" abs 4055
-      { at: 216, scene: "conveyor", labels: ["BACK"], tint: "#06B6D4", text: "CAME BACK" }, // "came back" abs 4087
-      { at: 258, scene: "check", obj: "clock", verdict: "warn", tint: "#F59E0B", text: "BEHIND A COUNTDOWN" }, // "shoved behind a countdown" abs 4129
-      { at: 356, scene: "emote", pose: "alarmed", accent: "#EF4444", tint: "#EF4444", text: "SO MUCH DRAMA", emoji: "🎭" }, // "a lot more drama" abs 4227
-      { at: 494, scene: "stack", tint: "#F59E0B", text: "JUNE 12: SHUTDOWN" }, // "June 12th… export controls" abs 4365
-      { at: 924, scene: "check", obj: "shield", verdict: "check", tint: "#34D399", text: "LIFTED → BACK GLOBAL" }, // "controls were lifted" abs 4795
-      { at: 1106, scene: "bolt", blockLabel: "FABLE 5", moduleLabel: "SAFETY", tint: "#06B6D4", text: "NEW SAFETY LAYER" }, // "new safety layer" abs 4977
-      { at: 1284, scene: "check", obj: "brain", verdict: "check", tint: "#34D399", text: "BLOCKS 99%" }, // "over 99% of cases" abs 5155
+      { at: 8, scene: "doors", labels: ["1", "2", "3", "4"], value: 1, tint: "#06B6D4", text: "FIVE WAYS IN" }, // "five clawed side hustles" abs 516
+      { at: 180, scene: "check", obj: "brain", verdict: "check", tint: "#34D399", text: "ZERO CODE NEEDED" }, // "no coding background" abs 665
+      { at: 255, scene: "reject", badge: "FAKE ENGINEER", tint: "#EF4444", text: "NO PRETENDING" }, // "no pretending you are suddenly a software engineer" abs 745
+      { at: 420, scene: "emote", pose: "shrug", tint: "#F59E0B", text: "BUT ZERO EFFORT? NO", emoji: "😅" }, // "zero experience does not mean zero effort" abs 912
+      { at: 502, scene: "queue", labels: ["TASTE", "JUDGEMENT", "SELLING"], tint: "#06B6D4", text: "YOU STILL NEED" }, // "you still need the taste…" abs 992
+      { at: 752, scene: "stamp", verdict: "check", badge: "THIS VIDEO", tint: "#34D399", text: "A DECISION GUIDE" }, // "this is the decision walkthrough" abs 1242
+      { at: 970, scene: "emote", pose: "thinking", tint: "#06B6D4", text: "WHICH FITS YOU?" }, // "which cloud side hustles fit your skills" abs 1466
     ],
-    // full-anim: the four-act drama run + the safety-layer reveal
-    fullscreen: [{ from: 190, to: 330 }, { from: 1180, to: 1309 }],
+    // full-anim: the doors reveal run + the you-still-need list
+    fullscreen: [{ from: 190, to: 330 }, { from: 502, to: 620 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
   },
   {
-    id: "Short-Swapped",
-    label: "Risky requests get rerouted — you may not get the model you picked",
+    id: "Short-HateResearch",
+    label: "People hate research — charge them for it (first-dollar Claude hustle)",
     source: "talking-head.mp4",
-    from: 6429, // "do not blindly build your entire workflow around it" (3:34.3)
-    // LOOP: ends on "…some requests depend on safety routing." (abs 7347) → replays into the warning.
-    durationInFrames: 933, // ~31s
-    topic: "IS IT EVEN FABLE 5?",
-    hook: "YOUR AI CAN BE SWAPPED",
-    context: "Anthropic can reroute risky Fable 5 requests",
+    from: 6564, // "and this works because most people hate research" (3:38.8)
+    // LOOP: ends on "…the upside is speed to payment." (abs 7133) → replays into the pain.
+    durationInFrames: 584, // ~19s
+    topic: "FIRST AI DOLLAR",
+    hook: "PEOPLE HATE RESEARCH. CHARGE THEM.",
+    context: "Claude research reports = an easy first sale",
     beats: [
-      { at: 8, scene: "stack", tint: "#F59E0B", text: "DON'T BUILD ON IT" }, // scene-setting under the hook; "blindly build" abs 6472
-      { at: 139, scene: "check", obj: "shield", verdict: "warn", labels: ["SECURITY", "COMPLIANCE", "CODE"], tint: "#06B6D4", text: "HIGH-STAKES WORK?" }, // "security, compliance…" abs 6574
-      { at: 321, scene: "reject", badge: "RISKY REQUEST", tint: "#EF4444", text: "REROUTED AWAY" }, // "route risky requests away" abs 6756
-      { at: 409, scene: "emote", pose: "confused", tint: "#F59E0B", text: "NOT WHAT YOU PICKED", emoji: "🤨" }, // "not getting the model you thought" abs 6844
-      { at: 503, scene: "check", obj: "brain", verdict: "warn", tint: "#06B6D4", text: "MOST PEOPLE MISS THIS" }, // "the part most people miss" abs 6938
-      { at: 626, scene: "coins", tint: "#EF4444", text: "EXPENSIVE…" }, // "not just expensive" abs 7061
-      { at: 715, scene: "queue", labels: ["PLAN", "LIMITS", "ROUTING"], tint: "#F59E0B", text: "…AND CONDITIONAL" }, // "it is also conditional" abs 7131
+      { at: 8, scene: "emote", pose: "facepalm", tint: "#F59E0B", text: "PEOPLE HATE RESEARCH" }, // spoken at open (abs 6570)
+      { at: 95, scene: "queue", labels: ["TAB", "TAB", "TAB"], tint: "#06B6D4", text: "STUCK IN 30 TABS" }, // "they get stuck in tabs" abs 6659
+      { at: 230, scene: "funnel", badge: "THE FINDINGS", tint: "#34D399", text: "CLAUDE DOES THE READING" }, // "Claude can handle the heavy reading" abs 6800
+      { at: 291, scene: "emote", pose: "pointing", tint: "#F59E0B", text: "YOU MAKE THE CALL" }, // "you still need to make the judgement call" abs 6855
+      { at: 361, scene: "check", obj: "coin", verdict: "check", tint: "#34D399", text: "VALUE = THE DECISION" }, // "the value…is in the final decision" abs 6925
     ],
-    // full-anim: the reroute gag + the reveal
-    fullscreen: [{ from: 321, to: 470 }],
+    // full-anim: the tabs → funnel run
+    fullscreen: [{ from: 190, to: 320 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
   },
   {
-    id: "Short-Specialist",
-    label: "Don't burn the window on FOMO — use Fable 5 like a specialist",
+    id: "Short-SkillNotPrompt",
+    label: "Prompts are disposable — sell reusable Claude skills instead",
     source: "talking-head.mp4",
-    from: 7895, // "But do not use it just because the timer is running out." (4:23.2)
-    // LOOP: ends on "…only use it when the output is worth the credit cost." (abs 8867) → replays into the warning.
-    durationInFrames: 987, // ~33s
-    topic: "USE FABLE 5 RIGHT",
-    hook: "STOP WASTING YOUR FREE AI",
-    context: "Free Fable 5 access ends July 12",
+    from: 11163, // "you gotta remember that this product is not just the prompt" (6:12.1)
+    // LOOP: ends on "…if anyone actually wants it." (abs 11847) → replays into the pitch.
+    durationInFrames: 699, // ~23s
+    topic: "SELL SKILLS, NOT PROMPTS",
+    hook: "PROMPTS ARE DISPOSABLE",
+    context: "Claude skills are sellable, reusable systems",
     beats: [
-      { at: 8, scene: "check", obj: "clock", verdict: "warn", tint: "#F59E0B", text: "TIMER FOMO?" }, // scene-setting under the hook; "timer is running out" abs 7940
-      { at: 102, scene: "coins", tint: "#EF4444", text: "A WASTED WINDOW" }, // "waste the free window" abs 8003
-      { at: 234, scene: "emote", pose: "pointing", accent: "#E8B84B", tint: "#F59E0B", text: "HIRE THE SPECIALIST", sub: "Fable 5" }, // "knowledgeable specialist" abs 8135
-      { at: 312, scene: "bolt", blockLabel: "FABLE 5", moduleLabel: "HARD PART", tint: "#06B6D4", text: "THE HARDEST PARTS" }, // "hardest parts" abs 8213
-      { at: 385, scene: "conveyor", labels: ["OPUS", "SONNET"], tint: "#34D399", text: "THE REST → CHEAPER" }, // "back to Opus or Sonnet" abs 8286
-      { at: 514, scene: "emote", pose: "celebrate", tint: "#06B6D4", text: "EXPENSIVE THINKING", sub: "cheap execution" }, // "expensive thinking" abs 8415
-      { at: 706, scene: "check", obj: "clock", verdict: "check", tint: "#34D399", text: "BEFORE: HARDEST WORK" }, // "before July 12" abs 8607
-      { at: 840, scene: "check", obj: "coin", verdict: "warn", tint: "#F59E0B", text: "AFTER: WORTH IT?" }, // "after July 12" abs 8741
+      { at: 8, scene: "emote", pose: "pointing", tint: "#06B6D4", text: "NOT JUST A PROMPT" }, // spoken at open (abs 11175)
+      { at: 127, scene: "cartridge", badge: "SKILL.MD", tint: "#34D399", text: "A REPEATABLE SYSTEM" }, // "a repeatable way to get a better result" abs 11290
+      { at: 227, scene: "reject", badge: "ONE-OFF PROMPT", tint: "#EF4444", text: "DISPOSABLE" }, // "a prompt is usually disposable" abs 11390
+      { at: 337, scene: "emote", pose: "pointing", accent: "#E8B84B", tint: "#F59E0B", text: "A MINI OS FOR ONE TASK" }, // "mini operating system for one specific task" abs 11500
+      { at: 437, scene: "queue", labels: ["BUILD", "EXPLAIN", "MARKET"], tint: "#06B6D4", text: "THE REAL WORK" }, // "you'll have to build the thing…" abs 11600
     ],
-    // full-anim: the specialist handoff + the decision rule
-    fullscreen: [{ from: 234, to: 400 }, { from: 700, to: 855 }],
-    outro: "FOLLOW FOR MORE",
-    music: "music/tension.MP3",
-  },
-  {
-    id: "Short-FreeWindow",
-    label: "The free-window rules: 50% battery, breaker trips July 12, pressure only moved",
-    source: "talking-head.mp4",
-    from: 1899, // "During the promo window, you can use Fable 5…" (1:03.3)
-    // LOOP: ends on "…has not promised a third extension." (abs 3003) → replays into the rules.
-    durationInFrames: 1119, // ~37s
-    topic: "FREE FABLE 5: THE RULES",
-    hook: "YOUR FREE AI HAS RULES",
-    context: "Fable 5 is free on paid plans until July 12",
-    beats: [
-      { at: 8, scene: "battery", value: 100, tint: "#34D399", text: "THE FREE WINDOW" }, // scene-setting; "promo window" abs 1899
-      { at: 89, scene: "battery", value: 50, tint: "#F59E0B", text: "50% OF WEEKLY LIMITS" }, // "50% of your weekly plan limits" abs 1988
-      { at: 147, scene: "stamp", verdict: "check", badge: "FABLE 5 ACCESS", tint: "#34D399", text: "NOTHING TO CLAIM" }, // "nothing special to claim" abs 2046 (stamp slams on "claim" abs 2086)
-      { at: 209, scene: "emote", pose: "pointing", tint: "#06B6D4", text: "JUST PICK IT" }, // "just select fable 5" abs 2108
-      { at: 320, scene: "breaker", tint: "#EF4444", text: "THEN THE PROMO ENDS" }, // "once the promo ends" abs 2219 (trips on "no longer part" abs ~2326)
-      { at: 575, scene: "coins", tint: "#F59E0B", text: "CREDIT TERRITORY" }, // "usage credits" abs 2474
-      { at: 659, scene: "elevator", value: 2, tint: "#06B6D4", text: "OR RIDE A TIER DOWN" }, // "switch back to another Claude model" abs 2558
-      { at: 845, scene: "emote", pose: "shrug", tint: "#34D399", text: "PRESSURE'S GONE?" }, // "think the pressure is gone" abs 2749
-      { at: 955, scene: "hourglass", tint: "#F59E0B", text: "IT JUST MOVED 5 DAYS", emoji: "⏳" }, // "only moved five days away" abs 2849
-    ],
-    // full-anim: the battery drain + the breaker trip
-    fullscreen: [{ from: 190, to: 460 }],
-    outro: "FOLLOW FOR MORE",
-    music: "music/tension.MP3",
-  },
-  {
-    id: "Short-TheSignal",
-    label: "Don't trust screenshots — the signal tower only goes green on official wording",
-    source: "talking-head.mp4",
-    from: 8871, // "And if you're waiting for it to return to the normal plans…" (4:55.7)
-    // LOOP: ends on "…use Fable 5 where it gives you leverage." (abs 9572) → replays into the wait.
-    durationInFrames: 716, // ~24s
-    topic: "WHEN DOES IT COME BACK?",
-    hook: "DON'T TRUST SCREENSHOTS",
-    context: "Waiting for Fable 5 back on normal plans?",
-    beats: [
-      { at: 8, scene: "signal", tint: "#F59E0B", text: "WAITING FOR NEWS?" }, // scene-setting; "waiting for it to return" abs 8877
-      { at: 85, scene: "emote", pose: "pointing", tint: "#06B6D4", text: "WATCH THE WORDING" }, // "watch the wording" abs 8956
-      { at: 140, scene: "stamp", verdict: "cross", badge: "RANDOM SCREENSHOT", tint: "#EF4444", text: "NOT SCREENSHOTS" }, // "random screenshots" abs 9011 (DENIED slams abs ~9051)
-      { at: 264, scene: "check", obj: "shield", verdict: "check", tint: "#34D399", text: "OFFICIAL + A REAL DATE" }, // "standard plans are a real date" abs 9128
-      { at: 306, scene: "signal", verdict: "check", tint: "#06B6D4", text: "THAT'S THE SIGNAL" }, // "that is the signal" abs 9177
-      { at: 424, scene: "hourglass", tint: "#F59E0B", text: "LAST CONFIRMED WINDOW" }, // "last confirmed free window" abs 9295
-      { at: 466, scene: "reject", badge: "A FORMALITY?", tint: "#EF4444", text: "NO GUARANTEES" }, // "not a formality, not a guarantee" abs 9337
-      { at: 532, scene: "emote", pose: "alarmed", tint: "#F59E0B", text: "JUST A WINDOW" }, // "a window" abs 9400
-    ],
-    // full-anim: the DENIED stamp gag + the clean-signal payoff
-    fullscreen: [{ from: 190, to: 430 }],
+    // full-anim: the cartridge click-in + the disposable-prompt rejection
+    fullscreen: [{ from: 190, to: 330 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
   },

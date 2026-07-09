@@ -1,21 +1,19 @@
 import React from "react";
 import { AbsoluteFill, Sequence } from "remotion";
-import { FableCountdownVideo, FABLE_COUNTDOWN_WINDOWS, FABLE_COUNTDOWN_FULLSCREEN } from "./FableCountdownVideo";
+import { SideHustleVideo, SIDE_HUSTLE_WINDOWS, SIDE_HUSTLE_FULLSCREEN } from "./SideHustleVideo";
 import { CutFlash } from "./components/CutFlash";
 import { FootageDirector } from "./components/FootageDirector";
 import { CornerPip } from "./components/CornerPip";
 import { AnimatedBackground } from "./components/AnimatedBackground";
 
-// Final combined cut: talking head + countdown animation track + per-span PiP
-// (§8 of AGENTS.md — one PiP per merged span, never per card). During
-// FABLE_COUNTDOWN_FULLSCREEN spans the animation OWNS the screen — no PiP — so
-// the hook, gags, systems and payoffs feel like a cartoon, not a presentation.
-const FOOTAGE = "talking-head-090726.mp4"; // rotated 2026-07-10 (side-hustles video took the active slot)
-const VO_BOOST = 1.6; // source peaks at −8.9 dB → lift the voice to lead the mix
+// Final combined cut: talking head + side-hustle animation track + per-span
+// PiP (§8 of AGENTS.md — one PiP per merged span, never per card). During
+// SIDE_HUSTLE_FULLSCREEN spans the animation OWNS the screen — no PiP.
+const FOOTAGE = "talking-head.mp4";
 
 const PIP_GAP_MAX = 180; // 6s
 const PIP_MIN = 90; // never show a PiP segment shorter than 3s (flicker)
-const COVERS = [...FABLE_COUNTDOWN_WINDOWS].sort((a, b) => a.from - b.from);
+const COVERS = [...SIDE_HUSTLE_WINDOWS].sort((a, b) => a.from - b.from);
 const SPANS: { from: number; to: number }[] = [];
 for (const c of COVERS) {
   const last = SPANS[SPANS.length - 1];
@@ -24,7 +22,7 @@ for (const c of COVERS) {
 }
 
 // PiP segments = spans minus the fullscreen windows (animation-only moments)
-const FULL = [...FABLE_COUNTDOWN_FULLSCREEN].sort((a, b) => a.from - b.from);
+const FULL = [...SIDE_HUSTLE_FULLSCREEN].sort((a, b) => a.from - b.from);
 const PIP_SEGMENTS: { from: number; to: number }[] = [];
 for (const s of SPANS) {
   let cursor = s.from;
@@ -36,14 +34,16 @@ for (const s of SPANS) {
   if (s.to - cursor >= PIP_MIN) PIP_SEGMENTS.push({ from: cursor, to: s.to });
 }
 
-// Soft dip-to-white on the biggest turns (spoken-frame beats):
-// the countdown slam · the clean rules · the drama timeline · the reroute · the signal.
-const FLASHES = [242, 1093, 3952, 6659, 9161];
+// Soft dip-to-white on the biggest turns: the five doors · path 1 · path 3 ·
+// the three-buyers gate · the 30-day window.
+const FLASHES = [505, 3343, 7500, 12844, 13423];
 
-export const FableCountdownFinal: React.FC = () => {
+export const SideHustleFinal: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: "black" }}>
-      <FootageDirector footage={FOOTAGE} volume={VO_BOOST} />
+      {/* VO boost 1.6× (source peaks ≈ −9 dB, same rig as the last recording —
+          re-probe with volumedetect after the proxy lands if the mix drifts) */}
+      <FootageDirector footage={FOOTAGE} volume={1.6} />
 
       {/* one continuous dark bridge per span, UNDER the cards */}
       {SPANS.map((s) => (
@@ -52,7 +52,7 @@ export const FableCountdownFinal: React.FC = () => {
         </Sequence>
       ))}
 
-      <FableCountdownVideo />
+      <SideHustleVideo />
 
       {/* steady PiP — except where the animation owns the whole screen */}
       {PIP_SEGMENTS.map((s) => (

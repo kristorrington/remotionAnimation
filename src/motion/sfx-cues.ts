@@ -60,6 +60,7 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "questionFlip":
       if (dur === 330) cues.push({ at: 130, type: "whip" }); // routing instance: crossAt=130
       else if (dur === 211) cues.push({ at: 82, type: "whip" }); // countdown instance: crossAt=82
+      else if (dur === 182) cues.push({ at: 61, type: "whip" }); // side-hustle instance: crossAt=61
       else cues.push({ at: Math.round(dur * 0.62), type: "whip" }); // the cross-out
       break;
     case "toolStack":
@@ -166,6 +167,40 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
       break;
     case "takeaway":
       cues.push({ at: 132, type: "boom" }); // LEVERAGE stamp
+      break;
+    // ——— Side-hustle scenes (timings track the overlay instance props) ———
+    case "takeawayThink":
+      cues.push({ at: 75, type: "boom" }); // STRONG FIT stamp
+      break;
+    case "takeaway30":
+      cues.push({ at: 92, type: "boom" }); // PICK ONE. GO.
+      break;
+    case "pathDoors":
+      [30, 45, 60, 75, 90].forEach((s) => cues.push({ at: s + 12, type: "switch" })); // doors land
+      break;
+    case "pathDoors2":
+      [183, 307, 468, 581, 668].forEach((s) => cues.push({ at: s + 12, type: "switch" })); // named doors land
+      break;
+    case "draftPolish":
+      cues.push({ at: 500, type: "whip" }, { at: 531, type: "ding" }); // handoff, outcome check
+      break;
+    case "docFunnel":
+      [191, 208, 226, 244].forEach((s) => cues.push({ at: s, type: "switch" })); // docs drop
+      cues.push({ at: 310, type: "ding" }); // the report pops out
+      break;
+    case "appFlow":
+      [19, 60, 90, 99, 160].forEach((s) => cues.push({ at: s, type: "switch" })); // tiles land
+      cues.push({ at: 317, type: "whip" }, { at: 774, type: "boom" }); // the wire draws, steps collapse
+      break;
+    case "firstDesk":
+      [311, 337, 361].forEach((s) => cues.push({ at: s, type: "switch" })); // questions land
+      break;
+    case "skillCart":
+      cues.push({ at: 456, type: "whip" }); // cartridge clicks in
+      [610, 660, 710].forEach((s) => cues.push({ at: s, type: "switch" })); // identical runs
+      break;
+    case "threeBuyers":
+      cues.push({ at: 351, type: "boom" }); // JUST AN IDEA stamp
       break;
     case "rateCard":
       cues.push({ at: 16, type: "whip" }, { at: 360, type: "switch" }, { at: 400, type: "switch" }, { at: 440, type: "switch" }); // bars in, multipliers

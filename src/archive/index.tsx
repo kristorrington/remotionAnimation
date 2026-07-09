@@ -20,6 +20,8 @@ import { ClaudeWealthVideo, CLAUDE_WEALTH_DUR } from "../ClaudeWealthVideo";
 import { ClaudeWealthFinal } from "../ClaudeWealthFinal";
 import { ModelRoutingVideo, MODEL_ROUTING_DUR } from "../ModelRoutingVideo";
 import { ModelRoutingFinal } from "../ModelRoutingFinal";
+import { FableCountdownVideo, FABLE_COUNTDOWN_DUR } from "../FableCountdownVideo";
+import { FableCountdownFinal } from "../FableCountdownFinal";
 
 // ============================================================================
 // THE ARCHIVE — compositions from PREVIOUS videos. When a new video starts,
@@ -43,6 +45,25 @@ const transparentDefaults: CalculateMetadataFunction<
 export const ArchivedVideoCompositions: React.FC = () => {
   return (
     <>
+      {/* ── Fable-countdown: the July 12 window (July 2026) ── */}
+      <Composition
+        id="FableCountdownVideo"
+        component={FableCountdownVideo}
+        durationInFrames={FABLE_COUNTDOWN_DUR}
+        fps={30}
+        width={1920}
+        height={1080}
+        calculateMetadata={transparentDefaults}
+      />
+      <Composition
+        id="FableCountdownFinal"
+        component={FableCountdownFinal}
+        durationInFrames={FABLE_COUNTDOWN_DUR}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
       {/* ── Model routing: Opus vs Fable 5 (July 2026) ── */}
       <Composition
         id="ModelRoutingVideo"

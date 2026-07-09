@@ -492,3 +492,93 @@ Follow @kristorrington for AI automation that survives the real world.
 
 #AI #Claude #Fable5 #TechNews #AIAutomation #Shorts
 ```
+
+---
+
+# Side-hustles video (5 beginner Claude paths)
+
+## Short-ThreeBuyers
+
+**Title**
+```
+The 3-People Test Before You Build Any AI Side Hustle #Shorts
+```
+
+**Description**
+```
+Before you build anything, name three people who could pay for this exact service this month. Not someday. Not "small businesses in general." Three real people.
+
+If you can't name three, you don't have an offer — you have an idea with a name. Flip it: start with the buyer, then shape the Claude workflow around them. Give yourself a 30-day proof window, pick one path, and go.
+
+Can you name your three? Drop the niche below 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #SideHustle #AIAutomation #Entrepreneur #Shorts
+```
+
+---
+
+## Short-FivePaths
+
+**Title**
+```
+5 Claude Side Hustles for Total Beginners (No Code) #Shorts
+```
+
+**Description**
+```
+Five Claude side hustles you can actually start with zero coding experience — no technical job history, and no pretending you're suddenly a software engineer.
+
+But honesty first: zero experience does not mean zero effort. You still need taste, judgement, and something a real person wants to buy. This is the decision walkthrough before you waste a weekend building the wrong thing.
+
+Which of the five fits what you already do? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #SideHustle #MakeMoneyOnline #AIAutomation #Shorts
+```
+
+---
+
+## Short-HateResearch
+
+**Title**
+```
+People Hate Research — Charge Them for It (Claude Hustle) #Shorts
+```
+
+**Description**
+```
+Most people hate research. They procrastinate, they skim badly, and they get stuck in thirty tabs.
+
+That's the opportunity: Claude handles the heavy reading, you make the judgement call, and you sell one finished report — "I'll research five competitors and give you a one-page summary." The value isn't the summary, it's the decision. Fastest first dollar of the five paths.
+
+Would you pay someone to make research go away? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #SideHustle #Freelancing #AIAutomation #Shorts
+```
+
+---
+
+## Short-SkillNotPrompt
+
+**Title**
+```
+Stop Selling Prompts — Sell Claude Skills Instead #Shorts
+```
+
+**Description**
+```
+A prompt is disposable. A Claude skill is a mini operating system for one specific task — a skill.md file that tells Claude exactly how to handle a YouTube script, an SEO audit, a sales email, client research.
+
+The product isn't the prompt. It's a repeatable way to get a better result, every run. The honest part: you still have to build it, explain it, and market it — and then find out if anyone actually wants it.
+
+What task would you turn into a skill? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #ClaudeSkills #SideHustle #AIAutomation #Shorts
+```
