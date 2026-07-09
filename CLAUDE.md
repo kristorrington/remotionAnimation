@@ -395,13 +395,19 @@ Shorts use even STRONGER cartoon/action animation than long-form:
 - **Every short OPENS on the FACE** (Kris's call, July 2026): the hook +
   context line sit over the full-shot presenter for ~3.2s (`hookHold = 96`),
   then the split slides in — the layout is always either full shot or split
-  screen at the open, never an animation cold-open. **The opener PUSHES IN
-  with a sound** (rule): the shot starts at the WIDEST framing and drifts in
-  gently across the whole hook (~1.0 → 1.08, ease-out, origin on the face)
-  with a whoosh at frame ~1, releasing back to normal framing as the split
-  arrives — built into VerticalShort, never remove it. Keep it SUBTLE: the
-  9:16 cover-crop is already tight on the face, so a fast pop or anything
-  past ~1.1 reads "too zoomed in". `animHook: true` is an
+  screen at the open, never an animation cold-open. **The opener PUNCHES IN
+  with a sound** (rule): the video starts SMALL — scale 0.5, floating on
+  black — and zooms up to full frame over the first ~0.7s (ease-out cubic)
+  with a whoosh at frame ~1, landing at exactly 1.0 so the framing is normal
+  by the time the hook settles — built into VerticalShort, never remove it.
+  Never zoom PAST 1.0 into the face: the 9:16 cover-crop is already tight,
+  so 1.1+ reads "too zoomed in". **The 1-second gate** (viral-shorts data,
+  2026): viewers decide in <1s, so the FIRST FRAME must already carry the
+  promise — hook word 1 visible by ~0.1s, ALL hook words by ~0.4s, context by
+  ~0.5s (HookTitle's near-instant stagger; never slow it back down), and the
+  first frame doubles as the feed thumbnail — never open on an empty frame.
+  Prefer 15–30s total (20–25s is the algorithm's sweet spot; >45s bleeds
+  retention); plant a secondary hook beat around ~14s. `animHook: true` is an
   opt-in exception for when the first beat's gag IS the hook. Keep a beat at
   frame ~8 so the panel is populated the moment the split arrives. **Layout
   changes must DWELL**: the split view shows for ≥ ~3s or not at all —

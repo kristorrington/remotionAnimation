@@ -45,16 +45,14 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
   const seamStart = hookHold - 16;
   const seamEnd = hookHold + 4;
 
-  // OPENING PUSH-IN (rule, CLAUDE.md §9): the video begins at the WIDEST
-  // framing and drifts in gently across the whole hook (1.0 → ~1.08, easing
-  // out) with a whoosh at frame 1, then releases back to normal framing while
-  // the split slides in. SUBTLE — the base cover-crop is already tight on the
-  // face, so anything past ~1.1 reads "too zoomed in". Face openers only.
+  // OPENING PUNCH-IN (rule, CLAUDE.md §9): the video starts SMALL (scale 0.5,
+  // floating on black) and zooms up to full frame over the first ~1s with a
+  // whoosh — the shot "arrives" rather than cropping into the face. It ends at
+  // exactly 1.0 (normal framing), so the split arrives as usual. Face openers
+  // only.
   const introZoom = spec.animHook
     ? 1
-    : 1 +
-      interpolate(frame, [0, seamStart], [0, 0.08], { ...CLAMP, easing: Easing.out(Easing.cubic) }) *
-        interpolate(frame, [seamStart, seamEnd], [1, 0], CLAMP);
+    : interpolate(frame, [0, 22], [0.5, 1], { ...CLAMP, easing: Easing.out(Easing.cubic) });
 
   // seam keyframes: hook (face OR full animation) → split → [full-anim spans]
   // → split → CTA (face). Two rules stop the reframe from flickering ("full →

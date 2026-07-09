@@ -14,15 +14,17 @@ export const HookTitle: React.FC<{ text: string; hold: number; context?: string 
   const t = useTheme();
   const words = text.split(" ");
   const out = interpolate(frame, [hold - 14, hold], [1, 0], CLAMP);
-  const ctxIn = spring({ frame: frame - 12, fps, config: { stiffness: 220, damping: 16 }, durationInFrames: 16 });
+  const ctxIn = spring({ frame: frame - 6, fps, config: { stiffness: 220, damping: 16 }, durationInFrames: 14 });
 
   return (
     <AbsoluteFill style={{ justifyContent: "flex-start", alignItems: "center", padding: "170px 56px 0", opacity: out }}>
       <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0 22px", maxWidth: 980 }}>
         {words.map((w, i) => {
-          const d = 3 + i * 3; // stagger
-          const s = spring({ frame: frame - d, fps, config: { stiffness: 320, damping: 16, mass: 0.5 }, durationInFrames: 12 });
-          const wordOp = interpolate(frame, [d, d + 4], [0, 1], CLAMP);
+          // near-instant stagger: viral-shorts rule — the promise must be
+          // readable within ~0.2s; all words land inside the first ~0.4s
+          const d = 1 + i * 2;
+          const s = spring({ frame: frame - d, fps, config: { stiffness: 320, damping: 16, mass: 0.5 }, durationInFrames: 10 });
+          const wordOp = interpolate(frame, [d, d + 3], [0, 1], CLAMP);
           const scale = interpolate(s, [0, 1], [1.7, 1]);
           const isLast = i === words.length - 1;
           return (
