@@ -586,6 +586,12 @@ integrate only assets that improve the video.**
 - Long subheadings; repeating every spoken phrase on screen.
 - Generic fade-in text; static cards that don't animate meaningfully.
 - Linear slides where an arc/spring should be; impacts with no squash or sparks.
+- **Flat clip-art props** — giant solid-colour icons (a big padlock), plain
+  solid rectangles as machinery, 3px flat borders. Panels get a PREMIUM finish:
+  glass gradient fill + thin (2px) alpha border + inner top highlight + soft
+  colour glow; props get texture (hazard stripes, bezels, pivots); sticker
+  tilts cap at ~±3°. Prefer the tech objects (ModelBlock, meters, racks) over
+  oversized icons for hero moments.
 - Diagrams with too many tiny labels; source text unreadable on mobile.
 - The same layout or mode in consecutive scenes.
 

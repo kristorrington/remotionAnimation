@@ -59,7 +59,7 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     // ——— Claude-wealth scenes (fractions track the instance props used) ———
     case "questionFlip":
       if (dur === 330) cues.push({ at: 130, type: "whip" }); // routing instance: crossAt=130
-      else if (dur === 232) cues.push({ at: 106, type: "whip" }); // countdown instance: crossAt=106
+      else if (dur === 211) cues.push({ at: 82, type: "whip" }); // countdown instance: crossAt=82
       else cues.push({ at: Math.round(dur * 0.62), type: "whip" }); // the cross-out
       break;
     case "toolStack":

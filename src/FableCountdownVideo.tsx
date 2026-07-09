@@ -31,7 +31,7 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
   { scene: "cdHook", from: 0, dur: 388, fullscreen: true },
   { scene: "cdWindow", from: 390, dur: 292 },
   { scene: "cdPrice", from: 684, dur: 190, fullscreen: true },
-  { scene: "questionFlip", from: 852, dur: 232 },
+  { scene: "questionFlip", from: 876, dur: 211 },
   { scene: "thresholdGate", from: 1087, dur: 420, fullscreen: true },
   { scene: "cdExtension", from: 1508, dur: 390 },
   { scene: "cdPromo", from: 1900, dur: 300 },
@@ -51,7 +51,7 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
   { scene: "routingLanes", from: 7545, dur: 445 },
   { scene: "cdSpecialist", from: 8111, dur: 429, fullscreen: true },
   { scene: "compare2", from: 8547, dur: 320 },
-  { scene: "cdWording", from: 8950, dur: 470 },
+  { scene: "cdWording", from: 8950, dur: 469 },
   { scene: "takeaway", from: 9419, dur: 190, fullscreen: true },
 ];
 
@@ -76,9 +76,9 @@ export const FableCountdownVisuals: React.FC = () => {
         <PriceRevealScene durationInFrames={190} kicker="USAGE-CREDIT TERRITORY" title="THE PRICE GETS REAL" inAt={8} outAt={88} />
       </Sequence>
 
-      {/* 0:28 THE QUESTION FLIP */}
-      <Sequence from={852} durationInFrames={232} premountFor={30}>
-        <QuestionFlipScene durationInFrames={232} kicker="THE REAL QUESTION" q1="SHOULD YOU USE FABLE 5?" q2="WHAT'S ACTUALLY WORTH IT?" q1At={30} crossAt={106} tint="#06B6D4" />
+      {/* 0:29 THE QUESTION FLIP (starts after the price scene fully lands) */}
+      <Sequence from={876} durationInFrames={211} premountFor={30}>
+        <QuestionFlipScene durationInFrames={211} kicker="THE REAL QUESTION" q1="SHOULD YOU USE FABLE 5?" q2="WHAT'S ACTUALLY WORTH IT?" q1At={6} crossAt={82} tint="#06B6D4" />
       </Sequence>
 
       {/* 0:36 CLEAN RULES — routine falls through, result-changing work passes */}
@@ -186,8 +186,8 @@ export const FableCountdownVisuals: React.FC = () => {
       </Sequence>
 
       {/* 4:58 WATCH THE WORDING — screenshots lie, official dates don't */}
-      <Sequence from={8950} durationInFrames={470} premountFor={30}>
-        <WatchWordingScene durationInFrames={470} kicker="WAITING FOR IT TO RETURN?" title="WATCH THE WORDING" crossAt={61} checkAt={192} stampAt={230} windowAts={[391, 420, 450]} />
+      <Sequence from={8950} durationInFrames={469} premountFor={30}>
+        <WatchWordingScene durationInFrames={469} kicker="WAITING FOR IT TO RETURN?" title="WATCH THE WORDING" crossAt={61} checkAt={192} stampAt={230} windowAts={[391, 420, 450]} />
       </Sequence>
 
       {/* 5:14 TAKEAWAY — leverage (stamp lands on the spoken word) */}

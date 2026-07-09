@@ -2,8 +2,8 @@ import React from "react";
 import { Sequence, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { FONT } from "../components/overlayUI";
 import { SceneShell, SceneHeadline } from "./SceneShell";
-import { CartoonRobot, Sparks, Puff, impulse, poseTimeline, RobotPose, CYAN, WHITE, RED, AMBER, GREEN, PANEL } from "../motion/subjects";
-import { ModelBlock, LockGate, ConveyorBelt, ServerRack, JengaTower, TokenCoin, CostMeterClimb } from "../motion/objects";
+import { CartoonRobot, Sparks, Puff, impulse, poseTimeline, RobotPose, CYAN, WHITE, RED, AMBER, GREEN } from "../motion/subjects";
+import { ModelBlock, ConveyorBelt, ServerRack, JengaTower, TokenCoin, CostMeterClimb } from "../motion/objects";
 import { ImpactStamp, Odometer, HighlightSweep, WarningBadge } from "../motion/primitives";
 import { DonutFill } from "../motion/charts";
 import { ClaudeMark } from "../components/Cartoons";
@@ -11,9 +11,20 @@ import { ClaudeMark } from "../components/Cartoons";
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const GOLD = "#E8B84B";
 
+// Premium finish: glass-gradient fill, thin alpha border, inner highlight —
+// never flat clip-art panels (they read childish).
 const chip = (color: string, fontSize = 24): React.CSSProperties => ({
-  padding: "8px 18px", borderRadius: 10, background: PANEL, border: `3px solid ${color}`,
-  fontFamily: FONT, fontWeight: 800, fontSize, letterSpacing: 1, color: WHITE, transform: "translateZ(0)", whiteSpace: "nowrap",
+  padding: "9px 20px", borderRadius: 11,
+  background: "linear-gradient(180deg, rgba(20,27,44,0.95), rgba(8,12,20,0.88))",
+  border: `2px solid ${color}AA`,
+  boxShadow: `0 10px 24px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.08), 0 0 18px ${color}22`,
+  fontFamily: FONT, fontWeight: 800, fontSize, letterSpacing: 1.5, color: WHITE, transform: "translateZ(0)", whiteSpace: "nowrap",
+});
+
+const glass = (color: string): React.CSSProperties => ({
+  background: "linear-gradient(180deg, rgba(20,27,44,0.95), rgba(8,12,20,0.88))",
+  border: `2px solid ${color}88`,
+  boxShadow: `0 20px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08), 0 0 30px ${color}26`,
 });
 
 // Rotated sticker chip that spring-slams in (scale 1.6 → 1, tilted).
@@ -21,8 +32,9 @@ const Sticker: React.FC<{ label: string; at: number; color?: string; rot?: numbe
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const pop = spring({ frame: frame - at, fps, config: { stiffness: 280, damping: 13 }, durationInFrames: 16 });
+  // tilt capped at ~±2.8° — enough to feel hand-placed, never sloppy
   return (
-    <div style={{ ...chip(color, fontSize), width: "fit-content", opacity: frame < at ? 0 : 1, transform: `translateZ(0) rotate(${rot}deg) scale(${interpolate(pop, [0, 1], [1.6, 1])})` }}>{label}</div>
+    <div style={{ ...chip(color, fontSize), width: "fit-content", opacity: frame < at ? 0 : 1, transform: `translateZ(0) rotate(${Math.max(-2.8, Math.min(2.8, rot))}deg) scale(${interpolate(pop, [0, 1], [1.45, 1])})` }}>{label}</div>
   );
 };
 
@@ -56,16 +68,22 @@ const CountdownPanel: React.FC<{ at: number; days?: number; date?: string; width
   const e = spring({ frame: frame - at, fps, config: { stiffness: 170, damping: 14 }, durationInFrames: 18 });
   const tick = 0.5 + 0.5 * Math.sin(frame * 0.24);
   return (
-    <div style={{ width, borderRadius: 18, background: PANEL, border: `3px solid ${AMBER}`, boxShadow: `0 20px 50px rgba(0,0,0,0.5), 0 0 34px ${AMBER}33`, padding: "26px 30px", display: "flex", flexDirection: "column", alignItems: "center", gap: 10, opacity: interpolate(e, [0, 0.3], [0, 1]), transform: `scale(${interpolate(e, [0, 1], [1.4, 1])})` }}>
+    <div style={{ width, borderRadius: 18, ...glass(AMBER), padding: "26px 30px", display: "flex", flexDirection: "column", alignItems: "center", gap: 12, opacity: interpolate(e, [0, 0.3], [0, 1]), transform: `scale(${interpolate(e, [0, 1], [1.3, 1])})` }}>
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-        <div style={{ width: 12, height: 12, borderRadius: "50%", background: RED, opacity: 0.4 + 0.6 * tick, boxShadow: `0 0 ${10 * tick}px ${RED}` }} />
-        <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 22, letterSpacing: 4, color: "rgba(255,255,255,0.65)", transform: "translateZ(0)" }}>FREE WINDOW ENDS</span>
+        <div style={{ width: 10, height: 10, borderRadius: "50%", background: RED, opacity: 0.4 + 0.6 * tick, boxShadow: `0 0 ${10 * tick}px ${RED}` }} />
+        <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 21, letterSpacing: 5, color: "rgba(255,255,255,0.6)", transform: "translateZ(0)" }}>FREE WINDOW ENDS</span>
       </div>
       <div style={{ display: "flex", alignItems: "baseline", gap: 16 }}>
         <Odometer to={days} at={at + 6} size={110} color={WHITE} />
-        <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 40, color: AMBER, transform: "translateZ(0)" }}>DAYS</span>
+        <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 38, letterSpacing: 2, color: AMBER, transform: "translateZ(0)" }}>DAYS</span>
       </div>
-      <div style={{ ...chip(RED, 26), transform: "translateZ(0) rotate(-2deg)" }}>{date}</div>
+      {/* day pips deplete toward the deadline */}
+      <div style={{ display: "flex", gap: 8 }}>
+        {Array.from({ length: 7 }, (_, i) => (
+          <div key={i} style={{ width: 26, height: 7, borderRadius: 4, background: i < days ? AMBER : "rgba(255,255,255,0.12)", boxShadow: i < days ? `0 0 10px ${AMBER}55` : "none" }} />
+        ))}
+      </div>
+      <div style={{ ...chip(RED, 25), transform: "translateZ(0) rotate(-1.5deg)" }}>{date}</div>
     </div>
   );
 };
@@ -85,9 +103,13 @@ export const CountdownGateScene: React.FC<{ durationInFrames: number; kicker?: s
           <div style={{ transform: `translateY(${-hop}px)` }}>
             <CartoonRobot pose={poseTimeline(frame, [[0, "celebrate"], [alarmAt - 30, "thinking"], [alarmAt, "alarmed"]])} size={250} accent={frame >= alarmAt ? RED : GREEN} lookX={-6} />
           </div>
-          <div style={{ position: "relative" }}>
-            <LockGate at={alarmAt} action="close" size={250} label="FABLE 5" />
-            <Sparks at={alarmAt} x={125} y={145} color={RED} size={160} />
+          {/* the model rig powers DOWN at the alarm — flicker, red core, lock tag */}
+          <div style={{ position: "relative", opacity: frame >= alarmAt ? 0.62 + 0.12 * Math.sin(frame * 0.5) * Math.max(0, 1 - (frame - alarmAt) / 40) : 1, filter: frame >= alarmAt ? "saturate(0.8)" : "none" }}>
+            <ModelBlock label="FABLE 5" width={370} coreColor={frame >= alarmAt ? RED : "#E8B84B"} />
+            <div style={{ position: "absolute", top: -34, right: -26, transform: "rotate(4deg)" }}>
+              <Sticker label="LOCKS JULY 12" at={alarmAt} color={RED} rot={4} fontSize={22} />
+            </div>
+            <Sparks at={alarmAt} x={185} y={70} color={RED} size={160} />
           </div>
         </div>
         {/* reserve the headline's space so the layout doesn't jump when it lands */}
@@ -109,7 +131,7 @@ export const PriceRevealScene: React.FC<{ durationInFrames: number; kicker?: str
   const price = (label: string, value: number, at: number, color: string) => {
     const e = spring({ frame: frame - at, fps, config: { stiffness: 200, damping: 13 }, durationInFrames: 18 });
     return (
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, padding: "26px 40px", borderRadius: 18, background: PANEL, border: `3px solid ${color}`, boxShadow: `0 18px 44px rgba(0,0,0,0.5), 0 0 30px ${color}33`, opacity: interpolate(e, [0, 0.3], [0, 1]), transform: `scale(${interpolate(e, [0, 1], [1.5, 1])}) rotate(${at === inAt ? -2 : 2}deg)` }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, padding: "26px 40px", borderRadius: 18, ...glass(color), opacity: interpolate(e, [0, 0.3], [0, 1]), transform: `scale(${interpolate(e, [0, 1], [1.35, 1])}) rotate(${at === inAt ? -1.5 : 1.5}deg)` }}>
         <Odometer to={value} at={at + 4} size={100} color={color} prefix="$" />
         <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 24, letterSpacing: 3, color: "rgba(255,255,255,0.7)", transform: "translateZ(0)" }}>{label}</span>
       </div>
@@ -299,7 +321,7 @@ export const JuneTimelineScene: React.FC<{ durationInFrames: number; kicker?: st
             {cards.map((c, i) => {
               const e = spring({ frame: frame - c.at, fps, config: { stiffness: 210, damping: 14 }, durationInFrames: 18 });
               return (
-                <div key={c.label} style={{ width: 270, borderRadius: 16, background: PANEL, border: `3px solid ${c.color}`, boxShadow: `0 16px 40px rgba(0,0,0,0.5), 0 0 26px ${c.color}2e`, padding: "22px 24px", display: "flex", flexDirection: "column", alignItems: "center", gap: 10, opacity: interpolate(e, [0, 0.3], [0, 1]), transform: `rotate(${[-3, 2, -2][i % 3]}deg) scale(${interpolate(e, [0, 1], [1.45, 1])}) translateY(${i % 2 ? 14 : -8}px)` }}>
+                <div key={c.label} style={{ width: 270, borderRadius: 16, ...glass(c.color), padding: "22px 24px", display: "flex", flexDirection: "column", alignItems: "center", gap: 10, opacity: interpolate(e, [0, 0.3], [0, 1]), transform: `rotate(${[-2, 1.5, -1.5][i % 3]}deg) scale(${interpolate(e, [0, 1], [1.35, 1])}) translateY(${i % 2 ? 14 : -8}px)` }}>
                   <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 34, color: c.color, transform: "translateZ(0)" }}>{c.date}</span>
                   <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 22, letterSpacing: 1, color: WHITE, textAlign: "center", lineHeight: 1.25, transform: "translateZ(0)" }}>{c.label}</span>
                 </div>
@@ -406,9 +428,10 @@ export const RerouteScene: React.FC<{ durationInFrames: number; kicker?: string;
           <div style={{ position: "absolute", right: 20, top: 250 }}>
             <ModelBlock label="OPUS 4.8" width={260} coreColor={CYAN} />
           </div>
-          {/* the safety arm */}
+          {/* the safety barrier — hazard-striped arm on a glowing pivot */}
           <div style={{ position: "absolute", left: 610, top: 26, transform: `rotate(${frame >= rerouteAt - 6 && frame < rerouteAt + 40 ? impulse(frame, rerouteAt, 10, 22) - 40 : 0}deg)`, transformOrigin: "top center" }}>
-            <div style={{ width: 14, height: 120, borderRadius: 7, background: RED, boxShadow: `0 0 18px ${RED}88` }} />
+            <div style={{ width: 18, height: 130, borderRadius: 9, background: `repeating-linear-gradient(45deg, ${RED} 0 9px, #33121a 9px 18px)`, border: "2px solid rgba(255,255,255,0.22)", boxShadow: `0 6px 18px rgba(0,0,0,0.5), 0 0 16px ${RED}55` }} />
+            <div style={{ position: "absolute", top: -12, left: -6, width: 30, height: 30, borderRadius: "50%", background: "linear-gradient(180deg, rgba(20,27,44,0.95), rgba(8,12,20,0.88))", border: `3px solid ${RED}`, boxShadow: `0 0 14px ${RED}66` }} />
           </div>
           <div style={{ position: "absolute", left: 480, top: -12 }}>
             <Sticker label="SAFETY ROUTING" at={rerouteAt - 20} color={RED} rot={-3} fontSize={22} />
@@ -511,7 +534,7 @@ export const WatchWordingScene: React.FC<{ durationInFrames: number; kicker?: st
         <div style={{ display: "flex", alignItems: "center", gap: 90 }}>
           {/* blurry screenshot card */}
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14, opacity: interpolate(l, [0, 0.3], [0, 1]), transform: `rotate(-3deg) scale(${interpolate(l, [0, 1], [1.35, 1])})` }}>
-            <div style={{ width: 330, borderRadius: 14, background: PANEL, border: "3px solid rgba(255,255,255,0.25)", padding: "20px 22px", filter: "saturate(0.6)" }}>
+            <div style={{ width: 330, borderRadius: 14, background: "linear-gradient(180deg, rgba(20,27,44,0.95), rgba(8,12,20,0.88))", border: "2px solid rgba(255,255,255,0.22)", boxShadow: "0 16px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)", padding: "20px 22px", filter: "saturate(0.6)" }}>
               <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 22, color: "rgba(255,255,255,0.6)", transform: "translateZ(0)", display: "block", marginBottom: 10 }}>random screenshot</span>
               {[86, 64, 74].map((w, i) => (
                 <div key={i} style={{ width: `${w}%`, height: 13, borderRadius: 6, background: "rgba(255,255,255,0.14)", margin: "8px 0", filter: "blur(2.5px)" }} />
@@ -524,7 +547,7 @@ export const WatchWordingScene: React.FC<{ durationInFrames: number; kicker?: st
           </div>
           {/* the official wording card */}
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14, opacity: interpolate(r, [0, 0.3], [0, 1]), transform: `rotate(2deg) scale(${interpolate(r, [0, 1], [1.35, 1])})` }}>
-            <div style={{ width: 380, borderRadius: 14, background: PANEL, border: `3px solid ${GREEN}`, padding: "20px 22px", boxShadow: `0 0 26px ${GREEN}2e` }}>
+            <div style={{ width: 380, borderRadius: 14, ...glass(GREEN), padding: "20px 22px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
                 <ClaudeMark size={26} />
                 <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 22, color: WHITE, transform: "translateZ(0)" }}>Anthropic — official</span>
