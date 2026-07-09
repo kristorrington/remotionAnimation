@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, getRemotionEnvironment, interpolate, Sequence, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, getRemotionEnvironment, interpolate, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { ShortSpec } from "./types";
 import { ThemeProvider } from "../theme";
 import { VerticalStage } from "./VerticalStage";
@@ -38,12 +38,18 @@ const SafeZones: React.FC = () => {
 };
 
 export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean }> = ({ spec, showSafeZones = false }) => {
-  const { durationInFrames: dur } = useVideoConfig();
+  const { durationInFrames: dur, fps } = useVideoConfig();
   const frame = useCurrentFrame();
 
   const hookHold = 96; // ~3.2s — the full-screen opening needs room to breathe (2.2s was too quick)
   const seamStart = hookHold - 16;
   const seamEnd = hookHold + 4;
+
+  // OPENING PUNCH-IN (rule, CLAUDE.md §9): the face zooms in as the video
+  // begins (~1.0 → 1.1 over the first ~0.8s, spring) with a whoosh, then eases
+  // back to normal framing while the split slides in. Face openers only.
+  const introPunch = spring({ frame, fps, config: { stiffness: 60, damping: 15 }, durationInFrames: 30 });
+  const introZoom = spec.animHook ? 1 : 1 + 0.1 * introPunch * interpolate(frame, [seamStart, seamEnd], [1, 0], CLAMP);
 
   // seam keyframes: hook (face OR full animation) → split → [full-anim spans]
   // → split → CTA (face). Two rules stop the reframe from flickering ("full →
@@ -107,7 +113,9 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
         {/* BOTTOM — talking head; grows to full screen when seamY → 0. Min height
             1px keeps the video mounted during full-anim spans so the VO plays on. */}
         <div style={{ position: "absolute", top: seamY, left: 0, width: 1080, height: Math.max(1920 - seamY, 1), overflow: "hidden" }}>
-          <VerticalStage source={spec.source} from={spec.from} />
+          <AbsoluteFill style={{ transform: `scale(${introZoom})`, transformOrigin: "50% 30%" }}>
+            <VerticalStage source={spec.source} from={spec.from} />
+          </AbsoluteFill>
         </div>
 
         {/* TOP — animated beat scenes; slides in for the split, zooms up when
@@ -158,6 +166,8 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
         {spec.music && (
           <MusicBed src={staticFile(spec.music)} from={0} durationInFrames={dur} volume={0.05} fadeInFrames={20} fadeOutFrames={40} />
         )}
+        {/* opening punch-in whoosh — fires with the zoom as the video begins */}
+        {!spec.animHook && <SfxCue from={1} src={SFX.whoosh} volume={0.45} rate={1.12} />}
         {/* hook: typewriter clicks under the word-slam (max 6 words) */}
         {spec.hook.split(" ").slice(0, 6).map((_, i) => (
           <SfxCue key={`hk-${i}`} from={3 + i * 3} src={SFX.click} volume={0.32} />

@@ -395,7 +395,11 @@ Shorts use even STRONGER cartoon/action animation than long-form:
 - **Every short OPENS on the FACE** (Kris's call, July 2026): the hook +
   context line sit over the full-shot presenter for ~3.2s (`hookHold = 96`),
   then the split slides in — the layout is always either full shot or split
-  screen at the open, never an animation cold-open. `animHook: true` is an
+  screen at the open, never an animation cold-open. **The opener PUNCHES IN
+  with a sound** (rule): the face zooms ~1.0 → 1.1 over the first ~0.8s
+  (spring, origin on the face) with a whoosh at frame ~1, easing back to
+  normal framing as the split arrives — built into VerticalShort, never
+  remove it. `animHook: true` is an
   opt-in exception for when the first beat's gag IS the hook. Keep a beat at
   frame ~8 so the panel is populated the moment the split arrives. **Layout
   changes must DWELL**: the split view shows for ≥ ~3s or not at all —
