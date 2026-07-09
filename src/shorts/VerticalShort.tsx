@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, getRemotionEnvironment, interpolate, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, Easing, getRemotionEnvironment, interpolate, Sequence, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { ShortSpec } from "./types";
 import { ThemeProvider } from "../theme";
 import { VerticalStage } from "./VerticalStage";
@@ -38,18 +38,23 @@ const SafeZones: React.FC = () => {
 };
 
 export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean }> = ({ spec, showSafeZones = false }) => {
-  const { durationInFrames: dur, fps } = useVideoConfig();
+  const { durationInFrames: dur } = useVideoConfig();
   const frame = useCurrentFrame();
 
   const hookHold = 96; // ~3.2s — the full-screen opening needs room to breathe (2.2s was too quick)
   const seamStart = hookHold - 16;
   const seamEnd = hookHold + 4;
 
-  // OPENING PUNCH-IN (rule, CLAUDE.md §9): the face zooms in as the video
-  // begins (~1.0 → 1.22 over the first ~0.8s, spring) with a whoosh, then
-  // eases back to normal framing while the split slides in. Face openers only.
-  const introPunch = spring({ frame, fps, config: { stiffness: 60, damping: 15 }, durationInFrames: 30 });
-  const introZoom = spec.animHook ? 1 : 1 + 0.22 * introPunch * interpolate(frame, [seamStart, seamEnd], [1, 0], CLAMP);
+  // OPENING PUSH-IN (rule, CLAUDE.md §9): the video begins at the WIDEST
+  // framing and drifts in gently across the whole hook (1.0 → ~1.08, easing
+  // out) with a whoosh at frame 1, then releases back to normal framing while
+  // the split slides in. SUBTLE — the base cover-crop is already tight on the
+  // face, so anything past ~1.1 reads "too zoomed in". Face openers only.
+  const introZoom = spec.animHook
+    ? 1
+    : 1 +
+      interpolate(frame, [0, seamStart], [0, 0.08], { ...CLAMP, easing: Easing.out(Easing.cubic) }) *
+        interpolate(frame, [seamStart, seamEnd], [1, 0], CLAMP);
 
   // seam keyframes: hook (face OR full animation) → split → [full-anim spans]
   // → split → CTA (face). Two rules stop the reframe from flickering ("full →
