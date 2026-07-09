@@ -596,8 +596,9 @@ integrate only assets that improve the video.**
   solid rectangles as machinery, 3px flat borders. Panels get a PREMIUM finish:
   glass gradient fill + thin (2px) alpha border + inner top highlight + soft
   colour glow; props get texture (hazard stripes, bezels, pivots); sticker
-  tilts cap at ~±3°. Prefer the tech objects (ModelBlock, meters, racks) over
-  oversized icons for hero moments.
+  tilts cap at ~±3°. Big icons NEVER float bare — seat them on a glass
+  app-tile (rounded glass panel, accent glow). Prefer the tech objects
+  (ModelBlock, meters, racks) over oversized icons for hero moments.
 - Diagrams with too many tiny labels; source text unreadable on mobile.
 - The same layout or mode in consecutive scenes.
 

@@ -459,16 +459,20 @@ const CheckBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
   const float = Math.sin(frame * 0.07) * 8;
   const obj = beat.obj ?? "gauge";
   const icon =
-    obj === "clock" ? <IconClock size={230} /> :
-    obj === "shield" ? <IconGuard size={230} /> :
-    obj === "coin" ? <IconPrice size={230} /> :
-    obj === "bug" ? <IconBug size={230} /> :
-    obj === "brain" ? <IconBrain size={230} /> :
-    <IconGauge size={230} />;
+    obj === "clock" ? <IconClock size={185} /> :
+    obj === "shield" ? <IconGuard size={185} /> :
+    obj === "coin" ? <IconPrice size={185} /> :
+    obj === "bug" ? <IconBug size={185} /> :
+    obj === "brain" ? <IconBrain size={185} /> :
+    <IconGauge size={185} />;
+  const tileColor = beat.verdict === "cross" ? RED : beat.verdict === "warn" ? AMBER : beat.verdict === "check" ? GREEN : CYAN;
   return (
     <Wrap gap={40}>
       <div style={{ display: "flex", alignItems: "center", gap: 30, transform: `translateY(${float}px)` }}>
-        <div style={{ transform: `scale(${interpolate(enter, [0, 1], [0.3, 1]) * react})` }}>{icon}</div>
+        {/* the icon sits on a glass app-tile — big icons never float bare */}
+        <div style={{ width: 270, height: 270, borderRadius: 48, display: "flex", alignItems: "center", justifyContent: "center", ...glassCard(tileColor), transform: `scale(${interpolate(enter, [0, 1], [0.3, 1]) * react})` }}>
+          {icon}
+        </div>
         {beat.verdict ? <Verdict kind={beat.verdict} at={stampAt} size={130} /> : null}
       </div>
       {beat.labels ? (

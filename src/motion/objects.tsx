@@ -103,8 +103,17 @@ export const TokenCoin: React.FC<{ at: number; fallH?: number; size?: number; de
   return (
     <div style={{ transform: `translateY(${y}px) scale(1, ${squash})`, opacity: op }}>
       <svg width={size} height={size} viewBox="0 0 60 60">
-        <circle cx={30} cy={30} r={26} fill="#173226" stroke={GREEN} strokeWidth={5} />
-        <text x={30} y={40} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={28} fill={GREEN}>¢</text>
+        <defs>
+          <radialGradient id="coinGlass" cx="35%" cy="28%" r="80%">
+            <stop offset="0%" stopColor="#2c5f48" />
+            <stop offset="100%" stopColor="#0f231a" />
+          </radialGradient>
+        </defs>
+        <circle cx={30} cy={30} r={26} fill="url(#coinGlass)" stroke={`${GREEN}CC`} strokeWidth={3} />
+        <circle cx={30} cy={30} r={20} fill="none" stroke="rgba(255,255,255,0.14)" strokeWidth={2} />
+        {/* rim shine */}
+        <path d="M 12 20 A 22 22 0 0 1 24 8" stroke="rgba(255,255,255,0.35)" strokeWidth={2.5} fill="none" strokeLinecap="round" />
+        <text x={30} y={40} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={26} fill={GREEN}>¢</text>
       </svg>
     </div>
   );
