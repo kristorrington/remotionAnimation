@@ -396,8 +396,11 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   spec, with a scene-setting beat at frame ~8 (it may precede its spoken
   anchor) so the screen is never empty under the hook. The opening holds
   **~3.2s** (`hookHold = 96` in VerticalShort) — enough to read hook + context;
-  never cut it shorter. First `fullscreen` span starts ≥ ~1.5s after the hook
-  settles (`from ≥ ~145`) so the face never blips in-and-out.
+  never cut it shorter. **Layout changes must DWELL**: the split view shows
+  for ≥ ~3s or not at all — VerticalShort merges `fullscreen` spans closer
+  than 90f and runs the opening full-screen phase straight into a first span
+  that starts < 90f after the hook settles. Never design a full → split →
+  full bounce shorter than 3s.
 - **Cold-viewer context is mandatory** when the short names a product/model/
   event the hook doesn't explain: `ShortSpec.context` — ONE unboxed, dim,
   sentence-case line under the hook (≤ ~45 chars, single line), e.g.

@@ -73,11 +73,13 @@ platform-UI safe zones (preview-only; can never render).
   (VO keeps playing — the video stays mounted at 1px), captions drop to y≈1560,
   the lower-third auto-defers past overlapping spans, and a whoosh fires on each
   boundary. Use for reveals, punchlines, big numbers, quick-fire runs, payoffs.
-  Constraints: sorted + non-overlapping, `from ≥ ~112` (leave the split ~1.5s
-  after the hook settles so the face never blips), `to ≤ dur − 120` (touching
-  the CTA window collides with its seam keyframes), ≥ 24f between spans.
-  VerticalShort now nudges colliding keyframes by a frame instead of crashing,
-  but respect the constraints — a nudge means the layout is fighting itself.
+  Constraints: sorted + non-overlapping, `to ≤ dur − 120` (touching the CTA
+  window collides with its seam keyframes). **The split must dwell ≥ ~3s**:
+  VerticalShort auto-merges spans closer than 90f, and with `animHook` a first
+  span starting < 90f after the hook settles extends the opening full-screen
+  phase straight through it — the face never blips in for under 3s. Colliding
+  keyframes get nudged a frame instead of crashing, but respect the
+  constraints — a merge/nudge means the layout was fighting itself.
 - **Text never covers the face:** captions on the chest, emphasis pops in the top
   band, hook over the hairline, CTA in the lower third.
 - **Retention furniture:** `TopBar` (progress bar + the `topic` question banner

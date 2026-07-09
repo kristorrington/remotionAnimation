@@ -46,16 +46,38 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
   const seamEnd = hookHold + 4;
 
   // seam keyframes: hook (face OR full animation) → split → [full-anim spans]
-  // → split → CTA (face). pushKey keeps the input range STRICTLY increasing —
-  // a span that touches the CTA window (or another keyframe) gets nudged by a
-  // frame instead of crashing interpolate().
-  const spans = spec.fullscreen ?? [];
-  const seamIn: number[] = [0, seamStart, seamEnd];
-  const seamOut: number[] = spec.animHook ? [FULL_H, FULL_H, ANIM_H] : [0, 0, ANIM_H];
+  // → split → CTA (face). Two rules stop the reframe from flickering ("full →
+  // split → full way too quick"):
+  //   1. spans closer together than MIN_SPLIT MERGE — the split view must
+  //      dwell ≥ ~3s or it reads as a glitchy bounce, so it doesn't appear;
+  //   2. with animHook, a first span starting < MIN_SPLIT after the hook
+  //      settles merges INTO the opening full-screen phase (no face blip).
+  // pushKey keeps the input range STRICTLY increasing (nudges collisions).
+  const MIN_SPLIT = 90; // ~3s — minimum dwell for the split layout
+  const sorted = (spec.fullscreen ?? []).slice().sort((a, b) => a.from - b.from);
+  const spans: { from: number; to: number }[] = [];
+  for (const s of sorted) {
+    const last = spans[spans.length - 1];
+    if (last && s.from - last.to < MIN_SPLIT) last.to = Math.max(last.to, s.to);
+    else spans.push({ ...s });
+  }
+  let hookFullTo: number | null = null; // set = hook runs full-screen straight into span 0
+  if (spec.animHook && spans.length > 0 && spans[0].from - seamEnd < MIN_SPLIT) {
+    hookFullTo = spans[0].to;
+    spans.shift();
+  }
+  const seamIn: number[] = [0, seamStart];
+  const seamOut: number[] = spec.animHook ? [FULL_H, FULL_H] : [0, 0];
   const pushKey = (t: number, v: number) => {
     seamIn.push(Math.max(t, seamIn[seamIn.length - 1] + 1));
     seamOut.push(v);
   };
+  if (hookFullTo !== null) {
+    pushKey(hookFullTo, FULL_H);
+    pushKey(hookFullTo + 12, ANIM_H);
+  } else {
+    pushKey(seamEnd, ANIM_H);
+  }
   for (const s of spans) {
     pushKey(s.from - 12, ANIM_H);
     pushKey(s.from, FULL_H);
@@ -68,8 +90,8 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
   const seamY = interpolate(frame, seamIn, seamOut, CLAMP);
   const animOpacity = interpolate(seamY, [30, 260], [0, 1], CLAMP);
 
-  // identity strip: dodge full-anim spans (it is designed to sit over the set wall)
-  let lowerThirdFrom = seamEnd + 6;
+  // identity strip: dodge full-anim phases (it sits over the set wall)
+  let lowerThirdFrom = hookFullTo !== null ? hookFullTo + 18 : seamEnd + 6;
   for (const s of spans) {
     if (lowerThirdFrom + 150 > s.from - 12 && lowerThirdFrom < s.to + 12) lowerThirdFrom = s.to + 18;
   }
@@ -136,7 +158,11 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
           <SfxCue key={`hk-${i}`} from={3 + i * 3} src={SFX.click} volume={0.32} />
         ))}
         {/* whoosh on every reframe (hook→split, split↔full-anim, →CTA) */}
-        <SfxCue from={seamStart + 6} src={SFX.whoosh} volume={0.4} />
+        {hookFullTo === null ? (
+          <SfxCue from={seamStart + 6} src={SFX.whoosh} volume={0.4} />
+        ) : (
+          <SfxCue from={hookFullTo} src={SFX.whoosh} volume={0.4} />
+        )}
         <SfxCue from={dur - 98} src={SFX.whoosh} volume={0.4} />
         {spans.map((s) => (
           <React.Fragment key={`fs-${s.from}`}>
