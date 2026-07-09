@@ -66,6 +66,11 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
     hookFullTo = spans[0].to;
     spans.shift();
   }
+  // face-first shorts (the house default): the split after the hook must also
+  // dwell — a first span starting sooner gets pushed out to seamEnd + MIN_SPLIT
+  if (!spec.animHook && spans.length > 0 && spans[0].from - seamEnd < MIN_SPLIT) {
+    spans[0] = { from: seamEnd + MIN_SPLIT, to: Math.max(spans[0].to, seamEnd + MIN_SPLIT + 30) };
+  }
   const seamIn: number[] = [0, seamStart];
   const seamOut: number[] = spec.animHook ? [FULL_H, FULL_H] : [0, 0];
   const pushKey = (t: number, v: number) => {

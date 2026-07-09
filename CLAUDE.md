@@ -392,15 +392,18 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   visual punchline. NOT like: cropped long-form slides · talking head under a
   title card · text-heavy presentation clips · title/subtitle/icon templates.
 - Final beat = a payoff or a **loop back to the hook** (loops = free replays).
-- **Every short OPENS on full-screen animation**: `animHook: true` on EVERY
-  spec, with a scene-setting beat at frame ~8 (it may precede its spoken
-  anchor) so the screen is never empty under the hook. The opening holds
-  **~3.2s** (`hookHold = 96` in VerticalShort) — enough to read hook + context;
-  never cut it shorter. **Layout changes must DWELL**: the split view shows
-  for ≥ ~3s or not at all — VerticalShort merges `fullscreen` spans closer
-  than 90f and runs the opening full-screen phase straight into a first span
-  that starts < 90f after the hook settles. Never design a full → split →
-  full bounce shorter than 3s.
+- **Every short OPENS on the FACE** (Kris's call, July 2026): the hook +
+  context line sit over the full-shot presenter for ~3.2s (`hookHold = 96`),
+  then the split slides in — the layout is always either full shot or split
+  screen at the open, never an animation cold-open. `animHook: true` is an
+  opt-in exception for when the first beat's gag IS the hook. Keep a beat at
+  frame ~8 so the panel is populated the moment the split arrives. **Layout
+  changes must DWELL**: the split view shows for ≥ ~3s or not at all —
+  VerticalShort merges `fullscreen` spans closer than 90f, pushes a first
+  span that starts < 90f after the split settles (face-first default), and
+  with animHook runs the opening phase straight into an early first span.
+  Never design a full → split → full bounce shorter than 3s; first
+  `fullscreen` span starts ≥ ~190.
 - **Cold-viewer context is mandatory** when the short names a product/model/
   event the hook doesn't explain: `ShortSpec.context` — ONE unboxed, dim,
   sentence-case line under the hook (≤ ~45 chars, single line), e.g.

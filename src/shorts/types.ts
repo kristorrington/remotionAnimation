@@ -91,11 +91,12 @@ export type ShortSpec = {
   // spans closer than 90f, and a first span starting < 90f after the hook
   // settles extends the opening full-screen phase instead (no face blip).
   fullscreen?: { from: number; to: number }[];
-  // Animation-first hook: the short OPENS on full-screen animation (under the
-  // HookTitle) instead of the full-screen face. HOUSE DEFAULT: set this on
-  // EVERY short (big action in the first second beats a face fading in).
-  // Requires a beat at/near frame ~8 so the screen is never empty; that beat
-  // is scene-setting and may precede its spoken anchor.
+  // Animation-first hook (opt-in EXCEPTION): open on full-screen animation
+  // instead of the face. HOUSE DEFAULT is the FACE opener — every short
+  // starts on the presenter (full shot, hook + context over it) and the
+  // animation arrives with the split. Use animHook only when the first
+  // beat's gag IS the hook. Either way keep a beat at frame ~8 so the panel
+  // is populated the moment it appears.
   animHook?: boolean;
   // A/B hook test: registers a second composition (`<id>-B`) identical except
   // for this hook line. Render both, post both, keep the winner.

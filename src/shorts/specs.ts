@@ -24,7 +24,6 @@ export const SHORTS: ShortSpec[] = [
     hook: "YOUR FREE AI EXPIRES SOON",
     hookAlt: "FABLE 5 GOES PAID JULY 12", // A/B variant → Short-PriceReal-B
     context: "Fable 5 free access ends July 12",
-    animHook: true,
     beats: [
       { at: 8, scene: "coins", tint: "#F59E0B", text: "THE PRICE GETS REAL" }, // scene-setting under the hook; "price gets very real" abs 645
       { at: 73, scene: "check", obj: "coin", verdict: "warn", tint: "#EF4444", text: "$10 / M INPUT" }, // "$10 per million input" abs 692
@@ -36,7 +35,7 @@ export const SHORTS: ShortSpec[] = [
       { at: 751, scene: "check", obj: "clock", verdict: "warn", tint: "#F59E0B", text: "AFTER JULY 12" }, // "after July 12th" abs 1370
     ],
     // full-anim: the $50 shock + the don't-waste-it payoff
-    fullscreen: [{ from: 150, to: 300 }, { from: 640, to: 780 }],
+    fullscreen: [{ from: 190, to: 300 }, { from: 640, to: 780 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
   },
@@ -50,7 +49,6 @@ export const SHORTS: ShortSpec[] = [
     topic: "FABLE 5'S WEIRD LAUNCH",
     hook: "THE MESSIEST AI LAUNCH YET",
     context: "Fable 5 = Claude's new top model",
-    animHook: true,
     beats: [
       { at: 8, scene: "emote", pose: "confused", tint: "#06B6D4", text: "A MESSY LAUNCH" }, // scene-setting under the hook; "timing is messy" abs 3920
       { at: 154, scene: "bolt", trails: true, blockLabel: "FABLE 5", moduleLabel: "LAUNCH", tint: "#34D399", text: "LAUNCHED" }, // "it launched" abs 4025
@@ -64,7 +62,7 @@ export const SHORTS: ShortSpec[] = [
       { at: 1284, scene: "check", obj: "brain", verdict: "check", tint: "#34D399", text: "BLOCKS 99%" }, // "over 99% of cases" abs 5155
     ],
     // full-anim: the four-act drama run + the safety-layer reveal
-    fullscreen: [{ from: 154, to: 330 }, { from: 1180, to: 1309 }],
+    fullscreen: [{ from: 190, to: 330 }, { from: 1180, to: 1309 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
   },
@@ -78,7 +76,6 @@ export const SHORTS: ShortSpec[] = [
     topic: "IS IT EVEN FABLE 5?",
     hook: "YOUR AI CAN BE SWAPPED",
     context: "Anthropic can reroute risky Fable 5 requests",
-    animHook: true,
     beats: [
       { at: 8, scene: "stack", tint: "#F59E0B", text: "DON'T BUILD ON IT" }, // scene-setting under the hook; "blindly build" abs 6472
       { at: 139, scene: "check", obj: "shield", verdict: "warn", labels: ["SECURITY", "COMPLIANCE", "CODE"], tint: "#06B6D4", text: "HIGH-STAKES WORK?" }, // "security, compliance…" abs 6574
@@ -103,7 +100,6 @@ export const SHORTS: ShortSpec[] = [
     topic: "USE FABLE 5 RIGHT",
     hook: "STOP WASTING YOUR FREE AI",
     context: "Free Fable 5 access ends July 12",
-    animHook: true,
     beats: [
       { at: 8, scene: "check", obj: "clock", verdict: "warn", tint: "#F59E0B", text: "TIMER FOMO?" }, // scene-setting under the hook; "timer is running out" abs 7940
       { at: 102, scene: "coins", tint: "#EF4444", text: "A WASTED WINDOW" }, // "waste the free window" abs 8003
@@ -129,7 +125,6 @@ export const SHORTS: ShortSpec[] = [
     topic: "FREE FABLE 5: THE RULES",
     hook: "YOUR FREE AI HAS RULES",
     context: "Fable 5 is free on paid plans until July 12",
-    animHook: true,
     beats: [
       { at: 8, scene: "battery", value: 100, tint: "#34D399", text: "THE FREE WINDOW" }, // scene-setting; "promo window" abs 1899
       { at: 89, scene: "battery", value: 50, tint: "#F59E0B", text: "50% OF WEEKLY LIMITS" }, // "50% of your weekly plan limits" abs 1988
@@ -142,7 +137,7 @@ export const SHORTS: ShortSpec[] = [
       { at: 955, scene: "hourglass", tint: "#F59E0B", text: "IT JUST MOVED 5 DAYS", emoji: "⏳" }, // "only moved five days away" abs 2849
     ],
     // full-anim: the battery drain + the breaker trip
-    fullscreen: [{ from: 150, to: 296 }, { from: 320, to: 460 }],
+    fullscreen: [{ from: 190, to: 460 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
   },
@@ -156,7 +151,6 @@ export const SHORTS: ShortSpec[] = [
     topic: "WHEN DOES IT COME BACK?",
     hook: "DON'T TRUST SCREENSHOTS",
     context: "Waiting for Fable 5 back on normal plans?",
-    animHook: true,
     beats: [
       { at: 8, scene: "signal", tint: "#F59E0B", text: "WAITING FOR NEWS?" }, // scene-setting; "waiting for it to return" abs 8877
       { at: 85, scene: "emote", pose: "pointing", tint: "#06B6D4", text: "WATCH THE WORDING" }, // "watch the wording" abs 8956
@@ -168,7 +162,7 @@ export const SHORTS: ShortSpec[] = [
       { at: 532, scene: "emote", pose: "alarmed", tint: "#F59E0B", text: "JUST A WINDOW" }, // "a window" abs 9400
     ],
     // full-anim: the DENIED stamp gag + the clean-signal payoff
-    fullscreen: [{ from: 150, to: 282 }, { from: 306, to: 430 }],
+    fullscreen: [{ from: 190, to: 430 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
   },
