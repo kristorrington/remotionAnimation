@@ -128,30 +128,54 @@ export const CartoonRobot: React.FC<{ pose?: RobotPose; size?: number; accent?: 
     return <path d="M90 80 Q100 86 110 80" stroke={WHITE} strokeWidth={4} fill="none" strokeLinecap="round" />;
   };
 
+  // PREMIUM finish (CLAUDE.md §12): glass-gradient shells, dark visor with
+  // glowing LED eyes, bezelled core, mitten hands, grounded contact shadow —
+  // never the flat-outline toy look. Gradient id is per-accent so multiple
+  // robots with different accents can share a frame.
+  const gid = `robo-${accent.replace(/[^a-zA-Z0-9]/g, "")}`;
+  const glowColor = pose === "alarmed" ? RED : accent;
   return (
     <svg width={size} height={size} viewBox="0 0 200 200" style={{ overflow: "visible" }}>
+      <defs>
+        <linearGradient id={gid} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#1b2438" />
+          <stop offset="100%" stopColor="#0a101d" />
+        </linearGradient>
+      </defs>
+      {/* grounded contact shadow — stays down while the body hops */}
+      <ellipse cx={100 + shake} cy={173} rx={Math.max(20, 34 - hop * 0.6)} ry={6} fill="#000" opacity={Math.max(0.16, 0.32 - hop * 0.006)} />
       <g transform={`translate(${shake} ${bob - hop}) scale(1 ${squash})`} style={{ transformOrigin: "100px 170px" }}>
-        {/* antenna */}
+        {/* antenna with a glowing tip */}
         <line x1={100} y1={30} x2={100 + antennaSway} y2={12} stroke={accent} strokeWidth={4} strokeLinecap="round" />
-        <circle cx={100 + antennaSway} cy={10} r={6} fill={pose === "alarmed" ? RED : accent}>
-        </circle>
-        {/* head */}
-        <rect x={62} y={30} width={76} height={62} rx={16} fill={PANEL} stroke={accent} strokeWidth={4} />
-        {/* eyes */}
-        <g transform={`translate(${lookX} ${lookY})`}>
-          <ellipse cx={86} cy={58} rx={8} ry={8 * eyeOpen} fill={WHITE} />
-          <ellipse cx={114} cy={58} rx={8} ry={8 * eyeOpen} fill={WHITE} />
+        <circle cx={100 + antennaSway} cy={10} r={9} fill={glowColor} opacity={0.18 + 0.14 * Math.sin(frame * 0.2)} />
+        <circle cx={100 + antennaSway} cy={10} r={5} fill={glowColor} />
+        {/* head: glass shell + dark visor screen */}
+        <rect x={62} y={30} width={76} height={62} rx={18} fill={`url(#${gid})`} stroke={accent} strokeWidth={3} />
+        <rect x={67} y={34} width={66} height={7} rx={3.5} fill="rgba(255,255,255,0.07)" />
+        <rect x={70} y={40} width={60} height={44} rx={11} fill="#060b14" stroke="rgba(255,255,255,0.09)" strokeWidth={2} />
+        {/* LED eyes inside the visor */}
+        <g transform={`translate(${lookX} ${lookY})`} style={{ filter: `drop-shadow(0 0 5px ${glowColor})` }}>
+          <rect x={80} y={58 - 8 * eyeOpen} width={11} height={16 * eyeOpen} rx={4.5} fill={glowColor} />
+          <rect x={109} y={58 - 8 * eyeOpen} width={11} height={16 * eyeOpen} rx={4.5} fill={glowColor} />
         </g>
         {mouth()}
-        {/* body */}
-        <rect x={70} y={98} width={60} height={52} rx={14} fill={PANEL} stroke={accent} strokeWidth={4} />
-        <circle cx={100} cy={122} r={9} fill={pose === "alarmed" ? RED : accent} opacity={0.5 + 0.5 * Math.sin(frame * 0.15)} />
-        {/* arms */}
-        <line x1={70} y1={110} x2={52} y2={124 - armL * 0.35} stroke={accent} strokeWidth={5} strokeLinecap="round" transform={`rotate(${-armL} 70 110)`} />
-        <line x1={130} y1={110} x2={148} y2={124 - armR * 0.35} stroke={accent} strokeWidth={5} strokeLinecap="round" transform={`rotate(${armR} 130 110)`} />
+        {/* body: glass shell + bezelled glowing core */}
+        <rect x={70} y={98} width={60} height={52} rx={15} fill={`url(#${gid})`} stroke={accent} strokeWidth={3} />
+        <rect x={74} y={101.5} width={52} height={6} rx={3} fill="rgba(255,255,255,0.06)" />
+        <circle cx={100} cy={122} r={12.5} fill="none" stroke="rgba(255,255,255,0.16)" strokeWidth={2.5} />
+        <circle cx={100} cy={122} r={8} fill={glowColor} opacity={0.55 + 0.45 * Math.sin(frame * 0.15)} style={{ filter: `drop-shadow(0 0 6px ${glowColor})` }} />
+        {/* arms with mitten hands */}
+        <g transform={`rotate(${-armL} 70 110)`}>
+          <line x1={70} y1={110} x2={52} y2={124 - armL * 0.35} stroke={accent} strokeWidth={6.5} strokeLinecap="round" />
+          <circle cx={52} cy={124 - armL * 0.35} r={5} fill={accent} />
+        </g>
+        <g transform={`rotate(${armR} 130 110)`}>
+          <line x1={130} y1={110} x2={148} y2={124 - armR * 0.35} stroke={accent} strokeWidth={6.5} strokeLinecap="round" />
+          <circle cx={148} cy={124 - armR * 0.35} r={5} fill={accent} />
+        </g>
         {/* legs */}
-        <rect x={80} y={150 - legL} width={12} height={18 + legL} rx={5} fill={PANEL} stroke={accent} strokeWidth={3.5} />
-        <rect x={108} y={150 - legR} width={12} height={18 + legR} rx={5} fill={PANEL} stroke={accent} strokeWidth={3.5} />
+        <rect x={79} y={150 - legL} width={14} height={18 + legL} rx={6} fill={`url(#${gid})`} stroke={accent} strokeWidth={3} />
+        <rect x={107} y={150 - legR} width={14} height={18 + legR} rx={6} fill={`url(#${gid})`} stroke={accent} strokeWidth={3} />
       </g>
       {pose === "sleepy" && <Zzz frame={frame} />}
       {pose === "alarmed" && <AlarmLines frame={frame} />}
