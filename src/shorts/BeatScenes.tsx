@@ -532,6 +532,219 @@ const RacksBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => (
   </Wrap>
 );
 
+// battery — the weekly allowance as a segmented battery draining to `value`%.
+const BatteryDrainBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
+  const frame = useCurrentFrame();
+  const target = beat.value ?? 50;
+  const pct = Math.round(interpolate(frame, [14, Math.min(dur * 0.55, 150)], [100, target], CLAMP));
+  const segs = 8;
+  const litFloat = (pct / 100) * segs;
+  const lit = Math.floor(litFloat);
+  const color = pct > 60 ? GREEN : pct > 35 ? AMBER : RED;
+  return (
+    <Wrap gap={56}>
+      <div style={{ position: "relative" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <div style={{ width: 430, height: 190, borderRadius: 26, padding: 14, display: "flex", gap: 10, ...glassCard(color, 2.5) }}>
+            {Array.from({ length: segs }, (_, i) => {
+              const draining = i === lit && litFloat - lit > 0.1;
+              const on = i < lit || (draining && frame % 12 < 7);
+              return <div key={i} style={{ flex: 1, borderRadius: 10, background: on ? `linear-gradient(180deg, ${color}, ${color}77)` : "rgba(255,255,255,0.07)", boxShadow: on ? `0 0 14px ${color}55` : "none" }} />;
+            })}
+          </div>
+          <div style={{ width: 22, height: 74, borderRadius: 8, background: "rgba(255,255,255,0.18)" }} />
+        </div>
+        <div style={{ position: "absolute", top: -72, left: "50%", transform: "translateX(-50%) rotate(-2deg)", borderRadius: 12, padding: "8px 24px", ...glassCard(color) }}>
+          <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 42, color: WHITE, transform: "translateZ(0)" }}>{pct}%</span>
+        </div>
+        <div style={{ position: "absolute", left: 40, right: 50, bottom: -28, height: 16, borderRadius: "50%", background: "rgba(0,0,0,0.35)", filter: "blur(6px)" }} />
+      </div>
+      <BeatLabel text={beat.text} sub={beat.sub} accent={color} />
+    </Wrap>
+  );
+};
+
+// breaker — the load meter climbs until the big switch TRIPS with sparks.
+const CircuitBreakerBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const tripAt = Math.min(Math.round(dur * 0.42), 120);
+  const level = interpolate(frame, [6, tripAt], [0.15, 0.98], CLAMP);
+  const tripped = frame >= tripAt;
+  const flip = spring({ frame: frame - tripAt, fps, config: { stiffness: 240, damping: 11 }, durationInFrames: 18 });
+  const lever = interpolate(flip, [0, 1], [-34, 34]);
+  const c = tripped ? RED : CYAN;
+  return (
+    <Wrap gap={44}>
+      <div style={{ display: "flex", alignItems: "flex-end", gap: 60 }}>
+        <CostMeterClimb level={level} height={280} label="USAGE" />
+        <div style={{ position: "relative", width: 260, height: 320, borderRadius: 26, ...glassCard(c, 2.5), display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 18 }}>
+          <div style={{ width: 16, height: 16, borderRadius: "50%", background: tripped ? RED : GREEN, boxShadow: `0 0 12px ${tripped ? RED : GREEN}` }} />
+          <div style={{ width: 78, height: 154, borderRadius: 16, background: "rgba(255,255,255,0.06)", border: "2px solid rgba(255,255,255,0.14)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ width: 32, height: 112, borderRadius: 12, background: `linear-gradient(180deg, ${c}, ${tripped ? "#7f1d1d" : "#0e7490"})`, boxShadow: `0 6px 14px rgba(0,0,0,0.5), 0 0 14px ${c}66`, transform: `rotate(${lever}deg)` }} />
+          </div>
+          <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 22, letterSpacing: 3, color: tripped ? RED : "rgba(255,255,255,0.7)", transform: "translateZ(0)" }}>{tripped ? "TRIPPED" : "ARMED"}</span>
+          <Sparks at={tripAt} x={130} y={160} color={RED} size={170} />
+        </div>
+      </div>
+      <BeatLabel text={beat.text} sub={beat.sub} accent={c} />
+    </Wrap>
+  );
+};
+
+// elevator — the model-tier lift rides to `value` (floor index in `labels`,
+// bottom → top) and the doors open on a celebrating mini robot.
+const TierElevatorBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const floors = beat.labels ?? ["HAIKU", "SONNET", "OPUS", "FABLE 5"];
+  const target = Math.min(beat.value ?? 2, floors.length - 1);
+  const floorH = 118;
+  const colors = [GREEN, CYAN, "#3B82F6", "#E8B84B"];
+  const ride = spring({ frame: frame - 20, fps, config: { stiffness: 60, damping: 16 }, durationInFrames: 40 });
+  const carFloor = interpolate(ride, [0, 1], [floors.length - 1, target]);
+  const doors = spring({ frame: frame - 58, fps, config: { stiffness: 140, damping: 15 }, durationInFrames: 22 });
+  const doorGap = interpolate(doors, [0, 1], [0, 46]);
+  const tc = colors[target % colors.length];
+  return (
+    <Wrap gap={40}>
+      <div style={{ display: "flex", gap: 30, alignItems: "flex-end" }}>
+        <div style={{ position: "relative", width: 180, height: floors.length * floorH + 22, borderRadius: 22, ...glassCard(CYAN, 2), overflow: "hidden" }}>
+          {floors.map((_, i) => (
+            <div key={i} style={{ position: "absolute", left: 10, right: 10, bottom: 12 + i * floorH, height: 2, background: "rgba(255,255,255,0.1)" }} />
+          ))}
+          <div style={{ position: "absolute", left: 14, right: 14, bottom: 14 + carFloor * floorH, height: floorH - 16, borderRadius: 14, background: "linear-gradient(180deg, rgba(30,40,62,0.98), rgba(12,18,30,0.95))", border: `2px solid ${tc}AA`, boxShadow: `0 0 18px ${tc}33`, overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <CartoonRobot pose={doors > 0.5 ? "celebrate" : "idle"} size={80} accent={tc} />
+            <div style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: `calc(50% - ${doorGap}px)`, background: "linear-gradient(180deg, #232f4a, #131c2f)", borderRight: "2px solid rgba(255,255,255,0.14)" }} />
+            <div style={{ position: "absolute", top: 0, bottom: 0, right: 0, width: `calc(50% - ${doorGap}px)`, background: "linear-gradient(180deg, #232f4a, #131c2f)", borderLeft: "2px solid rgba(255,255,255,0.14)" }} />
+          </div>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column-reverse", gap: floorH - 60, paddingBottom: 30 }}>
+          {floors.map((f, i) => (
+            <div key={f} style={{ padding: "10px 20px", borderRadius: 12, ...glassCard(i === target ? tc : "rgba(255,255,255,0.25)"), opacity: i === target ? 1 : 0.55, width: "fit-content" }}>
+              <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 24, letterSpacing: 1, color: WHITE, transform: "translateZ(0)" }}>{f}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <BeatLabel text={beat.text} sub={beat.sub} accent={tc} />
+    </Wrap>
+  );
+};
+
+// hourglass — the deadline as coin-sand; it FLIPS (the date moved), and after
+// the flip grains leak from a crack (the pressure didn't stop).
+const HourglassBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const flipAt = Math.min(Math.round(dur * 0.38), 110);
+  const flip = spring({ frame: frame - flipAt, fps, config: { stiffness: 110, damping: 14 }, durationInFrames: 30 });
+  const rot = interpolate(flip, [0, 1], [0, 180]);
+  const topFill = interpolate(frame, [0, dur], [0.8, 0.3], CLAMP);
+  const leak = frame >= flipAt + 24;
+  return (
+    <Wrap gap={50}>
+      <div style={{ position: "relative" }}>
+        <div style={{ transform: `rotate(${rot}deg)` }}>
+          <svg width={300} height={380} viewBox="0 0 150 190" style={{ overflow: "visible" }}>
+            {GLASS_DEFS}
+            <rect x={18} y={2} width={114} height={15} rx={7.5} fill="url(#beatGlass)" stroke={`${AMBER}AA`} strokeWidth={2} />
+            <rect x={18} y={173} width={114} height={15} rx={7.5} fill="url(#beatGlass)" stroke={`${AMBER}AA`} strokeWidth={2} />
+            <path d="M35 18 H115 L82 92 V98 L115 172 H35 L68 98 V92 Z" fill="rgba(160,200,255,0.07)" stroke="rgba(255,255,255,0.28)" strokeWidth={2.5} />
+            <path d={`M${75 - 34 * topFill} ${88 - 58 * topFill} h${68 * topFill} L78 90 h-6 Z`} fill={AMBER} opacity={0.85} />
+            <line x1={75} y1={94} x2={75} y2={152} stroke={AMBER} strokeWidth={4} strokeDasharray="6 7" strokeDashoffset={-frame * 2.2} opacity={0.9} />
+            <path d={`M${75 - 40 * (1 - topFill)} 168 Q75 ${168 - 46 * (1 - topFill)} ${75 + 40 * (1 - topFill)} 168 Z`} fill={AMBER} opacity={0.9} />
+          </svg>
+        </div>
+        {leak && [0, 1, 2].map((i) => {
+          const lt = ((frame - flipAt) * 0.02 + i * 0.33) % 1;
+          return <div key={i} style={{ position: "absolute", right: -6 - lt * 64, top: 188 + lt * 92, width: 9, height: 9, borderRadius: "50%", background: AMBER, opacity: (1 - lt) * 0.9 }} />;
+        })}
+        {leak && <div style={{ position: "absolute", right: 24, top: 196, width: 32, height: 3, background: "rgba(255,255,255,0.35)", transform: "rotate(24deg)" }} />}
+        <div style={{ position: "absolute", left: 30, right: 30, bottom: -26, height: 16, borderRadius: "50%", background: "rgba(0,0,0,0.35)", filter: "blur(6px)" }} />
+      </div>
+      <BeatLabel text={beat.text} sub={beat.sub} accent={AMBER} />
+    </Wrap>
+  );
+};
+
+// stamp — a card rides in, the hazard-striped arm SLAMS an APPROVED/DENIED
+// imprint (`verdict`: check = approved, cross = denied; `badge` = card label).
+const StampArmBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const ok = beat.verdict !== "cross";
+  const color = ok ? GREEN : RED;
+  const slideIn = spring({ frame: frame - 4, fps, config: { stiffness: 90, damping: 16 }, durationInFrames: 26 });
+  const cardX = interpolate(slideIn, [0, 1], [-420, 0]);
+  const stampAt = 40;
+  const slam = spring({ frame: frame - stampAt, fps, config: { stiffness: 320, damping: 13 }, durationInFrames: 14 });
+  const armY = frame < stampAt ? -120 : interpolate(slam, [0, 0.5, 1], [-120, 0, -64]);
+  const stamped = frame >= stampAt + 6;
+  const wob = stamped ? Math.sin((frame - stampAt) * 0.8) * Math.max(0, 1 - (frame - stampAt) / 16) * 4 : 0;
+  return (
+    <Wrap gap={46}>
+      <div style={{ position: "relative", width: 760, height: 430 }}>
+        <div style={{ position: "absolute", left: 330, top: 0, transform: `translateY(${armY}px)` }}>
+          <div style={{ width: 26, height: 150, margin: "0 auto", borderRadius: 10, background: "repeating-linear-gradient(45deg, #2a3550 0 10px, #1a2338 10px 20px)", border: "2px solid rgba(255,255,255,0.15)" }} />
+          <div style={{ width: 132, height: 56, borderRadius: 14, ...glassCard(color, 2.5), display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 20, letterSpacing: 2, color, transform: "translateZ(0)" }}>STAMP</span>
+          </div>
+        </div>
+        <div style={{ position: "absolute", left: 40, right: 40, top: 336 }}>
+          <ConveyorBelt width={680} speed={stamped ? 0.6 : 3} color={color} />
+        </div>
+        <div style={{ position: "absolute", left: 240 + cardX, top: 240, transform: `rotate(${wob}deg)` }}>
+          <div style={{ width: 300, padding: "22px 24px", borderRadius: 14, ...glassCard("rgba(255,255,255,0.3)"), textAlign: "center", position: "relative" }}>
+            <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 26, color: WHITE, transform: "translateZ(0)" }}>{beat.badge ?? "REQUEST"}</span>
+            {stamped && (
+              <div style={{ position: "absolute", left: "50%", top: -52, transform: `translateX(-50%) rotate(-8deg) scale(${interpolate(slam, [0.5, 1], [1.6, 1])})`, padding: "6px 18px", border: `4px solid ${color}`, borderRadius: 10, background: "rgba(6,9,16,0.5)", boxShadow: `0 0 22px ${color}66` }}>
+                <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 30, letterSpacing: 2, color, transform: "translateZ(0)" }}>{ok ? "APPROVED" : "DENIED"}</span>
+              </div>
+            )}
+          </div>
+        </div>
+        <Sparks at={stampAt + 4} x={395} y={286} color={color} size={150} />
+      </div>
+      <BeatLabel text={beat.text} sub={beat.sub} accent={color} />
+    </Wrap>
+  );
+};
+
+// signal — the status tower: static + jittery amber rings while waiting; with
+// `verdict: "check"` it broadcasts clean green pulses (the REAL signal).
+const SignalTowerBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
+  const frame = useCurrentFrame();
+  const clean = beat.verdict === "check";
+  const color = clean ? GREEN : AMBER;
+  const jitter = clean ? 0 : Math.sin(frame * 1.7) * 2.5;
+  return (
+    <Wrap gap={46}>
+      <div style={{ position: "relative", width: 460, height: 430 }}>
+        {[0, 1, 2].map((i) => {
+          const t = (frame * 0.016 + i / 3) % 1;
+          const r = 40 + t * 185;
+          return <div key={i} style={{ position: "absolute", left: 230 - r + jitter * (i + 1), top: 120 - r, width: r * 2, height: r * 2, borderRadius: "50%", border: `3px solid ${color}`, opacity: (1 - t) * (clean ? 0.75 : 0.4) }} />;
+        })}
+        {!clean && [0, 1, 2, 3].map((i) => (
+          <div key={i} style={{ position: "absolute", left: 120 + ((frame * (7 + i * 3)) % 220), top: 46 + i * 50, width: 42 + (i % 2) * 26, height: 4, borderRadius: 2, background: RED, opacity: 0.3 + 0.3 * Math.sin(frame * 0.9 + i) }} />
+        ))}
+        <svg width={460} height={430} viewBox="0 0 460 430" style={{ overflow: "visible", position: "absolute", left: 0, top: 0 }}>
+          {GLASS_DEFS}
+          <polygon points="230,96 196,404 264,404" fill="url(#beatGlass)" stroke="rgba(255,255,255,0.22)" strokeWidth={2.5} />
+          {[180, 255, 330].map((y) => (
+            <line key={y} x1={230 - (y - 96) * 0.11 - 6} y1={y} x2={230 + (y - 96) * 0.11 + 6} y2={y} stroke="rgba(255,255,255,0.18)" strokeWidth={3} />
+          ))}
+          <circle cx={230} cy={96} r={13} fill={color} style={{ filter: `drop-shadow(0 0 10px ${color})` }} opacity={0.5 + 0.5 * Math.sin(frame * (clean ? 0.18 : 0.7))} />
+        </svg>
+        <div style={{ position: "absolute", left: 150, right: 150, bottom: 6, height: 16, borderRadius: "50%", background: "rgba(0,0,0,0.35)", filter: "blur(6px)" }} />
+        {clean && <div style={{ position: "absolute", left: "50%", top: 26, transform: "translateX(-50%)" }}><Verdict kind="check" at={16} size={84} /></div>}
+      </div>
+      <BeatLabel text={beat.text} sub={beat.sub} accent={color} />
+    </Wrap>
+  );
+};
+
 // Meme punch: ONE oversized emoji pops with the beat (animated-meme energy).
 const EmojiPop: React.FC<{ emoji: string }> = ({ emoji }) => {
   const frame = useCurrentFrame();
@@ -564,6 +777,12 @@ export const BeatSceneView: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur
       case "check": return <CheckBeat beat={beat} dur={dur} />;
       case "race": return <RaceBeat beat={beat} dur={dur} />;
       case "racks": return <RacksBeat beat={beat} dur={dur} />;
+      case "battery": return <BatteryDrainBeat beat={beat} dur={dur} />;
+      case "breaker": return <CircuitBreakerBeat beat={beat} dur={dur} />;
+      case "elevator": return <TierElevatorBeat beat={beat} />;
+      case "hourglass": return <HourglassBeat beat={beat} dur={dur} />;
+      case "stamp": return <StampArmBeat beat={beat} />;
+      case "signal": return <SignalTowerBeat beat={beat} />;
       default: return null;
     }
   };

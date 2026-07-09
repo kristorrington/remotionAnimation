@@ -119,5 +119,58 @@ export const SHORTS: ShortSpec[] = [
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
   },
+  {
+    id: "Short-FreeWindow",
+    label: "The free-window rules: 50% battery, breaker trips July 12, pressure only moved",
+    source: "talking-head.mp4",
+    from: 1899, // "During the promo window, you can use Fable 5…" (1:03.3)
+    // LOOP: ends on "…has not promised a third extension." (abs 3003) → replays into the rules.
+    durationInFrames: 1119, // ~37s
+    topic: "FREE FABLE 5: THE RULES",
+    hook: "YOUR FREE AI HAS RULES",
+    context: "Fable 5 is free on paid plans until July 12",
+    animHook: true,
+    beats: [
+      { at: 8, scene: "battery", value: 100, tint: "#34D399", text: "THE FREE WINDOW" }, // scene-setting; "promo window" abs 1899
+      { at: 89, scene: "battery", value: 50, tint: "#F59E0B", text: "50% OF WEEKLY LIMITS" }, // "50% of your weekly plan limits" abs 1988
+      { at: 147, scene: "stamp", verdict: "check", badge: "FABLE 5 ACCESS", tint: "#34D399", text: "NOTHING TO CLAIM" }, // "nothing special to claim" abs 2046 (stamp slams on "claim" abs 2086)
+      { at: 209, scene: "emote", pose: "pointing", tint: "#06B6D4", text: "JUST PICK IT" }, // "just select fable 5" abs 2108
+      { at: 320, scene: "breaker", tint: "#EF4444", text: "THEN THE PROMO ENDS" }, // "once the promo ends" abs 2219 (trips on "no longer part" abs ~2326)
+      { at: 575, scene: "coins", tint: "#F59E0B", text: "CREDIT TERRITORY" }, // "usage credits" abs 2474
+      { at: 659, scene: "elevator", value: 2, tint: "#06B6D4", text: "OR RIDE A TIER DOWN" }, // "switch back to another Claude model" abs 2558
+      { at: 845, scene: "emote", pose: "shrug", tint: "#34D399", text: "PRESSURE'S GONE?" }, // "think the pressure is gone" abs 2749
+      { at: 955, scene: "hourglass", tint: "#F59E0B", text: "IT JUST MOVED 5 DAYS", emoji: "⏳" }, // "only moved five days away" abs 2849
+    ],
+    // full-anim: the battery drain + the breaker trip
+    fullscreen: [{ from: 150, to: 296 }, { from: 320, to: 460 }],
+    outro: "FOLLOW FOR MORE",
+    music: "music/tension.MP3",
+  },
+  {
+    id: "Short-TheSignal",
+    label: "Don't trust screenshots — the signal tower only goes green on official wording",
+    source: "talking-head.mp4",
+    from: 8871, // "And if you're waiting for it to return to the normal plans…" (4:55.7)
+    // LOOP: ends on "…use Fable 5 where it gives you leverage." (abs 9572) → replays into the wait.
+    durationInFrames: 716, // ~24s
+    topic: "WHEN DOES IT COME BACK?",
+    hook: "DON'T TRUST SCREENSHOTS",
+    context: "Waiting for Fable 5 back on normal plans?",
+    animHook: true,
+    beats: [
+      { at: 8, scene: "signal", tint: "#F59E0B", text: "WAITING FOR NEWS?" }, // scene-setting; "waiting for it to return" abs 8877
+      { at: 85, scene: "emote", pose: "pointing", tint: "#06B6D4", text: "WATCH THE WORDING" }, // "watch the wording" abs 8956
+      { at: 140, scene: "stamp", verdict: "cross", badge: "RANDOM SCREENSHOT", tint: "#EF4444", text: "NOT SCREENSHOTS" }, // "random screenshots" abs 9011 (DENIED slams abs ~9051)
+      { at: 264, scene: "check", obj: "shield", verdict: "check", tint: "#34D399", text: "OFFICIAL + A REAL DATE" }, // "standard plans are a real date" abs 9128
+      { at: 306, scene: "signal", verdict: "check", tint: "#06B6D4", text: "THAT'S THE SIGNAL" }, // "that is the signal" abs 9177
+      { at: 424, scene: "hourglass", tint: "#F59E0B", text: "LAST CONFIRMED WINDOW" }, // "last confirmed free window" abs 9295
+      { at: 466, scene: "reject", badge: "A FORMALITY?", tint: "#EF4444", text: "NO GUARANTEES" }, // "not a formality, not a guarantee" abs 9337
+      { at: 532, scene: "emote", pose: "alarmed", tint: "#F59E0B", text: "JUST A WINDOW" }, // "a window" abs 9400
+    ],
+    // full-anim: the DENIED stamp gag + the clean-signal payoff
+    fullscreen: [{ from: 150, to: 282 }, { from: 306, to: 430 }],
+    outro: "FOLLOW FOR MORE",
+    music: "music/tension.MP3",
+  },
 ];
 

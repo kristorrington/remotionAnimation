@@ -448,3 +448,47 @@ Follow @kristorrington for AI automation that survives the real world.
 
 #AI #Claude #Fable5 #PromptEngineering #AIAgents #Shorts
 ```
+
+---
+
+## Short-FreeWindow
+
+**Title**
+```
+How Fable 5's Free Window Actually Works (50% Rule) #Shorts
+```
+
+**Description**
+```
+Free Fable 5 isn't unlimited — during the promo you get it for up to 50% of your weekly plan limits, and there's nothing special to claim. You just pick the model.
+
+But once the promo ends, the breaker trips: Fable 5 leaves your included usage. Keep using it and you're in usage-credit territory — or you ride the elevator back down to Opus or Sonnet. And if "extended" made you relax: the pressure didn't stop, the hourglass just got flipped five days further.
+
+Are you burning your 50% or saving it for the hard stuff? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #Fable5 #AICosts #AIAutomation #Shorts
+```
+
+---
+
+## Short-TheSignal
+
+**Title**
+```
+Waiting for Fable 5? Watch for This One Signal #Shorts
+```
+
+**Description**
+```
+If you're waiting for Fable 5 to come back to normal plans, don't refresh random screenshots — they get the DENIED stamp.
+
+The only signal that matters is Anthropic's own wording: the standard plans plus a real date. Until that happens, July 12 is the last confirmed free window — not a formality, not a guarantee, a window.
+
+Where do you actually get your AI news? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #Fable5 #TechNews #AIAutomation #Shorts
+```

@@ -289,23 +289,23 @@ visual, pull from here FIRST and extend the §4 metaphor map; build in
 | `BillPrinterOdometer` | rolling money counter feeds a printer; the receipt physically grows | cost accumulation |
 | `PressureGauge` | needle climbs into the red, bolts rattle, steam vents at redline | load / limits / capacity |
 | `TokenFaucet` | faucet drips token coins into a bucket; a wrench tightens it, drips slow | cost control / savings |
-| `CircuitBreaker` | overload meter climbs, the big switch TRIPS with sparks, robot resets it | rate limits / outage |
+| `CircuitBreaker` — BUILT (shorts `breaker`) | overload meter climbs, the big switch TRIPS with sparks, robot resets it | rate limits / outage |
 | `PipelineValve` | glowing packets flow through glass pipes; a valve reroutes them to a branch | routing / pipelines |
 | `ForkliftBot` | robot forklift strains under a huge CONTEXT crate, tips, drops it | heavy context / payload |
 | `LaunchHoldClock` | rocket on the pad, countdown clock PAUSES on a hold, then resumes | delays / windows / launches |
 | `FirewallGrid` | laser gate — safe request cards pass, the flagged one is zapped mid-flight | safety filters / blocking |
 | `BalanceScale` | items drop onto COST vs OUTPUT pans; the scale tips hard, subject reacts | tradeoffs / "worth it?" |
-| `BatteryDrain` | segmented battery drains a chunk per task icon; docks to recharge | usage limits / credits |
-| `TierElevator` | elevator rides between HAIKU→SONNET→OPUS→FABLE floors; doors open on the pick | model tiers / routing |
+| `BatteryDrain` — BUILT (shorts `battery`) | segmented battery drains a chunk per task icon; docks to recharge | usage limits / credits |
+| `TierElevator` — BUILT (shorts `elevator`) | elevator rides between HAIKU→SONNET→OPUS→FABLE floors; doors open on the pick | model tiers / routing |
 | `InspectionScanner` | conveyor arch x-rays passing cards; one scans red and gets pulled | review / moderation |
 | `BlueprintTable` | blueprint unrolls; robot draws nodes that light up into a live diagram | planning / architecture |
 | `DominoChain` | labeled dominos topple in sequence; ONE gap stops the cascade | dependency chains / failure |
 | `VaultDoor` | vault wheel spins, bolts retract, door swings open on a glowing core | access granted / premium unlock |
-| `SignalTower` | antenna pulses rings; static interference cuts in; robot re-tunes the dish | uptime / API status |
+| `SignalTower` — BUILT (shorts `signal`) | antenna pulses rings; static interference cuts in; robot re-tunes the dish | uptime / API status |
 | `TugOfWar` | two robots haul a rope across a metric line; one heaves, flag crosses | benchmarks / competition |
 | `IceBlockThaw` | a feature frozen in ice; heat lamp + countdown melt it free, drips pool | frozen access thawing / promos |
-| `StampArm` | a factory stamper slams APPROVED / DENIED on passing cards at a gate | policy / decisions |
-| `HourglassBudget` | hourglass of coin-sand flipped by the robot; grains leak from a crack | time-boxed budget / deadline |
+| `StampArm` — BUILT (shorts `stamp`) | a factory stamper slams APPROVED / DENIED on passing cards at a gate | policy / decisions |
+| `HourglassBudget` — BUILT (shorts `hourglass`) | hourglass of coin-sand flipped by the robot; grains leak from a crack | time-boxed budget / deadline |
 
 Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
 
@@ -420,7 +420,8 @@ Shorts use even STRONGER cartoon/action animation than long-form:
 
 **In code** (`src/shorts/`): every beat is a `BeatScenes.tsx` subject scene
 (`emote / queue / stack / bolt / coins / migrate / testbench / conveyor /
-reject / retry / check / race`) routed via `Beat.scene`; the legacy icon card is
+reject / retry / check / race / racks / battery / breaker / elevator /
+hourglass / stamp / signal`) routed via `Beat.scene`; the legacy icon card is
 a fallback (max ~1 per short). `ShortSpec.fullscreen` spans give the animation
 the whole screen; `ShortSpec.animHook` opens the short on full-screen animation
 under the hook title (house default — set it on every short). Also:

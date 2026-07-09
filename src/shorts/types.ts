@@ -21,7 +21,13 @@ export type BeatSceneKey =
   | "retry"      // a call card loops the retry wheel, erroring each lap
   | "check"      // one big object gets a verdict stamped (quick-fire beats)
   | "race"       // same block, two lanes, trails on the fast one
-  | "racks";     // server racks + fans (physical-infrastructure beats)
+  | "racks"      // server racks + fans (physical-infrastructure beats)
+  | "battery"    // segmented allowance battery drains to `value`% (limits)
+  | "breaker"    // load meter climbs until the big switch TRIPS (cutoffs)
+  | "elevator"   // model-tier lift rides to floor `value` in `labels` (tiers)
+  | "hourglass"  // deadline sand FLIPS (date moved) then leaks (pressure stays)
+  | "stamp"      // arm slams APPROVED/DENIED (`verdict`) on the `badge` card
+  | "signal";    // status tower: static/amber, or clean green (`verdict: check`)
 
 // A "beat" = one tiny animated scene in the animation zone. `at` is relative to
 // the CLIP start. Beats should tile the whole clip so the zone is never empty.
@@ -45,6 +51,7 @@ export type Beat = {
   moduleLabel?: string; // bolt: the bolt-on module's label (default "DSPARK")
   stamp?: string; // coins: impact stamp text
   emoji?: string; // meme punch: ONE emoji pops with the beat (use ~1 per short)
+  value?: number; // battery: target % · elevator: target floor index in `labels`
 };
 
 // One short = one data entry. To turn a viral transcript moment into a Short,
