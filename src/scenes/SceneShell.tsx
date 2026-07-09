@@ -80,10 +80,11 @@ export const SceneHeadline: React.FC<{ kicker?: string; title: string; titleSize
     () => Math.min(titleSize, fitText({ text: title, withinWidth: 1560, fontFamily: FONT, fontWeight: 800, letterSpacing: "1px" }).fontSize),
     [title, titleSize],
   );
-  const slam = spring({ frame: frame - 6, fps, config: { stiffness: 300, damping: 26, mass: 0.8 }, durationInFrames: 20 });
-  const titleScale = interpolate(slam, [0, 1], [1.35, 1]);
-  const titleOp = interpolate(frame, [6, 16], [0, 1], CLAMP);
-  const kickerOp = interpolate(frame, [0, 10], [0, 1], CLAMP);
+  // ~0.9s settle — the slam should land, not blink in (sub-0.5s reads frantic)
+  const slam = spring({ frame: frame - 6, fps, config: { stiffness: 190, damping: 24, mass: 0.9 }, durationInFrames: 30 });
+  const titleScale = interpolate(slam, [0, 1], [1.28, 1]);
+  const titleOp = interpolate(frame, [6, 20], [0, 1], CLAMP);
+  const kickerOp = interpolate(frame, [0, 14], [0, 1], CLAMP);
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16, textAlign: "center" }}>
       {kicker ? (

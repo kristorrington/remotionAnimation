@@ -143,14 +143,14 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
       cues.push({ at: 32, type: "switch" }, { at: 76, type: "switch" }, { at: 160, type: "switch" }, { at: 128, type: "whip" }); // chips + overheat
       break;
     case "cdDrama":
-      [40, 109, 141, 183].forEach((s) => cues.push({ at: s, type: "whip" })); // station hops
+      [119, 151, 193].forEach((s) => cues.push({ at: s, type: "whip" })); // station landings (hop lands ~10f after the spoken stop)
       cues.push({ at: 281, type: "boom" }); // DRAMA stamp
       break;
     case "cdJune":
       [75, 513, 552].forEach((s) => cues.push({ at: s, type: "switch" })); // date cards slam
       break;
     case "cdClassifier":
-      cues.push({ at: 177, type: "whip" }, { at: 265, type: "ding" }, { at: 326, type: "boom" }); // bounce, 99%, crack
+      cues.push({ at: 185, type: "whip" }, { at: 265, type: "ding" }, { at: 326, type: "boom" }); // bounce, 99%, crack
       break;
     case "cdJenga":
       cues.push({ at: 222, type: "boom" }, { at: 324, type: "switch" }, { at: 354, type: "switch" }, { at: 380, type: "switch" }); // pull + risk stickers

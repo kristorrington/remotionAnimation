@@ -311,6 +311,12 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   rotated STICKERS that spring-slam in (scale ~1.5–1.8 → 1, ±2–5° tilt,
   scattered offsets) — never a flat fading row. Camera `impacts` + a subject
   hop/kick on every landing, bolt, stamp and check.
+- **Pacing breathes too**: element entrances settle in ~0.7–1.0s (spring
+  stiffness ~110–190, `durationInFrames` 22–30, gentler for big panels/slides)
+  — never everything snapping in under half a second; that reads frantic.
+  Reserve the hard sub-0.5s snap for impact stamps. Grouped elements stagger
+  ≥ 8–10f apart, and physical landings (hops, drops) get their Puff/impact at
+  the TOUCHDOWN frame, not the launch frame.
 - **Layout must breathe**: main subject groups sit ≥ ~110px apart at 1080p;
   absolutely-positioned props (coins, modules, stamps) never cover labels or
   the headline; piles/stacks actually stack (offset every item) — never render

@@ -31,7 +31,8 @@ const glass = (color: string): React.CSSProperties => ({
 const Sticker: React.FC<{ label: string; at: number; color?: string; rot?: number; fontSize?: number }> = ({ label, at, color = CYAN, rot = -3, fontSize = 24 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const pop = spring({ frame: frame - at, fps, config: { stiffness: 280, damping: 13 }, durationInFrames: 16 });
+  // ~0.8s settle — entrances that finish under half a second read frantic
+  const pop = spring({ frame: frame - at, fps, config: { stiffness: 170, damping: 15 }, durationInFrames: 24 });
   // tilt capped at ~±2.8° — enough to feel hand-placed, never sloppy
   return (
     <div style={{ ...chip(color, fontSize), width: "fit-content", opacity: frame < at ? 0 : 1, transform: `translateZ(0) rotate(${Math.max(-2.8, Math.min(2.8, rot))}deg) scale(${interpolate(pop, [0, 1], [1.45, 1])})` }}>{label}</div>
@@ -41,11 +42,11 @@ const Sticker: React.FC<{ label: string; at: number; color?: string; rot?: numbe
 const Mark: React.FC<{ kind: "check" | "cross"; at: number; size?: number }> = ({ kind, at, size = 90 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const e = spring({ frame: frame - at, fps, config: { stiffness: 280, damping: 14 }, durationInFrames: 14 });
+  const e = spring({ frame: frame - at, fps, config: { stiffness: 190, damping: 15 }, durationInFrames: 22 });
   if (frame < at) return null;
   const color = kind === "check" ? GREEN : RED;
   return (
-    <div style={{ transform: `scale(${interpolate(e, [0, 1], [2, 1])})`, opacity: interpolate(e, [0, 0.4], [0, 1]) }}>
+    <div style={{ transform: `scale(${interpolate(e, [0, 1], [1.7, 1])})`, opacity: interpolate(e, [0, 0.4], [0, 1]) }}>
       <svg width={size} height={size} viewBox="0 0 100 100" style={{ filter: `drop-shadow(0 0 12px ${color})` }}>
         <circle cx={50} cy={50} r={42} fill={`${color}22`} stroke={color} strokeWidth={7} />
         {kind === "check" ? (
@@ -65,7 +66,7 @@ const Mark: React.FC<{ kind: "check" | "cross"; at: number; size?: number }> = (
 const CountdownPanel: React.FC<{ at: number; days?: number; date?: string; width?: number }> = ({ at, days = 5, date = "JULY 12", width = 460 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const e = spring({ frame: frame - at, fps, config: { stiffness: 170, damping: 14 }, durationInFrames: 18 });
+  const e = spring({ frame: frame - at, fps, config: { stiffness: 120, damping: 15 }, durationInFrames: 26 });
   const tick = 0.5 + 0.5 * Math.sin(frame * 0.24);
   return (
     <div style={{ width, borderRadius: 18, ...glass(AMBER), padding: "26px 30px", display: "flex", flexDirection: "column", alignItems: "center", gap: 12, opacity: interpolate(e, [0, 0.3], [0, 1]), transform: `scale(${interpolate(e, [0, 1], [1.3, 1])})` }}>
@@ -129,7 +130,7 @@ export const PriceRevealScene: React.FC<{ durationInFrames: number; kicker?: str
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const price = (label: string, value: number, at: number, color: string) => {
-    const e = spring({ frame: frame - at, fps, config: { stiffness: 200, damping: 13 }, durationInFrames: 18 });
+    const e = spring({ frame: frame - at, fps, config: { stiffness: 130, damping: 14 }, durationInFrames: 26 });
     return (
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, padding: "26px 40px", borderRadius: 18, ...glass(color), opacity: interpolate(e, [0, 0.3], [0, 1]), transform: `scale(${interpolate(e, [0, 1], [1.35, 1])}) rotate(${at === inAt ? -1.5 : 1.5}deg)` }}>
         <Odometer to={value} at={at + 4} size={100} color={color} prefix="$" />
@@ -166,7 +167,7 @@ export const PriceRevealScene: React.FC<{ durationInFrames: number; kicker?: str
 export const ExtensionTimelineScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; slideAt?: number; chips?: { label: string; at: number }[] }> = ({ durationInFrames, kicker, title, slideAt = 90, chips = [] }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const slide = spring({ frame: frame - slideAt, fps, config: { stiffness: 90, damping: 16 }, durationInFrames: 34 });
+  const slide = spring({ frame: frame - slideAt, fps, config: { stiffness: 70, damping: 17 }, durationInFrames: 44 });
   const x = interpolate(slide, [0, 1], [0, 640]);
   const land = frame > slideAt + 26 && frame < slideAt + 44 ? Math.sin(((frame - slideAt - 26) / 18) * Math.PI) : 0;
   return (
@@ -269,14 +270,14 @@ export const DramaTimelineScene: React.FC<{ durationInFrames: number; kicker?: s
   for (let i = 1; i < stations.length; i++) {
     const at = stopAts[i] ?? 0;
     if (frame >= at - 14) {
-      const p = spring({ frame: frame - (at - 14), fps, config: { stiffness: 150, damping: 13 }, durationInFrames: 20 });
+      const p = spring({ frame: frame - (at - 14), fps, config: { stiffness: 110, damping: 14 }, durationInFrames: 28 });
       x = interpolate(p, [0, 1], [stations[i - 1].x, stations[i].x]);
       hopY = Math.sin(Math.min(1, p) * Math.PI) * -90;
     }
   }
-  const land = stopAts.some((a) => frame >= a && frame < a + 12);
+  const land = stopAts.some((a) => frame >= a + 10 && frame < a + 22);
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0x356} depth mood={frame >= stampAt ? "danger" : "neutral"} impacts={[...stopAts.slice(1), stampAt]} tint={RED}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x356} depth mood={frame >= stampAt ? "danger" : "neutral"} impacts={[...stopAts.slice(1).map((a) => a + 10), stampAt]} tint={RED}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 40 }}>
         <div style={{ position: "relative", width: 1380, height: 330 }}>
           <div style={{ position: "absolute", left: 40, right: 40, top: 236, height: 8, borderRadius: 4, background: "rgba(255,255,255,0.15)" }} />
@@ -288,7 +289,7 @@ export const DramaTimelineScene: React.FC<{ durationInFrames: number; kicker?: s
           {/* the model block rides the drama */}
           <div style={{ position: "absolute", left: x, top: 96 + hopY, transform: `scale(${land ? 1.06 : 1}, ${land ? 0.92 : 1})` }}>
             <ModelBlock label="FABLE 5" width={220} coreColor={frame >= (stopAts[3] ?? 9999) ? AMBER : frame >= (stopAts[1] ?? 9999) && frame < (stopAts[2] ?? 9999) ? RED : GREEN} />
-            {stopAts.map((a, i) => (i > 0 ? <Puff key={a} at={a} x={110} y={110} size={110} /> : null))}
+            {stopAts.map((a, i) => (i > 0 ? <Puff key={a} at={a + 10} x={110} y={110} size={110} /> : null))}
           </div>
           {/* watching robot, hops on every station hit */}
           <div style={{ position: "absolute", right: -40, top: 40, transform: `translateY(${-stopAts.reduce((acc, a) => acc + Math.abs(impulse(frame, a, 8, 14)), 0)}px)` }}>
@@ -319,7 +320,7 @@ export const JuneTimelineScene: React.FC<{ durationInFrames: number; kicker?: st
         <div style={{ display: "flex", alignItems: "center", gap: 90 }}>
           <div style={{ display: "flex", gap: 34 }}>
             {cards.map((c, i) => {
-              const e = spring({ frame: frame - c.at, fps, config: { stiffness: 210, damping: 14 }, durationInFrames: 18 });
+              const e = spring({ frame: frame - c.at, fps, config: { stiffness: 140, damping: 15 }, durationInFrames: 26 });
               return (
                 <div key={c.label} style={{ width: 270, borderRadius: 16, ...glass(c.color), padding: "22px 24px", display: "flex", flexDirection: "column", alignItems: "center", gap: 10, opacity: interpolate(e, [0, 0.3], [0, 1]), transform: `rotate(${[-2, 1.5, -1.5][i % 3]}deg) scale(${interpolate(e, [0, 1], [1.35, 1])}) translateY(${i % 2 ? 14 : -8}px)` }}>
                   <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 34, color: c.color, transform: "translateZ(0)" }}>{c.date}</span>
@@ -343,10 +344,10 @@ export const JuneTimelineScene: React.FC<{ durationInFrames: number; kicker?: st
 export const ClassifierScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; blockAt?: number; donutAt?: number; crackAt?: number }> = ({ durationInFrames, kicker, title, blockAt = 60, donutAt = 130, crackAt = 250 }) => {
   const frame = useCurrentFrame();
   const c = Math.max(0, frame - blockAt);
-  const approach = interpolate(Math.min(c, 18), [0, 18], [-330, -90], CLAMP);
-  const bounce = c >= 18 ? interpolate(Math.min((c - 18) / 14, 1), [0, 1], [0, -160]) : 0;
-  const fallY = c >= 18 ? interpolate(Math.min((c - 18) / 14, 1), [0, 1], [0, 70]) : 0;
-  const badgeOp = interpolate(c, [0, 4, 30, 44], [0, 1, 1, 0], CLAMP);
+  const approach = interpolate(Math.min(c, 26), [0, 26], [-330, -90], CLAMP);
+  const bounce = c >= 26 ? interpolate(Math.min((c - 26) / 20, 1), [0, 1], [0, -160]) : 0;
+  const fallY = c >= 26 ? interpolate(Math.min((c - 26) / 20, 1), [0, 1], [0, 70]) : 0;
+  const badgeOp = interpolate(c, [0, 6, 40, 56], [0, 1, 1, 0], CLAMP);
   const pulse = 0.6 + 0.4 * Math.sin(frame * 0.3);
   const cracked = frame >= crackAt;
   return (
@@ -360,7 +361,7 @@ export const ClassifierScene: React.FC<{ durationInFrames: number; kicker?: stri
                 <path d="M50 6 L88 20 V52 C88 78 71 94 50 102 C29 94 12 78 12 52 V20 Z" stroke={cracked ? AMBER : CYAN} strokeWidth={6} fill={cracked ? "rgba(245,158,11,0.12)" : "rgba(6,182,212,0.14)"} />
                 <path d="M42 30 L54 48 L44 62 L56 80" stroke={WHITE} strokeWidth={5} fill="none" strokeLinecap="round" opacity={cracked ? 0.9 : 0} />
               </svg>
-              <Sparks at={blockAt + 18} x={40} y={120} color={CYAN} size={150} />
+              <Sparks at={blockAt + 26} x={40} y={120} color={CYAN} size={150} />
               <Sparks at={crackAt} x={115} y={125} color={AMBER} size={160} />
             </div>
           </div>
@@ -442,7 +443,7 @@ export const RerouteScene: React.FC<{ durationInFrames: number; kicker?: string;
             if (t < 0) return null;
             const ride = Math.min(t * 6, c.risky ? 560 : 830);
             const flip = c.risky && frame >= rerouteAt;
-            const dropP = flip ? Math.min((frame - rerouteAt) / 18, 1) : 0;
+            const dropP = flip ? Math.min((frame - rerouteAt) / 26, 1) : 0;
             const y = 40 + dropP * 220 - Math.sin(dropP * Math.PI) * 60;
             const rideOn = flip ? Math.min((frame - rerouteAt) * 5, 300) : 0;
             return (
@@ -468,10 +469,10 @@ export const RerouteScene: React.FC<{ durationInFrames: number; kicker?: string;
 export const SpecialistScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; inAt?: number; workAt?: number; handoffAt?: number; chips?: { label: string; at: number }[] }> = ({ durationInFrames, kicker, title, inAt = 40, workAt = 120, handoffAt = 240, chips = [] }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const enter = spring({ frame: frame - inAt, fps, config: { stiffness: 170, damping: 12 }, durationInFrames: 20 });
+  const enter = spring({ frame: frame - inAt, fps, config: { stiffness: 120, damping: 13 }, durationInFrames: 28 });
   const working = frame >= workAt && frame < handoffAt;
   const workKick = working ? impulse(frame, workAt + ((frame - workAt) % 34), 5, 30) : 0;
-  const hand = spring({ frame: frame - handoffAt, fps, config: { stiffness: 120, damping: 15 }, durationInFrames: 26 });
+  const hand = spring({ frame: frame - handoffAt, fps, config: { stiffness: 85, damping: 16 }, durationInFrames: 36 });
   const shift = interpolate(hand, [0, 1], [0, 360]);
   return (
     <SceneShell durationInFrames={durationInFrames} particleSeed={0x3ab} depth impacts={[inAt + 10, handoffAt]} tint={AMBER}>
@@ -524,7 +525,7 @@ export const SpecialistScene: React.FC<{ durationInFrames: number; kicker?: stri
 export const WatchWordingScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; crossAt?: number; checkAt?: number; stampAt?: number; windowAts?: number[] }> = ({ durationInFrames, kicker, title, crossAt = 70, checkAt = 190, stampAt = 235, windowAts = [] }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const cardIn = (at: number) => spring({ frame: frame - at, fps, config: { stiffness: 190, damping: 14 }, durationInFrames: 18 });
+  const cardIn = (at: number) => spring({ frame: frame - at, fps, config: { stiffness: 130, damping: 15 }, durationInFrames: 26 });
   const l = cardIn(crossAt - 40);
   const r = cardIn(checkAt - 40);
   const labels = ["NOT A FORMALITY", "NOT A GUARANTEE", "A WINDOW"];
