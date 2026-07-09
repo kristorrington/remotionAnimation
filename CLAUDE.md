@@ -190,10 +190,15 @@ screens" — it is **tiny animated scenes**.
 ## 7. Visual component library (reuse/extend before writing one-offs)
 
 **Subjects** (`src/motion/subjects.tsx`) — characters with agency:
+- `GLASS` / `glassCard(color, borderW?)` — THE house finish for every card-like
+  element (glass gradient + 2px alpha border + inner highlight + soft glow;
+  rgba colours pass through safely). Never hand-roll `PANEL` + thick border.
 - `CartoonRobot` — poses: `idle | waiting | sleepy | alarmed | shrug | celebrate |
   worried | walking | thinking | confused | facepalm | pointing`; blinks, bobs,
   hops, squashes; `accent` color; `lookX`/`lookY` eye-targeting (make it WATCH
-  the action).
+  the action). PREMIUM build: glass shell, dark visor + glowing LED eyes,
+  mitten hands, grounded contact shadow — never revert to flat outlines/white
+  oval eyes.
 - `BugCharacter` (`crawl | attack | squashed`) — the antagonist for bug/failure
   beats. `TinyDev` (`typing | panic | happy`) — the human proxy.
 - `SpeechBubble` — THE shared comic bubble (`shout` variant); never re-implement.
@@ -271,6 +276,36 @@ light sweep + camera push):
 **Icons/logos** (`src/components/Cartoons.tsx`): frame-animated SVG icons +
 `DeepSeekMark`/`ClaudeMark`. Add new icons here in the same 100×100 SVG style;
 never repeat an icon on adjacent scenes.
+
+### 7.1 Animation backlog — approved concepts, build on demand
+
+Twenty vetted subject/machine/gag concepts that fit the house style (premium
+glass finish, cause-and-effect, a subject that ACTS). When a beat needs a new
+visual, pull from here FIRST and extend the §4 metaphor map; build in
+`src/motion/objects.tsx` or a scene file, then move it to the §7 list above.
+
+| Concept | The action | Beats it serves |
+|---|---|---|
+| `BillPrinterOdometer` | rolling money counter feeds a printer; the receipt physically grows | cost accumulation |
+| `PressureGauge` | needle climbs into the red, bolts rattle, steam vents at redline | load / limits / capacity |
+| `TokenFaucet` | faucet drips token coins into a bucket; a wrench tightens it, drips slow | cost control / savings |
+| `CircuitBreaker` | overload meter climbs, the big switch TRIPS with sparks, robot resets it | rate limits / outage |
+| `PipelineValve` | glowing packets flow through glass pipes; a valve reroutes them to a branch | routing / pipelines |
+| `ForkliftBot` | robot forklift strains under a huge CONTEXT crate, tips, drops it | heavy context / payload |
+| `LaunchHoldClock` | rocket on the pad, countdown clock PAUSES on a hold, then resumes | delays / windows / launches |
+| `FirewallGrid` | laser gate — safe request cards pass, the flagged one is zapped mid-flight | safety filters / blocking |
+| `BalanceScale` | items drop onto COST vs OUTPUT pans; the scale tips hard, subject reacts | tradeoffs / "worth it?" |
+| `BatteryDrain` | segmented battery drains a chunk per task icon; docks to recharge | usage limits / credits |
+| `TierElevator` | elevator rides between HAIKU→SONNET→OPUS→FABLE floors; doors open on the pick | model tiers / routing |
+| `InspectionScanner` | conveyor arch x-rays passing cards; one scans red and gets pulled | review / moderation |
+| `BlueprintTable` | blueprint unrolls; robot draws nodes that light up into a live diagram | planning / architecture |
+| `DominoChain` | labeled dominos topple in sequence; ONE gap stops the cascade | dependency chains / failure |
+| `VaultDoor` | vault wheel spins, bolts retract, door swings open on a glowing core | access granted / premium unlock |
+| `SignalTower` | antenna pulses rings; static interference cuts in; robot re-tunes the dish | uptime / API status |
+| `TugOfWar` | two robots haul a rope across a metric line; one heaves, flag crosses | benchmarks / competition |
+| `IceBlockThaw` | a feature frozen in ice; heat lamp + countdown melt it free, drips pool | frozen access thawing / promos |
+| `StampArm` | a factory stamper slams APPROVED / DENIED on passing cards at a gate | policy / decisions |
+| `HourglassBudget` | hourglass of coin-sand flipped by the robot; grains leak from a crack | time-boxed budget / deadline |
 
 Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
 
