@@ -46,10 +46,10 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
   const seamEnd = hookHold + 4;
 
   // OPENING PUNCH-IN (rule, CLAUDE.md §9): the face zooms in as the video
-  // begins (~1.0 → 1.1 over the first ~0.8s, spring) with a whoosh, then eases
-  // back to normal framing while the split slides in. Face openers only.
+  // begins (~1.0 → 1.22 over the first ~0.8s, spring) with a whoosh, then
+  // eases back to normal framing while the split slides in. Face openers only.
   const introPunch = spring({ frame, fps, config: { stiffness: 60, damping: 15 }, durationInFrames: 30 });
-  const introZoom = spec.animHook ? 1 : 1 + 0.1 * introPunch * interpolate(frame, [seamStart, seamEnd], [1, 0], CLAMP);
+  const introZoom = spec.animHook ? 1 : 1 + 0.22 * introPunch * interpolate(frame, [seamStart, seamEnd], [1, 0], CLAMP);
 
   // seam keyframes: hook (face OR full animation) → split → [full-anim spans]
   // → split → CTA (face). Two rules stop the reframe from flickering ("full →

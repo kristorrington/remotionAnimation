@@ -396,7 +396,7 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   context line sit over the full-shot presenter for ~3.2s (`hookHold = 96`),
   then the split slides in — the layout is always either full shot or split
   screen at the open, never an animation cold-open. **The opener PUNCHES IN
-  with a sound** (rule): the face zooms ~1.0 → 1.1 over the first ~0.8s
+  with a sound** (rule): the face zooms ~1.0 → 1.22 over the first ~0.8s
   (spring, origin on the face) with a whoosh at frame ~1, easing back to
   normal framing as the split arrives — built into VerticalShort, never
   remove it. `animHook: true` is an
