@@ -10,6 +10,7 @@ import { WordPop } from "./motion/WordPop";
 import { VoiceGlow } from "./motion/voice";
 import { BarsIn, LineDraw, DonutFill, BarRace, ChartData } from "./motion/charts";
 import { SourceScreenshot } from "./motion/SourceScreenshot";
+import { PathDoorsScene, DraftPolishScene, DocFunnelScene, AppFlowScene, FirstLineDeskScene, SkillCartridgeScene, ThreeBuyersScene } from "./scenes/SideHustleScenes";
 import { LogoBadge, IconBrain } from "./components/Cartoons";
 import speedups from "../public/assets/external/charts/dspark-speedups.json";
 
@@ -221,6 +222,35 @@ const sections: { title: string; node: React.ReactNode }[] = [
         <LogoBadge src={staticFile("claude-logo.png")} size={190} mode="transparent" glow="rgba(217,119,87,0.6)" />
       </Row>
     ),
+  },
+  // ——— Side-hustle templates (full scenes; the SceneShell fills the frame) ———
+  {
+    title: "PATH DOORS — N options, one opens",
+    node: <PathDoorsScene durationInFrames={DEMO} kicker="PICK A PATH" title="FIVE WAYS IN" doors={[{ label: "WRITING", at: 4 }, { label: "RESEARCH", at: 10 }, { label: "AUTOMATION", at: 16 }, { label: "CHATBOTS", at: 22 }, { label: "SKILLS", at: 28 }]} pickIndex={1} pickAt={46} />,
+  },
+  {
+    title: "DRAFT POLISH — AI drafts, human finishes",
+    node: <DraftPolishScene durationInFrames={DEMO} kicker="ASSISTED" title="SELL THE OUTCOME" polishAt={30} outcomeAt={60} outcomeLabel="2 POSTS / WEEK" />,
+  },
+  {
+    title: "DOC FUNNEL — many docs → one report",
+    node: <DocFunnelScene durationInFrames={DEMO} kicker="RESEARCH FOR HIRE" title="ONE-PAGE ANSWER" dropAts={[4, 16, 28, 40, 50]} reportAt={62} />,
+  },
+  {
+    title: "APP FLOW — tools wire into one workflow",
+    node: <AppFlowScene durationInFrames={DEMO} kicker="NO-CODE AUTOMATION" title="FEWER MANUAL STEPS" apps={[{ label: "QUICKBOOKS", at: 4 }, { label: "PAYPAL", at: 10 }, { label: "HUBSPOT", at: 16 }, { label: "CANVA", at: 22 }, { label: "WORKSPACE", at: 28 }]} connectAt={40} collapseAt={66} />,
+  },
+  {
+    title: "FIRST-LINE DESK — assistant answers, human approves",
+    node: <FirstLineDeskScene durationInFrames={DEMO} kicker="DONE-FOR-YOU BOTS" title="A FIRST-LINE HELPER" bubbles={[{ label: "HOURS?", at: 6 }, { label: "PRICING?", at: 18 }, { label: "BOOKINGS?", at: 30 }]} routeAt={48} approveAt={66} />,
+  },
+  {
+    title: "SKILL CARTRIDGE — repeatable beats disposable",
+    node: <SkillCartridgeScene durationInFrames={DEMO} kicker="PRODUCTIZED SKILLS" title="A MINI OPERATING SYSTEM" slotAt={16} runAts={[44, 58, 72]} />,
+  },
+  {
+    title: "THREE BUYERS — offer vs idea gate",
+    node: <ThreeBuyersScene durationInFrames={DEMO} kicker="BEFORE YOU BUILD" title="NAME THREE PEOPLE" fillAts={[20, 34, 48]} verdictAt={64} filled />,
   },
 ];
 

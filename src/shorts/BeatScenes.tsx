@@ -745,6 +745,128 @@ const SignalTowerBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
   );
 };
 
+// doors — compact path picker: up to 4 glass doors (`labels`), the door at
+// index `value` glows and slides open on a celebrating mini robot.
+const DoorsBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const labels = (beat.labels ?? ["A", "B", "C"]).slice(0, 4);
+  const pick = Math.min(beat.value ?? 0, labels.length - 1);
+  const pickAt = Math.min(Math.round(dur * 0.4), 90);
+  const picked = frame >= pickAt;
+  return (
+    <Wrap gap={44}>
+      <div style={{ display: "flex", gap: 22, alignItems: "flex-end" }}>
+        {labels.map((l, i) => {
+          const e = spring({ frame: frame - 6 - i * 7, fps, config: { stiffness: 130, damping: 14 }, durationInFrames: 24 });
+          const isPick = picked && i === pick;
+          const open = isPick ? spring({ frame: frame - pickAt, fps, config: { stiffness: 120, damping: 15 }, durationInFrames: 26 }) : 0;
+          return (
+            <div key={l} style={{ opacity: interpolate(e, [0, 0.3], [0, 1]), transform: `translateY(${interpolate(e, [0, 1], [-90, 0])}px)` }}>
+              <div style={{ position: "relative", width: 190, height: 280, borderRadius: 18, ...glassCard(isPick ? "#E8B84B" : CYAN, isPick ? 2.5 : 2), overflow: "hidden", opacity: picked && !isPick ? 0.4 : 1 }}>
+                <div style={{ position: "absolute", inset: 4, borderRadius: 14, background: "radial-gradient(ellipse at 50% 80%, rgba(232,184,75,0.28), transparent 70%)", opacity: open }} />
+                <div style={{ position: "absolute", left: 4, right: 4, bottom: 4, top: 4 + open * 244, borderRadius: 14, background: "linear-gradient(180deg, #232f4a, #131c2f)", borderBottom: "3px solid rgba(255,255,255,0.12)" }}>
+                  <div style={{ position: "absolute", right: 14, top: 128, width: 11, height: 11, borderRadius: "50%", background: "rgba(255,255,255,0.25)" }} />
+                </div>
+                {isPick && open > 0.5 && (
+                  <div style={{ position: "absolute", left: "50%", bottom: 14, transform: "translateX(-50%)" }}>
+                    <CartoonRobot pose="celebrate" size={110} accent="#E8B84B" />
+                  </div>
+                )}
+                {isPick && <Sparks at={pickAt + 14} x={95} y={140} color="#E8B84B" size={140} />}
+              </div>
+              <div style={{ marginTop: 10, textAlign: "center", fontFamily: FONT, fontWeight: 800, fontSize: 21, letterSpacing: 1, color: isPick ? "#E8B84B" : "rgba(255,255,255,0.7)", transform: "translateZ(0)" }}>{l}</div>
+            </div>
+          );
+        })}
+      </div>
+      <BeatLabel text={beat.text} sub={beat.sub} accent={picked ? "#E8B84B" : CYAN} />
+    </Wrap>
+  );
+};
+
+// funnel — messy docs pour into the glass funnel; ONE clean report pops out.
+const FunnelBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const reportAt = Math.min(Math.round(dur * 0.5), 120);
+  const out = spring({ frame: frame - reportAt, fps, config: { stiffness: 130, damping: 14 }, durationInFrames: 26 });
+  return (
+    <Wrap gap={40}>
+      <div style={{ position: "relative", width: 620, height: 500 }}>
+        {[10, 34, 56, 78].map((at, i) => {
+          const t = frame - at;
+          if (t < 0) return null;
+          const fall = spring({ frame: t, fps, config: { stiffness: 80, damping: 13 }, durationInFrames: 30 });
+          return (
+            <div key={at} style={{ position: "absolute", left: 110 + (i % 3) * 150, top: interpolate(fall, [0, 1], [-70, 160]), opacity: interpolate(t, [0, 6], [0, 1], CLAMP) * interpolate(fall, [0.85, 1], [1, 0], CLAMP), transform: `rotate(${(i % 2 ? 1 : -1) * (14 - fall * 10)}deg)` }}>
+              <div style={{ width: 92, height: 114, borderRadius: 10, ...glassCard("rgba(255,255,255,0.3)"), padding: "10px 10px" }}>
+                {[80, 60, 72].map((w, k) => (
+                  <div key={k} style={{ width: `${w}%`, height: 7, borderRadius: 4, background: "rgba(255,255,255,0.18)", margin: "9px 0" }} />
+                ))}
+              </div>
+            </div>
+          );
+        })}
+        <svg width={620} height={500} viewBox="0 0 620 500" style={{ overflow: "visible" }}>
+          <path d="M 110 190 L 510 190 L 350 340 L 350 420 L 270 420 L 270 340 Z" fill="rgba(160,200,255,0.06)" stroke="rgba(255,255,255,0.25)" strokeWidth={2.5} />
+        </svg>
+        <div style={{ position: "absolute", left: 212, top: 414, opacity: interpolate(out, [0, 0.3], [0, 1]), transform: `translateY(${interpolate(out, [0, 1], [-26, 4])}px) scale(${interpolate(out, [0, 1], [0.7, 1])})` }}>
+          <div style={{ width: 196, borderRadius: 12, ...glassCard(GREEN, 2.5), padding: "16px 16px", textAlign: "center" }}>
+            <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 21, letterSpacing: 1, color: WHITE, transform: "translateZ(0)" }}>{beat.badge ?? "THE REPORT"}</span>
+            {[86, 70].map((w, k) => (
+              <div key={k} style={{ width: `${w}%`, height: 8, borderRadius: 4, background: "rgba(52,211,153,0.4)", margin: "10px auto" }} />
+            ))}
+          </div>
+          <Sparks at={reportAt + 8} x={98} y={26} color={GREEN} size={140} />
+        </div>
+      </div>
+      <BeatLabel text={beat.text} sub={beat.sub} accent={GREEN} />
+    </Wrap>
+  );
+};
+
+// cartridge — a SKILL.MD cartridge clicks into the model block; identical RUN
+// cards pop out (repeatable beats disposable).
+const CartridgeBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const slotAt = 24;
+  const slot = spring({ frame: frame - slotAt, fps, config: { stiffness: 110, damping: 14 }, durationInFrames: 28 });
+  const seated = frame >= slotAt + 24;
+  const runs = [Math.round(dur * 0.45), Math.round(dur * 0.6), Math.round(dur * 0.75)];
+  return (
+    <Wrap gap={48}>
+      <div style={{ position: "relative", transform: "scale(1.12)", marginTop: 30 }}>
+        <ModelBlock label="CLAUDE" width={340} coreColor={seated ? GREEN : CYAN} />
+        <div style={{ position: "absolute", left: 96, top: interpolate(slot, [0, 1], [-150, -30]), transform: `rotate(${interpolate(slot, [0, 1], [-6, 0])}deg)` }}>
+          <div style={{ width: 148, height: 50, borderRadius: 10, ...glassCard("#E8B84B", 2.5), display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 21, letterSpacing: 1, color: WHITE, transform: "translateZ(0)" }}>{beat.badge ?? "SKILL.MD"}</span>
+          </div>
+        </div>
+        <Sparks at={slotAt + 24} x={170} y={-4} color="#E8B84B" size={130} />
+        <div style={{ position: "absolute", left: -36, top: 230, display: "flex", gap: 18 }}>
+          {runs.map((at, i) => {
+            const e = spring({ frame: frame - at, fps, config: { stiffness: 140, damping: 14 }, durationInFrames: 24 });
+            if (frame < at) return <div key={at} style={{ width: 128 }} />;
+            return (
+              <div key={at} style={{ opacity: interpolate(e, [0, 0.3], [0, 1]), transform: `translateY(${interpolate(e, [0, 1], [-36, 0])}px)` }}>
+                <div style={{ width: 128, borderRadius: 12, ...glassCard(GREEN, 2), padding: "10px 12px" }}>
+                  <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 16, letterSpacing: 1, color: GREEN, transform: "translateZ(0)" }}>RUN {i + 1}</span>
+                  {[84, 70].map((w, k) => (
+                    <div key={k} style={{ width: `${w}%`, height: 6, borderRadius: 3, background: "rgba(52,211,153,0.4)", margin: "7px 0" }} />
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <BeatLabel text={beat.text} sub={beat.sub} accent={seated ? GREEN : CYAN} />
+    </Wrap>
+  );
+};
+
 // Meme punch: ONE oversized emoji pops with the beat (animated-meme energy).
 const EmojiPop: React.FC<{ emoji: string }> = ({ emoji }) => {
   const frame = useCurrentFrame();
@@ -783,6 +905,9 @@ export const BeatSceneView: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur
       case "hourglass": return <HourglassBeat beat={beat} dur={dur} />;
       case "stamp": return <StampArmBeat beat={beat} />;
       case "signal": return <SignalTowerBeat beat={beat} />;
+      case "doors": return <DoorsBeat beat={beat} dur={dur} />;
+      case "funnel": return <FunnelBeat beat={beat} dur={dur} />;
+      case "cartridge": return <CartridgeBeat beat={beat} dur={dur} />;
       default: return null;
     }
   };

@@ -27,7 +27,10 @@ export type BeatSceneKey =
   | "elevator"   // model-tier lift rides to floor `value` in `labels` (tiers)
   | "hourglass"  // deadline sand FLIPS (date moved) then leaks (pressure stays)
   | "stamp"      // arm slams APPROVED/DENIED (`verdict`) on the `badge` card
-  | "signal";    // status tower: static/amber, or clean green (`verdict: check`)
+  | "signal"     // status tower: static/amber, or clean green (`verdict: check`)
+  | "doors"      // path picker: doors from `labels`, door `value` opens
+  | "funnel"     // messy docs pour in, ONE clean report (`badge`) pops out
+  | "cartridge"; // SKILL.MD (`badge`) clicks into the model; identical runs pop out
 
 // A "beat" = one tiny animated scene in the animation zone. `at` is relative to
 // the CLIP start. Beats should tile the whole clip so the zone is never empty.

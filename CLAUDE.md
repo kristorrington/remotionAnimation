@@ -104,6 +104,13 @@ For **every transcript beat, classify it first**, then design to the class:
 | **COMPARISON** | side-by-side cards, meters | `CompareCard`, `BenefitMetersScene` |
 | **NUMBERS** | animated counters dominate | `StatCountersScene`, `AnimatedCounter` |
 | **TAKEAWAY** | one strong phrase + stamp | `FinalTakeawayScene`, `ImpactStamp` |
+| **N OPTIONS / PICK A PATH** | glass doors pop in, the chosen one opens on the robot | `PathDoorsScene` (shorts: `doors`) |
+| **AI DRAFTS, HUMAN FINISHES** | messy draft slides to the human, edit marks fade, OUTCOME tag + check | `DraftPolishScene` |
+| **MANY → ONE DISTILLED** | docs pour into the glass funnel, one clean report pops out | `DocFunnelScene` (shorts: `funnel`) |
+| **TOOLS INTO ONE WORKFLOW** | app tiles wire together, manual-step pile collapses to one chip | `AppFlowScene` |
+| **FIRST-LINE HELPER + HUMAN GATE** | question bubbles auto-answered; the big one routes past the gate to the human | `FirstLineDeskScene` |
+| **REUSABLE SKILL / CONSISTENCY** | SKILL.MD cartridge clicks in, identical RUN cards pop out | `SkillCartridgeScene` (shorts: `cartridge`) |
+| **OFFER vs IDEA GATE** | three buyer slots fill (check) or stay empty (JUST AN IDEA stamp) | `ThreeBuyersScene` |
 | **TRANSITION** | quick impact text, camera push (mode F, ≤ 4s) | `SceneCameraPush`, `LightSweep` |
 
 If a beat's purpose isn't covered, **add a new scene type** — don't force it into
@@ -439,8 +446,8 @@ Shorts use even STRONGER cartoon/action animation than long-form:
 **In code** (`src/shorts/`): every beat is a `BeatScenes.tsx` subject scene
 (`emote / queue / stack / bolt / coins / migrate / testbench / conveyor /
 reject / retry / check / race / racks / battery / breaker / elevator /
-hourglass / stamp / signal`) routed via `Beat.scene`; the legacy icon card is
-a fallback (max ~1 per short). `ShortSpec.fullscreen` spans give the animation
+hourglass / stamp / signal / doors / funnel / cartridge`) routed via
+`Beat.scene`; the legacy icon card is a fallback (max ~1 per short). `ShortSpec.fullscreen` spans give the animation
 the whole screen; `ShortSpec.animHook` opens the short on full-screen animation
 under the hook title (house default — set it on every short). Also:
 `ShortSpec.context` renders the plain-words setup line under the hook;
