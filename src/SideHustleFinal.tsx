@@ -34,9 +34,10 @@ for (const s of SPANS) {
   if (s.to - cursor >= PIP_MIN) PIP_SEGMENTS.push({ from: cursor, to: s.to });
 }
 
-// Soft dip-to-white on the biggest turns: the five doors · path 1 · path 3 ·
-// the three-buyers gate · the 30-day window.
-const FLASHES = [505, 3343, 7500, 12844, 13423];
+// Soft dip-to-white on the biggest turns: the face→animation open cut (§8
+// face-first rule) · the five doors · path 1 · path 3 · the three-buyers gate ·
+// the 30-day window.
+const FLASHES = [90, 505, 3343, 7500, 12844, 13423];
 
 export const SideHustleFinal: React.FC = () => {
   return (

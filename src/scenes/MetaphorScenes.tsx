@@ -368,12 +368,11 @@ export const MigrateStopScene: React.FC<{ durationInFrames: number; kicker?: str
 
 // 20–30% OR SKIP — the decision gate: a 5% result hits the trapdoor; a 25%
 // result opens the gate and sails through with trails.
-export const ThresholdGateScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; failLabel?: string; passLabel?: string; zoneLabel?: string; skipStamp?: string; tint?: string }> = ({ durationInFrames, kicker, title, failLabel = "5%", passLabel = "25%", zoneLabel = "20–30%", skipStamp = "SKIP", tint }) => {
+export const ThresholdGateScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; failLabel?: string; passLabel?: string; zoneLabel?: string; skipStamp?: string; tint?: string; dropAt?: number; attempt2At?: number }> = ({ durationInFrames, kicker, title, failLabel = "5%", passLabel = "25%", zoneLabel = "20–30%", skipStamp = "SKIP", tint, dropAt = 84, attempt2At = Math.round(durationInFrames * 0.52) }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const gateX = 760;
   // attempt 1: 5% → trapdoor
-  const dropAt = 84;
   const x1 = interpolate(frame, [14, 64], [60, gateX - 150], CLAMP);
   const trap = spring({ frame: frame - dropAt, fps, config: { stiffness: 180, damping: 14 }, durationInFrames: 18 });
   const trapRot = interpolate(trap, [0, 1], [0, 78]); // swings DOWN (a trapdoor)
@@ -381,7 +380,7 @@ export const ThresholdGateScene: React.FC<{ durationInFrames: number; kicker?: s
   const rot1 = frame >= dropAt ? Math.min((frame - dropAt) * 4, 50) : 0;
   const card1Op = interpolate(frame, [dropAt + 12, dropAt + 26], [1, 0], CLAMP);
   // attempt 2: 25% → gate lifts
-  const startAt2 = Math.round(durationInFrames * 0.52);
+  const startAt2 = attempt2At;
   const liftAt = startAt2 + 52;
   const x2 = interpolate(frame, [startAt2, startAt2 + 50], [60, gateX - 150], CLAMP) + interpolate(frame, [liftAt + 6, liftAt + 40], [0, 560], CLAMP);
   const lift = spring({ frame: frame - liftAt, fps, config: { stiffness: 160, damping: 15 }, durationInFrames: 20 });
@@ -423,7 +422,7 @@ export const ThresholdGateScene: React.FC<{ durationInFrames: number; kicker?: s
           )}
           <Sparks at={liftAt + 12} x={gateX + 60} y={190} color={GREEN} size={150} />
         </div>
-        <SceneHeadline kicker={kicker} title={title} titleSize={92} accent={GREEN} />
+        <SceneHeadline kicker={kicker} title={title} titleSize={64} accent={GREEN} />
       </div>
     </SceneShell>
   );

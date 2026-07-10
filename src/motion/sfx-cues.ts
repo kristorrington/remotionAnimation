@@ -45,7 +45,8 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
       cues.push({ at: Math.round(dur * 0.34), type: "boom" }, { at: dur - 66, type: "ding" }); // STOP slam, test-bench arrival
       break;
     case "thresholdGate":
-      cues.push({ at: 84, type: "whip" }, { at: Math.round(dur * 0.52) + 52, type: "ding" }); // trapdoor, gate opens
+      if (dur === 222) cues.push({ at: 74, type: "whip" }, { at: 164, type: "ding" }); // side-hustles open: drop on "waste", lift on "prompt packs"
+      else cues.push({ at: 84, type: "whip" }, { at: Math.round(dur * 0.52) + 52, type: "ding" }); // trapdoor, gate opens
       break;
     case "plumbing":
       cues.push({ at: Math.round(dur * 0.44) + 24, type: "ding" }); // leak fixed

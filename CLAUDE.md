@@ -320,6 +320,13 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
 
 ## 8. Long-form video rules
 
+- **Long-form opens on the FACE** (Kris's rule, July 2026): frame 0 of every
+  Final is the full-frame talking head delivering the hook to camera — the
+  first animation cover must NEVER start at frame 0. It cuts in at ~90f (≈3s,
+  at the first natural phrase break) with a `CutFlash` at the cut. Re-anchor
+  the first scene's internal gags to the whisper words from the new start
+  (add timing props to shared scenes — e.g. `ThresholdGateScene dropAt/
+  attempt2At` — never let gags play late).
 - **Long-form scenes must not default to centred title cards.** A scene is only
   acceptable if it has a visual idea and animated action. Prefer cartoon
   explainer moments, object metaphors, workflow systems, UI simulations, and

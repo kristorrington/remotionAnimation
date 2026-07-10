@@ -26,7 +26,9 @@ import {
 export const SIDE_HUSTLE_DUR = 13881;
 
 const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[] = [
-  { scene: "thresholdGate", from: 0, dur: 312, fullscreen: true },
+  // face-first open (CLAUDE.md §8): frames 0–90 are full-frame talking head —
+  // the first cover NEVER starts at 0; it flash-cuts in at 90.
+  { scene: "thresholdGate", from: 90, dur: 222, fullscreen: true },
   { scene: "questionFlip", from: 318, dur: 182 },
   { scene: "pathDoors", from: 505, dur: 355, fullscreen: true },
   { scene: "steps", from: 906, dur: 245 },
@@ -61,9 +63,11 @@ export const SIDE_HUSTLE_FULLSCREEN: { from: number; to: number }[] = BEATS.filt
 export const SideHustleVisuals: React.FC = () => {
   return (
     <AbsoluteFill>
-      {/* 0:00 HOOK — chasing the biggest number falls through the trapdoor */}
-      <Sequence from={0} durationInFrames={312} premountFor={30}>
-        <ThresholdGateScene durationInFrames={312} kicker="ZERO CODING EXPERIENCE?" title="STOP CHASING THE BIGGEST NUMBER" failLabel="HYPE NUMBER" passLabel="PAID IN 30 DAYS" zoneLabel="REALISTIC" skipStamp="WASTED WEEKEND" tint="#F59E0B" />
+      {/* 0:03 HOOK — face delivers line 1 to camera, then the flash-cut into
+          the trapdoor: drop on "waste your time" (166), pass run on "That is
+          how people end up selling prompt packs" (202→) */}
+      <Sequence from={90} durationInFrames={222} premountFor={30}>
+        <ThresholdGateScene durationInFrames={222} kicker="ZERO CODING EXPERIENCE?" title="STOP CHASING THE BIGGEST NUMBER" failLabel="HYPE NUMBER" passLabel="PAID IN 30 DAYS" zoneLabel="REALISTIC" skipStamp="WASTED WEEKEND" tint="#F59E0B" dropAt={74} attempt2At={112} />
       </Sequence>
 
       {/* 0:10 THE BETTER QUESTION */}
