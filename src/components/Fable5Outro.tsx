@@ -30,7 +30,12 @@ export const Fable5Outro: React.FC<{ durationInFrames: number; kicker?: string; 
 
   return (
     <AbsoluteFill style={{ justifyContent: "center", alignItems: "center" }}>
-      <AnimatedBackground durationInFrames={durationInFrames} />
+      {/* fade IN only — the default envelope also fades OUT over the last
+          ~14 frames, which exposed the raw footage behind the CTA on the
+          video's final frame. The end card must hold to the last frame. */}
+      <AbsoluteFill style={{ opacity: interpolate(frame, [0, 12], [0, 1], CLAMP) }}>
+        <AnimatedBackground durationInFrames={durationInFrames} fade={false} />
+      </AbsoluteFill>
       {/* position: relative is LOAD-BEARING — without it the absolutely-
           positioned AnimatedBackground paints OVER this in-flow column
           (only the transformed button survived; the kicker/tag "flashed"
