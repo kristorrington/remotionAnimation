@@ -13,8 +13,11 @@ export const HookTitle: React.FC<{ text: string; hold: number; context?: string 
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = useTheme();
+  const paperTheme = t.name === "paper";
   const words = text.split(" ");
-  const out = interpolate(frame, [hold - 14, hold], [1, 0], CLAMP);
+  // fade out BEFORE the seam starts moving (seamStart = hold − 16) — the hook
+  // must never ghost over the expanding face card during the split transition
+  const out = interpolate(frame, [hold - 32, hold - 18], [1, 0], CLAMP);
   const ctxIn = spring({ frame: frame - 6, fps, config: { stiffness: 220, damping: 16 }, durationInFrames: 14 });
 
   return (
@@ -45,12 +48,15 @@ export const HookTitle: React.FC<{ text: string; hold: number; context?: string 
                 // a RED highlight box (the reference look); cinematic = HOT
                 // orange (colour research: hottest hue on the hook). The hook
                 // sits over footage, so non-keyword words stay white.
-                color: isLast && !paper ? (t.name === "bold" ? t.accent : HOT) : "#FFFFFF",
+                // paper: near-black words on the ivory (the face is a card
+                // below the hook block), keyword white-in-red-box; dark styles:
+                // white words over footage, keyword HOT
+                color: isLast ? (paper ? "#FFFFFF" : t.name === "bold" ? t.accent : HOT) : paper ? t.ink : "#FFFFFF",
                 background: isLast && paper ? t.accent2 : undefined,
                 padding: isLast && paper ? "2px 20px" : undefined,
                 borderRadius: isLast && paper ? 6 : undefined,
                 textTransform: "uppercase",
-                textShadow: "0 6px 34px rgba(0,0,0,0.75)",
+                textShadow: paper ? undefined : "0 6px 34px rgba(0,0,0,0.75)",
               }}
             >
               {w}
@@ -68,7 +74,7 @@ export const HookTitle: React.FC<{ text: string; hold: number; context?: string 
             transform: `translateY(${interpolate(ctxIn, [0, 1], [20, 0])}px)`,
           }}
         >
-          <span style={{ fontFamily: t.fontDisplay, fontWeight: 600, fontSize: 30, lineHeight: 1.3, letterSpacing: 0.4, color: "rgba(255,255,255,0.78)", textShadow: "0 4px 24px rgba(0,0,0,0.9)" }}>{context}</span>
+          <span style={{ fontFamily: t.fontDisplay, fontWeight: 600, fontSize: 30, lineHeight: 1.3, letterSpacing: 0.4, color: paperTheme ? t.textDim : "rgba(255,255,255,0.78)", textShadow: paperTheme ? undefined : "0 4px 24px rgba(0,0,0,0.9)" }}>{context}</span>
         </div>
       ) : null}
     </AbsoluteFill>

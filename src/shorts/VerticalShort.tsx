@@ -11,6 +11,7 @@ import { captionsFor } from "./captionsRegistry";
 import { ShortOutro } from "./ShortOutro";
 import { LowerThird } from "./LowerThird";
 import { MusicBed } from "../components/MusicBed";
+import { AnimatedBackground } from "../components/AnimatedBackground";
 import { SFX, SfxCue } from "../components/Sfx";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -45,6 +46,7 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
   const hookHold = 96; // ~3.2s — the full-screen opening needs room to breathe (2.2s was too quick)
   const seamStart = hookHold - 16;
   const seamEnd = hookHold + 4;
+  const paper = (spec.style ?? "cinematic") === "paper";
 
   // OPENING PUNCH-IN (rule, CLAUDE.md §9): the video starts SMALL (scale 0.5,
   // floating on black) and zooms up to full frame over the first ~1s with a
@@ -111,30 +113,46 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
     if (lowerThirdFrom + 150 > s.from - 12 && lowerThirdFrom < s.to + 12) lowerThirdFrom = s.to + 18;
   }
 
+  // PAPER full-face framing (Kris's reference, July 2026): the 9:16 cover-crop
+  // of the 16:9 source is far tighter than the reference creators' framing, so
+  // in paper style the full-screen face renders as a ROUNDED CARD at ~0.74
+  // scale anchored low on the ivory — face ≈ ⅓ of the frame, hook block owns
+  // the paper above it. The card expands to the full-bleed band as the split
+  // arrives (seam-driven), so the tight crop only ever shows in the split.
+  const faceScale = paper ? interpolate(seamY, [0, ANIM_H], [0.74, 1], CLAMP) : 1;
+  const faceOriginY = paper ? interpolate(seamY, [0, ANIM_H], [88, 30], CLAMP) : 30;
+  const introRadius = interpolate(frame, [0, 22], [40, 0], CLAMP);
+  const paperRadius = paper ? interpolate(seamY, [0, ANIM_H], [28, 0], CLAMP) : 0;
+
   return (
     <ThemeProvider style={spec.style}>
-      <AbsoluteFill style={{ backgroundColor: "black" }}>
+      <AbsoluteFill style={{ backgroundColor: paper ? "#F0EEE6" : "black" }}>
+        {/* paper style: the ivory dot-grid paper is the permanent base layer —
+            the face card and panels float on it */}
+        {paper && <AnimatedBackground durationInFrames={dur} fade={false} />}
+
         {/* TOP — talking head; grows to full screen when seamY → 0. Min height
             1px keeps the video mounted during full-anim spans so the VO plays on. */}
         <div style={{ position: "absolute", top: 0, left: 0, width: 1080, height: Math.max(1920 - seamY, 1), overflow: "hidden" }}>
-          {/* ambient fill behind the punch-in: the SAME shot blurred + dimmed,
-              fading out as the zoom lands — frame 0 must read as a designed
-              full frame (it doubles as the feed thumbnail), never a small
-              video floating on black (§9). Mounted for the intro only. */}
-          {!spec.animHook && frame < 26 && (
+          {/* ambient fill behind the punch-in (dark styles): the SAME shot
+              blurred + dimmed, fading out as the zoom lands — frame 0 must read
+              as a designed full frame (it doubles as the feed thumbnail), never
+              a small video floating on black (§9). Paper style skips it — the
+              ivory paper IS the fill. Mounted for the intro only. */}
+          {!spec.animHook && !paper && frame < 26 && (
             <AbsoluteFill style={{ transform: "scale(1.15)", filter: "blur(46px) brightness(0.5) saturate(1.25)", opacity: interpolate(frame, [14, 24], [1, 0], CLAMP) }}>
               <VerticalStage source={spec.source} from={spec.from} volume={0} />
             </AbsoluteFill>
           )}
           <AbsoluteFill
             style={{
-              transform: `scale(${introZoom})`,
-              transformOrigin: "50% 30%",
-              // while small, the shot is a floating CARD: rounded + drop shadow,
-              // both relaxing to nothing as it reaches full frame
-              borderRadius: interpolate(frame, [0, 22], [40, 0], CLAMP),
+              transform: `scale(${introZoom * faceScale})`,
+              transformOrigin: `50% ${faceOriginY}%`,
+              // while small, the shot is a floating CARD: rounded + drop shadow.
+              // Dark styles relax to full bleed; paper KEEPS the card at rest.
+              borderRadius: Math.max(introRadius, paperRadius),
               overflow: "hidden",
-              boxShadow: introZoom < 1 ? "0 30px 90px rgba(0,0,0,0.55)" : undefined,
+              boxShadow: introZoom * faceScale < 1 ? (paper ? "0 24px 70px rgba(31,30,29,0.30)" : "0 30px 90px rgba(0,0,0,0.55)") : undefined,
             }}
           >
             <VerticalStage source={spec.source} from={spec.from} />

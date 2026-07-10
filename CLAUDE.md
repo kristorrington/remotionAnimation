@@ -428,6 +428,16 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   VerticalShort themes all furniture via useTheme(); per-beat tints become
   soft pastel washes over the ivory. Dark "cinematic" remains the long-form
   look until converted.
+- **Paper full-face FRAMING** (reference match, July 2026): the 9:16 cover-
+  crop of the 16:9 source is much tighter than the reference creators'
+  framing, so in paper style every full-screen face phase renders the shot as
+  a ROUNDED CARD at ~0.74 scale anchored LOW on the ivory — face ≈ ⅓ of the
+  frame height with real headroom. The hook block AND the CTA live on the
+  paper ABOVE the card (near-black type, no shadows); the card expands into
+  the full-bleed band as the split arrives; the punch-in lands on the card
+  scale; the ambient blur fill is dark-styles-only (the paper IS the fill).
+  The hook fades fully BEFORE the seam moves — text never ghosts over the
+  expanding card.
 - **Split = FACE TOP / ANIMATION BOTTOM** (Kris's rule, July 2026 — overwrites
   the original animation-top band): whenever a short is split-screen, the
   talking head owns the TOP half and the animation band rises from the BOTTOM

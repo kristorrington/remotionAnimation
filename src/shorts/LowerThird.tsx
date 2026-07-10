@@ -30,15 +30,17 @@ export const LowerThird: React.FC<{ dur: number }> = ({ dur }) => {
             flexDirection: "column",
             gap: 3,
             padding: "10px 24px 10px 16px",
-            background: "rgba(6,9,16,0.88)",
+            // paper = white sticker card (near-black name reads over anything);
+            // dark styles keep the dark pill with white name
+            background: t.name === "paper" ? "rgba(255,255,255,0.95)" : "rgba(6,9,16,0.88)",
             borderRadius: "0 12px 12px 0",
-            border: "1px solid rgba(255,255,255,0.12)",
+            border: t.name === "paper" ? "1px solid rgba(31,30,29,0.14)" : "1px solid rgba(255,255,255,0.12)",
             borderLeft: "none",
-            boxShadow: "0 12px 30px rgba(0,0,0,0.45)",
+            boxShadow: t.name === "paper" ? "0 10px 26px rgba(31,30,29,0.22)" : "0 12px 30px rgba(0,0,0,0.45)",
           }}
         >
-          <span style={{ fontFamily: t.fontBody, fontWeight: 900, fontSize: 32, letterSpacing: 0.5, color: t.text }}>{BRAND_NAME}</span>
-          <span style={{ fontFamily: t.fontKicker, fontWeight: 700, fontSize: 21, letterSpacing: 3, color: t.accent }}>{BRAND_TAG}</span>
+          <span style={{ fontFamily: t.fontBody, fontWeight: 900, fontSize: 32, letterSpacing: 0.5, color: t.name === "paper" ? t.ink : "#FFFFFF" }}>{BRAND_NAME}</span>
+          <span style={{ fontFamily: t.fontKicker, fontWeight: 700, fontSize: 21, letterSpacing: 3, color: t.name === "paper" ? "#B85C3A" : t.accent }}>{BRAND_TAG}</span>
         </div>
       </div>
     </AbsoluteFill>

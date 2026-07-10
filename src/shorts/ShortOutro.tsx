@@ -14,6 +14,7 @@ export const ShortOutro: React.FC<{ text: string; dur: number }> = ({ text, dur 
   const { fps } = useVideoConfig();
   const t = useTheme();
   const bold = t.name === "bold";
+  const paper = t.name === "paper";
 
   const enter = spring({ frame, fps, config: { stiffness: 200, damping: 18, mass: 0.8 }, durationInFrames: 18 });
   const op = interpolate(frame, [0, 12], [0, 1], CLAMP) * interpolate(frame, [dur - 10, dur], [1, 0], CLAMP);
@@ -21,7 +22,9 @@ export const ShortOutro: React.FC<{ text: string; dur: number }> = ({ text, dur 
   const pulse = 1 + 0.04 * Math.sin(frame * 0.2);
 
   return (
-    <AbsoluteFill style={{ justifyContent: "flex-end", alignItems: "center", gap: 22, padding: "0 0 430px", opacity: op }}>
+    // paper: the face is a LOW card, so the CTA owns the paper ABOVE it
+    // (mirrors the hook composition); dark styles keep the chest position
+    <AbsoluteFill style={{ justifyContent: paper ? "flex-start" : "flex-end", alignItems: "center", gap: 22, padding: paper ? "190px 0 0" : "0 0 430px", opacity: op }}>
       <div
         style={{
           transform: `scale(${scale * pulse}) rotate(${bold ? -1.5 : 0}deg)`,
