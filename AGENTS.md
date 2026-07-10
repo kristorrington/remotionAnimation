@@ -385,6 +385,14 @@ Transitions (reference: [CutFlash.tsx](src/components/CutFlash.tsx) +
   the config sets `Config.setTimeoutInMilliseconds(300000)` (or pass
   `--timeout=300000`); kill orphaned render processes; drop `--concurrency`
   (e.g. 8 → 4) if it recurs.
+- **In-flow content silently hidden behind an `AbsoluteFill` background** (CSS
+  stacking, 07/2026): absolutely-positioned siblings (AnimatedBackground etc.)
+  paint ABOVE later non-positioned in-flow content — elements "mysteriously"
+  vanish, EXCEPT ones with a `transform`/`opacity < 1` (own stacking context),
+  which is why a fading element can FLASH and then disappear the moment its
+  fade completes. Fix: give the content wrapper `position: "relative"`
+  (Fable5Outro's column is the reference case). Symptom to watch for in QC
+  stills: an element visible in Studio mid-fade but missing in rendered frames.
 - **Long Finals (10k+ frames) stall/time out mid-render — RULE: render them
   with `node scripts/render-long.mjs <comp> <out.mp4> <totalFrames>`, never a
   single `remotion render`.** Root cause (07/2026, side-hustles video): the

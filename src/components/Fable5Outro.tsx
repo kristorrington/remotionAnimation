@@ -8,7 +8,6 @@ import {
 } from "remotion";
 import { CYAN, FONT, PILL_BORDER, RED, WHITE } from "./overlayUI";
 import { AnimatedBackground } from "./AnimatedBackground";
-import { ClaudeMark } from "./Cartoons";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
@@ -25,13 +24,18 @@ export const Fable5Outro: React.FC<{ durationInFrames: number; kicker?: string; 
   const enterOp = interpolate(frame, [6, 18], [0, 1], CLAMP);
   const pulse = 0.5 + 0.5 * Math.sin(frame * 0.16);
   const btnScale = interpolate(enter, [0, 1], [0.6, 1]) * (1 + 0.05 * pulse);
-  const tagOp = interpolate(frame, [40, 56], [0, 1], CLAMP);
+  // the tag is the CTA — it enters right after the button lands and stays
+  // readable for the rest of the outro window (~3s)
+  const tagOp = interpolate(frame, [22, 36], [0, 1], CLAMP);
 
   return (
     <AbsoluteFill style={{ justifyContent: "center", alignItems: "center" }}>
       <AnimatedBackground durationInFrames={durationInFrames} />
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 30, opacity: enterOp }}>
-        <ClaudeMark size={110} />
+      {/* position: relative is LOAD-BEARING — without it the absolutely-
+          positioned AnimatedBackground paints OVER this in-flow column
+          (only the transformed button survived; the kicker/tag "flashed"
+          during their opacity fades and then vanished at opacity 1). */}
+      <div style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", gap: 30, opacity: enterOp }}>
         <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 32, letterSpacing: 6, color: CYAN }}>{kicker}</span>
         <div style={{ transform: `scale(${btnScale})`, display: "inline-flex", alignItems: "center", gap: 16, padding: "20px 44px", borderRadius: 14, background: RED, boxShadow: "0 18px 44px rgba(0,0,0,0.5)" }}>
           <span style={{ display: "inline-block", width: 0, height: 0, borderTop: "12px solid transparent", borderBottom: "12px solid transparent", borderLeft: `20px solid ${WHITE}` }} />

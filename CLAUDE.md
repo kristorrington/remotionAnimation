@@ -329,7 +329,9 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   Final; the whoosh lives in the overlay's sound block). The face then holds
   full-frame delivering the hook — the first animation cover must NEVER
   start at frame 0. It cuts in at ~90f (≈3s, at the first natural phrase
-  break) with a `CutFlash` at the cut. Re-anchor
+  break) with a `CutFlash` at the cut. **Outro rule** (Kris, July 2026): the
+  CTA/tag line enters right after the subscribe button (~0.8s in) and stays
+  readable ≥ ~3s; no third-party logos on the end screen. Re-anchor
   the first scene's internal gags to the whisper words from the new start
   (add timing props to shared scenes — e.g. `ThresholdGateScene dropAt/
   attempt2At` — never let gags play late).
