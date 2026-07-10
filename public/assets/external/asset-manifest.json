@@ -8,7 +8,11 @@
       "sourceName": "Uploaded by Kris (DeepSeek official logo)",
       "dateAccessed": "2026-07-04",
       "usageNote": "Official DeepSeek logo used for commentary/product identification. PNG has a baked white background, so it is presented as a rounded white app-tile (DeepSeekMark component) rather than color-keyed.",
-      "usedIn": ["DSparkVideo hero launch scene", "DSparkVideo outro", "all 5 DSpark shorts (deepseek icon beats)"],
+      "usedIn": [
+        "DSparkVideo hero launch scene",
+        "DSparkVideo outro",
+        "all 5 DSpark shorts (deepseek icon beats)"
+      ],
       "attributionRequired": false,
       "concerns": "Source URL unknown (user-uploaded). Prefer an official SVG from DeepSeek brand assets for future videos."
     },
@@ -20,9 +24,25 @@
       "sourceName": "DeepSeek DSpark announcement (reported claims, via video transcript)",
       "dateAccessed": "2026-07-06",
       "usageNote": "Extracted claim numbers for native Remotion chart recreation (CLAUDE.md 10.3) — data-as-asset, no third-party chart image used",
-      "usedIn": ["TemplateLab chart demos"],
+      "usedIn": [
+        "TemplateLab chart demos"
+      ],
       "attributionRequired": false,
       "concerns": "Numbers come from the narration's reported claims; attach the official announcement URL when citing on screen in a published video"
+    },
+    {
+      "filename": "terminal-bench-gpt56.json",
+      "localPath": "public/assets/external/charts/terminal-bench-gpt56.json",
+      "type": "chart-data",
+      "sourceUrl": "https://decrypt.co",
+      "sourceName": "Decrypt (reported Terminal-Bench 2.1 scores, via video transcript)",
+      "dateAccessed": "2026-07-11",
+      "usageNote": "Reported agentic-coding benchmark scores (Sol Ultra 91.9 / Mythos 5 88 / Fable 5 84.3) recreated as a native Remotion chart (BenchBarsScene) — no third-party chart image downloaded.",
+      "usedIn": [
+        "GptSandboxVideo benchmark receipt scene"
+      ],
+      "attributionRequired": false,
+      "concerns": "Scores are as reported in launch coverage; verify against the primary Terminal-Bench leaderboard before re-use."
     }
   ]
 }

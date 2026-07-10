@@ -14,6 +14,43 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "heroLaunch":
       cues.push({ at: 34 + 26, type: "boom" }, { at: 110, type: "whoosh" }); // bolt lands, launch
       break;
+    // ── GPT-5.6 video (July 2026) ──
+    case "speedBoost":
+      cues.push({ at: 40, type: "boom" }, { at: 70, type: "whoosh" }); // SOL module bolts on, gauge sweep
+      break;
+    case "balance":
+      cues.push({ at: 24, type: "switch" }, { at: 94, type: "whip" }, { at: 124, type: "boom" }, { at: 231, type: "ding" }); // drops, tip, rule stamp
+      break;
+    case "tiersDoors":
+      cues.push({ at: 38 + 12, type: "switch" }, { at: 65 + 12, type: "switch" }, { at: 96 + 12, type: "switch" }); // the three tier doors land
+      break;
+    case "benchBars":
+      cues.push({ at: 67, type: "whip" }, { at: 232, type: "switch" }, { at: 308, type: "switch" }); // bars grow on their scores
+      break;
+    case "scanner":
+      cues.push({ at: 181, type: "switch" }, { at: 350, type: "ding" }); // scan starts, precedent tag
+      break;
+    case "systemBreak":
+      cues.push({ at: 170, type: "boom" }, { at: 194, type: "whip" }, { at: 275, type: "whip" }); // the chain breaks, badges slam
+      break;
+    case "takeawayCapable":
+      cues.push({ at: 95, type: "boom" }); // GATE IT stamp
+      break;
+    case "comparePerms":
+      cues.push({ at: 20, type: "whip" }, { at: 168, type: "ding" }); // leaderboard ✗, permissions ✓
+      break;
+    case "race":
+      cues.push({ at: 46, type: "whoosh" }); // the fast lane takes off
+      break;
+    case "gates":
+      cues.push({ at: 139, type: "ding" }, { at: 179, type: "ding" }, { at: 230, type: "ding" }, { at: 294, type: "boom" }); // three gates open, one slams
+      break;
+    case "signals":
+      cues.push({ at: 122, type: "switch" }, { at: 293, type: "switch" }); // the two signals land
+      break;
+    case "takeawayFinale":
+      cues.push({ at: 152, type: "boom" }); // THEN SCALE stamp
+      break;
     case "boredMatters":
       cues.push({ at: 56, type: "boom" }); // wake slam
       break;

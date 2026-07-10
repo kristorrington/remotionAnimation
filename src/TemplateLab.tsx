@@ -11,6 +11,7 @@ import { VoiceGlow } from "./motion/voice";
 import { BarsIn, LineDraw, DonutFill, BarRace, ChartData } from "./motion/charts";
 import { SourceScreenshot } from "./motion/SourceScreenshot";
 import { PathDoorsScene, DraftPolishScene, DocFunnelScene, AppFlowScene, FirstLineDeskScene, SkillCartridgeScene, ThreeBuyersScene } from "./scenes/SideHustleScenes";
+import { BalanceScaleScene, BenchBarsScene, ScannerScene, GatesScene } from "./scenes/GptScenes";
 import { LogoBadge, IconBrain } from "./components/Cartoons";
 import speedups from "../public/assets/external/charts/dspark-speedups.json";
 
@@ -251,6 +252,22 @@ const sections: { title: string; node: React.ReactNode }[] = [
   {
     title: "THREE BUYERS — offer vs idea gate",
     node: <ThreeBuyersScene durationInFrames={DEMO} kicker="BEFORE YOU BUILD" title="NAME THREE PEOPLE" fillAts={[20, 34, 48]} verdictAt={64} filled />,
+  },
+  {
+    title: "BalanceScaleScene — tradeoff tips",
+    node: <BalanceScaleScene durationInFrames={DEMO} kicker="WORTH IT?" title="EFFICIENCY VS TRUST" dropLeftAt={10} dropRightAt={34} tipAt={48} stampText="SANDBOX FIRST" stampAt={64} tint="#EF4444" />,
+  },
+  {
+    title: "BenchBarsScene — recreated chart",
+    node: <BenchBarsScene durationInFrames={DEMO} kicker="REPORTED SCORES" title="THE RECEIPTS" barAts={[10, 30, 50]} tint="#D97757" />,
+  },
+  {
+    title: "ScannerScene — inspection arch",
+    node: <ScannerScene durationInFrames={DEMO} kicker="FEDERAL PIPELINE" title="SCANNED FIRST" scanAt={30} tagAt={64} tint="#F59E0B" />,
+  },
+  {
+    title: "GatesScene — the three gates",
+    node: <GatesScene durationInFrames={DEMO} kicker="THE RULE" title="THREE GATES" gates={[{ label: "SANDBOXED", at: 14 }, { label: "REVIEWED", at: 30 }, { label: "LEAST-PRIVILEGE", at: 46 }]} missingAt={68} tint="#D97757" />,
   },
 ];
 

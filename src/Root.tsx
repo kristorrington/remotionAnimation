@@ -3,8 +3,8 @@ import { CalculateMetadataFunction, Composition } from "remotion";
 import { ShortsCompositions, SHORTS_ENABLED } from "./shorts";
 import { StyleDemo } from "./StyleDemo";
 import { TemplateLab, TEMPLATE_LAB_DUR } from "./TemplateLab";
-import { SideHustleVideo, SIDE_HUSTLE_DUR } from "./SideHustleVideo";
-import { SideHustleFinal } from "./SideHustleFinal";
+import { GptSandboxVideo, GPT_SANDBOX_DUR } from "./GptSandboxVideo";
+import { GptSandboxFinal } from "./GptSandboxFinal";
 import { ArchivedVideoCompositions, SHOW_ARCHIVE } from "./archive";
 
 // Default this composition to a transparent ProRes 4444 export so it composites
@@ -51,10 +51,10 @@ export const RemotionRoot: React.FC = () => {
       />
 
       <Composition
-        // CURRENT: Side-hustles (5 beginner paths) — transparent overlay track.
-        id="SideHustleVideo"
-        component={SideHustleVideo}
-        durationInFrames={SIDE_HUSTLE_DUR}
+        // CURRENT: GPT-5.6 "sandbox it before you scale it" — transparent overlay track.
+        id="GptSandboxVideo"
+        component={GptSandboxVideo}
+        durationInFrames={GPT_SANDBOX_DUR}
         fps={30}
         width={1920}
         height={1080}
@@ -62,10 +62,10 @@ export const RemotionRoot: React.FC = () => {
       />
 
       <Composition
-        // CURRENT: Side-hustles — the finished combined cut (footage + overlay).
-        id="SideHustleFinal"
-        component={SideHustleFinal}
-        durationInFrames={SIDE_HUSTLE_DUR}
+        // CURRENT: GPT-5.6 — the finished combined cut (footage + overlay).
+        id="GptSandboxFinal"
+        component={GptSandboxFinal}
+        durationInFrames={GPT_SANDBOX_DUR}
         fps={30}
         width={1920}
         height={1080}

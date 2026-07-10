@@ -113,6 +113,10 @@ For **every transcript beat, classify it first**, then design to the class:
 | **FIRST-LINE HELPER + HUMAN GATE** | question bubbles auto-answered; the big one routes past the gate to the human | `FirstLineDeskScene` |
 | **REUSABLE SKILL / CONSISTENCY** | SKILL.MD cartridge clicks in, identical RUN cards pop out | `SkillCartridgeScene` (shorts: `cartridge`) |
 | **OFFER vs IDEA GATE** | three buyer slots fill (check) or stay empty (JUST AN IDEA stamp) | `ThreeBuyersScene` |
+| **TRADEOFF / "WORTH IT?"** | items drop on both pans, the scale TIPS, verdict stamps | `BalanceScaleScene` |
+| **RECREATED CHART / SCORES** | native bars grow on their spoken numbers + source chip | `BenchBarsScene` (data in `public/assets/external/charts`) |
+| **REGULATOR / INSPECTION** | the product card rides the belt through the scan arch, tag pops | `ScannerScene` |
+| **RULE WITH N CONDITIONS** | lock-gates swing open per condition; a missing one SLAMS shut | `GatesScene` |
 | **TRANSITION** | quick impact text, camera push (mode F, ≤ 4s) | `SceneCameraPush`, `LightSweep` |
 
 If a beat's purpose isn't covered, **add a new scene type** — don't force it into
@@ -303,10 +307,10 @@ visual, pull from here FIRST and extend the §4 metaphor map; build in
 | `ForkliftBot` | robot forklift strains under a huge CONTEXT crate, tips, drops it | heavy context / payload |
 | `LaunchHoldClock` | rocket on the pad, countdown clock PAUSES on a hold, then resumes | delays / windows / launches |
 | `FirewallGrid` | laser gate — safe request cards pass, the flagged one is zapped mid-flight | safety filters / blocking |
-| `BalanceScale` | items drop onto COST vs OUTPUT pans; the scale tips hard, subject reacts | tradeoffs / "worth it?" |
+| `BalanceScale` — BUILT (`BalanceScaleScene`) | items drop onto COST vs OUTPUT pans; the scale tips hard, subject reacts | tradeoffs / "worth it?" |
 | `BatteryDrain` — BUILT (shorts `battery`) | segmented battery drains a chunk per task icon; docks to recharge | usage limits / credits |
 | `TierElevator` — BUILT (shorts `elevator`) | elevator rides between HAIKU→SONNET→OPUS→FABLE floors; doors open on the pick | model tiers / routing |
-| `InspectionScanner` | conveyor arch x-rays passing cards; one scans red and gets pulled | review / moderation |
+| `InspectionScanner` — BUILT (`ScannerScene`) | conveyor arch x-rays passing cards; one scans red and gets pulled | review / moderation |
 | `BlueprintTable` | blueprint unrolls; robot draws nodes that light up into a live diagram | planning / architecture |
 | `DominoChain` | labeled dominos topple in sequence; ONE gap stops the cascade | dependency chains / failure |
 | `VaultDoor` | vault wheel spins, bolts retract, door swings open on a glowing core | access granted / premium unlock |

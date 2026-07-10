@@ -22,6 +22,8 @@ import { ModelRoutingVideo, MODEL_ROUTING_DUR } from "../ModelRoutingVideo";
 import { ModelRoutingFinal } from "../ModelRoutingFinal";
 import { FableCountdownVideo, FABLE_COUNTDOWN_DUR } from "../FableCountdownVideo";
 import { FableCountdownFinal } from "../FableCountdownFinal";
+import { SideHustleVideo, SIDE_HUSTLE_DUR } from "../SideHustleVideo";
+import { SideHustleFinal } from "../SideHustleFinal";
 
 // ============================================================================
 // THE ARCHIVE — compositions from PREVIOUS videos. When a new video starts,
@@ -45,6 +47,25 @@ const transparentDefaults: CalculateMetadataFunction<
 export const ArchivedVideoCompositions: React.FC = () => {
   return (
     <>
+      {/* ── Side-hustles: 5 beginner Claude paths (July 2026) ── */}
+      <Composition
+        id="SideHustleVideo"
+        component={SideHustleVideo}
+        durationInFrames={SIDE_HUSTLE_DUR}
+        fps={30}
+        width={1920}
+        height={1080}
+        calculateMetadata={transparentDefaults}
+      />
+      <Composition
+        id="SideHustleFinal"
+        component={SideHustleFinal}
+        durationInFrames={SIDE_HUSTLE_DUR}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
       {/* ── Fable-countdown: the July 12 window (July 2026) ── */}
       <Composition
         id="FableCountdownVideo"

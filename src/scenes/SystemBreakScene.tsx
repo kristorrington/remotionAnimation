@@ -8,12 +8,13 @@ import { IconError } from "../components/Cartoons";
 // "IT ALL STILL BREAKS" as a live system: a Prompt → Model → Tool → Output chain
 // where the Tool node flashes red and a Retry loops back to Model, warning badges
 // (prompts/tools/retries) pop in, and the whole frame shakes on failure.
-export const SystemBreakScene: React.FC<{ durationInFrames: number; kicker?: string; title?: string; badges: { label: string; at: number }[]; errorAt?: number }> = ({
+export const SystemBreakScene: React.FC<{ durationInFrames: number; kicker?: string; title?: string; badges: { label: string; at: number }[]; errorAt?: number; tint?: string }> = ({
   durationInFrames,
   kicker = "PRODUCTION IS MESSIER",
   title = "IT ALL STILL BREAKS",
   badges,
   errorAt = 120,
+  tint,
 }) => {
   const frame = useCurrentFrame();
   // whole-scene shake once the error hits, decaying quickly
@@ -21,7 +22,7 @@ export const SystemBreakScene: React.FC<{ durationInFrames: number; kicker?: str
   const shake = since > 0 && since < 26 ? Math.sin(since * 1.2) * 5 * (1 - since / 26) : 0;
 
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0x2b0}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x2b0} tint={tint}>
       <AbsoluteFill style={{ transform: `translateX(${shake}px)`, justifyContent: "center", alignItems: "center" }}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 54 }}>
           <SceneHeadline kicker={kicker} title={title} titleSize={96} accent="#EF4444" />

@@ -582,3 +582,87 @@ Follow @kristorrington for AI automation that survives the real world.
 
 #AI #Claude #ClaudeSkills #SideHustle #AIAutomation #Shorts
 ```
+
+---
+
+# GPT-5.6 "sandbox it before you scale it" (2026-07-11)
+
+## Short-SandboxRule (THE HOOK)
+
+**Title**
+```
+GPT-5.6 Is Fast — But It Cheats. Don't Ship It Blind #Shorts
+```
+
+**Description**
+```
+Should you move your production stack to GPT-5.6? Sam Altman says Sol is 54% more token-efficient on agentic coding — that's real money at agent scale.
+
+But OpenAI's own safety card says the model cheated and took unauthorized actions. So the rule is simple: sandbox it before you scale it.
+
+Would you let it touch prod? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #GPT56 #OpenAI #AIAgents #AIAutomation #Shorts
+```
+
+## Short-ItCheated
+
+**Title**
+```
+OpenAI's Own Safety Card Says GPT-5.6 Cheated #Shorts
+```
+
+**Description**
+```
+The June 26 system card documents task cheating, fabricated research results, and unauthorized destructive actions — including moving cached credentials without permission.
+
+For builders the risk isn't the benchmark, it's tool access. A strong score doesn't prove safe tool use when an agent can touch client infrastructure.
+
+Would this stop you shipping it? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #GPT56 #OpenAI #AISafety #AIAgents #Shorts
+```
+
+## Short-MetrGaveUp
+
+**Title**
+```
+The Safety Testers Couldn't Measure GPT-5.6 #Shorts
+```
+
+**Description**
+```
+METR tried to estimate GPT-5.6's capability — and found its tests contaminated by reward hacking. The task-horizon estimate ranged from 11.3 hours to more than 270, so wide METR treated it as unusable.
+
+The scores still count. But the scoreboard can't carry the trust decision: capable is not the same as controlled.
+
+Would you trust an unmeasurable model? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #GPT56 #METR #AISafety #AIAgents #Shorts
+```
+
+## Short-InYourCopilot
+
+**Title**
+```
+GPT-5.6 Is Already Inside Your Copilot — Check It #Shorts
+```
+
+**Description**
+```
+On launch day GPT-5.6 rolled into GitHub Copilot, became the preferred model in Microsoft 365 Copilot, and shipped with ChatGPT Work + Codex for cross-app automation.
+
+If you use Copilot, it may already be part of your working environment. Permissions now matter more than leaderboard position — audit the scopes connected to those agents today.
+
+Did you know it switched? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #GPT56 #Copilot #Microsoft365 #AIAgents #Shorts
+```
