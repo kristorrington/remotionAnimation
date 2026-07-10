@@ -14,6 +14,12 @@ Config.setOverwriteOutput(true);
 // browser page-load on this OneDrive-throttled tree (cldflt slows every file
 // op ~2-5x even with OneDrive.exe stopped). Generous on purpose.
 Config.setTimeoutInMilliseconds(300000);
+// The OffthreadVideo compositor sizes its frame cache off free RAM — on this
+// 32-core/64GB box it grew past 10GB on the 13.9k-frame side-hustles render,
+// pushed Windows into paging and the render from ~145 frames/min to ~9 (looks
+// like a stall/timeout). Cap it: 2GB ≈ 250 cached 1080p frames, plenty for the
+// two footage tracks (Director + PiP) which read mostly monotonically.
+Config.setOffthreadVideoCacheSizeInBytes(2 * 1024 * 1024 * 1024);
 Config.overrideWebpackConfig((config) => {
   const withTailwind = enableTailwind(config);
   // Node 25 feeds `undefined` into webpack's snapshot CONTENT hashing

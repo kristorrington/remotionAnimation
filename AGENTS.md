@@ -385,6 +385,19 @@ Transitions (reference: [CutFlash.tsx](src/components/CutFlash.tsx) +
   the config sets `Config.setTimeoutInMilliseconds(300000)` (or pass
   `--timeout=300000`); kill orphaned render processes; drop `--concurrency`
   (e.g. 8 → 4) if it recurs.
+- **Long Finals (10k+ frames) stall/time out mid-render — RULE: render them
+  with `node scripts/render-long.mjs <comp> <out.mp4> <totalFrames>`, never a
+  single `remotion render`.** Root cause (07/2026, side-hustles video): the
+  OffthreadVideo compositor (`remotion.exe`) sizes its frame cache off free RAM;
+  on this 32-core/64GB box it grew past **10GB**, pushed Windows into paging and
+  the render from ~145 to ~9 frames/min — reads as a stall or delayRender
+  timeout, and even `tasklist` hangs. The config now caps the cache
+  (`Config.setOffthreadVideoCacheSizeInBytes(2GB)`); the script additionally
+  renders muted video in 3500-frame chunks (fresh browser + compositor each;
+  re-running skips finished chunks), concats losslessly, renders audio alone at
+  `--concurrency=4` (dodges the 0xC0000142 burst), and muxes. After ANY killed
+  render, clear orphans before retrying (Git Bash needs doubled slashes):
+  `taskkill //F //IM remotion.exe //IM chrome-headless-shell.exe //IM ffmpeg.exe`.
 - **THE PROJECT LIVES AT `C:\ANIMATION_WORK\my-project` — NEVER inside
   OneDrive.** History (07/2026): the project originally lived in OneDrive; its
   filter driver choked on multi-GB footage churn and made every file op crawl
