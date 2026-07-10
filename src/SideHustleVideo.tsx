@@ -215,6 +215,9 @@ export const SideHustleVideo: React.FC = () => {
       <MusicBed src={staticFile("music/tension.MP3")} from={12844} durationInFrames={770} volume={0.08} startFrom={600} fadeInFrames={45} fadeOutFrames={120} />
       <MusicBed src={staticFile("music/outro.MP3")} from={13764} durationInFrames={SIDE_HUSTLE_DUR - 13764} volume={0.075} fadeInFrames={30} />
 
+      {/* opening punch-in whoosh — fires with the Final's intro zoom */}
+      <SfxCue from={1} src={SFX.whoosh} volume={0.45} rate={1.12} />
+
       {/* ===== SFX — a whoosh per beat + per-scene action hits ===== */}
       {[...BEATS.map((b) => b.from), 13764].map((f, i) => (
         <SfxCue key={`w-${f}`} from={f} src={SFX.whoosh} volume={0.45} rate={vary(i)} />

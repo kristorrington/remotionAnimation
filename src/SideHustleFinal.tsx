@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, Sequence } from "remotion";
+import { AbsoluteFill, Easing, interpolate, Sequence, useCurrentFrame } from "remotion";
 import { SideHustleVideo, SIDE_HUSTLE_WINDOWS, SIDE_HUSTLE_FULLSCREEN } from "./SideHustleVideo";
 import { CutFlash } from "./components/CutFlash";
 import { FootageDirector } from "./components/FootageDirector";
@@ -40,14 +40,35 @@ for (const s of SPANS) {
 // the 30-day window.
 const FLASHES = [90, 505, 3343, 7500, 12844, 13423];
 
+const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+
 export const SideHustleFinal: React.FC = () => {
+  const frame = useCurrentFrame();
+  // OPENING PUNCH-IN (aligned with the shorts, CLAUDE.md §9): the footage
+  // starts SMALL — a rounded drop-shadowed card at scale 0.5 on the ivory
+  // paper — and zooms to exactly 1.0 over ~0.7s with a whoosh (the SfxCue
+  // lives in SideHustleVideo's sound block).
+  const introZoom = interpolate(frame, [0, 22], [0.5, 1], { ...CLAMP, easing: Easing.out(Easing.cubic) });
+  const introRadius = interpolate(frame, [0, 22], [40, 0], CLAMP);
   return (
     // paper theme: the per-span bridges + PiP chrome match the overlay's ivory
     <ThemeProvider style="paper">
     <AbsoluteFill style={{ backgroundColor: "black" }}>
+      {/* the ivory paper fills the frame behind the punch-in card */}
+      {frame < 26 && <AnimatedBackground durationInFrames={30} fade={false} />}
       {/* VO boost 1.6× (source peaks ≈ −9 dB, same rig as the last recording —
           re-probe with volumedetect after the proxy lands if the mix drifts) */}
-      <FootageDirector footage={FOOTAGE} volume={1.6} />
+      <AbsoluteFill
+        style={{
+          transform: `scale(${introZoom})`,
+          transformOrigin: "50% 40%",
+          borderRadius: introRadius,
+          overflow: "hidden",
+          boxShadow: introZoom < 1 ? "0 24px 70px rgba(31,30,29,0.30)" : undefined,
+        }}
+      >
+        <FootageDirector footage={FOOTAGE} volume={1.6} />
+      </AbsoluteFill>
 
       {/* one continuous dark bridge per span, UNDER the cards */}
       {SPANS.map((s) => (

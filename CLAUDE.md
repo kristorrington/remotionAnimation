@@ -322,10 +322,14 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
 
 ## 8. Long-form video rules
 
-- **Long-form opens on the FACE** (Kris's rule, July 2026): frame 0 of every
-  Final is the full-frame talking head delivering the hook to camera — the
-  first animation cover must NEVER start at frame 0. It cuts in at ~90f (≈3s,
-  at the first natural phrase break) with a `CutFlash` at the cut. Re-anchor
+- **Long-form opens on the FACE with the PUNCH-IN** (Kris's rule, July 2026):
+  the Final opens exactly like a short — the footage starts as a rounded,
+  drop-shadowed card at scale 0.5 on the ivory paper and zooms to exactly 1.0
+  over ~0.7s (ease-out cubic) with a whoosh at frame ~1 (built into the
+  Final; the whoosh lives in the overlay's sound block). The face then holds
+  full-frame delivering the hook — the first animation cover must NEVER
+  start at frame 0. It cuts in at ~90f (≈3s, at the first natural phrase
+  break) with a `CutFlash` at the cut. Re-anchor
   the first scene's internal gags to the whisper words from the new start
   (add timing props to shared scenes — e.g. `ThresholdGateScene dropAt/
   attempt2At` — never let gags play late).
