@@ -29,6 +29,7 @@ export type BeatSceneKey =
   | "stamp"      // arm slams APPROVED/DENIED (`verdict`) on the `badge` card
   | "signal"     // status tower: static/amber, or clean green (`verdict: check`)
   | "doors"      // path picker: doors from `labels`, door `value` opens
+  | "buyers"     // 3-people test: THREE buyer slots (+ robot); verdict "cross" = all ✗
   | "funnel"     // messy docs pour in, ONE clean report (`badge`) pops out
   | "cartridge"; // SKILL.MD (`badge`) clicks into the model; identical runs pop out
 

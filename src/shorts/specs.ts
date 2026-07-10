@@ -24,10 +24,10 @@ export const SHORTS: ShortSpec[] = [
     hook: "NO BUYERS = NO BUSINESS",
     context: "The test before you build any AI side hustle",
     beats: [
-      { at: 8, scene: "emote", pose: "pointing", tint: "#D97757", text: "NAME THREE PEOPLE" }, // spoken at open (abs 12851)
+      { at: 8, scene: "buyers", pose: "pointing", tint: "#D97757", text: "NAME THREE PEOPLE" }, // spoken at open (abs 12851) — THREE slots on screen, matching the spoken count
       { at: 118, scene: "check", obj: "brain", verdict: "warn", tint: "#F59E0B", text: "WHO PAYS THIS MONTH?" }, // "this month" abs 12964
       { at: 165, scene: "reject", badge: "SOMEDAY", tint: "#EF4444", text: "NOT SOMEDAY" }, // "not some day" abs 13010
-      { at: 310, scene: "emote", pose: "facepalm", tint: "#F59E0B", text: "CAN'T NAME THREE?" }, // "if you can't name three people" abs 13160
+      { at: 310, scene: "buyers", pose: "facepalm", verdict: "cross", tint: "#F59E0B", text: "CAN'T NAME THREE?" }, // "if you can't name three people" abs 13160 — three slots, all ✗
       { at: 356, scene: "stamp", verdict: "cross", badge: "YOUR PLAN", tint: "#EF4444", text: "JUST AN IDEA" }, // "an idea with a name" abs 13268 (stamp slams ~396)
       { at: 444, scene: "emote", pose: "pointing", tint: "#34D399", text: "START WITH THE BUYER" }, // "flip it start with the buyer" abs 13290
       { at: 583, scene: "hourglass", tint: "#F59E0B", text: "30-DAY PROOF WINDOW" }, // "give yourself a 30 day proof window" abs 13429

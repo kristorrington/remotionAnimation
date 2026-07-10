@@ -380,6 +380,11 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   Reserve the hard sub-0.5s snap for impact stamps. Grouped elements stagger
   ≥ 8–10f apart, and physical landings (hops, drops) get their Puff/impact at
   the TOUCHDOWN frame, not the launch frame.
+- **The shorts layout fixes apply to LONG-FORM too** (Kris, July 2026): on-
+  screen counts match the spoken count (five doors, three buyer slots — never
+  a component cap silently dropping items); props stay INSIDE their scene
+  stage (nothing escapes into the headline); text never touches another text
+  block; audit key frames of every scene with stills before shipping a cut.
 - **Layout must breathe**: main subject groups sit ≥ ~110px apart at 1080p;
   absolutely-positioned props (coins, modules, stamps) never cover labels or
   the headline; piles/stacks actually stack (offset every item) — never render
@@ -487,8 +492,11 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   never let text spill under a neighbouring element; (3) the lower-third
   auto-shortens to 130f and is SKIPPED entirely if no split window fits
   before dur−140 — it must never ride into the CTA where the face card puts
-  it over the face; (4) the hook fades fully before the seam moves. QC stills
-  of every short's transitions + full-anim beats before shipping.
+  it over the face; (4) the hook fades fully before the seam moves; (5) in
+  SPLIT mode the panel content biases DOWN 48px (AnimationPanel `shift`) so
+  the top-anchored BeatLabel clears the seam-docked caption pill — never let
+  those two text blocks touch. QC stills of every short's transitions +
+  full-anim beats before shipping.
 - **On-screen counts match the SPOKEN count** (Kris, July 2026): if the VO
   says "five options", the scene shows FIVE doors — never let a component
   cap (e.g. doors slice) silently drop items. DoorsBeat supports 5 (sizes
@@ -517,7 +525,7 @@ Shorts use even STRONGER cartoon/action animation than long-form:
 **In code** (`src/shorts/`): every beat is a `BeatScenes.tsx` subject scene
 (`emote / queue / stack / bolt / coins / migrate / testbench / conveyor /
 reject / retry / check / race / racks / battery / breaker / elevator /
-hourglass / stamp / signal / doors / funnel / cartridge`) routed via
+hourglass / stamp / signal / doors / funnel / cartridge / buyers`) routed via
 `Beat.scene`; the legacy icon card is a fallback (max ~1 per short). `ShortSpec.fullscreen` spans give the animation
 the whole screen; `ShortSpec.animHook` opens the short on full-screen animation
 under the hook title (house default — set it on every short). Also:

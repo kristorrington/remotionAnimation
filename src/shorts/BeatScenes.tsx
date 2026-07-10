@@ -118,6 +118,51 @@ const EmoteBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
   );
 };
 
+// buyers — the 3-people test: THREE buyer slots pop in beside the robot (the
+// on-screen count must match the spoken "three" — CLAUDE.md §9). Default:
+// each slot holds a silhouette + "?" (name them); `verdict: "cross"` slams a
+// red ✗ on every slot instead (you can't).
+const BuyersBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = useTheme();
+  const cross = beat.verdict === "cross";
+  const c = cross ? RED : CYAN;
+  return (
+    <Wrap gap={44}>
+      <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
+        <CartoonRobot pose={beat.pose ?? "pointing"} size={180} accent={c} lookX={7} />
+        <div style={{ display: "flex", gap: 18 }}>
+          {[1, 2, 3].map((n, i) => {
+            const e = spring({ frame: frame - 6 - i * 9, fps, config: { stiffness: 160, damping: 14 }, durationInFrames: 20 });
+            const q = spring({ frame: frame - 26 - i * 9, fps, config: { stiffness: 240, damping: 12 }, durationInFrames: 14 });
+            return (
+              <div key={n} style={{ opacity: interpolate(e, [0, 0.3], [0, 1], CLAMP), transform: `translateY(${interpolate(e, [0, 1], [46, 0])}px)` }}>
+                <div style={{ position: "relative", width: 148, height: 196, borderRadius: 16, border: `3px dashed ${cross ? "rgba(239,68,68,0.6)" : `${c}77`}`, background: t.name === "paper" ? "rgba(255,255,255,0.55)" : "rgba(255,255,255,0.05)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8 }}>
+                  <svg width={70} height={70} viewBox="0 0 100 100">
+                    <circle cx={50} cy={32} r={19} fill="none" stroke={c} strokeWidth={7} opacity={0.8} />
+                    <path d="M14 92 C22 62 78 62 86 92" fill="none" stroke={c} strokeWidth={7} strokeLinecap="round" opacity={0.8} />
+                  </svg>
+                  {!cross && (
+                    <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 34, color: t.name === "paper" ? "rgba(31,30,29,0.7)" : "rgba(255,255,255,0.75)", transform: `scale(${interpolate(q, [0, 1], [1.8, 1])})`, opacity: interpolate(q, [0, 0.3], [0, 1], CLAMP) }}>?</span>
+                  )}
+                  <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 19, letterSpacing: 1, color: t.name === "paper" ? "rgba(31,30,29,0.55)" : "rgba(255,255,255,0.5)", transform: "translateZ(0)" }}>#{n}</span>
+                  {cross && (
+                    <div style={{ position: "absolute", left: "50%", top: "38%", transform: "translate(-50%, -50%)" }}>
+                      <Verdict kind="cross" at={30 + i * 12} size={86} />
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <BeatLabel text={beat.text} sub={beat.sub} accent={c} />
+    </Wrap>
+  );
+};
+
 // queue — the bottleneck: robot waits → prompt cards queue → brain thinks slowly.
 const QueueBeat: React.FC<{ beat: Beat }> = ({ beat }) => (
   <Wrap gap={40}>
@@ -901,6 +946,7 @@ export const BeatSceneView: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur
   const scene = () => {
     switch (beat.scene) {
       case "emote": return <EmoteBeat beat={beat} />;
+      case "buyers": return <BuyersBeat beat={beat} />;
       case "queue": return <QueueBeat beat={beat} />;
       case "stack": return <StackBeat beat={beat} dur={dur} />;
       case "bolt": return <BoltBeat beat={beat} />;
