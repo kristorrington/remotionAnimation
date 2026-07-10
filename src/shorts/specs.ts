@@ -31,10 +31,12 @@ export const SHORTS: ShortSpec[] = [
       { at: 356, scene: "stamp", verdict: "cross", badge: "YOUR PLAN", tint: "#EF4444", text: "JUST AN IDEA" }, // "an idea with a name" abs 13268 (stamp slams ~396)
       { at: 444, scene: "emote", pose: "pointing", tint: "#34D399", text: "START WITH THE BUYER" }, // "flip it start with the buyer" abs 13290
       { at: 583, scene: "hourglass", tint: "#F59E0B", text: "30-DAY PROOF WINDOW" }, // "give yourself a 30 day proof window" abs 13429
-      { at: 700, scene: "doors", labels: ["WRITE", "RESEARCH", "AUTOMATE", "BOTS"], value: 0, tint: "#D97757", text: "PICK ONE. GO." }, // "pick one of the five options and go" abs 13515
+      { at: 700, scene: "doors", labels: ["WRITE", "RESEARCH", "AUTOMATE", "SUPPORT", "SKILLS"], value: 0, tint: "#D97757", text: "PICK ONE. GO." }, // "pick one of the FIVE options" abs 13515 — five doors, matching the spoken count
     ],
-    // full-anim: the someday/idea gauntlet + the pick-one payoff
-    fullscreen: [{ from: 190, to: 470 }, { from: 656, to: 758 }],
+    // full-anim: the someday/idea gauntlet + the pick-one payoff. Second span
+    // ends 726 (not 758): the ~26f exit ramp must clear the CTA return at
+    // dur−114 (spec rule: `to ≤ dur − 140`).
+    fullscreen: [{ from: 190, to: 470 }, { from: 656, to: 726 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
     style: "paper",
@@ -50,7 +52,7 @@ export const SHORTS: ShortSpec[] = [
     hook: "FIVE AI HUSTLES, ZERO CODE",
     context: "Beginner Claude side hustles — no coding needed",
     beats: [
-      { at: 8, scene: "doors", labels: ["1", "2", "3", "4"], value: 1, tint: "#D97757", text: "FIVE WAYS IN" }, // "five clawed side hustles" abs 516
+      { at: 8, scene: "doors", labels: ["1", "2", "3", "4", "5"], value: 1, tint: "#D97757", text: "FIVE WAYS IN" }, // "five Claude side hustles" abs 516 — FIVE doors, matching the spoken count
       { at: 180, scene: "check", obj: "brain", verdict: "check", tint: "#34D399", text: "ZERO CODE NEEDED" }, // "no coding background" abs 665
       { at: 255, scene: "reject", badge: "FAKE ENGINEER", tint: "#EF4444", text: "NO PRETENDING" }, // "no pretending you are suddenly a software engineer" abs 745
       { at: 420, scene: "emote", pose: "shrug", tint: "#F59E0B", text: "BUT ZERO EFFORT? NO", emoji: "😅" }, // "zero experience does not mean zero effort" abs 912

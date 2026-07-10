@@ -689,17 +689,19 @@ const StampArmBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
   const wob = stamped ? Math.sin((frame - stampAt) * 0.8) * Math.max(0, 1 - (frame - stampAt) / 16) * 4 : 0;
   return (
     <Wrap gap={46}>
-      <div style={{ position: "relative", width: 760, height: 430 }}>
-        <div style={{ position: "absolute", left: 330, top: 0, transform: `translateY(${armY}px)` }}>
+      {/* 130px of headroom INSIDE the stage — the raised arm must never escape
+          upward into the BeatLabel above (overlap rule, CLAUDE.md §9) */}
+      <div style={{ position: "relative", width: 760, height: 560 }}>
+        <div style={{ position: "absolute", left: 330, top: 130, transform: `translateY(${armY}px)` }}>
           <div style={{ width: 26, height: 150, margin: "0 auto", borderRadius: 10, background: "repeating-linear-gradient(45deg, #443428 0 10px, #1a2338 10px 20px)", border: "2px solid rgba(255,255,255,0.15)" }} />
           <div style={{ width: 132, height: 56, borderRadius: 14, ...glassCard(color, 2.5), display: "flex", alignItems: "center", justifyContent: "center" }}>
             <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 20, letterSpacing: 2, color, transform: "translateZ(0)" }}>STAMP</span>
           </div>
         </div>
-        <div style={{ position: "absolute", left: 40, right: 40, top: 336 }}>
+        <div style={{ position: "absolute", left: 40, right: 40, top: 466 }}>
           <ConveyorBelt width={680} speed={stamped ? 0.6 : 3} color={color} />
         </div>
-        <div style={{ position: "absolute", left: 240 + cardX, top: 240, transform: `rotate(${wob}deg)` }}>
+        <div style={{ position: "absolute", left: 240 + cardX, top: 370, transform: `rotate(${wob}deg)` }}>
           <div style={{ width: 300, padding: "22px 24px", borderRadius: 14, ...glassCard("rgba(255,255,255,0.3)"), textAlign: "center", position: "relative" }}>
             <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 26, color: WHITE, transform: "translateZ(0)" }}>{beat.badge ?? "REQUEST"}</span>
             {stamped && (
@@ -709,7 +711,7 @@ const StampArmBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
             )}
           </div>
         </div>
-        <Sparks at={stampAt + 4} x={395} y={286} color={color} size={150} />
+        <Sparks at={stampAt + 4} x={395} y={416} color={color} size={150} />
       </div>
       <BeatLabel text={beat.text} sub={beat.sub} accent={color} />
     </Wrap>
@@ -755,32 +757,39 @@ const SignalTowerBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
 const DoorsBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const labels = (beat.labels ?? ["A", "B", "C"]).slice(0, 4);
+  const t = useTheme();
+  // up to FIVE doors — the on-screen count must MATCH the spoken count
+  // (CLAUDE.md §9); sizes shrink so five still fit the ×1.32 full-anim zoom
+  const labels = (beat.labels ?? ["A", "B", "C"]).slice(0, 5);
+  const five = labels.length >= 5;
+  const doorW = five ? 146 : 190;
+  const doorH = five ? 215 : 280;
+  const doorGap = five ? 18 : 22;
   const pick = Math.min(beat.value ?? 0, labels.length - 1);
   const pickAt = Math.min(Math.round(dur * 0.4), 90);
   const picked = frame >= pickAt;
   return (
     <Wrap gap={44}>
-      <div style={{ display: "flex", gap: 22, alignItems: "flex-end" }}>
+      <div style={{ display: "flex", gap: doorGap, alignItems: "flex-end" }}>
         {labels.map((l, i) => {
           const e = spring({ frame: frame - 6 - i * 7, fps, config: { stiffness: 130, damping: 14 }, durationInFrames: 24 });
           const isPick = picked && i === pick;
           const open = isPick ? spring({ frame: frame - pickAt, fps, config: { stiffness: 120, damping: 15 }, durationInFrames: 26 }) : 0;
           return (
             <div key={l} style={{ opacity: interpolate(e, [0, 0.3], [0, 1]), transform: `translateY(${interpolate(e, [0, 1], [-90, 0])}px)` }}>
-              <div style={{ position: "relative", width: 190, height: 280, borderRadius: 18, ...glassCard(isPick ? "#E8B84B" : CYAN, isPick ? 2.5 : 2), overflow: "hidden", opacity: picked && !isPick ? 0.4 : 1 }}>
+              <div style={{ position: "relative", width: doorW, height: doorH, borderRadius: 18, ...glassCard(isPick ? "#E8B84B" : CYAN, isPick ? 2.5 : 2), overflow: "hidden", opacity: picked && !isPick ? 0.4 : 1 }}>
                 <div style={{ position: "absolute", inset: 4, borderRadius: 14, background: "radial-gradient(ellipse at 50% 80%, rgba(232,184,75,0.28), transparent 70%)", opacity: open }} />
-                <div style={{ position: "absolute", left: 4, right: 4, bottom: 4, top: 4 + open * 244, borderRadius: 14, background: "linear-gradient(180deg, #3a2f28, #1e1814)", borderBottom: "3px solid rgba(255,255,255,0.12)" }}>
-                  <div style={{ position: "absolute", right: 14, top: 128, width: 11, height: 11, borderRadius: "50%", background: "rgba(255,255,255,0.25)" }} />
+                <div style={{ position: "absolute", left: 4, right: 4, bottom: 4, top: 4 + open * (doorH - 36), borderRadius: 14, background: "linear-gradient(180deg, #3a2f28, #1e1814)", borderBottom: "3px solid rgba(255,255,255,0.12)" }}>
+                  <div style={{ position: "absolute", right: 14, top: doorH * 0.46, width: 11, height: 11, borderRadius: "50%", background: "rgba(255,255,255,0.25)" }} />
                 </div>
                 {isPick && open > 0.5 && (
                   <div style={{ position: "absolute", left: "50%", bottom: 14, transform: "translateX(-50%)" }}>
-                    <CartoonRobot pose="celebrate" size={110} accent="#E8B84B" />
+                    <CartoonRobot pose="celebrate" size={five ? 86 : 110} accent="#E8B84B" />
                   </div>
                 )}
-                {isPick && <Sparks at={pickAt + 14} x={95} y={140} color="#E8B84B" size={140} />}
+                {isPick && <Sparks at={pickAt + 14} x={doorW / 2} y={doorH / 2} color="#E8B84B" size={140} />}
               </div>
-              <div style={{ marginTop: 10, textAlign: "center", fontFamily: FONT, fontWeight: 800, fontSize: 21, letterSpacing: 1, color: isPick ? "#E8B84B" : "rgba(255,255,255,0.7)", transform: "translateZ(0)" }}>{l}</div>
+              <div style={{ marginTop: 10, textAlign: "center", fontFamily: FONT, fontWeight: 800, fontSize: five ? 19 : 21, letterSpacing: 1, color: isPick ? "#E8B84B" : t.name === "paper" ? "rgba(31,30,29,0.65)" : "rgba(255,255,255,0.7)", transform: "translateZ(0)" }}>{l}</div>
             </div>
           );
         })}

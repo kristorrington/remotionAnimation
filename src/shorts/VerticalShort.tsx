@@ -89,28 +89,39 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
     seamIn.push(Math.max(t, seamIn[seamIn.length - 1] + 1));
     seamOut.push(v);
   };
+  // TRANSITION SPEED (Kris, July 2026 — "too fast"): every layout move takes
+  // TRANS frames (~0.9s) and is EASED (in-out cubic per segment below), never
+  // the old 12f linear snap. Specs must keep `to ≤ dur − 140` so the last
+  // span's exit ramp never collides with the CTA return.
+  const TRANS = 26;
   if (hookFullTo !== null) {
     pushKey(hookFullTo, FULL_H);
-    pushKey(hookFullTo + 12, ANIM_H);
+    pushKey(hookFullTo + TRANS, ANIM_H);
   } else {
     pushKey(seamEnd, ANIM_H);
   }
   for (const s of spans) {
-    pushKey(s.from - 12, ANIM_H);
+    pushKey(s.from - TRANS, ANIM_H);
     pushKey(s.from, FULL_H);
     pushKey(s.to, FULL_H);
-    pushKey(s.to + 12, ANIM_H);
+    pushKey(s.to + TRANS, ANIM_H);
   }
-  pushKey(dur - 104, ANIM_H);
+  pushKey(dur - 114, ANIM_H);
   pushKey(dur - 84, 0);
   pushKey(dur, 0);
-  const seamY = interpolate(frame, seamIn, seamOut, CLAMP);
+  const seamY = interpolate(frame, seamIn, seamOut, { ...CLAMP, easing: Easing.inOut(Easing.cubic) });
   const animOpacity = interpolate(seamY, [30, 260], [0, 1], CLAMP);
+  // captions crossfade out while the seam TRAVELS between split and full-anim
+  // — they used to ride straight through the beat label mid-transition
+  const captionOp = interpolate(seamY, [ANIM_H, ANIM_H + 240, FULL_H - 240, FULL_H], [1, 0, 0, 1], CLAMP);
 
-  // identity strip: dodge full-anim phases (it sits over the set wall)
+  // identity strip: dodge full-anim phases (it sits over the set wall). 130f
+  // (not 150) so it can fit the split windows between spans; if no window fits
+  // before the CTA, the render below SKIPS it for this short.
+  const LOWER_THIRD_DUR = 130;
   let lowerThirdFrom = hookFullTo !== null ? hookFullTo + 18 : seamEnd + 6;
   for (const s of spans) {
-    if (lowerThirdFrom + 150 > s.from - 12 && lowerThirdFrom < s.to + 12) lowerThirdFrom = s.to + 18;
+    if (lowerThirdFrom + LOWER_THIRD_DUR > s.from - TRANS && lowerThirdFrom < s.to + TRANS) lowerThirdFrom = s.to + 18;
   }
 
   // PAPER full-face framing (Kris's reference, July 2026): the 9:16 cover-crop
@@ -171,7 +182,9 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
             so the absolute-timed captions must add the Sequence's start back or
             every word lags the audio by the hook length. */}
         <Sequence from={seamEnd} durationInFrames={dur - OUTRO - seamEnd}>
-          <Captions words={captionsFor(spec.source)} clipFrom={spec.from + seamEnd} centerY={interpolate(seamY, [0, ANIM_H, FULL_H], [1452, FULL_H - ANIM_H, 1560], CLAMP)} />
+          <AbsoluteFill style={{ opacity: captionOp }}>
+            <Captions words={captionsFor(spec.source)} clipFrom={spec.from + seamEnd} centerY={interpolate(seamY, [0, ANIM_H, FULL_H], [1452, FULL_H - ANIM_H, 1560], CLAMP)} />
+          </AbsoluteFill>
         </Sequence>
 
         {/* progress bar (with beat milestone ticks) + topic banner — fades in
@@ -186,10 +199,14 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
           <HookTitle text={spec.hook} hold={hookHold} context={spec.context} />
         </Sequence>
 
-        {/* identity lower-third, once the split settles (dodges full-anim spans) */}
-        <Sequence from={lowerThirdFrom} durationInFrames={150} premountFor={20}>
-          <LowerThird dur={150} />
-        </Sequence>
+        {/* identity lower-third, once the split settles (dodges full-anim spans;
+            SKIPPED when no split window fits — it must never ride into the CTA,
+            where the face card puts it over the FACE) */}
+        {lowerThirdFrom + LOWER_THIRD_DUR <= dur - 140 && (
+          <Sequence from={lowerThirdFrom} durationInFrames={LOWER_THIRD_DUR} premountFor={20}>
+            <LowerThird dur={LOWER_THIRD_DUR} />
+          </Sequence>
+        )}
 
         {/* CTA over the full-screen face at the end */}
         <Sequence from={dur - OUTRO} durationInFrames={OUTRO} premountFor={20}>

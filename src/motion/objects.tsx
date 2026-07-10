@@ -144,6 +144,9 @@ export const PromptQueue: React.FC<{ labels: string[]; at?: number; cardW?: numb
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const nudge = Math.max(0, Math.sin(frame * 0.11)) * 14; // first card tries to enter
+  // long labels ("JUDGEMENT") shrink to stay INSIDE their card — text spilling
+  // under the neighbouring card read as clipped (overlap rule, CLAUDE.md §9)
+  const fit = (label: string) => Math.min(22, Math.floor((cardW - 22) / (0.62 * Math.max(label.length, 1))));
   return (
     <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
       {labels.map((label, i) => {
@@ -153,7 +156,7 @@ export const PromptQueue: React.FC<{ labels: string[]; at?: number; cardW?: numb
         return (
           <div key={label} style={{ opacity: interpolate(e, [0, 0.4], [0, 1], CLAMP), transform: `translate(${interpolate(e, [0, 1], [-120, 0]) + x}px, ${bob}px)` }}>
             <div style={{ width: cardW, padding: "16px 10px", borderRadius: 12, textAlign: "center", ...glassCard(i === 0 ? AMBER : CYAN) }}>
-              <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 22, color: WHITE, letterSpacing: 1 }}>{label}</span>
+              <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: fit(label), color: WHITE, letterSpacing: 1, whiteSpace: "nowrap" }}>{label}</span>
             </div>
           </div>
         );

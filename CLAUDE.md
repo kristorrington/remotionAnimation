@@ -473,7 +473,27 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   span that starts < 90f after the split settles (face-first default), and
   with animHook runs the opening phase straight into an early first span.
   Never design a full → split → full bounce shorter than 3s; first
-  `fullscreen` span starts ≥ ~190.
+  `fullscreen` span starts ≥ ~190. **Layout transitions are SLOW and EASED**
+  (Kris, July 2026 — the 12f linear snap was "too fast"): every seam move
+  takes ~26f (~0.9s) with in-out cubic easing; the CTA return starts at
+  dur−114; spans must end ≤ `dur − 140` so their exit ramp clears the CTA;
+  captions CROSSFADE OUT while the seam travels (they used to ride through
+  the beat label mid-transition).
+- **Overlap rules (Kris's fixes, July 2026 — check EVERY short before
+  shipping):** (1) beat-scene stages must CONTAIN their props — anything that
+  rises/hangs above the subject (stamp arm, bubbles) gets headroom INSIDE the
+  stage, never escaping up into the BeatLabel; (2) text always fits ITS OWN
+  card — auto-shrink long labels (PromptQueue `fit()`, BeatLabel fitText),
+  never let text spill under a neighbouring element; (3) the lower-third
+  auto-shortens to 130f and is SKIPPED entirely if no split window fits
+  before dur−140 — it must never ride into the CTA where the face card puts
+  it over the face; (4) the hook fades fully before the seam moves. QC stills
+  of every short's transitions + full-anim beats before shipping.
+- **On-screen counts match the SPOKEN count** (Kris, July 2026): if the VO
+  says "five options", the scene shows FIVE doors — never let a component
+  cap (e.g. doors slice) silently drop items. DoorsBeat supports 5 (sizes
+  shrink to fit the ×1.32 zoom); verify every numbered claim against its
+  beat when writing specs.
 - **Cold-viewer context is mandatory** when the short names a product/model/
   event the hook doesn't explain: `ShortSpec.context` — ONE unboxed, dim,
   sentence-case line under the hook (≤ ~45 chars, single line), e.g.

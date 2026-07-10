@@ -89,8 +89,9 @@ export type ShortSpec = {
   // force every beat into split-screen (CLAUDE.md §9). Constraints: sorted,
   // non-overlapping, from ≥ ~112 (after the hook split settles; leave the
   // split ~1.5s before the first span so the face never blips), to ≤
-  // durationInFrames − 120 (a span touching the CTA window collides with its
-  // seam keyframes). The split must DWELL ≥ ~3s: VerticalShort auto-merges
+  // durationInFrames − 140 (layout transitions are ~26f eased ramps as of
+  // 07/2026 — a span ending later collides with the CTA return at dur−114).
+  // The split must DWELL ≥ ~3s: VerticalShort auto-merges
   // spans closer than 90f, and a first span starting < 90f after the hook
   // settles extends the opening full-screen phase instead (no face blip).
   fullscreen?: { from: number; to: number }[];
