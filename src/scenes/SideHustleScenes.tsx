@@ -185,8 +185,8 @@ export const DocFunnelScene: React.FC<{
             })}
             {/* the glass funnel */}
             <svg width={560} height={470} viewBox="0 0 560 470" style={{ overflow: "visible" }}>
-              <path d="M 90 180 L 470 180 L 320 320 L 320 400 L 240 400 L 240 320 Z" fill="rgba(160,200,255,0.06)" stroke="rgba(255,255,255,0.25)" strokeWidth={2.5} />
-              <path d="M 100 186 L 460 186" stroke="rgba(255,255,255,0.1)" strokeWidth={5} strokeLinecap="round" />
+              <path d="M 90 180 L 470 180 L 320 320 L 320 400 L 240 400 L 240 320 Z" fill="rgba(120,112,102,0.08)" stroke="rgba(120,112,102,0.6)" strokeWidth={2.5} />
+              <path d="M 100 186 L 460 186" stroke="rgba(120,112,102,0.25)" strokeWidth={5} strokeLinecap="round" />
             </svg>
             {/* the distilled report */}
             <div style={{ position: "absolute", left: 190, top: 396, opacity: interpolate(out, [0, 0.3], [0, 1]), transform: `translateY(${interpolate(out, [0, 1], [-30, 6])}px) scale(${interpolate(out, [0, 1], [0.7, 1])})` }}>
@@ -288,7 +288,8 @@ export const FirstLineDeskScene: React.FC<{
           <div style={{ position: "absolute", left: 130, bottom: 0, display: "flex", flexDirection: "column", alignItems: "center" }}>
             <CartoonRobot pose="idle" size={200} accent={CYAN} lookX={2} lookY={-4} />
             <div style={{ width: 300, height: 26, borderRadius: 10, ...glassCard(CYAN, 2), marginTop: -8 }} />
-            <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 20, letterSpacing: 2, color: "rgba(255,255,255,0.6)", marginTop: 10, transform: "translateZ(0)" }}>FIRST-LINE HELPER</span>
+            {/* ink-dim: these scenes render on the ivory paper theme */}
+            <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 20, letterSpacing: 2, color: "rgba(31,30,29,0.6)", marginTop: 10, transform: "translateZ(0)" }}>FIRST-LINE HELPER</span>
           </div>
           {/* raining questions — answered with a quick check */}
           {bubbles.map((b, i) => {

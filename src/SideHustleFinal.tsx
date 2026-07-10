@@ -5,6 +5,7 @@ import { CutFlash } from "./components/CutFlash";
 import { FootageDirector } from "./components/FootageDirector";
 import { CornerPip } from "./components/CornerPip";
 import { AnimatedBackground } from "./components/AnimatedBackground";
+import { ThemeProvider } from "./theme";
 
 // Final combined cut: talking head + side-hustle animation track + per-span
 // PiP (§8 of AGENTS.md — one PiP per merged span, never per card). During
@@ -41,6 +42,8 @@ const FLASHES = [90, 505, 3343, 7500, 12844, 13423];
 
 export const SideHustleFinal: React.FC = () => {
   return (
+    // paper theme: the per-span bridges + PiP chrome match the overlay's ivory
+    <ThemeProvider style="paper">
     <AbsoluteFill style={{ backgroundColor: "black" }}>
       {/* VO boost 1.6× (source peaks ≈ −9 dB, same rig as the last recording —
           re-probe with volumedetect after the proxy lands if the mix drifts) */}
@@ -64,5 +67,6 @@ export const SideHustleFinal: React.FC = () => {
         <CutFlash key={f} at={f} peak={0.5} />
       ))}
     </AbsoluteFill>
+    </ThemeProvider>
   );
 };

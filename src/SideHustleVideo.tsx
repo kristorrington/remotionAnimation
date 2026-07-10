@@ -12,6 +12,7 @@ import { NotMagicScene } from "./scenes/RobotScenes";
 import { ReactionsScene } from "./scenes/RobotScenes";
 import { ThresholdGateScene } from "./scenes/MetaphorScenes";
 import { QuestionFlipScene, ExpectationScene } from "./scenes/WealthScenes";
+import { ThemeProvider } from "./theme";
 import {
   PathDoorsScene, DraftPolishScene, DocFunnelScene, AppFlowScene,
   FirstLineDeskScene, SkillCartridgeScene, ThreeBuyersScene,
@@ -62,6 +63,9 @@ export const SIDE_HUSTLE_FULLSCREEN: { from: number; to: number }[] = BEATS.filt
 
 export const SideHustleVisuals: React.FC = () => {
   return (
+    // paper theme (Kris, July 2026): the long-form is ALIGNED with the shorts —
+    // every scene renders on the ivory dot-grid paper via SceneShell/useTheme
+    <ThemeProvider style="paper">
     <AbsoluteFill>
       {/* 0:03 HOOK — face delivers line 1 to camera, then the flash-cut into
           the trapdoor: drop on "waste your time" (166), pass run on "That is
@@ -195,6 +199,7 @@ export const SideHustleVisuals: React.FC = () => {
         <Fable5Outro durationInFrames={SIDE_HUSTLE_DUR - 13764} kicker="PRACTICAL AI — NO HYPE" tag="Which path are you picking? Name your three buyers below" />
       </Sequence>
     </AbsoluteFill>
+    </ThemeProvider>
   );
 };
 
@@ -225,3 +230,6 @@ export const SideHustleVideo: React.FC = () => {
     </AbsoluteFill>
   );
 };
+
+// Note: SideHustleVisuals wraps its own ThemeProvider, so both the standalone
+// overlay comp and the Final render the paper look without extra plumbing.

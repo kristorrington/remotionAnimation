@@ -203,7 +203,8 @@ export const ExpectationScene: React.FC<{
               </div>
             </div>
             <CartoonRobot pose={frame >= leftAt + 34 ? "facepalm" : "idle"} size={210} accent={RED} />
-            <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 24, letterSpacing: 2, color: "rgba(255,255,255,0.6)", transform: "translateZ(0)" }}>{leftCaption}</span>
+            {/* mid-grey caption — readable on the paper theme AND the archived dark comps */}
+            <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 24, letterSpacing: 2, color: "rgba(110,102,92,0.95)", transform: "translateZ(0)" }}>{leftCaption}</span>
           </div>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16, opacity: interpolate(frame, [rightAt - 10, rightAt], [0.3, 1], CLAMP) }}>
             <div style={{ position: "relative" }}>
@@ -301,8 +302,8 @@ export const NearBottleneckScene: React.FC<{ durationInFrames: number; kicker?: 
         <div style={{ position: "relative", width: 1200, height: 380 }}>
           {/* funnel walls */}
           <svg width={1200} height={300} viewBox="0 0 1200 300" style={{ position: "absolute", top: 0 }}>
-            <path d="M 80 20 L 640 120 L 640 190 L 80 290" stroke="rgba(255,255,255,0.3)" strokeWidth={6} fill="none" strokeLinecap="round" />
-            <path d="M 1120 20 L 700 120 L 700 190 L 1120 290" stroke="rgba(255,255,255,0.3)" strokeWidth={6} fill="none" strokeLinecap="round" />
+            <path d="M 80 20 L 640 120 L 640 190 L 80 290" stroke="rgba(120,112,102,0.55)" strokeWidth={6} fill="none" strokeLinecap="round" />
+            <path d="M 1120 20 L 700 120 L 700 190 L 1120 290" stroke="rgba(120,112,102,0.55)" strokeWidth={6} fill="none" strokeLinecap="round" />
           </svg>
           {/* jam of requests on the wide side */}
           <div style={{ position: "absolute", left: 60, top: 100 }}>

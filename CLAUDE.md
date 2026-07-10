@@ -1,7 +1,9 @@
 # CLAUDE.md — Motion-Design System (the visual framework for this project)
 
-This project makes **AI YouTube explainers as dark-tech motion graphics** in
-Remotion. This file is the **decision framework** Claude Code MUST apply to all
+This project makes **AI YouTube explainers as light "paper editorial" motion
+graphics** in Remotion (Anthropic-ivory dot-grid paper, near-black type, Claude
+coral accents — the ALIGNED house style for BOTH long-form and Shorts as of
+July 2026; the old dark-tech cinematic look survives only in archived comps). This file is the **decision framework** Claude Code MUST apply to all
 future long-form videos and Shorts/Reels — before creating or editing any scene.
 
 For the technical *pipeline* (footage → overlay → combined cut → shorts → render/
@@ -332,7 +334,14 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   explainer moments, object metaphors, workflow systems, UI simulations, and
   cause-and-effect animations. Talking head can appear as a supporting layer,
   but the main visual should usually be the animated concept.
-- Keep the dark-tech cinematic motion-graphics identity.
+- **Long-form uses the PAPER theme, same as shorts** (Kris, July 2026 — one
+  aligned style): wrap the video's Visuals AND its Final in
+  `<ThemeProvider style="paper">`; SceneShell/SceneHeadline/AnimatedBackground
+  are theme-aware. Scene text on the backdrop must read on IVORY: headlines
+  near-black via `t.text`, captions ink-dim `rgba(31,30,29,0.6)`, structural
+  lines mid-grey `rgba(120,112,102,0.5)` (readable on both light and archived
+  dark comps). Dark glass cards/robots on the ivory are the house "sticker"
+  look. Never bare white text on the backdrop.
 - Do NOT make the edit mostly talking head — talking head is corner PiP / a quick
   reaction / an emphasis beat; motion graphics drive the visuals.
 - **Every non-receipt scene has a subject doing something** (§1); route each beat

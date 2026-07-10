@@ -141,7 +141,7 @@ export const SpeedWallScene: React.FC<{ durationInFrames: number; kicker?: strin
     <SceneShell durationInFrames={durationInFrames} particleSeed={0x93} mood="danger" depth impacts={[hitAt]}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 30 }}>
         <div style={{ position: "relative", width: 1340, height: 320 }}>
-          <div style={{ position: "absolute", left: 0, right: 0, bottom: 30, height: 4, background: "rgba(255,255,255,0.16)" }} />
+          <div style={{ position: "absolute", left: 0, right: 0, bottom: 30, height: 4, background: "rgba(120,112,102,0.5)" }} />
           {/* the wall */}
           <div style={{ position: "absolute", right: 120, bottom: 34, transform: `translateX(${wallShake}px)` }}>
             <div style={{ width: 34, height: 230, background: "rgba(239,68,68,0.5)", border: `4px solid ${RED}`, borderRadius: 8 }} />
@@ -326,7 +326,7 @@ export const MigrateStopScene: React.FC<{ durationInFrames: number; kicker?: str
     <SceneShell durationInFrames={durationInFrames} particleSeed={0xd2} depth impacts={[stopAt]}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 26 }}>
         <div style={{ position: "relative", width: 1400, height: 380 }}>
-          <div style={{ position: "absolute", left: 0, right: 0, bottom: 42, height: 5, background: "rgba(255,255,255,0.16)" }} />
+          <div style={{ position: "absolute", left: 0, right: 0, bottom: 42, height: 5, background: "rgba(120,112,102,0.5)" }} />
           <div style={{ position: "absolute", right: 20, bottom: 56, display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
             {sign("MIGRATE", RED)}
             <div style={{ width: 12, height: 120, background: "rgba(255,255,255,0.2)", borderRadius: 6 }} />
@@ -394,12 +394,12 @@ export const ThresholdGateScene: React.FC<{ durationInFrames: number; kicker?: s
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 30 }}>
         <div style={{ position: "relative", width: 1340, height: 340 }}>
           {/* ground with a trapdoor segment before the gate */}
-          <div style={{ position: "absolute", left: 0, width: gateX - 210, bottom: 86, height: 5, background: "rgba(255,255,255,0.16)" }} />
+          <div style={{ position: "absolute", left: 0, width: gateX - 210, bottom: 86, height: 5, background: "rgba(120,112,102,0.5)" }} />
           <div style={{ position: "absolute", left: gateX - 210, bottom: 88, width: 120, height: 5, background: RED, transformOrigin: "left center", transform: `rotate(${trapRot}deg)`, opacity: 0.8 }} />
-          <div style={{ position: "absolute", left: gateX - 10, right: 0, bottom: 86, height: 5, background: "rgba(255,255,255,0.16)" }} />
+          <div style={{ position: "absolute", left: gateX - 10, right: 0, bottom: 86, height: 5, background: "rgba(120,112,102,0.5)" }} />
           {/* the gate */}
           <div style={{ position: "absolute", left: gateX, bottom: 90 }}>
-            <div style={{ position: "absolute", left: 0, bottom: 0, width: 14, height: 210, background: "rgba(255,255,255,0.22)", borderRadius: 6 }} />
+            <div style={{ position: "absolute", left: 0, bottom: 0, width: 14, height: 210, background: "rgba(120,112,102,0.6)", borderRadius: 6 }} />
             <div style={{ position: "absolute", left: -150, bottom: 130, transform: `translateY(${gateY}px)`, width: 160, height: 16, borderRadius: 8, background: passed ? GREEN : AMBER, boxShadow: `0 0 14px ${passed ? GREEN : AMBER}` }} />
             <div style={{ position: "absolute", left: -66, bottom: 226, ...chipStyle(GREEN), fontSize: 22 }}>{zoneLabel}</div>
           </div>
@@ -494,7 +494,7 @@ export const WorkOverTokensScene: React.FC<{ durationInFrames: number; kicker?: 
     <SceneShell durationInFrames={durationInFrames} particleSeed={0x105} mood="win" impacts={[crossAt]}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 30 }}>
         <div style={{ position: "relative", width: 1340, height: 340 }}>
-          <div style={{ position: "absolute", left: 0, right: 0, bottom: 40, height: 4, background: "rgba(255,255,255,0.16)" }} />
+          <div style={{ position: "absolute", left: 0, right: 0, bottom: 40, height: 4, background: "rgba(120,112,102,0.5)" }} />
           {/* dim token pile, background left */}
           <div style={{ position: "absolute", left: 40, bottom: 46, opacity: 0.4 }}>
             <div style={{ position: "relative", width: 160, height: 200 }}>
@@ -556,7 +556,7 @@ export const FinishCheckScene: React.FC<{ durationInFrames: number; kicker?: str
           </svg>
           {/* work block crossing a small finish flag */}
           <div style={{ position: "relative", width: 640, height: 170 }}>
-            <div style={{ position: "absolute", left: 0, right: 0, bottom: 26, height: 4, background: "rgba(255,255,255,0.16)" }} />
+            <div style={{ position: "absolute", left: 0, right: 0, bottom: 26, height: 4, background: "rgba(120,112,102,0.5)" }} />
             <div style={{ position: "absolute", right: 90, bottom: 30, width: 8, height: 110, background: "rgba(255,255,255,0.5)" }}>
               <div style={{ position: "absolute", top: 0, left: 8, width: 46, height: 30, background: GREEN, clipPath: "polygon(0 0, 100% 50%, 0 100%)" }} />
             </div>

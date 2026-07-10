@@ -1,10 +1,11 @@
 import React from "react";
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { fitText } from "@remotion/layout-utils";
-import { FONT, CYAN, WHITE } from "../components/overlayUI";
+import { FONT, CYAN } from "../components/overlayUI";
 import { AnimatedBackground } from "../components/AnimatedBackground";
 import { LightSweep, ParticleField, SceneCameraPush, GlowDivider } from "../motion/primitives";
 import { DepthProps, useImpactShake } from "../motion/cinematics";
+import { useTheme } from "../theme";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
@@ -76,6 +77,7 @@ export const SceneShell: React.FC<{
 export const SceneHeadline: React.FC<{ kicker?: string; title: string; titleSize?: number; accent?: string }> = ({ kicker, title, titleSize = 92, accent = CYAN }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const t = useTheme();
   const fitted = React.useMemo(
     () => Math.min(titleSize, fitText({ text: title, withinWidth: 1560, fontFamily: FONT, fontWeight: 800, letterSpacing: "1px" }).fontSize),
     [title, titleSize],
@@ -88,9 +90,10 @@ export const SceneHeadline: React.FC<{ kicker?: string; title: string; titleSize
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16, textAlign: "center" }}>
       {kicker ? (
-        <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 26, letterSpacing: 8, color: accent, opacity: kickerOp, filter: "drop-shadow(0 4px 14px rgba(0,0,0,0.6))" }}>{kicker}</span>
+        <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 26, letterSpacing: 8, color: accent, opacity: kickerOp, filter: t.glow ? "drop-shadow(0 4px 14px rgba(0,0,0,0.6))" : undefined }}>{kicker}</span>
       ) : null}
-      <div style={{ opacity: titleOp, transform: `scale(${titleScale})`, fontFamily: FONT, fontWeight: 800, fontSize: fitted, letterSpacing: 1, color: WHITE, lineHeight: 1.02, textShadow: "0 0 40px rgba(193,95,60,0.55)", whiteSpace: "nowrap" }}>
+      {/* paper: near-black editorial type, no neon glow (theme-aware) */}
+      <div style={{ opacity: titleOp, transform: `scale(${titleScale})`, fontFamily: FONT, fontWeight: 800, fontSize: fitted, letterSpacing: 1, color: t.text, lineHeight: 1.02, textShadow: t.glow ? "0 0 40px rgba(193,95,60,0.55)" : undefined, whiteSpace: "nowrap" }}>
         {title}
       </div>
       <GlowDivider color={accent} />
