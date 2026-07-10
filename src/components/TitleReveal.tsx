@@ -9,8 +9,8 @@ import {
 } from "remotion";
 import { loadFont } from "@remotion/google-fonts/Inter";
 
-const ELECTRIC_BLUE = "#3B82F6";
-const CYAN = "#06B6D4";
+const ELECTRIC_BLUE = "#C15F3C";
+const CYAN = "#D97757";
 const WHITE = "#FFFFFF";
 
 const { fontFamily } = loadFont("normal", {

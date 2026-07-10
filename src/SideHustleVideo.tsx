@@ -87,7 +87,7 @@ export const SideHustleVisuals: React.FC = () => {
 
       {/* 0:38 NOT A TUTORIAL — a decision walkthrough */}
       <Sequence from={1157} durationInFrames={263} premountFor={30}>
-        <CompareCard kicker="WHAT THIS VIDEO IS" tint="#06B6D4" left={{ title: "BUILD TUTORIAL", items: ["screen by screen"], accent: "#EF4444", mark: "✗" }} right={{ title: "DECISION WALKTHROUGH", items: ["before you waste a weekend"], accent: "#34D399", mark: "✓" }} leftDelay={6} rightDelay={85} durationInFrames={263} />
+        <CompareCard kicker="WHAT THIS VIDEO IS" tint="#D97757" left={{ title: "BUILD TUTORIAL", items: ["screen by screen"], accent: "#EF4444", mark: "✗" }} right={{ title: "DECISION WALKTHROUGH", items: ["before you waste a weekend"], accent: "#34D399", mark: "✓" }} leftDelay={6} rightDelay={85} durationInFrames={263} />
       </Sequence>
 
       {/* 0:53 WHAT PEOPLE ALREADY USE CLAUDE FOR */}
@@ -102,7 +102,7 @@ export const SideHustleVisuals: React.FC = () => {
 
       {/* 1:16 WHY CLAUDE — when the deliverable is thinking */}
       <Sequence from={2286} durationInFrames={314} premountFor={30}>
-        <StepsScene durationInFrames={314} kicker="WHY CLAUDE?" title="WHEN THE DELIVERABLE IS THINKING" tint="#06B6D4" steps={[{ label: "Writing", at: 98 }, { label: "Reasoning", at: 205 }, { label: "Long documents", at: 236 }, { label: "Careful analysis", at: 274 }]} />
+        <StepsScene durationInFrames={314} kicker="WHY CLAUDE?" title="WHEN THE DELIVERABLE IS THINKING" tint="#D97757" steps={[{ label: "Writing", at: 98 }, { label: "Reasoning", at: 205 }, { label: "Long documents", at: 236 }, { label: "Careful analysis", at: 274 }]} />
       </Sequence>
 
       {/* 1:33 THE THINKING IS THE PRODUCT */}
@@ -142,7 +142,7 @@ export const SideHustleVisuals: React.FC = () => {
 
       {/* 3:46 CLAUDE READS, YOU DECIDE */}
       <Sequence from={6787} durationInFrames={353} premountFor={30}>
-        <FlowScene durationInFrames={353} kicker="WHY THIS WORKS" title="CLAUDE READS. YOU DECIDE." nodes={[{ label: "Heavy reading" }, { label: "Your judgement" }, { label: "The decision" }]} nodeAts={[6, 65, 138]} tint="#06B6D4" />
+        <FlowScene durationInFrames={353} kicker="WHY THIS WORKS" title="CLAUDE READS. YOU DECIDE." nodes={[{ label: "Heavy reading" }, { label: "Your judgement" }, { label: "The decision" }]} nodeAts={[6, 65, 138]} tint="#D97757" />
       </Sequence>
 
       {/* 4:10 PATH 3 — no-code automations around the owner's tools */}
@@ -162,7 +162,7 @@ export const SideHustleVisuals: React.FC = () => {
 
       {/* 5:25 FIRST LINE, NOT AUTOPILOT */}
       <Sequence from={9753} durationInFrames={477} premountFor={30}>
-        <FlowScene durationInFrames={477} kicker="SELL IT HONESTLY" title="FIRST LINE, NOT AUTOPILOT" nodes={[{ label: "Collects info" }, { label: "Drafts replies" }, { label: "Human approves" }]} nodeAts={[78, 127, 209]} tint="#06B6D4" />
+        <FlowScene durationInFrames={477} kicker="SELL IT HONESTLY" title="FIRST LINE, NOT AUTOPILOT" nodes={[{ label: "Collects info" }, { label: "Drafts replies" }, { label: "Human approves" }]} nodeAts={[78, 127, 209]} tint="#D97757" />
       </Sequence>
 
       {/* 5:43 PATH 5 — productized skills: the SKILL.MD cartridge */}

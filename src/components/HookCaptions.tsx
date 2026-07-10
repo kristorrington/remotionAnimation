@@ -4,7 +4,7 @@ import { loadFont } from "@remotion/google-fonts/Inter";
 
 const { fontFamily } = loadFont("normal", { weights: ["600", "800"], subsets: ["latin"] });
 
-const CYAN = "#06B6D4";
+const CYAN = "#D97757";
 const WHITE = "#FFFFFF";
 
 // Each phrase is timed to its beat. The word "this" glows/scales at f50 and f66

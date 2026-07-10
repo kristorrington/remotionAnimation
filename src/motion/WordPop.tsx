@@ -23,7 +23,7 @@ export const findSpoken = (word: string, fromAbs = 0): number | null => {
 };
 
 // The pop itself: slams in oversized, settles, glows, exits with a whip.
-export const WordPop: React.FC<{ text: string; at: number; hold?: number; color?: string; size?: number }> = ({ text, at, hold = 34, color = "#06B6D4", size = 96 }) => {
+export const WordPop: React.FC<{ text: string; at: number; hold?: number; color?: string; size?: number }> = ({ text, at, hold = 34, color = "#D97757", size = 96 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   if (frame < at || frame > at + hold) return null;

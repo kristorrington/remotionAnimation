@@ -67,7 +67,7 @@ export const BillPrinterScene: React.FC<{ durationInFrames: number; kicker?: str
           <div style={{ position: "relative", transform: `translateX(${shake}px)` }}>
             <svg width={230} height={130} viewBox="0 0 230 130">
               <rect x={10} y={20} width={210} height={90} rx={18} fill={PANEL} stroke={AMBER} strokeWidth={5} />
-              <rect x={40} y={100} width={150} height={10} rx={5} fill="#0a0f18" stroke={AMBER} strokeWidth={3} />
+              <rect x={40} y={100} width={150} height={10} rx={5} fill="#14100c" stroke={AMBER} strokeWidth={3} />
               <circle cx={190} cy={45} r={8} fill={RED} opacity={0.4 + 0.6 * Math.abs(Math.sin(frame * 0.4))} />
               <text x={100} y={70} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={26} fill={WHITE}>BILLING</text>
             </svg>
@@ -182,7 +182,7 @@ export const CheaperToServeScene: React.FC<{ durationInFrames: number; kicker?: 
   const serve = interpolate(frame, [serveStart, serveStart + durationInFrames * 0.28], [0.82, 0.24], CLAMP);
   const meter = (label: string, level: number, color: string) => (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
-      <div style={{ width: 70, height: 280, borderRadius: 16, border: "3px solid rgba(255,255,255,0.25)", background: "rgba(8,12,20,0.8)", position: "relative", overflow: "hidden" }}>
+      <div style={{ width: 70, height: 280, borderRadius: 16, border: "3px solid rgba(255,255,255,0.25)", background: "rgba(20,16,13,0.8)", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: `${level * 100}%`, background: `linear-gradient(180deg, ${color}, ${color}88)`, boxShadow: `0 0 16px ${color}` }} />
       </div>
       <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 22, letterSpacing: 2, color: WHITE, transform: "translateZ(0)" }}>{label}</span>

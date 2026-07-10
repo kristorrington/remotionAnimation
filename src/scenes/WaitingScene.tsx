@@ -24,7 +24,7 @@ export const WaitingScene: React.FC<{ durationInFrames: number; kicker?: string;
           </div>
           <PromptQueue labels={chips.slice(0, 4).map((c) => c.label)} at={chips[0]?.at ?? 6} />
           <div style={{ position: "relative", opacity: brainOp, marginLeft: 24 }}>
-            <div style={{ width: 190, height: 190, borderRadius: 26, border: "4px solid #3B82F6", background: "rgba(12,18,30,0.9)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 0 30px rgba(59,130,246,0.3)" }}>
+            <div style={{ width: 190, height: 190, borderRadius: 26, border: "4px solid #C15F3C", background: "rgba(12,18,30,0.9)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 0 30px rgba(59,130,246,0.3)" }}>
               <IconBrain size={130} />
             </div>
             <div style={{ position: "absolute", top: -86, right: -60 }}>

@@ -23,7 +23,7 @@ const Column: React.FC<{ side: Side; delay: number; from: "left" | "right" }> = 
   const x = interpolate(enter, [0, 1], [from === "left" ? -50 : 50, 0]);
   const op = interpolate(frame, [delay, delay + 10], [0, 1], CLAMP);
   return (
-    <div style={{ width: 560, opacity: op, transform: `translateX(${x}px)`, padding: "30px 34px", borderRadius: 22, background: "rgba(8,12,20,0.85)", border: `1px solid ${side.accent}`, filter: DROP_SHADOW, display: "flex", flexDirection: "column", gap: 20 }}>
+    <div style={{ width: 560, opacity: op, transform: `translateX(${x}px)`, padding: "30px 34px", borderRadius: 22, background: "rgba(20,16,13,0.85)", border: `1px solid ${side.accent}`, filter: DROP_SHADOW, display: "flex", flexDirection: "column", gap: 20 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
         <span style={{ width: 44, height: 44, borderRadius: "50%", background: side.accent, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: FONT, fontWeight: 800, fontSize: 24, color: "#04121f" }}>{side.mark}</span>
         <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 40, color: WHITE }}>{side.title}</span>
@@ -61,7 +61,7 @@ export const CompareCard: React.FC<{
       <AnimatedBackground durationInFrames={durationInFrames} />
       {tint && <TintWash tint={tint} seed={0x44} />}
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 34 }}>
-        {kicker ? <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 30, letterSpacing: 8, color: "#06B6D4", opacity: kOp, filter: DROP_SHADOW }}>{kicker}</span> : null}
+        {kicker ? <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 30, letterSpacing: 8, color: "#D97757", opacity: kOp, filter: DROP_SHADOW }}>{kicker}</span> : null}
         <div style={{ display: "flex", gap: 40, alignItems: "stretch" }}>
           <Column side={{ title: left.title, items: left.items, accent: left.accent ?? GREEN, mark: left.mark ?? "✓" }} delay={leftDelay} from="left" />
           <Column side={{ title: right.title, items: right.items, accent: right.accent ?? AMBER, mark: right.mark ?? "!" }} delay={rightDelay} from="right" />

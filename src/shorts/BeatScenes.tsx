@@ -13,14 +13,14 @@ import { Beat } from "./types";
 // crossfade, so the gradient sweeps with each 1.5–3s reset; never the same
 // navy twice in a row). Explicit `Beat.tint` wins; the palette rotation covers
 // archived specs that predate the field.
-const BEAT_TINTS = ["#06B6D4", "#F59E0B", "#34D399", "#EF4444"];
+const BEAT_TINTS = ["#D97757", "#F59E0B", "#34D399", "#EF4444"];
 
 // Shared glass-gradient fill for the one-off SVG machines (PREMIUM finish).
 const GLASS_DEFS = (
   <defs>
     <linearGradient id="beatGlass" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stopColor="#1b2438" />
-      <stop offset="100%" stopColor="#0a101d" />
+      <stop offset="0%" stopColor="#2b2219" />
+      <stop offset="100%" stopColor="#16110d" />
     </linearGradient>
   </defs>
 );
@@ -125,7 +125,7 @@ const QueueBeat: React.FC<{ beat: Beat }> = ({ beat }) => (
       </div>
       <PromptQueue labels={(beat.labels ?? ["PROMPT", "TOOL", "RETRY"]).slice(0, 3)} at={4} cardW={108} />
       <div style={{ position: "relative", marginLeft: 14 }}>
-        <div style={{ width: 160, height: 160, borderRadius: 24, display: "flex", alignItems: "center", justifyContent: "center", ...glassCard("#3B82F6") }}>
+        <div style={{ width: 160, height: 160, borderRadius: 24, display: "flex", alignItems: "center", justifyContent: "center", ...glassCard("#C15F3C") }}>
           <IconBrain size={110} />
         </div>
         <div style={{ position: "absolute", top: -80, right: -46 }}>
@@ -301,7 +301,7 @@ const TestBenchBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => 
             {GLASS_DEFS}
             <rect x={30} y={30} width={300} height={170} rx={24} fill="url(#beatGlass)" stroke={CYAN} strokeWidth={3} />
             <rect x={40} y={37} width={280} height={8} rx={4} fill="rgba(255,255,255,0.06)" />
-            <rect x={0} y={95} width={44} height={44} rx={8} fill="#0a0f18" stroke={CYAN} strokeWidth={4} />
+            <rect x={0} y={95} width={44} height={44} rx={8} fill="#14100c" stroke={CYAN} strokeWidth={4} />
             {[0, 1, 2].map((i) => (
               <circle key={i} cx={90 + i * 40} cy={62} r={9} fill={[GREEN, AMBER, CYAN][i]} opacity={0.4 + 0.6 * Math.max(0, Math.sin(frame * 0.3 - i))} />
             ))}
@@ -603,7 +603,7 @@ const TierElevatorBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
   const floors = beat.labels ?? ["HAIKU", "SONNET", "OPUS", "FABLE 5"];
   const target = Math.min(beat.value ?? 2, floors.length - 1);
   const floorH = 118;
-  const colors = [GREEN, CYAN, "#3B82F6", "#E8B84B"];
+  const colors = [GREEN, CYAN, "#C15F3C", "#E8B84B"];
   const ride = spring({ frame: frame - 20, fps, config: { stiffness: 60, damping: 16 }, durationInFrames: 40 });
   const carFloor = interpolate(ride, [0, 1], [floors.length - 1, target]);
   const doors = spring({ frame: frame - 58, fps, config: { stiffness: 140, damping: 15 }, durationInFrames: 22 });
@@ -618,8 +618,8 @@ const TierElevatorBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
           ))}
           <div style={{ position: "absolute", left: 14, right: 14, bottom: 14 + carFloor * floorH, height: floorH - 16, borderRadius: 14, background: "linear-gradient(180deg, rgba(30,40,62,0.98), rgba(12,18,30,0.95))", border: `2px solid ${tc}AA`, boxShadow: `0 0 18px ${tc}33`, overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <CartoonRobot pose={doors > 0.5 ? "celebrate" : "idle"} size={80} accent={tc} />
-            <div style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: `calc(50% - ${doorGap}px)`, background: "linear-gradient(180deg, #232f4a, #131c2f)", borderRight: "2px solid rgba(255,255,255,0.14)" }} />
-            <div style={{ position: "absolute", top: 0, bottom: 0, right: 0, width: `calc(50% - ${doorGap}px)`, background: "linear-gradient(180deg, #232f4a, #131c2f)", borderLeft: "2px solid rgba(255,255,255,0.14)" }} />
+            <div style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: `calc(50% - ${doorGap}px)`, background: "linear-gradient(180deg, #3a2f28, #1e1814)", borderRight: "2px solid rgba(255,255,255,0.14)" }} />
+            <div style={{ position: "absolute", top: 0, bottom: 0, right: 0, width: `calc(50% - ${doorGap}px)`, background: "linear-gradient(180deg, #3a2f28, #1e1814)", borderLeft: "2px solid rgba(255,255,255,0.14)" }} />
           </div>
         </div>
         <div style={{ display: "flex", flexDirection: "column-reverse", gap: floorH - 60, paddingBottom: 30 }}>
@@ -689,7 +689,7 @@ const StampArmBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
     <Wrap gap={46}>
       <div style={{ position: "relative", width: 760, height: 430 }}>
         <div style={{ position: "absolute", left: 330, top: 0, transform: `translateY(${armY}px)` }}>
-          <div style={{ width: 26, height: 150, margin: "0 auto", borderRadius: 10, background: "repeating-linear-gradient(45deg, #2a3550 0 10px, #1a2338 10px 20px)", border: "2px solid rgba(255,255,255,0.15)" }} />
+          <div style={{ width: 26, height: 150, margin: "0 auto", borderRadius: 10, background: "repeating-linear-gradient(45deg, #443428 0 10px, #1a2338 10px 20px)", border: "2px solid rgba(255,255,255,0.15)" }} />
           <div style={{ width: 132, height: 56, borderRadius: 14, ...glassCard(color, 2.5), display: "flex", alignItems: "center", justifyContent: "center" }}>
             <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 20, letterSpacing: 2, color, transform: "translateZ(0)" }}>STAMP</span>
           </div>
@@ -768,7 +768,7 @@ const DoorsBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
             <div key={l} style={{ opacity: interpolate(e, [0, 0.3], [0, 1]), transform: `translateY(${interpolate(e, [0, 1], [-90, 0])}px)` }}>
               <div style={{ position: "relative", width: 190, height: 280, borderRadius: 18, ...glassCard(isPick ? "#E8B84B" : CYAN, isPick ? 2.5 : 2), overflow: "hidden", opacity: picked && !isPick ? 0.4 : 1 }}>
                 <div style={{ position: "absolute", inset: 4, borderRadius: 14, background: "radial-gradient(ellipse at 50% 80%, rgba(232,184,75,0.28), transparent 70%)", opacity: open }} />
-                <div style={{ position: "absolute", left: 4, right: 4, bottom: 4, top: 4 + open * 244, borderRadius: 14, background: "linear-gradient(180deg, #232f4a, #131c2f)", borderBottom: "3px solid rgba(255,255,255,0.12)" }}>
+                <div style={{ position: "absolute", left: 4, right: 4, bottom: 4, top: 4 + open * 244, borderRadius: 14, background: "linear-gradient(180deg, #3a2f28, #1e1814)", borderBottom: "3px solid rgba(255,255,255,0.12)" }}>
                   <div style={{ position: "absolute", right: 14, top: 128, width: 11, height: 11, borderRadius: "50%", background: "rgba(255,255,255,0.25)" }} />
                 </div>
                 {isPick && open > 0.5 && (

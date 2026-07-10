@@ -347,9 +347,13 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   like `140 + i * 60`. If a shared scene has fixed internal timing, add
   per-element `at`/`nodeAts`/`chipAts` props instead of accepting drift.
 - **Background tints match the topic** (`SceneShell tint`): green =
-  savings/win, amber = cost/effort, red = trap/danger, cyan = system/process.
-  Tints are BOLD (`TintWash`: ~25% alpha, three gradient geometries rotated by
-  `particleSeed`) — a scene must never read as "the same dark navy". EVERY
+  savings/win, amber = cost/effort, red = trap/danger, terracotta #D97757 =
+  system/process (the Claude-brand house hue — the whole palette is Claude
+  Code branding as of 07/2026: terracotta accent, deep-clay #C15F3C secondary,
+  warm charcoal backgrounds; the shared constants CYAN/BLUE now hold these
+  values). Tints are BOLD (`TintWash`: ~25% alpha, three gradient geometries
+  rotated by `particleSeed`) — a scene must never read as "the same dark
+  charcoal". EVERY
   scene in a final cut gets a tint (pass it through shared scenes if missing),
   and adjacent scenes never share one — it's part of the visual reset.
 - **Proportions kill the slide look**: subjects LARGE (robots ~230–300px,

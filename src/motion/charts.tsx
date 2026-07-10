@@ -22,7 +22,7 @@ const INK_MUTED = "rgba(255,255,255,0.62)";
 const TRACK = "rgba(255,255,255,0.09)";
 const BASELINE = "rgba(255,255,255,0.22)";
 // fixed categorical order — never cycled, never re-ranked by value
-export const CHART_COLORS = ["#06B6D4", "#3B82F6", "#F59E0B", "#34D399"] as const;
+export const CHART_COLORS = ["#D97757", "#C15F3C", "#F59E0B", "#34D399"] as const;
 
 export type ChartDatum = { label: string; value: number; series?: string };
 export type ChartData = {
@@ -37,7 +37,7 @@ export const SourceChip: React.FC<{ name: string; url?: string | null; at?: numb
   const frame = useCurrentFrame();
   const op = interpolate(frame, [at, at + 10], [0, 0.9], CLAMP);
   return (
-    <div style={{ display: "inline-flex", alignItems: "center", gap: 8, opacity: op, padding: "5px 14px", borderRadius: 999, background: "rgba(8,12,20,0.8)", border: "1px solid rgba(255,255,255,0.16)", transform: "translateZ(0)" }}>
+    <div style={{ display: "inline-flex", alignItems: "center", gap: 8, opacity: op, padding: "5px 14px", borderRadius: 999, background: "rgba(20,16,13,0.8)", border: "1px solid rgba(255,255,255,0.16)", transform: "translateZ(0)" }}>
       <span style={{ width: 7, height: 7, borderRadius: "50%", background: CHART_COLORS[0] }} />
       <span style={{ fontFamily: FONT, fontWeight: 600, fontSize: 19, color: INK_MUTED }}>Source: {name}{url ? ` — ${url.replace(/^https?:\/\//, "").split("/")[0]}` : ""}</span>
     </div>

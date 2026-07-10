@@ -57,7 +57,7 @@ const CardShell: React.FC<{
           height: CARD_H,
           borderRadius: 18,
           overflow: "hidden",
-          background: "linear-gradient(160deg, #0b1220, #05080f)",
+          background: "linear-gradient(160deg, #1d1712, #05080f)",
           border: PILL_BORDER,
           boxShadow: `0 18px 50px rgba(0,0,0,0.55), 0 0 ${20 + glow * 36}px rgba(59,130,246,${0.25 + glow * 0.5})`,
         }}

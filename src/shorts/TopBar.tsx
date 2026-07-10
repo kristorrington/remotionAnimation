@@ -19,7 +19,7 @@ export const TopBar: React.FC<{ topic: string; beats?: number[] }> = ({ topic, b
       <div style={{ position: "absolute", top: 0, left: 0, height: 8, width: `${progress}%`, background: t.accent, boxShadow: t.glow ? `0 0 16px ${t.accent}` : undefined }} />
       {(beats ?? []).map((p, i) => {
         const passed = progress / 100 >= p;
-        return <div key={i} style={{ position: "absolute", top: 0, left: `${p * 100}%`, width: 4, height: 8, background: passed ? "rgba(8,12,20,0.85)" : "rgba(255,255,255,0.4)" }} />;
+        return <div key={i} style={{ position: "absolute", top: 0, left: `${p * 100}%`, width: 4, height: 8, background: passed ? "rgba(20,16,13,0.85)" : "rgba(255,255,255,0.4)" }} />;
       })}
       {/* topic banner */}
       <div style={{ position: "absolute", top: 34, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
@@ -30,7 +30,7 @@ export const TopBar: React.FC<{ topic: string; beats?: number[] }> = ({ topic, b
             gap: 12,
             padding: "12px 28px",
             borderRadius: bold ? 8 : 999,
-            background: "rgba(8,12,20,0.74)",
+            background: "rgba(20,16,13,0.74)",
             border: bold ? `2px solid ${t.accent}` : "1px solid rgba(255,255,255,0.16)",
           }}
         >

@@ -4,7 +4,7 @@ import { loadFont } from "@remotion/google-fonts/Inter";
 
 const { fontFamily } = loadFont("normal", { weights: ["400", "600", "700"], subsets: ["latin"] });
 
-const BLUE = "#3B82F6";
+const BLUE = "#C15F3C";
 const WHITE = "#FFFFFF";
 const GREY = "#8B9098";
 const FULL = "…using AI";

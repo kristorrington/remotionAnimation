@@ -4,8 +4,8 @@ import { Img, staticFile, useCurrentFrame } from "remotion";
 // Small frame-animated "cartoon" icons that illustrate each idea. Each uses its
 // own useCurrentFrame (local to the card's Sequence) so it animates while shown.
 
-const CYAN = "#06B6D4";
-const BLUE = "#3B82F6";
+const CYAN = "#D97757";
+const BLUE = "#C15F3C";
 const WHITE = "#FFFFFF";
 const RED = "#EF4444";
 const AMBER = "#F59E0B";

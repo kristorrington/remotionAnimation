@@ -12,7 +12,7 @@ export const StatCountersScene: React.FC<{ durationInFrames: number; kicker?: st
   kicker,
   title,
   stats,
-  accent = "#06B6D4",
+  accent = "#D97757",
 }) => {
   return (
     <SceneShell durationInFrames={durationInFrames} particleSeed={0x77c}>

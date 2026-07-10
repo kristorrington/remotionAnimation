@@ -29,7 +29,7 @@ export const ProcessChecklist: React.FC<{ title: string; steps: Step[]; duration
           width: 460,
           padding: "26px 30px",
           borderRadius: 20,
-          background: "rgba(8,12,20,0.85)",
+          background: "rgba(20,16,13,0.85)",
           border: PILL_BORDER,
           filter: DROP_SHADOW,
           display: "flex",

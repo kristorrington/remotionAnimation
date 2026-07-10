@@ -82,7 +82,7 @@ export const StatusChip: React.FC<{ label: string; color?: string; delay?: numbe
   const e = spring({ frame: frame - delay, fps, config: { stiffness: 220, damping: 18, mass: 0.6 }, durationInFrames: 14 });
   const op = interpolate(frame, [delay, delay + 8], [0, 1], CLAMP);
   return (
-    <div style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "8px 18px", borderRadius: 999, background: "rgba(8,12,20,0.72)", border: `1px solid ${color}66`, transform: `scale(${interpolate(e, [0, 1], [0.7, 1])})`, opacity: op, ...style }}>
+    <div style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "8px 18px", borderRadius: 999, background: "rgba(20,16,13,0.72)", border: `1px solid ${color}66`, transform: `scale(${interpolate(e, [0, 1], [0.7, 1])})`, opacity: op, ...style }}>
       <span style={{ width: 9, height: 9, borderRadius: "50%", background: color, boxShadow: `0 0 8px ${color}` }} />
       <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 24, letterSpacing: 2, color: WHITE, textTransform: "uppercase" }}>{label}</span>
     </div>
@@ -229,7 +229,7 @@ export const LabelArrow: React.FC<{ label: string; at?: number; angle?: number; 
           <path d={`M ${20 - Math.min(0, x2) + hx} ${20 - Math.min(0, y2) + hy} l ${-14 * Math.cos(rad - 0.5)} ${-14 * Math.sin(rad - 0.5)} M ${20 - Math.min(0, x2) + hx} ${20 - Math.min(0, y2) + hy} l ${-14 * Math.cos(rad + 0.5)} ${-14 * Math.sin(rad + 0.5)}`} stroke={color} strokeWidth={6} strokeLinecap="round" fill="none" />
         )}
       </svg>
-      <div style={{ position: "absolute", left: x2 > 0 ? -30 : 10, top: y2 > 0 ? -46 : 10, opacity: labelOp, padding: "6px 16px", borderRadius: 10, background: "rgba(8,12,20,0.85)", border: `2px solid ${color}`, whiteSpace: "nowrap", transform: "translateZ(0)" }}>
+      <div style={{ position: "absolute", left: x2 > 0 ? -30 : 10, top: y2 > 0 ? -46 : 10, opacity: labelOp, padding: "6px 16px", borderRadius: 10, background: "rgba(20,16,13,0.85)", border: `2px solid ${color}`, whiteSpace: "nowrap", transform: "translateZ(0)" }}>
         <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 26, letterSpacing: 1, color: WHITE }}>{label}</span>
       </div>
     </div>
@@ -244,7 +244,7 @@ export const FloatingPanel: React.FC<{ children: React.ReactNode; delay?: number
   const op = interpolate(frame, [delay, delay + 10], [0, 1], CLAMP);
   const bob = Math.sin(frame * 0.05) * 5 * depth;
   return (
-    <div style={{ opacity: op, transform: `translateY(${bob + interpolate(e, [0, 1], [40, 0])}px) scale(${interpolate(e, [0, 1], [0.9, 1])})`, padding: "26px 30px", borderRadius: 18, background: "linear-gradient(180deg, rgba(16,22,34,0.9), rgba(8,12,20,0.9))", border: `1px solid ${accent}44`, boxShadow: `0 24px 60px rgba(0,0,0,0.5), inset 0 0 40px ${accent}10`, ...style }}>
+    <div style={{ opacity: op, transform: `translateY(${bob + interpolate(e, [0, 1], [40, 0])}px) scale(${interpolate(e, [0, 1], [0.9, 1])})`, padding: "26px 30px", borderRadius: 18, background: "linear-gradient(180deg, rgba(16,22,34,0.9), rgba(20,16,13,0.9))", border: `1px solid ${accent}44`, boxShadow: `0 24px 60px rgba(0,0,0,0.5), inset 0 0 40px ${accent}10`, ...style }}>
       {children}
     </div>
   );

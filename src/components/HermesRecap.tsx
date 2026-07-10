@@ -69,7 +69,7 @@ export const HermesRecap: React.FC<{ durationInFrames: number }> = ({ durationIn
               { k: "Web search", v: "find & understand" },
               { k: "Playwright MCP", v: "act & verify" },
             ].map((c) => (
-              <div key={c.k} style={{ padding: "26px 34px", borderRadius: 18, background: "rgba(8,12,20,0.8)", border: PILL_BORDER, textAlign: "center", boxShadow: "0 18px 44px rgba(0,0,0,0.45)" }}>
+              <div key={c.k} style={{ padding: "26px 34px", borderRadius: 18, background: "rgba(20,16,13,0.8)", border: PILL_BORDER, textAlign: "center", boxShadow: "0 18px 44px rgba(0,0,0,0.45)" }}>
                 <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 44, color: WHITE }}>{c.k}</div>
                 <div style={{ fontFamily: FONT, fontWeight: 500, fontSize: 28, color: CYAN, marginTop: 8 }}>{c.v}</div>
               </div>

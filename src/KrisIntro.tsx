@@ -10,7 +10,7 @@ import {
 } from "remotion";
 
 const BG = "#0a0a0a";
-const ACCENT = "#3B82F6";
+const ACCENT = "#C15F3C";
 const FONT_FAMILY =
   'Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif';
 

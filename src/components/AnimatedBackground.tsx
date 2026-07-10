@@ -119,7 +119,7 @@ export const AnimatedBackground: React.FC<Props> = ({ durationInFrames, words, f
       <AbsoluteFill
         style={{
           background:
-            "radial-gradient(120% 120% at 50% 40%, #0a1422 0%, #050a14 45%, #02040a 100%)",
+            "radial-gradient(120% 120% at 50% 40%, #221a14 0%, #13100d 45%, #080605 100%)",
         }}
       />
 

@@ -86,7 +86,7 @@ export const ModelRoutingVisuals: React.FC = () => {
 
       {/* 0:53 THE 5 RULES */}
       <Sequence from={1606} durationInFrames={330} premountFor={30}>
-        <StepsScene durationInFrames={330} kicker="THE NEW GAME" title="FIVE RULES" tint="#06B6D4" steps={[{ label: "Copy the process", at: 28 }, { label: "Set effort", at: 84 }, { label: "Package a skill", at: 180 }, { label: "Route by risk", at: 233 }, { label: "Watch access", at: 284 }]} />
+        <StepsScene durationInFrames={330} kicker="THE NEW GAME" title="FIVE RULES" tint="#D97757" steps={[{ label: "Copy the process", at: 28 }, { label: "Set effort", at: 84 }, { label: "Package a skill", at: 180 }, { label: "Route by risk", at: 233 }, { label: "Watch access", at: 284 }]} />
       </Sequence>
 
       {/* 1:07 RULE 1 — the leak is a rumour; steal the behaviour */}
@@ -97,17 +97,17 @@ export const ModelRoutingVisuals: React.FC = () => {
       {/* 1:31 THE PATTERN WORTH STEALING */}
       <Sequence from={2748} durationInFrames={340} premountFor={30}>
         {/* tint cyan — the leak-doc scene before this one ends on a green wash */}
-        <StepsScene durationInFrames={340} kicker="THE PATTERN" title="GOOD AGENT BEHAVIOUR" accent="#34D399" tint="#06B6D4" steps={[{ label: "No stale knowledge", at: 12 }, { label: "Never assume files", at: 56 }, { label: "Resolve unknowns", at: 115 }]} />
+        <StepsScene durationInFrames={340} kicker="THE PATTERN" title="GOOD AGENT BEHAVIOUR" accent="#34D399" tint="#D97757" steps={[{ label: "No stale knowledge", at: 12 }, { label: "Never assume files", at: 56 }, { label: "Resolve unknowns", at: 115 }]} />
       </Sequence>
 
       {/* 1:43 IF FABLE DOES IT, OPUS CAN TOO — twin robots */}
       <Sequence from={3105} durationInFrames={540} premountFor={30}>
-        <ReactionsScene durationInFrames={540} kicker="THE WHOLE TRICK" leftBubble="CHECKS FIRST" leftPose="celebrate" leftAccent="#E8B84B" leftAt={60} rightBubble="CAN TOO" rightPose="celebrate" rightAccent="#34D399" rightAt={134} stamp="SAME MOVES" stampColor="#06B6D4" pointAt={338} tint="#34D399" />
+        <ReactionsScene durationInFrames={540} kicker="THE WHOLE TRICK" leftBubble="CHECKS FIRST" leftPose="celebrate" leftAccent="#E8B84B" leftAt={60} rightBubble="CAN TOO" rightPose="celebrate" rightAccent="#34D399" rightAt={134} stamp="SAME MOVES" stampColor="#D97757" pointAt={338} tint="#34D399" />
       </Sequence>
 
       {/* 2:07 THE OPERATING STYLE — nodes pop on the spoken verify/reason/act */}
       <Sequence from={3824} durationInFrames={330} premountFor={30}>
-        <FlowScene durationInFrames={330} kicker="THE OPERATING STYLE" title="COPY THE OPERATING STYLE" nodes={[{ label: "Verify" }, { label: "Reason" }, { label: "Act" }]} nodeAts={[44, 107, 153]} tint="#06B6D4" />
+        <FlowScene durationInFrames={330} kicker="THE OPERATING STYLE" title="COPY THE OPERATING STYLE" nodes={[{ label: "Verify" }, { label: "Reason" }, { label: "Act" }]} nodeAts={[44, 107, 153]} tint="#D97757" />
       </Sequence>
 
       {/* 2:19 RULE 2 — the effort dial (what it is) */}
@@ -138,7 +138,7 @@ export const ModelRoutingVisuals: React.FC = () => {
 
       {/* 3:36 THE QUESTION FLIP */}
       <Sequence from={6480} durationInFrames={330} premountFor={30}>
-        <QuestionFlipScene durationInFrames={330} kicker="ASK THIS INSTEAD" q1="WHAT'S THE SMARTEST MODEL?" q2="WHAT DOES THIS TASK DESERVE?" q1At={30} crossAt={130} tint="#06B6D4" />
+        <QuestionFlipScene durationInFrames={330} kicker="ASK THIS INSTEAD" q1="WHAT'S THE SMARTEST MODEL?" q2="WHAT DOES THIS TASK DESERVE?" q1At={30} crossAt={130} tint="#D97757" />
       </Sequence>
 
       {/* 3:47 RULE 3 — package the behaviour as a SKILL */}
@@ -148,7 +148,7 @@ export const ModelRoutingVisuals: React.FC = () => {
 
       {/* 4:12 THE SKILL'S ONE JOB */}
       <Sequence from={7580} durationInFrames={440} premountFor={30}>
-        <StepsScene durationInFrames={440} kicker="GIVE IT ONE JOB" title="SLOW DOWN BEFORE ACTING" tint="#06B6D4" steps={[{ label: "Inspect the context", at: 112 }, { label: "State uncertainty", at: 220 }, { label: "Cheapest sane path", at: 284 }]} />
+        <StepsScene durationInFrames={440} kicker="GIVE IT ONE JOB" title="SLOW DOWN BEFORE ACTING" tint="#D97757" steps={[{ label: "Inspect the context", at: 112 }, { label: "State uncertainty", at: 220 }, { label: "Cheapest sane path", at: 284 }]} />
       </Sequence>
 
       {/* 4:30 DISCIPLINE, NOT BRAIN */}
@@ -186,7 +186,7 @@ export const ModelRoutingVisuals: React.FC = () => {
       {/* 6:22 THE FALLBACK RULE */}
       <Sequence from={11454} durationInFrames={560} premountFor={30}>
         {/* tint cyan — the access-window scene before this one sits on amber */}
-        <StepsScene durationInFrames={560} kicker="NOT PANIC — A ROUTING RULE" title="THE FALLBACK" accent="#F59E0B" tint="#06B6D4" steps={[{ label: "Fable down? Opus xhigh", at: 187 }, { label: "Too pricey? Step to high", at: 353 }, { label: "Ask: just enough?", at: 470 }]} />
+        <StepsScene durationInFrames={560} kicker="NOT PANIC — A ROUTING RULE" title="THE FALLBACK" accent="#F59E0B" tint="#D97757" steps={[{ label: "Fable down? Opus xhigh", at: 187 }, { label: "Too pricey? Step to high", at: 353 }, { label: "Ask: just enough?", at: 470 }]} />
       </Sequence>
 
       {/* 6:41 THE RATE CARD — 2× on paper, more in practice */}

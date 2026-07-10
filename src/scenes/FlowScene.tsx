@@ -16,7 +16,7 @@ export const FlowScene: React.FC<{
   accent?: string;
   nodeAts?: number[];
   tint?: string;
-}> = ({ durationInFrames, kicker, title, nodes, retry, retryLabel = "Wrong", accent = "#06B6D4", nodeAts, tint }) => {
+}> = ({ durationInFrames, kicker, title, nodes, retry, retryLabel = "Wrong", accent = "#D97757", nodeAts, tint }) => {
   return (
     <SceneShell durationInFrames={durationInFrames} particleSeed={0x4f} tint={tint}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 60 }}>

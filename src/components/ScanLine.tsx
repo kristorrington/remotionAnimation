@@ -6,7 +6,7 @@ import {
   useCurrentFrame,
 } from "remotion";
 
-const CYAN = "#06B6D4";
+const CYAN = "#D97757";
 
 // Act 3 — a thin cyan radar sweep crosses the full composition left to right,
 // completing just as the subtitle finishes locking in. A soft trailing glow

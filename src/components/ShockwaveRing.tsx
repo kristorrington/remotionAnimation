@@ -8,7 +8,7 @@ import {
   useVideoConfig,
 } from "remotion";
 
-const ELECTRIC_BLUE = "#3B82F6";
+const ELECTRIC_BLUE = "#C15F3C";
 
 // Act 1 — Signal detected.
 // A single electric-blue pixel appears dead centre at frame 8, then expands

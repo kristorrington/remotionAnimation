@@ -27,7 +27,7 @@ export const useVoiceLevel = (clipFrom: number): number => {
 
 // Wraps a subject so its glow pulses WITH the voice — the cheapest way to make
 // a "thinking"/"speaking" element feel alive and VO-synced.
-export const VoiceGlow: React.FC<{ clipFrom: number; color?: string; maxGlow?: number; children: React.ReactNode }> = ({ clipFrom, color = "#06B6D4", maxGlow = 26, children }) => {
+export const VoiceGlow: React.FC<{ clipFrom: number; color?: string; maxGlow?: number; children: React.ReactNode }> = ({ clipFrom, color = "#D97757", maxGlow = 26, children }) => {
   const level = useVoiceLevel(clipFrom);
   return <div style={{ filter: `drop-shadow(0 0 ${4 + level * maxGlow}px ${color})` }}>{children}</div>;
 };

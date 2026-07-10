@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 
-const ELECTRIC_BLUE = "#3B82F6";
-const CYAN = "#06B6D4";
+const ELECTRIC_BLUE = "#C15F3C";
+const CYAN = "#D97757";
 
 // Deterministic PRNG (mulberry32) — identical particles on every render.
 // Never Math.random().

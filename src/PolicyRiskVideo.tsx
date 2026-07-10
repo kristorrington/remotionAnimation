@@ -63,7 +63,7 @@ export const PolicyRiskVisuals: React.FC = () => {
       <Sequence from={1626} durationInFrames={560} premountFor={30}>
         <CompareCard
           kicker="JUNE 9 — RELEASED"
-          left={{ title: "Fable 5", items: ["The public model", "Heavier safeguards"], accent: "#3B82F6", mark: "★" }}
+          left={{ title: "Fable 5", items: ["The public model", "Heavier safeguards"], accent: "#C15F3C", mark: "★" }}
           right={{ title: "Mythos 5", items: ["Fewer safeguards", "Trusted Glasgow partners"], accent: "#F59E0B", mark: "◆" }}
           leftDelay={234}
           rightDelay={348}

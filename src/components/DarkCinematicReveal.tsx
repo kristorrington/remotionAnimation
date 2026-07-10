@@ -10,8 +10,8 @@ import { loadFont } from "@remotion/google-fonts/Inter";
 
 const { fontFamily } = loadFont("normal", { weights: ["800"], subsets: ["latin"] });
 
-const BLUE = "#3B82F6";
-const CYAN = "#06B6D4";
+const BLUE = "#C15F3C";
+const CYAN = "#D97757";
 const WHITE = "#FFFFFF";
 const TITLE = "KRIS TORRINGTON";
 const CHROMA_PX = 4; // chromatic aberration offset at the slam (per spec)

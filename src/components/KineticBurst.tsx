@@ -29,7 +29,7 @@ export const KineticBurst: React.FC = () => {
     <AbsoluteFill
       style={{
         // Bright diagonal gradient — full energy from frame 0 (no fade-in).
-        background: `linear-gradient(135deg, ${"#06B6D4"} 0%, ${"#3B82F6"} 50%, ${"#FFFFFF"} 100%)`,
+        background: `linear-gradient(135deg, ${"#D97757"} 0%, ${"#C15F3C"} 50%, ${"#FFFFFF"} 100%)`,
         justifyContent: "center",
         alignItems: "center",
       }}

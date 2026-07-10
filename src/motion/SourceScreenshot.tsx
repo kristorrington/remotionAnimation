@@ -11,7 +11,7 @@ import { HighlightSweep } from "./primitives";
 // ============================================================================
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
-const CYAN = "#06B6D4";
+const CYAN = "#D97757";
 
 type Rect = { x: number; y: number; w: number; h: number };
 

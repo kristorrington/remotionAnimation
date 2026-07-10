@@ -50,7 +50,7 @@ export const DemoPreview: React.FC<{ durationInFrames: number }> = ({ durationIn
                   width: 360,
                   height: 300,
                   borderRadius: 22,
-                  background: "rgba(8,12,20,0.78)",
+                  background: "rgba(20,16,13,0.78)",
                   border: PILL_BORDER,
                   boxShadow: "0 22px 60px rgba(0,0,0,0.5)",
                   display: "flex",

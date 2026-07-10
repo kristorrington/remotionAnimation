@@ -3,13 +3,17 @@ import { loadFont as loadInter } from "@remotion/google-fonts/Inter";
 import { loadFont as loadMono } from "@remotion/google-fonts/RobotoMono";
 
 // Shared palette / type for all tutorial overlays.
-export const BLUE = "#3B82F6";
-export const CYAN = "#06B6D4";
+// REBRAND (July 2026, Kris's call): the house accent is Claude Code's
+// terracotta (#D97757, Anthropic brand) with deep clay as the secondary —
+// the constant NAMES stay (CYAN/BLUE) so ~40 call sites don't churn; treat
+// them as "accent" / "accent2".
+export const BLUE = "#C15F3C";
+export const CYAN = "#D97757";
 export const WHITE = "#FFFFFF";
 export const RED = "#EF4444";
 
 // Semi-transparent dark pill so text stays legible over any screen content.
-export const PILL_BG = "rgba(8,10,14,0.74)";
+export const PILL_BG = "rgba(16,12,10,0.74)";
 export const PILL_BORDER = "1px solid rgba(255,255,255,0.10)";
 
 // Subtle drop shadow so overlays read over bright or busy footage.

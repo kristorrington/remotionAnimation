@@ -77,7 +77,7 @@ export const PathDoorsScene: React.FC<{
                 <div style={{ position: "relative", width: doorW, height: 300, borderRadius: 18, ...glassCard(isPick ? GOLD : CYAN, isPick ? 2.5 : 2), overflow: "hidden", opacity: picked && !isPick ? 0.45 : 1 }}>
                   {/* interior glow revealed as the door slides up */}
                   <div style={{ position: "absolute", inset: 4, borderRadius: 14, background: `radial-gradient(ellipse at 50% 80%, ${GOLD}44, transparent 70%)`, opacity: open }} />
-                  <div style={{ position: "absolute", left: 4, right: 4, bottom: 4, top: 4 + open * 262, borderRadius: 14, background: "linear-gradient(180deg, #232f4a, #131c2f)", borderBottom: "3px solid rgba(255,255,255,0.12)" }}>
+                  <div style={{ position: "absolute", left: 4, right: 4, bottom: 4, top: 4 + open * 262, borderRadius: 14, background: "linear-gradient(180deg, #3a2f28, #1e1814)", borderBottom: "3px solid rgba(255,255,255,0.12)" }}>
                     <div style={{ position: "absolute", right: 16, top: 140, width: 12, height: 12, borderRadius: "50%", background: "rgba(255,255,255,0.25)" }} />
                   </div>
                   {isPick && <Sparks at={pickAt + 22} x={doorW / 2} y={150} color={GOLD} size={150} />}
@@ -352,7 +352,7 @@ export const SkillCartridgeScene: React.FC<{
               <div style={{ width: 160, height: 54, borderRadius: 10, ...glassCard(GOLD, 2.5), display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 22, letterSpacing: 1, color: WHITE, transform: "translateZ(0)" }}>{cartridgeLabel}</span>
               </div>
-              <div style={{ width: 100, height: 12, margin: "0 auto", borderRadius: "0 0 8px 8px", background: "linear-gradient(180deg, #232f4a, #131c2f)", border: "2px solid rgba(255,255,255,0.14)", borderTop: "none" }} />
+              <div style={{ width: 100, height: 12, margin: "0 auto", borderRadius: "0 0 8px 8px", background: "linear-gradient(180deg, #3a2f28, #1e1814)", border: "2px solid rgba(255,255,255,0.14)", borderTop: "none" }} />
             </div>
             <Sparks at={slotAt + 24} x={200} y={-6} color={GOLD} size={140} />
             {/* identical outputs pop out per run — consistency is the product */}
@@ -405,10 +405,10 @@ export const ThreeBuyersScene: React.FC<{
               const has = filled && at !== undefined && frame >= at;
               const e = spring({ frame: frame - (at ?? 0), fps, config: { stiffness: 140, damping: 14 }, durationInFrames: 24 });
               return (
-                <div key={i} style={{ position: "relative", width: 230, height: 290, borderRadius: 18, border: has ? undefined : `3px dashed rgba(255,255,255,${0.2 + 0.15 * pulse})`, ...(has ? glassCard(GREEN, 2.5) : { background: "rgba(8,12,20,0.4)" }), display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 14, transform: has ? `rotate(${i % 2 ? 1.5 : -1.5}deg) scale(${interpolate(e, [0, 1], [1.3, 1])})` : undefined }}>
+                <div key={i} style={{ position: "relative", width: 230, height: 290, borderRadius: 18, border: has ? undefined : `3px dashed rgba(255,255,255,${0.2 + 0.15 * pulse})`, ...(has ? glassCard(GREEN, 2.5) : { background: "rgba(20,16,13,0.4)" }), display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 14, transform: has ? `rotate(${i % 2 ? 1.5 : -1.5}deg) scale(${interpolate(e, [0, 1], [1.3, 1])})` : undefined }}>
                   {has ? (
                     <>
-                      <div style={{ width: 84, height: 84, borderRadius: "50%", background: "linear-gradient(180deg, #2b3a5c, #17203a)", border: `3px solid ${GREEN}AA`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <div style={{ width: 84, height: 84, borderRadius: "50%", background: "linear-gradient(180deg, #46362a, #17203a)", border: `3px solid ${GREEN}AA`, display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 34, color: GREEN, transform: "translateZ(0)" }}>{i + 1}</span>
                       </div>
                       {[70, 50].map((w, k) => (

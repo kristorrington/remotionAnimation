@@ -9,8 +9,8 @@ import { FONT } from "../components/overlayUI";
 // Style: rounded shapes, expressive eyes, squash & stretch, dark-tech palette.
 // ============================================================================
 
-const CYAN = "#06B6D4";
-const BLUE = "#3B82F6";
+const CYAN = "#D97757";
+const BLUE = "#C15F3C";
 const WHITE = "#FFFFFF";
 const RED = "#EF4444";
 const AMBER = "#F59E0B";
@@ -27,7 +27,7 @@ export type RobotPose =
 // gradient + thin alpha border + inner highlight — never flat PANEL fills
 // with thick solid borders. Hex colors get an alpha edge + soft glow; rgba
 // colors pass through untouched.
-export const GLASS = "linear-gradient(180deg, rgba(20,27,44,0.95), rgba(8,12,20,0.88))";
+export const GLASS = "linear-gradient(180deg, rgba(41,33,27,0.95), rgba(20,16,13,0.88))";
 export const glassCard = (color: string, borderW = 2): React.CSSProperties => {
   const hex = color.startsWith("#");
   return {
@@ -134,10 +134,10 @@ export const CartoonRobot: React.FC<{ pose?: RobotPose; size?: number; accent?: 
 
   const mouth = () => {
     if (pose === "celebrate") return <path d="M86 78 Q100 92 114 78" stroke={WHITE} strokeWidth={4} fill="none" strokeLinecap="round" />;
-    if (pose === "alarmed") return <ellipse cx={100} cy={80} rx={8} ry={10} fill="#0a0f18" stroke={WHITE} strokeWidth={3} />;
+    if (pose === "alarmed") return <ellipse cx={100} cy={80} rx={8} ry={10} fill="#14100c" stroke={WHITE} strokeWidth={3} />;
     if (pose === "worried" || pose === "shrug" || pose === "facepalm") return <path d="M88 84 Q100 76 112 84" stroke={WHITE} strokeWidth={4} fill="none" strokeLinecap="round" />;
-    if (pose === "sleepy") return <ellipse cx={100} cy={82} rx={5} ry={6} fill="#0a0f18" stroke={WHITE} strokeWidth={2.5} />;
-    if (pose === "thinking") return <ellipse cx={100} cy={81} rx={4} ry={5} fill="#0a0f18" stroke={WHITE} strokeWidth={2.5} />;
+    if (pose === "sleepy") return <ellipse cx={100} cy={82} rx={5} ry={6} fill="#14100c" stroke={WHITE} strokeWidth={2.5} />;
+    if (pose === "thinking") return <ellipse cx={100} cy={81} rx={4} ry={5} fill="#14100c" stroke={WHITE} strokeWidth={2.5} />;
     if (pose === "confused") return <path d="M88 82 q6 -7 12 0 q6 7 12 0" stroke={WHITE} strokeWidth={4} fill="none" strokeLinecap="round" />;
     return <path d="M90 80 Q100 86 110 80" stroke={WHITE} strokeWidth={4} fill="none" strokeLinecap="round" />;
   };
@@ -152,8 +152,8 @@ export const CartoonRobot: React.FC<{ pose?: RobotPose; size?: number; accent?: 
     <svg width={size} height={size} viewBox="0 0 200 200" style={{ overflow: "visible" }}>
       <defs>
         <linearGradient id={gid} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#1b2438" />
-          <stop offset="100%" stopColor="#0a101d" />
+          <stop offset="0%" stopColor="#2b2219" />
+          <stop offset="100%" stopColor="#16110d" />
         </linearGradient>
       </defs>
       {/* grounded contact shadow — stays down while the body hops */}
@@ -313,17 +313,17 @@ export const TinyDev: React.FC<{ pose?: "typing" | "panic" | "happy"; size?: num
     <svg width={size} height={size} viewBox="0 0 200 200" style={{ overflow: "visible" }}>
       <g transform={`translate(${shake} ${-hop})`}>
         {/* head + hair */}
-        <circle cx={100} cy={58} r={26} fill="#E8B98B" stroke="#0a0f18" strokeWidth={3} />
+        <circle cx={100} cy={58} r={26} fill="#E8B98B" stroke="#14100c" strokeWidth={3} />
         <path d="M74 52 A26 26 0 0 1 126 52 L120 40 L108 46 L96 38 L84 46 Z" fill="#3B2B20" />
         {/* eyes + mouth */}
-        <ellipse cx={91} cy={58} rx={3.4} ry={3.4 * (pose === "panic" ? 1.5 : blink)} fill="#0a0f18" />
-        <ellipse cx={109} cy={58} rx={3.4} ry={3.4 * (pose === "panic" ? 1.5 : blink)} fill="#0a0f18" />
+        <ellipse cx={91} cy={58} rx={3.4} ry={3.4 * (pose === "panic" ? 1.5 : blink)} fill="#14100c" />
+        <ellipse cx={109} cy={58} rx={3.4} ry={3.4 * (pose === "panic" ? 1.5 : blink)} fill="#14100c" />
         {pose === "panic" ? (
-          <ellipse cx={100} cy={72} rx={6} ry={7} fill="#0a0f18" />
+          <ellipse cx={100} cy={72} rx={6} ry={7} fill="#14100c" />
         ) : pose === "happy" ? (
-          <path d="M90 70 Q100 80 110 70" stroke="#0a0f18" strokeWidth={3.5} fill="none" strokeLinecap="round" />
+          <path d="M90 70 Q100 80 110 70" stroke="#14100c" strokeWidth={3.5} fill="none" strokeLinecap="round" />
         ) : (
-          <path d="M92 72 Q100 75 108 72" stroke="#0a0f18" strokeWidth={3} fill="none" strokeLinecap="round" />
+          <path d="M92 72 Q100 75 108 72" stroke="#14100c" strokeWidth={3} fill="none" strokeLinecap="round" />
         )}
         {/* hoodie body */}
         <rect x={72} y={84} width={56} height={58} rx={16} fill={PANEL} stroke={accent} strokeWidth={4} />
@@ -343,15 +343,15 @@ export const TinyDev: React.FC<{ pose?: "typing" | "panic" | "happy"; size?: num
         {/* laptop when typing */}
         {pose === "typing" && (
           <g>
-            <rect x={62} y={128} width={76} height={8} rx={3} fill="#2A3648" stroke={CYAN} strokeWidth={2.5} />
+            <rect x={62} y={128} width={76} height={8} rx={3} fill="#443627" stroke={CYAN} strokeWidth={2.5} />
             <rect x={70} y={102} width={60} height={26} rx={4} fill="#0E1522" stroke={CYAN} strokeWidth={2.5} />
             <rect x={76} y={107 + (frame % 18 < 9 ? 0 : 2)} width={30} height={3} rx={1.5} fill={GREEN} opacity={0.8} />
             <rect x={76} y={114} width={44} height={3} rx={1.5} fill={CYAN} opacity={0.5} />
           </g>
         )}
         {/* legs */}
-        <rect x={82} y={142} width={13} height={20} rx={5} fill="#1B2434" stroke={accent} strokeWidth={3} />
-        <rect x={105} y={142} width={13} height={20} rx={5} fill="#1B2434" stroke={accent} strokeWidth={3} />
+        <rect x={82} y={142} width={13} height={20} rx={5} fill="#2b221a" stroke={accent} strokeWidth={3} />
+        <rect x={105} y={142} width={13} height={20} rx={5} fill="#2b221a" stroke={accent} strokeWidth={3} />
       </g>
       {pose === "panic" && <AlarmLines frame={frame} />}
     </svg>

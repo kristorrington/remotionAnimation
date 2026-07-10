@@ -33,7 +33,7 @@ export const ResultCard: React.FC<{
           minWidth: 540,
           padding: "30px 40px",
           borderRadius: 20,
-          background: "rgba(8,12,20,0.9)",
+          background: "rgba(20,16,13,0.9)",
           border: PILL_BORDER,
           filter: DROP_SHADOW,
           display: "flex",

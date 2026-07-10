@@ -37,7 +37,7 @@ export const Fable5Outro: React.FC<{ durationInFrames: number; kicker?: string; 
           <span style={{ display: "inline-block", width: 0, height: 0, borderTop: "12px solid transparent", borderBottom: "12px solid transparent", borderLeft: `20px solid ${WHITE}` }} />
           <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 42, letterSpacing: 2, color: WHITE }}>SUBSCRIBE</span>
         </div>
-        <div style={{ opacity: tagOp, display: "inline-flex", alignItems: "center", gap: 14, padding: "14px 26px", borderRadius: 999, background: "rgba(8,12,20,0.8)", border: PILL_BORDER }}>
+        <div style={{ opacity: tagOp, display: "inline-flex", alignItems: "center", gap: 14, padding: "14px 26px", borderRadius: 999, background: "rgba(20,16,13,0.8)", border: PILL_BORDER }}>
           <span style={{ width: 9, height: 9, borderRadius: "50%", background: CYAN, boxShadow: `0 0 10px ${CYAN}` }} />
           <span style={{ fontFamily: FONT, fontWeight: 600, fontSize: 30, color: "rgba(255,255,255,0.85)" }}>{tag}</span>
         </div>

@@ -9,8 +9,8 @@ import { ParallaxLayer } from "./primitives";
 // ============================================================================
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
-const CYAN = "#06B6D4";
-const BLUE = "#3B82F6";
+const CYAN = "#D97757";
+const BLUE = "#C15F3C";
 
 // World shake on impacts: pass the frames where hits land; apply the returned
 // offset to the scene content (SceneShell does this via its `impacts` prop).

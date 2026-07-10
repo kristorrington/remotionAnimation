@@ -78,7 +78,7 @@ export const FableCountdownVisuals: React.FC = () => {
 
       {/* 0:29 THE QUESTION FLIP (starts after the price scene fully lands) */}
       <Sequence from={876} durationInFrames={211} premountFor={30}>
-        <QuestionFlipScene durationInFrames={211} kicker="THE REAL QUESTION" q1="SHOULD YOU USE FABLE 5?" q2="WHAT'S ACTUALLY WORTH IT?" q1At={6} crossAt={82} tint="#06B6D4" />
+        <QuestionFlipScene durationInFrames={211} kicker="THE REAL QUESTION" q1="SHOULD YOU USE FABLE 5?" q2="WHAT'S ACTUALLY WORTH IT?" q1At={6} crossAt={82} tint="#D97757" />
       </Sequence>
 
       {/* 0:36 CLEAN RULES — routine falls through, result-changing work passes */}
@@ -136,12 +136,12 @@ export const FableCountdownVisuals: React.FC = () => {
 
       {/* 2:56 THE PUSHBACK — Messaros vs the jailbreak framing */}
       <Sequence from={5290} durationInFrames={440} premountFor={30}>
-        <ReactionsScene durationInFrames={440} kicker="THE PUSHBACK" leftBubble="DEFENSIVE WORK" leftPose="pointing" leftAccent="#06B6D4" leftAt={401} rightBubble="A JAILBREAK?" rightPose="shrug" rightAccent="#F59E0B" rightAt={241} stamp="OVERSTATED?" stampColor="#F59E0B" pointAt={271} tint="#F59E0B" />
+        <ReactionsScene durationInFrames={440} kicker="THE PUSHBACK" leftBubble="DEFENSIVE WORK" leftPose="pointing" leftAccent="#D97757" leftAt={401} rightBubble="A JAILBREAK?" rightPose="shrug" rightAccent="#F59E0B" rightAt={241} stamp="OVERSTATED?" stampColor="#F59E0B" pointAt={271} tint="#F59E0B" />
       </Sequence>
 
       {/* 3:11 WHAT SHE ACTUALLY DID — find → fix → test */}
       <Sequence from={5735} durationInFrames={210} premountFor={30}>
-        <FlowScene durationInFrames={210} kicker="WHAT SHE REPORTED" title="FIND → FIX → TEST" nodes={[{ label: "Find a bug" }, { label: "Fix the code" }, { label: "Write a test" }]} nodeAts={[8, 47, 91]} tint="#06B6D4" />
+        <FlowScene durationInFrames={210} kicker="WHAT SHE REPORTED" title="FIND → FIX → TEST" nodes={[{ label: "Find a bug" }, { label: "Fix the code" }, { label: "Write a test" }]} nodeAts={[8, 47, 91]} tint="#D97757" />
       </Sequence>
 
       {/* 3:28 TRUST NOT SETTLED — don't build the whole tower on it */}
@@ -158,7 +158,7 @@ export const FableCountdownVisuals: React.FC = () => {
 
       {/* 3:57 CONDITIONAL — plan, limits, routing */}
       <Sequence from={7125} durationInFrames={350} premountFor={30}>
-        <StepsScene durationInFrames={350} kicker="NOT JUST EXPENSIVE" title="CONDITIONAL" accent="#F59E0B" tint="#06B6D4" steps={[
+        <StepsScene durationInFrames={350} kicker="NOT JUST EXPENSIVE" title="CONDITIONAL" accent="#F59E0B" tint="#D97757" steps={[
           { label: "Access → your plan", at: 19 }, { label: "Usage → weekly limits", at: 70 }, { label: "Requests → safety routing", at: 138 },
         ]} />
       </Sequence>
@@ -182,7 +182,7 @@ export const FableCountdownVisuals: React.FC = () => {
 
       {/* 4:45 THE DECISION RULE — before vs after July 12 */}
       <Sequence from={8547} durationInFrames={320} premountFor={30}>
-        <CompareCard kicker="THE DECISION RULE" tint="#06B6D4" left={{ title: "BEFORE JULY 12", items: ["hardest unfinished work"], accent: "#E8B84B", mark: "»" }} right={{ title: "AFTER JULY 12", items: ["only if it beats the credit cost"], accent: "#34D399", mark: "»" }} leftDelay={140} rightDelay={194} durationInFrames={320} />
+        <CompareCard kicker="THE DECISION RULE" tint="#D97757" left={{ title: "BEFORE JULY 12", items: ["hardest unfinished work"], accent: "#E8B84B", mark: "»" }} right={{ title: "AFTER JULY 12", items: ["only if it beats the credit cost"], accent: "#34D399", mark: "»" }} leftDelay={140} rightDelay={194} durationInFrames={320} />
       </Sequence>
 
       {/* 4:58 WATCH THE WORDING — screenshots lie, official dates don't */}

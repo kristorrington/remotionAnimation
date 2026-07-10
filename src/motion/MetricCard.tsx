@@ -38,7 +38,7 @@ export const MetricCard: React.FC<{ mode: MetricMode; delay?: number; width?: nu
         width,
         padding: "34px 26px 30px",
         borderRadius: 20,
-        background: "linear-gradient(180deg, rgba(16,22,34,0.92), rgba(8,12,20,0.92))",
+        background: "linear-gradient(180deg, rgba(16,22,34,0.92), rgba(20,16,13,0.92))",
         border: `1px solid ${c.accent}55`,
         boxShadow: `0 24px 60px rgba(0,0,0,0.5), inset 0 0 40px ${c.accent}12`,
         opacity: op,

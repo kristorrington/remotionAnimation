@@ -52,7 +52,7 @@ export const ActionBadge: React.FC<{ text: string; pos: Pos; check?: boolean; du
           gap: 12,
           padding: "14px 22px",
           borderRadius: 999,
-          background: "rgba(8,12,20,0.85)",
+          background: "rgba(20,16,13,0.85)",
           border: PILL_BORDER,
           filter: DROP_SHADOW,
         }}

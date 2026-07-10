@@ -76,7 +76,7 @@ const Beat1: React.FC = () => {
             <div style={{ ...line, color: WHITE, textShadow: "0 0 36px rgba(59,130,246,0.5)" }}>JUST CHAT</div>
           </div>
         </div>
-        <div style={{ display: "inline-flex", alignItems: "center", gap: 18, opacity: revOp, transform: `scale(${revScale})`, padding: "14px 26px 14px 16px", borderRadius: 16, background: "rgba(8,12,20,0.8)", border: PILL_BORDER }}>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 18, opacity: revOp, transform: `scale(${revScale})`, padding: "14px 26px 14px 16px", borderRadius: 16, background: "rgba(20,16,13,0.8)", border: PILL_BORDER }}>
           <LogoBadge src={GMAIL_LOGO} size={48} glow="rgba(234,67,53,0.5)" />
           <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 34, letterSpacing: 2, color: WHITE }}>connect Gmail</span>
         </div>

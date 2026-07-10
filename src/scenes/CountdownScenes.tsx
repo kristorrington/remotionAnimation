@@ -20,7 +20,7 @@ const chip = (color: string, fontSize = 24): React.CSSProperties => ({
 });
 
 const glass = (color: string): React.CSSProperties => ({
-  background: "linear-gradient(180deg, rgba(20,27,44,0.95), rgba(8,12,20,0.88))",
+  background: "linear-gradient(180deg, rgba(41,33,27,0.95), rgba(20,16,13,0.88))",
   border: `2px solid ${color}88`,
   boxShadow: `0 20px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08), 0 0 30px ${color}26`,
 });
@@ -430,7 +430,7 @@ export const RerouteScene: React.FC<{ durationInFrames: number; kicker?: string;
           {/* the safety barrier — hazard-striped arm on a glowing pivot */}
           <div style={{ position: "absolute", left: 610, top: 26, transform: `rotate(${frame >= rerouteAt - 6 && frame < rerouteAt + 40 ? impulse(frame, rerouteAt, 10, 22) - 40 : 0}deg)`, transformOrigin: "top center" }}>
             <div style={{ width: 18, height: 130, borderRadius: 9, background: `repeating-linear-gradient(45deg, ${RED} 0 9px, #33121a 9px 18px)`, border: "2px solid rgba(255,255,255,0.22)", boxShadow: `0 6px 18px rgba(0,0,0,0.5), 0 0 16px ${RED}55` }} />
-            <div style={{ position: "absolute", top: -12, left: -6, width: 30, height: 30, borderRadius: "50%", background: "linear-gradient(180deg, rgba(20,27,44,0.95), rgba(8,12,20,0.88))", border: `3px solid ${RED}`, boxShadow: `0 0 14px ${RED}66` }} />
+            <div style={{ position: "absolute", top: -12, left: -6, width: 30, height: 30, borderRadius: "50%", background: "linear-gradient(180deg, rgba(41,33,27,0.95), rgba(20,16,13,0.88))", border: `3px solid ${RED}`, boxShadow: `0 0 14px ${RED}66` }} />
           </div>
           <div style={{ position: "absolute", left: 480, top: -12 }}>
             <Sticker label="SAFETY ROUTING" at={rerouteAt - 20} color={RED} rot={-3} fontSize={22} />
@@ -533,7 +533,7 @@ export const WatchWordingScene: React.FC<{ durationInFrames: number; kicker?: st
         <div style={{ display: "flex", alignItems: "center", gap: 90 }}>
           {/* blurry screenshot card */}
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14, opacity: interpolate(l, [0, 0.3], [0, 1]), transform: `rotate(-3deg) scale(${interpolate(l, [0, 1], [1.35, 1])})` }}>
-            <div style={{ width: 330, borderRadius: 14, background: "linear-gradient(180deg, rgba(20,27,44,0.95), rgba(8,12,20,0.88))", border: "2px solid rgba(255,255,255,0.22)", boxShadow: "0 16px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)", padding: "20px 22px", filter: "saturate(0.6)" }}>
+            <div style={{ width: 330, borderRadius: 14, background: "linear-gradient(180deg, rgba(41,33,27,0.95), rgba(20,16,13,0.88))", border: "2px solid rgba(255,255,255,0.22)", boxShadow: "0 16px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)", padding: "20px 22px", filter: "saturate(0.6)" }}>
               <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 22, color: "rgba(255,255,255,0.6)", transform: "translateZ(0)", display: "block", marginBottom: 10 }}>random screenshot</span>
               {[86, 64, 74].map((w, i) => (
                 <div key={i} style={{ width: `${w}%`, height: 13, borderRadius: 6, background: "rgba(255,255,255,0.14)", margin: "8px 0", filter: "blur(2.5px)" }} />

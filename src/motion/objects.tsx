@@ -15,8 +15,8 @@ const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const GLASS_DEFS = (
   <defs>
     <linearGradient id="objGlass" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stopColor="#1b2438" />
-      <stop offset="100%" stopColor="#0a101d" />
+      <stop offset="0%" stopColor="#2b2219" />
+      <stop offset="100%" stopColor="#16110d" />
     </linearGradient>
   </defs>
 );
@@ -127,7 +127,7 @@ export const CostMeterClimb: React.FC<{ level: number; height?: number; label?: 
   const alarm = l > 0.85 ? 0.5 + 0.5 * Math.sin(frame * 0.5) : 0;
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
-      <div style={{ width: 74, height, borderRadius: 18, border: "2px solid rgba(255,255,255,0.22)", background: "linear-gradient(180deg, rgba(16,22,36,0.9), rgba(8,12,20,0.82))", position: "relative", overflow: "hidden", boxShadow: `inset 0 1px 0 rgba(255,255,255,0.08), 0 10px 24px rgba(0,0,0,0.4)${alarm ? `, 0 0 ${26 * alarm}px ${RED}` : ""}` }}>
+      <div style={{ width: 74, height, borderRadius: 18, border: "2px solid rgba(255,255,255,0.22)", background: "linear-gradient(180deg, rgba(16,22,36,0.9), rgba(20,16,13,0.82))", position: "relative", overflow: "hidden", boxShadow: `inset 0 1px 0 rgba(255,255,255,0.08), 0 10px 24px rgba(0,0,0,0.4)${alarm ? `, 0 0 ${26 * alarm}px ${RED}` : ""}` }}>
         <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: `${l * 100}%`, background: `linear-gradient(180deg, ${color}, ${color}88)`, boxShadow: `0 0 18px ${color}` }} />
         {[0.25, 0.5, 0.75].map((m) => (
           <div key={m} style={{ position: "absolute", bottom: `${m * 100}%`, left: 0, right: 0, height: 2, background: "rgba(255,255,255,0.18)" }} />
@@ -270,7 +270,7 @@ export const LeakingBucket: React.FC<{ level?: number; patchAt?: number; width?:
     <div style={{ position: "relative", width: width + 90, height: h + 70 }}>
       <svg width={width} height={h} viewBox="0 0 100 95" style={{ overflow: "visible" }}>
         {/* bucket */}
-        <path d="M14 12 L86 12 L78 88 L22 88 Z" fill="rgba(8,12,20,0.85)" stroke="#8899AA" strokeWidth={5} strokeLinejoin="round" />
+        <path d="M14 12 L86 12 L78 88 L22 88 Z" fill="rgba(20,16,13,0.85)" stroke="#8899AA" strokeWidth={5} strokeLinejoin="round" />
         {/* liquid */}
         <path d={`M${18 + (1 - drain) * 3} ${16 + (1 - drain) * 66} L${82 - (1 - drain) * 3} ${16 + (1 - drain) * 66} L78 88 L22 88 Z`} fill={GREEN} opacity={0.5} />
         {/* hole + drips */}
@@ -312,8 +312,8 @@ export const TrafficJam: React.FC<{ cars?: string[]; at?: number; width?: number
             <svg width={104} height={62} viewBox="0 0 104 62" style={{ overflow: "visible" }}>
               {GLASS_DEFS}
               <path d="M8 42 L14 24 Q18 14 30 14 L66 14 Q78 14 84 26 L96 42 Q100 44 98 50 L6 50 Q4 44 8 42 Z" fill="url(#objGlass)" stroke={i === 0 ? AMBER : CYAN} strokeWidth={3} />
-              <circle cx={28} cy={52} r={9} fill="#0a0f18" stroke={i === 0 ? AMBER : CYAN} strokeWidth={3.5} />
-              <circle cx={76} cy={52} r={9} fill="#0a0f18" stroke={i === 0 ? AMBER : CYAN} strokeWidth={3.5} />
+              <circle cx={28} cy={52} r={9} fill="#14100c" stroke={i === 0 ? AMBER : CYAN} strokeWidth={3.5} />
+              <circle cx={76} cy={52} r={9} fill="#14100c" stroke={i === 0 ? AMBER : CYAN} strokeWidth={3.5} />
               <text x={50} y={40} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={16} fill={WHITE}>{label}</text>
               {honk && <text x={80} y={10} fontFamily={FONT} fontWeight={900} fontSize={16} fill={AMBER}>!</text>}
             </svg>
@@ -340,7 +340,7 @@ export const ServerRack: React.FC<{ width?: number; units?: number; overheatAt?:
         const y = 18 + u * 54;
         return (
           <g key={u}>
-            <rect x={16} y={y} width={128} height={42} rx={6} fill="rgba(8,12,20,0.9)" stroke="rgba(255,255,255,0.18)" strokeWidth={2} />
+            <rect x={16} y={y} width={128} height={42} rx={6} fill="rgba(20,16,13,0.9)" stroke="rgba(255,255,255,0.18)" strokeWidth={2} />
             {/* LEDs */}
             {[0, 1, 2, 3, 4].map((l) => {
               const on = hot ? (frame + l * 3) % 10 < 5 : (frame * 0.4 + l * 7 + u * 13) % 17 < 8;

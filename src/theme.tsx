@@ -4,7 +4,8 @@ import { BLUE, CYAN, FONT, MONO, WHITE } from "./components/overlayUI";
 
 // ============================================================================
 // VIDEO STYLES. Two brand looks, switchable per video and per short:
-//   "cinematic" — dark space, aurora + grid, cyan/blue glow, Inter. (default)
+//   "cinematic" — warm charcoal space, aurora + grid, Claude-terracotta glow,
+//                 Inter. (default; rebranded to Claude Code colours 07/2026)
 //   "bold"      — flat slate, chunky cream display type (Anton), yellow tape
 //                 banners, terracotta numerics, boxed typewriter kickers.
 // Choose by wrapping a composition in <ThemeProvider style="bold"> (main
@@ -24,8 +25,8 @@ export type Theme = {
   ink: string; // dark text used ON accent surfaces (tape, buttons)
   text: string; // main text color
   textDim: string; // de-emphasized text
-  accent: string; // primary accent (cyan | yellow)
-  accent2: string; // secondary accent (blue | terracotta)
+  accent: string; // primary accent (Claude terracotta | yellow)
+  accent2: string; // secondary accent (deep clay | terracotta)
   fontDisplay: string; // big titles
   fontBody: string; // items / paragraphs
   fontKicker: string; // kickers / small labels
@@ -37,8 +38,8 @@ export const THEMES: Record<VideoStyle, Theme> = {
   cinematic: {
     name: "cinematic",
     flat: false,
-    bg: "#050a14",
-    ink: "#04070d",
+    bg: "#13100d",
+    ink: "#0d0a08",
     text: WHITE,
     textDim: "rgba(255,255,255,0.65)",
     accent: CYAN,

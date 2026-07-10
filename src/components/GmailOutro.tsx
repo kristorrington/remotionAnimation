@@ -31,7 +31,7 @@ export const GmailOutro: React.FC<{ durationInFrames: number }> = ({ durationInF
         <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 96, color: WHITE, textShadow: `0 0 ${40 + 26 * glow}px rgba(59,130,246,${0.5 + 0.3 * glow})` }}>
           HOST HERMES ON A VPS
         </span>
-        <div style={{ display: "inline-flex", alignItems: "center", gap: 14, opacity: subOp, padding: "12px 24px", borderRadius: 999, background: "rgba(8,12,20,0.8)", border: PILL_BORDER }}>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 14, opacity: subOp, padding: "12px 24px", borderRadius: 999, background: "rgba(20,16,13,0.8)", border: PILL_BORDER }}>
           <span style={{ width: 9, height: 9, borderRadius: "50%", background: CYAN, boxShadow: `0 0 10px ${CYAN}` }} />
           <span style={{ fontFamily: MONO, fontSize: 30, color: "rgba(255,255,255,0.85)" }}>run 24/7 with Hostinger</span>
         </div>

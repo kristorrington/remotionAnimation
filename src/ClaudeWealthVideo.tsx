@@ -107,8 +107,8 @@ export const ClaudeWealthVisuals: React.FC = () => {
       {/* 1:03 MEDVI — the reported numbers (labelled as reported) */}
       <Sequence from={1884} durationInFrames={615} premountFor={30}>
         <StatCountersScene durationInFrames={615} kicker="MEDVI — REPORTED, NOT AUDITED" title="THE DREAM STORY" stats={[
-          { value: 2, suffix: "", label: "People", at: 205, accent: "#06B6D4" },
-          { value: 20, suffix: "K", label: "Upfront", at: 258, accent: "#3B82F6" },
+          { value: 2, suffix: "", label: "People", at: 205, accent: "#D97757" },
+          { value: 20, suffix: "K", label: "Upfront", at: 258, accent: "#C15F3C" },
           { value: 401, suffix: "M", label: "2025 revenue*", at: 347, accent: "#34D399" },
           { value: 1.8, suffix: "B", decimals: 1, label: "2026 pace*", at: 531, accent: "#F59E0B" },
         ]} />

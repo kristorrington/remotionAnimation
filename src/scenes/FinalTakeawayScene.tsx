@@ -15,7 +15,7 @@ export const FinalTakeawayScene: React.FC<{ durationInFrames: number; kicker?: s
   title,
   subtitle,
   stamp,
-  accent = "#06B6D4",
+  accent = "#D97757",
   stampAt = 40,
 }) => {
   const frame = useCurrentFrame();

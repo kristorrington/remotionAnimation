@@ -24,7 +24,7 @@ const DEMO = 90; // frames per section
 
 const Section: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
   <AbsoluteFill style={{ justifyContent: "center", alignItems: "center" }}>
-    <span style={{ position: "absolute", top: 44, left: 60, fontFamily: FONT, fontWeight: 800, fontSize: 34, letterSpacing: 3, color: "#06B6D4", transform: "translateZ(0)" }}>{title}</span>
+    <span style={{ position: "absolute", top: 44, left: 60, fontFamily: FONT, fontWeight: 800, fontSize: 34, letterSpacing: 3, color: "#D97757", transform: "translateZ(0)" }}>{title}</span>
     {children}
   </AbsoluteFill>
 );
@@ -170,7 +170,7 @@ const sections: { title: string; node: React.ReactNode }[] = [
     title: "VOICE GLOW — brain pulses with the VO (precomputed levels)",
     node: (
       <VoiceGlow clipFrom={1333} maxGlow={34}>
-        <div style={{ width: 220, height: 220, borderRadius: 30, border: "4px solid #3B82F6", background: "rgba(12,18,30,0.9)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ width: 220, height: 220, borderRadius: 30, border: "4px solid #C15F3C", background: "rgba(12,18,30,0.9)", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <IconBrain size={150} />
         </div>
       </VoiceGlow>
@@ -257,7 +257,7 @@ const sections: { title: string; node: React.ReactNode }[] = [
 export const TEMPLATE_LAB_DUR = sections.length * DEMO;
 
 export const TemplateLab: React.FC = () => (
-  <AbsoluteFill style={{ background: "#07090E" }}>
+  <AbsoluteFill style={{ background: "#100d0b" }}>
     <AnimatedBackground durationInFrames={TEMPLATE_LAB_DUR} fade={false} />
     {sections.map((s, i) => (
       <Sequence key={s.title} from={i * DEMO} durationInFrames={DEMO}>

@@ -54,7 +54,7 @@ export const Fable5Timeline: React.FC<{ durationInFrames: number }> = ({ duratio
               <div key={e.date} style={{ width: 360, display: "flex", flexDirection: "column", alignItems: "center", gap: 20, opacity: op }}>
                 <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 36, letterSpacing: 2, color: WHITE }}>{e.date}</span>
                 <div style={{ width: 30, height: 30, borderRadius: "50%", background: e.color, transform: `scale(${scale})`, boxShadow: `0 0 20px ${e.color}`, border: "3px solid rgba(2,6,14,0.9)" }} />
-                <div style={{ transform: `scale(${scale})`, padding: "14px 18px", borderRadius: 12, background: "rgba(8,12,20,0.85)", border: PILL_BORDER, filter: DROP_SHADOW, textAlign: "center", maxWidth: 320 }}>
+                <div style={{ transform: `scale(${scale})`, padding: "14px 18px", borderRadius: 12, background: "rgba(20,16,13,0.85)", border: PILL_BORDER, filter: DROP_SHADOW, textAlign: "center", maxWidth: 320 }}>
                   <span style={{ fontFamily: FONT, fontWeight: 500, fontSize: 26, color: "rgba(255,255,255,0.9)" }}>{e.text}</span>
                 </div>
               </div>

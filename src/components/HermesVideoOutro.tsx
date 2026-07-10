@@ -40,7 +40,7 @@ export const HermesVideoOutro: React.FC<{ durationInFrames: number }> = ({ durat
         </div>
 
         {/* Next video teaser */}
-        <div style={{ opacity: teaserOpacity, transform: `translateY(${teaserY}px)`, display: "flex", flexDirection: "column", alignItems: "center", gap: 12, padding: "24px 40px", borderRadius: 18, background: "rgba(8,12,20,0.8)", border: PILL_BORDER, marginTop: 10 }}>
+        <div style={{ opacity: teaserOpacity, transform: `translateY(${teaserY}px)`, display: "flex", flexDirection: "column", alignItems: "center", gap: 12, padding: "24px 40px", borderRadius: 18, background: "rgba(20,16,13,0.8)", border: PILL_BORDER, marginTop: 10 }}>
           <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 24, letterSpacing: 5, color: CYAN }}>NEXT VIDEO</span>
           <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 44, color: WHITE }}>Host Hermes on a VPS</span>
           <span style={{ fontFamily: FONT, fontWeight: 500, fontSize: 28, color: "rgba(255,255,255,0.72)" }}>keep it running 24/7, off your machine</span>
