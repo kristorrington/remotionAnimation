@@ -35,7 +35,7 @@ export const HermesRecap: React.FC<{ durationInFrames: number }> = ({ durationIn
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", opacity: p0 }}>
         <div style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", gap: 22 }}>
           <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 30, letterSpacing: 8, color: CYAN }}>RECAP</span>
-          <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 92, color: WHITE, textShadow: "0 0 40px rgba(59,130,246,0.5)" }}>HERMES ✕ PLAYWRIGHT MCP</div>
+          <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 92, color: WHITE, textShadow: "0 0 40px rgba(193,95,60,0.5)" }}>HERMES ✕ PLAYWRIGHT MCP</div>
           <span style={{ fontFamily: MONO, fontSize: 32, color: "rgba(255,255,255,0.78)" }}>inside WSL · on Windows</span>
         </div>
       </AbsoluteFill>

@@ -62,7 +62,7 @@ export const UsingAICard: React.FC = () => {
       <AbsoluteFill
         style={{
           opacity: glow,
-          background: "radial-gradient(circle at 50% 48%, rgba(59,130,246,0.30) 0%, transparent 55%)",
+          background: "radial-gradient(circle at 50% 48%, rgba(193,95,60,0.30) 0%, transparent 55%)",
         }}
       />
 
@@ -90,7 +90,7 @@ export const UsingAICard: React.FC = () => {
             fontWeight: 600,
             fontSize: 56,
             color: WHITE,
-            textShadow: `0 0 ${20 * glow}px rgba(59,130,246,${0.6 * glow})`,
+            textShadow: `0 0 ${20 * glow}px rgba(193,95,60,${0.6 * glow})`,
           }}
         >
           {typed}

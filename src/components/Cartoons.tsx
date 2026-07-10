@@ -40,7 +40,7 @@ export const ClaudeMark: React.FC<{ size?: number }> = ({ size = 130 }) => {
 // tilt + pulse with a brand-colored glow. `mode: "tile"` frames it on a white
 // rounded app-tile (for logos with a baked white background — record which in
 // the asset manifest); `mode: "transparent"` shows the raw image.
-export const LogoBadge: React.FC<{ src: string; size?: number; mode?: "tile" | "transparent"; glow?: string; float?: boolean }> = ({ src, size = 140, mode = "transparent", glow = "rgba(6,182,212,0.55)", float = true }) => {
+export const LogoBadge: React.FC<{ src: string; size?: number; mode?: "tile" | "transparent"; glow?: string; float?: boolean }> = ({ src, size = 140, mode = "transparent", glow = "rgba(217,119,87,0.55)", float = true }) => {
   const frame = useCurrentFrame();
   const y = float ? 6 * Math.sin(frame * 0.06) : 0;
   const tilt = float ? 4 * Math.sin(frame * 0.05) : 0;
@@ -91,7 +91,7 @@ export const IconThinking: React.FC<{ size?: number }> = ({ size = 120 }) => {
   const dash = 2 * Math.PI * 30;
   return (
     <Svg size={size}>
-      <circle cx="50" cy="50" r="30" stroke="rgba(6,182,212,0.2)" strokeWidth="8" />
+      <circle cx="50" cy="50" r="30" stroke="rgba(217,119,87,0.2)" strokeWidth="8" />
       <circle cx="50" cy="50" r="30" stroke={CYAN} strokeWidth="8" strokeDasharray={`${dash * 0.28} ${dash}`} transform={`rotate(${frame * 6} 50 50)`} />
     </Svg>
   );
@@ -174,8 +174,8 @@ export const IconBrain: React.FC<{ size?: number }> = ({ size = 120 }) => {
   const p = 0.55 + 0.45 * Math.sin(frame * 0.2);
   return (
     <Svg size={size}>
-      <path d="M40 24 C28 24 22 34 26 42 C18 46 18 58 28 62 C28 72 40 78 47 70 V30 C47 26 44 24 40 24 Z" stroke={BLUE} strokeWidth="5" fill="rgba(59,130,246,0.1)" />
-      <path d="M60 24 C72 24 78 34 74 42 C82 46 82 58 72 62 C72 72 60 78 53 70 V30 C53 26 56 24 60 24 Z" stroke={CYAN} strokeWidth="5" fill="rgba(6,182,212,0.1)" />
+      <path d="M40 24 C28 24 22 34 26 42 C18 46 18 58 28 62 C28 72 40 78 47 70 V30 C47 26 44 24 40 24 Z" stroke={BLUE} strokeWidth="5" fill="rgba(193,95,60,0.1)" />
+      <path d="M60 24 C72 24 78 34 74 42 C82 46 82 58 72 62 C72 72 60 78 53 70 V30 C53 26 56 24 60 24 Z" stroke={CYAN} strokeWidth="5" fill="rgba(217,119,87,0.1)" />
       <circle cx="50" cy="48" r="5" fill={WHITE} opacity={p} style={{ filter: `drop-shadow(0 0 ${8 * p}px ${CYAN})` }} />
     </Svg>
   );
@@ -231,7 +231,7 @@ export const IconGuard: React.FC<{ size?: number }> = ({ size = 120 }) => {
   const len = 70;
   return (
     <Svg size={size}>
-      <path d="M50 12 L82 24 V50 C82 71 68 84 50 90 C32 84 18 71 18 50 V24 Z" stroke={CYAN} strokeWidth="6" fill="rgba(6,182,212,0.12)" />
+      <path d="M50 12 L82 24 V50 C82 71 68 84 50 90 C32 84 18 71 18 50 V24 Z" stroke={CYAN} strokeWidth="6" fill="rgba(217,119,87,0.12)" />
       <path d="M35 50 L46 62 L67 38" stroke={GREEN} strokeWidth="7" strokeDasharray={len} strokeDashoffset={len * (1 - draw)} />
     </Svg>
   );

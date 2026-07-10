@@ -130,7 +130,7 @@ export const Agenda: React.FC<{ durationInFrames: number }> = ({ durationInFrame
                   transform: `scale(${scale})`,
                   padding: "10px 20px",
                   borderRadius: 999,
-                  background: "rgba(59,130,246,0.14)",
+                  background: "rgba(193,95,60,0.14)",
                   border: `1px solid ${BLUE}`,
                   filter: DROP_SHADOW,
                   fontFamily: FONT,

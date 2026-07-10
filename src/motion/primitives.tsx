@@ -1,6 +1,6 @@
 import React from "react";
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
-import { FONT, BLUE, CYAN, WHITE, RED } from "../components/overlayUI";
+import { FONT, BLUE, CYAN, HOT, WHITE, RED } from "../components/overlayUI";
 
 // Reusable, render-safe motion primitives that give scenes cinematic depth
 // without new dependencies. All frame-driven. Colors kept on the project palette.
@@ -104,7 +104,9 @@ export const WarningBadge: React.FC<{ label: string; danger?: boolean; delay?: n
 };
 
 // Stamped emphasis — slams in with overshoot + a slight tilt (e.g. "IF IT WORKS").
-export const ImpactStamp: React.FC<{ text: string; at?: number; color?: string }> = ({ text, at = 0, color = CYAN }) => {
+// Stamps are ATTENTION moments — HOT by default (colour research: the hot
+// orange is reserved for scroll-stopper beats, call sites keep semantic colours)
+export const ImpactStamp: React.FC<{ text: string; at?: number; color?: string }> = ({ text, at = 0, color = HOT }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const e = spring({ frame: frame - at, fps, config: { stiffness: 240, damping: 12, mass: 0.9 }, durationInFrames: 18 });

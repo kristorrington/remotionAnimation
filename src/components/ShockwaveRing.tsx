@@ -57,7 +57,7 @@ export const ShockwaveRing: React.FC = () => {
       <AbsoluteFill
         style={{
           opacity: glowOpacity,
-          background: `radial-gradient(circle at 50% 50%, ${ELECTRIC_BLUE} 0%, rgba(59,130,246,0.35) 22%, transparent 60%)`,
+          background: `radial-gradient(circle at 50% 50%, ${ELECTRIC_BLUE} 0%, rgba(193,95,60,0.35) 22%, transparent 60%)`,
         }}
       />
 
@@ -70,7 +70,7 @@ export const ShockwaveRing: React.FC = () => {
             borderRadius: "50%",
             border: `2px solid ${ELECTRIC_BLUE}`,
             opacity: ringOpacity,
-            boxShadow: `0 0 28px ${ELECTRIC_BLUE}, inset 0 0 28px rgba(59,130,246,0.5)`,
+            boxShadow: `0 0 28px ${ELECTRIC_BLUE}, inset 0 0 28px rgba(193,95,60,0.5)`,
           }}
         />
       </AbsoluteFill>

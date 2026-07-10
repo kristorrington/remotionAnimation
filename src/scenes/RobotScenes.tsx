@@ -143,7 +143,7 @@ export const NotMagicScene: React.FC<{ durationInFrames: number; kicker?: string
           </div>
           {/* shield */}
           <svg width={190} height={210} viewBox="0 0 100 110" style={{ filter: `drop-shadow(0 0 ${16 * shieldPulse}px ${CYAN})` }}>
-            <path d="M50 6 L88 20 V52 C88 78 71 94 50 102 C29 94 12 78 12 52 V20 Z" stroke={CYAN} strokeWidth={6} fill="rgba(6,182,212,0.14)" />
+            <path d="M50 6 L88 20 V52 C88 78 71 94 50 102 C29 94 12 78 12 52 V20 Z" stroke={CYAN} strokeWidth={6} fill="rgba(217,119,87,0.14)" />
             <line x1={32} y1={40} x2={68} y2={72} stroke={RED} strokeWidth={8} strokeLinecap="round" />
             <line x1={68} y1={40} x2={32} y2={72} stroke={RED} strokeWidth={8} strokeLinecap="round" />
           </svg>

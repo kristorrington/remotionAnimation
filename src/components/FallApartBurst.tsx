@@ -115,7 +115,7 @@ export const FallApartBurst: React.FC = () => {
                 borderRadius: 18,
                 background: "#0E1422",
                 border: "1px solid rgba(255,255,255,0.12)",
-                boxShadow: `${-split}px 0 0 rgba(239,68,68,0.7), ${split}px 0 0 rgba(6,182,212,0.7), 0 18px 44px rgba(0,0,0,0.45)`,
+                boxShadow: `${-split}px 0 0 rgba(239,68,68,0.7), ${split}px 0 0 rgba(217,119,87,0.7), 0 18px 44px rgba(0,0,0,0.45)`,
                 minWidth: 240,
               }}
             >

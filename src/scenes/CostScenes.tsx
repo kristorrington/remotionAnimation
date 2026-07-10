@@ -69,7 +69,7 @@ export const ScaleCostScene: React.FC<{ durationInFrames: number; kicker?: strin
               const on = i < usersShown;
               const wob = 3 * Math.sin(frame * 0.12 + i);
               return (
-                <div key={i} style={{ width: 74, height: 54, borderRadius: 10, border: `3px solid ${on ? CYAN : "rgba(255,255,255,0.12)"}`, background: on ? "rgba(6,182,212,0.12)" : "transparent", opacity: on ? 1 : 0.25, transform: `translateY(${on ? wob : 0}px)`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <div key={i} style={{ width: 74, height: 54, borderRadius: 10, border: `3px solid ${on ? CYAN : "rgba(255,255,255,0.12)"}`, background: on ? "rgba(217,119,87,0.12)" : "transparent", opacity: on ? 1 : 0.25, transform: `translateY(${on ? wob : 0}px)`, display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 20, color: on ? WHITE : "rgba(255,255,255,0.3)" }}>◉</span>
                 </div>
               );

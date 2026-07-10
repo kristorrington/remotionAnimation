@@ -62,7 +62,7 @@ export const DemoPreview: React.FC<{ durationInFrames: number }> = ({ durationIn
                   transform: `translateY(${y}px) scale(${scale})`,
                 }}
               >
-                <div style={{ width: 84, height: 84, borderRadius: "50%", background: `linear-gradient(135deg, ${BLUE}, ${CYAN})`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: FONT, fontWeight: 800, fontSize: 44, color: WHITE, boxShadow: `0 0 26px rgba(59,130,246,0.6)` }}>
+                <div style={{ width: 84, height: 84, borderRadius: "50%", background: `linear-gradient(135deg, ${BLUE}, ${CYAN})`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: FONT, fontWeight: 800, fontSize: 44, color: WHITE, boxShadow: `0 0 26px rgba(193,95,60,0.6)` }}>
                   {c.n}
                 </div>
                 <div style={{ textAlign: "center" }}>

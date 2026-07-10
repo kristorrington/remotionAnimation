@@ -90,7 +90,7 @@ export const SceneHeadline: React.FC<{ kicker?: string; title: string; titleSize
       {kicker ? (
         <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 26, letterSpacing: 8, color: accent, opacity: kickerOp, filter: "drop-shadow(0 4px 14px rgba(0,0,0,0.6))" }}>{kicker}</span>
       ) : null}
-      <div style={{ opacity: titleOp, transform: `scale(${titleScale})`, fontFamily: FONT, fontWeight: 800, fontSize: fitted, letterSpacing: 1, color: WHITE, lineHeight: 1.02, textShadow: "0 0 40px rgba(59,130,246,0.55)", whiteSpace: "nowrap" }}>
+      <div style={{ opacity: titleOp, transform: `scale(${titleScale})`, fontFamily: FONT, fontWeight: 800, fontSize: fitted, letterSpacing: 1, color: WHITE, lineHeight: 1.02, textShadow: "0 0 40px rgba(193,95,60,0.55)", whiteSpace: "nowrap" }}>
         {title}
       </div>
       <GlowDivider color={accent} />

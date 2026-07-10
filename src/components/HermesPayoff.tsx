@@ -66,7 +66,7 @@ export const HermesPayoff: React.FC = () => {
       <AbsoluteFill
         style={{
           opacity: 0.18 + 0.32 * glow + 0.25 * endGlow,
-          background: "radial-gradient(circle at 50% 45%, rgba(59,130,246,0.5) 0%, transparent 55%)",
+          background: "radial-gradient(circle at 50% 45%, rgba(193,95,60,0.5) 0%, transparent 55%)",
         }}
       />
 
@@ -80,7 +80,7 @@ export const HermesPayoff: React.FC = () => {
         <div style={{ position: "relative", opacity: hOpacity, transform: `scale(${hScale})` }}>
           <div style={{ ...titleStyle, position: "absolute", inset: 0, color: CYAN, opacity: 0.4, transform: `translateX(${-off}px)` }}>HERMES</div>
           <div style={{ ...titleStyle, position: "absolute", inset: 0, color: BLUE, opacity: 0.4, transform: `translateX(${off}px)` }}>HERMES</div>
-          <div style={{ ...titleStyle, position: "relative", color: WHITE, textShadow: `0 0 ${30 + 30 * endGlow}px rgba(59,130,246,${0.5 + 0.4 * endGlow})` }}>HERMES</div>
+          <div style={{ ...titleStyle, position: "relative", color: WHITE, textShadow: `0 0 ${30 + 30 * endGlow}px rgba(193,95,60,${0.5 + 0.4 * endGlow})` }}>HERMES</div>
         </div>
 
         {/* ✕ PLAYWRIGHT MCP */}

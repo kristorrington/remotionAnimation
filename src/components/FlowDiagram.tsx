@@ -64,7 +64,7 @@ export const FlowDiagram: React.FC<{ durationInFrames: number }> = ({ durationIn
                     borderRadius: 12,
                     background: active ? `linear-gradient(135deg, ${BLUE}, ${CYAN})` : "rgba(20,16,13,0.9)",
                     border: active ? "none" : PILL_BORDER,
-                    boxShadow: active ? `0 0 30px rgba(6,182,212,0.7)` : "0 14px 36px rgba(0,0,0,0.45)",
+                    boxShadow: active ? `0 0 30px rgba(217,119,87,0.7)` : "0 14px 36px rgba(0,0,0,0.45)",
                     fontFamily: node.mono ? MONO : FONT,
                     fontWeight: node.mono ? 500 : 800,
                     fontSize: node.mono ? 23 : 27,

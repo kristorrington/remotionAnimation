@@ -20,7 +20,7 @@ const GMAIL_LOGO = "google-gmail-logo-symbol-design-illustration-free-vector.jpg
 // (the Gmail JPG's white bg becomes the tile; the Hermes line-art shows
 // properly). A soft gradient, brand-coloured glow ring and drop shadow make the
 // white read as an intentional icon tile rather than a flat box.
-const LogoBadge: React.FC<{ src: string; size: number; glow?: string }> = ({ src, size, glow = "rgba(59,130,246,0.55)" }) => (
+const LogoBadge: React.FC<{ src: string; size: number; glow?: string }> = ({ src, size, glow = "rgba(193,95,60,0.55)" }) => (
   <div
     style={{
       width: size,
@@ -72,8 +72,8 @@ const Beat1: React.FC = () => {
             <div style={{ ...line, color: BLUE }}>JUST CHAT</div>
           </div>
           <div style={{ position: "relative" }}>
-            <div style={{ ...line, color: WHITE, textShadow: "0 0 36px rgba(59,130,246,0.5)" }}>MORE THAN</div>
-            <div style={{ ...line, color: WHITE, textShadow: "0 0 36px rgba(59,130,246,0.5)" }}>JUST CHAT</div>
+            <div style={{ ...line, color: WHITE, textShadow: "0 0 36px rgba(193,95,60,0.5)" }}>MORE THAN</div>
+            <div style={{ ...line, color: WHITE, textShadow: "0 0 36px rgba(193,95,60,0.5)" }}>JUST CHAT</div>
           </div>
         </div>
         <div style={{ display: "inline-flex", alignItems: "center", gap: 18, opacity: revOp, transform: `scale(${revScale})`, padding: "14px 26px 14px 16px", borderRadius: 16, background: "rgba(20,16,13,0.8)", border: PILL_BORDER }}>
@@ -132,7 +132,7 @@ const Beat3: React.FC = () => {
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 24, transform: `scale(${scale})`, opacity: op }}>
         <LogoBadge src={GMAIL_LOGO} size={96} glow="rgba(234,67,53,0.5)" />
         <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 30, letterSpacing: 8, color: CYAN }}>A REAL AI AGENT FOR</span>
-        <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 110, color: WHITE, textShadow: `0 0 ${40 + 30 * glow}px rgba(59,130,246,${0.5 + 0.3 * glow})` }}>YOUR INBOX</span>
+        <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 110, color: WHITE, textShadow: `0 0 ${40 + 30 * glow}px rgba(193,95,60,${0.5 + 0.3 * glow})` }}>YOUR INBOX</span>
         <div style={{ display: "flex", gap: 30, marginTop: 6 }}>
           {["Search", "Triage", "Draft replies"].map((t, i) => {
             const o = interpolate(frame, [40 + i * 16, 52 + i * 16], [0, 1], CLAMP);

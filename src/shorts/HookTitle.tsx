@@ -1,5 +1,6 @@
 import React from "react";
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
+import { HOT } from "../components/overlayUI";
 import { useTheme } from "../theme";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -39,7 +40,9 @@ export const HookTitle: React.FC<{ text: string; hold: number; context?: string 
                 fontSize: t.name === "bold" ? 100 : 92,
                 lineHeight: 1.04,
                 letterSpacing: t.name === "bold" ? 0.5 : -1.5,
-                color: isLast ? t.accent : t.text,
+                // the hook keyword gets the HOT scroll-stopper orange, not the
+                // brand terracotta (colour research: hottest hue on the hook)
+                color: isLast ? (t.name === "bold" ? t.accent : HOT) : t.text,
                 textTransform: "uppercase",
                 textShadow: "0 6px 34px rgba(0,0,0,0.75)",
               }}

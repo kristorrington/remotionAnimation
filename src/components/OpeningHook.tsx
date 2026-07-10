@@ -59,7 +59,7 @@ const CardShell: React.FC<{
           overflow: "hidden",
           background: "linear-gradient(160deg, #1d1712, #05080f)",
           border: PILL_BORDER,
-          boxShadow: `0 18px 50px rgba(0,0,0,0.55), 0 0 ${20 + glow * 36}px rgba(59,130,246,${0.25 + glow * 0.5})`,
+          boxShadow: `0 18px 50px rgba(0,0,0,0.55), 0 0 ${20 + glow * 36}px rgba(193,95,60,${0.25 + glow * 0.5})`,
         }}
       >
         <div
@@ -170,7 +170,7 @@ export const OpeningHook: React.FC = () => {
           <AbsoluteFill style={{ justifyContent: "center", alignItems: "center" }}>
             {/* soft radial glow */}
             <AbsoluteFill
-              style={{ background: "radial-gradient(circle at 50% 50%, rgba(59,130,246,0.30), transparent 65%)" }}
+              style={{ background: "radial-gradient(circle at 50% 50%, rgba(193,95,60,0.30), transparent 65%)" }}
             />
             {/* mini title */}
             <div style={{ position: "relative", textAlign: "center" }}>
@@ -206,7 +206,7 @@ export const OpeningHook: React.FC = () => {
         <CardShell glow={0.3} caption="or this">
           <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", gap: 18 }}>
             <AbsoluteFill
-              style={{ background: "radial-gradient(circle at 50% 60%, rgba(6,182,212,0.30), transparent 65%)" }}
+              style={{ background: "radial-gradient(circle at 50% 60%, rgba(217,119,87,0.30), transparent 65%)" }}
             />
             <div style={{ position: "relative", display: "flex", alignItems: "flex-end", gap: 12, height: 150 }}>
               {bars.map((b, i) => {
@@ -219,7 +219,7 @@ export const OpeningHook: React.FC = () => {
                       height: h,
                       borderRadius: 6,
                       background: `linear-gradient(180deg, ${CYAN}, ${BLUE})`,
-                      boxShadow: `0 0 14px rgba(6,182,212,0.55)`,
+                      boxShadow: `0 0 14px rgba(217,119,87,0.55)`,
                     }}
                   />
                 );
@@ -275,7 +275,7 @@ export const OpeningHook: React.FC = () => {
             fontSize: 118,
             letterSpacing: 4,
             color: CYAN,
-            textShadow: `0 0 50px rgba(6,182,212,0.9), 0 0 90px rgba(59,130,246,0.6)`,
+            textShadow: `0 0 50px rgba(217,119,87,0.9), 0 0 90px rgba(193,95,60,0.6)`,
           }}
         >
           AI

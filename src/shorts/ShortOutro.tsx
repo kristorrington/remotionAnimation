@@ -1,13 +1,14 @@
 import React from "react";
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
-import { RED, WHITE } from "../components/overlayUI";
+import { GOLD } from "../components/overlayUI";
 import { useTheme } from "../theme";
 import { BRAND_HANDLE } from "../brand";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
-// End-of-clip call to action in the lower third (clear of the face), themed:
-// cinematic = red button; bold = accent-yellow button with dark ink text.
+// End-of-clip call to action in the lower third (clear of the face). GOLD
+// button + dark ink text in both styles — yellow-on-dark is the top-CTR
+// combo in the colour research; gold is reserved for CTAs and key numbers.
 export const ShortOutro: React.FC<{ text: string; dur: number }> = ({ text, dur }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -29,12 +30,12 @@ export const ShortOutro: React.FC<{ text: string; dur: number }> = ({ text, dur 
           gap: 18,
           padding: "26px 54px",
           borderRadius: bold ? 12 : 18,
-          background: bold ? t.accent : RED,
-          boxShadow: "0 20px 50px rgba(0,0,0,0.55)",
+          background: bold ? t.accent : GOLD,
+          boxShadow: `0 20px 50px rgba(0,0,0,0.55), 0 0 34px ${GOLD}44`,
         }}
       >
-        <span style={{ width: 0, height: 0, borderTop: "16px solid transparent", borderBottom: "16px solid transparent", borderLeft: `26px solid ${bold ? t.ink : WHITE}` }} />
-        <span style={{ fontFamily: t.fontDisplay, fontWeight: bold ? t.titleWeight : 900, fontSize: 52, letterSpacing: 1, color: bold ? t.ink : WHITE, textTransform: "uppercase" }}>{text}</span>
+        <span style={{ width: 0, height: 0, borderTop: "16px solid transparent", borderBottom: "16px solid transparent", borderLeft: `26px solid ${t.ink}` }} />
+        <span style={{ fontFamily: t.fontDisplay, fontWeight: bold ? t.titleWeight : 900, fontSize: 52, letterSpacing: 1, color: t.ink, textTransform: "uppercase" }}>{text}</span>
       </div>
       {/* the handle — so the CTA works even when the username is off-screen */}
       <span style={{ opacity: interpolate(frame, [14, 26], [0, 1], CLAMP), fontFamily: t.fontBody, fontWeight: 800, fontSize: 44, letterSpacing: 1.5, color: bold ? t.accent2 : t.accent, textShadow: "0 4px 18px rgba(0,0,0,0.7)" }}>

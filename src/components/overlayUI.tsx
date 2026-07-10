@@ -11,6 +11,11 @@ export const BLUE = "#C15F3C";
 export const CYAN = "#D97757";
 export const WHITE = "#FFFFFF";
 export const RED = "#EF4444";
+// Attention roles (viral-shorts colour research, July 2026): HOT is the
+// scroll-stopper — hook keyword + impact stamps ONLY, never furniture; GOLD is
+// CTAs + the one big number (yellow-as-accent = top CTR combo on dark).
+export const HOT = "#FF6B35";
+export const GOLD = "#E8B84B";
 
 // Semi-transparent dark pill so text stays legible over any screen content.
 export const PILL_BG = "rgba(16,12,10,0.74)";

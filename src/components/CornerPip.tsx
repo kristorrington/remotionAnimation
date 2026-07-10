@@ -29,7 +29,7 @@ const Pip: React.FC<{ footage: string; from: number; dur: number }> = ({ footage
           transform: `scale(${scale})`,
           transformOrigin: "bottom right",
           border: "2px solid rgba(255,255,255,0.9)",
-          boxShadow: "0 20px 48px rgba(0,0,0,0.55), 0 0 0 4px rgba(6,182,212,0.35)",
+          boxShadow: "0 20px 48px rgba(0,0,0,0.55), 0 0 0 4px rgba(217,119,87,0.35)",
         }}
       >
         <OffthreadVideo

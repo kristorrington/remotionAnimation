@@ -141,7 +141,7 @@ export const TitleReveal: React.FC = () => {
               position: "relative",
               color: WHITE,
               transform: `scale(${nameScale})`,
-              textShadow: `0 0 ${glowBlur}px rgba(59,130,246,${glowSpread})`,
+              textShadow: `0 0 ${glowBlur}px rgba(193,95,60,${glowSpread})`,
             }}
           >
             KRIS TORRINGTON

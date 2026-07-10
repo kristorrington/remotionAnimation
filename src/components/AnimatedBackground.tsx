@@ -115,15 +115,16 @@ export const AnimatedBackground: React.FC<Props> = ({ durationInFrames, words, f
 
   return (
     <AbsoluteFill style={{ opacity: envelope }}>
-      {/* Base deep-space gradient */}
+      {/* Base: deep NEUTRAL near-black (dark-mode research: muted desaturated
+          base, colour lives on the accents — never a muddy brown wash) */}
       <AbsoluteFill
         style={{
           background:
-            "radial-gradient(120% 120% at 50% 40%, #221a14 0%, #13100d 45%, #080605 100%)",
+            "radial-gradient(120% 120% at 50% 40%, #191715 0%, #0e0d0c 45%, #050404 100%)",
         }}
       />
 
-      {/* Aurora glows */}
+      {/* Aurora glows — subtle warm breathing, well under the subjects */}
       <div
         style={{
           position: "absolute",
@@ -133,9 +134,9 @@ export const AnimatedBackground: React.FC<Props> = ({ durationInFrames, words, f
           height: 1300,
           transform: "translate(-50%, -50%)",
           borderRadius: "50%",
-          background: `radial-gradient(circle, ${BLUE} 0%, rgba(59,130,246,0.25) 35%, transparent 70%)`,
+          background: `radial-gradient(circle, ${BLUE} 0%, rgba(193,95,60,0.18) 35%, transparent 70%)`,
           filter: "blur(70px)",
-          opacity: 0.42 + 0.12 * auroraPulse,
+          opacity: 0.26 + 0.10 * auroraPulse,
         }}
       />
       <div
@@ -147,9 +148,9 @@ export const AnimatedBackground: React.FC<Props> = ({ durationInFrames, words, f
           height: 1100,
           transform: "translate(-50%, -50%)",
           borderRadius: "50%",
-          background: `radial-gradient(circle, ${CYAN} 0%, rgba(6,182,212,0.22) 35%, transparent 70%)`,
+          background: `radial-gradient(circle, ${CYAN} 0%, rgba(217,119,87,0.16) 35%, transparent 70%)`,
           filter: "blur(70px)",
-          opacity: 0.34 + 0.12 * (1 - auroraPulse),
+          opacity: 0.22 + 0.10 * (1 - auroraPulse),
         }}
       />
 
@@ -180,7 +181,7 @@ export const AnimatedBackground: React.FC<Props> = ({ durationInFrames, words, f
           width: 320,
           transform: "skewX(-18deg)",
           background:
-            "linear-gradient(90deg, transparent 0%, rgba(6,182,212,0.10) 50%, transparent 100%)",
+            "linear-gradient(90deg, transparent 0%, rgba(217,119,87,0.10) 50%, transparent 100%)",
         }}
       />
 

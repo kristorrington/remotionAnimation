@@ -28,7 +28,7 @@ export const GmailOutro: React.FC<{ durationInFrames: number }> = ({ durationInF
       <AnimatedBackground durationInFrames={durationInFrames} />
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 26, transform: `scale(${scale})`, opacity: op }}>
         <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 30, letterSpacing: 8, color: CYAN }}>NEXT VIDEO →</span>
-        <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 96, color: WHITE, textShadow: `0 0 ${40 + 26 * glow}px rgba(59,130,246,${0.5 + 0.3 * glow})` }}>
+        <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 96, color: WHITE, textShadow: `0 0 ${40 + 26 * glow}px rgba(193,95,60,${0.5 + 0.3 * glow})` }}>
           HOST HERMES ON A VPS
         </span>
         <div style={{ display: "inline-flex", alignItems: "center", gap: 14, opacity: subOp, padding: "12px 24px", borderRadius: 999, background: "rgba(20,16,13,0.8)", border: PILL_BORDER }}>

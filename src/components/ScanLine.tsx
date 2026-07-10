@@ -37,7 +37,7 @@ export const ScanLine: React.FC = () => {
           left: `${x}%`,
           width: 160,
           transform: "translateX(-160px)",
-          background: `linear-gradient(90deg, transparent 0%, rgba(6,182,212,0.25) 100%)`,
+          background: `linear-gradient(90deg, transparent 0%, rgba(217,119,87,0.25) 100%)`,
         }}
       />
       {/* Leading edge */}

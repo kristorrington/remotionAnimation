@@ -90,7 +90,7 @@ export const SectionCard: React.FC<Props> = ({ kicker, title, subtitle, items, i
               color: t.text,
               lineHeight: 1.02,
               textTransform: bold ? "uppercase" : undefined,
-              textShadow: t.glow ? "0 0 40px rgba(59,130,246,0.55)" : "0 6px 24px rgba(0,0,0,0.35)",
+              textShadow: t.glow ? "0 0 40px rgba(193,95,60,0.55)" : "0 6px 24px rgba(0,0,0,0.35)",
             }}
           >
             <TitleTokens text={title} />

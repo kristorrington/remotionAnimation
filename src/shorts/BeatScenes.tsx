@@ -427,7 +427,7 @@ const RejectBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
         {/* the shield */}
         <div style={{ position: "absolute", right: 130, top: 60 }}>
           <svg width={210} height={230} viewBox="0 0 100 110" style={{ filter: `drop-shadow(0 0 ${16 * pulse}px ${CYAN})` }}>
-            <path d="M50 6 L88 20 V52 C88 78 71 94 50 102 C29 94 12 78 12 52 V20 Z" stroke={CYAN} strokeWidth={6} fill="rgba(6,182,212,0.14)" />
+            <path d="M50 6 L88 20 V52 C88 78 71 94 50 102 C29 94 12 78 12 52 V20 Z" stroke={CYAN} strokeWidth={6} fill="rgba(217,119,87,0.14)" />
             <line x1={32} y1={40} x2={68} y2={72} stroke={RED} strokeWidth={8} strokeLinecap="round" />
             <line x1={68} y1={40} x2={32} y2={72} stroke={RED} strokeWidth={8} strokeLinecap="round" />
           </svg>

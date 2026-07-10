@@ -226,7 +226,7 @@ export const InstallPayoff: React.FC<{ durationInFrames: number }> = ({ duration
             fontSize: 72,
             letterSpacing: 2,
             color: WHITE,
-            textShadow: `0 0 ${glow}px rgba(59,130,246,0.7)`,
+            textShadow: `0 0 ${glow}px rgba(193,95,60,0.7)`,
             filter: DROP_SHADOW,
           }}
         >

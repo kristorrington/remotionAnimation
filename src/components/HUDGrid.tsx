@@ -18,8 +18,8 @@ export const HUDGrid: React.FC = () => {
       style={{
         opacity,
         backgroundImage: `
-          linear-gradient(to right, rgba(59,130,246,1) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(59,130,246,1) 1px, transparent 1px)
+          linear-gradient(to right, rgba(193,95,60,1) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(193,95,60,1) 1px, transparent 1px)
         `,
         backgroundSize: `${GRID}px ${GRID}px`,
         WebkitMaskImage:

@@ -49,7 +49,7 @@ export const AgentSearchReveal: React.FC = () => {
       <AbsoluteFill
         style={{
           opacity: glowOpacity,
-          background: "radial-gradient(circle at 50% 50%, rgba(59,130,246,1) 0%, rgba(59,130,246,0.35) 25%, transparent 60%)",
+          background: "radial-gradient(circle at 50% 50%, rgba(193,95,60,1) 0%, rgba(193,95,60,0.35) 25%, transparent 60%)",
         }}
       />
 
@@ -61,7 +61,7 @@ export const AgentSearchReveal: React.FC = () => {
           borderRadius: "50%",
           border: `3px solid ${BLUE}`,
           opacity: ringOpacity,
-          boxShadow: `0 0 30px ${BLUE}, inset 0 0 30px rgba(59,130,246,0.5)`,
+          boxShadow: `0 0 30px ${BLUE}, inset 0 0 30px rgba(193,95,60,0.5)`,
         }}
       />
 
@@ -69,7 +69,7 @@ export const AgentSearchReveal: React.FC = () => {
         <div style={{ position: "relative", opacity: titleOpacity, transform: `scale(${titleScale})` }}>
           <div style={{ ...titleStyle, position: "absolute", inset: 0, color: CYAN, opacity: 0.4, transform: `translateX(${-off}px)` }}>{TITLE}</div>
           <div style={{ ...titleStyle, position: "absolute", inset: 0, color: BLUE, opacity: 0.4, transform: `translateX(${off}px)` }}>{TITLE}</div>
-          <div style={{ ...titleStyle, position: "relative", color: WHITE, textShadow: "0 0 36px rgba(59,130,246,0.5)" }}>{TITLE}</div>
+          <div style={{ ...titleStyle, position: "relative", color: WHITE, textShadow: "0 0 36px rgba(193,95,60,0.5)" }}>{TITLE}</div>
         </div>
 
         <div

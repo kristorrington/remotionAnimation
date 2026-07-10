@@ -97,8 +97,8 @@ export const SameCoreScene: React.FC<{ durationInFrames: number; kicker?: string
         <div style={{ position: "relative", width: 320, height: 320, display: "flex", alignItems: "center", justifyContent: "center" }}>
           {/* constant core */}
           <svg width={150} height={150} viewBox="0 0 100 100" style={{ position: "absolute", filter: `drop-shadow(0 0 ${16 * corePulse}px ${CYAN})` }}>
-            <path d="M40 24 C28 24 22 34 26 42 C18 46 18 58 28 62 C28 72 40 78 47 70 V30 C47 26 44 24 40 24 Z" stroke={CYAN} strokeWidth={5} fill="rgba(6,182,212,0.12)" />
-            <path d="M60 24 C72 24 78 34 74 42 C82 46 82 58 72 62 C72 72 60 78 53 70 V30 C53 26 56 24 60 24 Z" stroke={CYAN} strokeWidth={5} fill="rgba(6,182,212,0.12)" />
+            <path d="M40 24 C28 24 22 34 26 42 C18 46 18 58 28 62 C28 72 40 78 47 70 V30 C47 26 44 24 40 24 Z" stroke={CYAN} strokeWidth={5} fill="rgba(217,119,87,0.12)" />
+            <path d="M60 24 C72 24 78 34 74 42 C82 46 82 58 72 62 C72 72 60 78 53 70 V30 C53 26 56 24 60 24 Z" stroke={CYAN} strokeWidth={5} fill="rgba(217,119,87,0.12)" />
           </svg>
           {/* outer segments click on around it */}
           <svg width={320} height={320} viewBox="0 0 320 320" style={{ position: "absolute", overflow: "visible" }}>

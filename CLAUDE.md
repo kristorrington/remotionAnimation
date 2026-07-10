@@ -349,13 +349,23 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
 - **Background tints match the topic** (`SceneShell tint`): green =
   savings/win, amber = cost/effort, red = trap/danger, terracotta #D97757 =
   system/process (the Claude-brand house hue — the whole palette is Claude
-  Code branding as of 07/2026: terracotta accent, deep-clay #C15F3C secondary,
-  warm charcoal backgrounds; the shared constants CYAN/BLUE now hold these
-  values). Tints are BOLD (`TintWash`: ~25% alpha, three gradient geometries
-  rotated by `particleSeed`) — a scene must never read as "the same dark
+  Code branding as of 07/2026: terracotta accent, deep-clay #C15F3C secondary;
+  the shared constants CYAN/BLUE now hold these values). Tints are BOLD
+  (`TintWash`: ~25% alpha, three gradient geometries rotated by
+  `particleSeed`) — a scene must never read as "the same dark
   charcoal". EVERY
   scene in a final cut gets a tint (pass it through shared scenes if missing),
   and adjacent scenes never share one — it's part of the visual reset.
+- **Colour ROLES (attention research, July 2026 — applies to shorts AND
+  long-form):** the base is deep NEUTRAL near-black (#0e0d0c family — never a
+  muddy brown wash; colour lives on elements, not the backdrop; aurora glows
+  stay subtle). High contrast beats any hue (~39% CTR gap in studies). Roles:
+  **terracotta #D97757 (`CYAN`)** = brand furniture (banners, captions
+  highlight, progress, underlines, chips); **HOT #FF6B35** = scroll-stopper
+  moments ONLY (hook keyword, impact stamps) — if it's everywhere it's
+  furniture and stops working; **GOLD #E8B84B** = CTAs + the one big number
+  (yellow-on-dark = top CTR combo); **green/amber/red** stay semantic
+  (win/cost/danger). White text for max contrast.
 - **Proportions kill the slide look**: subjects LARGE (robots ~230–300px,
   machine blocks ~390–440px wide), `SceneHeadline` titleSize ~60–64 (never
   80+ — if the text dominates the frame it's a presentation), something

@@ -37,7 +37,7 @@ export const LightLeak: React.FC<{ at?: number; dur?: number; warm?: boolean }> 
   if (frame < at || frame > at + dur) return null;
   const op = interpolate(t, [0, 0.2, 0.75, 1], [0, 0.55, 0.4, 0]);
   const a = warm ? "rgba(255,150,60,0.9)" : "rgba(90,160,255,0.9)";
-  const b = warm ? "rgba(255,60,120,0.7)" : "rgba(6,182,212,0.7)";
+  const b = warm ? "rgba(255,60,120,0.7)" : "rgba(217,119,87,0.7)";
   return (
     <AbsoluteFill style={{ pointerEvents: "none", mixBlendMode: "screen", opacity: op }}>
       <div style={{ position: "absolute", top: "-20%", bottom: "-20%", left: `${-40 + t * 150}%`, width: "46%", background: `radial-gradient(ellipse at center, ${a}, transparent 70%)`, transform: "rotate(-18deg)" }} />

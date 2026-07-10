@@ -38,8 +38,8 @@ export const THEMES: Record<VideoStyle, Theme> = {
   cinematic: {
     name: "cinematic",
     flat: false,
-    bg: "#13100d",
-    ink: "#0d0a08",
+    bg: "#0e0d0c",
+    ink: "#0a0908",
     text: WHITE,
     textDim: "rgba(255,255,255,0.65)",
     accent: CYAN,
