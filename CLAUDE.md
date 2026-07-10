@@ -406,6 +406,14 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   visual punchline. NOT like: cropped long-form slides · talking head under a
   title card · text-heavy presentation clips · title/subtitle/icon templates.
 - Final beat = a payoff or a **loop back to the hook** (loops = free replays).
+- **Split = FACE TOP / ANIMATION BOTTOM** (Kris's rule, July 2026 — overwrites
+  the original animation-top band): whenever a short is split-screen, the
+  talking head owns the TOP half and the animation band rises from the BOTTOM
+  (~838px). Captions dock on the seam (~y1082); `BeatLabel` renders at the TOP
+  of every beat scene (flex `order: -1`) so the punch text hugs the seam and
+  never falls into the platform-UI bottom zone; the lower-third sits low in
+  the face band, above the caption pill. Built into `VerticalShort` — never
+  hand-build a split layout.
 - **Every short OPENS on the FACE** (Kris's call, July 2026): the hook +
   context line sit over the full-shot presenter for ~3.2s (`hookHold = 96`),
   then the split slides in — the layout is always either full shot or split

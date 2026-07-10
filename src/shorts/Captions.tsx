@@ -7,7 +7,7 @@ import { CaptionWord } from "./captionsData";
 // Burned-in karaoke captions. `words` are in absolute source frames; `clipFrom`
 // shifts into clip-local time. Words group into ~3-word chunks; the active chunk
 // renders in an OPAQUE pill centered at `centerY` — the parent docks it on the
-// panel seam when split (screen center, clear of face and cartoons) and drops it
+// face/panel seam when split (~y1082, clear of face and cartoons) and drops it
 // to the chest when the face is full-screen.
 const CHUNK = 3;
 

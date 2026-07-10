@@ -14,11 +14,12 @@ import { MusicBed } from "../components/MusicBed";
 import { SFX, SfxCue } from "../components/Sfx";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
-const ANIM_H = 838; // height of the top animation band when split (~44%)
-const FULL_H = 1920; // seam all the way down = animation takes the whole screen
+const ANIM_H = 838; // height of the bottom animation band when split (~44%)
+const FULL_H = 1920; // seam all the way up = animation takes the whole screen
 const OUTRO = 96; // last ~3.2s
 
-// One 1080×1920 short. Cartoon animations on TOP, talking head on BOTTOM, with a
+// One 1080×1920 short. Talking head on TOP, cartoon animations on BOTTOM
+// (Kris's rule, July 2026 — face always owns the top half of the split), with a
 // dynamic reframe: FULL-SCREEN face for the hook + CTA, SPLIT for the body, and
 // FULL-SCREEN ANIMATION during `spec.fullscreen` spans (reveals / punchlines /
 // payoffs — CLAUDE.md §9: never force every beat into split). Text stays off the
@@ -113,17 +114,17 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
   return (
     <ThemeProvider style={spec.style}>
       <AbsoluteFill style={{ backgroundColor: "black" }}>
-        {/* BOTTOM — talking head; grows to full screen when seamY → 0. Min height
+        {/* TOP — talking head; grows to full screen when seamY → 0. Min height
             1px keeps the video mounted during full-anim spans so the VO plays on. */}
-        <div style={{ position: "absolute", top: seamY, left: 0, width: 1080, height: Math.max(1920 - seamY, 1), overflow: "hidden" }}>
+        <div style={{ position: "absolute", top: 0, left: 0, width: 1080, height: Math.max(1920 - seamY, 1), overflow: "hidden" }}>
           <AbsoluteFill style={{ transform: `scale(${introZoom})`, transformOrigin: "50% 30%" }}>
             <VerticalStage source={spec.source} from={spec.from} />
           </AbsoluteFill>
         </div>
 
-        {/* TOP — animated beat scenes; slides in for the split, zooms up when
-            the animation takes the full screen */}
-        <div style={{ position: "absolute", top: 0, left: 0, width: 1080, height: Math.max(seamY, 1), overflow: "hidden", opacity: animOpacity }}>
+        {/* BOTTOM — animated beat scenes; the band RISES from the bottom edge
+            for the split, zooms up when the animation takes the full screen */}
+        <div style={{ position: "absolute", top: FULL_H - seamY, left: 0, width: 1080, height: Math.max(seamY, 1), overflow: "hidden", opacity: animOpacity }}>
           <AnimationPanel beats={spec.beats} zoom={interpolate(seamY, [ANIM_H, FULL_H], [1, 1.32], CLAMP)} />
         </div>
 
@@ -133,7 +134,7 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
             so the absolute-timed captions must add the Sequence's start back or
             every word lags the audio by the hook length. */}
         <Sequence from={seamEnd} durationInFrames={dur - OUTRO - seamEnd}>
-          <Captions words={captionsFor(spec.source)} clipFrom={spec.from + seamEnd} centerY={interpolate(seamY, [0, ANIM_H, FULL_H], [1452, ANIM_H, 1560], CLAMP)} />
+          <Captions words={captionsFor(spec.source)} clipFrom={spec.from + seamEnd} centerY={interpolate(seamY, [0, ANIM_H, FULL_H], [1452, FULL_H - ANIM_H, 1560], CLAMP)} />
         </Sequence>
 
         {/* progress bar (with beat milestone ticks) + topic banner — fades in

@@ -51,7 +51,10 @@ const BeatLabel: React.FC<{ text: string; sub?: string; accent?: string }> = ({ 
   const subPop = spring({ frame: frame - 8, fps, config: { stiffness: 280, damping: 12 }, durationInFrames: 14 });
   const op = interpolate(frame, [2, 8], [0, 1], CLAMP);
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14, opacity: op, transform: `scale(${interpolate(e, [0, 1], [1.12, 1])}) translateZ(0)`, padding: "0 40px", textAlign: "center" }}>
+    // order -1: the label renders at the TOP of every beat scene's column — the
+    // panel lives in the BOTTOM band (face-top split), so punch text must stay
+    // up by the seam, clear of the platform-UI bottom zone.
+    <div style={{ order: -1, display: "flex", flexDirection: "column", alignItems: "center", gap: 14, opacity: op, transform: `scale(${interpolate(e, [0, 1], [1.12, 1])}) translateZ(0)`, padding: "0 40px", textAlign: "center" }}>
       <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: fitted, lineHeight: 1.02, color: WHITE, textShadow: "0 6px 30px rgba(0,0,0,0.6)", whiteSpace: "nowrap" }}>{text}</span>
       {sub ? <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 30, letterSpacing: 3, color: accent, borderRadius: 12, padding: "6px 18px", ...glassCard(accent), opacity: frame < 8 ? 0 : 1, transform: `rotate(-2deg) scale(${interpolate(subPop, [0, 1], [1.5, 1])})` }}>{sub}</span> : null}
     </div>

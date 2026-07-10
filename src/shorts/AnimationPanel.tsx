@@ -11,7 +11,7 @@ import { Beat } from "./types";
 export const AnimationPanel: React.FC<{ beats: Beat[]; zoom?: number }> = ({ beats, zoom = 1 }) => {
   const t = useTheme();
   return (
-    <AbsoluteFill style={{ overflow: "hidden", background: t.flat ? t.bg : "#07090E", borderBottom: `2px solid ${t.accent}66` }}>
+    <AbsoluteFill style={{ overflow: "hidden", background: t.flat ? t.bg : "#07090E", borderTop: `2px solid ${t.accent}66` }}>
       <AbsoluteFill style={{ transform: `scale(${zoom})` }}>
         <ShortAnimation beats={beats} />
       </AbsoluteFill>

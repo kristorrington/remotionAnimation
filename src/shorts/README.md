@@ -59,11 +59,14 @@ designing, flip `showSafeZones` in the Studio props panel to overlay the
 platform-UI safe zones (preview-only; can never render).
 
 ### Layout — dynamic split / full-screen (built for retention)
-- **Animated cartoon cards on TOP** (`AnimationPanel` → `ShortAnimation`): one
-  `CartoonBeat` per beat (springing icon + shock-ring + phrase) over a cinematic
-  backdrop. Beats TILE the clip so the panel is never empty, and the text lives
-  **inside** the card (never a separate overlay clashing with it).
-- **Talking head on the BOTTOM** (`VerticalStage`) with a slow Ken-Burns push.
+- **Talking head on TOP** (`VerticalStage`) — Kris's rule, July 2026: whenever
+  the screen is split, the face owns the TOP half. No Ken-Burns (reads as
+  shimmer); the footage stays locked.
+- **Animated beat scenes on the BOTTOM** (`AnimationPanel` → `ShortAnimation`):
+  the band rises from the bottom edge for the split. Beats TILE the clip so the
+  panel is never empty; `BeatLabel` renders at the TOP of each scene (flex
+  `order: -1`) so the punch text hugs the seam, clear of the platform-UI
+  bottom zone.
 - **Dynamic reframe:** FULL-SCREEN face for the hook and the CTA, SPLIT for the
   body — the seam (`seamY`) animates in [VerticalShort.tsx](VerticalShort.tsx);
   `ANIM_H` is the split band height. A whoosh fires on each reframe.
@@ -80,15 +83,15 @@ platform-UI safe zones (preview-only; can never render).
   phase straight through it — the face never blips in for under 3s. Colliding
   keyframes get nudged a frame instead of crashing, but respect the
   constraints — a merge/nudge means the layout was fighting itself.
-- **Text never covers the face:** captions on the chest, emphasis pops in the top
-  band, hook over the hairline, CTA in the lower third.
+- **Text never covers the face:** captions docked on the seam (~y1082), emphasis
+  pops in the bottom band, hook over the hairline, CTA in the lower third.
 - **Retention furniture:** `TopBar` (progress bar + the `topic` question banner
   — a short, INFORMATIVE curiosity question that names the subject, e.g. "IS
   YOUR AI BEING SWAPPED?"), `HookTitle` (word-slam, first ~3.2s), `Captions`
   (whisper karaoke in an opaque pill, **split mode only** — docked on the seam;
   never during the hook or CTA, so the open stays clean),
-  `LowerThird` (identity strip just below the seam, left, over the set wall —
-  never the face), `ShortOutro` (CTA + handle). One text element per zone —
+  `LowerThird` (identity strip low in the top face band, left, over the desk —
+  never the face, clear of the caption pill), `ShortOutro` (CTA + handle). One text element per zone —
   if a frame has more than 3 text blocks, cut something.
 - **Brand:** name / tag / handle live in [src/brand.ts](../brand.ts) — edit once,
   the lower-third and CTA update everywhere.
