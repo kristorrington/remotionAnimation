@@ -418,10 +418,14 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   context line sit over the full-shot presenter for ~3.2s (`hookHold = 96`),
   then the split slides in — the layout is always either full shot or split
   screen at the open, never an animation cold-open. **The opener PUNCHES IN
-  with a sound** (rule): the video starts SMALL — scale 0.5, floating on
-  black — and zooms up to full frame over the first ~0.7s (ease-out cubic)
-  with a whoosh at frame ~1, landing at exactly 1.0 so the framing is normal
-  by the time the hook settles — built into VerticalShort, never remove it.
+  with a sound** (rule): the video starts SMALL — scale 0.5, a rounded
+  drop-shadowed card — and zooms up to full frame over the first ~0.7s
+  (ease-out cubic) with a whoosh at frame ~1, landing at exactly 1.0 so the
+  framing is normal by the time the hook settles — built into VerticalShort,
+  never remove it. The dead space behind the small shot is NEVER black: a
+  blurred, dimmed copy of the same footage fills the whole frame (ambient
+  echo) and fades out as the zoom lands — frame 0 must read as a designed
+  full frame, since it doubles as the feed thumbnail.
   Never zoom PAST 1.0 into the face: the 9:16 cover-crop is already tight,
   so 1.1+ reads "too zoomed in". **The 1-second gate** (viral-shorts data,
   2026): viewers decide in <1s, so the FIRST FRAME must already carry the
