@@ -10,6 +10,7 @@ export const TopBar: React.FC<{ topic: string; beats?: number[] }> = ({ topic, b
   const { durationInFrames } = useVideoConfig();
   const t = useTheme();
   const bold = t.name === "bold";
+  const paper = t.name === "paper";
   const progress = interpolate(frame, [0, durationInFrames], [0, 100], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
 
   return (
@@ -30,12 +31,14 @@ export const TopBar: React.FC<{ topic: string; beats?: number[] }> = ({ topic, b
             gap: 12,
             padding: "12px 28px",
             borderRadius: bold ? 8 : 999,
-            background: "rgba(20,16,13,0.74)",
-            border: bold ? `2px solid ${t.accent}` : "1px solid rgba(255,255,255,0.16)",
+            // paper = white sticker chip (banner sits over footage AND ivory)
+            background: paper ? "rgba(255,255,255,0.94)" : "rgba(20,16,13,0.74)",
+            border: paper ? "1px solid rgba(31,30,29,0.16)" : bold ? `2px solid ${t.accent}` : "1px solid rgba(255,255,255,0.16)",
+            boxShadow: paper ? "0 8px 22px rgba(31,30,29,0.18)" : undefined,
           }}
         >
           <span style={{ width: 12, height: 12, borderRadius: "50%", background: t.accent, boxShadow: t.glow ? `0 0 12px ${t.accent}` : undefined }} />
-          <span style={{ fontFamily: bold ? t.fontKicker : t.fontBody, fontWeight: 800, fontSize: 29, letterSpacing: 3, color: t.text, textTransform: "uppercase" }}>{topic}</span>
+          <span style={{ fontFamily: bold ? t.fontKicker : t.fontBody, fontWeight: 800, fontSize: 29, letterSpacing: 3, color: paper ? t.ink : t.text, textTransform: "uppercase" }}>{topic}</span>
         </div>
       </div>
     </AbsoluteFill>

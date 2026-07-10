@@ -64,6 +64,25 @@ export const AnimatedBackground: React.FC<Props> = ({ durationInFrames, words, f
       )
     : 1;
 
+  if (theme.name === "paper") {
+    // LIGHT paper editorial (the viral-Claude-creator look): ivory + a fine
+    // dot grid + the softest warm vignette. Texture, not decoration — all the
+    // colour lives on the subjects and text.
+    return (
+      <AbsoluteFill style={{ opacity: envelope }}>
+        <AbsoluteFill style={{ backgroundColor: theme.bg }} />
+        <AbsoluteFill
+          style={{
+            backgroundImage: "radial-gradient(rgba(31,30,29,0.11) 1.4px, transparent 1.4px)",
+            backgroundSize: "26px 26px",
+            backgroundPosition: `0px ${(frame * 0.15) % 26}px`,
+          }}
+        />
+        <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 42%, transparent 55%, rgba(120,90,60,0.10) 100%)" }} />
+      </AbsoluteFill>
+    );
+  }
+
   if (theme.flat) {
     const drift = Math.sin(frame * 0.02) * 6;
     return (

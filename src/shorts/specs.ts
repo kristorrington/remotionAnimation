@@ -37,6 +37,7 @@ export const SHORTS: ShortSpec[] = [
     fullscreen: [{ from: 190, to: 470 }, { from: 656, to: 758 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
+    style: "paper",
   },
   {
     id: "Short-FivePaths",
@@ -61,6 +62,7 @@ export const SHORTS: ShortSpec[] = [
     fullscreen: [{ from: 190, to: 330 }, { from: 502, to: 620 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
+    style: "paper",
   },
   {
     id: "Short-HateResearch",
@@ -83,6 +85,7 @@ export const SHORTS: ShortSpec[] = [
     fullscreen: [{ from: 190, to: 320 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
+    style: "paper",
   },
   {
     id: "Short-SkillNotPrompt",
@@ -105,6 +108,7 @@ export const SHORTS: ShortSpec[] = [
     fullscreen: [{ from: 190, to: 330 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
+    style: "paper",
   },
 ];
 

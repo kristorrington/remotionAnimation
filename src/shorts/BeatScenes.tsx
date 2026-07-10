@@ -7,6 +7,7 @@ import { ModelBlock, SpeedModule, SpeedTrails, TokenCoin, CostMeterClimb, Prompt
 import { StalledBar, ImpactStamp } from "../motion/primitives";
 import { IconBrain, IconClock, IconGuard, IconPrice, IconBug, IconGauge } from "../components/Cartoons";
 import { TintWash } from "../scenes/SceneShell";
+import { useTheme } from "../theme";
 import { Beat } from "./types";
 
 // Per-beat ambient tints — every beat SHIFTS the wash colour (the beats
@@ -43,6 +44,7 @@ const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const BeatLabel: React.FC<{ text: string; sub?: string; accent?: string }> = ({ text, sub, accent = CYAN }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const t = useTheme();
   const fitted = React.useMemo(
     () => Math.min(92, fitText({ text, withinWidth: 730, fontFamily: FONT, fontWeight: 900 }).fontSize),
     [text],
@@ -55,7 +57,7 @@ const BeatLabel: React.FC<{ text: string; sub?: string; accent?: string }> = ({ 
     // panel lives in the BOTTOM band (face-top split), so punch text must stay
     // up by the seam, clear of the platform-UI bottom zone.
     <div style={{ order: -1, display: "flex", flexDirection: "column", alignItems: "center", gap: 14, opacity: op, transform: `scale(${interpolate(e, [0, 1], [1.12, 1])}) translateZ(0)`, padding: "0 40px", textAlign: "center" }}>
-      <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: fitted, lineHeight: 1.02, color: WHITE, textShadow: "0 6px 30px rgba(0,0,0,0.6)", whiteSpace: "nowrap" }}>{text}</span>
+      <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: fitted, lineHeight: 1.02, color: t.text, textShadow: t.glow ? "0 6px 30px rgba(0,0,0,0.6)" : undefined, whiteSpace: "nowrap" }}>{text}</span>
       {sub ? <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 30, letterSpacing: 3, color: accent, borderRadius: 12, padding: "6px 18px", ...glassCard(accent), opacity: frame < 8 ? 0 : 1, transform: `rotate(-2deg) scale(${interpolate(subPop, [0, 1], [1.5, 1])})` }}>{sub}</span> : null}
     </div>
   );

@@ -106,5 +106,5 @@ export type ShortSpec = {
   hookAlt?: string;
   outro: string; // CTA shown in the last ~3s (e.g. "FOLLOW FOR MORE")
   music?: string; // optional low bed in public/music/ (e.g. "music/tension.MP3")
-  style?: VideoStyle; // brand look — "cinematic" (default) or "bold"
+  style?: VideoStyle; // brand look — "paper" (shorts default look), "cinematic", "bold"
 };

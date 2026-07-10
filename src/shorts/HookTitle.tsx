@@ -28,6 +28,7 @@ export const HookTitle: React.FC<{ text: string; hold: number; context?: string 
           const wordOp = interpolate(frame, [d, d + 3], [0, 1], CLAMP);
           const scale = interpolate(s, [0, 1], [1.7, 1]);
           const isLast = i === words.length - 1;
+          const paper = t.name === "paper";
           return (
             <span
               key={i}
@@ -40,9 +41,14 @@ export const HookTitle: React.FC<{ text: string; hold: number; context?: string 
                 fontSize: t.name === "bold" ? 100 : 92,
                 lineHeight: 1.04,
                 letterSpacing: t.name === "bold" ? 0.5 : -1.5,
-                // the hook keyword gets the HOT scroll-stopper orange, not the
-                // brand terracotta (colour research: hottest hue on the hook)
-                color: isLast ? (t.name === "bold" ? t.accent : HOT) : t.text,
+                // the hook keyword is the scroll-stopper: paper = white text in
+                // a RED highlight box (the reference look); cinematic = HOT
+                // orange (colour research: hottest hue on the hook). The hook
+                // sits over footage, so non-keyword words stay white.
+                color: isLast && !paper ? (t.name === "bold" ? t.accent : HOT) : "#FFFFFF",
+                background: isLast && paper ? t.accent2 : undefined,
+                padding: isLast && paper ? "2px 20px" : undefined,
+                borderRadius: isLast && paper ? 6 : undefined,
                 textTransform: "uppercase",
                 textShadow: "0 6px 34px rgba(0,0,0,0.75)",
               }}

@@ -3,9 +3,13 @@ import { loadFont as loadAnton } from "@remotion/google-fonts/Anton";
 import { BLUE, CYAN, FONT, MONO, WHITE } from "./components/overlayUI";
 
 // ============================================================================
-// VIDEO STYLES. Two brand looks, switchable per video and per short:
+// VIDEO STYLES. Brand looks, switchable per video and per short:
 //   "cinematic" — warm charcoal space, aurora + grid, Claude-terracotta glow,
-//                 Inter. (default; rebranded to Claude Code colours 07/2026)
+//                 Inter. (long-form default; Claude Code colours 07/2026)
+//   "paper"     — LIGHT editorial: Anthropic ivory + dot-grid paper, big black
+//                 type, coral accents, red highlight boxes, white sticker
+//                 cards. (SHORTS default as of 07/2026 — the viral-Claude-
+//                 creator look Kris referenced.)
 //   "bold"      — flat slate, chunky cream display type (Anton), yellow tape
 //                 banners, terracotta numerics, boxed typewriter kickers.
 // Choose by wrapping a composition in <ThemeProvider style="bold"> (main
@@ -16,7 +20,7 @@ import { BLUE, CYAN, FONT, MONO, WHITE } from "./components/overlayUI";
 
 const { fontFamily: antonFamily } = loadAnton("normal", { weights: ["400"], subsets: ["latin"] });
 
-export type VideoStyle = "cinematic" | "bold";
+export type VideoStyle = "cinematic" | "paper" | "bold";
 
 export type Theme = {
   name: VideoStyle;
@@ -49,6 +53,21 @@ export const THEMES: Record<VideoStyle, Theme> = {
     fontKicker: FONT,
     titleWeight: 800,
     glow: true,
+  },
+  paper: {
+    name: "paper",
+    flat: true,
+    bg: "#F0EEE6", // Anthropic ivory
+    ink: "#1F1E1D", // near-black — text on light surfaces and accent buttons
+    text: "#1F1E1D",
+    textDim: "rgba(31,30,29,0.55)",
+    accent: "#D97757", // Claude coral
+    accent2: "#E03E36", // highlight-box red (the hook keyword box)
+    fontDisplay: FONT,
+    fontBody: FONT,
+    fontKicker: FONT,
+    titleWeight: 900,
+    glow: false,
   },
   bold: {
     name: "bold",

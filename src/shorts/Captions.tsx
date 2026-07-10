@@ -57,9 +57,11 @@ export const Captions: React.FC<{ words: CaptionWord[]; clipFrom: number; center
             maxWidth: 920,
             padding: "16px 34px",
             borderRadius: 18,
-            background: "rgba(6,9,16,0.94)",
-            border: "1px solid rgba(255,255,255,0.14)",
-            boxShadow: "0 14px 38px rgba(0,0,0,0.55)",
+            // paper = a WHITE sticker card with near-black type (the reference
+            // collage look); dark styles keep the opaque dark pill
+            background: t.name === "paper" ? "rgba(255,255,255,0.96)" : "rgba(6,9,16,0.94)",
+            border: t.name === "paper" ? "1px solid rgba(31,30,29,0.14)" : "1px solid rgba(255,255,255,0.14)",
+            boxShadow: t.name === "paper" ? "0 10px 30px rgba(31,30,29,0.20)" : "0 14px 38px rgba(0,0,0,0.55)",
           }}
         >
           {active.words.map((w, i) => {

@@ -420,6 +420,14 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   visual punchline. NOT like: cropped long-form slides · talking head under a
   title card · text-heavy presentation clips · title/subtitle/icon templates.
 - Final beat = a payoff or a **loop back to the hook** (loops = free replays).
+- **Shorts style = "paper"** (Kris's reference pass, July 2026 — the viral-
+  Claude-creator look): LIGHT Anthropic-ivory editorial. Dot-grid paper panel
+  (#F0EEE6), big near-black type, WHITE sticker cards for captions + topic
+  chip, coral #D97757 accents, the hook keyword in a RED (#E03E36) highlight
+  box over white text, gold CTA. Set `style: "paper"` on every new ShortSpec —
+  VerticalShort themes all furniture via useTheme(); per-beat tints become
+  soft pastel washes over the ivory. Dark "cinematic" remains the long-form
+  look until converted.
 - **Split = FACE TOP / ANIMATION BOTTOM** (Kris's rule, July 2026 — overwrites
   the original animation-top band): whenever a short is split-screen, the
   talking head owns the TOP half and the animation band rises from the BOTTOM
