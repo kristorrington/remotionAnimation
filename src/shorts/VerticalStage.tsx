@@ -21,7 +21,10 @@ export const VerticalStage: React.FC<{ source: string; from: number; volume?: nu
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          objectPosition: "50% 30%",
+          // 48% horizontal: the presenter sits slightly LEFT of frame centre
+          // in the current recording, so the crop window shifts with him —
+          // re-tune this per recording if the face reads off-centre
+          objectPosition: "48% 30%",
           // No continuous zoom: per-frame sub-pixel scaling reads as a subtle
           // shake/shimmer on the face. The footage stays locked still.
           filter: "contrast(1.06) saturate(1.1) brightness(1.02)",
