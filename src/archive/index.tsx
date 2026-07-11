@@ -23,6 +23,8 @@ import { ModelRoutingFinal } from "../ModelRoutingFinal";
 import { FableCountdownVideo, FABLE_COUNTDOWN_DUR } from "../FableCountdownVideo";
 import { FableCountdownFinal } from "../FableCountdownFinal";
 import { SideHustleVideo, SIDE_HUSTLE_DUR } from "../SideHustleVideo";
+import { GptSandboxVideo, GPT_SANDBOX_DUR } from "../GptSandboxVideo";
+import { GptSandboxFinal } from "../GptSandboxFinal";
 import { SideHustleFinal } from "../SideHustleFinal";
 
 // ============================================================================
@@ -47,6 +49,10 @@ const transparentDefaults: CalculateMetadataFunction<
 export const ArchivedVideoCompositions: React.FC = () => {
   return (
     <>
+      {/* ── GPT-5.6: sandbox it before you scale it (July 2026) ── */}
+      <Composition id="GptSandboxVideo" component={GptSandboxVideo} durationInFrames={GPT_SANDBOX_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="GptSandboxFinal" component={GptSandboxFinal} durationInFrames={GPT_SANDBOX_DUR} fps={30} width={1920} height={1080} />
+
       {/* ── Side-hustles: 5 beginner Claude paths (July 2026) ── */}
       <Composition
         id="SideHustleVideo"

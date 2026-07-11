@@ -666,3 +666,87 @@ Follow @kristorrington for AI automation that survives the real world.
 
 #AI #GPT56 #Copilot #Microsoft365 #AIAgents #Shorts
 ```
+
+---
+
+# n8n vs agents "hybrid stack" (2026-07-11)
+
+## Short-DontAbandon (THE HOOK)
+
+**Title**
+```
+Don't Abandon n8n for AI Agents Yet — Here's Why #Shorts
+```
+
+**Description**
+```
+About to ditch n8n for an AI agent framework? The evidence says slow down: n8n's revenue grew tenfold while investors were pricing in no-code's death, and Klarna had to bring humans back after pushing AI-led support too hard.
+
+The winning setup is hybrid: a reliable workflow underneath, AI making decisions only where judgement is useful.
+
+Are you team workflow or team agent? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #n8n #AIAgents #Automation #NoCode #Shorts
+```
+
+## Short-KlarnaLesson
+
+**Title**
+```
+AI Replaced 700 People at Klarna. Then Quality Broke. #Shorts
+```
+
+**Description**
+```
+In 2024 Klarna said its AI assistants were doing the work of roughly 700 customer service agents — resolution times fell from 11 minutes to 2. Then the CEO admitted they'd over-indexed on efficiency and cost, and started hiring people again.
+
+But they didn't switch the AI off: it kept the simple work while humans took the judgement calls. The lesson isn't "AI failed" — it's don't give a probabilistic system responsibility without protecting the customer.
+
+Would you have made the same call? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Klarna #CustomerService #AIAgents #Automation #Shorts
+```
+
+## Short-AgentGap
+
+**Title**
+```
+62% Are Testing AI Agents. Only 23% Ever Ship. #Shorts
+```
+
+**Description**
+```
+McKinsey: 62% of organizations are experimenting with AI agents — but only 23% have scaled one anywhere. The gap is where reliability, governance and cost start hurting.
+
+And Gartner predicts both sides at once: 40% of enterprise apps will include agents by end of 2026, AND over 40% of agentic projects get cancelled by end of 2027. Fast adoption and fast kills, together.
+
+Is your agent project in the 23%? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #AIAgents #McKinsey #Gartner #Enterprise #Shorts
+```
+
+## Short-DecisionRule
+
+**Title**
+```
+Workflow or AI Agent? One Rule Decides Every Time #Shorts
+```
+
+**Description**
+```
+Use a deterministic workflow when the steps are known and mistakes are expensive — payments, account changes, approvals, compliance. No agent improvising there.
+
+Use an agent when input is messy and decisions stay bounded — classification, document interpretation, research, drafting. Then connect the two: the agent recommends, the workflow validates, executes, logs, retries and escalates.
+
+Deterministic core, agentic decision points. Where do you draw the line? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #n8n #AIAgents #Automation #SystemDesign #Shorts
+```

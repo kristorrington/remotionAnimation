@@ -1,0 +1,16 @@
+{
+  "sourceName": "McKinsey",
+  "sourceUrl": "https://mckinsey.com",
+  "dateAccessed": "2026-07-11",
+  "note": "Agent adoption vs scaling shares cited in the n8n-hybrid video; recreated natively per CLAUDE.md 10.3.",
+  "data": [
+    {
+      "label": "Experimenting",
+      "value": 62
+    },
+    {
+      "label": "Scaled somewhere",
+      "value": 23
+    }
+  ]
+}

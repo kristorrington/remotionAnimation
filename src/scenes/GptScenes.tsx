@@ -89,11 +89,12 @@ export const BalanceScaleScene: React.FC<{
 // (CLAUDE.md §10.3); each bar grows ON its spoken frame, the source chip rides
 // along. Data lives in public/assets/external/charts (manifested).
 export const BenchBarsScene: React.FC<{
-  durationInFrames: number; kicker?: string; title: string; barAts?: [number, number, number]; tint?: string;
-}> = ({ durationInFrames, kicker, title, barAts = [40, 120, 200], tint }) => {
+  durationInFrames: number; kicker?: string; title: string; barAts?: number[]; tint?: string;
+  data?: { label: string; value: number }[]; sourceName?: string; sourceUrl?: string;
+}> = ({ durationInFrames, kicker, title, barAts = [40, 120, 200], tint, data, sourceName, sourceUrl }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const bars = benchData.data as { label: string; value: number; color: string }[];
+  const bars = (data ?? benchData.data) as { label: string; value: number }[];
   const max = 100;
   const W = 1040;
   return (
@@ -118,7 +119,7 @@ export const BenchBarsScene: React.FC<{
             );
           })}
           <div style={{ alignSelf: "flex-end" }}>
-            <SourceChip name={benchData.sourceName} url={benchData.sourceUrl} at={barAts[0] + 10} />
+            <SourceChip name={sourceName ?? benchData.sourceName} url={sourceUrl ?? benchData.sourceUrl} at={barAts[0] + 10} />
           </div>
         </div>
         <SceneHeadline kicker={kicker} title={title} titleSize={62} />

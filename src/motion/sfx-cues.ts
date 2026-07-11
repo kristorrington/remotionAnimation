@@ -14,6 +14,33 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "heroLaunch":
       cues.push({ at: 34 + 26, type: "boom" }, { at: 110, type: "whoosh" }); // bolt lands, launch
       break;
+    // ── n8n-hybrid video (July 2026) ──
+    case "tenfold": cues.push({ at: 43, type: "ding" }); break;
+    case "klarnaBack": cues.push({ at: 24, type: "boom" }); break;
+    case "hybridIntro": cues.push({ at: 193, type: "boom" }); break; // agent module docks
+    case "blurLabels": cues.push({ at: 30, type: "switch" }, { at: 120, type: "switch" }, { at: 132, type: "switch" }); break;
+    case "predictable": cues.push({ at: 179, type: "switch" }, { at: 216, type: "switch" }, { at: 295, type: "switch" }); break;
+    case "messFunnel": cues.push({ at: 117, type: "switch" }, { at: 152, type: "switch" }, { at: 178, type: "switch" }, { at: 210, type: "ding" }); break;
+    case "bothCompare": cues.push({ at: 22, type: "whip" }, { at: 94, type: "ding" }); break;
+    case "intelVsRely": cues.push({ at: 20, type: "boom" }); break;
+    case "klarnaStats": cues.push({ at: 176, type: "switch" }, { at: 286, type: "switch" }); break;
+    case "qualityWall": cues.push({ at: 88, type: "boom" }); break; // the crash
+    case "splitWork": cues.push({ at: 111, type: "switch" }); break;
+    case "tooMuchTrust": cues.push({ at: 40, type: "switch" }, { at: 77, type: "whip" }, { at: 112, type: "boom" }, { at: 213, type: "ding" }); break;
+    case "moneyRound": cues.push({ at: 118, type: "switch" }, { at: 209, type: "switch" }, { at: 432, type: "switch" }); break;
+    case "onePlace": cues.push({ at: 78, type: "switch" }, { at: 97, type: "switch" }, { at: 120, type: "switch" }, { at: 156, type: "switch" }, { at: 170, type: "whip" }); break;
+    case "zapierBet": cues.push({ at: 168, type: "switch" }, { at: 353, type: "ding" }); break;
+    case "controlLayer": cues.push({ at: Math.round(dur * 0.44) + 24, type: "ding" }); break; // leak fixed
+    case "mckinseyGap": cues.push({ at: 34, type: "whip" }, { at: 184, type: "switch" }); break;
+    case "gapHurts": cues.push({ at: 100, type: "switch" }, { at: 135, type: "switch" }, { at: 161, type: "switch" }); break;
+    case "fortyForty": cues.push({ at: 30, type: "switch" }, { at: 242, type: "whip" }, { at: 292, type: "boom" }); break;
+    case "bothHappen": cues.push({ at: 20, type: "boom" }); break;
+    case "sellOff": cues.push({ at: 28, type: "boom" }); break;
+    case "knownSteps": cues.push({ at: 147, type: "switch" }, { at: 194, type: "switch" }, { at: 222, type: "switch" }); break;
+    case "boundedGates": cues.push({ at: 179, type: "ding" }, { at: 226, type: "ding" }, { at: 259, type: "ding" }, { at: 291, type: "ding" }); break;
+    case "hybridPayoff": cues.push({ at: 87, type: "boom" }, { at: 146, type: "switch" }, { at: 168, type: "switch" }, { at: 188, type: "switch" }, { at: 200, type: "switch" }, { at: 221, type: "switch" }); break;
+    case "oneFramework": cues.push({ at: 22, type: "whip" }, { at: 145, type: "ding" }); break;
+    case "autonomyMatters": cues.push({ at: 193, type: "boom" }); break;
     // ── GPT-5.6 video (July 2026) ──
     case "speedBoost":
       cues.push({ at: 40, type: "boom" }, { at: 70, type: "whoosh" }); // SOL module bolts on, gauge sweep

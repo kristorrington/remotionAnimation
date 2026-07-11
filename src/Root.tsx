@@ -3,8 +3,8 @@ import { CalculateMetadataFunction, Composition } from "remotion";
 import { ShortsCompositions, SHORTS_ENABLED } from "./shorts";
 import { StyleDemo } from "./StyleDemo";
 import { TemplateLab, TEMPLATE_LAB_DUR } from "./TemplateLab";
-import { GptSandboxVideo, GPT_SANDBOX_DUR } from "./GptSandboxVideo";
-import { GptSandboxFinal } from "./GptSandboxFinal";
+import { N8nHybridVideo, N8N_HYBRID_DUR } from "./N8nHybridVideo";
+import { N8nHybridFinal } from "./N8nHybridFinal";
 import { ArchivedVideoCompositions, SHOW_ARCHIVE } from "./archive";
 
 // Default this composition to a transparent ProRes 4444 export so it composites
@@ -51,10 +51,10 @@ export const RemotionRoot: React.FC = () => {
       />
 
       <Composition
-        // CURRENT: GPT-5.6 "sandbox it before you scale it" — transparent overlay track.
-        id="GptSandboxVideo"
-        component={GptSandboxVideo}
-        durationInFrames={GPT_SANDBOX_DUR}
+        // CURRENT: n8n vs agents "hybrid stack" — transparent overlay track.
+        id="N8nHybridVideo"
+        component={N8nHybridVideo}
+        durationInFrames={N8N_HYBRID_DUR}
         fps={30}
         width={1920}
         height={1080}
@@ -62,10 +62,10 @@ export const RemotionRoot: React.FC = () => {
       />
 
       <Composition
-        // CURRENT: GPT-5.6 — the finished combined cut (footage + overlay).
-        id="GptSandboxFinal"
-        component={GptSandboxFinal}
-        durationInFrames={GPT_SANDBOX_DUR}
+        // CURRENT: n8n-hybrid — the finished combined cut (footage + overlay).
+        id="N8nHybridFinal"
+        component={N8nHybridFinal}
+        durationInFrames={N8N_HYBRID_DUR}
         fps={30}
         width={1920}
         height={1080}

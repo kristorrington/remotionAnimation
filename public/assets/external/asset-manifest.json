@@ -43,6 +43,20 @@
       ],
       "attributionRequired": false,
       "concerns": "Scores are as reported in launch coverage; verify against the primary Terminal-Bench leaderboard before re-use."
+    },
+    {
+      "filename": "mckinsey-agent-adoption.json",
+      "localPath": "public/assets/external/charts/mckinsey-agent-adoption.json",
+      "type": "chart-data",
+      "sourceUrl": "https://mckinsey.com",
+      "sourceName": "McKinsey (reported adoption stats, via video transcript)",
+      "dateAccessed": "2026-07-11",
+      "usageNote": "Recreated natively (BenchBarsScene data prop) — 62% experimenting vs 23% scaling.",
+      "usedIn": [
+        "N8nHybridVideo McKinsey gap scene"
+      ],
+      "attributionRequired": false,
+      "concerns": "Figures as reported in coverage; verify against the primary McKinsey report before re-use."
     }
   ]
 }

@@ -156,12 +156,15 @@ Use this map before inventing new visuals; extend it when a new idea appears.
 
 **On-screen text must not narrate.** Use text as *emphasis*, not explanation.
 
-**Long-form YouTube:**
-- **1 main headline** per scene — usually **1–4 words** (longer only when the
+**Long-form YouTube (LESS-WORDS pass, July 2026 — kinetic-type research:
+viewers read one short phrase per beat, fast):**
+- **1 main headline** per scene — **≤ 3–4 words** standard (longer only when the
   phrase IS the whole point).
 - **≤ 3 supporting labels**, each **1–4 words**. No full sentences.
-- No long subtitles under cards. **≤ 12–16 total words** on screen (a
-  source/receipt scene may show a little more).
+- No long subtitles under cards. **≤ 8–10 total words** on screen (a
+  source/receipt scene may show a little more). Kickers are OPTIONAL — drop
+  them on fast beats; one-word kinetic payoffs (mode F, ≤ 4s) between
+  chapters are encouraged.
 - Big **numbers** are allowed to dominate; the narration explains them.
 - Cut filler ("the", "a", "still", "actually", "basically", "it", "this") unless
   needed for meaning. Turn sentences into **labels / chips / states**:
@@ -339,6 +342,13 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   the first scene's internal gags to the whisper words from the new start
   (add timing props to shared scenes — e.g. `ThresholdGateScene dropAt/
   attempt2At` — never let gags play late).
+- **Transitions v2 (editing research, July 2026):** every FULLSCREEN-span cut
+  in a Final opens with a kinetic transition from `src/motion/transitions.tsx`
+  (whip pan / iris / bar wipe, ~16f) — kinds ROTATE so no two consecutive
+  cuts repeat a move; the per-cover whoosh carries the sound; `CutFlash`
+  stays only on the face→first-cover cut. `ZoomPunchIn` is available for
+  incoming scenes that should land with jump-cut energy. Research: minimal
+  but kinetic cuts + speed-ramp feel beat hard cuts for retention.
 - **Long-form scenes must not default to centred title cards.** A scene is only
   acceptable if it has a visual idea and animated action. Prefer cartoon
   explainer moments, object metaphors, workflow systems, UI simulations, and

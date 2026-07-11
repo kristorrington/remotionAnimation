@@ -1,20 +1,23 @@
 import React from "react";
 import { AbsoluteFill, Easing, interpolate, Sequence, useCurrentFrame } from "remotion";
-import { GptSandboxVideo, GPT_SANDBOX_WINDOWS, GPT_SANDBOX_FULLSCREEN } from "./GptSandboxVideo";
+import { N8nHybridVideo, N8N_HYBRID_WINDOWS, N8N_HYBRID_FULLSCREEN } from "./N8nHybridVideo";
 import { CutFlash } from "./components/CutFlash";
 import { FootageDirector } from "./components/FootageDirector";
 import { CornerPip } from "./components/CornerPip";
 import { AnimatedBackground } from "./components/AnimatedBackground";
+import { SceneTransition, TransitionKind } from "./motion/transitions";
 import { ThemeProvider } from "./theme";
 
-// Final combined cut: talking head + GPT-5.6 animation track + per-span PiP
-// (§8 of AGENTS.md — one PiP per merged span, never per card). During
-// GPT_SANDBOX_FULLSCREEN spans the animation OWNS the screen — no PiP.
-const FOOTAGE = "talking-head-110726.mp4"; // rotated 2026-07-11 (n8n-hybrid video took the active slot)
+// Final combined cut: talking head + n8n-hybrid animation track + per-span PiP.
+// TRANSITIONS v2 (editing research, July 2026): every FULLSCREEN span opens
+// with a kinetic transition (whip pan / iris / bar wipe), kinds ROTATING so no
+// two consecutive cuts use the same move; the whoosh that already fires per
+// cover carries the sound. CutFlash remains only on the face→first-cover cut.
+const FOOTAGE = "talking-head.mp4";
 
 const PIP_GAP_MAX = 180; // 6s
 const PIP_MIN = 90; // never show a PiP segment shorter than 3s (flicker)
-const COVERS = [...GPT_SANDBOX_WINDOWS].sort((a, b) => a.from - b.from);
+const COVERS = [...N8N_HYBRID_WINDOWS].sort((a, b) => a.from - b.from);
 const SPANS: { from: number; to: number }[] = [];
 for (const c of COVERS) {
   const last = SPANS[SPANS.length - 1];
@@ -23,7 +26,7 @@ for (const c of COVERS) {
 }
 
 // PiP segments = spans minus the fullscreen windows (animation-only moments)
-const FULL = [...GPT_SANDBOX_FULLSCREEN].sort((a, b) => a.from - b.from);
+const FULL = [...N8N_HYBRID_FULLSCREEN].sort((a, b) => a.from - b.from);
 const PIP_SEGMENTS: { from: number; to: number }[] = [];
 for (const s of SPANS) {
   let cursor = s.from;
@@ -35,28 +38,23 @@ for (const s of SPANS) {
   if (s.to - cursor >= PIP_MIN) PIP_SEGMENTS.push({ from: cursor, to: s.to });
 }
 
-// Soft dip-to-white on the biggest turns: the face→animation open cut (§8) ·
-// the benchmark receipt · the system card · launch-day placement · the three
-// gates · the finale rule.
-const FLASHES = [90, 1616, 2810, 4542, 6439, 7862];
+// Kinetic transitions on every full-screen span START (rotating kinds).
+const KINDS: TransitionKind[] = ["whip", "iris", "bar"];
+const TRANSITIONS = FULL.map((f, i) => ({ at: f.from, kind: KINDS[i % KINDS.length] }));
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
-export const GptSandboxFinal: React.FC = () => {
+export const N8nHybridFinal: React.FC = () => {
   const frame = useCurrentFrame();
-  // OPENING PUNCH-IN (aligned with the shorts, CLAUDE.md §8/§9): the footage
-  // starts SMALL — a rounded drop-shadowed card at scale 0.5 on the ivory
-  // paper — and zooms to exactly 1.0 over ~0.7s with a whoosh (the SfxCue
-  // lives in GptSandboxVideo's sound block).
+  // OPENING PUNCH-IN (§8): footage starts as a rounded card at 0.5 on the
+  // ivory paper, zooms to exactly 1.0 over ~0.7s with the whoosh.
   const introZoom = interpolate(frame, [0, 22], [0.5, 1], { ...CLAMP, easing: Easing.out(Easing.cubic) });
   const introRadius = interpolate(frame, [0, 22], [40, 0], CLAMP);
   return (
-    // paper theme: the per-span bridges + PiP chrome match the overlay's ivory
     <ThemeProvider style="paper">
     <AbsoluteFill style={{ backgroundColor: "black" }}>
-      {/* the ivory paper fills the frame behind the punch-in card */}
       {frame < 26 && <AnimatedBackground durationInFrames={30} fade={false} />}
-      {/* VO boost 1.6× (source peaks ≈ −8.2 dB — probed 2026-07-11) */}
+      {/* VO boost 1.6× (source peaks ≈ −8.5 dB — probed 2026-07-11) */}
       <AbsoluteFill
         style={{
           transform: `scale(${introZoom})`,
@@ -76,16 +74,18 @@ export const GptSandboxFinal: React.FC = () => {
         </Sequence>
       ))}
 
-      <GptSandboxVideo />
+      <N8nHybridVideo />
 
       {/* steady PiP — except where the animation owns the whole screen */}
       {PIP_SEGMENTS.map((s) => (
         <CornerPip key={`pip-${s.from}`} footage={FOOTAGE} from={s.from} dur={s.to - s.from} />
       ))}
 
-      {FLASHES.map((f) => (
-        <CutFlash key={f} at={f} peak={0.5} />
+      {/* kinetic cut moves on the big turns (rotating whip / iris / bar) */}
+      {TRANSITIONS.map((t) => (
+        <SceneTransition key={`tr-${t.at}`} at={t.at} kind={t.kind} />
       ))}
+      <CutFlash at={90} peak={0.5} />
     </AbsoluteFill>
     </ThemeProvider>
   );

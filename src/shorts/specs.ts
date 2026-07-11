@@ -10,105 +10,102 @@ import { ShortSpec } from "./types";
 // ============================================================================
 export const SHORTS: ShortSpec[] = [
   // ==========================================================================
-  // GPT-5.6 "sandbox it" video (talking-head.mp4) — anchors from whisper words.
+  // n8n-hybrid video (talking-head.mp4) — anchors from whisper words.
   // ==========================================================================
   {
-    id: "Short-SandboxRule",
-    label: "THE HOOK: efficient but it cheated — sandbox it before you scale it",
+    id: "Short-DontAbandon",
+    label: "THE HOOK: about to abandon n8n for agents? the evidence says slow down",
     source: "talking-head.mp4",
-    from: 0, // the video's hook question, verbatim
-    // LOOP: the CTA lands right as "…scale it." (700) ends; the tail trails
-    // into "GPT-5.6 launched publicly…" which loops cleanly back into the
-    // hook question. 800f so the rule-stamp beat gets ≥3s of split BEFORE the
-    // CTA return (at 720 the CTA seized the layout mid-payoff).
-    durationInFrames: 800, // ~27s
-    topic: "GPT-5.6 IN PRODUCTION?",
-    hook: "DON'T SHIP GPT-5.6 BLIND",
-    hookAlt: "GPT-5.6 IS FAST. AND IT CHEATS.", // A/B variant → Short-SandboxRule-B
-    context: "OpenAI's new model: efficient — but it cheats",
-    beats: [
-      { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "MOVE YOUR STACK?" }, // hook question spoken at open
-      { at: 170, scene: "bolt", trails: true, blockLabel: "GPT-5.6", moduleLabel: "SOL", tint: "#34D399", text: "54% MORE EFFICIENT" }, // "Sol is 54% more token-efficient" abs 176
-      { at: 332, scene: "check", obj: "coin", verdict: "check", tint: "#F59E0B", text: "CHEAPER AGENTS AT SCALE" }, // "could reduce real-agent costs" abs 338
-      { at: 419, scene: "check", obj: "shield", verdict: "warn", tint: "#D97757", text: "BUT THE SAFETY CARD…" }, // "OpenAI's own safety card" abs 425
-      { at: 506, scene: "reject", badge: "IT CHEATED", tint: "#EF4444", text: "UNAUTHORIZED ACTIONS", emoji: "🚨" }, // "cheated" abs 512, "unauthorized" abs 542
-      { at: 592, scene: "stamp", verdict: "check", badge: "MY RULE", tint: "#34D399", text: "SANDBOX → THEN SCALE" }, // "my rule is simple: sandbox it" abs 594→649 (slam ~632)
-    ],
-    // full-anim: the bolt-on efficiency gag + the cheat/rule payoff
-    fullscreen: [{ from: 190, to: 376 }, { from: 470, to: 578 }],
-    outro: "FOLLOW FOR MORE",
-    music: "music/tension.MP3",
-    style: "paper",
-  },
-  {
-    id: "Short-ItCheated",
-    label: "OpenAI's own system card: cheating, faked results, moved credentials",
-    source: "talking-head.mp4",
-    from: 2810, // "OpenAI's June 26 system card changes the production conversation."
-    // LOOP: ends on "…can touch client infrastructure." (abs 3585) → replays into the system card.
+    from: 0,
+    // LOOP: tail trails into "the strongest automation setup…" → replays into
+    // "if you're about to abandon n8n" cleanly.
     durationInFrames: 780, // ~26s
-    topic: "OPENAI'S SAFETY CARD",
-    hook: "OPENAI SAYS IT CHEATED",
-    context: "GPT-5.6's own system card, June 26",
+    topic: "N8N VS AI AGENTS",
+    hook: "DON'T ABANDON N8N YET",
+    hookAlt: "THE NO-CODE DEATH IS FAKE", // A/B variant → Short-DontAbandon-B
+    context: "Agent hype vs what the evidence shows",
     beats: [
-      { at: 8, scene: "stamp", verdict: "cross", badge: "SYSTEM CARD", tint: "#EF4444", text: "THE JUNE 26 DROP" }, // spoken at open
-      { at: 170, scene: "queue", labels: ["CHEATED", "FABRICATED", "DESTRUCTIVE"], tint: "#F59E0B", text: "IT DID ALL THREE" }, // "task cheating" abs 2986 → the three documented behaviours
-      { at: 402, scene: "reject", badge: "CACHED CREDENTIALS", tint: "#EF4444", text: "IT MOVED YOUR KEYS", emoji: "🔑" }, // "moving cached credentials" abs 3218
-      { at: 545, scene: "emote", pose: "worried", accent: "#F59E0B", tint: "#D97757", text: "RISK = TOOL ACCESS" }, // "the production risk sits in tool access" abs 3360
-      { at: 610, scene: "check", obj: "gauge", verdict: "cross", tint: "#EF4444", text: "SCORES ≠ SAFE TOOLS" }, // "does not prove safe tool use" abs 3453
+      { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "ABANDON N8N?" }, // hook question at open
+      { at: 134, scene: "stamp", verdict: "cross", badge: "THE EVIDENCE", tint: "#EF4444", text: "SLOW DOWN" }, // "evidence says slow down" abs 140 (slam ~174)
+      { at: 196, scene: "check", obj: "coin", verdict: "check", tint: "#34D399", text: "N8N REVENUE ×10" }, // "revenue grew 10-fold" abs 208
+      { at: 352, scene: "reject", badge: "AI-ONLY SUPPORT", tint: "#F59E0B", text: "KLARNA REHIRED HUMANS", emoji: "😬" }, // "bring more humans back" abs 413
+      { at: 590, scene: "bolt", blockLabel: "WORKFLOW", moduleLabel: "AI", tint: "#34D399", text: "HYBRID STACK" }, // "favor a hybrid stack" abs 607
     ],
-    // full-anim: the three-behaviours gauntlet
-    fullscreen: [{ from: 190, to: 470 }],
+    // full-anim: the slow-down stamp + the hybrid payoff
+    fullscreen: [{ from: 190, to: 330 }, { from: 540, to: 640 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
     style: "paper",
   },
   {
-    id: "Short-MetrGaveUp",
-    label: "METR's capability estimate: 11.3h to 270h — treated as unusable",
+    id: "Short-KlarnaLesson",
+    label: "Klarna: 700 agents' work, then quality broke and humans came back",
     source: "talking-head.mp4",
-    from: 3588, // "METR then tried to estimate Sol's capability…"
-    // LOOP: ends on "…around poorly constrained tools." (abs 4522) → replays into METR's attempt.
-    durationInFrames: 950, // ~32s
-    topic: "CAN YOU TRUST GPT-5.6?",
-    hook: "THE SAFETY TESTERS GAVE UP",
-    context: "METR couldn't measure GPT-5.6's limits",
+    from: 1862, // "Klarna is the cleanest warning…"
+    // LOOP: ends on "…did not switch the AI off." (abs 2860) → replays into the warning.
+    durationInFrames: 1000, // ~33s
+    topic: "THE KLARNA WARNING",
+    hook: "AI REPLACED 700 PEOPLE. BRIEFLY.",
+    context: "Klarna's AI support story, 2024-2025",
     beats: [
-      { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "METR RAN THE TESTS" }, // spoken at open
-      { at: 120, scene: "signal", tint: "#EF4444", text: "REWARD HACKING", sub: "tests contaminated" }, // "contaminated by reward hacking" abs 3716
-      { at: 334, scene: "check", obj: "clock", verdict: "warn", tint: "#F59E0B", text: "11 HOURS? OR 270?" }, // "11.3 hours to more than 270" abs 3928
-      { at: 467, scene: "emote", pose: "shrug", tint: "#D97757", text: "A RANGE THAT WIDE?", emoji: "🤷" }, // "the range was so wide" abs 4061
-      { at: 574, scene: "stamp", verdict: "cross", badge: "METR VERDICT", tint: "#EF4444", text: "UNUSABLE" }, // "treated the estimate as unusable" abs 4168 (slam ~614)
-      { at: 692, scene: "check", obj: "brain", verdict: "warn", tint: "#F59E0B", text: "SCOREBOARD ≠ TRUST" }, // "the scoreboard cannot carry the trust decision" abs 4286
-      { at: 766, scene: "emote", pose: "worried", accent: "#EF4444", tint: "#D97757", text: "CAPABLE BUT UNRELIABLE" }, // "highly capable while still behaving unreliably" abs 4383
+      { at: 8, scene: "emote", pose: "pointing", tint: "#D97757", text: "THE CLEANEST WARNING" }, // spoken at open
+      { at: 295, scene: "check", obj: "brain", verdict: "check", tint: "#34D399", text: "WORK OF 700 AGENTS" }, // "roughly 700 customer service agents" abs 2163
+      { at: 405, scene: "check", obj: "clock", verdict: "check", tint: "#F59E0B", text: "11 MIN → 2" }, // "from 11 minutes to around 2" abs 2273
+      { at: 592, scene: "reject", badge: "QUALITY", tint: "#EF4444", text: "THEN IT BROKE", emoji: "📉" }, // "the quality problem surfaced" abs 2460
+      { at: 723, scene: "emote", pose: "facepalm", accent: "#F59E0B", tint: "#D97757", text: "OVER-INDEXED ON COST" }, // "over-indexed on efficiency and cost" abs 2591
+      { at: 897, scene: "stamp", verdict: "check", badge: "THE FIX", tint: "#34D399", text: "HUMANS CAME BACK" }, // "began hiring people again" abs 2765 (slam ~937)
     ],
-    // full-anim: the static-signal gag + the UNUSABLE stamp
-    fullscreen: [{ from: 190, to: 430 }, { from: 560, to: 690 }],
+    // full-anim: the good-numbers run + the break
+    fullscreen: [{ from: 190, to: 330 }, { from: 560, to: 700 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
     style: "paper",
   },
   {
-    id: "Short-InYourCopilot",
-    label: "GPT-5.6 became Copilot's preferred model on day one — audit permissions",
+    id: "Short-AgentGap",
+    label: "62% experimenting, 23% scaled — and Gartner's 40/40 whiplash",
     source: "talking-head.mp4",
-    from: 4542, // "Now look at where the model landed on launch day."
-    // LOOP: ends on "…matter more than leaderboard position." (abs 5583) → replays into launch day.
-    durationInFrames: 1060, // ~35s
-    topic: "CHECK YOUR COPILOT",
-    hook: "IT'S ALREADY IN YOUR TOOLS",
-    context: "GPT-5.6 became Copilot's default on day one",
+    from: 5551, // "McKinsey found 62%…"
+    // LOOP: cuts as "so rapid adoption…" begins → replays into the McKinsey stat.
+    durationInFrames: 990, // ~33s
+    topic: "AGENTS: HYPE VS SCALE",
+    hook: "EVERYONE'S TESTING. FEW SHIP.",
+    context: "McKinsey + Gartner on AI agents in business",
     beats: [
-      { at: 8, scene: "emote", pose: "pointing", tint: "#D97757", text: "WHERE IT LANDED, DAY 1" }, // spoken at open
-      { at: 125, scene: "bolt", blockLabel: "COPILOT", moduleLabel: "GPT-5.6", tint: "#34D399", text: "INSIDE GITHUB COPILOT" }, // "rolled into GitHub Copilot" abs 4673
-      { at: 268, scene: "check", obj: "brain", verdict: "check", tint: "#F59E0B", text: "M365'S PREFERRED MODEL" }, // "the preferred model in Microsoft 365" abs 4794
-      { at: 350, scene: "queue", labels: ["CHATGPT WORK", "CODEX", "CROSS-APP"], tint: "#D97757", text: "WORKPLACE AUTOMATION" }, // "ChatGPT Work launched alongside" abs 4898
-      { at: 630, scene: "conveyor", labels: ["TOOL-RICH"], tint: "#F59E0B", text: "STRAIGHT INTO WORKFLOWS" }, // "moving directly into tool-rich workplaces" abs 5176
-      { at: 823, scene: "emote", pose: "confused", tint: "#EF4444", text: "ALREADY IN YOUR STACK?", emoji: "👀" }, // "if you use Copilot… may already be part" abs 5352
-      { at: 970, scene: "stamp", verdict: "check", badge: "PERMISSIONS", tint: "#34D399", text: "PERMISSIONS > LEADERBOARDS" }, // "permissions now matter more" abs 5518 (slam ~1010)
+      { at: 8, scene: "check", obj: "brain", verdict: "warn", tint: "#D97757", text: "62% ARE TESTING" }, // "62% of organizations" abs 5579
+      { at: 178, scene: "check", obj: "gauge", verdict: "cross", tint: "#EF4444", text: "ONLY 23% SCALED" }, // "only 23% reported scaling" abs 5735
+      { at: 330, scene: "emote", pose: "shrug", tint: "#F59E0B", text: "A SNAPSHOT, NOT FATE", emoji: "🤷" }, // "a snapshot, not a permanent failure rate" abs 5888
+      { at: 519, scene: "queue", labels: ["RELIABILITY", "GOVERNANCE", "COST"], tint: "#EF4444", text: "WHERE IT HURTS" }, // "reliability, governance and cost" abs 6076
+      { at: 652, scene: "check", obj: "clock", verdict: "warn", tint: "#34D399", text: "40% ADOPT BY 2026" }, // "up to 40% of enterprise applications" abs 6209
+      { at: 864, scene: "stamp", verdict: "cross", badge: "GARTNER", tint: "#EF4444", text: "40% CANCELLED BY 2027" }, // "over 40%… cancelled" abs 6421 (slam ~904)
     ],
-    // full-anim: the bolt-into-Copilot gag + the "already in yours?" punch
-    fullscreen: [{ from: 190, to: 330 }, { from: 790, to: 910 }],
+    // full-anim: the 62/23 gap + the hurt list
+    fullscreen: [{ from: 190, to: 400 }, { from: 640, to: 780 }],
+    outro: "FOLLOW FOR MORE",
+    music: "music/tension.MP3",
+    style: "paper",
+  },
+  {
+    id: "Short-DecisionRule",
+    label: "The one rule: deterministic core, agent decision points",
+    source: "talking-head.mp4",
+    from: 7218, // "For builders, this turns it into a simple decision rule."
+    // LOOP: ends on "…retry and escalate." (abs 8270) → replays into the rule.
+    durationInFrames: 1050, // ~35s
+    topic: "WORKFLOW OR AGENT?",
+    hook: "ONE RULE DECIDES IT",
+    context: "When to use n8n workflows vs AI agents",
+    beats: [
+      { at: 8, scene: "emote", pose: "pointing", tint: "#D97757", text: "ONE DECISION RULE" }, // spoken at open
+      { at: 101, scene: "conveyor", labels: ["KNOWN STEPS"], tint: "#34D399", text: "EXPENSIVE MISTAKES? WORKFLOW" }, // "use a deterministic workflow when…" abs 7325
+      { at: 240, scene: "queue", labels: ["PAYMENTS", "CHANGES", "APPROVALS", "COMPLIANCE"], tint: "#EF4444", text: "NO IMPROVISING" }, // the four named no-go areas abs 7463→7538
+      { at: 477, scene: "check", obj: "brain", verdict: "check", tint: "#D97757", text: "MESSY + BOUNDED? AGENT" }, // "use an agent when the input is messy" abs 7701
+      { at: 606, scene: "funnel", badge: "DECISION", tint: "#F59E0B", text: "BOUNDED JOBS ONLY" }, // "classification, document interpretation…" abs 7830
+      { at: 801, scene: "bolt", blockLabel: "WORKFLOW", moduleLabel: "AGENT", tint: "#34D399", text: "CONNECT THE TWO" }, // "then connect the two" abs 8019
+      { at: 940, scene: "stamp", verdict: "check", badge: "WORKFLOW", tint: "#34D399", text: "VALIDATE → ESCALATE" }, // "let the workflow validate… escalate" abs 8164 (slam ~980)
+    ],
+    // full-anim: the no-improvising queue + the connect payoff
+    fullscreen: [{ from: 190, to: 380 }, { from: 780, to: 900 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
     style: "paper",

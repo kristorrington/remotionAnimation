@@ -170,7 +170,7 @@ const QueueBeat: React.FC<{ beat: Beat }> = ({ beat }) => (
       <div style={{ marginTop: 26 }}>
         <CartoonRobot pose="waiting" size={180} />
       </div>
-      <PromptQueue labels={(beat.labels ?? ["PROMPT", "TOOL", "RETRY"]).slice(0, 3)} at={4} cardW={108} />
+      <PromptQueue labels={(beat.labels ?? ["PROMPT", "TOOL", "RETRY"]).slice(0, 4)} at={4} cardW={(beat.labels ?? []).length >= 4 ? 96 : 108} />
       <div style={{ position: "relative", marginLeft: 14 }}>
         <div style={{ width: 160, height: 160, borderRadius: 24, display: "flex", alignItems: "center", justifyContent: "center", ...glassCard("#C15F3C") }}>
           <IconBrain size={110} />
