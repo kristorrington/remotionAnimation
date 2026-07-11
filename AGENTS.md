@@ -385,6 +385,13 @@ Transitions (reference: [CutFlash.tsx](src/components/CutFlash.tsx) +
   the config sets `Config.setTimeoutInMilliseconds(300000)` (or pass
   `--timeout=300000`); kill orphaned render processes; drop `--concurrency`
   (e.g. 8 → 4) if it recurs.
+- **`public/` holds ONLY the CURRENT + PREVIOUS footage proxies** (07/2026):
+  every render re-copies public/ into the bundle, so old rotated proxies bloat
+  every bundle and can starve browser setup past its timeout when renders are
+  chained ("Timed out … while setting up the headless browser"). Older proxies
+  live in `C:\ANIMATION_WORK\_footage-backup\proxies\` — move one back into
+  public/ only while re-rendering its archived comp. Also: render comps ONE AT
+  A TIME (never parallel terminals, close Studio during batch renders).
 - **In-flow content silently hidden behind an `AbsoluteFill` background** (CSS
   stacking, 07/2026): absolutely-positioned siblings (AnimatedBackground etc.)
   paint ABOVE later non-positioned in-flow content — elements "mysteriously"
