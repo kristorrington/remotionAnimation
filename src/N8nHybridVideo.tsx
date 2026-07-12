@@ -28,10 +28,10 @@ export const N8N_HYBRID_DUR = 9475;
 const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[] = [
   // face-first open + punch-in (§8): the hook question is delivered to camera
   { scene: "migrateStop", from: 90, dur: 255, fullscreen: true },
-  { scene: "tenfold", from: 350, dur: 190 },
-  { scene: "klarnaBack", from: 545, dur: 90 },
+  { scene: "tenfold", from: 350, dur: 98 },
+  { scene: "klarnaOpenProof", from: 452, dur: 180 }, // opening b-roll: Forbes right on the Klarna claim ("humans back" 430)
   { scene: "hybridIntro", from: 641, dur: 229, fullscreen: true },
-  { scene: "blurLabels", from: 906, dur: 190 },
+  { scene: "blurProof", from: 906, dur: 190 }, // opening b-roll: n8n's own hero IS the blur ("n8n leans" 936)
   { scene: "predictable", from: 1104, dur: 320 },
   { scene: "messFunnel", from: 1433, dur: 237, fullscreen: true },
   { scene: "bothCompare", from: 1678, dur: 175 },
@@ -77,13 +77,13 @@ export const N8nHybridVisuals: React.FC = () => {
       </Sequence>
 
       {/* 0:06 n8n grew 10× while no-code was "dying" */}
-      <Sequence from={350} durationInFrames={190} premountFor={30}>
-        <StatCountersScene durationInFrames={190} title="WHILE NO-CODE 'DIED'" stats={[{ label: "N8N REVENUE", value: 10, suffix: "×", at: 43 }]} accent="#34D399" />
+      <Sequence from={350} durationInFrames={98} premountFor={30}>
+        <StatCountersScene durationInFrames={98} title="WHILE NO-CODE 'DIED'" stats={[{ label: "N8N REVENUE", value: 10, suffix: "×", at: 43 }]} accent="#34D399" />
       </Sequence>
 
-      {/* 0:12 Klarna pulled humans back */}
-      <Sequence from={545} durationInFrames={90} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={90} title="HUMANS CAME BACK" accent="#F59E0B" />
+      {/* 0:15 opening b-roll: the Forbes headline as the Klarna claim is spoken */}
+      <Sequence from={452} durationInFrames={180} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={180} kicker="FORBES · MAY 2025" title="HUMANS CAME BACK" tint="#F59E0B" src="assets/external/screenshots/forbes-klarna-rehire.png" url="forbes.com" imageW={1600} imageH={1100} to={{ x: 0, y: 330, w: 1440, h: 340 }} zoomAt={16} highlight={{ x: 2, y: 393, w: 1396, h: 112 }} highlightAt={26} />
       </Sequence>
 
       {/* 0:21 the verdict: hybrid — the workflow slab + the AI judgement module */}
@@ -91,9 +91,9 @@ export const N8nHybridVisuals: React.FC = () => {
         <HybridStackScene durationInFrames={229} title="WORKFLOW + JUDGEMENT" slabLabel="WORKFLOW" agentLabel="AI" dockAt={171} tint="#34D399" />
       </Sequence>
 
-      {/* 0:30 the labels are blurring */}
+      {/* 0:30 opening b-roll: n8n's own homepage sells "AI agents and workflows" — the blur on screen */}
       <Sequence from={906} durationInFrames={190} premountFor={30}>
-        <FlowScene durationInFrames={190} title="BLURRED LABELS" nodes={[{ label: "n8n" }, { label: "Zapier" }, { label: "Make" }]} nodeAts={[30, 120, 132]} tint="#D97757" />
+        <ScreenshotReceiptScene durationInFrames={190} kicker="N8N.IO" title="LABELS BLURRING" tint="#D97757" src="assets/external/screenshots/n8n-homepage-hero.png" url="n8n.io" imageW={3000} imageH={2450} to={{ x: 250, y: 0, w: 2300, h: 1124 }} zoomAt={18} highlight={{ x: 385, y: 70, w: 1030, h: 220 }} highlightAt={40} />
       </Sequence>
 
       {/* 0:37 all three: trigger → run → predictable */}

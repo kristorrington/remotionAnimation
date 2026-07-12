@@ -16,9 +16,9 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
       break;
     // ── n8n-hybrid video (July 2026) ──
     case "tenfold": cues.push({ at: 43, type: "ding" }); break;
-    case "klarnaBack": cues.push({ at: 24, type: "boom" }); break;
+    case "klarnaOpenProof": cues.push({ at: 16, type: "whip" }, { at: 26, type: "switch" }); break;
     case "hybridIntro": cues.push({ at: 193, type: "boom" }); break; // agent module docks
-    case "blurLabels": cues.push({ at: 30, type: "switch" }, { at: 120, type: "switch" }, { at: 132, type: "switch" }); break;
+    case "blurProof": cues.push({ at: 18, type: "whip" }, { at: 40, type: "switch" }); break;
     case "predictable": cues.push({ at: 179, type: "switch" }, { at: 216, type: "switch" }, { at: 295, type: "switch" }); break;
     case "messFunnel": cues.push({ at: 117, type: "switch" }, { at: 152, type: "switch" }, { at: 178, type: "switch" }, { at: 210, type: "ding" }); break;
     case "bothCompare": cues.push({ at: 22, type: "whip" }, { at: 94, type: "ding" }); break;
