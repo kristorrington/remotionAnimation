@@ -936,12 +936,41 @@ const CartridgeBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => 
 // receipt — a REAL page screenshot as proof: the browser card pops in and
 // zooms to the claim (SourceScreenshot). Shorts receipts show BIG headlines
 // only (§9/§10) — the BeatLabel carries the message, the page proves it.
+// White sticker label for bleed mode — theme text is unreadable over a page.
+const BleedLabel: React.FC<{ text: string; top: number }> = ({ text, top }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const pop = spring({ frame: frame - 6, fps, config: { stiffness: 260, damping: 13 }, durationInFrames: 16 });
+  const fitted = React.useMemo(
+    () => Math.min(64, fitText({ text, withinWidth: 840, fontFamily: FONT, fontWeight: 900 }).fontSize),
+    [text],
+  );
+  return (
+    <div style={{ position: "absolute", top, left: "50%", transform: `translateX(-50%) rotate(-1.5deg) scale(${interpolate(pop, [0, 1], [1.16, 1])})`, opacity: interpolate(pop, [0, 0.3], [0, 1]) }}>
+      <div style={{ padding: "12px 30px", borderRadius: 16, background: "rgba(255,255,255,0.96)", boxShadow: "0 16px 44px rgba(31,30,29,0.35)" }}>
+        <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: fitted, color: "#1F1E1D", whiteSpace: "nowrap" }}>{text}</span>
+      </div>
+    </div>
+  );
+};
+
 const ReceiptBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const e = spring({ frame: frame - 2, fps, config: { stiffness: 240, damping: 14 }, durationInFrames: 16 });
   const s = beat.shot;
   if (!s) return null;
+  if (s.bleed) {
+    // page fills the layout; label rides a white sticker (hook owns the top
+    // in animHook, so "full" drops the sticker below it; "band" hugs the seam)
+    const vh = s.bleed === "full" ? 1920 : 838;
+    return (
+      <AbsoluteFill style={{ overflow: "hidden" }}>
+        <SourceScreenshot src={s.src} url={s.url} imageW={s.imageW} imageH={s.imageH} from={s.from} to={s.to} zoomAt={s.zoomAt} highlight={s.highlight} highlightAt={s.highlightAt} width={1080} height={vh} bleed />
+        <BleedLabel text={beat.text} top={s.bleed === "full" ? 545 : 24} />
+      </AbsoluteFill>
+    );
+  }
   return (
     <Wrap gap={34}>
       <div style={{ transform: `scale(${interpolate(e, [0, 1], [0.82, 1])}) rotate(${interpolate(e, [0, 1], [-2, 0])}deg)`, opacity: interpolate(e, [0, 0.3], [0, 1]) }}>

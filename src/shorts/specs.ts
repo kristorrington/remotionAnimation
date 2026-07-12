@@ -25,7 +25,9 @@ export const SHORTS: ShortSpec[] = [
     hookAlt: "THE NO-CODE DEATH IS FAKE", // A/B variant → Short-DontAbandon-B
     context: "Agent hype vs what the evidence shows",
     beats: [
-      // animHook opener: the n8n canvas full-screen under the hook from frame 0 (cardW 780 — survives the ×1.32 zoom)
+      // animHook opener: the n8n canvas CARD under the hook (full-bleed was
+      // tried and rejected here — the near-black hook text vanishes over a
+      // dark page; the hook needs ivory behind it)
       { at: 8, scene: "receipt", tint: "#D97757", text: "ABANDON N8N?", shot: { src: "assets/external/screenshots/n8n-homepage-hero.png", url: "n8n.io", imageW: 3000, imageH: 2450, from: { x: 450, y: 820, w: 2550, h: 1247 }, to: { x: 550, y: 900, w: 2450, h: 1198 }, zoomAt: 10 } },
       { at: 134, scene: "stamp", verdict: "cross", badge: "THE EVIDENCE", tint: "#EF4444", text: "SLOW DOWN" }, // "evidence says slow down" abs 140 (slam ~174)
       { at: 196, scene: "check", obj: "coin", verdict: "check", tint: "#34D399", text: "N8N REVENUE ×10" }, // "revenue grew 10-fold" abs 208
@@ -60,8 +62,9 @@ export const SHORTS: ShortSpec[] = [
       { at: 405, scene: "receipt", tint: "#F59E0B", text: "11 MIN → 2", shot: { src: "assets/external/screenshots/klarna-ai-assistant-pr.png", url: "klarna.com/press", imageW: 2700, imageH: 1500, to: { x: 240, y: 620, w: 1500, h: 858 }, zoomAt: 4, highlight: { x: 315, y: 1188, w: 1260, h: 72 }, highlightAt: 10 } },
       { at: 592, scene: "reject", badge: "QUALITY", tint: "#EF4444", text: "THEN IT BROKE", emoji: "📉" }, // "the quality problem surfaced" abs 2460
       // Forbes receipt as proof of the admission ("over-indexed on efficiency and cost" abs 2591).
-      // NOTE: the CTA owns the frame from dur−114 (886) — a beat at 897 never shows, so the receipt lives here.
-      { at: 723, scene: "receipt", tint: "#D97757", text: "OVER-INDEXED ON COST", shot: { src: "assets/external/screenshots/forbes-klarna-rehire.png", url: "forbes.com", imageW: 1600, imageH: 1100, to: { x: 0, y: 330, w: 1440, h: 340 }, zoomAt: 14, highlight: { x: 2, y: 393, w: 1396, h: 112 }, highlightAt: 110 } },
+      // BAND-BLEED: this beat lives purely in split view (spans end at 700; CTA
+      // owns the frame from dur−114=886), so the page fills the whole band.
+      { at: 723, scene: "receipt", tint: "#D97757", text: "OVER-INDEXED ON COST", shot: { src: "assets/external/screenshots/forbes-klarna-rehire.png", url: "forbes.com", imageW: 1600, imageH: 1100, to: { x: 0, y: 80, w: 1400, h: 1017 }, zoomAt: 14, highlight: { x: 2, y: 393, w: 1396, h: 112 }, highlightAt: 110, bleed: "band" } },
       { at: 897, scene: "stamp", verdict: "check", badge: "THE FIX", tint: "#34D399", text: "HUMANS CAME BACK" }, // "began hiring people again" abs 2765 (rides under the CTA)
     ],
     // full-anim: the good-numbers run + the break
