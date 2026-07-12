@@ -553,6 +553,21 @@
       ],
       "attributionRequired": false,
       "concerns": null
+    },
+    {
+      "filename": "chatgpt-logo.png",
+      "localPath": "public/chatgpt-logo.png",
+      "type": "logo",
+      "sourceUrl": null,
+      "sourceName": "Uploaded by Kris (official ChatGPT app icon)",
+      "dateAccessed": "2026-07-13",
+      "usageNote": "Official ChatGPT app icon (white blossom on teal tile, transparent corners, 960x960; converted from ChatGPT_logo.svg.webp). Product identification for commentary.",
+      "usedIn": [
+        "ChatGptWorkScenes (opener window, rivalry column, Sol incident window, agent cursor)",
+        "Short-WorkLaunch bolt beat (ChatGptMark)"
+      ],
+      "attributionRequired": false,
+      "concerns": "Source URL unknown (user-uploaded webp of the SVG). Prefer an original SVG from an official OpenAI brand page if one becomes available."
     }
   ]
 }

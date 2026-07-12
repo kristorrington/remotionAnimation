@@ -5,7 +5,7 @@ import { FONT } from "../components/overlayUI";
 import { CartoonRobot, ThoughtBubble, Sparks, SpeechBubble, RobotPose, glassCard, CYAN, WHITE, RED, AMBER, GREEN, PANEL } from "../motion/subjects";
 import { ModelBlock, SpeedModule, SpeedTrails, TokenCoin, CostMeterClimb, PromptQueue, CardStackDrop, ConveyorBelt, RetryWheel, ServerRack } from "../motion/objects";
 import { StalledBar, ImpactStamp } from "../motion/primitives";
-import { IconBrain, IconClock, IconGuard, IconPrice, IconBug, IconGauge } from "../components/Cartoons";
+import { IconBrain, IconClock, IconGuard, IconPrice, IconBug, IconGauge, ChatGptMark } from "../components/Cartoons";
 import { TintWash } from "../scenes/SceneShell";
 import { useTheme } from "../theme";
 import { SourceScreenshot } from "../motion/SourceScreenshot";
@@ -225,6 +225,14 @@ const BoltBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
     <Wrap gap={54}>
       <div style={{ position: "relative", transform: "scale(1.25)" }}>
         <ModelBlock label={beat.blockLabel ?? "V4"} width={300} />
+        {/* the real app icon badges the block's corner when the block IS
+            ChatGPT — never above it (props must stay inside the stage; a
+            floating mark escapes into the BeatLabel under the span zoom) */}
+        {beat.blockLabel === "CHATGPT" && (
+          <div style={{ position: "absolute", left: 246, top: 128, transform: `translateY(${Math.sin(frame * 0.09) * 4}px)` }}>
+            <ChatGptMark size={58} glow />
+          </div>
+        )}
         <div style={{ position: "absolute", left: -150, top: 56 }}>
           <SpeedModule at={8} label={beat.moduleLabel ?? "DSPARK"} />
         </div>

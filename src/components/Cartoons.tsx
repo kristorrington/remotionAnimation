@@ -85,6 +85,16 @@ export const DeepSeekMark: React.FC<{ size?: number }> = ({ size = 140 }) => (
   <LogoBadge src={staticFile("deepseek-logo.png")} size={size} mode="tile" glow="rgba(77,107,254,0.6)" />
 );
 
+// The ChatGPT app icon — Kris's supplied official asset (white blossom on the
+// teal tile, transparent corners). THE mark for ChatGPT in scenes/shorts;
+// `maxWidth:none` dodges the Tailwind preflight img squish (AGENTS §9).
+export const ChatGptMark: React.FC<{ size?: number; glow?: boolean }> = ({ size = 140, glow = false }) => (
+  <Img
+    src={staticFile("chatgpt-logo.png")}
+    style={{ width: size, height: size, objectFit: "contain", maxWidth: "none", display: "block", filter: glow ? "drop-shadow(0 0 18px rgba(116,170,156,0.6))" : undefined }}
+  />
+);
+
 // The OpenAI/ChatGPT blossom — native SVG recreation of the official mark
 // (§10.8: OpenAI's domains bot-wall direct asset downloads, so the logomark
 // is drawn from its canonical path instead of a fetched file). Vector-crisp

@@ -4,7 +4,7 @@ import { FONT, MONO } from "../components/overlayUI";
 import { SceneShell, SceneHeadline } from "./SceneShell";
 import { glassCard, impulse, Sparks, Puff, CYAN, WHITE, RED, AMBER, GREEN, PANEL } from "../motion/subjects";
 import { ImpactStamp, WarningBadge } from "../motion/primitives";
-import { OpenAiMark, ClaudeMark } from "../components/Cartoons";
+import { ChatGptMark, ClaudeMark } from "../components/Cartoons";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
@@ -98,7 +98,7 @@ export const OneWorkspaceScene: React.FC<{
             <div style={{ position: "absolute", left: "50%", top: "50%", transform: `translate(-50%, -50%) scale(${interpolate(pop, [0, 1], [0.5, 1]) * grow})`, opacity: interpolate(pop, [0, 0.3], [0, 1]) }}>
               <div style={{ ...glassCard(CYAN, 2), borderRadius: 24, width: 640, padding: 0, overflow: "hidden" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 14, padding: "16px 24px", borderBottom: "1px solid rgba(255,255,255,0.12)" }}>
-                  <OpenAiMark size={44} color={WHITE} pulse={false} />
+                  <ChatGptMark size={46} />
                   <span style={label(26)}>ChatGPT <span style={{ color: CYAN }}>Work</span></span>
                 </div>
                 <div style={{ padding: "22px 24px", display: "flex", flexDirection: "column", gap: 14 }}>
@@ -130,7 +130,7 @@ export const RivalryScene: React.FC<{
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const cols = [
-    { name: "CHATGPT", sub: "WORK", color: CYAN, mark: <OpenAiMark size={72} color={WHITE} pulse={false} />, fromY: -420 },
+    { name: "CHATGPT", sub: "WORK", color: CYAN, mark: <ChatGptMark size={76} glow />, fromY: -420 },
     { name: "CLAUDE", sub: "COWORK", color: "#D97757", mark: <ClaudeMark size={64} />, fromY: 420 },
     { name: "COPILOT", sub: "COWORK", color: "#60A5FA", mark: (
         <div style={{ width: 64, height: 64, borderRadius: 16, background: "#60A5FA22", border: "2px solid #60A5FA", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -192,7 +192,7 @@ export const SolIncidentScene: React.FC<{
         <div style={{ filter: frozen ? "grayscale(0.85) blur(1.6px) brightness(0.75)" : undefined }}>
           <div style={{ ...glassCard(RED, 2), borderRadius: 22, width: 760, overflow: "hidden" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "14px 22px", borderBottom: "1px solid rgba(255,255,255,0.12)" }}>
-              <OpenAiMark size={32} color={WHITE} pulse={false} />
+              <ChatGptMark size={34} />
               <span style={label(20)}>agent run — cleanup task</span>
               <span style={{ ...label(15, AMBER), marginLeft: "auto", border: `2px solid ${AMBER}`, borderRadius: 8, padding: "3px 10px" }}>ILLUSTRATION</span>
             </div>
@@ -273,9 +273,7 @@ export const NoBackupNoAgentScene: React.FC<{
           </div>
           {/* the agent cursor — a blossom-badged pointer */}
           <div style={{ position: "absolute", right: cursorX, top: 96, display: "flex", alignItems: "center", gap: 10 }}>
-            <div style={{ ...glassCard(CYAN, 2), borderRadius: 999, padding: 10, display: "flex" }}>
-              <OpenAiMark size={46} color={WHITE} pulse={false} />
-            </div>
+            <ChatGptMark size={56} glow />
             <svg width={34} height={40} viewBox="0 0 34 40" style={{ transform: "rotate(-18deg)" }}>
               <path d="M4 2 L30 22 L18 24 L24 38 L16 38 L12 26 L4 30 Z" fill={WHITE} stroke="rgba(0,0,0,0.4)" strokeWidth={2} />
             </svg>
