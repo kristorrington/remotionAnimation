@@ -24,7 +24,8 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "messFunnel": cues.push({ at: 117, type: "switch" }, { at: 152, type: "switch" }, { at: 178, type: "switch" }, { at: 210, type: "ding" }); break;
     case "bothCompare": cues.push({ at: 22, type: "whip" }, { at: 94, type: "ding" }); break;
     case "intelVsRely": cues.push({ at: 20, type: "boom" }); break;
-    case "klarnaStats": cues.push({ at: 176, type: "switch" }, { at: 286, type: "switch" }); break;
+    case "klarnaStats": cues.push({ at: 176, type: "switch" }); break;
+    case "klarnaPrProof": cues.push({ at: 8, type: "whip" }, { at: 34, type: "switch" }); break;
     case "qualityWall": cues.push({ at: 88, type: "boom" }); break; // the crash
     case "splitWork": cues.push({ at: 111, type: "switch" }); break;
     case "tooMuchTrust": cues.push({ at: 40, type: "switch" }, { at: 77, type: "whip" }, { at: 112, type: "boom" }, { at: 213, type: "ding" }); break;

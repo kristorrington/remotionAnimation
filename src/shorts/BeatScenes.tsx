@@ -945,7 +945,10 @@ const ReceiptBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
   return (
     <Wrap gap={34}>
       <div style={{ transform: `scale(${interpolate(e, [0, 1], [0.82, 1])}) rotate(${interpolate(e, [0, 1], [-2, 0])}deg)`, opacity: interpolate(e, [0, 0.3], [0, 1]) }}>
-        <SourceScreenshot src={s.src} url={s.url} imageW={s.imageW} imageH={s.imageH} from={s.from} to={s.to} zoomAt={s.zoomAt} highlight={s.highlight} highlightAt={s.highlightAt} width={s.cardW ?? 940} height={s.cardH ?? 560} />
+        {/* 780×500 default: beats crossfade INTO fullscreen spans, so every card
+            must survive the ×1.32 zoom (780 × 1.32 ≈ 1030 < 1080) — one size,
+            one position, every receipt aligned the same way */}
+        <SourceScreenshot src={s.src} url={s.url} imageW={s.imageW} imageH={s.imageH} from={s.from} to={s.to} zoomAt={s.zoomAt} highlight={s.highlight} highlightAt={s.highlightAt} width={s.cardW ?? 780} height={s.cardH ?? 500} />
       </div>
       <BeatLabel text={beat.text} sub={beat.sub} accent={beat.accent} />
     </Wrap>

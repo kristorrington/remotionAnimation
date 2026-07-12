@@ -37,7 +37,8 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
   { scene: "messFunnel", from: 1433, dur: 237, fullscreen: true },
   { scene: "bothCompare", from: 1678, dur: 175 },
   { scene: "intelVsRely", from: 1862, dur: 113, fullscreen: true },
-  { scene: "klarnaStats", from: 1987, dur: 343, fullscreen: true },
+  { scene: "klarnaStats", from: 1987, dur: 240, fullscreen: true },
+  { scene: "klarnaPrProof", from: 2239, dur: 105 }, // Klarna's own PR — "from 11 minutes to around 2" 2273
   { scene: "qualityWall", from: 2350, dur: 310, fullscreen: true },
   { scene: "klarnaRehireProof", from: 2694, dur: 168 }, // "began hiring people again" 2765
   { scene: "splitWork", from: 2867, dur: 170 },
@@ -125,8 +126,13 @@ export const N8nHybridVisuals: React.FC = () => {
       </Sequence>
 
       {/* 1:06 Klarna 2024: the numbers that looked like the future */}
-      <Sequence from={1987} durationInFrames={343} premountFor={30}>
-        <StatCountersScene durationInFrames={343} kicker="KLARNA, 2024" title="THE AI-ONLY DREAM" stats={[{ label: "AGENTS' WORK", value: 700, at: 176 }, { label: "MINUTES → 2", value: 11, at: 286 }]} accent="#F59E0B" />
+      <Sequence from={1987} durationInFrames={240} premountFor={30}>
+        <StatCountersScene durationInFrames={240} kicker="KLARNA, 2024" title="THE AI-ONLY DREAM" stats={[{ label: "AGENTS' WORK", value: 700, at: 176 }]} accent="#F59E0B" />
+      </Sequence>
+
+      {/* 1:14 receipt: Klarna's OWN press release carries the 11→2 claim */}
+      <Sequence from={2239} durationInFrames={105} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={105} kicker="KLARNA.COM · FEB 2024" title="THEIR OWN NUMBERS" tint="#34D399" src="assets/external/screenshots/klarna-ai-assistant-pr.png" url="klarna.com/press" imageW={2700} imageH={1500} to={{ x: 200, y: 350, w: 2300, h: 1124 }} zoomAt={8} highlight={{ x: 315, y: 1188, w: 1260, h: 72 }} highlightAt={34} />
       </Sequence>
 
       {/* 1:18 then the quality wall */}

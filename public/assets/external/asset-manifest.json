@@ -183,6 +183,21 @@
       ],
       "attributionRequired": false,
       "concerns": null
+    },
+    {
+      "filename": "klarna-ai-assistant-pr.png",
+      "localPath": "public/assets/external/screenshots/klarna-ai-assistant-pr.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/",
+      "sourceName": "Klarna press release (Feb 27, 2024)",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "Klarna own announcement: 700 full-time agents equivalent, 11 min → under 2 min; first-party receipt for the Klarna stats beats.",
+      "usedIn": [
+        "N8nHybridVideo klarnaPrProof",
+        "Short-KlarnaLesson 11-min beat"
+      ],
+      "attributionRequired": false,
+      "concerns": null
     }
   ]
 }

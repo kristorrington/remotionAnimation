@@ -61,8 +61,9 @@ export type Beat = {
   emoji?: string; // meme punch: ONE emoji pops with the beat (use ~1 per short)
   value?: number; // battery: target % · elevator: target floor index in `labels`
   // receipt: the manifested screenshot + the crop that proves the claim.
-  // Crop AGGRESSIVELY (big headlines only — no tiny source text on mobile);
-  // keep cardW ≤ ~800 if the beat sits inside a fullscreen span (×1.32 zoom).
+  // Crop AGGRESSIVELY (big headlines only — no tiny source text on mobile).
+  // Default card is 780×500 — safe under the ×1.32 span zoom even when the
+  // beat's window CROSSFADES INTO a fullscreen span; don't override upward.
   shot?: {
     src: string; url: string; imageW: number; imageH: number;
     from?: ShotRect; to: ShotRect; zoomAt?: number;

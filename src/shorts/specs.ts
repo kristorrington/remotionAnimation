@@ -26,7 +26,7 @@ export const SHORTS: ShortSpec[] = [
     context: "Agent hype vs what the evidence shows",
     beats: [
       // animHook opener: the n8n canvas full-screen under the hook from frame 0 (cardW 780 — survives the ×1.32 zoom)
-      { at: 8, scene: "receipt", tint: "#D97757", text: "ABANDON N8N?", shot: { src: "assets/external/screenshots/n8n-homepage-hero.png", url: "n8n.io", imageW: 3000, imageH: 2450, from: { x: 450, y: 820, w: 2550, h: 1247 }, to: { x: 550, y: 900, w: 2450, h: 1198 }, zoomAt: 10, cardW: 780, cardH: 500 } },
+      { at: 8, scene: "receipt", tint: "#D97757", text: "ABANDON N8N?", shot: { src: "assets/external/screenshots/n8n-homepage-hero.png", url: "n8n.io", imageW: 3000, imageH: 2450, from: { x: 450, y: 820, w: 2550, h: 1247 }, to: { x: 550, y: 900, w: 2450, h: 1198 }, zoomAt: 10 } },
       { at: 134, scene: "stamp", verdict: "cross", badge: "THE EVIDENCE", tint: "#EF4444", text: "SLOW DOWN" }, // "evidence says slow down" abs 140 (slam ~174)
       { at: 196, scene: "check", obj: "coin", verdict: "check", tint: "#34D399", text: "N8N REVENUE ×10" }, // "revenue grew 10-fold" abs 208
       // Forbes receipt — the evidence beat of the "evidence says slow down" hook ("bring more humans back" abs 413).
@@ -56,7 +56,8 @@ export const SHORTS: ShortSpec[] = [
     beats: [
       { at: 8, scene: "emote", pose: "pointing", tint: "#D97757", text: "THE CLEANEST WARNING" }, // spoken at open
       { at: 295, scene: "check", obj: "brain", verdict: "check", tint: "#34D399", text: "WORK OF 700 AGENTS" }, // "roughly 700 customer service agents" abs 2163
-      { at: 405, scene: "check", obj: "clock", verdict: "check", tint: "#F59E0B", text: "11 MIN → 2" }, // "from 11 minutes to around 2" abs 2273
+      // Klarna's OWN press release as the receipt ("from 11 minutes to around 2" abs 2273 → beat-rel 6)
+      { at: 405, scene: "receipt", tint: "#F59E0B", text: "11 MIN → 2", shot: { src: "assets/external/screenshots/klarna-ai-assistant-pr.png", url: "klarna.com/press", imageW: 2700, imageH: 1500, to: { x: 240, y: 620, w: 1500, h: 858 }, zoomAt: 4, highlight: { x: 315, y: 1188, w: 1260, h: 72 }, highlightAt: 10 } },
       { at: 592, scene: "reject", badge: "QUALITY", tint: "#EF4444", text: "THEN IT BROKE", emoji: "📉" }, // "the quality problem surfaced" abs 2460
       // Forbes receipt as proof of the admission ("over-indexed on efficiency and cost" abs 2591).
       // NOTE: the CTA owns the frame from dur−114 (886) — a beat at 897 never shows, so the receipt lives here.
@@ -84,8 +85,8 @@ export const SHORTS: ShortSpec[] = [
       { at: 178, scene: "check", obj: "gauge", verdict: "cross", tint: "#EF4444", text: "ONLY 23% SCALED" }, // "only 23% reported scaling" abs 5735
       { at: 330, scene: "emote", pose: "shrug", tint: "#F59E0B", text: "A SNAPSHOT, NOT FATE", emoji: "🤷" }, // "a snapshot, not a permanent failure rate" abs 5888
       { at: 519, scene: "queue", labels: ["RELIABILITY", "GOVERNANCE", "COST"], tint: "#EF4444", text: "WHERE IT HURTS" }, // "reliability, governance and cost" abs 6076
-      // Gartner receipt, full-screen span — cardW 780 so the ×1.32 zoom stays in frame ("40% of enterprise applications" abs 6209 → beat-rel 6)
-      { at: 652, scene: "receipt", tint: "#34D399", text: "40% ADOPT BY 2026", shot: { src: "assets/external/screenshots/gartner-40pct-agents-2026.png", url: "gartner.com/newsroom", imageW: 2000, imageH: 600, to: { x: 85, y: 68, w: 1660, h: 477 }, zoomAt: 4, highlight: { x: 112, y: 122, w: 1565, h: 100 }, highlightAt: 10, cardW: 780, cardH: 500 } },
+      // Gartner receipt, full-screen span ("40% of enterprise applications" abs 6209 → beat-rel 6)
+      { at: 652, scene: "receipt", tint: "#34D399", text: "40% ADOPT BY 2026", shot: { src: "assets/external/screenshots/gartner-40pct-agents-2026.png", url: "gartner.com/newsroom", imageW: 2000, imageH: 600, to: { x: 85, y: 68, w: 1660, h: 477 }, zoomAt: 4, highlight: { x: 112, y: 122, w: 1565, h: 100 }, highlightAt: 10 } },
       { at: 864, scene: "stamp", verdict: "cross", badge: "GARTNER", tint: "#EF4444", text: "40% CANCELLED BY 2027" }, // "over 40%… cancelled" abs 6421 (slam ~904)
     ],
     // full-anim: the 62/23 gap + the hurt list
@@ -106,8 +107,8 @@ export const SHORTS: ShortSpec[] = [
     context: "When to use n8n workflows vs AI agents",
     beats: [
       { at: 8, scene: "emote", pose: "pointing", tint: "#D97757", text: "ONE DECISION RULE" }, // spoken at open
-      // The n8n canvas IS the deterministic workflow ("use a deterministic workflow when…" abs 7325); cardW 780 — beat runs into the [190,380] span
-      { at: 101, scene: "receipt", tint: "#34D399", text: "EXPENSIVE MISTAKES? WORKFLOW", shot: { src: "assets/external/screenshots/n8n-homepage-hero.png", url: "n8n.io", imageW: 3000, imageH: 2450, from: { x: 450, y: 820, w: 2550, h: 1247 }, to: { x: 550, y: 900, w: 2450, h: 1198 }, zoomAt: 10, cardW: 780, cardH: 470 } },
+      // The n8n canvas IS the deterministic workflow ("use a deterministic workflow when…" abs 7325)
+      { at: 101, scene: "receipt", tint: "#34D399", text: "EXPENSIVE MISTAKES? WORKFLOW", shot: { src: "assets/external/screenshots/n8n-homepage-hero.png", url: "n8n.io", imageW: 3000, imageH: 2450, from: { x: 450, y: 820, w: 2550, h: 1247 }, to: { x: 550, y: 900, w: 2450, h: 1198 }, zoomAt: 10 } },
       { at: 240, scene: "queue", labels: ["PAYMENTS", "CHANGES", "APPROVALS", "COMPLIANCE"], tint: "#EF4444", text: "NO IMPROVISING" }, // the four named no-go areas abs 7463→7538
       { at: 477, scene: "check", obj: "brain", verdict: "check", tint: "#D97757", text: "MESSY + BOUNDED? AGENT" }, // "use an agent when the input is messy" abs 7701
       { at: 606, scene: "funnel", badge: "DECISION", tint: "#F59E0B", text: "BOUNDED JOBS ONLY" }, // "classification, document interpretation…" abs 7830
