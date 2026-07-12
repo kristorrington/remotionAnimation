@@ -499,8 +499,11 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   ~0.5s (HookTitle's near-instant stagger; never slow it back down), and the
   first frame doubles as the feed thumbnail — never open on an empty frame.
   Prefer 15–30s total (20–25s is the algorithm's sweet spot; >45s bleeds
-  retention); plant a secondary hook beat around ~14s. `animHook: true` is an
-  opt-in exception for when the first beat's gag IS the hook. Keep a beat at
+  retention); plant a secondary hook beat around ~14s. `animHook` is RETIRED
+  (Kris, July 2026): shorts ALWAYS open on the face — the pattern is face →
+  first fullscreen span lands on a SCREENSHOT receipt (when a claim anchors
+  one; route the first span to cover the first receipt beat) → continue.
+  Keep a beat at
   frame ~8 so the panel is populated the moment the split arrives. **Layout
   changes must DWELL**: the split view shows for ≥ ~3s or not at all —
   VerticalShort merges `fullscreen` spans closer than 90f, pushes a first
@@ -676,8 +679,8 @@ press kits, screenshots of official pages.
   receipts per short, big headlines only — body text never carries the message.
   **A screenshot lands inside the first 5 seconds** (Kris, July 2026): the
   video's FIRST COVER (frame ~90) is a product/receipt shot when the opening
-  line names a product; the flagship short opens `animHook` on that same shot
-  so frame 0 (= the feed thumbnail) already shows it.
+  line names a product; shorts open on the FACE and give that shot the FIRST
+  fullscreen span instead (animHook retired).
 
 ### 10.1 Asset research pass
 Before designing scenes, search the web for assets matching the transcript topic:

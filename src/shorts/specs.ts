@@ -25,22 +25,18 @@ export const SHORTS: ShortSpec[] = [
     hookAlt: "THE NO-CODE DEATH IS FAKE", // A/B variant → Short-DontAbandon-B
     context: "Agent hype vs what the evidence shows",
     beats: [
-      // animHook opener: the n8n canvas CARD under the hook (full-bleed was
-      // tried and rejected here — the near-black hook text vanishes over a
-      // dark page; the hook needs ivory behind it)
-      { at: 8, scene: "receipt", tint: "#D97757", text: "ABANDON N8N?", shot: { src: "assets/external/screenshots/n8n-homepage-hero.png", url: "n8n.io", imageW: 3000, imageH: 2450, from: { x: 450, y: 820, w: 2550, h: 1247 }, to: { x: 550, y: 900, w: 2450, h: 1198 }, zoomAt: 10 } },
+      { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "ABANDON N8N?" }, // populates the band as the split lands
       { at: 134, scene: "stamp", verdict: "cross", badge: "THE EVIDENCE", tint: "#EF4444", text: "SLOW DOWN" }, // "evidence says slow down" abs 140 (slam ~174)
-      { at: 196, scene: "check", obj: "coin", verdict: "check", tint: "#34D399", text: "N8N REVENUE ×10" }, // "revenue grew 10-fold" abs 208
+      // FACE → FULL-SCREEN SCREENSHOT (Kris's pattern): the n8n canvas takes
+      // the first span on the ×10 claim ("revenue grew 10-fold" abs 208)
+      { at: 196, scene: "receipt", tint: "#34D399", text: "N8N REVENUE ×10", shot: { src: "assets/external/screenshots/n8n-homepage-hero.png", url: "n8n.io", imageW: 3000, imageH: 2450, from: { x: 450, y: 820, w: 2550, h: 1247 }, to: { x: 550, y: 900, w: 2450, h: 1198 }, zoomAt: 10 } },
       // Forbes receipt — the evidence beat of the "evidence says slow down" hook ("bring more humans back" abs 413).
       // No emoji here: EmojiPop docks top-right and would touch the wide label.
       { at: 352, scene: "receipt", tint: "#F59E0B", text: "KLARNA REHIRED HUMANS", shot: { src: "assets/external/screenshots/forbes-klarna-rehire.png", url: "forbes.com", imageW: 1600, imageH: 1100, to: { x: 0, y: 330, w: 1440, h: 340 }, zoomAt: 14, highlight: { x: 2, y: 393, w: 1396, h: 112 }, highlightAt: 78 } },
       { at: 590, scene: "bolt", blockLabel: "WORKFLOW", moduleLabel: "AI", tint: "#34D399", text: "HYBRID STACK" }, // "favor a hybrid stack" abs 607
     ],
-    // full-anim: the slow-down stamp + the hybrid payoff
-    fullscreen: [{ from: 190, to: 330 }, { from: 540, to: 640 }],
-    // animHook: the short OPENS on the n8n canvas receipt (screenshot in the
-    // first second — the gag IS the hook; §9 carve-out)
-    animHook: true,
+    // full-anim: the canvas receipt goes full screen, then the hybrid payoff
+    fullscreen: [{ from: 196, to: 336 }, { from: 540, to: 640 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
     style: "paper",
@@ -67,8 +63,10 @@ export const SHORTS: ShortSpec[] = [
       { at: 723, scene: "receipt", tint: "#D97757", text: "OVER-INDEXED ON COST", shot: { src: "assets/external/screenshots/forbes-klarna-rehire.png", url: "forbes.com", imageW: 1600, imageH: 1100, to: { x: 0, y: 80, w: 1400, h: 1017 }, zoomAt: 14, highlight: { x: 2, y: 393, w: 1396, h: 112 }, highlightAt: 110, bleed: "band" } },
       { at: 897, scene: "stamp", verdict: "check", badge: "THE FIX", tint: "#34D399", text: "HUMANS CAME BACK" }, // "began hiring people again" abs 2765 (rides under the CTA)
     ],
-    // full-anim: the good-numbers run + the break
-    fullscreen: [{ from: 190, to: 330 }, { from: 560, to: 700 }],
+    // full-anim: ONE span on the Klarna-PR receipt + the quality break
+    // (face → full-screen screenshot pattern; a 405→545 + 560→700 pair would
+    // flash the split for 15f between them, so they merge)
+    fullscreen: [{ from: 405, to: 700 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
     style: "paper",
