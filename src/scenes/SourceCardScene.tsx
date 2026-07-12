@@ -3,6 +3,39 @@ import { interpolate, useCurrentFrame } from "remotion";
 import { FONT, MONO, CYAN, WHITE } from "../components/overlayUI";
 import { SceneShell, SceneHeadline } from "./SceneShell";
 import { FloatingPanel, HighlightSweep } from "../motion/primitives";
+import { SourceScreenshot } from "../motion/SourceScreenshot";
+
+type Rect = { x: number; y: number; w: number; h: number };
+
+// SCREENSHOT RECEIPT — mode E full scene for a REAL page screenshot: short
+// headline + the SourceScreenshot browser card panning/zooming into the crop
+// that proves the claim (CLAUDE.md §10.7 — the only way screenshots appear).
+export const ScreenshotReceiptScene: React.FC<{
+  durationInFrames: number;
+  kicker?: string;
+  title: string;
+  tint?: string;
+  src: string;
+  url: string;
+  imageW: number;
+  imageH: number;
+  from?: Rect;
+  to: Rect;
+  zoomAt?: number;
+  highlight?: Rect;
+  highlightAt?: number;
+  cardW?: number;
+  cardH?: number;
+}> = ({ durationInFrames, kicker, title, tint, src, url, imageW, imageH, from, to, zoomAt, highlight, highlightAt, cardW = 1240, cardH = 660 }) => {
+  return (
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x77} tint={tint}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 36 }}>
+        <SceneHeadline kicker={kicker} title={title} titleSize={58} />
+        <SourceScreenshot src={src} url={url} imageW={imageW} imageH={imageH} from={from} to={to} zoomAt={zoomAt} highlight={highlight} highlightAt={highlightAt} width={cardW} height={cardH} />
+      </div>
+    </SceneShell>
+  );
+};
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 

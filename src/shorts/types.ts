@@ -31,7 +31,11 @@ export type BeatSceneKey =
   | "doors"      // path picker: doors from `labels`, door `value` opens
   | "buyers"     // 3-people test: THREE buyer slots (+ robot); verdict "cross" = all ✗
   | "funnel"     // messy docs pour in, ONE clean report (`badge`) pops out
-  | "cartridge"; // SKILL.MD (`badge`) clicks into the model; identical runs pop out
+  | "cartridge"  // SKILL.MD (`badge`) clicks into the model; identical runs pop out
+  | "receipt";   // REAL page screenshot receipt (`shot`) — zoom hard, big headlines only
+
+// Image-pixel rectangle for receipt shots (crop / highlight regions).
+export type ShotRect = { x: number; y: number; w: number; h: number };
 
 // A "beat" = one tiny animated scene in the animation zone. `at` is relative to
 // the CLIP start. Beats should tile the whole clip so the zone is never empty.
@@ -56,6 +60,15 @@ export type Beat = {
   stamp?: string; // coins: impact stamp text
   emoji?: string; // meme punch: ONE emoji pops with the beat (use ~1 per short)
   value?: number; // battery: target % · elevator: target floor index in `labels`
+  // receipt: the manifested screenshot + the crop that proves the claim.
+  // Crop AGGRESSIVELY (big headlines only — no tiny source text on mobile);
+  // keep cardW ≤ ~800 if the beat sits inside a fullscreen span (×1.32 zoom).
+  shot?: {
+    src: string; url: string; imageW: number; imageH: number;
+    from?: ShotRect; to: ShotRect; zoomAt?: number;
+    highlight?: ShotRect; highlightAt?: number;
+    cardW?: number; cardH?: number;
+  };
 };
 
 // One short = one data entry. To turn a viral transcript moment into a Short,

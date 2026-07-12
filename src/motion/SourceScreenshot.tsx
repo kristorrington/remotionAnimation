@@ -61,7 +61,8 @@ export const SourceScreenshot: React.FC<{
       {/* the page, panned + zoomed to the proof */}
       <div style={{ position: "relative", width, height: inner, overflow: "hidden" }}>
         <div style={{ position: "absolute", transform: `translate(${tx}px, ${ty}px) scale(${scale})`, transformOrigin: "top left" }}>
-          <Img src={staticFile(src)} style={{ width: imageW, height: imageH, display: "block" }} />
+          {/* maxWidth:none — Tailwind preflight's img{max-width:100%} squishes pages wider than the card */}
+          <Img src={staticFile(src)} style={{ width: imageW, height: imageH, maxWidth: "none", display: "block" }} />
           {highlight && (
             <div style={{ position: "absolute", left: highlight.x, top: highlight.y, width: highlight.w, height: highlight.h, borderRadius: 8, border: `3px solid ${CYAN}`, background: `${CYAN}1A`, opacity: interpolate(frame, [highlightAt, highlightAt + 10], [0, 1], CLAMP), overflow: "hidden" }}>
               <HighlightSweep at={highlightAt + 6} />

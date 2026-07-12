@@ -57,6 +57,104 @@
       ],
       "attributionRequired": false,
       "concerns": "Figures as reported in coverage; verify against the primary McKinsey report before re-use."
+    },
+    {
+      "filename": "n8n-series-c-announcement.png",
+      "localPath": "public/assets/external/screenshots/n8n-series-c-announcement.png",
+      "type": "screenshot",
+      "sourceUrl": "https://blog.n8n.io/series-c/",
+      "sourceName": "n8n official blog",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "Cropped headline + funding quote ($180M / $240M total / $2.5B valuation); receipt for the money-round beat.",
+      "usedIn": [
+        "N8nHybridVideo seriesCProof"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "forbes-klarna-rehire.png",
+      "localPath": "public/assets/external/screenshots/forbes-klarna-rehire.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.forbes.com/sites/quickerbettertech/2025/05/18/business-tech-news-klarna-reverses-on-ai-says-customers-like-talking-to-people/",
+      "sourceName": "Forbes",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "Cropped headline: Klarna is hiring back human help after going all-in on AI; receipt for the rehire beat.",
+      "usedIn": [
+        "N8nHybridVideo klarnaRehireProof"
+      ],
+      "attributionRequired": false,
+      "concerns": "Editorial page screenshot used briefly as commentary receipt with source URL shown."
+    },
+    {
+      "filename": "akeneo-agentic-pr.png",
+      "localPath": "public/assets/external/screenshots/akeneo-agentic-pr.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.prnewswire.com/news-releases/akeneo-introduces-the-first-truly-agentic-product-experience-platform-302819885.html",
+      "sourceName": "PR Newswire (Akeneo release)",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "Cropped headline + Jul 08 2026 date; receipt for no-code platforms adding agent layers.",
+      "usedIn": [
+        "N8nHybridVideo akeneoProof"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "zapier-ceo-agents-post.png",
+      "localPath": "public/assets/external/screenshots/zapier-ceo-agents-post.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/wadefoster/status/1929559248104513672",
+      "sourceName": "Wade Foster on X",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "Cropped post card: more AI agents than employees; receipt for the Zapier bet beat.",
+      "usedIn": [
+        "N8nHybridVideo zapierPostProof"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "gartner-40pct-agents-2026.png",
+      "localPath": "public/assets/external/screenshots/gartner-40pct-agents-2026.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.gartner.com/en/newsroom/press-releases/2025-08-26-gartner-predicts-40-percent-of-enterprise-apps-will-feature-task-specific-ai-agents-by-2026-up-from-less-than-5-percent-in-2025",
+      "sourceName": "Gartner Newsroom",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "Cropped press-release headline (40% by 2026, up from <5%); receipt after the 40/40 balance beat.",
+      "usedIn": [
+        "N8nHybridVideo gartnerProof"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "fireship-saas-selloff-yt.png",
+      "localPath": "public/assets/external/screenshots/fireship-saas-selloff-yt.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.youtube.com/watch?v=cxcb55zr2Q8",
+      "sourceName": "YouTube — Fireship",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "Watch-page screenshot (player UI + title + channel row) as coverage receipt for the $1T SaaS sell-off.",
+      "usedIn": [
+        "N8nHybridVideo selloffProof"
+      ],
+      "attributionRequired": false,
+      "concerns": "Third-party creator content — page UI shown briefly for commentary with channel name visible; do not linger or crop out attribution."
+    },
+    {
+      "filename": "n8n-homepage-hero.png",
+      "localPath": "public/assets/external/screenshots/n8n-homepage-hero.png",
+      "type": "screenshot",
+      "sourceUrl": "https://n8n.io/",
+      "sourceName": "n8n official site",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "Homepage hero + workflow canvas; product b-roll on the keep-building line.",
+      "usedIn": [
+        "N8nHybridVideo n8nProductRoll"
+      ],
+      "attributionRequired": false,
+      "concerns": null
     }
   ]
 }

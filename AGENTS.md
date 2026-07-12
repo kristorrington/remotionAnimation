@@ -400,6 +400,13 @@ Transitions (reference: [CutFlash.tsx](src/components/CutFlash.tsx) +
   fade completes. Fix: give the content wrapper `position: "relative"`
   (Fable5Outro's column is the reference case). Symptom to watch for in QC
   stills: an element visible in Studio mid-fade but missing in rendered frames.
+- **Tailwind preflight squishes wide images** (07/2026, n8n b-roll): `index.css`
+  imports Tailwind, whose reset sets `img { max-width: 100%; height: auto }` —
+  any `<Img>` wider than its container silently compresses horizontally (page
+  screenshots render squeezed while sibling overlays sit at the correct
+  coordinates). Fix: `maxWidth: "none"` inline on every measured/panned `Img`
+  (SourceScreenshot is the reference case). Symptom: image and its highlight
+  rect disagree in QC stills.
 - **Long Finals (10k+ frames) stall/time out mid-render — RULE: render them
   with `node scripts/render-long.mjs <comp> <out.mp4> <totalFrames>`, never a
   single `remotion render`.** Root cause (07/2026, side-hustles video): the

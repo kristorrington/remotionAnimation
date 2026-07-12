@@ -523,8 +523,13 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   before dur−140 — it must never ride into the CTA where the face card puts
   it over the face; (4) the hook fades fully before the seam moves; (5) in
   SPLIT mode the panel content biases DOWN 48px (AnimationPanel `shift`) so
-  the top-anchored BeatLabel clears the seam-docked caption pill — never let
-  those two text blocks touch. QC stills of every short's transitions +
+  the top-anchored BeatLabel clears the seam-docked caption pill; (6) the CTA
+  owns the frame from **dur−114** — a beat starting at or after that frame
+  NEVER renders (the n8n Klarna receipt originally sat at 897/1000 and was
+  invisible), so the last beat must start well before dur−114 and payoffs that
+  the VO speaks under the CTA move earlier; (7) `Beat.emoji` docks top-right
+  and touches wide labels — don't combine an emoji with a near-full-width
+  BeatLabel on the same beat. QC stills of every short's transitions +
   full-anim beats before shipping.
 - **On-screen counts match the SPOKEN count** (Kris, July 2026): if the VO
   says "five options", the scene shows FIVE doors — never let a component
@@ -641,11 +646,23 @@ press kits, screenshots of official pages.
   `public/assets/external/charts/*.json` (with `sourceUrl` + `dateAccessed`,
   manifested like any asset); chart components import the JSON directly.
 - **Components:** `SourceScreenshot` (browser-chrome card + pan/zoom to the crop
-  + highlight sweep — the ONLY way screenshots appear), `LogoBadge`
-  (tile/transparent treatment for any manifest logo), chart kit in
+  + highlight sweep — the ONLY way screenshots appear), `ScreenshotReceiptScene`
+  (the mode-E full scene wrapping it: short headline + tint), the shorts beat
+  `scene: "receipt"` (`Beat.shot` — cardW ≤ ~800 inside a fullscreen span),
+  `LogoBadge` (tile/transparent treatment for any manifest logo), chart kit in
   `src/motion/charts.tsx` (`BarsIn`, `LineDraw`, `DonutFill`, `BarRace` + the
   `SourceChip` citation that must travel with every recreated chart), and
   `StatReceiptScene` (one big cited number).
+- **B-roll pass (editing research, July 2026):** raw full-page captures land in
+  `public/screenshots/<video>/` with a `sources.txt`; CROP the claim region via
+  ffmpeg into `public/assets/external/screenshots/` (manifest every crop; the
+  raw captures stay untracked). Receipts hold **2–5s**, the zoom starts ~0.5s
+  in, the highlight sweep fires ON the whisper word; a receipt may TRAIL its
+  spoken number by a beat (counters first, proof after) but never precede it.
+  Receipts cover PiP stretches (they double as jump-cut cover); vary the
+  pan/zoom direction between adjacent receipts, and never place two
+  browser-card receipts back to back (same-layout rule). Shorts: max ~1–2
+  receipts per short, big headlines only — body text never carries the message.
 
 ### 10.1 Asset research pass
 Before designing scenes, search the web for assets matching the transcript topic:

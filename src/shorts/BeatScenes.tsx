@@ -8,6 +8,7 @@ import { StalledBar, ImpactStamp } from "../motion/primitives";
 import { IconBrain, IconClock, IconGuard, IconPrice, IconBug, IconGauge } from "../components/Cartoons";
 import { TintWash } from "../scenes/SceneShell";
 import { useTheme } from "../theme";
+import { SourceScreenshot } from "../motion/SourceScreenshot";
 import { Beat } from "./types";
 
 // Per-beat ambient tints — every beat SHIFTS the wash colour (the beats
@@ -927,6 +928,25 @@ const CartridgeBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => 
 };
 
 // Meme punch: ONE oversized emoji pops with the beat (animated-meme energy).
+// receipt — a REAL page screenshot as proof: the browser card pops in and
+// zooms to the claim (SourceScreenshot). Shorts receipts show BIG headlines
+// only (§9/§10) — the BeatLabel carries the message, the page proves it.
+const ReceiptBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const e = spring({ frame: frame - 2, fps, config: { stiffness: 240, damping: 14 }, durationInFrames: 16 });
+  const s = beat.shot;
+  if (!s) return null;
+  return (
+    <Wrap gap={34}>
+      <div style={{ transform: `scale(${interpolate(e, [0, 1], [0.82, 1])}) rotate(${interpolate(e, [0, 1], [-2, 0])}deg)`, opacity: interpolate(e, [0, 0.3], [0, 1]) }}>
+        <SourceScreenshot src={s.src} url={s.url} imageW={s.imageW} imageH={s.imageH} from={s.from} to={s.to} zoomAt={s.zoomAt} highlight={s.highlight} highlightAt={s.highlightAt} width={s.cardW ?? 940} height={s.cardH ?? 560} />
+      </div>
+      <BeatLabel text={beat.text} sub={beat.sub} accent={beat.accent} />
+    </Wrap>
+  );
+};
+
 const EmojiPop: React.FC<{ emoji: string }> = ({ emoji }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -968,6 +988,7 @@ export const BeatSceneView: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur
       case "doors": return <DoorsBeat beat={beat} dur={dur} />;
       case "funnel": return <FunnelBeat beat={beat} dur={dur} />;
       case "cartridge": return <CartridgeBeat beat={beat} dur={dur} />;
+      case "receipt": return <ReceiptBeat beat={beat} />;
       default: return null;
     }
   };

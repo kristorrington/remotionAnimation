@@ -29,8 +29,16 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "tooMuchTrust": cues.push({ at: 40, type: "switch" }, { at: 77, type: "whip" }, { at: 112, type: "boom" }, { at: 213, type: "ding" }); break;
     case "moneyRound": cues.push({ at: 118, type: "switch" }, { at: 209, type: "switch" }, { at: 432, type: "switch" }); break;
     case "onePlace": cues.push({ at: 78, type: "switch" }, { at: 97, type: "switch" }, { at: 120, type: "switch" }, { at: 156, type: "switch" }, { at: 170, type: "whip" }); break;
-    case "zapierBet": cues.push({ at: 168, type: "switch" }, { at: 353, type: "ding" }); break;
+    case "zapierBet": cues.push({ at: 168, type: "switch" }); break;
     case "controlLayer": cues.push({ at: Math.round(dur * 0.44) + 24, type: "ding" }); break; // leak fixed
+    // screenshot receipts: whip on the zoom, switch on the highlight sweep
+    case "klarnaRehireProof": cues.push({ at: 18, type: "whip" }, { at: 71, type: "switch" }); break;
+    case "seriesCProof": cues.push({ at: 22, type: "whip" }, { at: 56, type: "switch" }); break;
+    case "zapierPostProof": cues.push({ at: 8, type: "whip" }, { at: 26, type: "switch" }); break;
+    case "akeneoProof": cues.push({ at: 20, type: "whip" }, { at: 121, type: "switch" }); break;
+    case "gartnerProof": cues.push({ at: 16, type: "whip" }, { at: 44, type: "switch" }); break;
+    case "selloffProof": cues.push({ at: 22, type: "whip" }, { at: 54, type: "switch" }); break;
+    case "n8nProductRoll": cues.push({ at: 30, type: "whip" }); break;
     case "mckinseyGap": cues.push({ at: 34, type: "whip" }, { at: 184, type: "switch" }); break;
     case "gapHurts": cues.push({ at: 100, type: "switch" }, { at: 135, type: "switch" }, { at: 161, type: "switch" }); break;
     case "fortyForty": cues.push({ at: 30, type: "switch" }, { at: 242, type: "whip" }, { at: 292, type: "boom" }); break;

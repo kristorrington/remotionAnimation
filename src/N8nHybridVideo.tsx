@@ -13,6 +13,7 @@ import { MigrateStopScene, SpeedWallScene, PlumbingScene, HiddenCostScene } from
 import { DocFunnelScene, AppFlowScene, FirstLineDeskScene } from "./scenes/SideHustleScenes";
 import { BalanceScaleScene, BenchBarsScene, GatesScene } from "./scenes/GptScenes";
 import { HybridStackScene } from "./scenes/HybridScenes";
+import { ScreenshotReceiptScene } from "./scenes/SourceCardScene";
 import { ThemeProvider } from "./theme";
 import mckinsey from "../public/assets/external/charts/mckinsey-agent-adoption.json";
 
@@ -37,20 +38,27 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
   { scene: "intelVsRely", from: 1862, dur: 113, fullscreen: true },
   { scene: "klarnaStats", from: 1987, dur: 343, fullscreen: true },
   { scene: "qualityWall", from: 2350, dur: 310, fullscreen: true },
+  { scene: "klarnaRehireProof", from: 2694, dur: 168 }, // "began hiring people again" 2765
   { scene: "splitWork", from: 2867, dur: 170 },
   { scene: "tooMuchTrust", from: 3161, dur: 279, fullscreen: true },
   { scene: "moneyRound", from: 3449, dur: 540 },
+  { scene: "seriesCProof", from: 3995, dur: 235 }, // receipt trails the counters ("did not confirm that figure" 3957)
   { scene: "onePlace", from: 4250, dur: 212, fullscreen: true },
-  { scene: "zapierBet", from: 4469, dur: 470 },
-  { scene: "controlLayer", from: 4954, dur: 400 },
+  { scene: "zapierBet", from: 4469, dur: 240 },
+  { scene: "zapierPostProof", from: 4712, dur: 227 }, // "more agents than employees" 4736
+  { scene: "controlLayer", from: 4954, dur: 126 },
+  { scene: "akeneoProof", from: 5080, dur: 250 }, // "Akeneo followed that pattern" 5086
   { scene: "mckinseyGap", from: 5551, dur: 319, fullscreen: true },
   { scene: "gapHurts", from: 5976, dur: 190 },
   { scene: "fortyForty", from: 6179, dur: 341, fullscreen: true },
   { scene: "bothHappen", from: 6535, dur: 125, fullscreen: true },
+  { scene: "gartnerProof", from: 6664, dur: 136 }, // receipt right after the 40/40 tip
   { scene: "sellOff", from: 6806, dur: 195 },
+  { scene: "selloffProof", from: 7006, dur: 170 }, // "market fear tells you what investors expect" 7012
   { scene: "knownSteps", from: 7316, dur: 330 },
   { scene: "boundedGates", from: 7651, dur: 355 },
   { scene: "hybridPayoff", from: 8018, dur: 412, fullscreen: true },
+  { scene: "n8nProductRoll", from: 8473, dur: 140 }, // "keep building in n8n, Make, or Zapier" 8479
   { scene: "skillsSurvive", from: 8623, dur: 240 },
   { scene: "oneFramework", from: 8868, dur: 240 },
   { scene: "autonomyMatters", from: 9117, dur: 213, fullscreen: true },
@@ -118,6 +126,11 @@ export const N8nHybridVisuals: React.FC = () => {
         <SpeedWallScene durationInFrames={310} title="THE QUALITY WALL" />
       </Sequence>
 
+      {/* 1:29 receipt: Forbes — Klarna hires humans back ("began hiring people again" 2765) */}
+      <Sequence from={2694} durationInFrames={168} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={168} kicker="FORBES · MAY 2025" title="HIRING AGAIN" tint="#F59E0B" src="assets/external/screenshots/forbes-klarna-rehire.png" url="forbes.com" imageW={1600} imageH={1100} to={{ x: 0, y: 280, w: 1600, h: 560 }} zoomAt={18} highlight={{ x: 2, y: 393, w: 1396, h: 112 }} highlightAt={71} />
+      </Sequence>
+
       {/* 1:35 the fix: AI keeps simple work, humans take judgement */}
       <Sequence from={2867} durationInFrames={170} premountFor={30}>
         <FirstLineDeskScene durationInFrames={170} title="SPLIT THE WORK" />
@@ -133,19 +146,34 @@ export const N8nHybridVisuals: React.FC = () => {
         <StatCountersScene durationInFrames={540} kicker="OCTOBER 2025" title="THE ORCHESTRATION BET" stats={[{ label: "$ MILLION RAISED", value: 180, at: 118 }, { label: "$ BILLION VALUATION", value: 2.5, decimals: 1, at: 209 }, { label: "$ MILLION REVENUE", value: 40, at: 432 }]} accent="#E8B84B" />
       </Sequence>
 
+      {/* 2:13 receipt: the Series C post itself ("did not confirm that figure" 3957) */}
+      <Sequence from={3995} durationInFrames={235} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={235} kicker="BLOG.N8N.IO · OCT 2025" title="THE RECEIPT" tint="#34D399" src="assets/external/screenshots/n8n-series-c-announcement.png" url="blog.n8n.io/series-c" imageW={3020} imageH={1580} to={{ x: 760, y: 920, w: 1580, h: 772 }} zoomAt={22} highlight={{ x: 950, y: 1140, w: 1250, h: 118 }} highlightAt={56} />
+      </Sequence>
+
       {/* 2:21 n8n = models + tools + data + workflows in ONE place */}
       <Sequence from={4250} durationInFrames={212} premountFor={30}>
         <AppFlowScene durationInFrames={212} title="ONE PLACE" apps={[{ label: "MODELS", at: 78 }, { label: "TOOLS", at: 97 }, { label: "DATA", at: 120 }, { label: "WORKFLOWS", at: 156 }]} connectAt={170} collapseAt={9999} />
       </Sequence>
 
       {/* 2:29 Zapier's identical bet: 800 internal agents */}
-      <Sequence from={4469} durationInFrames={470} premountFor={30}>
-        <StatCountersScene durationInFrames={470} kicker="ZAPIER'S BET" title="MORE AGENTS THAN STAFF" stats={[{ label: "INTERNAL AGENTS", value: 800, at: 168 }, { label: "PLATFORM", value: 1, at: 353 }]} accent="#D97757" />
+      <Sequence from={4469} durationInFrames={240} premountFor={30}>
+        <StatCountersScene durationInFrames={240} kicker="ZAPIER'S BET" title="MORE AGENTS THAN STAFF" stats={[{ label: "INTERNAL AGENTS", value: 800, at: 168 }]} accent="#D97757" />
       </Sequence>
 
-      {/* 2:45 the workflow layer becomes the control system (+ Akeneo) */}
-      <Sequence from={4954} durationInFrames={400} premountFor={30}>
-        <PlumbingScene durationInFrames={400} title="THE CONTROL LAYER" />
+      {/* 2:37 receipt: the CEO's post ("more agents than employees" 4736) */}
+      <Sequence from={4712} durationInFrames={227} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={227} kicker="X · JUNE 2025" title="THE CEO'S POST" tint="#D97757" src="assets/external/screenshots/zapier-ceo-agents-post.png" url="x.com/wadefoster" imageW={1200} imageH={640} to={{ x: 25, y: 30, w: 1150, h: 562 }} zoomAt={8} highlight={{ x: 42, y: 243, w: 680, h: 64 }} highlightAt={26} />
+      </Sequence>
+
+      {/* 2:45 the workflow layer becomes the control system */}
+      <Sequence from={4954} durationInFrames={126} premountFor={30}>
+        <PlumbingScene durationInFrames={126} title="THE CONTROL LAYER" />
+      </Sequence>
+
+      {/* 2:49 receipt: Akeneo bolts an agent layer onto its no-code platform ("launched an agent layer" 5201) */}
+      <Sequence from={5080} durationInFrames={250} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={250} kicker="PR NEWSWIRE · JUL 2026" title="AGENT LAYER ADDED" tint="#34D399" src="assets/external/screenshots/akeneo-agentic-pr.png" url="prnewswire.com" imageW={2150} imageH={800} to={{ x: 80, y: 40, w: 1360, h: 660 }} zoomAt={20} highlight={{ x: 108, y: 78, w: 1190, h: 330 }} highlightAt={121} />
       </Sequence>
 
       {/* 3:05 McKinsey: experimenting vs actually scaling */}
@@ -168,9 +196,19 @@ export const N8nHybridVisuals: React.FC = () => {
         <FinalTakeawayScene durationInFrames={125} title="BOTH HAPPEN" accent="#D97757" />
       </Sequence>
 
+      {/* 3:42 receipt: Gartner's own headline right after the 40/40 tip */}
+      <Sequence from={6664} durationInFrames={136} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={136} kicker="GARTNER · AUG 2025" title="40% BY 2026" tint="#F59E0B" src="assets/external/screenshots/gartner-40pct-agents-2026.png" url="gartner.com/newsroom" imageW={2000} imageH={600} to={{ x: 85, y: 68, w: 1660, h: 477 }} zoomAt={16} highlight={{ x: 112, y: 122, w: 1565, h: 100 }} highlightAt={44} cardH={410} />
+      </Sequence>
+
       {/* 3:47 the $1T sell-off */}
       <Sequence from={6806} durationInFrames={195} premountFor={30}>
         <StatCountersScene durationInFrames={195} kicker="FEBRUARY" title="PRICED FOR REPLACEMENT" stats={[{ label: "$ TRILLION SELL-OFF", value: 1, at: 28 }]} accent="#EF4444" />
+      </Sequence>
+
+      {/* 3:53 receipt: the coverage of the sell-off ("market fear tells you" 7012) */}
+      <Sequence from={7006} durationInFrames={170} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={170} kicker="YOUTUBE · FIRESHIP" title="THE $1T STORY" tint="#C15F3C" src="assets/external/screenshots/fireship-saas-selloff-yt.png" url="youtube.com" imageW={2760} imageH={1760} to={{ x: 0, y: 686, w: 2200, h: 1074 }} zoomAt={22} highlight={{ x: 25, y: 1528, w: 850, h: 72 }} highlightAt={54} />
       </Sequence>
 
       {/* 4:03 rule 1: known steps + expensive mistakes → workflow */}
@@ -186,6 +224,11 @@ export const N8nHybridVisuals: React.FC = () => {
       {/* 4:27 THE payoff: connect the two — agent recommends, workflow runs it */}
       <Sequence from={8018} durationInFrames={412} premountFor={30}>
         <HybridStackScene durationInFrames={412} kicker="MY BET" title="CORE + DECISION POINTS" slabLabel="WORKFLOW" agentLabel="AGENT" dockAt={65} chipLabels={["VALIDATE", "EXECUTE", "LOG", "RETRY", "ESCALATE"]} chipAts={[146, 168, 188, 200, 221]} tint="#34D399" />
+      </Sequence>
+
+      {/* 4:42 product b-roll: the actual canvas ("keep building in n8n, Make, or Zapier" 8479) */}
+      <Sequence from={8473} durationInFrames={140} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={140} kicker="N8N.IO" title="KEEP BUILDING" tint="#D97757" src="assets/external/screenshots/n8n-homepage-hero.png" url="n8n.io" imageW={3000} imageH={2450} from={{ x: 100, y: 0, w: 2900, h: 1418 }} to={{ x: 550, y: 900, w: 2450, h: 1198 }} zoomAt={30} />
       </Sequence>
 
       {/* 4:47 the skills that survive every platform cycle */}

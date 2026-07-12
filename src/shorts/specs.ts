@@ -28,7 +28,9 @@ export const SHORTS: ShortSpec[] = [
       { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "ABANDON N8N?" }, // hook question at open
       { at: 134, scene: "stamp", verdict: "cross", badge: "THE EVIDENCE", tint: "#EF4444", text: "SLOW DOWN" }, // "evidence says slow down" abs 140 (slam ~174)
       { at: 196, scene: "check", obj: "coin", verdict: "check", tint: "#34D399", text: "N8N REVENUE ×10" }, // "revenue grew 10-fold" abs 208
-      { at: 352, scene: "reject", badge: "AI-ONLY SUPPORT", tint: "#F59E0B", text: "KLARNA REHIRED HUMANS", emoji: "😬" }, // "bring more humans back" abs 413
+      // Forbes receipt — the evidence beat of the "evidence says slow down" hook ("bring more humans back" abs 413).
+      // No emoji here: EmojiPop docks top-right and would touch the wide label.
+      { at: 352, scene: "receipt", tint: "#F59E0B", text: "KLARNA REHIRED HUMANS", shot: { src: "assets/external/screenshots/forbes-klarna-rehire.png", url: "forbes.com", imageW: 1600, imageH: 1100, to: { x: 0, y: 330, w: 1440, h: 340 }, zoomAt: 14, highlight: { x: 2, y: 393, w: 1396, h: 112 }, highlightAt: 78 } },
       { at: 590, scene: "bolt", blockLabel: "WORKFLOW", moduleLabel: "AI", tint: "#34D399", text: "HYBRID STACK" }, // "favor a hybrid stack" abs 607
     ],
     // full-anim: the slow-down stamp + the hybrid payoff
@@ -52,8 +54,10 @@ export const SHORTS: ShortSpec[] = [
       { at: 295, scene: "check", obj: "brain", verdict: "check", tint: "#34D399", text: "WORK OF 700 AGENTS" }, // "roughly 700 customer service agents" abs 2163
       { at: 405, scene: "check", obj: "clock", verdict: "check", tint: "#F59E0B", text: "11 MIN → 2" }, // "from 11 minutes to around 2" abs 2273
       { at: 592, scene: "reject", badge: "QUALITY", tint: "#EF4444", text: "THEN IT BROKE", emoji: "📉" }, // "the quality problem surfaced" abs 2460
-      { at: 723, scene: "emote", pose: "facepalm", accent: "#F59E0B", tint: "#D97757", text: "OVER-INDEXED ON COST" }, // "over-indexed on efficiency and cost" abs 2591
-      { at: 897, scene: "stamp", verdict: "check", badge: "THE FIX", tint: "#34D399", text: "HUMANS CAME BACK" }, // "began hiring people again" abs 2765 (slam ~937)
+      // Forbes receipt as proof of the admission ("over-indexed on efficiency and cost" abs 2591).
+      // NOTE: the CTA owns the frame from dur−114 (886) — a beat at 897 never shows, so the receipt lives here.
+      { at: 723, scene: "receipt", tint: "#D97757", text: "OVER-INDEXED ON COST", shot: { src: "assets/external/screenshots/forbes-klarna-rehire.png", url: "forbes.com", imageW: 1600, imageH: 1100, to: { x: 0, y: 330, w: 1440, h: 340 }, zoomAt: 14, highlight: { x: 2, y: 393, w: 1396, h: 112 }, highlightAt: 110 } },
+      { at: 897, scene: "stamp", verdict: "check", badge: "THE FIX", tint: "#34D399", text: "HUMANS CAME BACK" }, // "began hiring people again" abs 2765 (rides under the CTA)
     ],
     // full-anim: the good-numbers run + the break
     fullscreen: [{ from: 190, to: 330 }, { from: 560, to: 700 }],
@@ -76,7 +80,8 @@ export const SHORTS: ShortSpec[] = [
       { at: 178, scene: "check", obj: "gauge", verdict: "cross", tint: "#EF4444", text: "ONLY 23% SCALED" }, // "only 23% reported scaling" abs 5735
       { at: 330, scene: "emote", pose: "shrug", tint: "#F59E0B", text: "A SNAPSHOT, NOT FATE", emoji: "🤷" }, // "a snapshot, not a permanent failure rate" abs 5888
       { at: 519, scene: "queue", labels: ["RELIABILITY", "GOVERNANCE", "COST"], tint: "#EF4444", text: "WHERE IT HURTS" }, // "reliability, governance and cost" abs 6076
-      { at: 652, scene: "check", obj: "clock", verdict: "warn", tint: "#34D399", text: "40% ADOPT BY 2026" }, // "up to 40% of enterprise applications" abs 6209
+      // Gartner receipt, full-screen span — cardW 780 so the ×1.32 zoom stays in frame ("40% of enterprise applications" abs 6209 → beat-rel 6)
+      { at: 652, scene: "receipt", tint: "#34D399", text: "40% ADOPT BY 2026", shot: { src: "assets/external/screenshots/gartner-40pct-agents-2026.png", url: "gartner.com/newsroom", imageW: 2000, imageH: 600, to: { x: 85, y: 68, w: 1660, h: 477 }, zoomAt: 4, highlight: { x: 112, y: 122, w: 1565, h: 100 }, highlightAt: 10, cardW: 780, cardH: 500 } },
       { at: 864, scene: "stamp", verdict: "cross", badge: "GARTNER", tint: "#EF4444", text: "40% CANCELLED BY 2027" }, // "over 40%… cancelled" abs 6421 (slam ~904)
     ],
     // full-anim: the 62/23 gap + the hurt list
