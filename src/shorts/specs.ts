@@ -29,10 +29,10 @@ export const SHORTS: ShortSpec[] = [
       { at: 134, scene: "stamp", verdict: "cross", badge: "THE EVIDENCE", tint: "#EF4444", text: "SLOW DOWN" }, // "evidence says slow down" abs 140 (slam ~174)
       // FACE → FULL-SCREEN SCREENSHOT (Kris's pattern): the n8n canvas takes
       // the first span on the ×10 claim ("revenue grew 10-fold" abs 208)
-      { at: 196, scene: "receipt", tint: "#34D399", text: "N8N REVENUE ×10", shot: { src: "assets/external/screenshots/n8n-homepage-hero.png", url: "n8n.io", imageW: 3000, imageH: 2450, from: { x: 300, y: 960, w: 2100, h: 1525 }, to: { x: 400, y: 1060, w: 1900, h: 1380 }, zoomAt: 10 } },
+      { at: 196, scene: "receipt", tint: "#34D399", text: "N8N REVENUE ×10", shot: { src: "assets/external/screenshots/n8n-canvas-tall.png", url: "n8n.io", imageW: 1900, imageH: 1380, from: { x: 114, y: 83, w: 1672, h: 1214 }, to: { x: 0, y: 0, w: 1900, h: 1380 }, zoomAt: 10 } },
       // Forbes receipt — the evidence beat of the "evidence says slow down" hook ("bring more humans back" abs 413).
       // No emoji here: EmojiPop docks top-right and would touch the wide label.
-      { at: 352, scene: "receipt", tint: "#F59E0B", text: "KLARNA REHIRED HUMANS", shot: { src: "assets/external/screenshots/forbes-klarna-rehire.png", url: "forbes.com", imageW: 1600, imageH: 1100, to: { x: 0, y: 80, w: 1400, h: 1017 }, zoomAt: 14, highlight: { x: 2, y: 393, w: 1396, h: 112 }, highlightAt: 78 } },
+      { at: 352, scene: "receipt", tint: "#F59E0B", text: "KLARNA REHIRED HUMANS", shot: { src: "assets/external/screenshots/forbes-klarna-tall.png", url: "forbes.com", imageW: 1400, imageH: 1017, from: { x: 84, y: 61, w: 1232, h: 895 }, to: { x: 0, y: 0, w: 1400, h: 1017 }, zoomAt: 14, highlight: { x: 2, y: 313, w: 1396, h: 112 }, highlightAt: 78 } },
       { at: 490, scene: "emote", pose: "worried", accent: "#EF4444", tint: "#EF4444", text: "PUSHED TOO HARD" }, // "pushing AI-led customer service too hard" abs 466-557 (ends the receipt before the span)
       { at: 590, scene: "bolt", blockLabel: "WORKFLOW", moduleLabel: "AI", tint: "#34D399", text: "HYBRID STACK" }, // "favor a hybrid stack" abs 607
     ],
@@ -57,12 +57,12 @@ export const SHORTS: ShortSpec[] = [
       { at: 8, scene: "emote", pose: "pointing", tint: "#D97757", text: "THE CLEANEST WARNING" }, // spoken at open
       { at: 295, scene: "check", obj: "brain", verdict: "check", tint: "#34D399", text: "WORK OF 700 AGENTS" }, // "roughly 700 customer service agents" abs 2163
       // Klarna's OWN press release as the receipt ("from 11 minutes to around 2" abs 2273 → beat-rel 6)
-      { at: 405, scene: "receipt", tint: "#F59E0B", text: "11 MIN → 2", shot: { src: "assets/external/screenshots/klarna-ai-assistant-pr.png", url: "klarna.com/press", imageW: 2700, imageH: 1500, to: { x: 340, y: 480, w: 1400, h: 1017 }, zoomAt: 4, highlight: { x: 315, y: 1188, w: 1260, h: 72 }, highlightAt: 10 } },
+      { at: 405, scene: "receipt", tint: "#F59E0B", text: "11 MIN → 2", shot: { src: "assets/external/screenshots/klarna-pr-tall.png", url: "klarna.com/press", imageW: 1400, imageH: 1017, from: { x: 84, y: 61, w: 1232, h: 895 }, to: { x: 0, y: 0, w: 1400, h: 1017 }, zoomAt: 4, highlight: { x: 15, y: 708, w: 1260, h: 72 }, highlightAt: 10 } },
       { at: 592, scene: "reject", badge: "QUALITY", tint: "#EF4444", text: "THEN IT BROKE", emoji: "📉" }, // "the quality problem surfaced" abs 2460
       // Forbes receipt as proof of the admission ("over-indexed on efficiency and cost" abs 2591).
       // Lives purely in split view (spans end at 700; the CTA owns the frame
       // from dur−114=886) — fills the band like every receipt.
-      { at: 723, scene: "receipt", tint: "#D97757", text: "OVER-INDEXED ON COST", shot: { src: "assets/external/screenshots/forbes-klarna-rehire.png", url: "forbes.com", imageW: 1600, imageH: 1100, to: { x: 0, y: 80, w: 1400, h: 1017 }, zoomAt: 14, highlight: { x: 2, y: 393, w: 1396, h: 112 }, highlightAt: 110 } },
+      { at: 723, scene: "receipt", tint: "#D97757", text: "OVER-INDEXED ON COST", shot: { src: "assets/external/screenshots/forbes-klarna-tall.png", url: "forbes.com", imageW: 1400, imageH: 1017, from: { x: 140, y: 90, w: 1232, h: 895 }, to: { x: 0, y: 0, w: 1400, h: 1017 }, zoomAt: 14, highlight: { x: 2, y: 313, w: 1396, h: 112 }, highlightAt: 110 } },
       { at: 897, scene: "stamp", verdict: "check", badge: "THE FIX", tint: "#34D399", text: "HUMANS CAME BACK" }, // "began hiring people again" abs 2765 (rides under the CTA)
     ],
     // full-anim: the quality-break reject only — the Klarna-PR receipt stays
@@ -89,7 +89,7 @@ export const SHORTS: ShortSpec[] = [
       { at: 519, scene: "queue", labels: ["RELIABILITY", "GOVERNANCE", "COST"], tint: "#EF4444", text: "WHERE IT HURTS" }, // "reliability, governance and cost" abs 6076
       // Gartner receipt, full-screen span ("40% of enterprise applications" abs 6209 → beat-rel 6).
       // The banner is short (600px) — the cover slice mega-zooms onto the "40%".
-      { at: 652, scene: "receipt", tint: "#34D399", text: "40% ADOPT BY 2026", shot: { src: "assets/external/screenshots/gartner-40pct-agents-2026.png", url: "gartner.com/newsroom", imageW: 2000, imageH: 600, from: { x: 430, y: 0, w: 900, h: 600 }, to: { x: 530, y: 0, w: 700, h: 507 }, zoomAt: 4, highlight: { x: 765, y: 120, w: 230, h: 105 }, highlightAt: 10 } },
+      { at: 652, scene: "receipt", tint: "#34D399", text: "40% ADOPT BY 2026", shot: { src: "assets/external/screenshots/gartner-40pct-tall.png", url: "gartner.com/newsroom", imageW: 826, imageH: 600, from: { x: 50, y: 36, w: 726, h: 527 }, to: { x: 0, y: 0, w: 826, h: 600 }, zoomAt: 4, highlight: { x: 285, y: 120, w: 230, h: 105 }, highlightAt: 10 } },
       { at: 864, scene: "stamp", verdict: "cross", badge: "GARTNER", tint: "#EF4444", text: "40% CANCELLED BY 2027" }, // "over 40%… cancelled" abs 6421 (slam ~904)
     ],
     // full-anim: the 62/23 gap + the hurt list only — the Gartner receipt
@@ -112,7 +112,7 @@ export const SHORTS: ShortSpec[] = [
     beats: [
       { at: 8, scene: "emote", pose: "pointing", tint: "#D97757", text: "ONE DECISION RULE" }, // spoken at open
       // The n8n canvas IS the deterministic workflow ("use a deterministic workflow when…" abs 7325)
-      { at: 101, scene: "receipt", tint: "#34D399", text: "EXPENSIVE MISTAKES? WORKFLOW", shot: { src: "assets/external/screenshots/n8n-homepage-hero.png", url: "n8n.io", imageW: 3000, imageH: 2450, from: { x: 300, y: 960, w: 2100, h: 1525 }, to: { x: 400, y: 1060, w: 1900, h: 1380 }, zoomAt: 10 } },
+      { at: 101, scene: "receipt", tint: "#34D399", text: "EXPENSIVE MISTAKES? WORKFLOW", shot: { src: "assets/external/screenshots/n8n-canvas-tall.png", url: "n8n.io", imageW: 1900, imageH: 1380, from: { x: 150, y: 100, w: 1672, h: 1214 }, to: { x: 0, y: 0, w: 1900, h: 1380 }, zoomAt: 10 } },
       { at: 240, scene: "queue", labels: ["PAYMENTS", "CHANGES", "APPROVALS", "COMPLIANCE"], tint: "#EF4444", text: "NO IMPROVISING" }, // the four named no-go areas abs 7463→7538
       { at: 477, scene: "check", obj: "brain", verdict: "check", tint: "#D97757", text: "MESSY + BOUNDED? AGENT" }, // "use an agent when the input is messy" abs 7701
       { at: 606, scene: "funnel", badge: "DECISION", tint: "#F59E0B", text: "BOUNDED JOBS ONLY" }, // "classification, document interpretation…" abs 7830

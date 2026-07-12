@@ -77,7 +77,7 @@ export const N8nHybridVisuals: React.FC = () => {
     <AbsoluteFill>
       {/* 0:03 FIRST COVER — the n8n canvas on screen the moment it's named */}
       <Sequence from={90} durationInFrames={75} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={75} title="ABANDON N8N?" tint="#D97757" src="assets/external/screenshots/n8n-homepage-hero.png" url="n8n.io" imageW={3000} imageH={2450} from={{ x: 450, y: 820, w: 2550, h: 1247 }} to={{ x: 550, y: 900, w: 2450, h: 1198 }} zoomAt={8} />
+        <ScreenshotReceiptScene durationInFrames={75} title="ABANDON N8N?" tint="#D97757" src="assets/external/screenshots/n8n-canvas-wide.png" url="n8n.io" imageW={2300} imageH={1229} from={{ x: 138, y: 74, w: 2024, h: 1082 }} to={{ x: 0, y: 0, w: 2300, h: 1229 }} zoomAt={8} />
       </Sequence>
 
       {/* 0:06 HOOK GAG — STOP: slow down (slam pinned to the spoken verdict) */}
@@ -92,7 +92,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 0:15 opening b-roll: the Forbes headline as the Klarna claim is spoken */}
       <Sequence from={452} durationInFrames={180} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={180} kicker="FORBES · MAY 2025" title="HUMANS CAME BACK" tint="#F59E0B" src="assets/external/screenshots/forbes-klarna-rehire.png" url="forbes.com" imageW={1600} imageH={1100} to={{ x: 0, y: 330, w: 1440, h: 340 }} zoomAt={16} highlight={{ x: 2, y: 393, w: 1396, h: 112 }} highlightAt={26} />
+        <ScreenshotReceiptScene durationInFrames={180} kicker="FORBES · MAY 2025" title="HUMANS CAME BACK" tint="#F59E0B" src="assets/external/screenshots/forbes-klarna-wide.png" url="forbes.com" imageW={1600} imageH={855} from={{ x: 96, y: 51, w: 1408, h: 753 }} to={{ x: 0, y: 0, w: 1600, h: 855 }} zoomAt={16} highlight={{ x: 2, y: 148, w: 1396, h: 112 }} highlightAt={26} />
       </Sequence>
 
       {/* 0:21 the verdict: hybrid — the workflow slab + the AI judgement module */}
@@ -102,7 +102,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 0:30 opening b-roll: n8n's own homepage sells "AI agents and workflows" — the blur on screen */}
       <Sequence from={906} durationInFrames={190} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={190} kicker="N8N.IO" title="LABELS BLURRING" tint="#D97757" src="assets/external/screenshots/n8n-homepage-hero.png" url="n8n.io" imageW={3000} imageH={2450} to={{ x: 250, y: 0, w: 2300, h: 1124 }} zoomAt={18} highlight={{ x: 385, y: 70, w: 1030, h: 220 }} highlightAt={40} />
+        <ScreenshotReceiptScene durationInFrames={190} kicker="N8N.IO" title="LABELS BLURRING" tint="#D97757" src="assets/external/screenshots/n8n-hero-wide.png" url="n8n.io" imageW={2900} imageH={1550} from={{ x: 290, y: 155, w: 2436, h: 1302 }} to={{ x: 0, y: 0, w: 2900, h: 1550 }} zoomAt={18} highlight={{ x: 385, y: 70, w: 1030, h: 220 }} highlightAt={40} />
       </Sequence>
 
       {/* 0:37 all three: trigger → run → predictable */}
@@ -132,7 +132,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 1:14 receipt: Klarna's OWN press release carries the 11→2 claim */}
       <Sequence from={2239} durationInFrames={105} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={105} kicker="KLARNA.COM · FEB 2024" title="THEIR OWN NUMBERS" tint="#34D399" src="assets/external/screenshots/klarna-ai-assistant-pr.png" url="klarna.com/press" imageW={2700} imageH={1500} to={{ x: 200, y: 350, w: 2300, h: 1124 }} zoomAt={8} highlight={{ x: 315, y: 1188, w: 1260, h: 72 }} highlightAt={34} />
+        <ScreenshotReceiptScene durationInFrames={105} kicker="KLARNA.COM · FEB 2024" title="THEIR OWN NUMBERS" tint="#34D399" src="assets/external/screenshots/klarna-pr-wide.png" url="klarna.com/press" imageW={2152} imageH={1150} from={{ x: 129, y: 69, w: 1894, h: 1012 }} to={{ x: 0, y: 0, w: 2152, h: 1150 }} zoomAt={8} highlight={{ x: 115, y: 838, w: 1260, h: 72 }} highlightAt={34} />
       </Sequence>
 
       {/* 1:18 then the quality wall */}
@@ -142,7 +142,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 1:29 receipt: Forbes — Klarna hires humans back ("began hiring people again" 2765) */}
       <Sequence from={2694} durationInFrames={168} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={168} kicker="FORBES · MAY 2025" title="HIRING AGAIN" tint="#F59E0B" src="assets/external/screenshots/forbes-klarna-rehire.png" url="forbes.com" imageW={1600} imageH={1100} to={{ x: 0, y: 280, w: 1600, h: 560 }} zoomAt={18} highlight={{ x: 2, y: 393, w: 1396, h: 112 }} highlightAt={71} />
+        <ScreenshotReceiptScene durationInFrames={168} kicker="FORBES · MAY 2025" title="HIRING AGAIN" tint="#F59E0B" src="assets/external/screenshots/forbes-klarna-wide.png" url="forbes.com" imageW={1600} imageH={855} from={{ x: 160, y: 85, w: 1408, h: 753 }} to={{ x: 0, y: 0, w: 1600, h: 855 }} zoomAt={18} highlight={{ x: 2, y: 148, w: 1396, h: 112 }} highlightAt={71} />
       </Sequence>
 
       {/* 1:35 the fix: AI keeps simple work, humans take judgement */}
@@ -162,12 +162,12 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 2:13 receipt: the Series C post itself ("did not confirm that figure" 3957) */}
       <Sequence from={3995} durationInFrames={150} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={150} kicker="BLOG.N8N.IO · OCT 2025" title="THE RECEIPT" tint="#34D399" src="assets/external/screenshots/n8n-series-c-announcement.png" url="blog.n8n.io/series-c" imageW={3020} imageH={1580} to={{ x: 760, y: 920, w: 1580, h: 772 }} zoomAt={22} highlight={{ x: 950, y: 1140, w: 1250, h: 118 }} highlightAt={56} />
+        <ScreenshotReceiptScene durationInFrames={150} kicker="BLOG.N8N.IO · OCT 2025" title="THE RECEIPT" tint="#34D399" src="assets/external/screenshots/n8n-seriesc-wide.png" url="blog.n8n.io/series-c" imageW={1650} imageH={882} from={{ x: 99, y: 53, w: 1452, h: 776 }} to={{ x: 0, y: 0, w: 1650, h: 882 }} zoomAt={22} highlight={{ x: 260, y: 440, w: 1250, h: 118 }} highlightAt={56} />
       </Sequence>
 
       {/* 2:18 receipt: the hype, measured — Zapier's own survey ("agent hype is accelerating" 4155) */}
       <Sequence from={4149} durationInFrames={91} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={91} kicker="ZAPIER SURVEY" title="HYPE, MEASURED" tint="#F59E0B" src="assets/external/screenshots/zapier-survey-84pct.png" url="zapier.com/blog/ai-agents-survey" imageW={2600} imageH={1700} to={{ x: 700, y: 20, w: 1470, h: 719 }} zoomAt={10} highlight={{ x: 855, y: 175, w: 400, h: 155 }} highlightAt={32} />
+        <ScreenshotReceiptScene durationInFrames={91} kicker="ZAPIER SURVEY" title="HYPE, MEASURED" tint="#F59E0B" src="assets/external/screenshots/zapier-survey-wide.png" url="zapier.com/blog/ai-agents-survey" imageW={2040} imageH={1090} from={{ x: 122, y: 65, w: 1795, h: 959 }} to={{ x: 0, y: 0, w: 2040, h: 1090 }} zoomAt={10} highlight={{ x: 295, y: 175, w: 400, h: 155 }} highlightAt={32} />
       </Sequence>
 
       {/* 2:21 n8n = models + tools + data + workflows in ONE place */}
@@ -177,7 +177,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 2:28 product b-roll: Zapier's agent product ("similar strategic bet" 4469) */}
       <Sequence from={4466} durationInFrames={124} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={124} kicker="ZAPIER.COM/AGENTS" title="THE SAME BET" tint="#C15F3C" src="assets/external/screenshots/zapier-agents-page.png" url="zapier.com/agents" imageW={3240} imageH={2600} to={{ x: 620, y: 60, w: 2100, h: 1026 }} zoomAt={16} highlight={{ x: 1140, y: 200, w: 970, h: 300 }} highlightAt={40} />
+        <ScreenshotReceiptScene durationInFrames={124} kicker="ZAPIER.COM/AGENTS" title="THE SAME BET" tint="#C15F3C" src="assets/external/screenshots/zapier-agents-wide.png" url="zapier.com/agents" imageW={2900} imageH={1550} from={{ x: 174, y: 93, w: 2552, h: 1364 }} to={{ x: 0, y: 0, w: 2900, h: 1550 }} zoomAt={16} highlight={{ x: 820, y: 70, w: 970, h: 300 }} highlightAt={40} />
       </Sequence>
 
       {/* 2:33 Zapier's identical bet: 800 internal agents */}
@@ -187,7 +187,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 2:37 receipt: the CEO's post ("more agents than employees" 4736) */}
       <Sequence from={4712} durationInFrames={227} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={227} kicker="X · JUNE 2025" title="THE CEO'S POST" tint="#D97757" src="assets/external/screenshots/zapier-ceo-agents-post.png" url="x.com/wadefoster" imageW={1200} imageH={640} to={{ x: 25, y: 30, w: 1150, h: 562 }} zoomAt={8} highlight={{ x: 42, y: 243, w: 680, h: 64 }} highlightAt={26} />
+        <ScreenshotReceiptScene durationInFrames={227} kicker="X · JUNE 2025" title="THE CEO'S POST" tint="#D97757" src="assets/external/screenshots/zapier-ceo-agents-post.png" url="x.com/wadefoster" imageW={1200} imageH={640} from={{ x: 72, y: 38, w: 1056, h: 563 }} to={{ x: 0, y: 0, w: 1200, h: 640 }} zoomAt={8} highlight={{ x: 42, y: 243, w: 680, h: 64 }} highlightAt={26} />
       </Sequence>
 
       {/* 2:45 the workflow layer becomes the control system */}
@@ -197,7 +197,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 2:49 receipt: Akeneo bolts an agent layer onto its no-code platform ("launched an agent layer" 5201) */}
       <Sequence from={5080} durationInFrames={250} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={250} kicker="PR NEWSWIRE · JUL 2026" title="AGENT LAYER ADDED" tint="#34D399" src="assets/external/screenshots/akeneo-agentic-pr.png" url="prnewswire.com" imageW={2150} imageH={800} to={{ x: 80, y: 40, w: 1360, h: 660 }} zoomAt={20} highlight={{ x: 108, y: 78, w: 1190, h: 330 }} highlightAt={121} />
+        <ScreenshotReceiptScene durationInFrames={250} kicker="PR NEWSWIRE · JUL 2026" title="AGENT LAYER ADDED" tint="#34D399" src="assets/external/screenshots/akeneo-pr-wide.png" url="prnewswire.com" imageW={1497} imageH={800} from={{ x: 90, y: 48, w: 1317, h: 704 }} to={{ x: 0, y: 0, w: 1497, h: 800 }} zoomAt={20} highlight={{ x: 8, y: 78, w: 1190, h: 330 }} highlightAt={121} />
       </Sequence>
 
       {/* 3:05 McKinsey: experimenting vs actually scaling */}
@@ -232,7 +232,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 3:53 receipt: the coverage of the sell-off ("market fear tells you" 7012) */}
       <Sequence from={7006} durationInFrames={170} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={170} kicker="YOUTUBE · FIRESHIP" title="THE $1T STORY" tint="#C15F3C" src="assets/external/screenshots/fireship-saas-selloff-yt.png" url="youtube.com" imageW={2760} imageH={1760} to={{ x: 0, y: 686, w: 2200, h: 1074 }} zoomAt={22} highlight={{ x: 25, y: 1528, w: 850, h: 72 }} highlightAt={54} />
+        <ScreenshotReceiptScene durationInFrames={170} kicker="YOUTUBE · FIRESHIP" title="THE $1T STORY" tint="#C15F3C" src="assets/external/screenshots/fireship-selloff-wide.png" url="youtube.com" imageW={2760} imageH={1475} from={{ x: 166, y: 89, w: 2429, h: 1298 }} to={{ x: 0, y: 0, w: 2760, h: 1475 }} zoomAt={22} highlight={{ x: 25, y: 1243, w: 850, h: 72 }} highlightAt={54} />
       </Sequence>
 
       {/* 4:03 rule 1: known steps + expensive mistakes → workflow */}

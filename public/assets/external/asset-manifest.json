@@ -67,7 +67,7 @@
       "dateAccessed": "2026-07-12",
       "usageNote": "Cropped headline + funding quote ($180M / $240M total / $2.5B valuation); receipt for the money-round beat.",
       "usedIn": [
-        "N8nHybridVideo seriesCProof"
+        "source master for -wide/-tall recuts"
       ],
       "attributionRequired": false,
       "concerns": null
@@ -81,7 +81,7 @@
       "dateAccessed": "2026-07-12",
       "usageNote": "Cropped headline: Klarna is hiring back human help after going all-in on AI; receipt for the rehire beat.",
       "usedIn": [
-        "N8nHybridVideo klarnaRehireProof"
+        "source master for -wide/-tall recuts"
       ],
       "attributionRequired": false,
       "concerns": "Editorial page screenshot used briefly as commentary receipt with source URL shown."
@@ -95,7 +95,7 @@
       "dateAccessed": "2026-07-12",
       "usageNote": "Cropped headline + Jul 08 2026 date; receipt for no-code platforms adding agent layers.",
       "usedIn": [
-        "N8nHybridVideo akeneoProof"
+        "source master for -wide/-tall recuts"
       ],
       "attributionRequired": false,
       "concerns": null
@@ -123,7 +123,7 @@
       "dateAccessed": "2026-07-12",
       "usageNote": "Cropped press-release headline (40% by 2026, up from <5%); receipt after the 40/40 balance beat.",
       "usedIn": [
-        "N8nHybridVideo gartnerProof"
+        "source master for -wide/-tall recuts; N8nHybridVideo gartnerProof"
       ],
       "attributionRequired": false,
       "concerns": null
@@ -137,7 +137,7 @@
       "dateAccessed": "2026-07-12",
       "usageNote": "Watch-page screenshot (player UI + title + channel row) as coverage receipt for the $1T SaaS sell-off.",
       "usedIn": [
-        "N8nHybridVideo selloffProof"
+        "source master for -wide/-tall recuts"
       ],
       "attributionRequired": false,
       "concerns": "Third-party creator content — page UI shown briefly for commentary with channel name visible; do not linger or crop out attribution."
@@ -151,7 +151,7 @@
       "dateAccessed": "2026-07-12",
       "usageNote": "Homepage hero + workflow canvas; product b-roll on the keep-building line.",
       "usedIn": [
-        "N8nHybridVideo n8nProductRoll"
+        "source master for -wide/-tall recuts; N8nHybridVideo n8nProductRoll pan"
       ],
       "attributionRequired": false,
       "concerns": null
@@ -165,7 +165,7 @@
       "dateAccessed": "2026-07-12",
       "usageNote": "84% plan-to-increase-investment stat card; receipt for the agent-hype-accelerating line.",
       "usedIn": [
-        "N8nHybridVideo surveyHype"
+        "source master for -wide/-tall recuts"
       ],
       "attributionRequired": false,
       "concerns": null
@@ -179,7 +179,7 @@
       "dateAccessed": "2026-07-12",
       "usageNote": "Meet-your-new-AI-teammates hero + agents dashboard; product b-roll for the similar-strategic-bet line.",
       "usedIn": [
-        "N8nHybridVideo zapierAgentsRoll"
+        "source master for -wide/-tall recuts"
       ],
       "attributionRequired": false,
       "concerns": null
@@ -193,8 +193,191 @@
       "dateAccessed": "2026-07-12",
       "usageNote": "Klarna own announcement: 700 full-time agents equivalent, 11 min → under 2 min; first-party receipt for the Klarna stats beats.",
       "usedIn": [
-        "N8nHybridVideo klarnaPrProof",
-        "Short-KlarnaLesson 11-min beat"
+        "source master for -wide/-tall recuts"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "n8n-canvas-wide.png",
+      "localPath": "public/assets/external/screenshots/n8n-canvas-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://n8n.io/",
+      "sourceName": "n8n official site",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "long-form 1.871 recut: workflow canvas (recut from n8n-homepage-hero.png)",
+      "usedIn": [
+        "N8nHybridVideo n8nOpenShot"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "n8n-canvas-tall.png",
+      "localPath": "public/assets/external/screenshots/n8n-canvas-tall.png",
+      "type": "screenshot",
+      "sourceUrl": "https://n8n.io/",
+      "sourceName": "n8n official site",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "shorts split-band 1.377 recut: workflow canvas (recut from n8n-homepage-hero.png)",
+      "usedIn": [
+        "Short-DontAbandon 196",
+        "Short-DecisionRule 101"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "n8n-hero-wide.png",
+      "localPath": "public/assets/external/screenshots/n8n-hero-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://n8n.io/",
+      "sourceName": "n8n official site",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "long-form 1.871 recut: hero + logos (recut from n8n-homepage-hero.png)",
+      "usedIn": [
+        "N8nHybridVideo blurProof"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "forbes-klarna-wide.png",
+      "localPath": "public/assets/external/screenshots/forbes-klarna-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.forbes.com/sites/quickerbettertech/2025/05/18/business-tech-news-klarna-reverses-on-ai-says-customers-like-talking-to-people/",
+      "sourceName": "Forbes",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "long-form 1.871 recut: headline + body (recut from forbes-klarna-rehire.png)",
+      "usedIn": [
+        "N8nHybridVideo klarnaOpenProof + klarnaRehireProof"
+      ],
+      "attributionRequired": false,
+      "concerns": "Editorial page screenshot used briefly as commentary receipt with source URL shown."
+    },
+    {
+      "filename": "forbes-klarna-tall.png",
+      "localPath": "public/assets/external/screenshots/forbes-klarna-tall.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.forbes.com/sites/quickerbettertech/2025/05/18/business-tech-news-klarna-reverses-on-ai-says-customers-like-talking-to-people/",
+      "sourceName": "Forbes",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "shorts split-band 1.377 recut (recut from forbes-klarna-rehire.png)",
+      "usedIn": [
+        "Short-DontAbandon 352",
+        "Short-KlarnaLesson 723"
+      ],
+      "attributionRequired": false,
+      "concerns": "Editorial page screenshot used briefly as commentary receipt with source URL shown."
+    },
+    {
+      "filename": "klarna-pr-wide.png",
+      "localPath": "public/assets/external/screenshots/klarna-pr-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/",
+      "sourceName": "Klarna press release (Feb 27, 2024)",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "long-form 1.871 recut: intro + bullets (recut from klarna-ai-assistant-pr.png)",
+      "usedIn": [
+        "N8nHybridVideo klarnaPrProof"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "klarna-pr-tall.png",
+      "localPath": "public/assets/external/screenshots/klarna-pr-tall.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/",
+      "sourceName": "Klarna press release (Feb 27, 2024)",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "shorts split-band 1.377 recut: bullets (recut from klarna-ai-assistant-pr.png)",
+      "usedIn": [
+        "Short-KlarnaLesson 405"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "n8n-seriesc-wide.png",
+      "localPath": "public/assets/external/screenshots/n8n-seriesc-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://blog.n8n.io/series-c/",
+      "sourceName": "n8n official blog",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "long-form 1.871 recut: funding quote (recut from n8n-series-c-announcement.png)",
+      "usedIn": [
+        "N8nHybridVideo seriesCProof"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "zapier-survey-wide.png",
+      "localPath": "public/assets/external/screenshots/zapier-survey-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://zapier.com/blog/ai-agents-survey/",
+      "sourceName": "Zapier AI agents survey (2026)",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "long-form 1.871 recut: 84% stat card (recut from zapier-survey-84pct.png)",
+      "usedIn": [
+        "N8nHybridVideo surveyHype"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "zapier-agents-wide.png",
+      "localPath": "public/assets/external/screenshots/zapier-agents-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://zapier.com/agents",
+      "sourceName": "Zapier Agents product page",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "long-form 1.871 recut: hero + agents UI (recut from zapier-agents-page.png)",
+      "usedIn": [
+        "N8nHybridVideo zapierAgentsRoll"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "akeneo-pr-wide.png",
+      "localPath": "public/assets/external/screenshots/akeneo-pr-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.prnewswire.com/news-releases/akeneo-introduces-the-first-truly-agentic-product-experience-platform-302819885.html",
+      "sourceName": "PR Newswire (Akeneo release)",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "long-form 1.871 recut: headline + date (recut from akeneo-agentic-pr.png)",
+      "usedIn": [
+        "N8nHybridVideo akeneoProof"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "fireship-selloff-wide.png",
+      "localPath": "public/assets/external/screenshots/fireship-selloff-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.youtube.com/watch?v=cxcb55zr2Q8",
+      "sourceName": "YouTube — Fireship",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "long-form 1.871 recut: player + title + channel (recut from fireship-saas-selloff-yt.png)",
+      "usedIn": [
+        "N8nHybridVideo selloffProof"
+      ],
+      "attributionRequired": false,
+      "concerns": "Third-party creator content — page UI shown briefly for commentary with channel name visible; do not linger or crop out attribution."
+    },
+    {
+      "filename": "gartner-40pct-tall.png",
+      "localPath": "public/assets/external/screenshots/gartner-40pct-tall.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.gartner.com/en/newsroom/press-releases/2025-08-26-gartner-predicts-40-percent-of-enterprise-apps-will-feature-task-specific-ai-agents-by-2026-up-from-less-than-5-percent-in-2025",
+      "sourceName": "Gartner Newsroom",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "shorts split-band 1.377 recut: 40% zoom (recut from gartner-40pct-agents-2026.png)",
+      "usedIn": [
+        "Short-AgentGap 652"
       ],
       "attributionRequired": false,
       "concerns": null
