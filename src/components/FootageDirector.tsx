@@ -13,6 +13,8 @@ type Framing = { at: number; scale: number; y?: number };
 // Jump-cut schedule. Each entry snaps the framing (a cut); within the segment a
 // gentle push drifts it a hair so the shot never sits still. Cuts land inside the
 // visible talking gaps between cutaways — under a cutaway the framing is hidden.
+// PER-VIDEO: pass `framing` from the Final (gaps move with every edit); this
+// default is the legacy schedule the archived finals were tuned against.
 const FRAMING: Framing[] = [
   { at: 0,     scale: 1.05, y: -1 }, // cold open — barely punched
   { at: 1122,  scale: 1.12, y: -2 }, // gentle push for the point
@@ -40,16 +42,16 @@ const GRAIN = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 // The talking-head footage, "directed": punch-in jump cuts + a slow push, a warm
 // cinematic grade, a vignette and animated grain. Sits *under* the animation track
 // so the cards keep their own palette; only the footage is treated.
-export const FootageDirector: React.FC<{ footage: string; volume?: number }> = ({ footage, volume = 3 }) => {
+export const FootageDirector: React.FC<{ footage: string; volume?: number; framing?: Framing[] }> = ({ footage, volume = 3, framing = FRAMING }) => {
   const frame = useCurrentFrame();
 
   // Which framing segment are we in, and how far through it?
   let i = 0;
-  for (let k = 0; k < FRAMING.length; k++) {
-    if (frame >= FRAMING[k].at) i = k;
+  for (let k = 0; k < framing.length; k++) {
+    if (frame >= framing[k].at) i = k;
   }
-  const cur = FRAMING[i];
-  const next = FRAMING[i + 1];
+  const cur = framing[i];
+  const next = framing[i + 1];
   const segEnd = next ? next.at : frame + 1;
   const t = interpolate(frame, [cur.at, segEnd], [0, 1], CLAMP);
   const scale = cur.scale + PUSH * t;

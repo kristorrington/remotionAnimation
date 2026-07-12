@@ -669,6 +669,108 @@ Follow @kristorrington for AI automation that survives the real world.
 
 ---
 
+# ChatGPT Work "learn it, don't trust it" (2026-07-13)
+
+## Short-WorkLaunch (THE HOOK)
+
+**Title**
+```
+ChatGPT Work Explained in 26 Seconds #Shorts
+```
+
+**Description**
+```
+ChatGPT Work wants one window to run your work apps, files, and code — Codex folded straight into ChatGPT, plus one directory for Slack, Gmail, Salesforce and the rest.
+
+The promise is fewer tabs and more finished work in one conversation. The catches: pricing is unclear, access is uneven, and the launch-week reports deserve a look before you trust it.
+
+Would you hand your work apps to one window? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #ChatGPT #OpenAI #ChatGPTWork #Productivity #Shorts
+```
+
+## Short-WorkLaunch-B (A/B hook variant — hook "ONE WINDOW FOR ALL YOUR WORK")
+
+**Title**
+```
+One Window for All Your Work? ChatGPT Work Explained #Shorts
+```
+
+**Description** — same as Short-WorkLaunch. Post both, keep the winner.
+
+## Short-SolIncident
+
+**Title**
+```
+AI Deleted User Files? The ChatGPT Work Reports #Shorts
+```
+
+**Description**
+```
+Launch week turned into a trust test: July 11 reports describe quota resets, redesign confusion — and one unverified outlet report of two Sol incidents where user files were deleted during agentic runs.
+
+No official OpenAI acknowledgement confirms a deletion bug. The right response is caution without pretending it's confirmed: agents with file access can damage the work they're meant to accelerate.
+
+Would you give an agent write access this week? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #ChatGPT #OpenAI #AIAgents #AISafety #Shorts
+```
+
+## Short-SolIncident-B (A/B hook variant — hook "DON'T GIVE AI YOUR ONLY COPY")
+
+**Title**
+```
+Don't Give AI Your Only Copy — ChatGPT Work Reports #Shorts
+```
+
+**Description** — same as Short-SolIncident. Post both, keep the winner.
+
+## Short-BackupRule
+
+**Title**
+```
+No Backup, No Agent — the ChatGPT Work Rule #Shorts
+```
+
+**Description**
+```
+A useful agent needs permissions. A trustworthy agent needs limits.
+
+Launch coverage focused on models, integrations and polished demos — file safety deserves equal attention, because the product is asking for deeper access to your work. So the rule is simple: never run agentic tasks against anything that lacks a backup, and treat an official patch note on file safety as your green light.
+
+What's your rule for agent access? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #ChatGPT #AIAgents #AISafety #Productivity #Shorts
+```
+
+## Short-SolTerraLuna
+
+**Title**
+```
+Trump Delayed GPT-5.6 — Sol, Terra and Luna Explained #Shorts
+```
+
+**Description**
+```
+GPT-5.6 launched with three named models — Sol, Terra, and Luna — and public reporting still doesn't define their roles clearly.
+
+The unusual part is the launch itself: Engadget and The Decoder reported the Trump administration restricted access pending a national-security review, and The Tech Portal said the review covered cyber, biological, and military risk. Heavy scrutiny for a chatbot release — because agents acting across work systems raise the stakes.
+
+Which model would you actually use? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #GPT56 #OpenAI #ChatGPT #TechNews #Shorts
+```
+
+---
+
 # n8n vs agents "hybrid stack" (2026-07-11)
 
 ## Short-DontAbandon (THE HOOK)

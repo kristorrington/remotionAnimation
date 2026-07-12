@@ -61,7 +61,25 @@ export const ChatGptWorkFinal: React.FC = () => {
           boxShadow: introZoom < 1 ? "0 24px 70px rgba(31,30,29,0.30)" : undefined,
         }}
       >
-        <FootageDirector footage={FOOTAGE} volume={2.5} />
+        {/* jump-cuts retimed to THIS footage's visible face gaps (2026-07-13) */}
+        <FootageDirector
+          footage={FOOTAGE}
+          volume={2.5}
+          framing={[
+            { at: 0, scale: 1.05, y: -1 },
+            { at: 640, scale: 1.1, y: -2 },
+            { at: 1680, scale: 1.0, y: 0 },
+            { at: 2750, scale: 1.08, y: -1 },
+            { at: 3880, scale: 1.12, y: -2 },
+            { at: 5100, scale: 1.0, y: 0 },
+            { at: 5850, scale: 1.07, y: -1 },
+            { at: 6640, scale: 1.12, y: -2 },
+            { at: 7360, scale: 1.05, y: -1 },
+            { at: 8600, scale: 1.1, y: -2 },
+            { at: 9200, scale: 1.06, y: -1 },
+            { at: 9760, scale: 1.0, y: 0 },
+          ]}
+        />
       </AbsoluteFill>
 
       {/* one continuous paper bridge per span, UNDER the cards */}

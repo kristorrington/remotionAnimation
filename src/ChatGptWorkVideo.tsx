@@ -24,7 +24,7 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
   // face-first open + punch-in (§8); the first cover is the logo opener
   { scene: "oneWorkspace", from: 90, dur: 190, fullscreen: true }, // panels dive in on "folds Codex into ChatGPT" (190)
   { scene: "dirPan", from: 300, dur: 150 }, // "adds one directory for the tools your business already uses" (296)
-  { scene: "fewerTabs", from: 460, dur: 130 }, // "fewer tabs, fewer handoffs" (~445-585)
+  { scene: "fewerTabs", from: 415, dur: 130 }, // "fewer tabs" (405) → "one conversation" (520)
   { scene: "migrateStop", from: 862, dur: 158, fullscreen: true }, // "learn it now, do not trust it with your only copy" (870-1016)
   { scene: "launchProof", from: 1060, dur: 180 }, // "launched on Thursday, July 9th" (1077)
   { scene: "notRebrand", from: 1290, dur: 100 }, // "an Enterprise rebrand misses the product change" (1300-1390)
@@ -33,7 +33,7 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
   { scene: "productSplit", from: 2100, dur: 300, fullscreen: true }, // "a genuine product split across the same account ecosystem" (2310-2433)
   { scene: "rivalry", from: 2445, dur: 250, fullscreen: true }, // "ChatGPT Work versus Claude Cowork and Copilot" (2445-2705)
   { scene: "modelsProof", from: 2900, dur: 200 }, // "three named models: Sol, Terra, and Luna" (2893)
-  { scene: "rolesUnclear", from: 3120, dur: 110 }, // "reporting does not define those roles clearly" (3170-3240)
+  { scene: "rolesUnclear", from: 3060, dur: 110 }, // "does not define those roles clearly" (3054-3151)
   { scene: "staggerProof", from: 3250, dur: 140 }, // "how the release got delayed" (3240)
   { scene: "scanner", from: 3400, dur: 180, fullscreen: true }, // "restricted access pending a national security review" (3387-3560)
   { scene: "reviewScopeProof", from: 3590, dur: 230 }, // "cyber, biological, and military risk" (3590-3660)
@@ -48,15 +48,15 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
   { scene: "connectorWarn", from: 5900, dur: 150 }, // "not assume every connector can read, write, automate" (5873-6090)
   { scene: "strategyProof", from: 6120, dur: 200 }, // "sit across Microsoft 365 and Google Workspace" (6225)
   { scene: "controlLayer", from: 6380, dur: 210, fullscreen: true }, // "the control layer across your work stack" (6460)
-  { scene: "trustTest", from: 6700, dur: 120 }, // "launch week turns into a trust test" (6712)
+  { scene: "trustTest", from: 6655, dur: 120 }, // "launch week turns into a trust test" (6651-6734)
   { scene: "unverifiedCard", from: 6830, dur: 150 }, // "quota resets and confusion around the redesign" (6829)
   { scene: "solIncident", from: 6990, dur: 330, fullscreen: true }, // "two Sol incidents... deleted" (6993) → NOT CONFIRMED (7162)
   { scene: "damageAtSpeed", from: 7440, dur: 220, fullscreen: true }, // "an agent with file access can damage the work" (7500-7660)
   { scene: "needsPermissions", from: 7660, dur: 95 }, // "a useful agent needs permissions" (7660-7738)
   { scene: "needsLimits", from: 7755, dur: 170 }, // "a trustworthy agent needs limits" (7738-7830)
   { scene: "demosHide", from: 7860, dur: 240, fullscreen: true }, // "coverage focused on... polished demos; file safety deserves equal attention" (7856-8100)
-  { scene: "backupRule", from: 8110, dur: 260, fullscreen: true }, // "do not run agentic tasks against anything that lacks a backup" (8140-8260)
-  { scene: "greenLight", from: 8400, dur: 140 }, // "official acknowledgment or patch note" (8323-8440)
+  { scene: "backupRule", from: 8110, dur: 200, fullscreen: true }, // "do not run agentic tasks against anything that lacks a backup" (8140-8271)
+  { scene: "greenLight", from: 8310, dur: 130 }, // "my first green light is an official acknowledgment or patch note" (8276-8416)
   { scene: "sandbox", from: 8830, dur: 300, fullscreen: true }, // "start inside a sandbox folder containing copies only" (8836)
   { scene: "onlyCopy", from: 9140, dur: 160 }, // "do not point it at the only version of a client deliverable" (9100-9280)
   { scene: "verdictCompare", from: 9300, dur: 220 }, // "launch day... patch notes show whether it's earning trust" (9300-9420)
@@ -82,9 +82,9 @@ export const ChatGptWorkVisuals: React.FC = () => {
         <ScreenshotReceiptScene durationInFrames={150} kicker="OPENAI.COM" title="ONE DIRECTORY" tint="#34D399" src={`${SHOT}/openai-plugins-grid.png`} url="openai.com/business/plugins" imageW={2880} imageH={5500} from={{ x: 0, y: 760, w: 2880, h: 1539 }} to={{ x: 0, y: 60, w: 2880, h: 1539 }} zoomAt={12} />
       </Sequence>
 
-      {/* 0:15 kinetic: the promise */}
-      <Sequence from={460} durationInFrames={130} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={130} title="FEWER TABS" stamp="ONE CHAT" stampAt={85} accent="#D97757" />
+      {/* 0:14 kinetic: the promise */}
+      <Sequence from={415} durationInFrames={130} premountFor={30}>
+        <FinalTakeawayScene durationInFrames={130} title="FEWER TABS" stamp="ONE CHAT" stampAt={105} accent="#D97757" />
       </Sequence>
 
       {/* 0:29 the verdict, acted out: learn it — but STOP before trusting it */}
@@ -127,8 +127,8 @@ export const ChatGptWorkVisuals: React.FC = () => {
         <ScreenshotReceiptScene durationInFrames={200} kicker="HELP.OPENAI.COM" title="SOL · TERRA · LUNA" tint="#D97757" src={`${SHOT}/openai-help-models-table-wide.png`} url="help.openai.com" imageW={2535} imageH={1355} from={{ x: 102, y: 54, w: 2332, h: 1246 }} to={{ x: 0, y: 0, w: 2535, h: 1355 }} zoomAt={12} highlight={{ x: 385, y: 420, w: 1345, h: 84 }} highlightAt={19} />
       </Sequence>
 
-      {/* 1:44 kinetic: the fine print */}
-      <Sequence from={3120} durationInFrames={110} premountFor={30}>
+      {/* 1:42 kinetic: the fine print */}
+      <Sequence from={3060} durationInFrames={110} premountFor={30}>
         <FinalTakeawayScene durationInFrames={110} title="ROLES: UNCLEAR" accent="#F59E0B" />
       </Sequence>
 
@@ -202,8 +202,8 @@ export const ChatGptWorkVisuals: React.FC = () => {
         <PlumbingScene durationInFrames={210} title="THE CONTROL LAYER?" />
       </Sequence>
 
-      {/* 3:43 kinetic: the trust test */}
-      <Sequence from={6700} durationInFrames={120} premountFor={30}>
+      {/* 3:42 kinetic: the trust test */}
+      <Sequence from={6655} durationInFrames={120} premountFor={30}>
         <FinalTakeawayScene durationInFrames={120} title="THE TRUST TEST" accent="#EF4444" />
       </Sequence>
 
@@ -235,14 +235,14 @@ export const ChatGptWorkVisuals: React.FC = () => {
         <BenchmarksLieScene durationInFrames={240} title="DEMOS HIDE RISK" messLabels={["FILE SAFETY", "PERMISSIONS", "RECOVERY"]} />
       </Sequence>
 
-      {/* 4:30 MY RULE: no backup, no agent */}
-      <Sequence from={8110} durationInFrames={260} premountFor={30}>
-        <NoBackupNoAgentScene durationInFrames={260} kicker="MY RULE" title="BACK IT UP FIRST" stopAt={40} copyAt={148} goAt={200} stampAt={220} tint="#34D399" />
+      {/* 4:30 MY RULE: no backup, no agent (stamp lands as "lacks a backup" ends, 8268) */}
+      <Sequence from={8110} durationInFrames={200} premountFor={30}>
+        <NoBackupNoAgentScene durationInFrames={200} kicker="MY RULE" title="BACK IT UP FIRST" stopAt={40} copyAt={148} goAt={168} stampAt={158} tint="#34D399" />
       </Sequence>
 
-      {/* 4:40 kinetic: what flips the light */}
-      <Sequence from={8400} durationInFrames={140} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={140} title="GREEN LIGHT: PATCH NOTES" accent="#34D399" />
+      {/* 4:37 kinetic: what flips the light ("green light" 8290-8310) */}
+      <Sequence from={8310} durationInFrames={130} premountFor={30}>
+        <FinalTakeawayScene durationInFrames={130} title="GREEN LIGHT: PATCH NOTES" accent="#34D399" />
       </Sequence>
 
       {/* 4:54 the playbook: sandbox first, write access last */}

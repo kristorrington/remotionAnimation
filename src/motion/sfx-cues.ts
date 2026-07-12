@@ -71,7 +71,7 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "strategyProof": cues.push({ at: 16, type: "whip" }); break;
     case "unverifiedCard": cues.push({ at: 16, type: "whip" }, { at: 60, type: "switch" }); break;
     case "solIncident": cues.push({ at: 58, type: "switch" }, { at: 92, type: "boom" }, { at: 172, type: "boom" }); break;
-    case "backupRule": cues.push({ at: 40, type: "boom" }, { at: 148, type: "switch" }, { at: 220, type: "boom" }); break;
+    case "backupRule": cues.push({ at: 40, type: "boom" }, { at: 148, type: "switch" }, { at: 158, type: "boom" }); break;
     case "sandbox": cues.push({ at: 100, type: "whip" }, { at: 120, type: "switch" }, { at: 145, type: "switch" }, { at: 245, type: "boom" }); break;
     // ── GPT-5.6 video (July 2026) ──
     case "speedBoost":
