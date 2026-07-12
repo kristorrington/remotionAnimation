@@ -662,6 +662,16 @@ press kits, screenshots of official pages.
   raw captures stay untracked). Receipts hold **2–5s**, the zoom starts ~0.5s
   in, the highlight sweep fires ON the whisper word; a receipt may TRAIL its
   spoken number by a beat (counters first, proof after) but never precede it.
+  **Recut PAIRS per format** (Kris, July 2026): every screenshot used as a
+  receipt gets a dedicated crop matched to its zone's aspect — `<name>-wide`
+  at **1.871** (long-form full-bleed picture area, 1920×1026 below the URL
+  bar) and `<name>-tall` at **1.377** (shorts band picture area, 1080×784) —
+  so cover-fit never crops the claim away. Author the receipt with `to` =
+  the FULL recut image and `from` ≈ a 92% inset (gentle zoom-out); re-offset
+  `highlight` rects by the recut's crop origin. Manifest every recut
+  (sourceUrl = the source master's); keep the original full crop as the
+  source master — it stays the file for pans/letterboxed cards (e.g. the
+  hero product-roll pan, the Gartner banner long-form card).
   Screenshots are 100% of their zone (Kris, July 2026): long-form receipts
   are FULL-BLEED (page fills 1920×1080, URL bar on top, kicker+title on a
   white sticker pill; `fullBleed={false}` = the 90% card for quick b-roll).
