@@ -155,6 +155,34 @@
       ],
       "attributionRequired": false,
       "concerns": null
+    },
+    {
+      "filename": "zapier-survey-84pct.png",
+      "localPath": "public/assets/external/screenshots/zapier-survey-84pct.png",
+      "type": "screenshot",
+      "sourceUrl": "https://zapier.com/blog/ai-agents-survey/",
+      "sourceName": "Zapier AI agents survey (2026)",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "84% plan-to-increase-investment stat card; receipt for the agent-hype-accelerating line.",
+      "usedIn": [
+        "N8nHybridVideo surveyHype"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "zapier-agents-page.png",
+      "localPath": "public/assets/external/screenshots/zapier-agents-page.png",
+      "type": "screenshot",
+      "sourceUrl": "https://zapier.com/agents",
+      "sourceName": "Zapier Agents product page",
+      "dateAccessed": "2026-07-12",
+      "usageNote": "Meet-your-new-AI-teammates hero + agents dashboard; product b-roll for the similar-strategic-bet line.",
+      "usedIn": [
+        "N8nHybridVideo zapierAgentsRoll"
+      ],
+      "attributionRequired": false,
+      "concerns": null
     }
   ]
 }

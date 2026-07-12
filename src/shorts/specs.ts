@@ -25,7 +25,8 @@ export const SHORTS: ShortSpec[] = [
     hookAlt: "THE NO-CODE DEATH IS FAKE", // A/B variant → Short-DontAbandon-B
     context: "Agent hype vs what the evidence shows",
     beats: [
-      { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "ABANDON N8N?" }, // hook question at open
+      // animHook opener: the n8n canvas full-screen under the hook from frame 0 (cardW 780 — survives the ×1.32 zoom)
+      { at: 8, scene: "receipt", tint: "#D97757", text: "ABANDON N8N?", shot: { src: "assets/external/screenshots/n8n-homepage-hero.png", url: "n8n.io", imageW: 3000, imageH: 2450, from: { x: 450, y: 820, w: 2550, h: 1247 }, to: { x: 550, y: 900, w: 2450, h: 1198 }, zoomAt: 10, cardW: 780, cardH: 500 } },
       { at: 134, scene: "stamp", verdict: "cross", badge: "THE EVIDENCE", tint: "#EF4444", text: "SLOW DOWN" }, // "evidence says slow down" abs 140 (slam ~174)
       { at: 196, scene: "check", obj: "coin", verdict: "check", tint: "#34D399", text: "N8N REVENUE ×10" }, // "revenue grew 10-fold" abs 208
       // Forbes receipt — the evidence beat of the "evidence says slow down" hook ("bring more humans back" abs 413).
@@ -35,6 +36,9 @@ export const SHORTS: ShortSpec[] = [
     ],
     // full-anim: the slow-down stamp + the hybrid payoff
     fullscreen: [{ from: 190, to: 330 }, { from: 540, to: 640 }],
+    // animHook: the short OPENS on the n8n canvas receipt (screenshot in the
+    // first second — the gag IS the hook; §9 carve-out)
+    animHook: true,
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
     style: "paper",
@@ -102,7 +106,8 @@ export const SHORTS: ShortSpec[] = [
     context: "When to use n8n workflows vs AI agents",
     beats: [
       { at: 8, scene: "emote", pose: "pointing", tint: "#D97757", text: "ONE DECISION RULE" }, // spoken at open
-      { at: 101, scene: "conveyor", labels: ["KNOWN STEPS"], tint: "#34D399", text: "EXPENSIVE MISTAKES? WORKFLOW" }, // "use a deterministic workflow when…" abs 7325
+      // The n8n canvas IS the deterministic workflow ("use a deterministic workflow when…" abs 7325); cardW 780 — beat runs into the [190,380] span
+      { at: 101, scene: "receipt", tint: "#34D399", text: "EXPENSIVE MISTAKES? WORKFLOW", shot: { src: "assets/external/screenshots/n8n-homepage-hero.png", url: "n8n.io", imageW: 3000, imageH: 2450, from: { x: 450, y: 820, w: 2550, h: 1247 }, to: { x: 550, y: 900, w: 2450, h: 1198 }, zoomAt: 10, cardW: 780, cardH: 470 } },
       { at: 240, scene: "queue", labels: ["PAYMENTS", "CHANGES", "APPROVALS", "COMPLIANCE"], tint: "#EF4444", text: "NO IMPROVISING" }, // the four named no-go areas abs 7463→7538
       { at: 477, scene: "check", obj: "brain", verdict: "check", tint: "#D97757", text: "MESSY + BOUNDED? AGENT" }, // "use an agent when the input is messy" abs 7701
       { at: 606, scene: "funnel", badge: "DECISION", tint: "#F59E0B", text: "BOUNDED JOBS ONLY" }, // "classification, document interpretation…" abs 7830

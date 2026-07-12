@@ -165,26 +165,31 @@ const BuyersBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
 };
 
 // queue — the bottleneck: robot waits → prompt cards queue → brain thinks slowly.
-const QueueBeat: React.FC<{ beat: Beat }> = ({ beat }) => (
-  <Wrap gap={40}>
-    <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-      <div style={{ marginTop: 26 }}>
-        <CartoonRobot pose="waiting" size={180} />
-      </div>
-      <PromptQueue labels={(beat.labels ?? ["PROMPT", "TOOL", "RETRY"]).slice(0, 4)} at={4} cardW={(beat.labels ?? []).length >= 4 ? 96 : 108} />
-      <div style={{ position: "relative", marginLeft: 14 }}>
-        <div style={{ width: 160, height: 160, borderRadius: 24, display: "flex", alignItems: "center", justifyContent: "center", ...glassCard("#C15F3C") }}>
-          <IconBrain size={110} />
+const QueueBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
+  // 4-label queues shrink the whole row so it survives the ×1.32 span zoom
+  // (the brain tile used to clip the right frame edge — overlap rule 1)
+  const wide = (beat.labels ?? []).length >= 4;
+  return (
+    <Wrap gap={40}>
+      <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+        <div style={{ marginTop: 26 }}>
+          <CartoonRobot pose="waiting" size={wide ? 150 : 180} />
         </div>
-        <div style={{ position: "absolute", top: -80, right: -46 }}>
-          <ThoughtBubble size={100} />
+        <PromptQueue labels={(beat.labels ?? ["PROMPT", "TOOL", "RETRY"]).slice(0, 4)} at={4} cardW={wide ? 96 : 108} />
+        <div style={{ position: "relative", marginLeft: 14 }}>
+          <div style={{ width: wide ? 128 : 160, height: wide ? 128 : 160, borderRadius: 24, display: "flex", alignItems: "center", justifyContent: "center", ...glassCard("#C15F3C") }}>
+            <IconBrain size={wide ? 88 : 110} />
+          </div>
+          <div style={{ position: "absolute", top: wide ? -64 : -80, right: wide ? -24 : -46 }}>
+            <ThoughtBubble size={wide ? 84 : 100} />
+          </div>
         </div>
       </div>
-    </div>
-    <StalledBar width={560} />
-    <BeatLabel text={beat.text} accent={beat.accent} />
-  </Wrap>
-);
+      <StalledBar width={560} />
+      <BeatLabel text={beat.text} accent={beat.accent} />
+    </Wrap>
+  );
+};
 
 // stack — call cards pile up, wobble, collapse on a worried robot.
 const StackBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {

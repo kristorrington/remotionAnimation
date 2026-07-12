@@ -15,6 +15,7 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
       cues.push({ at: 34 + 26, type: "boom" }, { at: 110, type: "whoosh" }); // bolt lands, launch
       break;
     // ── n8n-hybrid video (July 2026) ──
+    case "n8nOpenShot": cues.push({ at: 8, type: "whip" }); break;
     case "tenfold": cues.push({ at: 43, type: "ding" }); break;
     case "klarnaOpenProof": cues.push({ at: 16, type: "whip" }, { at: 26, type: "switch" }); break;
     case "hybridIntro": cues.push({ at: 193, type: "boom" }); break; // agent module docks
@@ -29,7 +30,9 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "tooMuchTrust": cues.push({ at: 40, type: "switch" }, { at: 77, type: "whip" }, { at: 112, type: "boom" }, { at: 213, type: "ding" }); break;
     case "moneyRound": cues.push({ at: 118, type: "switch" }, { at: 209, type: "switch" }, { at: 432, type: "switch" }); break;
     case "onePlace": cues.push({ at: 78, type: "switch" }, { at: 97, type: "switch" }, { at: 120, type: "switch" }, { at: 156, type: "switch" }, { at: 170, type: "whip" }); break;
-    case "zapierBet": cues.push({ at: 168, type: "switch" }); break;
+    case "zapierBet": cues.push({ at: 42, type: "switch" }); break;
+    case "surveyHype": cues.push({ at: 10, type: "whip" }, { at: 32, type: "switch" }); break;
+    case "zapierAgentsRoll": cues.push({ at: 16, type: "whip" }, { at: 40, type: "switch" }); break;
     case "controlLayer": cues.push({ at: Math.round(dur * 0.44) + 24, type: "ding" }); break; // leak fixed
     // screenshot receipts: whip on the zoom, switch on the highlight sweep
     case "klarnaRehireProof": cues.push({ at: 18, type: "whip" }, { at: 71, type: "switch" }); break;
@@ -114,7 +117,8 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
       cues.push({ at: Math.round(dur * 0.4), type: "boom" }); // the placard drops
       break;
     case "migrateStop":
-      cues.push({ at: Math.round(dur * 0.34), type: "boom" }, { at: dur - 66, type: "ding" }); // STOP slam, test-bench arrival
+      if (dur === 177) cues.push({ at: 40, type: "boom" }, { at: dur - 66, type: "ding" }); // n8n open: slam pinned via stopAtFrame
+      else cues.push({ at: Math.round(dur * 0.34), type: "boom" }, { at: dur - 66, type: "ding" }); // STOP slam, test-bench arrival
       break;
     case "thresholdGate":
       if (dur === 222) cues.push({ at: 74, type: "whip" }, { at: 164, type: "ding" }); // side-hustles open: drop on "waste", lift on "prompt packs"

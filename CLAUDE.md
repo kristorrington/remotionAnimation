@@ -661,8 +661,14 @@ press kits, screenshots of official pages.
   spoken number by a beat (counters first, proof after) but never precede it.
   Receipts cover PiP stretches (they double as jump-cut cover); vary the
   pan/zoom direction between adjacent receipts, and never place two
-  browser-card receipts back to back (same-layout rule). Shorts: max ~1–2
+  browser-card receipts back to back (same-layout rule) — UNLESS the two pages
+  read as different layouts (dark text page vs bright stat graphic) AND the
+  zoom treatment changes. Shorts: max ~1–2
   receipts per short, big headlines only — body text never carries the message.
+  **A screenshot lands inside the first 5 seconds** (Kris, July 2026): the
+  video's FIRST COVER (frame ~90) is a product/receipt shot when the opening
+  line names a product; the flagship short opens `animHook` on that same shot
+  so frame 0 (= the feed thumbnail) already shows it.
 
 ### 10.1 Asset research pass
 Before designing scenes, search the web for assets matching the transcript topic:

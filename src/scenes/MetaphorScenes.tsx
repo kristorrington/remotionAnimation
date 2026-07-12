@@ -307,10 +307,11 @@ export const BenchmarksLieScene: React.FC<{ durationInFrames: number; kicker?: s
 
 // DON'T MIGRATE — TEST: the robot carries its app toward the MIGRATE gate, the
 // STOP sign slams down, and it walks back to the TEST BENCH instead.
-export const MigrateStopScene: React.FC<{ durationInFrames: number; kicker?: string; title: string }> = ({ durationInFrames, kicker, title }) => {
+export const MigrateStopScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; stopAtFrame?: number }> = ({ durationInFrames, kicker, title, stopAtFrame }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const stopAt = Math.round(durationInFrames * 0.34);
+  // stopAtFrame pins the STOP slam to the whisper word when the beat starts late
+  const stopAt = stopAtFrame ?? Math.round(durationInFrames * 0.34);
   const turnAt = stopAt + 16;
   const walk = interpolate(frame, [8, stopAt], [140, 830], CLAMP);
   const back = interpolate(frame, [turnAt, durationInFrames - 40], [0, -560], CLAMP);

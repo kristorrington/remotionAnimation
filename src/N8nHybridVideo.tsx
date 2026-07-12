@@ -27,7 +27,8 @@ export const N8N_HYBRID_DUR = 9475;
 
 const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[] = [
   // face-first open + punch-in (§8): the hook question is delivered to camera
-  { scene: "migrateStop", from: 90, dur: 255, fullscreen: true },
+  { scene: "n8nOpenShot", from: 90, dur: 75, fullscreen: true }, // FIRST COVER at 3.0s — the n8n canvas as "abandon n8n" is spoken (56)
+  { scene: "migrateStop", from: 168, dur: 177, fullscreen: true }, // stopAtFrame 40 → slam 208, right off "slow down." (185)
   { scene: "tenfold", from: 350, dur: 98 },
   { scene: "klarnaOpenProof", from: 452, dur: 180 }, // opening b-roll: Forbes right on the Klarna claim ("humans back" 430)
   { scene: "hybridIntro", from: 641, dur: 229, fullscreen: true },
@@ -42,9 +43,11 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
   { scene: "splitWork", from: 2867, dur: 170 },
   { scene: "tooMuchTrust", from: 3161, dur: 279, fullscreen: true },
   { scene: "moneyRound", from: 3449, dur: 540 },
-  { scene: "seriesCProof", from: 3995, dur: 235 }, // receipt trails the counters ("did not confirm that figure" 3957)
+  { scene: "seriesCProof", from: 3995, dur: 150 }, // receipt trails the counters ("did not confirm that figure" 3957)
+  { scene: "surveyHype", from: 4149, dur: 91 }, // Zapier survey 84% — "agent hype is accelerating" 4155
   { scene: "onePlace", from: 4250, dur: 212, fullscreen: true },
-  { scene: "zapierBet", from: 4469, dur: 240 },
+  { scene: "zapierAgentsRoll", from: 4466, dur: 124 }, // the agents product page — "similar strategic bet" 4469
+  { scene: "zapierBet", from: 4595, dur: 114 },
   { scene: "zapierPostProof", from: 4712, dur: 227 }, // "more agents than employees" 4736
   { scene: "controlLayer", from: 4954, dur: 126 },
   { scene: "akeneoProof", from: 5080, dur: 250 }, // "Akeneo followed that pattern" 5086
@@ -71,9 +74,14 @@ export const N8nHybridVisuals: React.FC = () => {
   return (
     <ThemeProvider style="paper">
     <AbsoluteFill>
-      {/* 0:03 HOOK — about to abandon n8n? STOP: slow down */}
-      <Sequence from={90} durationInFrames={255} premountFor={30}>
-        <MigrateStopScene durationInFrames={255} title="SLOW DOWN" />
+      {/* 0:03 FIRST COVER — the n8n canvas on screen the moment it's named */}
+      <Sequence from={90} durationInFrames={75} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={75} title="ABANDON N8N?" tint="#D97757" src="assets/external/screenshots/n8n-homepage-hero.png" url="n8n.io" imageW={3000} imageH={2450} from={{ x: 450, y: 820, w: 2550, h: 1247 }} to={{ x: 550, y: 900, w: 2450, h: 1198 }} zoomAt={8} />
+      </Sequence>
+
+      {/* 0:06 HOOK GAG — STOP: slow down (slam pinned to the spoken verdict) */}
+      <Sequence from={168} durationInFrames={177} premountFor={30}>
+        <MigrateStopScene durationInFrames={177} title="SLOW DOWN" stopAtFrame={40} />
       </Sequence>
 
       {/* 0:06 n8n grew 10× while no-code was "dying" */}
@@ -147,8 +155,13 @@ export const N8nHybridVisuals: React.FC = () => {
       </Sequence>
 
       {/* 2:13 receipt: the Series C post itself ("did not confirm that figure" 3957) */}
-      <Sequence from={3995} durationInFrames={235} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={235} kicker="BLOG.N8N.IO · OCT 2025" title="THE RECEIPT" tint="#34D399" src="assets/external/screenshots/n8n-series-c-announcement.png" url="blog.n8n.io/series-c" imageW={3020} imageH={1580} to={{ x: 760, y: 920, w: 1580, h: 772 }} zoomAt={22} highlight={{ x: 950, y: 1140, w: 1250, h: 118 }} highlightAt={56} />
+      <Sequence from={3995} durationInFrames={150} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={150} kicker="BLOG.N8N.IO · OCT 2025" title="THE RECEIPT" tint="#34D399" src="assets/external/screenshots/n8n-series-c-announcement.png" url="blog.n8n.io/series-c" imageW={3020} imageH={1580} to={{ x: 760, y: 920, w: 1580, h: 772 }} zoomAt={22} highlight={{ x: 950, y: 1140, w: 1250, h: 118 }} highlightAt={56} />
+      </Sequence>
+
+      {/* 2:18 receipt: the hype, measured — Zapier's own survey ("agent hype is accelerating" 4155) */}
+      <Sequence from={4149} durationInFrames={91} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={91} kicker="ZAPIER SURVEY" title="HYPE, MEASURED" tint="#F59E0B" src="assets/external/screenshots/zapier-survey-84pct.png" url="zapier.com/blog/ai-agents-survey" imageW={2600} imageH={1700} to={{ x: 700, y: 20, w: 1470, h: 719 }} zoomAt={10} highlight={{ x: 855, y: 175, w: 400, h: 155 }} highlightAt={32} />
       </Sequence>
 
       {/* 2:21 n8n = models + tools + data + workflows in ONE place */}
@@ -156,9 +169,14 @@ export const N8nHybridVisuals: React.FC = () => {
         <AppFlowScene durationInFrames={212} title="ONE PLACE" apps={[{ label: "MODELS", at: 78 }, { label: "TOOLS", at: 97 }, { label: "DATA", at: 120 }, { label: "WORKFLOWS", at: 156 }]} connectAt={170} collapseAt={9999} />
       </Sequence>
 
-      {/* 2:29 Zapier's identical bet: 800 internal agents */}
-      <Sequence from={4469} durationInFrames={240} premountFor={30}>
-        <StatCountersScene durationInFrames={240} kicker="ZAPIER'S BET" title="MORE AGENTS THAN STAFF" stats={[{ label: "INTERNAL AGENTS", value: 800, at: 168 }]} accent="#D97757" />
+      {/* 2:28 product b-roll: Zapier's agent product ("similar strategic bet" 4469) */}
+      <Sequence from={4466} durationInFrames={124} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={124} kicker="ZAPIER.COM/AGENTS" title="THE SAME BET" tint="#C15F3C" src="assets/external/screenshots/zapier-agents-page.png" url="zapier.com/agents" imageW={3240} imageH={2600} to={{ x: 620, y: 60, w: 2100, h: 1026 }} zoomAt={16} highlight={{ x: 1140, y: 200, w: 970, h: 300 }} highlightAt={40} />
+      </Sequence>
+
+      {/* 2:33 Zapier's identical bet: 800 internal agents */}
+      <Sequence from={4595} durationInFrames={114} premountFor={30}>
+        <StatCountersScene durationInFrames={114} kicker="ZAPIER'S BET" title="MORE AGENTS THAN STAFF" stats={[{ label: "INTERNAL AGENTS", value: 800, at: 42 }]} accent="#D97757" />
       </Sequence>
 
       {/* 2:37 receipt: the CEO's post ("more agents than employees" 4736) */}
