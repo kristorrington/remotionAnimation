@@ -956,17 +956,31 @@ const BleedLabel: React.FC<{ text: string; top: number }> = ({ text, top }) => {
 };
 
 const ReceiptBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
-  // 100% RULE (Kris, July 2026): the page ALWAYS fills its zone — the whole
-  // band in split view, the whole screen during spans, morphing with the
-  // seam. The panel scales content by `zoom` and biases it by `shift`; the
-  // counter-transform below nets that out so the bleed tracks the zone
-  // exactly, and cover-fit keeps the page edge-to-edge at every aspect.
+  // PADDED CARD (Kris, July 2026 — supersedes the 100% bleed): the page is a
+  // centered browser card with paper margin around it. The card viewport is
+  // sized to the shot's `to` aspect so the settled view shows the WHOLE
+  // authored rect — claim text never slices at a card edge. The
+  // counter-transform nets out the panel zoom/shift so the card stays
+  // screen-true around seam moves.
   const { zoom, shift, panelH } = React.useContext(PanelLayout);
   const s = beat.shot;
   if (!s) return null;
+  const labelZone = 194; // sticker label + clearance below the caption pill
+  const availH = Math.max(220, panelH - labelZone - 36);
+  const aspect = s.to.w / s.to.h;
+  let contentW = 952;
+  let contentH = contentW / aspect;
+  if (contentH > availH - 54) {
+    contentH = availH - 54;
+    contentW = contentH * aspect;
+  }
+  const cardW = Math.round(contentW);
+  const cardH = Math.round(contentH) + 54;
   return (
-    <AbsoluteFill style={{ overflow: "hidden", transform: `translateY(${-shift}px) scale(${1 / zoom})` }}>
-      <SourceScreenshot src={s.src} url={s.url} imageW={s.imageW} imageH={s.imageH} from={s.from} to={s.to} zoomAt={s.zoomAt} highlight={s.highlight} highlightAt={s.highlightAt} width={1080} height={panelH} bleed fit="cover" />
+    <AbsoluteFill style={{ transform: `translateY(${-shift}px) scale(${1 / zoom})` }}>
+      <div style={{ position: "absolute", left: (1080 - cardW) / 2, top: labelZone + Math.max(0, (availH - cardH) / 2) }}>
+        <SourceScreenshot src={s.src} url={s.url} imageW={s.imageW} imageH={s.imageH} from={s.from} to={s.to} zoomAt={s.zoomAt} highlight={s.highlight} highlightAt={s.highlightAt} width={cardW} height={cardH} fit="cover" />
+      </div>
       {/* split: clear the seam-docked caption pill; full: clear the topic banner */}
       <BleedLabel text={beat.text} top={interpolate(zoom, [1, 1.32], [96, 170], CLAMP)} />
     </AbsoluteFill>

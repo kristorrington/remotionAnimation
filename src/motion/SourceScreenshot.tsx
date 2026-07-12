@@ -52,11 +52,14 @@ export const SourceScreenshot: React.FC<{
   const tx = a.tx + (b.tx - a.tx) * t;
   const ty = a.ty + (b.ty - a.ty) * t;
   // Ken Burns tail: once the zoom lands, keep a slow drift going so the
-  // receipt never sits static (editing research: slow purposeful motion)
+  // receipt never sits static (editing research: slow purposeful motion).
+  // Bleed mode drifts the PAGE (frame-edge crop is fine full-screen); card
+  // mode drifts the whole CARD outward instead — an inner drift would crop
+  // the page at the card edge and nibble text (the "leclining" bug).
   const drift = interpolate(frame, [zoomAt + 26, zoomAt + 26 + 260], [1, 1.05], CLAMP);
   const op = interpolate(frame, [0, 12], [0, 1], CLAMP);
   return (
-    <div style={{ width, borderRadius: bleed ? 0 : 18, overflow: "hidden", border: bleed ? "none" : `2px solid ${CYAN}55`, boxShadow: bleed ? "none" : `0 30px 80px rgba(0,0,0,0.55), 0 0 40px ${CYAN}22`, opacity: op, background: "#0B0F17" }}>
+    <div style={{ width, borderRadius: bleed ? 0 : 18, overflow: "hidden", border: bleed ? "none" : `2px solid ${CYAN}55`, boxShadow: bleed ? "none" : `0 30px 80px rgba(0,0,0,0.55), 0 0 40px ${CYAN}22`, opacity: op, background: "#0B0F17", transform: bleed ? undefined : `scale(${drift})`, transformOrigin: "50% 50%" }}>
       {/* browser chrome */}
       <div style={{ height: 54, display: "flex", alignItems: "center", gap: 10, padding: "0 20px", background: "#111827", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
         {["#EF4444", "#F59E0B", "#34D399"].map((c) => (
@@ -67,7 +70,7 @@ export const SourceScreenshot: React.FC<{
         </div>
       </div>
       {/* the page, panned + zoomed to the proof (outer div = the drift) */}
-      <div style={{ position: "relative", width, height: inner, overflow: "hidden", transform: `scale(${drift})`, transformOrigin: "50% 50%" }}>
+      <div style={{ position: "relative", width, height: inner, overflow: "hidden", transform: bleed ? `scale(${drift})` : undefined, transformOrigin: "50% 50%" }}>
         <div style={{ position: "absolute", transform: `translate(${tx}px, ${ty}px) scale(${scale})`, transformOrigin: "top left" }}>
           {/* maxWidth:none — Tailwind preflight's img{max-width:100%} squishes pages wider than the card */}
           <Img src={staticFile(src)} style={{ width: imageW, height: imageH, maxWidth: "none", display: "block" }} />

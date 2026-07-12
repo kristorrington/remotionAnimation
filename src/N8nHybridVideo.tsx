@@ -30,9 +30,10 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
   { scene: "n8nOpenShot", from: 90, dur: 75, fullscreen: true }, // FIRST COVER at 3.0s — the n8n canvas as "abandon n8n" is spoken (56)
   { scene: "migrateStop", from: 168, dur: 177, fullscreen: true }, // stopAtFrame 40 → slam 208, right off "slow down." (185)
   { scene: "tenfold", from: 350, dur: 98 },
-  { scene: "klarnaOpenProof", from: 452, dur: 180 }, // opening b-roll: Forbes right on the Klarna claim ("humans back" 430)
+  { scene: "klarnaOpenProof", from: 452, dur: 180 }, // Klarna's FIRST MENTION → their own press page (brand rule; "humans back" 430)
   { scene: "hybridIntro", from: 641, dur: 229, fullscreen: true },
-  { scene: "blurProof", from: 906, dur: 190 }, // opening b-roll: n8n's own hero IS the blur ("n8n leans" 936)
+  { scene: "blurProof", from: 906, dur: 114 }, // opening b-roll: n8n's own hero IS the blur ("n8n leans" 936)
+  { scene: "zapierNoCode", from: 1026, dur: 78 }, // Zapier's FIRST MENTION → their agents page ("towards no code" 1050)
   { scene: "predictable", from: 1104, dur: 320 },
   { scene: "messFunnel", from: 1433, dur: 237, fullscreen: true },
   { scene: "bothCompare", from: 1678, dur: 175 },
@@ -77,7 +78,7 @@ export const N8nHybridVisuals: React.FC = () => {
     <AbsoluteFill>
       {/* 0:03 FIRST COVER — the n8n canvas on screen the moment it's named */}
       <Sequence from={90} durationInFrames={75} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={75} title="ABANDON N8N?" tint="#D97757" src="assets/external/screenshots/n8n-canvas-wide.png" url="n8n.io" imageW={2300} imageH={1229} from={{ x: 138, y: 74, w: 2024, h: 1082 }} to={{ x: 0, y: 0, w: 2300, h: 1229 }} zoomAt={8} />
+        <ScreenshotReceiptScene durationInFrames={75} title="ABANDON N8N?" tint="#D97757" src="assets/external/screenshots/n8n-canvas-wide.png" url="n8n.io" imageW={1800} imageH={962} from={{ x: 72, y: 38, w: 1656, h: 885 }} to={{ x: 0, y: 0, w: 1800, h: 962 }} zoomAt={8} />
       </Sequence>
 
       {/* 0:06 HOOK GAG — STOP: slow down (slam pinned to the spoken verdict) */}
@@ -90,9 +91,10 @@ export const N8nHybridVisuals: React.FC = () => {
         <StatCountersScene durationInFrames={98} title="WHILE NO-CODE 'DIED'" stats={[{ label: "N8N REVENUE", value: 10, suffix: "×", at: 43 }]} accent="#34D399" />
       </Sequence>
 
-      {/* 0:15 opening b-roll: the Forbes headline as the Klarna claim is spoken */}
+      {/* 0:15 Klarna's FIRST MENTION → Klarna's OWN press page (brand rule, July 2026);
+          the Forbes rehire proof still lands at 2694 on "began hiring people again" */}
       <Sequence from={452} durationInFrames={180} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={180} kicker="FORBES · MAY 2025" title="HUMANS CAME BACK" tint="#F59E0B" src="assets/external/screenshots/forbes-klarna-wide.png" url="forbes.com" imageW={1600} imageH={855} from={{ x: 96, y: 51, w: 1408, h: 753 }} to={{ x: 0, y: 0, w: 1600, h: 855 }} zoomAt={16} highlight={{ x: 2, y: 148, w: 1396, h: 112 }} highlightAt={26} />
+        <ScreenshotReceiptScene durationInFrames={180} kicker="KLARNA.COM · FEB 2024" title="ALL-IN ON AI" tint="#F59E0B" src="assets/external/screenshots/klarna-pr-wide.png" url="klarna.com/press" imageW={2152} imageH={1150} from={{ x: 76, y: 48, w: 1980, h: 1058 }} to={{ x: 8, y: 48, w: 2062, h: 1102 }} zoomAt={16} highlight={{ x: 555, y: 372, w: 835, h: 95 }} highlightAt={26} />
       </Sequence>
 
       {/* 0:21 the verdict: hybrid — the workflow slab + the AI judgement module */}
@@ -101,8 +103,13 @@ export const N8nHybridVisuals: React.FC = () => {
       </Sequence>
 
       {/* 0:30 opening b-roll: n8n's own homepage sells "AI agents and workflows" — the blur on screen */}
-      <Sequence from={906} durationInFrames={190} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={190} kicker="N8N.IO" title="LABELS BLURRING" tint="#D97757" src="assets/external/screenshots/n8n-hero-wide.png" url="n8n.io" imageW={2900} imageH={1550} from={{ x: 290, y: 155, w: 2436, h: 1302 }} to={{ x: 0, y: 0, w: 2900, h: 1550 }} zoomAt={18} highlight={{ x: 385, y: 70, w: 1030, h: 220 }} highlightAt={40} />
+      <Sequence from={906} durationInFrames={114} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={114} kicker="N8N.IO" title="LABELS BLURRING" tint="#D97757" src="assets/external/screenshots/n8n-hero-wide.png" url="n8n.io" imageW={2900} imageH={1550} from={{ x: 290, y: 155, w: 2436, h: 1302 }} to={{ x: 0, y: 0, w: 2900, h: 1550 }} zoomAt={18} highlight={{ x: 385, y: 70, w: 1030, h: 220 }} highlightAt={40} />
+      </Sequence>
+
+      {/* 0:34 Zapier's FIRST MENTION → their own agents page ("Zapier, Make lean heavily towards no code" 1026) */}
+      <Sequence from={1026} durationInFrames={78} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={78} kicker="ZAPIER.COM" title="THE NO-CODE CAMP" tint="#C15F3C" src="assets/external/screenshots/zapier-agents-wide.png" url="zapier.com/agents" imageW={2900} imageH={1550} from={{ x: 174, y: 44, w: 2552, h: 1364 }} to={{ x: 370, y: 44, w: 1870, h: 999 }} zoomAt={12} highlight={{ x: 820, y: 70, w: 970, h: 300 }} highlightAt={24} />
       </Sequence>
 
       {/* 0:37 all three: trigger → run → predictable */}
@@ -132,7 +139,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 1:14 receipt: Klarna's OWN press release carries the 11→2 claim */}
       <Sequence from={2239} durationInFrames={105} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={105} kicker="KLARNA.COM · FEB 2024" title="THEIR OWN NUMBERS" tint="#34D399" src="assets/external/screenshots/klarna-pr-wide.png" url="klarna.com/press" imageW={2152} imageH={1150} from={{ x: 129, y: 69, w: 1894, h: 1012 }} to={{ x: 0, y: 0, w: 2152, h: 1150 }} zoomAt={8} highlight={{ x: 115, y: 838, w: 1260, h: 72 }} highlightAt={34} />
+        <ScreenshotReceiptScene durationInFrames={105} kicker="KLARNA.COM · FEB 2024" title="THEIR OWN NUMBERS" tint="#34D399" src="assets/external/screenshots/klarna-pr-wide.png" url="klarna.com/press" imageW={2152} imageH={1150} from={{ x: 129, y: 69, w: 1894, h: 1012 }} to={{ x: 8, y: 48, w: 2062, h: 1102 }} zoomAt={8} highlight={{ x: 115, y: 838, w: 1260, h: 72 }} highlightAt={34} />
       </Sequence>
 
       {/* 1:18 then the quality wall */}
@@ -177,7 +184,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 2:28 product b-roll: Zapier's agent product ("similar strategic bet" 4469) */}
       <Sequence from={4466} durationInFrames={124} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={124} kicker="ZAPIER.COM/AGENTS" title="THE SAME BET" tint="#C15F3C" src="assets/external/screenshots/zapier-agents-wide.png" url="zapier.com/agents" imageW={2900} imageH={1550} from={{ x: 174, y: 93, w: 2552, h: 1364 }} to={{ x: 0, y: 0, w: 2900, h: 1550 }} zoomAt={16} highlight={{ x: 820, y: 70, w: 970, h: 300 }} highlightAt={40} />
+        <ScreenshotReceiptScene durationInFrames={124} kicker="ZAPIER.COM/AGENTS" title="THE SAME BET" tint="#C15F3C" src="assets/external/screenshots/zapier-agents-wide.png" url="zapier.com/agents" imageW={2900} imageH={1550} from={{ x: 174, y: 93, w: 2552, h: 1364 }} to={{ x: 40, y: 44, w: 2818, h: 1506 }} zoomAt={16} highlight={{ x: 820, y: 70, w: 970, h: 300 }} highlightAt={40} />
       </Sequence>
 
       {/* 2:33 Zapier's identical bet: 800 internal agents */}

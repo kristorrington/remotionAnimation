@@ -61,10 +61,11 @@ export type Beat = {
   emoji?: string; // meme punch: ONE emoji pops with the beat (use ~1 per short)
   value?: number; // battery: target % · elevator: target floor index in `labels`
   // receipt: the manifested screenshot + the crop that proves the claim.
-  // Receipts ALWAYS fill 100% of their zone (the split band or the whole
-  // screen, morphing with the seam) via cover-fit — author `to` as a TALL
-  // rect (≈1.38, band aspect) CENTERED on the claim: the full-screen phase
-  // shows the center slice. Big text only — no tiny source text on mobile.
+  // Receipts render as a PADDED CARD centered in the split band (July 2026 —
+  // supersedes the 100% bleed): the card viewport matches the `to` aspect, so
+  // author `to` as the settled view with the CLAIM FULLY INSIDE it (usually
+  // the full -wide recut) — text must never slice at a card edge. `from` is
+  // the zoomed opening view. Big text only — no tiny source text on mobile.
   shot?: {
     src: string; url: string; imageW: number; imageH: number;
     from?: ShotRect; to: ShotRect; zoomAt?: number;

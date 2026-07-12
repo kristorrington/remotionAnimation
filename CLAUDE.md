@@ -662,29 +662,44 @@ press kits, screenshots of official pages.
   raw captures stay untracked). Receipts hold **2–5s**, the zoom starts ~0.5s
   in, the highlight sweep fires ON the whisper word; a receipt may TRAIL its
   spoken number by a beat (counters first, proof after) but never precede it.
-  **Recut PAIRS per format** (Kris, July 2026): every screenshot used as a
-  receipt gets a dedicated crop matched to its zone's aspect — `<name>-wide`
-  at **1.871** (long-form full-bleed picture area, 1920×1026 below the URL
-  bar) and `<name>-tall` at **1.377** (shorts band picture area, 1080×784) —
-  so cover-fit never crops the claim away. Author the receipt with `to` =
-  the FULL recut image and `from` ≈ a 92% inset (gentle zoom-out); re-offset
-  `highlight` rects by the recut's crop origin. Manifest every recut
-  (sourceUrl = the source master's); keep the original full crop as the
-  source master — it stays the file for pans/letterboxed cards (e.g. the
-  hero product-roll pan, the Gartner banner long-form card).
-  Screenshots are 100% of their zone (Kris, July 2026): long-form receipts
-  are FULL-BLEED (page fills 1920×1080, URL bar on top, kicker+title on a
-  white sticker pill; `fullBleed={false}` = the 90% card for quick b-roll).
-  Shorts receipts live in the SPLIT VIEW ONLY and fill the whole bottom half
-  — the face stays on screen; a receipt beat must NEVER sit inside (or run
-  into) a `fullscreen` span — spans are reserved for animated subject beats
-  (add a short animated beat to end a receipt before a span starts if
-  needed). ReceiptBeat counters the panel zoom/shift via the PanelLayout
-  context and cover-fits the page: author `shot.to` as a TALL rect (≈1.38
-  band aspect) CENTERED on the claim; short banner images become a mega-zoom
-  on the key number (the house big-number look). The BeatLabel rides a white
-  sticker over the page. All receipts keep a slow Ken Burns drift after the
-  zoom so they never sit static.
+  **Recuts** (Kris, July 2026): every screenshot used as a receipt gets a
+  `<name>-wide` crop at **1.871** (long-form full-bleed picture area,
+  1920×1026 below the URL bar); the SAME -wide file feeds the shorts receipt
+  card (the `-tall` pair is RETIRED — the padded card sizes itself to any
+  aspect). Crops CENTER THE SUBJECT (the n8n workflow is centered, the page's
+  side nav/text column excluded — never let dead page furniture push the
+  subject off-axis) and must never slice text mid-glyph at a crop edge: if
+  the capture cuts a headline row, trim `to` to start below the remnant
+  (klarna-pr `y≥48`, zapier-agents `y≥44`). Author the receipt with `to` =
+  the settled view holding the WHOLE claim and `from` ≈ a 92% inset or a
+  claim zoom; re-offset `highlight` rects by the recut's crop origin.
+  Manifest every recut (sourceUrl = the source master's); keep the original
+  full crop as the source master for pans/banner cards.
+  **Brand first-mention rule** (Kris, July 2026): the FIRST time a brand is
+  named — in the long-form AND inside each short — the receipt on that beat
+  comes from the brand's OWN website (Klarna → klarna.com/press, Zapier →
+  zapier.com/agents, n8n → n8n.io canvas); third-party proof pages (Forbes,
+  PR Newswire, YouTube) land LATER on the specific claims they prove. Search
+  the captured b-roll first, capture fresh if missing — sites behind bot
+  walls (mckinsey.com serves Access Denied headless) fall back to the native
+  recreated chart with SourceChip. Never break a whisper-pinned animated
+  scene to force it: a brand receipt that TRAILS its stat scene is fine
+  (Gartner stays after the 40/40 balance).
+  Long-form receipts are FULL-BLEED (page fills 1920×1080, URL bar on top,
+  kicker+title on a white sticker pill; `fullBleed={false}` = the 90% card
+  for quick b-roll). **Shorts receipts are a PADDED CARD** (Kris, July 2026
+  — supersedes the earlier 100% band fill, which slammed pages edge-to-edge
+  and sliced text): a centered browser card ≤ ~952px wide with paper margin
+  around it, still SPLIT VIEW ONLY — never inside (or running into) a
+  `fullscreen` span; spans stay reserved for animated subject beats. The
+  card viewport sizes itself to the `to` aspect, so author `to` with the
+  claim FULLY inside (usually the full -wide recut; a wide banner opens
+  zoomed on its key number, then settles on the whole headline — never
+  leave a mega-zoom that slices the sentence). The BeatLabel rides a white
+  sticker above the card. Ken Burns drift after the zoom: bleed mode drifts
+  the PAGE (frame-edge crop is fine full-screen), card mode drifts the CARD
+  outward — an inner drift crops at the card edge and nibbles the first
+  glyph of every line (the "leclining" bug).
   Receipts cover PiP stretches (they double as jump-cut cover); vary the
   pan/zoom direction between adjacent receipts, and never place two
   browser-card receipts back to back (same-layout rule) — UNLESS the two pages
