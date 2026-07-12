@@ -338,7 +338,9 @@
       "sourceName": "OpenAI Help Center",
       "dateAccessed": "2026-07-13",
       "usageNote": "1.871 recut: H1 + 'combines Chat, ChatGPT Work, and Codex' paragraph — Codex-merge receipt. (2535x1355)",
-      "usedIn": [],
+      "usedIn": [
+        "ChatGptWorkVideo codexMergeProof (1400)"
+      ],
       "attributionRequired": false,
       "concerns": null
     },
@@ -350,7 +352,9 @@
       "sourceName": "OpenAI Help Center",
       "dateAccessed": "2026-07-13",
       "usageNote": "1.871 recut: ChatGPT Classic FAQ block — Classic-rename receipt. (2535x1355)",
-      "usedIn": [],
+      "usedIn": [
+        "ChatGptWorkVideo classicProof (1810)"
+      ],
       "attributionRequired": false,
       "concerns": null
     },
@@ -362,7 +366,9 @@
       "sourceName": "OpenAI (launch post)",
       "dateAccessed": "2026-07-13",
       "usageNote": "1.871 recut: July 9 2026 dateline + launch H1 — first-5s launch receipt. (3840x2052)",
-      "usedIn": [],
+      "usedIn": [
+        "ChatGptWorkVideo launchProof (1060)"
+      ],
       "attributionRequired": false,
       "concerns": null
     },
@@ -374,7 +380,9 @@
       "sourceName": "OpenAI (launch post)",
       "dateAccessed": "2026-07-13",
       "usageNote": "1.871 recut: delegate-tasks section — backdrop for the control-layer strategy diagram. (3840x2052)",
-      "usedIn": [],
+      "usedIn": [
+        "ChatGptWorkVideo strategyProof (6120)"
+      ],
       "attributionRequired": false,
       "concerns": null
     },
@@ -386,7 +394,9 @@
       "sourceName": "OpenAI (GPT-5.6 post)",
       "dateAccessed": "2026-07-13",
       "usageNote": "1.871 recut: GPT-5.6 launch H1 — Sol/Terra/Luna beat opener. (3840x2052)",
-      "usedIn": [],
+      "usedIn": [
+        "reserve (shorts b-roll)"
+      ],
       "attributionRequired": false,
       "concerns": null
     },
@@ -398,7 +408,9 @@
       "sourceName": "OpenAI Help Center",
       "dateAccessed": "2026-07-13",
       "usageNote": "1.871 recut: availability table naming Sol, Terra, Luna + roles line — models receipt. (2535x1355)",
-      "usedIn": [],
+      "usedIn": [
+        "ChatGptWorkVideo modelsProof (2900)"
+      ],
       "attributionRequired": false,
       "concerns": null
     },
@@ -410,7 +422,9 @@
       "sourceName": "MacRumors",
       "dateAccessed": "2026-07-13",
       "usageNote": "1.871 recut: headline + July 9 dateline + intro. (2535x1355)",
-      "usedIn": [],
+      "usedIn": [
+        "reserve (shorts b-roll)"
+      ],
       "attributionRequired": false,
       "concerns": "Editorial page screenshot used briefly as commentary receipt with source URL shown."
     },
@@ -422,7 +436,9 @@
       "sourceName": "MacRumors",
       "dateAccessed": "2026-07-13",
       "usageNote": "1.871 recut: Pro/Enterprise/Edu today, Plus/Business next days + Classic rename paragraphs. (2535x1355)",
-      "usedIn": [],
+      "usedIn": [
+        "ChatGptWorkVideo accessProof (3980)"
+      ],
       "attributionRequired": false,
       "concerns": "Editorial page screenshot used briefly as commentary receipt with source URL shown."
     },
@@ -434,7 +450,9 @@
       "sourceName": "Fox Business",
       "dateAccessed": "2026-07-13",
       "usageNote": "1.871 recut: Plus and Business follow in the coming days paragraph. (2700x1443)",
-      "usedIn": [],
+      "usedIn": [
+        "reserve (shorts b-roll)"
+      ],
       "attributionRequired": false,
       "concerns": "Editorial page screenshot used briefly as commentary receipt with source URL shown."
     },
@@ -446,7 +464,9 @@
       "sourceName": "The Decoder",
       "dateAccessed": "2026-07-13",
       "usageNote": "1.871 recut: Trump administration restricted GPT-5.6 access passage. (1900x1016)",
-      "usedIn": [],
+      "usedIn": [
+        "reserve (shorts b-roll)"
+      ],
       "attributionRequired": false,
       "concerns": "Editorial page screenshot used briefly as commentary receipt with source URL shown."
     },
@@ -458,7 +478,9 @@
       "sourceName": "The Decoder",
       "dateAccessed": "2026-07-13",
       "usageNote": "1.871 recut: phased rollout, usage-based billing section (scales with task size/complexity/model). (1900x1016)",
-      "usedIn": [],
+      "usedIn": [
+        "reserve (shorts b-roll)"
+      ],
       "attributionRequired": false,
       "concerns": "Editorial page screenshot used briefly as commentary receipt with source URL shown."
     },
@@ -470,7 +492,9 @@
       "sourceName": "TheTechPortal",
       "dateAccessed": "2026-07-13",
       "usageNote": "1.871 recut: review covered cyberattacks, biological research, military applications paragraph. (2021x1080)",
-      "usedIn": [],
+      "usedIn": [
+        "ChatGptWorkVideo reviewScopeProof (3590)"
+      ],
       "attributionRequired": false,
       "concerns": "Editorial page screenshot used briefly as commentary receipt with source URL shown."
     },
@@ -482,7 +506,9 @@
       "sourceName": "TechSpot",
       "dateAccessed": "2026-07-13",
       "usageNote": "1.871 recut of the CLEAN recapture: staggered-release headline + hero. (2900x1550)",
-      "usedIn": [],
+      "usedIn": [
+        "ChatGptWorkVideo staggerProof (3250)"
+      ],
       "attributionRequired": false,
       "concerns": "Editorial page screenshot used briefly as commentary receipt with source URL shown."
     },
@@ -494,7 +520,9 @@
       "sourceName": "OpenAI Unified Plugins Directory",
       "dateAccessed": "2026-07-13",
       "usageNote": "Tall pan master of the CLEAN recapture (modal dismissed, Load more expanded): full plugin grid incl Salesforce, Slack, Gmail, Teams, SharePoint, Adobe, GitHub, Canva, Dropbox, Zoom, Outlook. (2880x5500)",
-      "usedIn": [],
+      "usedIn": [
+        "ChatGptWorkVideo dirPan (300) + directoryPan (5311)"
+      ],
       "attributionRequired": false,
       "concerns": null
     },
@@ -506,7 +534,9 @@
       "sourceName": "ChatGPT pricing page",
       "dateAccessed": "2026-07-13",
       "usageNote": "1.871 recut: plan cards with NO ChatGPT Work price — no-fixed-price receipt. (3200x1710)",
-      "usedIn": [],
+      "usedIn": [
+        "ChatGptWorkVideo noPriceProof (4870)"
+      ],
       "attributionRequired": false,
       "concerns": null
     },
@@ -518,7 +548,9 @@
       "sourceName": "ChatGPT pricing page",
       "dateAccessed": "2026-07-13",
       "usageNote": "1.871 recut: Models table rows GPT-5.6 Sol / Sol Pro / Terra / Luna. (3200x1710)",
-      "usedIn": [],
+      "usedIn": [
+        "reserve (shorts b-roll)"
+      ],
       "attributionRequired": false,
       "concerns": null
     }

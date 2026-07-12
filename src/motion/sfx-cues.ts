@@ -54,6 +54,25 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "hybridPayoff": cues.push({ at: 87, type: "boom" }, { at: 146, type: "switch" }, { at: 168, type: "switch" }, { at: 188, type: "switch" }, { at: 200, type: "switch" }, { at: 221, type: "switch" }); break;
     case "oneFramework": cues.push({ at: 22, type: "whip" }, { at: 145, type: "ding" }); break;
     case "autonomyMatters": cues.push({ at: 193, type: "boom" }); break;
+    // ── ChatGPT Work video (July 2026) ──
+    case "oneWorkspace": cues.push({ at: 100 + 14, type: "boom" }, { at: 140, type: "ding" }); break; // panels merge, stamp
+    case "dirPan": cues.push({ at: 12, type: "whip" }); break;
+    case "launchProof": cues.push({ at: 16, type: "whip" }, { at: 30, type: "switch" }); break;
+    case "codexMergeProof": cues.push({ at: 16, type: "whip" }, { at: 34, type: "switch" }); break;
+    case "classicProof": cues.push({ at: 14, type: "whip" }, { at: 31, type: "switch" }); break;
+    case "rivalry": cues.push({ at: 10, type: "switch" }, { at: 45, type: "switch" }, { at: 78, type: "switch" }, { at: 219, type: "boom" }); break;
+    case "modelsProof": cues.push({ at: 12, type: "whip" }, { at: 19, type: "switch" }); break;
+    case "staggerProof": cues.push({ at: 14, type: "whip" }, { at: 28, type: "switch" }); break;
+    case "reviewScopeProof": cues.push({ at: 14, type: "whip" }, { at: 20, type: "switch" }); break;
+    case "accessProof": cues.push({ at: 14, type: "whip" }, { at: 22, type: "switch" }); break;
+    case "billPrinter": cues.push({ at: 40, type: "switch" }, { at: Math.round(dur * 0.6), type: "boom" }); break;
+    case "noPriceProof": cues.push({ at: 18, type: "whip" }); break;
+    case "directoryPan": cues.push({ at: 14, type: "whip" }, { at: 130, type: "switch" }); break;
+    case "strategyProof": cues.push({ at: 16, type: "whip" }); break;
+    case "unverifiedCard": cues.push({ at: 16, type: "whip" }, { at: 60, type: "switch" }); break;
+    case "solIncident": cues.push({ at: 58, type: "switch" }, { at: 92, type: "boom" }, { at: 172, type: "boom" }); break;
+    case "backupRule": cues.push({ at: 40, type: "boom" }, { at: 148, type: "switch" }, { at: 220, type: "boom" }); break;
+    case "sandbox": cues.push({ at: 100, type: "whip" }, { at: 120, type: "switch" }, { at: 145, type: "switch" }, { at: 245, type: "boom" }); break;
     // ── GPT-5.6 video (July 2026) ──
     case "speedBoost":
       cues.push({ at: 40, type: "boom" }, { at: 70, type: "whoosh" }); // SOL module bolts on, gauge sweep

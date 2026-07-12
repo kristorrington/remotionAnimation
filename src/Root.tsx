@@ -1,12 +1,22 @@
 import "./index.css";
-import { Composition } from "remotion";
+import { CalculateMetadataFunction, Composition } from "remotion";
 import { ShortsCompositions, SHORTS_ENABLED } from "./shorts";
 import { StyleDemo } from "./StyleDemo";
 import { TemplateLab, TEMPLATE_LAB_DUR } from "./TemplateLab";
+import { ChatGptWorkVideo, CHATGPT_WORK_DUR } from "./ChatGptWorkVideo";
+import { ChatGptWorkFinal } from "./ChatGptWorkFinal";
 import { ArchivedVideoCompositions, SHOW_ARCHIVE } from "./archive";
 
-// NOTE: the ChatGPT Work video's comps (ChatGptWorkVideo/Final) register here
-// marked CURRENT: once Phase 1 lands; transparentDefaults returns with them.
+// Default this composition to a transparent ProRes 4444 export so it composites
+// cleanly over screen-recorded footage straight from Studio's render button.
+const transparentDefaults: CalculateMetadataFunction<
+  Record<string, unknown>
+> = () => ({
+  defaultCodec: "prores",
+  defaultVideoImageFormat: "png",
+  defaultPixelFormat: "yuva444p10le",
+  defaultProResProfile: "4444",
+});
 
 // The sidebar shows TOOLS + the CURRENT video + its shorts. Previous videos
 // live in src/archive (long-form) and src/shorts/archivedSpecs.ts (shorts) —
@@ -35,6 +45,27 @@ export const RemotionRoot: React.FC = () => {
         id="TemplateLab"
         component={TemplateLab}
         durationInFrames={TEMPLATE_LAB_DUR}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      <Composition
+        // CURRENT: "What is ChatGPT Work" — transparent overlay track.
+        id="ChatGptWorkVideo"
+        component={ChatGptWorkVideo}
+        durationInFrames={CHATGPT_WORK_DUR}
+        fps={30}
+        width={1920}
+        height={1080}
+        calculateMetadata={transparentDefaults}
+      />
+
+      <Composition
+        // CURRENT: ChatGPT Work — the finished combined cut (footage + overlay).
+        id="ChatGptWorkFinal"
+        component={ChatGptWorkFinal}
+        durationInFrames={CHATGPT_WORK_DUR}
         fps={30}
         width={1920}
         height={1080}
