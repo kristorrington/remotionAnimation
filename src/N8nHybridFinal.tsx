@@ -13,7 +13,7 @@ import { ThemeProvider } from "./theme";
 // with a kinetic transition (whip pan / iris / bar wipe), kinds ROTATING so no
 // two consecutive cuts use the same move; the whoosh that already fires per
 // cover carries the sound. CutFlash remains only on the face→first-cover cut.
-const FOOTAGE = "talking-head.mp4";
+const FOOTAGE = "talking-head-120726.mp4"; // rotated 2026-07-13 (ChatGPT Work video took talking-head.mp4)
 
 const PIP_GAP_MAX = 180; // 6s
 const PIP_MIN = 90; // never show a PiP segment shorter than 3s (flicker)

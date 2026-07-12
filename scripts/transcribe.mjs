@@ -66,6 +66,16 @@ const main = async () => {
     [["f", "able"], "Fable"],
     [["m", "iff", "os"], "Mythos"],
     [["miff", "os"], "Mythos"],
+    // ChatGPT Work video (07/2026)
+    [["chatch", "ept"], "ChatGPT"],
+    [["chat", "gpt"], "ChatGPT"],
+    [["in", "gadget"], "Engadget"],
+    [["the", "dakota"], "The Decoder"],
+    [["mac", "room", "is"], "MacRumors"],
+    [["mac", "rumors"], "MacRumors"],
+    // "sole" is a real word — only fix it in the model-name contexts
+    [["two", "sole"], "two Sol"],
+    [["sole", "deletion"], "Sol deletion"],
   ];
   const norm = (s) => s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
   for (const [parts, joined] of JOINS) {
@@ -81,10 +91,19 @@ const main = async () => {
     anthropic: "Anthropic", anthropics: "Anthropic", thorpek: "Anthropic", thorpey: "Anthropic",
     anthorpey: "Anthropic", fable: "Fable", mythos: "Mythos", miffos: "Mythos", mifos: "Mythos",
     misaris: "Messaros", claude: "Claude",
+    // ChatGPT Work video (07/2026)
+    codecs: "Codex", cowork: "Cowork", copilot: "Copilot",
+    engadget: "Engadget", macrumors: "MacRumors",
   };
   for (const w of words) {
     const base = norm(w.text);
-    if (FIX[base]) w.text = w.text.replace(/[\p{L}\p{N}]+/u, FIX[base]);
+    if (FIX[base]) {
+      // swap the WHOLE word body (hyphenated mishears like "co-work" would
+      // otherwise only get their first token replaced → "Cowork-work")
+      const leading = w.text.match(/^[^\p{L}\p{N}]+/u)?.[0] ?? "";
+      const trailing = w.text.match(/[^\p{L}\p{N}]+$/u)?.[0] ?? "";
+      w.text = leading + FIX[base] + trailing;
+    }
   }
 
   // Words that are OFTEN brand mishears but can also be legit (e.g. whisper

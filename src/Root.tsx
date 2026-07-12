@@ -1,22 +1,12 @@
 import "./index.css";
-import { CalculateMetadataFunction, Composition } from "remotion";
+import { Composition } from "remotion";
 import { ShortsCompositions, SHORTS_ENABLED } from "./shorts";
 import { StyleDemo } from "./StyleDemo";
 import { TemplateLab, TEMPLATE_LAB_DUR } from "./TemplateLab";
-import { N8nHybridVideo, N8N_HYBRID_DUR } from "./N8nHybridVideo";
-import { N8nHybridFinal } from "./N8nHybridFinal";
 import { ArchivedVideoCompositions, SHOW_ARCHIVE } from "./archive";
 
-// Default this composition to a transparent ProRes 4444 export so it composites
-// cleanly over screen-recorded footage straight from Studio's render button.
-const transparentDefaults: CalculateMetadataFunction<
-  Record<string, unknown>
-> = () => ({
-  defaultCodec: "prores",
-  defaultVideoImageFormat: "png",
-  defaultPixelFormat: "yuva444p10le",
-  defaultProResProfile: "4444",
-});
+// NOTE: the ChatGPT Work video's comps (ChatGptWorkVideo/Final) register here
+// marked CURRENT: once Phase 1 lands; transparentDefaults returns with them.
 
 // The sidebar shows TOOLS + the CURRENT video + its shorts. Previous videos
 // live in src/archive (long-form) and src/shorts/archivedSpecs.ts (shorts) —
@@ -45,27 +35,6 @@ export const RemotionRoot: React.FC = () => {
         id="TemplateLab"
         component={TemplateLab}
         durationInFrames={TEMPLATE_LAB_DUR}
-        fps={30}
-        width={1920}
-        height={1080}
-      />
-
-      <Composition
-        // CURRENT: n8n vs agents "hybrid stack" — transparent overlay track.
-        id="N8nHybridVideo"
-        component={N8nHybridVideo}
-        durationInFrames={N8N_HYBRID_DUR}
-        fps={30}
-        width={1920}
-        height={1080}
-        calculateMetadata={transparentDefaults}
-      />
-
-      <Composition
-        // CURRENT: n8n-hybrid — the finished combined cut (footage + overlay).
-        id="N8nHybridFinal"
-        component={N8nHybridFinal}
-        durationInFrames={N8N_HYBRID_DUR}
         fps={30}
         width={1920}
         height={1080}

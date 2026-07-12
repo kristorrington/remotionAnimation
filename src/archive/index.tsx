@@ -26,6 +26,8 @@ import { SideHustleVideo, SIDE_HUSTLE_DUR } from "../SideHustleVideo";
 import { GptSandboxVideo, GPT_SANDBOX_DUR } from "../GptSandboxVideo";
 import { GptSandboxFinal } from "../GptSandboxFinal";
 import { SideHustleFinal } from "../SideHustleFinal";
+import { N8nHybridVideo, N8N_HYBRID_DUR } from "../N8nHybridVideo";
+import { N8nHybridFinal } from "../N8nHybridFinal";
 
 // ============================================================================
 // THE ARCHIVE — compositions from PREVIOUS videos. When a new video starts,
@@ -49,6 +51,10 @@ const transparentDefaults: CalculateMetadataFunction<
 export const ArchivedVideoCompositions: React.FC = () => {
   return (
     <>
+      {/* ── n8n vs agents "hybrid stack" (July 2026) ── */}
+      <Composition id="N8nHybridVideo" component={N8nHybridVideo} durationInFrames={N8N_HYBRID_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="N8nHybridFinal" component={N8nHybridFinal} durationInFrames={N8N_HYBRID_DUR} fps={30} width={1920} height={1080} />
+
       {/* ── GPT-5.6: sandbox it before you scale it (July 2026) ── */}
       <Composition id="GptSandboxVideo" component={GptSandboxVideo} durationInFrames={GPT_SANDBOX_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
       <Composition id="GptSandboxFinal" component={GptSandboxFinal} durationInFrames={GPT_SANDBOX_DUR} fps={30} width={1920} height={1080} />
