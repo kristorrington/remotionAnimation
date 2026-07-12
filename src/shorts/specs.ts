@@ -33,7 +33,7 @@ export const SHORTS: ShortSpec[] = [
       // Klarna's FIRST MENTION → Klarna's OWN site (brand rule, July 2026);
       // the Forbes rehire proof lives in Short-KlarnaLesson instead.
       // No emoji here: EmojiPop docks top-right and would touch the wide label.
-      { at: 352, scene: "receipt", tint: "#F59E0B", text: "KLARNA REHIRED HUMANS", shot: { src: "assets/external/screenshots/klarna-pr-wide.png", url: "klarna.com/press", imageW: 2152, imageH: 1150, from: { x: 76, y: 48, w: 1980, h: 1058 }, to: { x: 8, y: 48, w: 2062, h: 1102 }, zoomAt: 14 } },
+      { at: 352, scene: "receipt", tint: "#F59E0B", text: "KLARNA REHIRED HUMANS", shot: { src: "assets/external/screenshots/klarna-pr-wide.png", url: "klarna.com/press", imageW: 2152, imageH: 1150, from: { x: 8, y: 48, w: 2062, h: 1102 }, to: { x: 8, y: 50, w: 900, h: 330 }, zoomAt: 14 } },
       { at: 490, scene: "emote", pose: "worried", accent: "#EF4444", tint: "#EF4444", text: "PUSHED TOO HARD" }, // "pushing AI-led customer service too hard" abs 466-557 (ends the receipt before the span)
       { at: 590, scene: "bolt", blockLabel: "WORKFLOW", moduleLabel: "AI", tint: "#34D399", text: "HYBRID STACK" }, // "favor a hybrid stack" abs 607
     ],
@@ -63,7 +63,7 @@ export const SHORTS: ShortSpec[] = [
       // Forbes receipt as proof of the admission ("over-indexed on efficiency and cost" abs 2591).
       // Lives purely in split view (spans end at 700; the CTA owns the frame
       // from dur−114=886) — fills the band like every receipt.
-      { at: 723, scene: "receipt", tint: "#D97757", text: "OVER-INDEXED ON COST", shot: { src: "assets/external/screenshots/forbes-klarna-wide.png", url: "forbes.com", imageW: 1600, imageH: 855, from: { x: 64, y: 34, w: 1472, h: 787 }, to: { x: 0, y: 0, w: 1600, h: 855 }, zoomAt: 14, highlight: { x: 2, y: 148, w: 1396, h: 112 }, highlightAt: 110 } },
+      { at: 723, scene: "receipt", tint: "#D97757", text: "OVER-INDEXED ON COST", shot: { src: "assets/external/screenshots/forbes-klarna-wide.png", url: "forbes.com", imageW: 1600, imageH: 855, from: { x: 0, y: 20, w: 1600, h: 835 }, to: { x: 0, y: 60, w: 1600, h: 620 }, zoomAt: 14, highlight: { x: 2, y: 148, w: 1396, h: 112 }, highlightAt: 110 } },
       { at: 897, scene: "stamp", verdict: "check", badge: "THE FIX", tint: "#34D399", text: "HUMANS CAME BACK" }, // "began hiring people again" abs 2765 (rides under the CTA)
     ],
     // full-anim: the quality-break reject only — the Klarna-PR receipt stays

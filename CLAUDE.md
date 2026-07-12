@@ -687,16 +687,25 @@ press kits, screenshots of official pages.
   (Gartner stays after the 40/40 balance).
   Long-form receipts are FULL-BLEED (page fills 1920×1080, URL bar on top,
   kicker+title on a white sticker pill; `fullBleed={false}` = the 90% card
-  for quick b-roll). **Shorts receipts are a PADDED CARD** (Kris, July 2026
+  for quick b-roll). **The sticker must never sit ON page text** (Kris,
+  July 2026 — "captions over the screenshot text"): top-center only over
+  whitespace; otherwise dock it with `titlePos="right"/"left"` (+
+  `titleTop` for a lower slot) into a region that is empty in BOTH the
+  `from` and `to` states — audit both in stills; bottom-right is reserved
+  for the corner PiP. Long titles shrink to fit their slot (akeneo:
+  "AGENT LAYER", kicker "PR NEWSWIRE"). **Shorts receipts are a PADDED CARD** (Kris, July 2026
   — supersedes the earlier 100% band fill, which slammed pages edge-to-edge
   and sliced text): a centered browser card ≤ ~952px wide with paper margin
   around it, still SPLIT VIEW ONLY — never inside (or running into) a
   `fullscreen` span; spans stay reserved for animated subject beats. The
   card viewport sizes itself to the `to` aspect, so author `to` with the
-  claim FULLY inside (usually the full -wide recut; a wide banner opens
-  zoomed on its key number, then settles on the whole headline — never
-  leave a mega-zoom that slices the sentence). The BeatLabel rides a white
-  sticker above the card. Ken Burns drift after the zoom: bleed mode drifts
+  claim FULLY inside AND tight on the claim BLOCK (Kris, July 2026 — a full
+  text page crammed in the card reads at ~8px on mobile): zoom to the
+  headline/logo/stat region at the page's full column width (x-slicing
+  mid-word is never OK; the bottom edge cutting a body row like a real
+  browser fold is fine). A wide banner opens zoomed on its key number,
+  then settles on the whole headline. The BeatLabel rides a white sticker
+  above the card. Ken Burns drift after the zoom: bleed mode drifts
   the PAGE (frame-edge crop is fine full-screen), card mode drifts the CARD
   outward — an inner drift crops at the card edge and nibbles the first
   glyph of every line (the "leclining" bug).

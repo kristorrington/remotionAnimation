@@ -104,12 +104,12 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 0:30 opening b-roll: n8n's own homepage sells "AI agents and workflows" — the blur on screen */}
       <Sequence from={906} durationInFrames={114} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={114} kicker="N8N.IO" title="LABELS BLURRING" tint="#D97757" src="assets/external/screenshots/n8n-hero-wide.png" url="n8n.io" imageW={2900} imageH={1550} from={{ x: 290, y: 155, w: 2436, h: 1302 }} to={{ x: 0, y: 0, w: 2900, h: 1550 }} zoomAt={18} highlight={{ x: 385, y: 70, w: 1030, h: 220 }} highlightAt={40} />
+        <ScreenshotReceiptScene durationInFrames={114} kicker="N8N.IO" title="LABELS BLURRING" titlePos="right" tint="#D97757" src="assets/external/screenshots/n8n-hero-wide.png" url="n8n.io" imageW={2900} imageH={1550} from={{ x: 290, y: 155, w: 2436, h: 1302 }} to={{ x: 0, y: 0, w: 2900, h: 1550 }} zoomAt={18} highlight={{ x: 385, y: 70, w: 1030, h: 220 }} highlightAt={40} />
       </Sequence>
 
       {/* 0:34 Zapier's FIRST MENTION → their own agents page ("Zapier, Make lean heavily towards no code" 1026) */}
       <Sequence from={1026} durationInFrames={78} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={78} kicker="ZAPIER.COM" title="THE NO-CODE CAMP" tint="#C15F3C" src="assets/external/screenshots/zapier-agents-wide.png" url="zapier.com/agents" imageW={2900} imageH={1550} from={{ x: 174, y: 44, w: 2552, h: 1364 }} to={{ x: 370, y: 44, w: 1870, h: 999 }} zoomAt={12} highlight={{ x: 820, y: 70, w: 970, h: 300 }} highlightAt={24} />
+        <ScreenshotReceiptScene durationInFrames={78} kicker="ZAPIER.COM" title="THE NO-CODE CAMP" titlePos="left" titleTop={880} tint="#C15F3C" src="assets/external/screenshots/zapier-agents-wide.png" url="zapier.com/agents" imageW={2900} imageH={1550} from={{ x: 174, y: 44, w: 2552, h: 1364 }} to={{ x: 370, y: 44, w: 1870, h: 999 }} zoomAt={12} highlight={{ x: 820, y: 70, w: 970, h: 300 }} highlightAt={24} />
       </Sequence>
 
       {/* 0:37 all three: trigger → run → predictable */}
@@ -149,7 +149,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 1:29 receipt: Forbes — Klarna hires humans back ("began hiring people again" 2765) */}
       <Sequence from={2694} durationInFrames={168} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={168} kicker="FORBES · MAY 2025" title="HIRING AGAIN" tint="#F59E0B" src="assets/external/screenshots/forbes-klarna-wide.png" url="forbes.com" imageW={1600} imageH={855} from={{ x: 160, y: 85, w: 1408, h: 753 }} to={{ x: 0, y: 0, w: 1600, h: 855 }} zoomAt={18} highlight={{ x: 2, y: 148, w: 1396, h: 112 }} highlightAt={71} />
+        <ScreenshotReceiptScene durationInFrames={168} kicker="FORBES · MAY 2025" title="HIRING AGAIN" titlePos="right" tint="#F59E0B" src="assets/external/screenshots/forbes-klarna-wide.png" url="forbes.com" imageW={1600} imageH={855} from={{ x: 160, y: 85, w: 1408, h: 753 }} to={{ x: 0, y: 0, w: 1600, h: 855 }} zoomAt={18} highlight={{ x: 2, y: 148, w: 1396, h: 112 }} highlightAt={71} />
       </Sequence>
 
       {/* 1:35 the fix: AI keeps simple work, humans take judgement */}
@@ -184,7 +184,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 2:28 product b-roll: Zapier's agent product ("similar strategic bet" 4469) */}
       <Sequence from={4466} durationInFrames={124} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={124} kicker="ZAPIER.COM/AGENTS" title="THE SAME BET" tint="#C15F3C" src="assets/external/screenshots/zapier-agents-wide.png" url="zapier.com/agents" imageW={2900} imageH={1550} from={{ x: 174, y: 93, w: 2552, h: 1364 }} to={{ x: 40, y: 44, w: 2818, h: 1506 }} zoomAt={16} highlight={{ x: 820, y: 70, w: 970, h: 300 }} highlightAt={40} />
+        <ScreenshotReceiptScene durationInFrames={124} kicker="ZAPIER.COM/AGENTS" title="THE SAME BET" titlePos="right" tint="#C15F3C" src="assets/external/screenshots/zapier-agents-wide.png" url="zapier.com/agents" imageW={2900} imageH={1550} from={{ x: 174, y: 93, w: 2552, h: 1364 }} to={{ x: 40, y: 44, w: 2818, h: 1506 }} zoomAt={16} highlight={{ x: 820, y: 70, w: 970, h: 300 }} highlightAt={40} />
       </Sequence>
 
       {/* 2:33 Zapier's identical bet: 800 internal agents */}
@@ -194,7 +194,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 2:37 receipt: the CEO's post ("more agents than employees" 4736) */}
       <Sequence from={4712} durationInFrames={227} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={227} kicker="X · JUNE 2025" title="THE CEO'S POST" tint="#D97757" src="assets/external/screenshots/zapier-ceo-agents-post.png" url="x.com/wadefoster" imageW={1200} imageH={640} from={{ x: 72, y: 38, w: 1056, h: 563 }} to={{ x: 0, y: 0, w: 1200, h: 640 }} zoomAt={8} highlight={{ x: 42, y: 243, w: 680, h: 64 }} highlightAt={26} />
+        <ScreenshotReceiptScene durationInFrames={227} kicker="X · JUNE 2025" title="THE CEO'S POST" titlePos="right" tint="#D97757" src="assets/external/screenshots/zapier-ceo-agents-post.png" url="x.com/wadefoster" imageW={1200} imageH={640} from={{ x: 72, y: 38, w: 1056, h: 563 }} to={{ x: 0, y: 0, w: 1200, h: 640 }} zoomAt={8} highlight={{ x: 42, y: 243, w: 680, h: 64 }} highlightAt={26} />
       </Sequence>
 
       {/* 2:45 the workflow layer becomes the control system */}
@@ -204,7 +204,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 2:49 receipt: Akeneo bolts an agent layer onto its no-code platform ("launched an agent layer" 5201) */}
       <Sequence from={5080} durationInFrames={250} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={250} kicker="PR NEWSWIRE · JUL 2026" title="AGENT LAYER ADDED" tint="#34D399" src="assets/external/screenshots/akeneo-pr-wide.png" url="prnewswire.com" imageW={1497} imageH={800} from={{ x: 90, y: 48, w: 1317, h: 704 }} to={{ x: 0, y: 0, w: 1497, h: 800 }} zoomAt={20} highlight={{ x: 8, y: 78, w: 1190, h: 330 }} highlightAt={121} />
+        <ScreenshotReceiptScene durationInFrames={250} kicker="PR NEWSWIRE" title="AGENT LAYER" titlePos="right" tint="#34D399" src="assets/external/screenshots/akeneo-pr-wide.png" url="prnewswire.com" imageW={1497} imageH={800} from={{ x: 90, y: 48, w: 1317, h: 704 }} to={{ x: 0, y: 0, w: 1497, h: 800 }} zoomAt={20} highlight={{ x: 8, y: 78, w: 1190, h: 330 }} highlightAt={121} />
       </Sequence>
 
       {/* 3:05 McKinsey: experimenting vs actually scaling */}

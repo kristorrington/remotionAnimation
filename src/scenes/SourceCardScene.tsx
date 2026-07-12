@@ -27,7 +27,13 @@ export const ScreenshotReceiptScene: React.FC<{
   cardW?: number;
   cardH?: number;
   fullBleed?: boolean;
-}> = ({ durationInFrames, kicker, title, tint, src, url, imageW, imageH, from, to, zoomAt, highlight, highlightAt, cardW = 1700, cardH = 840, fullBleed = true }) => {
+  // Sticker slot: "center" only when the page's top-center is EMPTY —
+  // over a headline/hero it covers the page text (Kris, July 2026); dock
+  // it "right"/"left" into the page's whitespace instead, and lower it
+  // with titleTop when even the top corner holds text.
+  titlePos?: "center" | "right" | "left";
+  titleTop?: number;
+}> = ({ durationInFrames, kicker, title, tint, src, url, imageW, imageH, from, to, zoomAt, highlight, highlightAt, cardW = 1700, cardH = 840, fullBleed = true, titlePos = "center", titleTop = 88 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   // FULL-BLEED trial (Kris, July 2026): the page fills the whole frame; the
@@ -35,10 +41,11 @@ export const ScreenshotReceiptScene: React.FC<{
   // white sticker pill over the page. Set fullBleed={false} for the 90% card.
   if (fullBleed) {
     const pop = spring({ frame: frame - 8, fps, config: { stiffness: 240, damping: 14 }, durationInFrames: 18 });
+    const slot = titlePos === "right" ? { right: 60 } : titlePos === "left" ? { left: 60 } : { left: "50%" };
     return (
       <AbsoluteFill>
         <SourceScreenshot src={src} url={url} imageW={imageW} imageH={imageH} from={from} to={to} zoomAt={zoomAt} highlight={highlight} highlightAt={highlightAt} width={1920} height={1080} bleed />
-        <div style={{ position: "absolute", top: 88, left: "50%", transform: `translateX(-50%) rotate(-1.5deg) scale(${interpolate(pop, [0, 1], [1.18, 1])})`, opacity: interpolate(pop, [0, 0.3], [0, 1]) }}>
+        <div style={{ position: "absolute", top: titleTop, ...slot, transform: `${titlePos === "center" ? "translateX(-50%) " : ""}rotate(-1.5deg) scale(${interpolate(pop, [0, 1], [1.18, 1])})`, opacity: interpolate(pop, [0, 0.3], [0, 1]) }}>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, padding: "14px 34px", borderRadius: 18, background: "rgba(255,255,255,0.96)", boxShadow: "0 18px 50px rgba(31,30,29,0.35)" }}>
             {kicker ? <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 20, letterSpacing: 3, color: CYAN }}>{kicker}</span> : null}
             <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 46, letterSpacing: 0.5, color: "#1F1E1D", whiteSpace: "nowrap" }}>{title}</span>
