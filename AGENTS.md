@@ -407,6 +407,11 @@ Transitions (reference: [CutFlash.tsx](src/components/CutFlash.tsx) +
   coordinates). Fix: `maxWidth: "none"` inline on every measured/panned `Img`
   (SourceScreenshot is the reference case). Symptom: image and its highlight
   rect disagree in QC stills.
+- **Multi-line `git commit -m @'…'@` here-strings can hang the PowerShell tool
+  indefinitely** (07/2026, twice in one session — timed out at 2m and 5m, left
+  a stale `.git/index.lock`). Fix: write the message to a scratch file and
+  `git commit -F <file>` (instant). If a git call was killed mid-flight,
+  confirm no git process is alive, then delete `.git/index.lock`.
 - **Long Finals (10k+ frames) stall/time out mid-render — RULE: render them
   with `node scripts/render-long.mjs <comp> <out.mp4> <totalFrames>`, never a
   single `remotion render`.** Root cause (07/2026, side-hustles video): the
