@@ -37,7 +37,8 @@ export const SourceScreenshot: React.FC<{
   highlightAt?: number;
   width?: number;
   height?: number;
-}> = ({ src, url, imageW, imageH, from, to, zoomAt = 20, highlight, highlightAt = 52, width = 1100, height = 640 }) => {
+  bleed?: boolean; // full-frame mode: no radius/border/glow — the page IS the frame
+}> = ({ src, url, imageW, imageH, from, to, zoomAt = 20, highlight, highlightAt = 52, width = 1100, height = 640, bleed = false }) => {
   const frame = useCurrentFrame();
   const inner = height - 54;
   const a = rectTransform(from ?? { x: 0, y: 0, w: imageW, h: imageH }, width, inner);
@@ -51,7 +52,7 @@ export const SourceScreenshot: React.FC<{
   const drift = interpolate(frame, [zoomAt + 26, zoomAt + 26 + 260], [1, 1.05], CLAMP);
   const op = interpolate(frame, [0, 12], [0, 1], CLAMP);
   return (
-    <div style={{ width, borderRadius: 18, overflow: "hidden", border: `2px solid ${CYAN}55`, boxShadow: `0 30px 80px rgba(0,0,0,0.55), 0 0 40px ${CYAN}22`, opacity: op, background: "#0B0F17" }}>
+    <div style={{ width, borderRadius: bleed ? 0 : 18, overflow: "hidden", border: bleed ? "none" : `2px solid ${CYAN}55`, boxShadow: bleed ? "none" : `0 30px 80px rgba(0,0,0,0.55), 0 0 40px ${CYAN}22`, opacity: op, background: "#0B0F17" }}>
       {/* browser chrome */}
       <div style={{ height: 54, display: "flex", alignItems: "center", gap: 10, padding: "0 20px", background: "#111827", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
         {["#EF4444", "#F59E0B", "#34D399"].map((c) => (
