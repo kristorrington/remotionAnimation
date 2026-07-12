@@ -659,6 +659,11 @@ press kits, screenshots of official pages.
   raw captures stay untracked). Receipts hold **2–5s**, the zoom starts ~0.5s
   in, the highlight sweep fires ON the whisper word; a receipt may TRAIL its
   spoken number by a beat (counters first, proof after) but never precede it.
+  Receipt cards run at ~90% of the frame (long-form default 1700×840, compact
+  46px headline above; shorts stay 780×500 — the span zoom already takes them
+  to ~95%) and keep a slow Ken Burns drift after the zoom lands so they never
+  sit static. NEVER full-bleed: the browser chrome + URL bar is the
+  credibility device, and the paper margin keeps the sticker look.
   Receipts cover PiP stretches (they double as jump-cut cover); vary the
   pan/zoom direction between adjacent receipts, and never place two
   browser-card receipts back to back (same-layout rule) — UNLESS the two pages

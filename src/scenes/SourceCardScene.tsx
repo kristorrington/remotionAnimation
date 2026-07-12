@@ -26,11 +26,14 @@ export const ScreenshotReceiptScene: React.FC<{
   highlightAt?: number;
   cardW?: number;
   cardH?: number;
-}> = ({ durationInFrames, kicker, title, tint, src, url, imageW, imageH, from, to, zoomAt, highlight, highlightAt, cardW = 1240, cardH = 660 }) => {
+}> = ({ durationInFrames, kicker, title, tint, src, url, imageW, imageH, from, to, zoomAt, highlight, highlightAt, cardW = 1700, cardH = 840 }) => {
+  // 90% treatment (Kris, July 2026): the card dominates the frame; the
+  // headline compacts above it. Never full-bleed — the browser chrome + URL
+  // bar IS the receipt's credibility (§10.7: no raw screenshot dumps).
   return (
     <SceneShell durationInFrames={durationInFrames} particleSeed={0x77} tint={tint}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 36 }}>
-        <SceneHeadline kicker={kicker} title={title} titleSize={58} />
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 22 }}>
+        <SceneHeadline kicker={kicker} title={title} titleSize={46} />
         <SourceScreenshot src={src} url={url} imageW={imageW} imageH={imageH} from={from} to={to} zoomAt={zoomAt} highlight={highlight} highlightAt={highlightAt} width={cardW} height={cardH} />
       </div>
     </SceneShell>

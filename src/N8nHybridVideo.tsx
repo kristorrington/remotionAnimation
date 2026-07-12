@@ -222,7 +222,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 3:42 receipt: Gartner's own headline right after the 40/40 tip */}
       <Sequence from={6664} durationInFrames={136} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={136} kicker="GARTNER · AUG 2025" title="40% BY 2026" tint="#F59E0B" src="assets/external/screenshots/gartner-40pct-agents-2026.png" url="gartner.com/newsroom" imageW={2000} imageH={600} to={{ x: 85, y: 68, w: 1660, h: 477 }} zoomAt={16} highlight={{ x: 112, y: 122, w: 1565, h: 100 }} highlightAt={44} cardH={410} />
+        <ScreenshotReceiptScene durationInFrames={136} kicker="GARTNER · AUG 2025" title="40% BY 2026" tint="#F59E0B" src="assets/external/screenshots/gartner-40pct-agents-2026.png" url="gartner.com/newsroom" imageW={2000} imageH={600} to={{ x: 85, y: 68, w: 1660, h: 477 }} zoomAt={16} highlight={{ x: 112, y: 122, w: 1565, h: 100 }} highlightAt={44} cardH={545} />
       </Sequence>
 
       {/* 3:47 the $1T sell-off */}

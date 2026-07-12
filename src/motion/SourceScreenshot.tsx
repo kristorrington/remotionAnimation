@@ -46,6 +46,9 @@ export const SourceScreenshot: React.FC<{
   const scale = a.scale + (b.scale - a.scale) * t;
   const tx = a.tx + (b.tx - a.tx) * t;
   const ty = a.ty + (b.ty - a.ty) * t;
+  // Ken Burns tail: once the zoom lands, keep a slow drift going so the
+  // receipt never sits static (editing research: slow purposeful motion)
+  const drift = interpolate(frame, [zoomAt + 26, zoomAt + 26 + 260], [1, 1.05], CLAMP);
   const op = interpolate(frame, [0, 12], [0, 1], CLAMP);
   return (
     <div style={{ width, borderRadius: 18, overflow: "hidden", border: `2px solid ${CYAN}55`, boxShadow: `0 30px 80px rgba(0,0,0,0.55), 0 0 40px ${CYAN}22`, opacity: op, background: "#0B0F17" }}>
@@ -58,8 +61,8 @@ export const SourceScreenshot: React.FC<{
           <span style={{ fontFamily: FONT, fontWeight: 600, fontSize: 21, color: "rgba(255,255,255,0.75)" }}>{url}</span>
         </div>
       </div>
-      {/* the page, panned + zoomed to the proof */}
-      <div style={{ position: "relative", width, height: inner, overflow: "hidden" }}>
+      {/* the page, panned + zoomed to the proof (outer div = the drift) */}
+      <div style={{ position: "relative", width, height: inner, overflow: "hidden", transform: `scale(${drift})`, transformOrigin: "50% 50%" }}>
         <div style={{ position: "absolute", transform: `translate(${tx}px, ${ty}px) scale(${scale})`, transformOrigin: "top left" }}>
           {/* maxWidth:none — Tailwind preflight's img{max-width:100%} squishes pages wider than the card */}
           <Img src={staticFile(src)} style={{ width: imageW, height: imageH, maxWidth: "none", display: "block" }} />
