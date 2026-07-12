@@ -33,10 +33,12 @@ export const SHORTS: ShortSpec[] = [
       // Forbes receipt — the evidence beat of the "evidence says slow down" hook ("bring more humans back" abs 413).
       // No emoji here: EmojiPop docks top-right and would touch the wide label.
       { at: 352, scene: "receipt", tint: "#F59E0B", text: "KLARNA REHIRED HUMANS", shot: { src: "assets/external/screenshots/forbes-klarna-rehire.png", url: "forbes.com", imageW: 1600, imageH: 1100, to: { x: 0, y: 80, w: 1400, h: 1017 }, zoomAt: 14, highlight: { x: 2, y: 393, w: 1396, h: 112 }, highlightAt: 78 } },
+      { at: 490, scene: "emote", pose: "worried", accent: "#EF4444", tint: "#EF4444", text: "PUSHED TOO HARD" }, // "pushing AI-led customer service too hard" abs 466-557 (ends the receipt before the span)
       { at: 590, scene: "bolt", blockLabel: "WORKFLOW", moduleLabel: "AI", tint: "#34D399", text: "HYBRID STACK" }, // "favor a hybrid stack" abs 607
     ],
-    // full-anim: the canvas receipt goes full screen, then the hybrid payoff
-    fullscreen: [{ from: 196, to: 336 }, { from: 540, to: 640 }],
+    // full-anim: ONLY the animated hybrid payoff — receipts stay in the split
+    // band (Kris's rule: screenshots fill the half, never the whole screen)
+    fullscreen: [{ from: 550, to: 640 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
     style: "paper",
@@ -63,10 +65,9 @@ export const SHORTS: ShortSpec[] = [
       { at: 723, scene: "receipt", tint: "#D97757", text: "OVER-INDEXED ON COST", shot: { src: "assets/external/screenshots/forbes-klarna-rehire.png", url: "forbes.com", imageW: 1600, imageH: 1100, to: { x: 0, y: 80, w: 1400, h: 1017 }, zoomAt: 14, highlight: { x: 2, y: 393, w: 1396, h: 112 }, highlightAt: 110 } },
       { at: 897, scene: "stamp", verdict: "check", badge: "THE FIX", tint: "#34D399", text: "HUMANS CAME BACK" }, // "began hiring people again" abs 2765 (rides under the CTA)
     ],
-    // full-anim: ONE span on the Klarna-PR receipt + the quality break
-    // (face → full-screen screenshot pattern; a 405→545 + 560→700 pair would
-    // flash the split for 15f between them, so they merge)
-    fullscreen: [{ from: 405, to: 700 }],
+    // full-anim: the quality-break reject only — the Klarna-PR receipt stays
+    // in the split band (screenshots fill the half, never the whole screen)
+    fullscreen: [{ from: 592, to: 700 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
     style: "paper",
@@ -91,8 +92,9 @@ export const SHORTS: ShortSpec[] = [
       { at: 652, scene: "receipt", tint: "#34D399", text: "40% ADOPT BY 2026", shot: { src: "assets/external/screenshots/gartner-40pct-agents-2026.png", url: "gartner.com/newsroom", imageW: 2000, imageH: 600, from: { x: 430, y: 0, w: 900, h: 600 }, to: { x: 530, y: 0, w: 700, h: 507 }, zoomAt: 4, highlight: { x: 765, y: 120, w: 230, h: 105 }, highlightAt: 10 } },
       { at: 864, scene: "stamp", verdict: "cross", badge: "GARTNER", tint: "#EF4444", text: "40% CANCELLED BY 2027" }, // "over 40%… cancelled" abs 6421 (slam ~904)
     ],
-    // full-anim: the 62/23 gap + the hurt list
-    fullscreen: [{ from: 190, to: 400 }, { from: 640, to: 780 }],
+    // full-anim: the 62/23 gap + the hurt list only — the Gartner receipt
+    // stays in the split band (its 40% mega-zoom fills the half)
+    fullscreen: [{ from: 190, to: 400 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
     style: "paper",
@@ -117,8 +119,9 @@ export const SHORTS: ShortSpec[] = [
       { at: 801, scene: "bolt", blockLabel: "WORKFLOW", moduleLabel: "AGENT", tint: "#34D399", text: "CONNECT THE TWO" }, // "then connect the two" abs 8019
       { at: 940, scene: "stamp", verdict: "check", badge: "WORKFLOW", tint: "#34D399", text: "VALIDATE → ESCALATE" }, // "let the workflow validate… escalate" abs 8164 (slam ~980)
     ],
-    // full-anim: the no-improvising queue + the connect payoff
-    fullscreen: [{ from: 190, to: 380 }, { from: 780, to: 900 }],
+    // full-anim: the no-improvising queue + the connect payoff — the canvas
+    // receipt at 101 stays in the split band
+    fullscreen: [{ from: 240, to: 380 }, { from: 780, to: 900 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
     style: "paper",
