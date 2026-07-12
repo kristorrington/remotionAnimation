@@ -691,6 +691,15 @@ Follow @kristorrington for AI automation that survives the real world.
 #AI #n8n #AIAgents #Automation #NoCode #Shorts
 ```
 
+## Short-DontAbandon-B (A/B hook variant — same video, hook "THE NO-CODE DEATH IS FAKE")
+
+**Title**
+```
+The Death of No-Code Is Fake — n8n Grew 10x #Shorts
+```
+
+**Description** — same as Short-DontAbandon. Post both, keep the winner.
+
 ## Short-KlarnaLesson
 
 **Title**
