@@ -9,6 +9,7 @@ import { IconBrain, IconClock, IconGuard, IconPrice, IconBug, IconGauge } from "
 import { TintWash } from "../scenes/SceneShell";
 import { useTheme } from "../theme";
 import { SourceScreenshot } from "../motion/SourceScreenshot";
+import { PanelLayout } from "./panelLayout";
 import { Beat } from "./types";
 
 // Per-beat ambient tints — every beat SHIFTS the wash colour (the beats
@@ -955,32 +956,20 @@ const BleedLabel: React.FC<{ text: string; top: number }> = ({ text, top }) => {
 };
 
 const ReceiptBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const e = spring({ frame: frame - 2, fps, config: { stiffness: 240, damping: 14 }, durationInFrames: 16 });
+  // 100% RULE (Kris, July 2026): the page ALWAYS fills its zone — the whole
+  // band in split view, the whole screen during spans, morphing with the
+  // seam. The panel scales content by `zoom` and biases it by `shift`; the
+  // counter-transform below nets that out so the bleed tracks the zone
+  // exactly, and cover-fit keeps the page edge-to-edge at every aspect.
+  const { zoom, shift, panelH } = React.useContext(PanelLayout);
   const s = beat.shot;
   if (!s) return null;
-  if (s.bleed) {
-    // page fills the layout; label rides a white sticker (hook owns the top
-    // in animHook, so "full" drops the sticker below it; "band" hugs the seam)
-    const vh = s.bleed === "full" ? 1920 : 838;
-    return (
-      <AbsoluteFill style={{ overflow: "hidden" }}>
-        <SourceScreenshot src={s.src} url={s.url} imageW={s.imageW} imageH={s.imageH} from={s.from} to={s.to} zoomAt={s.zoomAt} highlight={s.highlight} highlightAt={s.highlightAt} width={1080} height={vh} bleed />
-        <BleedLabel text={beat.text} top={s.bleed === "full" ? 545 : 24} />
-      </AbsoluteFill>
-    );
-  }
   return (
-    <Wrap gap={34}>
-      <div style={{ transform: `scale(${interpolate(e, [0, 1], [0.82, 1])}) rotate(${interpolate(e, [0, 1], [-2, 0])}deg)`, opacity: interpolate(e, [0, 0.3], [0, 1]) }}>
-        {/* 780×500 default: beats crossfade INTO fullscreen spans, so every card
-            must survive the ×1.32 zoom (780 × 1.32 ≈ 1030 < 1080) — one size,
-            one position, every receipt aligned the same way */}
-        <SourceScreenshot src={s.src} url={s.url} imageW={s.imageW} imageH={s.imageH} from={s.from} to={s.to} zoomAt={s.zoomAt} highlight={s.highlight} highlightAt={s.highlightAt} width={s.cardW ?? 780} height={s.cardH ?? 500} />
-      </div>
-      <BeatLabel text={beat.text} sub={beat.sub} accent={beat.accent} />
-    </Wrap>
+    <AbsoluteFill style={{ overflow: "hidden", transform: `translateY(${-shift}px) scale(${1 / zoom})` }}>
+      <SourceScreenshot src={s.src} url={s.url} imageW={s.imageW} imageH={s.imageH} from={s.from} to={s.to} zoomAt={s.zoomAt} highlight={s.highlight} highlightAt={s.highlightAt} width={1080} height={panelH} bleed fit="cover" />
+      {/* split: clear the seam-docked caption pill; full: clear the topic banner */}
+      <BleedLabel text={beat.text} top={interpolate(zoom, [1, 1.32], [96, 170], CLAMP)} />
+    </AbsoluteFill>
   );
 };
 

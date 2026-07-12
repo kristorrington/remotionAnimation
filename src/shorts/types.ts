@@ -61,19 +61,14 @@ export type Beat = {
   emoji?: string; // meme punch: ONE emoji pops with the beat (use ~1 per short)
   value?: number; // battery: target % · elevator: target floor index in `labels`
   // receipt: the manifested screenshot + the crop that proves the claim.
-  // Crop AGGRESSIVELY (big headlines only — no tiny source text on mobile).
-  // Default card is 780×500 — safe under the ×1.32 span zoom even when the
-  // beat's window CROSSFADES INTO a fullscreen span; don't override upward.
-  // bleed: the page fills its layout instead of a card — "full" (1080×1920,
-  // ONLY for animHook openers / beats that never show in the band) or "band"
-  // (1080×838, ONLY for beats that never enter a fullscreen span). Beats that
-  // cross layouts keep the card. Tall to-rects required (≈0.58 / ≈1.38).
+  // Receipts ALWAYS fill 100% of their zone (the split band or the whole
+  // screen, morphing with the seam) via cover-fit — author `to` as a TALL
+  // rect (≈1.38, band aspect) CENTERED on the claim: the full-screen phase
+  // shows the center slice. Big text only — no tiny source text on mobile.
   shot?: {
     src: string; url: string; imageW: number; imageH: number;
     from?: ShotRect; to: ShotRect; zoomAt?: number;
     highlight?: ShotRect; highlightAt?: number;
-    cardW?: number; cardH?: number;
-    bleed?: "full" | "band";
   };
 };
 

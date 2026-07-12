@@ -15,9 +15,12 @@ const CYAN = "#D97757";
 
 type Rect = { x: number; y: number; w: number; h: number };
 
-// transform that shows image-rect `r` inside a `w`×`h` viewport
-const rectTransform = (r: Rect, w: number, h: number) => {
-  const scale = Math.min(w / r.w, h / r.h);
+// transform that shows image-rect `r` inside a `w`×`h` viewport.
+// contain: the whole rect fits (default). cover: the rect always FILLS the
+// viewport (center slice crops) — bleed receipts use this so the page hits
+// 100% of the zone at any aspect.
+const rectTransform = (r: Rect, w: number, h: number, fit: "contain" | "cover" = "contain") => {
+  const scale = fit === "cover" ? Math.max(w / r.w, h / r.h) : Math.min(w / r.w, h / r.h);
   return {
     scale,
     tx: -r.x * scale + (w - r.w * scale) / 2,
@@ -38,11 +41,12 @@ export const SourceScreenshot: React.FC<{
   width?: number;
   height?: number;
   bleed?: boolean; // full-frame mode: no radius/border/glow — the page IS the frame
-}> = ({ src, url, imageW, imageH, from, to, zoomAt = 20, highlight, highlightAt = 52, width = 1100, height = 640, bleed = false }) => {
+  fit?: "contain" | "cover"; // cover: the to-rect always fills the viewport
+}> = ({ src, url, imageW, imageH, from, to, zoomAt = 20, highlight, highlightAt = 52, width = 1100, height = 640, bleed = false, fit = "contain" }) => {
   const frame = useCurrentFrame();
   const inner = height - 54;
-  const a = rectTransform(from ?? { x: 0, y: 0, w: imageW, h: imageH }, width, inner);
-  const b = rectTransform(to, width, inner);
+  const a = rectTransform(from ?? { x: 0, y: 0, w: imageW, h: imageH }, width, inner, fit);
+  const b = rectTransform(to, width, inner, fit);
   const t = interpolate(frame, [zoomAt, zoomAt + 26], [0, 1], { ...CLAMP, easing: (x) => 1 - (1 - x) * (1 - x) });
   const scale = a.scale + (b.scale - a.scale) * t;
   const tx = a.tx + (b.tx - a.tx) * t;

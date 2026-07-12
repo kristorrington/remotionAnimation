@@ -173,7 +173,7 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
         {/* BOTTOM — animated beat scenes; the band RISES from the bottom edge
             for the split, zooms up when the animation takes the full screen */}
         <div style={{ position: "absolute", top: FULL_H - seamY, left: 0, width: 1080, height: Math.max(seamY, 1), overflow: "hidden", opacity: animOpacity }}>
-          <AnimationPanel beats={spec.beats} zoom={interpolate(seamY, [ANIM_H, FULL_H], [1, 1.32], CLAMP)} />
+          <AnimationPanel beats={spec.beats} zoom={interpolate(seamY, [ANIM_H, FULL_H], [1, 1.32], CLAMP)} panelH={seamY} />
         </div>
 
         {/* captions: split mode ONLY, docked on the seam — not during the hook
