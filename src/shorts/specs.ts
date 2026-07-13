@@ -26,7 +26,9 @@ export const SHORTS: ShortSpec[] = [
     context: "ChatGPT Work launched July 9 with GPT-5.6",
     beats: [
       { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "ONE WINDOW?", logo: "chatgpt" }, // populates the band as the split lands
-      { at: 185, scene: "bolt", blockLabel: "CHATGPT", moduleLabel: "CODEX", tint: "#34D399", text: "CODEX, FOLDED IN" }, // "folds Codex technology into ChatGPT" (190)
+      // span-owning beat sits at span.from+13 — the push's HIDDEN midpoint —
+      // so the pull-left slides the PREVIOUS beat out (never the new one)
+      { at: 203, scene: "bolt", blockLabel: "CHATGPT", moduleLabel: "CODEX", tint: "#34D399", text: "CODEX, FOLDED IN" }, // "folds Codex technology into ChatGPT" (190-250)
       // The directory receipt — brand first-mention shot is OpenAI's own page
       { at: 300, scene: "receipt", tint: "#F59E0B", text: "EVERY APP, ONE DIRECTORY", shot: { src: "assets/external/screenshots/openai-plugins-grid.png", url: "openai.com/business/plugins", imageW: 2880, imageH: 5500, from: { x: 480, y: 1600, w: 1920, h: 1026 }, to: { x: 0, y: 60, w: 2880, h: 1539 }, zoomAt: 8 } },
       { at: 440, scene: "stamp", verdict: "check", badge: "THE PROMISE", tint: "#34D399", text: "FEWER TABS" }, // "fewer tabs" (420)
@@ -53,7 +55,7 @@ export const SHORTS: ShortSpec[] = [
     beats: [
       { at: 8, scene: "emote", pose: "worried", tint: "#D97757", text: "THE TRUST TEST", logo: "chatgpt" }, // spoken at open (6712)
       { at: 178, scene: "queue", labels: ["QUOTA RESETS", "REDESIGN CONFUSION"], tint: "#F59E0B", text: "JULY 11 NOISE" }, // "quota resets" (6829)
-      { at: 342, scene: "check", obj: "bug", verdict: "cross", tint: "#EF4444", text: "FILES DELETED?" }, // "two Sol incidents… deleted" (6993)
+      { at: 343, scene: "check", obj: "bug", verdict: "cross", tint: "#EF4444", text: "FILES DELETED?" }, // "two Sol incidents… deleted" (6993); span.from+13 = push midpoint
       { at: 511, scene: "stamp", verdict: "cross", badge: "OPENAI", tint: "#D97757", text: "NOT CONFIRMED" }, // "official OpenAI acknowledgment" (7162)
       { at: 640, scene: "emote", pose: "pointing", accent: "#34D399", tint: "#34D399", text: "CAUTION, NOT PANIC" }, // "the right response is caution" (7291)
     ],
@@ -80,7 +82,7 @@ export const SHORTS: ShortSpec[] = [
       // (~122) — the opening logo must sit on the first VISIBLE beat
       { at: 100, scene: "reject", badge: "NO LIMITS", tint: "#EF4444", text: "TRUST NEEDS LIMITS", logo: "chatgpt" }, // "a trustworthy agent needs limits" (7746)
       { at: 214, scene: "queue", labels: ["FILE SAFETY", "PERMISSIONS", "RECOVERY"], tint: "#F59E0B", text: "WHAT DEMOS HIDE" }, // "focused on models… polished demos" (7860)
-      { at: 464, scene: "migrate", tint: "#D97757", text: "MY RULE" }, // "do not run agentic tasks…" (8110)
+      { at: 453, scene: "migrate", tint: "#D97757", text: "MY RULE" }, // "My rule is simple: do not run…" (8092+); span.from+13 = push midpoint
       { at: 622, scene: "stamp", verdict: "check", badge: "THE RULE", tint: "#34D399", text: "BACK UP FIRST" }, // "…lacks a backup" (8268)
     ],
     // full-anim: the STOP-sign migrate gag
@@ -104,7 +106,7 @@ export const SHORTS: ShortSpec[] = [
       { at: 260, scene: "check", obj: "gauge", verdict: "warn", tint: "#F59E0B", text: "ROLES UNCLEAR" }, // "does not define those roles clearly" (3120)
       // TechSpot headline receipt — split-band card, zooms out from the headline
       { at: 390, scene: "receipt", tint: "#C15F3C", text: "STAGGERED RELEASE", shot: { src: "assets/external/screenshots/techspot-staggered-wide.png", url: "techspot.com", imageW: 2900, imageH: 1550, from: { x: 300, y: 120, w: 1740, h: 930 }, to: { x: 116, y: 62, w: 2668, h: 1426 }, zoomAt: 8, highlight: { x: 300, y: 150, w: 1715, h: 340 }, highlightAt: 14 } }, // "the release got delayed" (3250)
-      { at: 540, scene: "check", obj: "shield", verdict: "cross", tint: "#EF4444", text: "ACCESS RESTRICTED" }, // "Trump administration restricted access" (3387)
+      { at: 533, scene: "check", obj: "shield", verdict: "cross", tint: "#EF4444", text: "ACCESS RESTRICTED" }, // "Trump administration restricted access" (3387); span.from+13 = push midpoint
       { at: 730, scene: "queue", labels: ["CYBER", "BIO", "MILITARY"], tint: "#F59E0B", text: "THE REVIEW SCOPE" }, // "cyber, biological, and military risk" (3590)
     ],
     // full-anim: the restricted-shield beat

@@ -520,7 +520,11 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   additionally wraps the face+panel+captions and PUSHES the frame left on each
   move INTO a full-anim span — its window must be EXACTLY the seam travel
   (centred at from+13, dur 26) so the slide-out hides the expanding band; a
-  shorter/later window lets the new layout visibly "load" before the push
+  shorter/later window lets the new layout visibly "load" before the push.
+  **The span-owning beat's `at` = span.from+13** (the push's hidden
+  midpoint) — a beat that starts before the span puts the NEW scene in the
+  band during the slide-out, so the push slides the new animation out and
+  back instead of transitioning FROM the previous one
   (banner/hook/CTA stay fixed like platform UI; the span whoosh carries the
   sound); the CTA
   return starts at
