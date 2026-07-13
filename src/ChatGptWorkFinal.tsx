@@ -5,7 +5,7 @@ import { CutFlash } from "./components/CutFlash";
 import { FootageDirector } from "./components/FootageDirector";
 import { CornerPip } from "./components/CornerPip";
 import { AnimatedBackground } from "./components/AnimatedBackground";
-import { SceneTransition, TransitionKind } from "./motion/transitions";
+import { SlideLeftPush } from "./motion/transitions";
 import { ThemeProvider } from "./theme";
 
 // Final combined cut: talking head + ChatGPT Work animation track + per-span
@@ -35,9 +35,10 @@ for (const s of SPANS) {
   if (s.to - cursor >= PIP_MIN) PIP_SEGMENTS.push({ from: cursor, to: s.to });
 }
 
-// Kinetic transitions on every full-screen span START (rotating kinds).
-const KINDS: TransitionKind[] = ["whip", "iris", "bar", "swipe"];
-const TRANSITIONS = FULL.map((f, i) => ({ at: f.from, kind: KINDS[i % KINDS.length] }));
+// CapCut-style pull-left on every full-screen span START: the whole frame
+// slides off left and the incoming cover rides in from the right (Kris's
+// call, July 2026 — replaces the rotating overlay wipes for this video).
+const CUTS = FULL.map((f) => f.from);
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
@@ -50,7 +51,10 @@ export const ChatGptWorkFinal: React.FC = () => {
   return (
     <ThemeProvider style="paper">
     <AbsoluteFill style={{ backgroundColor: "black" }}>
+      {/* ivory backdrop: the pull-left gap must show paper, never black */}
+      <AbsoluteFill style={{ backgroundColor: "#F0EEE6" }} />
       {frame < 26 && <AnimatedBackground durationInFrames={30} fade={false} />}
+      <SlideLeftPush cuts={CUTS}>
       {/* VO boost 2.5× (source peaks ≈ −11.4 dB — probed 2026-07-13) */}
       <AbsoluteFill
         style={{
@@ -95,11 +99,7 @@ export const ChatGptWorkFinal: React.FC = () => {
       {PIP_SEGMENTS.map((s) => (
         <CornerPip key={`pip-${s.from}`} footage={FOOTAGE} from={s.from} dur={s.to - s.from} />
       ))}
-
-      {/* kinetic cut moves on the big turns (rotating whip / iris / bar) */}
-      {TRANSITIONS.map((t) => (
-        <SceneTransition key={`tr-${t.at}`} at={t.at} kind={t.kind} />
-      ))}
+      </SlideLeftPush>
       <CutFlash at={90} peak={0.5} />
     </AbsoluteFill>
     </ThemeProvider>

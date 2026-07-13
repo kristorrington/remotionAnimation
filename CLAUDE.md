@@ -343,9 +343,13 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   (add timing props to shared scenes — e.g. `ThresholdGateScene dropAt/
   attempt2At` — never let gags play late).
 - **Transitions v2 (editing research, July 2026):** every FULLSCREEN-span cut
-  in a Final opens with a kinetic transition from `src/motion/transitions.tsx`
-  (whip pan / iris / bar wipe / swipe-left, ~16f) — kinds ROTATE so no two
-  consecutive cuts repeat a move; the per-cover whoosh carries the sound; `CutFlash`
+  in a Final opens with a kinetic transition from `src/motion/transitions.tsx`.
+  House default since the ChatGPT Work video (Kris, July 2026): the
+  **CapCut-style pull-left** — `SlideLeftPush` WRAPS the whole composite and
+  slides the actual frame off LEFT while the incoming cover rides in from the
+  RIGHT with speed-scaled motion blur (~18f; keep an ivory backdrop behind the
+  wrapper so the gap never shows black). The overlay wipes (whip pan / iris /
+  bar / swipe cover) remain in the kit for rotation variety; the per-cover whoosh carries the sound; `CutFlash`
   stays only on the face→first-cover cut. `ZoomPunchIn` is available for
   incoming scenes that should land with jump-cut energy. Research: minimal
   but kinetic cuts + speed-ramp feel beat hard cuts for retention.
@@ -512,9 +516,11 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   Never design a full → split → full bounce shorter than 3s; first
   `fullscreen` span starts ≥ ~190. **Layout transitions are SLOW and EASED**
   (Kris, July 2026 — the 12f linear snap was "too fast"): every seam move
-  takes ~26f (~0.9s) with in-out cubic easing; a swipe-left `SceneTransition`
-  additionally covers each move INTO a full-anim span (centred mid-travel at
-  from+13, ~16f — the span whoosh at from−10 carries the sound); the CTA
+  takes ~26f (~0.9s) with in-out cubic easing; a CapCut-style `SlideLeftPush`
+  additionally wraps the face+panel+captions and PUSHES the frame left on each
+  move INTO a full-anim span (centred mid-travel at from+13, ~18f — banner/
+  hook/CTA stay fixed like platform UI; the span whoosh carries the sound);
+  the CTA
   return starts at
   dur−114; spans must end ≤ `dur − 140` so their exit ramp clears the CTA;
   captions CROSSFADE OUT while the seam travels (they used to ride through

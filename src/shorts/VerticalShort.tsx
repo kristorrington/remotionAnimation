@@ -13,7 +13,7 @@ import { LowerThird } from "./LowerThird";
 import { MusicBed } from "../components/MusicBed";
 import { AnimatedBackground } from "../components/AnimatedBackground";
 import { SFX, SfxCue } from "../components/Sfx";
-import { SceneTransition } from "../motion/transitions";
+import { SlideLeftPush } from "../motion/transitions";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const ANIM_H = 838; // height of the bottom animation band when split (~44%)
@@ -143,6 +143,11 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
             the face card and panels float on it */}
         {paper && <AnimatedBackground durationInFrames={dur} fade={false} />}
 
+        {/* CapCut-style pull-left on every seam move into a full-anim span:
+            face + panel + captions slide off left, the arrived layout rides in
+            from the right (banner/hook/CTA stay fixed like platform UI) */}
+        <SlideLeftPush cuts={spans.map((s) => s.from + 13)}>
+
         {/* TOP — talking head; grows to full screen when seamY → 0. Min height
             1px keeps the video mounted during full-anim spans so the VO plays on. */}
         <div style={{ position: "absolute", top: 0, left: 0, width: 1080, height: Math.max(1920 - seamY, 1), overflow: "hidden" }}>
@@ -188,6 +193,8 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
           </AbsoluteFill>
         </Sequence>
 
+        </SlideLeftPush>
+
         {/* progress bar (with beat milestone ticks) + topic banner — fades in
             AFTER the hook so the opening stays minimal (hook + context only) */}
         <AbsoluteFill style={{ pointerEvents: "none", opacity: interpolate(frame, [hookHold - 8, hookHold + 8], [0, 1], CLAMP) }}>
@@ -213,13 +220,6 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
         <Sequence from={dur - OUTRO} durationInFrames={OUTRO} premountFor={20}>
           <ShortOutro text={spec.outro} dur={OUTRO} />
         </Sequence>
-
-        {/* swipe-left covers each seam move INTO a full-anim span (Transitions
-            v2 — centred mid-travel so the reveal lands on the arrived layout;
-            the span whoosh at from−10 already carries the sound) */}
-        {spans.map((s) => (
-          <SceneTransition key={`sw-${s.from}`} at={s.from + 13} kind="swipe" />
-        ))}
 
         {/* loop-seam ease: dip the last frames toward dark so the platform
             auto-replay (last frame → first frame) never visibly jumps */}

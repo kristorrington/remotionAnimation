@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Easing, interpolate, useCurrentFrame } from "remotion";
 import { CYAN } from "../components/overlayUI";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -85,6 +85,34 @@ export const SceneTransition: React.FC<{ at: number; kind?: TransitionKind; dur?
   if (kind === "bar") return <Bar t={t} />;
   if (kind === "swipe") return <SwipeLeft t={t} />;
   return <Whip t={t} />;
+};
+
+// CAPCUT-STYLE PULL LEFT — the CONTENT itself moves (not a cover panel): the
+// outgoing frame slides off to the LEFT and the incoming frame rides in from
+// the RIGHT, with speed-scaled motion blur. Single-tree trick: the wrapper
+// eases out to −105%, jumps (off-screen, invisible) to +105% at the midpoint
+// where the underlying Sequences switch content, and eases back to 0. Wrap
+// the whole composite in it and keep a paper backdrop BEHIND the wrapper so
+// the brief gap shows ivory, never black. `cuts` = absolute cut frames.
+export const SlideLeftPush: React.FC<{ cuts: number[]; dur?: number; children: React.ReactNode }> = ({ cuts, dur = 18, children }) => {
+  const frame = useCurrentFrame();
+  let x = 0;
+  let speed = 0;
+  for (const at of cuts) {
+    const t0 = at - dur / 2;
+    const t1 = at + dur / 2;
+    if (frame >= t0 && frame < t1) {
+      const t = interpolate(frame, [t0, t1], [0, 1], { ...CLAMP, easing: Easing.inOut(Easing.cubic) });
+      x = t < 0.5 ? interpolate(t, [0, 0.5], [0, -105], CLAMP) : interpolate(t, [0.5, 1], [105, 0], CLAMP);
+      speed = 1 - Math.abs(t - 0.5) * 2; // 0 at rest → 1 at the hidden jump
+      break;
+    }
+  }
+  return (
+    <AbsoluteFill style={{ transform: `translateX(${x}%)`, filter: speed > 0.02 ? `blur(${speed * 5}px)` : undefined }}>
+      {children}
+    </AbsoluteFill>
+  );
 };
 
 // ZOOM PUNCH — wrap a scene's content: it lands with a fast 1.10 → 1.00 settle
