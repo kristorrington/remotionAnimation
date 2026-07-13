@@ -538,9 +538,17 @@ Copy `PolicyRiskVideo.tsx` as the template. It must export THREE things:
 
 ### Phase 2 — The combined final cut (`src/<Slug>Final.tsx`)
 
-Copy `PolicyRiskFinal.tsx` as the template; it composites, in order:
-`FootageDirector` → per-span bridge backgrounds → `<Slug>Video` → per-span
-`CornerPip`s → `CutFlash`es.
+Copy `ChatGptWorkFinal.tsx` as the template; it composites, in order:
+ivory backdrop → `SlideLeftPush` wrapping [`FootageDirector` → per-span
+bridge backgrounds → `<Slug>Video` → per-span `CornerPip`s] → `CutFlash`.
+
+0. **Pull-left transitions (RULE, Kris 07/2026 — both formats):** wrap the
+   whole composite in `SlideLeftPush cuts={FULLSCREEN starts}` with a flat
+   `#F0EEE6` backdrop BEHIND the wrapper (the gap must never show black).
+   Content must switch at each cut frame — the push midpoint — never
+   earlier, or the push slides the NEW scene out instead of the previous
+   one. Shorts get theirs automatically from `VerticalShort` (window = the
+   26f seam travel; span-owning beats at span.from+13).
 
 1. **FootageDirector schedule:** place jump-cuts inside the VISIBLE gaps
    between cutaways. Subtle only: `scale 1.0–1.12` (1.0 IS a framing), small

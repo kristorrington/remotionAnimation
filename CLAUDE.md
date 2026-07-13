@@ -342,14 +342,17 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   the first scene's internal gags to the whisper words from the new start
   (add timing props to shared scenes — e.g. `ThresholdGateScene dropAt/
   attempt2At` — never let gags play late).
-- **Transitions v2 (editing research, July 2026):** every FULLSCREEN-span cut
-  in a Final opens with a kinetic transition from `src/motion/transitions.tsx`.
-  House default since the ChatGPT Work video (Kris, July 2026): the
-  **CapCut-style pull-left** — `SlideLeftPush` WRAPS the whole composite and
-  slides the actual frame off LEFT while the incoming cover rides in from the
-  RIGHT with speed-scaled motion blur (~18f; keep an ivory backdrop behind the
-  wrapper so the gap never shows black). The overlay wipes (whip pan / iris /
-  bar / swipe cover) remain in the kit for rotation variety; the per-cover whoosh carries the sound; `CutFlash`
+- **Transitions v2 — the pull-left RULE (Kris, July 2026, BOTH formats):**
+  every FULLSCREEN-span cut — in every long-form Final AND every short —
+  uses the **CapCut-style pull-left**: `SlideLeftPush` WRAPS the whole
+  composite and slides the actual frame off LEFT while the incoming cover
+  rides in from the RIGHT with speed-scaled motion blur (never an overlay
+  panel passing over static content). Finals: cuts = fullscreen-span starts,
+  ~18f, flat `#F0EEE6` backdrop BEHIND the wrapper (the gap never shows
+  black), content switches AT the cut frame (the hidden midpoint). Shorts:
+  built into `VerticalShort` (window = the 26f seam travel; span-owning
+  beats at span.from+13 — see §9). The overlay wipes (whip pan / iris /
+  bar / swipe cover) remain in the kit for special moments only; the per-cover whoosh carries the sound; `CutFlash`
   stays only on the face→first-cover cut. `ZoomPunchIn` is available for
   incoming scenes that should land with jump-cut energy. Research: minimal
   but kinetic cuts + speed-ramp feel beat hard cuts for retention.
