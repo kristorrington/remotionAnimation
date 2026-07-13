@@ -344,8 +344,8 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   attempt2At` — never let gags play late).
 - **Transitions v2 (editing research, July 2026):** every FULLSCREEN-span cut
   in a Final opens with a kinetic transition from `src/motion/transitions.tsx`
-  (whip pan / iris / bar wipe, ~16f) — kinds ROTATE so no two consecutive
-  cuts repeat a move; the per-cover whoosh carries the sound; `CutFlash`
+  (whip pan / iris / bar wipe / swipe-left, ~16f) — kinds ROTATE so no two
+  consecutive cuts repeat a move; the per-cover whoosh carries the sound; `CutFlash`
   stays only on the face→first-cover cut. `ZoomPunchIn` is available for
   incoming scenes that should land with jump-cut energy. Research: minimal
   but kinetic cuts + speed-ramp feel beat hard cuts for retention.

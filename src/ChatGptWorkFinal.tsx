@@ -36,7 +36,7 @@ for (const s of SPANS) {
 }
 
 // Kinetic transitions on every full-screen span START (rotating kinds).
-const KINDS: TransitionKind[] = ["whip", "iris", "bar"];
+const KINDS: TransitionKind[] = ["whip", "iris", "bar", "swipe"];
 const TRANSITIONS = FULL.map((f, i) => ({ at: f.from, kind: KINDS[i % KINDS.length] }));
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;

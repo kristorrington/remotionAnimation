@@ -13,7 +13,7 @@ const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 // already fires per cover. CLAUDE.md §8 "Transitions v2".
 // ============================================================================
 
-export type TransitionKind = "whip" | "iris" | "bar";
+export type TransitionKind = "whip" | "iris" | "bar" | "swipe";
 
 // WHIP PAN — a horizontally-streaked ivory sweep, like a fast camera whip.
 const Whip: React.FC<{ t: number }> = ({ t }) => {
@@ -60,6 +60,20 @@ const Bar: React.FC<{ t: number }> = ({ t }) => {
   );
 };
 
+// SWIPE LEFT — an ivory page swipes in from the right and off to the left
+// (phone-gesture feel); coral leading/trailing edges + a soft shadow sell the
+// direction. Reads as "the old scene got swiped away".
+const SwipeLeft: React.FC<{ t: number }> = ({ t }) => {
+  const x = interpolate(t, [0, 1], [115, -115]);
+  return (
+    <AbsoluteFill style={{ pointerEvents: "none", transform: `translateX(${x}%)` }}>
+      <AbsoluteFill style={{ background: "#F0EEE6", boxShadow: "-48px 0 90px rgba(31,30,29,0.3), 48px 0 90px rgba(31,30,29,0.3)" }} />
+      <div style={{ position: "absolute", top: 0, bottom: 0, left: -8, width: 12, background: CYAN, boxShadow: `0 0 24px ${CYAN}88` }} />
+      <div style={{ position: "absolute", top: 0, bottom: 0, right: -8, width: 12, background: CYAN, boxShadow: `0 0 24px ${CYAN}88` }} />
+    </AbsoluteFill>
+  );
+};
+
 // One transition instance at an absolute cut frame (place in the FINAL's tree,
 // above the overlay + PiP). `dur` ~16f: fast enough to feel like a cut, slow
 // enough to read as intentional (the "minimal but kinetic" research finding).
@@ -69,6 +83,7 @@ export const SceneTransition: React.FC<{ at: number; kind?: TransitionKind; dur?
   const t = interpolate(frame, [at - dur / 2, at + dur / 2], [0, 1], CLAMP);
   if (kind === "iris") return <Iris t={t} />;
   if (kind === "bar") return <Bar t={t} />;
+  if (kind === "swipe") return <SwipeLeft t={t} />;
   return <Whip t={t} />;
 };
 
