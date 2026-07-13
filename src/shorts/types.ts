@@ -59,6 +59,10 @@ export type Beat = {
   moduleLabel?: string; // bolt: the bolt-on module's label (default "DSPARK")
   stamp?: string; // coins: impact stamp text
   emoji?: string; // meme punch: ONE emoji pops with the beat (use ~1 per short)
+  logo?: "chatgpt"; // brand mark pops with the beat (top-right dock, same slot
+  // rules as emoji: never combine with a near-full-width label or an emoji).
+  // House rule (Kris, 07/2026): the OPENING beat of every short in a product
+  // video carries the product's logo.
   value?: number; // battery: target % · elevator: target floor index in `labels`
   // receipt: the manifested screenshot + the crop that proves the claim.
   // Receipts render as a PADDED CARD centered in the split band (July 2026 —

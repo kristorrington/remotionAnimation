@@ -995,6 +995,20 @@ const ReceiptBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
   );
 };
 
+// Brand-mark pop — the product's real logo rides the beat (top-right dock,
+// same collision rules as EmojiPop). Opening beats of product videos use it.
+const LogoPop: React.FC<{ logo: "chatgpt" }> = ({ logo }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const e = spring({ frame: frame - 6, fps, config: { stiffness: 260, damping: 13, mass: 0.8 }, durationInFrames: 16 });
+  const bob = Math.sin(frame * 0.08) * 5;
+  return (
+    <div style={{ position: "absolute", top: 44, right: 74, transform: `translateY(${bob}px) scale(${interpolate(e, [0, 1], [0.3, 1])}) rotate(${interpolate(e, [0, 1], [-14, -4])}deg)`, opacity: interpolate(e, [0, 0.3], [0, 1]) }}>
+      {logo === "chatgpt" && <ChatGptMark size={116} glow />}
+    </div>
+  );
+};
+
 const EmojiPop: React.FC<{ emoji: string }> = ({ emoji }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -1045,6 +1059,7 @@ export const BeatSceneView: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur
       <TintWash tint={beat.tint ?? BEAT_TINTS[beat.at % BEAT_TINTS.length]} seed={beat.at} />
       {scene()}
       {beat.emoji ? <EmojiPop emoji={beat.emoji} /> : null}
+      {beat.logo ? <LogoPop logo={beat.logo} /> : null}
     </AbsoluteFill>
   );
 };

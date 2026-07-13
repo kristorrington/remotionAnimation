@@ -549,6 +549,12 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   bubble ("the ½-price Claude").
 - **Every beat sets `Beat.tint`** — beats crossfade, so the wash colour sweeps
   with each 1.5–3s reset; no two adjacent beats share a colour.
+- **The product logo opens every animation** (Kris, July 2026): in a product
+  video, the long-form opening animation AND each short's opening beat carry
+  the product's real logo (`Beat.logo` → LogoPop, top-right dock, same
+  collision rules as `Beat.emoji`). Put it on the first beat that is VISIBLE
+  when the split settles (~f122) — a logo on a beat that ends earlier never
+  renders.
 - **Never hand-size big text**: beat labels go through `BeatLabel`'s auto-fit
   (≤ 730px), because full-anim spans zoom the panel ×1.32 and text must never
   cross the frame borders.
