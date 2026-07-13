@@ -145,8 +145,11 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
 
         {/* CapCut-style pull-left on every seam move into a full-anim span:
             face + panel + captions slide off left, the arrived layout rides in
-            from the right (banner/hook/CTA stay fixed like platform UI) */}
-        <SlideLeftPush cuts={spans.map((s) => s.from + 13)}>
+            from the right (banner/hook/CTA stay fixed like platform UI).
+            Window = EXACTLY the 26f seam travel (centred at from+13) so the
+            slide-out hides the expanding band — otherwise the new layout
+            visibly "loads" before the push starts. */}
+        <SlideLeftPush cuts={spans.map((s) => s.from + 13)} dur={26}>
 
         {/* TOP — talking head; grows to full screen when seamY → 0. Min height
             1px keeps the video mounted during full-anim spans so the VO plays on. */}

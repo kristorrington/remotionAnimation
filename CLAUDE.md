@@ -518,9 +518,11 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   (Kris, July 2026 — the 12f linear snap was "too fast"): every seam move
   takes ~26f (~0.9s) with in-out cubic easing; a CapCut-style `SlideLeftPush`
   additionally wraps the face+panel+captions and PUSHES the frame left on each
-  move INTO a full-anim span (centred mid-travel at from+13, ~18f — banner/
-  hook/CTA stay fixed like platform UI; the span whoosh carries the sound);
-  the CTA
+  move INTO a full-anim span — its window must be EXACTLY the seam travel
+  (centred at from+13, dur 26) so the slide-out hides the expanding band; a
+  shorter/later window lets the new layout visibly "load" before the push
+  (banner/hook/CTA stay fixed like platform UI; the span whoosh carries the
+  sound); the CTA
   return starts at
   dur−114; spans must end ≤ `dur − 140` so their exit ramp clears the CTA;
   captions CROSSFADE OUT while the seam travels (they used to ride through
