@@ -13,6 +13,7 @@ import { LowerThird } from "./LowerThird";
 import { MusicBed } from "../components/MusicBed";
 import { AnimatedBackground } from "../components/AnimatedBackground";
 import { SFX, SfxCue } from "../components/Sfx";
+import { SceneTransition } from "../motion/transitions";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const ANIM_H = 838; // height of the bottom animation band when split (~44%)
@@ -212,6 +213,13 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
         <Sequence from={dur - OUTRO} durationInFrames={OUTRO} premountFor={20}>
           <ShortOutro text={spec.outro} dur={OUTRO} />
         </Sequence>
+
+        {/* swipe-left covers each seam move INTO a full-anim span (Transitions
+            v2 — centred mid-travel so the reveal lands on the arrived layout;
+            the span whoosh at from−10 already carries the sound) */}
+        {spans.map((s) => (
+          <SceneTransition key={`sw-${s.from}`} at={s.from + 13} kind="swipe" />
+        ))}
 
         {/* loop-seam ease: dip the last frames toward dark so the platform
             auto-replay (last frame → first frame) never visibly jumps */}

@@ -512,7 +512,10 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   Never design a full → split → full bounce shorter than 3s; first
   `fullscreen` span starts ≥ ~190. **Layout transitions are SLOW and EASED**
   (Kris, July 2026 — the 12f linear snap was "too fast"): every seam move
-  takes ~26f (~0.9s) with in-out cubic easing; the CTA return starts at
+  takes ~26f (~0.9s) with in-out cubic easing; a swipe-left `SceneTransition`
+  additionally covers each move INTO a full-anim span (centred mid-travel at
+  from+13, ~16f — the span whoosh at from−10 carries the sound); the CTA
+  return starts at
   dur−114; spans must end ≤ `dur − 140` so their exit ramp clears the CTA;
   captions CROSSFADE OUT while the seam travels (they used to ride through
   the beat label mid-transition).
