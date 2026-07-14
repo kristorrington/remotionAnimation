@@ -1,20 +1,12 @@
 import "./index.css";
-import { CalculateMetadataFunction, Composition } from "remotion";
+import { Composition } from "remotion";
 import { ShortsCompositions, SHORTS_ENABLED } from "./shorts";
 import { StyleDemo } from "./StyleDemo";
 import { TemplateLab, TEMPLATE_LAB_DUR } from "./TemplateLab";
 import { ArchivedVideoCompositions, SHOW_ARCHIVE } from "./archive";
-import { AiNewsVideo, AINEWS_DUR } from "./AiNewsVideo";
-import { AiNewsFinal } from "./AiNewsFinal";
 
-const transparentDefaults: CalculateMetadataFunction<
-  Record<string, unknown>
-> = () => ({
-  defaultCodec: "prores",
-  defaultVideoImageFormat: "png",
-  defaultPixelFormat: "yuva444p10le",
-  defaultProResProfile: "4444",
-});
+// NOTE: the go-local video's comps register here marked CURRENT: once Phase 1
+// lands; transparentDefaults returns with them.
 
 // The sidebar shows TOOLS + the CURRENT video + its shorts. Previous videos
 // live in src/archive (long-form) and src/shorts/archivedSpecs.ts (shorts) —
@@ -48,9 +40,7 @@ export const RemotionRoot: React.FC = () => {
         height={1080}
       />
 
-      {/* ── CURRENT: AI-news / GPT-5.6 super-app roundup (July 2026) ── */}
-      <Composition id="AiNewsVideo" component={AiNewsVideo} durationInFrames={AINEWS_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
-      <Composition id="AiNewsFinal" component={AiNewsFinal} durationInFrames={AINEWS_DUR} fps={30} width={1920} height={1080} />
+      {/* CURRENT: go-local video comps register here (Phase 1) */}
 
       {/* Previous videos — hidden unless SHOW_ARCHIVE (src/archive) is true */}
       {SHOW_ARCHIVE && <ArchivedVideoCompositions />}

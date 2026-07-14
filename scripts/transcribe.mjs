@@ -90,6 +90,12 @@ const main = async () => {
     [["intelligence", "leak"], "intelligence leap"],
     [["claude", "devs"], "Claude Devs'"],
     [["web", "and", "mobile"], "Web and Mobile"],
+    // go-local video (07/2026)
+    [["chat", "jpt"], "ChatGPT"],
+    [["side", "by", "hugging", "face"], "cited by Hugging Face"],
+    [["clement", "delange"], "Clément Delangue"],
+    [["deep", "seek"], "DeepSeek"],
+    [["mini", "max"], "MiniMax"],
   ];
   const norm = (s) => s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
   for (const [parts, joined] of JOINS) {
@@ -112,6 +118,9 @@ const main = async () => {
     xai: "xAI", cdream: "Seedream", seedream: "Seedream",
     metareleased: "Meta released", grock: "Grok",
     cost4: "cost $4",
+    // go-local video (07/2026) — Kris says "licence"/"quantisation" (British)
+    quinn: "Qwen", license: "licence", licenses: "licences",
+    quantization: "quantisation",
   };
   for (const w of words) {
     const base = norm(w.text);

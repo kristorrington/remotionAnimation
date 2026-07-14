@@ -30,6 +30,8 @@ import { N8nHybridVideo, N8N_HYBRID_DUR } from "../N8nHybridVideo";
 import { N8nHybridFinal } from "../N8nHybridFinal";
 import { ChatGptWorkVideo, CHATGPT_WORK_DUR } from "../ChatGptWorkVideo";
 import { ChatGptWorkFinal } from "../ChatGptWorkFinal";
+import { AiNewsVideo, AINEWS_DUR } from "../AiNewsVideo";
+import { AiNewsFinal } from "../AiNewsFinal";
 
 // ============================================================================
 // THE ARCHIVE — compositions from PREVIOUS videos. When a new video starts,
@@ -53,6 +55,10 @@ const transparentDefaults: CalculateMetadataFunction<
 export const ArchivedVideoCompositions: React.FC = () => {
   return (
     <>
+      {/* ── AI-news / GPT-5.6 super-app roundup (July 2026) ── */}
+      <Composition id="AiNewsVideo" component={AiNewsVideo} durationInFrames={AINEWS_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="AiNewsFinal" component={AiNewsFinal} durationInFrames={AINEWS_DUR} fps={30} width={1920} height={1080} />
+
       {/* ── "What is ChatGPT Work" (July 2026) ── */}
       <Composition id="ChatGptWorkVideo" component={ChatGptWorkVideo} durationInFrames={CHATGPT_WORK_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
       <Composition id="ChatGptWorkFinal" component={ChatGptWorkFinal} durationInFrames={CHATGPT_WORK_DUR} fps={30} width={1920} height={1080} />

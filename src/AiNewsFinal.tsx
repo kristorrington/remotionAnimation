@@ -10,7 +10,7 @@ import { ThemeProvider } from "./theme";
 
 // Final combined cut: talking head + AI-news animation track + per-span PiP.
 // Same structure as ChatGptWorkFinal (transitions v2, paper theme).
-const FOOTAGE = "talking-head.mp4"; // AI-news footage (rotated in 2026-07-14)
+const FOOTAGE = "talking-head-140726.mp4"; // rotated 2026-07-15 (go-local video took talking-head.mp4)
 
 const PIP_GAP_MAX = 180; // 6s
 const PIP_MIN = 90; // never show a PiP segment shorter than 3s (flicker)
