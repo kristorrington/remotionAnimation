@@ -28,6 +28,8 @@ import { GptSandboxFinal } from "../GptSandboxFinal";
 import { SideHustleFinal } from "../SideHustleFinal";
 import { N8nHybridVideo, N8N_HYBRID_DUR } from "../N8nHybridVideo";
 import { N8nHybridFinal } from "../N8nHybridFinal";
+import { ChatGptWorkVideo, CHATGPT_WORK_DUR } from "../ChatGptWorkVideo";
+import { ChatGptWorkFinal } from "../ChatGptWorkFinal";
 
 // ============================================================================
 // THE ARCHIVE — compositions from PREVIOUS videos. When a new video starts,
@@ -51,6 +53,10 @@ const transparentDefaults: CalculateMetadataFunction<
 export const ArchivedVideoCompositions: React.FC = () => {
   return (
     <>
+      {/* ── "What is ChatGPT Work" (July 2026) ── */}
+      <Composition id="ChatGptWorkVideo" component={ChatGptWorkVideo} durationInFrames={CHATGPT_WORK_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="ChatGptWorkFinal" component={ChatGptWorkFinal} durationInFrames={CHATGPT_WORK_DUR} fps={30} width={1920} height={1080} />
+
       {/* ── n8n vs agents "hybrid stack" (July 2026) ── */}
       <Composition id="N8nHybridVideo" component={N8nHybridVideo} durationInFrames={N8N_HYBRID_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
       <Composition id="N8nHybridFinal" component={N8nHybridFinal} durationInFrames={N8N_HYBRID_DUR} fps={30} width={1920} height={1080} />

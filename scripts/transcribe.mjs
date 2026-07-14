@@ -76,6 +76,15 @@ const main = async () => {
     // "sole" is a real word — only fix it in the model-name contexts
     [["two", "sole"], "two Sol"],
     [["sole", "deletion"], "Sol deletion"],
+    // AI-news / GPT-5.6 super-app video (07/2026)
+    [["soul", "pro"], "Sol Pro"],
+    [["soul", "tier"], "Sol tier"],
+    [["gdp", "valve"], "GDPval"],
+    [["gdp", "val"], "GDPval"],
+    [["the", "new", "stack"], "The New Stack"],
+    [["gpt", "live"], "GPT-Live"],
+    [["artificial", "analysis"], "Artificial Analysis"],
+    [["video", "remakes"], "Video Remix"],
   ];
   const norm = (s) => s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
   for (const [parts, joined] of JOINS) {
@@ -94,6 +103,9 @@ const main = async () => {
     // ChatGPT Work video (07/2026)
     codecs: "Codex", cowork: "Cowork", copilot: "Copilot",
     engadget: "Engadget", macrumors: "MacRumors",
+    // AI-news / GPT-5.6 super-app video (07/2026)
+    xai: "xAI", cdream: "Seedream", seedream: "Seedream",
+    metareleased: "Meta released", grock: "Grok",
   };
   for (const w of words) {
     const base = norm(w.text);
