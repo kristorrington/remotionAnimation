@@ -489,9 +489,9 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   `order: 2`) so the punch text hugs the seam next to the captions and never
   collides with the topic banner overlaying the band's top edge (panel
   content biases DOWN 36px for the same reason; logo/emoji dock at ~y130
-  below the banner; receipt stickers ride just above the seam); the
-  lower-third sits at the TOP of the face band under the caption pill
-  (~y980). Built into `VerticalShort` — never hand-build a split layout.
+  below the banner); the lower-third sits at the TOP of the face band under
+  the caption pill (~y980). Built into `VerticalShort` — never hand-build a
+  split layout.
 - **Every short opens with EVIDENCE** (Kris, July 2026 — "use more evidence
   or b-roll at the start of each short"): the first or second visible beat
   is a receipt/b-roll card — a tweet from the brand's own account, the
@@ -737,19 +737,27 @@ press kits, screenshots of official pages.
   `titleTop` for a lower slot) into a region that is empty in BOTH the
   `from` and `to` states — audit both in stills; bottom-right is reserved
   for the corner PiP. Long titles shrink to fit their slot (akeneo:
-  "AGENT LAYER", kicker "PR NEWSWIRE"). **Shorts receipts are a PADDED CARD** (Kris, July 2026
-  — supersedes the earlier 100% band fill, which slammed pages edge-to-edge
-  and sliced text): a centered browser card ≤ ~952px wide with paper margin
-  around it, still SPLIT VIEW ONLY — never inside (or running into) a
-  `fullscreen` span; spans stay reserved for animated subject beats. The
-  card viewport sizes itself to the `to` aspect, so author `to` with the
-  claim FULLY inside AND tight on the claim BLOCK (Kris, July 2026 — a full
-  text page crammed in the card reads at ~8px on mobile): zoom to the
-  headline/logo/stat region at the page's full column width (x-slicing
-  mid-word is never OK; the bottom edge cutting a body row like a real
-  browser fold is fine). A wide banner opens zoomed on its key number,
-  then settles on the whole headline. The BeatLabel rides a white sticker
-  above the card. Ken Burns drift after the zoom: bleed mode drifts
+  "AGENT LAYER", kicker "PR NEWSWIRE"). **Shorts receipts are a BIG PADDED
+  CARD that FILLS the band** (Kris, July 2026 — third pass: "the b-roll is
+  too small / not readable"): a centered browser card up to ~1016px wide
+  sized against the whole band (banner zone 112 / seam zone 52), still
+  SPLIT VIEW ONLY — never inside (or running into) a `fullscreen` span;
+  spans stay reserved for animated subject beats. A span that starts while a
+  receipt beat is still ACTIVE blows the card up full-screen and sweeps it
+  mid-read with the push (Kris, July 2026 — "full screen b-roll transitions
+  way too quickly"): keep a non-receipt beat between a receipt and the next
+  span, or drop the span. **Author `to` crops TALL
+  (~2:1)** — thin banner-strip crops (3:1+) render as unreadable slivers;
+  the card viewport sizes itself to the `to` aspect, so a tall crop = a
+  tall, readable card. Keep the claim FULLY inside and tight on the claim
+  BLOCK (x-slicing mid-word is never OK; the bottom edge cutting a body row
+  like a real browser fold is fine). A receipt HOLDS ≥ ~3.5s (Kris: "on
+  screen long enough" — only a deliberate montage run goes quicker) and the
+  frame stays LEAN: **no sticker label** (Kris: "remove that middle
+  caption" — the receipt beat's `text` is a records-only note), **no
+  logo/emoji pop** (the branded page IS the mark; move `Beat.logo` to the
+  first non-receipt beat), and the lower-third auto-dodges receipt beats.
+  Ken Burns drift after the zoom: bleed mode drifts
   the PAGE (frame-edge crop is fine full-screen), card mode drifts the CARD
   outward — an inner drift crops at the card edge and nibbles the first
   glyph of every line (the "leclining" bug).

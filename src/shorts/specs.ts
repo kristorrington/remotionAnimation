@@ -28,8 +28,8 @@ export const SHORTS: ShortSpec[] = [
       { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "THE REAL WIN" }, // "not a dramatic benchmark victory" (3231)
       // EVIDENCE EARLY (Kris, July 2026): the cost article lands on "the change
       // in cost and speed" — first beat visible at the split settle, logo here
-      { at: 127, scene: "receipt", tint: "#34D399", text: "THE PAPER TRAIL", logo: "chatgpt", shot: { src: "assets/external/screenshots/aa-gpt56-landed-wide.png", url: "artificialanalysis.ai", imageW: 3840, imageH: 2052, from: { x: 700, y: 740, w: 1810, h: 375 }, to: { x: 490, y: 130, w: 2900, h: 600 }, zoomAt: 8 } }, // "It is the change in cost and speed" (3288-3390); the spoken source "Artificial Analysis" (3365) lands mid-beat
-      { at: 303, scene: "conveyor", labels: ["SOL PRO"], tint: "#E8B84B", text: "THE TEST RUN" }, // "GPT 5.6 Sol Pro completed…" (3464)
+      { at: 127, scene: "receipt", tint: "#34D399", text: "THE PAPER TRAIL", shot: { src: "assets/external/screenshots/aa-gpt56-landed-wide.png", url: "artificialanalysis.ai", imageW: 3840, imageH: 2052, from: { x: 700, y: 740, w: 1810, h: 375 }, to: { x: 560, y: 100, w: 2440, h: 1150 }, zoomAt: 8 } }, // "It is the change in cost and speed" (3288-3390); tall ~2:1 crop so the card fills the band
+      { at: 303, scene: "conveyor", labels: ["SOL PRO"], tint: "#E8B84B", text: "THE TEST RUN", logo: "chatgpt" }, // "GPT 5.6 Sol Pro completed…" (3464); logo here — receipts stay lean
       { at: 425, scene: "check", obj: "clock", verdict: "check", tint: "#34D399", text: "1 MIN · 77¢" }, // "one minute (3586) for 77 cents (3624)"; span.from+13 = push midpoint
       { at: 591, scene: "coins", tint: "#EF4444", text: "6 MIN · $4" }, // "six minutes (3752)… cost $4 (3787)" — crossfades inside the span
       { at: 741, scene: "emote", pose: "alarmed", accent: "#EF4444", tint: "#F59E0B", text: "NIGHT AND DAY", emoji: "💸" }, // "massive efficiency difference" (3902)
@@ -57,15 +57,17 @@ export const SHORTS: ShortSpec[] = [
       { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "THE REAL UPGRADE" }, // "may be the biggest change right now" (100)
       // EVIDENCE EARLY (Kris, July 2026): @OpenAI's own launch tweet lands as
       // the brand is first named — first beat visible at the split settle
-      { at: 147, scene: "receipt", tint: "#34D399", text: "THE ANNOUNCEMENT", logo: "chatgpt", shot: { src: "assets/external/screenshots/openai-tweet-work-launch.png", url: "x.com/OpenAI", imageW: 1100, imageH: 1010, from: { x: 100, y: 120, w: 940, h: 380 }, to: { x: 0, y: 0, w: 1100, h: 1010 }, zoomAt: 8 } }, // "OpenAI brought ChatGPT, Codex…" (153-305)
-      // span-owning beat sits at span.from+13 — the push's HIDDEN midpoint —
-      // so the pull-left slides the PREVIOUS beat out (never the new one)
-      { at: 233, scene: "bolt", trails: true, blockLabel: "CHATGPT", moduleLabel: "CODEX", tint: "#E8B84B", text: "THE MEGA-MERGE" }, // "together inside of one unified app" (305-400)
+      { at: 147, scene: "receipt", tint: "#34D399", text: "THE ANNOUNCEMENT", shot: { src: "assets/external/screenshots/openai-tweet-work-launch.png", url: "x.com/OpenAI", imageW: 1100, imageH: 1010, from: { x: 100, y: 120, w: 940, h: 380 }, to: { x: 0, y: 0, w: 1100, h: 1010 }, zoomAt: 8 } }, // "OpenAI brought ChatGPT, Codex…" (153-305); holds ~4.2s
+      // No span here: the tweet receipt runs right up to this beat, and a
+      // span must NEVER start while a receipt is active (the card would blow
+      // up full-screen and get swept by the push — Kris, July 2026).
+      // No LogoPop needed: the CHATGPT block badge IS the brand mark here.
+      { at: 273, scene: "bolt", trails: true, blockLabel: "CHATGPT", moduleLabel: "CODEX", tint: "#E8B84B", text: "THE MEGA-MERGE" }, // "together inside of one unified app" (305-400)
       { at: 457, scene: "doors", labels: ["WORK", "CODEX"], value: 0, tint: "#D97757", text: "PICK YOUR MODE" }, // "choose between work mode and Codex mode" (463)
       { at: 617, scene: "queue", labels: ["FILES", "BROWSER", "TOOLS"], tint: "#34D399", text: "ALL IN ONE CHAT" }, // "files, browsers, and connected tools" (701-830); span.from+13
     ],
-    // full-anim: the Codex bolt gag + the one-conversation queue
-    fullscreen: [{ from: 220, to: 350 }, { from: 604, to: 698 }],
+    // full-anim: the one-conversation queue (the bolt gag stays split — see above)
+    fullscreen: [{ from: 604, to: 698 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
     style: "paper",
@@ -86,8 +88,8 @@ export const SHORTS: ShortSpec[] = [
       { at: 8, scene: "migrate", tint: "#EF4444", text: "DON'T CHASE RANKINGS" }, // "do not switch… top of a leaderboard" (8940-9000)
       // EVIDENCE EARLY (Kris, July 2026): the leaderboard being warned about,
       // on screen as it's spoken — first beat visible at the split settle
-      { at: 92, scene: "receipt", tint: "#D97757", text: "THE BAIT", logo: "chatgpt", shot: { src: "assets/external/screenshots/benchlm-leaderboard-wide.png", url: "benchlm.ai", imageW: 3840, imageH: 2052, from: { x: 300, y: 820, w: 1200, h: 340 }, to: { x: 260, y: 800, w: 3320, h: 940 }, zoomAt: 8 } }, // "one model reached the top of a leaderboard" (8977-9010)
-      { at: 204, scene: "check", obj: "coin", verdict: "check", tint: "#E8B84B", text: "1 · THE BILL" }, // "cost per usable result" (9134)
+      { at: 92, scene: "receipt", tint: "#D97757", text: "THE BAIT", shot: { src: "assets/external/screenshots/benchlm-leaderboard-wide.png", url: "benchlm.ai", imageW: 3840, imageH: 2052, from: { x: 300, y: 820, w: 1200, h: 340 }, to: { x: 260, y: 460, w: 3320, h: 1566 }, zoomAt: 8 } }, // "one model reached the top of a leaderboard" (8977-9010); tall crop: headline + top-3 cards + table
+      { at: 204, scene: "check", obj: "coin", verdict: "check", tint: "#E8B84B", text: "1 · THE BILL", logo: "chatgpt" }, // "cost per usable result" (9134); logo here — receipts stay lean
       { at: 263, scene: "check", obj: "clock", verdict: "check", tint: "#34D399", text: "2 · THE CLOCK" }, // "how long the task takes" (9193)
       { at: 334, scene: "retry", tint: "#F59E0B", text: "3 · THE FIXES" }, // "how much correction work is still required" (9264)
       { at: 457, scene: "stamp", verdict: "check", badge: "THE RULE", tint: "#34D399", text: "SWITCH AT 2 OF 3" }, // "at least two of those three" (9394); span.from+13
@@ -116,8 +118,8 @@ export const SHORTS: ShortSpec[] = [
       { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "ANOTHER LAUNCH" }, // "OpenAI also released GPT-Live during the same week" (1936-1985)
       // logo rides the receipt: beat 8 hands over right at the split settle
       // (~122), so this is the first beat fully visible when the band lands
-      { at: 138, scene: "receipt", tint: "#E8B84B", text: "GPT-LIVE IS HERE", logo: "chatgpt", shot: { src: "assets/external/screenshots/siliconangle-gptlive-wide.png", url: "siliconangle.com", imageW: 2280, imageH: 1219, from: { x: 500, y: 120, w: 1600, h: 624 }, to: { x: 40, y: 361, w: 2200, h: 858 }, zoomAt: 8 } }, // "the new real-time voice experience" (2074-2136) — opens on the phone photo, settles on the full headline (x 753-2222)
-      { at: 241, scene: "check", obj: "brain", verdict: "check", tint: "#34D399", text: "MORE THAN TALK" }, // "not simply that ChatGPT can speak" (2177-2245)
+      { at: 138, scene: "receipt", tint: "#E8B84B", text: "GPT-LIVE IS HERE", shot: { src: "assets/external/screenshots/siliconangle-gptlive-wide.png", url: "siliconangle.com", imageW: 2280, imageH: 1219, from: { x: 500, y: 120, w: 1600, h: 624 }, to: { x: 600, y: 380, w: 1640, h: 770 }, zoomAt: 8 } }, // "the new real-time voice experience" (2074-2136) — settles tight on the photo + headline column (no page margin in the card; byline row excluded); holds ~3.7s
+      { at: 250, scene: "check", obj: "brain", verdict: "check", tint: "#34D399", text: "MORE THAN TALK", logo: "chatgpt" }, // "not simply that ChatGPT can speak" (2177-2245); logo here — receipts stay lean
       { at: 362, scene: "signal", tint: "#D97757", text: "KEEPS UP, OR LAGS?" }, // "feel responsive enough to become part of a real workflow" (2298-2410)
       { at: 499, scene: "queue", labels: ["WALK", "PRACTICE", "GAME"], tint: "#E8B84B", text: "REAL USES" }, // "brainstorm while walking (2435) / practice (2481) / tabletop game (2555)"; span.from+13
       { at: 703, scene: "emote", pose: "pointing", accent: "#EF4444", tint: "#EF4444", text: "TRY TO DERAIL IT", sub: "mid-sentence" }, // "interrupt it (2639), change one instruction (2669)"
@@ -144,8 +146,8 @@ export const SHORTS: ShortSpec[] = [
       { at: 8, scene: "check", obj: "brain", verdict: "warn", tint: "#E8B84B", text: "GDPVAL: REAL WORK" }, // "On GDPval" (5142-5182)
       // the head-to-head receipt lands ON "sits just behind Claude Fable";
       // it is also the first beat visible at the split settle → logo here
-      { at: 82, scene: "receipt", tint: "#34D399", text: "91 VS 86", logo: "chatgpt", shot: { src: "assets/external/screenshots/benchlm-fable-vs-sol-wide.png", url: "benchlm.ai", imageW: 3840, imageH: 2052, from: { x: 700, y: 250, w: 2400, h: 640 }, to: { x: 420, y: 20, w: 3000, h: 800 }, zoomAt: 8 } }, // "sits just behind Claude Fable" (5224-5290)
-      { at: 243, scene: "check", obj: "gauge", verdict: "check", tint: "#60A5FA", text: "WHERE IT SHINES" }, // "performs strongly on browser based computer use" (5327-5440)
+      { at: 82, scene: "receipt", tint: "#34D399", text: "91 VS 86", shot: { src: "assets/external/screenshots/benchlm-fable-vs-sol-wide.png", url: "benchlm.ai", imageW: 3840, imageH: 2052, from: { x: 700, y: 250, w: 2400, h: 640 }, to: { x: 480, y: 30, w: 2900, h: 1370 }, zoomAt: 8 } }, // "sits just behind Claude Fable" (5224-5290); tall crop: headline + full 91/86 score card
+      { at: 243, scene: "check", obj: "gauge", verdict: "check", tint: "#60A5FA", text: "WHERE IT SHINES", logo: "chatgpt" }, // "performs strongly on browser based computer use" (5327-5440); logo here — receipts stay lean
       { at: 392, scene: "conveyor", labels: ["NAVIGATE", "COMPLETE"], tint: "#D97757", text: "AGENT-READY" }, // "agents that need to navigate websites and complete tasks" (5534-5592)
       { at: 509, scene: "stamp", verdict: "cross", badge: "IQ LEAP?", tint: "#F59E0B", text: "CHEAPER, NOT SMARTER" }, // "an efficiency release before… a massive intelligence leap" (5651-5770); span.from+13
     ],
@@ -172,17 +174,21 @@ export const SHORTS: ShortSpec[] = [
     beats: [
       { at: 8, scene: "emote", pose: "alarmed", tint: "#D97757", text: "THE WEEK GOT CROWDED" }, // "xAI also announced Grok 4.5" (5982-6100)
       // brand first-mention receipt: xAI's own announcement page
-      { at: 96, scene: "receipt", tint: "#EF4444", text: "THE NEW CHALLENGER", shot: { src: "assets/external/screenshots/xai-grok45-wide.png", url: "x.ai/news/grok-4-5", imageW: 3840, imageH: 2052, from: { x: 1050, y: 60, w: 1900, h: 481 }, to: { x: 340, y: 40, w: 3160, h: 800 }, zoomAt: 8 } }, // "Grok 4.5" (6034-6100)
-      { at: 216, scene: "doors", labels: ["GROK", "GPT-5.6", "FABLE"], tint: "#D97757", text: "THREE AT THE TOP" }, // "same premium category as GPT 5.6 and Claude Fable" (6123-6299); span.from+13
+      { at: 96, scene: "receipt", tint: "#EF4444", text: "THE NEW CHALLENGER", shot: { src: "assets/external/screenshots/xai-grok45-wide.png", url: "x.ai/news/grok-4-5", imageW: 3840, imageH: 2052, from: { x: 1050, y: 60, w: 1900, h: 481 }, to: { x: 1080, y: 20, w: 1720, h: 811 }, zoomAt: 8 } }, // "Grok 4.5" (6034-6100); tall crop tight on the announcement column
+      // No span here: the Grok receipt runs right up to this beat — a span
+      // must never start while a receipt is active (Kris, July 2026)
+      { at: 216, scene: "doors", labels: ["GROK", "GPT-5.6", "FABLE"], tint: "#D97757", text: "THREE AT THE TOP" }, // "same premium category as GPT 5.6 and Claude Fable" (6123-6299)
       { at: 360, scene: "reject", badge: "BLIND SWITCH", tint: "#F59E0B", text: "NOT SO FAST" }, // "not seen enough evidence… move their workloads" (6274-6359)
       { at: 510, scene: "testbench", tint: "#34D399", text: "ONE FAIR FIGHT" }, // "give both models the same difficult task" (6476-6515)
       { at: 578, scene: "queue", labels: ["QUALITY", "TIME", "FIXES"], tint: "#E8B84B", text: "JUDGE 3 THINGS" }, // "output quality (6544), time taken, correction work (6617)"
       // brand first-mention receipt: Anthropic's own redeploy post
-      { at: 732, scene: "receipt", tint: "#34D399", text: "BACK IN THE RING", shot: { src: "assets/external/screenshots/anthropic-fable5-redeploy-wide.png", url: "anthropic.com", imageW: 3840, imageH: 2052, from: { x: 1100, y: 340, w: 1650, h: 435 }, to: { x: 480, y: 60, w: 2880, h: 760 }, zoomAt: 8 } }, // "Anthropic widened access to Claude Fable 5" (6670-6780)
-      { at: 836, scene: "breaker", tint: "#D97757", text: "MORE ROOM TO TEST" }, // "reset Claude Devs' rate limits" (6802-6833); span.from+13
+      { at: 732, scene: "receipt", tint: "#34D399", text: "BACK IN THE RING", shot: { src: "assets/external/screenshots/anthropic-fable5-redeploy-wide.png", url: "anthropic.com", imageW: 3840, imageH: 2052, from: { x: 1100, y: 340, w: 1650, h: 435 }, to: { x: 780, y: 40, w: 2280, h: 1075 }, zoomAt: 8 } }, // "Anthropic widened access to Claude Fable 5" (6670-6780); tall crop: headline + UPDATE badge + restored line
+      { at: 836, scene: "breaker", tint: "#D97757", text: "MORE ROOM TO TEST" }, // "reset Claude Devs' rate limits" (6802-6833)
     ],
-    // full-anim: the three premium doors + the breaker reset
-    fullscreen: [{ from: 203, to: 340 }, { from: 823, to: 920 }],
+    // NO spans: both would start while a receipt beat is active (Grok at 96,
+    // Anthropic at 732), and a span must never blow a receipt up full-screen
+    // (Kris, July 2026) — this evidence-heavy short stays split throughout
+    fullscreen: [],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
     style: "paper",
@@ -204,7 +210,7 @@ export const SHORTS: ShortSpec[] = [
     beats: [
       { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "IMAGE AI WEEK" }, // "the image model competition also kept moving" (7664)
       // brand first-mention receipts from the brands' OWN pages (max 2/short)
-      { at: 99, scene: "receipt", tint: "#60A5FA", text: "DROP 1 OF 3", shot: { src: "assets/external/screenshots/seedream5-pro-wide.png", url: "seed.bytedance.com", imageW: 3840, imageH: 2052, from: { x: 1100, y: 100, w: 2000, h: 360 }, to: { x: 180, y: 40, w: 3440, h: 620 }, zoomAt: 8 } }, // "ByteDance released Seedream 5.0 Pro" (7757) — headline banner only, body text never carries the card
+      { at: 99, scene: "receipt", tint: "#60A5FA", text: "DROP 1 OF 3", shot: { src: "assets/external/screenshots/seedream5-pro-wide.png", url: "seed.bytedance.com", imageW: 3840, imageH: 2052, from: { x: 1100, y: 100, w: 2000, h: 360 }, to: { x: 160, y: 20, w: 3480, h: 1641 }, zoomAt: 8 } }, // "ByteDance released Seedream 5.0 Pro" (7757) — tall crop: the headline carries, body is context
       { at: 180, scene: "receipt", tint: "#D97757", text: "DROP 2 OF 3", shot: { src: "assets/external/screenshots/meta-musespark-wide.png", url: "ai.meta.com", imageW: 3840, imageH: 2052, from: { x: 400, y: 30, w: 2000, h: 864 }, to: { x: 300, y: 20, w: 3240, h: 1400 }, zoomAt: 8 } }, // "Meta released Muse Spark 1.1" (7838); dark hero vs light page — layouts differ
       { at: 324, scene: "stamp", verdict: "check", badge: "GOOGLE PHOTOS", tint: "#34D399", text: "DROP 3 OF 3" }, // "added Video Remix to Google Photos" (7988)
       { at: 476, scene: "reject", badge: "LAUNCH DEMO", tint: "#EF4444", text: "SHINY ≠ PROVEN" }, // "would not change the image tools because of a launch demo" (8020-8140); span.from+13

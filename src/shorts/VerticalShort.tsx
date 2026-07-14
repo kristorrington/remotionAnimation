@@ -116,13 +116,20 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
   // — they used to ride straight through the beat label mid-transition
   const captionOp = interpolate(seamY, [ANIM_H, ANIM_H + 240, FULL_H - 240, FULL_H], [1, 0, 0, 1], CLAMP);
 
-  // identity strip: dodge full-anim phases (it sits over the set wall). 130f
-  // (not 150) so it can fit the split windows between spans; if no window fits
-  // before the CTA, the render below SKIPS it for this short.
+  // identity strip: dodge full-anim phases (it sits over the set wall) AND
+  // receipt beats (evidence frames stay lean — Kris, July 2026: "too many
+  // text elements on the screen"). 130f so it can fit the split windows
+  // between spans; if no window fits before the CTA, it's SKIPPED.
   const LOWER_THIRD_DUR = 130;
+  const blockers: { from: number; to: number }[] = [
+    ...spans.map((s) => ({ from: s.from - TRANS, to: s.to + TRANS })),
+    ...spec.beats
+      .map((b, i) => (b.scene === "receipt" ? { from: b.at, to: spec.beats[i + 1]?.at ?? dur } : null))
+      .filter((w): w is { from: number; to: number } => w !== null),
+  ].sort((a, b) => a.from - b.from);
   let lowerThirdFrom = hookFullTo !== null ? hookFullTo + 18 : seamEnd + 6;
-  for (const s of spans) {
-    if (lowerThirdFrom + LOWER_THIRD_DUR > s.from - TRANS && lowerThirdFrom < s.to + TRANS) lowerThirdFrom = s.to + 18;
+  for (const w of blockers) {
+    if (lowerThirdFrom + LOWER_THIRD_DUR > w.from && lowerThirdFrom < w.to) lowerThirdFrom = w.to + 12;
   }
 
   // PAPER full-face framing (Kris's reference, July 2026): the 9:16 cover-crop

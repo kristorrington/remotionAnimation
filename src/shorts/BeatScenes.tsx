@@ -941,28 +941,11 @@ const CartridgeBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => 
   );
 };
 
-// Meme punch: ONE oversized emoji pops with the beat (animated-meme energy).
 // receipt — a REAL page screenshot as proof: the browser card pops in and
 // zooms to the claim (SourceScreenshot). Shorts receipts show BIG headlines
-// only (§9/§10) — the BeatLabel carries the message, the page proves it.
-// White sticker label for bleed mode — theme text is unreadable over a page.
-const BleedLabel: React.FC<{ text: string; top: number }> = ({ text, top }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const pop = spring({ frame: frame - 6, fps, config: { stiffness: 260, damping: 13 }, durationInFrames: 16 });
-  const fitted = React.useMemo(
-    () => Math.min(64, fitText({ text, withinWidth: 840, fontFamily: FONT, fontWeight: 900 }).fontSize),
-    [text],
-  );
-  return (
-    <div style={{ position: "absolute", top, left: "50%", transform: `translateX(-50%) rotate(-1.5deg) scale(${interpolate(pop, [0, 1], [1.16, 1])})`, opacity: interpolate(pop, [0, 0.3], [0, 1]) }}>
-      <div style={{ padding: "12px 30px", borderRadius: 16, background: "rgba(255,255,255,0.96)", boxShadow: "0 16px 44px rgba(31,30,29,0.35)" }}>
-        <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: fitted, color: "#1F1E1D", whiteSpace: "nowrap" }}>{text}</span>
-      </div>
-    </div>
-  );
-};
-
+// only (§9/§10). NO sticker label (Kris, July 2026 — "remove that middle
+// caption across all shorts"): the card + captions carry the beat; the spec's
+// `text` is a records-only note on receipt beats.
 const ReceiptBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
   // PADDED CARD (Kris, July 2026 — supersedes the 100% bleed): the page is a
   // centered browser card with paper margin around it. The card viewport is
@@ -975,15 +958,17 @@ const ReceiptBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
   if (!s) return null;
   // face-bottom split (Kris, July 2026): the band is the TOP of the frame, so
   // the banner zone is at the top and the sticker label drops to the BOTTOM,
-  // hugging the seam with the captions cluster below it.
-  const bannerZone = 118; // topic banner overlays the band's top edge
-  const labelZone = 164; // sticker label above the seam
-  const availH = Math.max(220, panelH - bannerZone - labelZone);
+  // hugging the seam with the captions cluster below it. The card FILLS the
+  // band (Kris: "resize the b-roll so it takes up more space and is
+  // readable") — author `to` crops TALL (~2:1), never thin banner strips.
+  const bannerZone = 112; // topic banner overlays the band's top edge
+  const seamZone = 52; // breathing room above the seam / captions below it
+  const availH = Math.max(220, panelH - bannerZone - seamZone);
   const aspect = s.to.w / s.to.h;
-  let contentW = 952;
+  let contentW = 1016;
   let contentH = contentW / aspect;
-  if (contentH > availH - 54) {
-    contentH = availH - 54;
+  if (contentH > availH - 46) {
+    contentH = availH - 46;
     contentW = contentH * aspect;
   }
   const cardW = Math.round(contentW);
@@ -993,8 +978,6 @@ const ReceiptBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
       <div style={{ position: "absolute", left: (1080 - cardW) / 2, top: bannerZone + Math.max(0, (availH - cardH) / 2) }}>
         <SourceScreenshot src={s.src} url={s.url} imageW={s.imageW} imageH={s.imageH} from={s.from} to={s.to} zoomAt={s.zoomAt} highlight={s.highlight} highlightAt={s.highlightAt} width={cardW} height={cardH} fit="cover" />
       </div>
-      {/* the sticker rides just above the seam (receipts are split-only) */}
-      <BleedLabel text={beat.text} top={Math.min(panelH - labelZone + 22, 1560)} />
     </AbsoluteFill>
   );
 };
@@ -1063,8 +1046,11 @@ export const BeatSceneView: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur
     <AbsoluteFill style={{ opacity: op }}>
       <TintWash tint={beat.tint ?? BEAT_TINTS[beat.at % BEAT_TINTS.length]} seed={beat.at} />
       {scene()}
-      {beat.emoji ? <EmojiPop emoji={beat.emoji} /> : null}
-      {beat.logo ? <LogoPop logo={beat.logo} /> : null}
+      {/* receipt beats never stack the logo/emoji on top of the page — the
+          branded card IS the mark, and receipt frames must stay lean
+          (Kris, July 2026: "too many text elements on the screen") */}
+      {beat.emoji && beat.scene !== "receipt" ? <EmojiPop emoji={beat.emoji} /> : null}
+      {beat.logo && beat.scene !== "receipt" ? <LogoPop logo={beat.logo} /> : null}
     </AbsoluteFill>
   );
 };
