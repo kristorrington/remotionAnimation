@@ -111,7 +111,7 @@ export const AiNewsVisuals: React.FC = () => {
 
       {/* 1:05 receipt: SiliconANGLE — GPT-Live launches */}
       <Sequence from={1950} durationInFrames={180} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={180} kicker="SILICONANGLE" title="GPT-LIVE" tint="#E8B84B" src={`${SHOT}/siliconangle-gptlive-wide.png`} url="siliconangle.com" imageW={2280} imageH={1219} from={{ x: 91, y: 49, w: 2098, h: 1121 }} to={{ x: 0, y: 0, w: 2280, h: 1219 }} zoomAt={14} highlight={{ x: 180, y: 950, w: 1900, h: 130 }} highlightAt={41} />
+        <ScreenshotReceiptScene durationInFrames={180} kicker="SILICONANGLE" title="GPT-LIVE" titlePos="right" tint="#E8B84B" src={`${SHOT}/siliconangle-gptlive-wide.png`} url="siliconangle.com" imageW={2280} imageH={1219} from={{ x: 91, y: 49, w: 2098, h: 1121 }} to={{ x: 0, y: 0, w: 2280, h: 1219 }} zoomAt={14} highlight={{ x: 180, y: 950, w: 1900, h: 130 }} highlightAt={41} />
       </Sequence>
 
       {/* 1:20 GPT-Live acted out: talk, interrupt, keep the thread */}
@@ -126,7 +126,7 @@ export const AiNewsVisuals: React.FC = () => {
 
       {/* 1:51 receipt: the Artificial Analysis cost report */}
       <Sequence from={3359} durationInFrames={150} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={150} kicker="ARTIFICIAL ANALYSIS" title="THE COST REPORT" titlePos="right" tint="#34D399" src={`${SHOT}/aa-gpt56-landed-wide.png`} url="artificialanalysis.ai" imageW={3840} imageH={2052} from={{ x: 0, y: 0, w: 3840, h: 2052 }} to={{ x: 480, y: 60, w: 2880, h: 1539 }} zoomAt={18} highlight={{ x: 620, y: 790, w: 1700, h: 100 }} highlightAt={46} />
+        <ScreenshotReceiptScene durationInFrames={150} kicker="ARTIFICIAL ANALYSIS" title="COST REPORT" titlePos="right" tint="#34D399" src={`${SHOT}/aa-gpt56-landed-wide.png`} url="artificialanalysis.ai" imageW={3840} imageH={2052} from={{ x: 0, y: 0, w: 3840, h: 2052 }} to={{ x: 640, y: 60, w: 2880, h: 1539 }} zoomAt={18} highlight={{ x: 735, y: 790, w: 1600, h: 100 }} highlightAt={46} />
       </Sequence>
 
       {/* 1:57 THE numbers: 1 min / 77¢ vs 6 min / $4 */}
@@ -161,7 +161,7 @@ export const AiNewsVisuals: React.FC = () => {
 
       {/* 2:59 receipt: OpenAI's own BrowseComp section (different layout + zoom) */}
       <Sequence from={5363} durationInFrames={190} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={190} kicker="OPENAI.COM" title="STRONG IN BROWSERS" titlePos="right" tint="#60A5FA" src={`${SHOT}/oai-browsecomp-wide.png`} url="openai.com/index/gpt-5-6" imageW={3840} imageH={2052} from={{ x: 480, y: 120, w: 2880, h: 1539 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 620, y: 225, w: 2000, h: 180 }} highlightAt={28} />
+        <ScreenshotReceiptScene durationInFrames={190} kicker="OPENAI.COM" title="STRONG IN BROWSERS" titlePos="right" titleTop={560} tint="#60A5FA" src={`${SHOT}/oai-browsecomp-wide.png`} url="openai.com/index/gpt-5-6" imageW={3840} imageH={2052} from={{ x: 480, y: 120, w: 2880, h: 1539 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 620, y: 225, w: 2000, h: 180 }} highlightAt={28} />
       </Sequence>
 
       {/* 3:08 kinetic: what this release actually is */}

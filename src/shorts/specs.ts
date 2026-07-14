@@ -27,7 +27,7 @@ export const SHORTS: ShortSpec[] = [
     beats: [
       { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "NOT A BENCHMARK STORY", logo: "chatgpt" }, // "not a dramatic benchmark victory" (3231); first beat visible at the split settle
       // Artificial Analysis is the spoken source — their cost article is the receipt
-      { at: 204, scene: "receipt", tint: "#34D399", text: "THE COST REPORT", shot: { src: "assets/external/screenshots/aa-gpt56-landed-wide.png", url: "artificialanalysis.ai", imageW: 3840, imageH: 2052, from: { x: 840, y: 240, w: 2070, h: 750 }, to: { x: 540, y: 140, w: 2760, h: 1000 }, zoomAt: 8 } }, // "Artificial Analysis report" (3365)
+      { at: 204, scene: "receipt", tint: "#34D399", text: "THE COST REPORT", shot: { src: "assets/external/screenshots/aa-gpt56-landed-wide.png", url: "artificialanalysis.ai", imageW: 3840, imageH: 2052, from: { x: 700, y: 740, w: 1810, h: 375 }, to: { x: 490, y: 130, w: 2900, h: 600 }, zoomAt: 8 } }, // "Artificial Analysis report" (3365) — opens on the one-third-cost takeaway, settles on the headline banner
       { at: 303, scene: "conveyor", labels: ["SOL PRO"], tint: "#E8B84B", text: "SOL PRO, TESTED" }, // "GPT 5.6 Sol Pro completed…" (3464)
       { at: 425, scene: "check", obj: "clock", verdict: "check", tint: "#34D399", text: "1 MIN · 77¢" }, // "one minute (3586) for 77 cents (3624)"; span.from+13 = push midpoint
       { at: 591, scene: "coins", tint: "#EF4444", text: "6 MIN · $4" }, // "six minutes (3752)… cost $4 (3787)" — crossfades inside the span
@@ -114,7 +114,7 @@ export const SHORTS: ShortSpec[] = [
     beats: [
       { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "IMAGE AI WEEK" }, // "the image model competition also kept moving" (7664)
       // brand first-mention receipts from the brands' OWN pages (max 2/short)
-      { at: 99, scene: "receipt", tint: "#60A5FA", text: "SEEDREAM 5.0 PRO", shot: { src: "assets/external/screenshots/seedream5-pro-wide.png", url: "seed.bytedance.com", imageW: 3840, imageH: 2052, from: { x: 240, y: 100, w: 2100, h: 800 }, to: { x: 200, y: 60, w: 3400, h: 1300 }, zoomAt: 8 } }, // "ByteDance released Seedream 5.0 Pro" (7757)
+      { at: 99, scene: "receipt", tint: "#60A5FA", text: "SEEDREAM 5.0 PRO", shot: { src: "assets/external/screenshots/seedream5-pro-wide.png", url: "seed.bytedance.com", imageW: 3840, imageH: 2052, from: { x: 1100, y: 100, w: 2000, h: 360 }, to: { x: 180, y: 40, w: 3440, h: 620 }, zoomAt: 8 } }, // "ByteDance released Seedream 5.0 Pro" (7757) — headline banner only, body text never carries the card
       { at: 180, scene: "receipt", tint: "#D97757", text: "MUSE SPARK 1.1", shot: { src: "assets/external/screenshots/meta-musespark-wide.png", url: "ai.meta.com", imageW: 3840, imageH: 2052, from: { x: 400, y: 30, w: 2000, h: 864 }, to: { x: 300, y: 20, w: 3240, h: 1400 }, zoomAt: 8 } }, // "Meta released Muse Spark 1.1" (7838); dark hero vs light page — layouts differ
       { at: 324, scene: "stamp", verdict: "check", badge: "GOOGLE PHOTOS", tint: "#34D399", text: "VIDEO REMIX" }, // "added Video Remix to Google Photos" (7988)
       { at: 476, scene: "reject", badge: "LAUNCH DEMO", tint: "#EF4444", text: "DON'T TRUST DEMOS" }, // "would not change the image tools because of a launch demo" (8020-8140); span.from+13
