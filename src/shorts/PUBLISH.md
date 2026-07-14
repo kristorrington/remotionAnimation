@@ -1071,3 +1071,123 @@ Follow @kristorrington for AI automation that survives the real world.
 ## Short-PremiumWar-B (A/B hook variant — hook "GROK JUST CRASHED THE AI PARTY")
 
 Same video + copy as Short-PremiumWar; post the loser as unlisted or delete after 48h.
+
+---
+
+# "Just go local" solves nothing (2026-07-15)
+
+## Short-71Percent (THE HOOK)
+
+**Title**
+```
+71% of ChatGPT Can Run Locally? Read the Fine Print #Shorts
+```
+
+**Description**
+```
+A Stanford study — cited by Hugging Face's CEO — says 71% of ChatGPT questions can supposedly run locally.
+
+The catch: "local" might mean renting a GPU cluster. "Go local" sounds like one decision, but it's really three: which model tier, which licence, and what hardware can actually run it. Get one wrong and you overspend or lose a weekend.
+
+Which tier are you on: 1, 2 or 3? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #LocalAI #LocalLLM #ChatGPT #OpenSourceAI #Shorts
+```
+
+---
+
+## Short-71Percent-B (A/B hook variant — hook "THE 3 CHECKS BEFORE LOCAL AI")
+
+Same video + copy as Short-71Percent; post the loser as unlisted or delete after 48h.
+
+---
+
+## Short-Tier3Giants
+
+**Title**
+```
+1.6 Trillion Parameters — You Can't Run This AI at Home #Shorts
+```
+
+**Description**
+```
+Some DeepSeek releases reportedly reach ~1.6 TRILLION parameters (per NVIDIA's model card).
+
+The weights may be downloadable — running them is another story. You're looking at H100/B100-class clusters, not a spare laptop under your desk. Downloadable is not deployable.
+
+So when someone repeats the "71% local" figure, ask one question: which tier produced that answer?
+
+What's the biggest model you've actually run locally? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #LocalAI #DeepSeek #LLM #GPU #Shorts
+```
+
+---
+
+## Short-Tier3Giants-B (A/B hook variant — hook "1.6 TRILLION PARAMETERS. LOCAL?")
+
+Same video + copy as Short-Tier3Giants; post the loser as unlisted or delete after 48h.
+
+---
+
+## Short-LicenceTrap
+
+**Title**
+```
+Free AI Models Aren't Free to Use — the Licence Trap #Shorts
+```
+
+**Description**
+```
+Free to download does NOT automatically mean free to use inside a commercial product.
+
+DeepSeek and GLM releases mostly use MIT terms — commercial use generally OK, but check the exact release. Kimi allows commercial use WITH attribution (your product may need to credit the model). MiniMax moved some releases to non-commercial terms — commercial use may now need a signed agreement.
+
+Same lab does not mean same terms. Check the exact version, every time.
+
+Have you ever actually read a model licence? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #OpenSourceAI #AILicensing #DeepSeek #LocalAI #Shorts
+```
+
+---
+
+## Short-LicenceTrap-B (A/B hook variant — hook "THE AI LICENCE TRAP")
+
+Same video + copy as Short-LicenceTrap; post the loser as unlisted or delete after 48h.
+
+---
+
+## Short-VanishingAI
+
+**Title**
+```
+This AI Model Vanished Days After Launch #Shorts
+```
+
+**Description**
+```
+Even a good licence doesn't guarantee stable access.
+
+Reports say Fable 5 launched June 9th — days later it was taken offline amid export-control concerns, then later restored. The public explanation is still limited, but the risk is clear: a model can look available today and become inaccessible days later.
+
+That makes any single model risky as your ONLY dependency — especially when products, clients or revenue depend on it.
+
+Would your workflow survive your model disappearing tomorrow? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #Anthropic #AIRisk #LocalAI #Shorts
+```
+
+---
+
+## Short-VanishingAI-B (A/B hook variant — hook "FABLE 5 DISAPPEARED FOR WEEKS")
+
+Same video + copy as Short-VanishingAI; post the loser as unlisted or delete after 48h.
