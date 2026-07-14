@@ -252,7 +252,7 @@ export const LessPainScene: React.FC<{ durationInFrames: number; kicker?: string
 
 // BENCHMARKS LIE — the shiny scoreboard placard DROPS, revealing the messy
 // real-world workflow behind it while the siren spins up.
-export const BenchmarksLieScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; messLabels?: [string, string, string] }> = ({ durationInFrames, kicker, title, messLabels = ["RETRY LOOP", "TOOL FAIL", "TIMEOUT"] }) => {
+export const BenchmarksLieScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; messLabels?: [string, string, string]; tint?: string }> = ({ durationInFrames, kicker, title, messLabels = ["RETRY LOOP", "TOOL FAIL", "TIMEOUT"], tint }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const revealAt = Math.round(durationInFrames * 0.4);
@@ -268,7 +268,7 @@ export const BenchmarksLieScene: React.FC<{ durationInFrames: number; kicker?: s
     { label: messLabels[2], x: -60, y: 110, rot: -4 },
   ];
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0xc8} mood="danger" impacts={[revealAt]}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0xc8} mood="danger" impacts={[revealAt]} tint={tint}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 40 }}>
         <div style={{ position: "relative", width: 700, height: 360 }}>
           {/* the messy reality (behind) */}

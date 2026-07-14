@@ -11,7 +11,7 @@ const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 // CALLS STACK UP: call cards physically DROP onto a pile; the stack wobbles as
 // it grows and (optionally) COLLAPSES onto a worried robot. With no `collapseAt`
 // the stack HOLDS — a solid build (labels + celebrate + optional stamp).
-export const StackCollapseScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; drops?: number[]; collapseAt?: number; labels?: string[]; stamp?: string; stampAt?: number; accent?: string }> = ({
+export const StackCollapseScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; drops?: number[]; collapseAt?: number; labels?: string[]; stamp?: string; stampAt?: number; accent?: string; tint?: string }> = ({
   durationInFrames,
   kicker,
   title,
@@ -21,12 +21,13 @@ export const StackCollapseScene: React.FC<{ durationInFrames: number; kicker?: s
   stamp,
   stampAt,
   accent = "#F59E0B",
+  tint,
 }) => {
   const frame = useCurrentFrame();
   const collapsed = collapseAt !== undefined && frame >= collapseAt;
   const built = collapseAt === undefined && frame >= (drops[drops.length - 1] ?? 0) + 24;
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0x91} impacts={collapseAt !== undefined ? [collapseAt] : []} mood={collapseAt === undefined ? "win" : "neutral"}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x91} impacts={collapseAt !== undefined ? [collapseAt] : []} mood={collapseAt === undefined ? "win" : "neutral"} tint={tint}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
         <div style={{ display: "flex", alignItems: "flex-end", gap: 0 }}>
           <CardStackDrop drops={drops} collapseAt={collapseAt} labels={labels} />
