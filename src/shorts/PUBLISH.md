@@ -861,3 +861,123 @@ Follow @kristorrington for AI automation that survives the real world.
 
 #AI #n8n #AIAgents #Automation #SystemDesign #Shorts
 ```
+
+---
+
+## Short-77Cents
+
+**Title**
+```
+77¢ vs $4 — The Same AI Job Just Got 5× Cheaper #Shorts
+```
+
+**Description**
+```
+GPT-5.6 Sol Pro reportedly did in ~1 minute for 77¢ what GPT-5.5 Pro took ~6 minutes and $4 to do.
+
+That's the real story of this launch — not a benchmark victory. Roughly one sixth of the time and less than one fifth of the cost for the same type of generation (per Artificial Analysis). If you run agents or repeated automated tasks, that changes your economics more than any leaderboard jump.
+
+A model doesn't need to be twice as smart. It needs acceptable work, much faster, much cheaper.
+
+Would a 5× cost drop make you switch? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #GPT56 #OpenAI #AIAgents #LLM #Shorts
+```
+
+---
+
+## Short-77Cents-B (A/B hook variant — hook "AI JUST GOT 5× CHEAPER")
+
+Same video + copy as Short-77Cents; post the loser as unlisted or delete after 48h.
+
+---
+
+## Short-SuperApp
+
+**Title**
+```
+ChatGPT, Codex + the Browser Just Became ONE App #Shorts
+```
+
+**Description**
+```
+GPT-5.6 was the headline — but the bigger change is the app.
+
+OpenAI folded ChatGPT, Codex and its browser experience into one unified app. You pick a mode instead of an app: Work mode handles your files, browsing and connected tools in one conversation; Codex mode is built for repos, branches, terminal and code review.
+
+Three separate products are becoming one main working environment.
+
+Would you use one AI app for everything, or keep them separate? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #ChatGPT #OpenAI #GPT56 #Productivity #Shorts
+```
+
+---
+
+## Short-SuperApp-B (A/B hook variant — hook "THE NEW CHATGPT SUPER-APP")
+
+Same video + copy as Short-SuperApp; post the loser as unlisted or delete after 48h.
+
+---
+
+## Short-SwitchTest
+
+**Title**
+```
+Stop Switching AI Models Over Leaderboards — Run This Test #Shorts
+```
+
+**Description**
+```
+Don't switch AI models because one topped a leaderboard.
+
+Test one real workflow and measure three things: cost per usable result, how long the task takes, and how much correction work is still required. Switch when the new model clearly improves at least two of the three.
+
+Because cheap output gets expensive when you have to repair all of it — and fast output is useless when it's consistently wrong.
+
+Which of the three metrics matters most for your work? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #GPT56 #AIAgents #LLM #TechStrategy #Shorts
+```
+
+---
+
+## Short-SwitchTest-B (A/B hook variant — hook "THE 3-METRIC AI TEST")
+
+Same video + copy as Short-SwitchTest; post the loser as unlisted or delete after 48h.
+
+---
+
+## Short-ImageWeek
+
+**Title**
+```
+3 Image AIs Launched in One Week — Don't Buy the Demos #Shorts
+```
+
+**Description**
+```
+ByteDance shipped Seedream 5.0 Pro, Meta shipped Muse Spark 1.1 + Muse Image, and Google added Video Remix to Google Photos — all in the same week.
+
+Don't change your image stack over a launch demo. Run the SAME prompt across your current models and the new ones, then score three things: prompt accuracy, consistency, and how many results you'd actually keep.
+
+The launch demo is marketing. Your prompt is the benchmark.
+
+Which image model are you on right now? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Seedream #MuseSpark #GooglePhotos #ImageAI #Shorts
+```
+
+---
+
+## Short-ImageWeek-B (A/B hook variant — hook "DON'T BUY THE LAUNCH DEMO")
+
+Same video + copy as Short-ImageWeek; post the loser as unlisted or delete after 48h.
