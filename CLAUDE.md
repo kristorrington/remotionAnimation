@@ -479,14 +479,26 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   scale; the ambient blur fill is dark-styles-only (the paper IS the fill).
   The hook fades fully BEFORE the seam moves — text never ghosts over the
   expanding card.
-- **Split = FACE TOP / ANIMATION BOTTOM** (Kris's rule, July 2026 — overwrites
-  the original animation-top band): whenever a short is split-screen, the
-  talking head owns the TOP half and the animation band rises from the BOTTOM
-  (~838px). Captions dock on the seam (~y1082); `BeatLabel` renders at the TOP
-  of every beat scene (flex `order: -1`) so the punch text hugs the seam and
-  never falls into the platform-UI bottom zone; the lower-third sits low in
-  the face band, above the caption pill. Built into `VerticalShort` — never
-  hand-build a split layout.
+- **Split = ANIMATION TOP / FACE BOTTOM** (Kris's rule, July 2026 —
+  supersedes the short-lived face-top layout): whenever a short is
+  split-screen, the animation band DROPS from the TOP (~838px) and the
+  talking head owns the BOTTOM half. Captions dock just UNDER the seam
+  (~y902) at **0.76× size** (Kris: "reduce the amount of text or captions in
+  split screen mode" — split captions shrink, full-anim captions stay full
+  size); `BeatLabel` renders at the BOTTOM of every beat scene (flex
+  `order: 2`) so the punch text hugs the seam next to the captions and never
+  collides with the topic banner overlaying the band's top edge (panel
+  content biases DOWN 36px for the same reason; logo/emoji dock at ~y130
+  below the banner; receipt stickers ride just above the seam); the
+  lower-third sits at the TOP of the face band under the caption pill
+  (~y980). Built into `VerticalShort` — never hand-build a split layout.
+- **Every short opens with EVIDENCE** (Kris, July 2026 — "use more evidence
+  or b-roll at the start of each short"): the first or second visible beat
+  is a receipt/b-roll card — a tweet from the brand's own account, the
+  brand's page, a chart — landing within ~4s of the split settling, pinned
+  to the claim being spoken. Tweets read native in shorts; crop tweet
+  captures above the link-preview caption and keep broken media embeds out
+  of the crop.
 - **Every short OPENS on the FACE** (Kris's call, July 2026): the hook +
   context line sit over the full-shot presenter for ~3.2s (`hookHold = 96`),
   then the split slides in — the layout is always either full shot or split
@@ -543,8 +555,9 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   auto-shortens to 130f and is SKIPPED entirely if no split window fits
   before dur−140 — it must never ride into the CTA where the face card puts
   it over the face; (4) the hook fades fully before the seam moves; (5) in
-  SPLIT mode the panel content biases DOWN 48px (AnimationPanel `shift`) so
-  the top-anchored BeatLabel clears the seam-docked caption pill; (6) the CTA
+  SPLIT mode the panel content biases DOWN 36px (AnimationPanel `shift`) so
+  the scene clears the topic banner over the band's top edge, and the
+  bottom-anchored BeatLabel stays clear of the caption pill under the seam; (6) the CTA
   owns the frame from **dur−114** — a beat starting at or after that frame
   NEVER renders (the n8n Klarna receipt originally sat at 897/1000 and was
   invisible), so the last beat must start well before dur−114 and payoffs that

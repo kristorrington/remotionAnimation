@@ -19,10 +19,11 @@ export const LowerThird: React.FC<{ dur: number }> = ({ dur }) => {
 
   return (
     <AbsoluteFill style={{ pointerEvents: "none" }}>
-      {/* low in the TOP face band, hugging the left edge — over the desk/set,
-          never the face (the presenter is centered), and clear of the caption
-          pill docked on the seam below (~1027) */}
-      <div style={{ position: "absolute", top: 880, left: 0, transform: `translateX(${inX + outX}px)`, display: "flex", alignItems: "center", gap: 14 }}>
+      {/* top of the BOTTOM face band (face-bottom split, Kris July 2026),
+          hugging the left edge — over the set wall, never the face (the
+          presenter is centered), below the caption pill docked under the seam
+          (~902-946) and far above the platform-UI bottom zone */}
+      <div style={{ position: "absolute", top: 980, left: 0, transform: `translateX(${inX + outX}px)`, display: "flex", alignItems: "center", gap: 14 }}>
         <div style={{ width: 7, height: barH, background: t.accent, boxShadow: t.glow ? `0 0 14px ${t.accent}` : undefined }} />
         <div
           style={{

@@ -22,10 +22,13 @@ const toChunks = (words: CaptionWord[]): Chunk[] => {
   return chunks;
 };
 
-export const Captions: React.FC<{ words: CaptionWord[]; clipFrom: number; centerY: number }> = ({
+// fontScale shrinks the whole pill in SPLIT mode (Kris, July 2026 — "reduce
+// the amount of text in split screen mode"); full-anim captions stay full size.
+export const Captions: React.FC<{ words: CaptionWord[]; clipFrom: number; centerY: number; fontScale?: number }> = ({
   words,
   clipFrom,
   centerY,
+  fontScale = 1,
 }) => {
   const frame = useCurrentFrame();
   const t = useTheme();
@@ -53,9 +56,9 @@ export const Captions: React.FC<{ words: CaptionWord[]; clipFrom: number; center
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "center",
-            gap: "0 18px",
-            maxWidth: 920,
-            padding: "16px 34px",
+            gap: `0 ${Math.round(18 * fontScale)}px`,
+            maxWidth: Math.round(920 * fontScale),
+            padding: `${Math.round(16 * fontScale)}px ${Math.round(34 * fontScale)}px`,
             borderRadius: 18,
             // paper = a WHITE sticker card with near-black type (the reference
             // collage look); dark styles keep the opaque dark pill
@@ -73,7 +76,7 @@ export const Captions: React.FC<{ words: CaptionWord[]; clipFrom: number; center
                   // Inter stays for captions in both styles — readability first.
                   fontFamily: FONT,
                   fontWeight: 900,
-                  fontSize: 58,
+                  fontSize: Math.round(58 * fontScale),
                   lineHeight: 1.15,
                   letterSpacing: -0.5,
                   textTransform: "uppercase",

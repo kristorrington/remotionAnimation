@@ -16,17 +16,17 @@ import { SFX, SfxCue } from "../components/Sfx";
 import { SlideLeftPush } from "../motion/transitions";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
-const ANIM_H = 838; // height of the bottom animation band when split (~44%)
-const FULL_H = 1920; // seam all the way up = animation takes the whole screen
+const ANIM_H = 838; // height of the TOP animation band when split (~44%)
+const FULL_H = 1920; // seam all the way down = animation takes the whole screen
 const OUTRO = 96; // last ~3.2s
 
-// One 1080×1920 short. Talking head on TOP, cartoon animations on BOTTOM
-// (Kris's rule, July 2026 — face always owns the top half of the split), with a
-// dynamic reframe: FULL-SCREEN face for the hook + CTA, SPLIT for the body, and
-// FULL-SCREEN ANIMATION during `spec.fullscreen` spans (reveals / punchlines /
-// payoffs — CLAUDE.md §9: never force every beat into split). Text stays off the
-// face; sound fires on every visual change; the brand style comes from
-// spec.style ("cinematic" default | "bold").
+// One 1080×1920 short. Cartoon animations on TOP, talking head on BOTTOM
+// (Kris's rule, July 2026 — face always owns the BOTTOM half of the split;
+// supersedes the earlier face-top layout), with a dynamic reframe: FULL-SCREEN
+// face for the hook + CTA, SPLIT for the body, and FULL-SCREEN ANIMATION during
+// `spec.fullscreen` spans (reveals / punchlines / payoffs — CLAUDE.md §9: never
+// force every beat into split). Text stays off the face; sound fires on every
+// visual change; the brand style comes from spec.style ("cinematic" | "bold").
 // Platform-UI safe zones (right ~12%, bottom ~18%) — flip `showSafeZones` in
 // the Studio props panel while designing; it can never appear in a render.
 const SafeZones: React.FC = () => {
@@ -132,7 +132,8 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
   // the paper above it. The card expands to the full-bleed band as the split
   // arrives (seam-driven), so the tight crop only ever shows in the split.
   const faceScale = paper ? interpolate(seamY, [0, ANIM_H], [0.74, 1], CLAMP) : 1;
-  const faceOriginY = paper ? interpolate(seamY, [0, ANIM_H], [88, 30], CLAMP) : 30;
+  // face-BOTTOM split: the card stays anchored LOW as it expands into the band
+  const faceOriginY = paper ? interpolate(seamY, [0, ANIM_H], [88, 75], CLAMP) : 70;
   const introRadius = interpolate(frame, [0, 22], [40, 0], CLAMP);
   const paperRadius = paper ? interpolate(seamY, [0, ANIM_H], [28, 0], CLAMP) : 0;
 
@@ -151,9 +152,9 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
             visibly "loads" before the push starts. */}
         <SlideLeftPush cuts={spans.map((s) => s.from + 13)} dur={26}>
 
-        {/* TOP — talking head; grows to full screen when seamY → 0. Min height
+        {/* BOTTOM — talking head; grows to full screen when seamY → 0. Min height
             1px keeps the video mounted during full-anim spans so the VO plays on. */}
-        <div style={{ position: "absolute", top: 0, left: 0, width: 1080, height: Math.max(1920 - seamY, 1), overflow: "hidden" }}>
+        <div style={{ position: "absolute", top: Math.min(seamY, FULL_H - 1), left: 0, width: 1080, height: Math.max(1920 - seamY, 1), overflow: "hidden" }}>
           {/* ambient fill behind the punch-in (dark styles): the SAME shot
               blurred + dimmed, fading out as the zoom lands — frame 0 must read
               as a designed full frame (it doubles as the feed thumbnail), never
@@ -179,20 +180,22 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
           </AbsoluteFill>
         </div>
 
-        {/* BOTTOM — animated beat scenes; the band RISES from the bottom edge
-            for the split, zooms up when the animation takes the full screen */}
-        <div style={{ position: "absolute", top: FULL_H - seamY, left: 0, width: 1080, height: Math.max(seamY, 1), overflow: "hidden", opacity: animOpacity }}>
+        {/* TOP — animated beat scenes; the band DROPS from the top edge for the
+            split, grows down when the animation takes the full screen */}
+        <div style={{ position: "absolute", top: 0, left: 0, width: 1080, height: Math.max(seamY, 1), overflow: "hidden", opacity: animOpacity }}>
           <AnimationPanel beats={spec.beats} zoom={interpolate(seamY, [ANIM_H, FULL_H], [1, 1.32], CLAMP)} panelH={seamY} />
         </div>
 
-        {/* captions: split mode ONLY, docked on the seam — not during the hook
-            (the hook is the text) and not during the CTA. Less clutter.
+        {/* captions: split mode ONLY, docked just UNDER the seam on the face
+            side — not during the hook (the hook is the text) and not during the
+            CTA. Split-mode captions render SMALLER (fontScale — Kris, July
+            2026: "reduce the amount of text in split screen mode").
             clipFrom includes seamEnd: useCurrentFrame() RESETS inside a Sequence,
             so the absolute-timed captions must add the Sequence's start back or
             every word lags the audio by the hook length. */}
         <Sequence from={seamEnd} durationInFrames={dur - OUTRO - seamEnd}>
           <AbsoluteFill style={{ opacity: captionOp }}>
-            <Captions words={captionsFor(spec.source)} clipFrom={spec.from + seamEnd} centerY={interpolate(seamY, [0, ANIM_H, FULL_H], [1452, FULL_H - ANIM_H, 1560], CLAMP)} />
+            <Captions words={captionsFor(spec.source)} clipFrom={spec.from + seamEnd} centerY={interpolate(seamY, [0, ANIM_H, FULL_H], [1452, ANIM_H + 64, 1560], CLAMP)} fontScale={interpolate(seamY, [ANIM_H, FULL_H], [0.76, 1], CLAMP)} />
           </AbsoluteFill>
         </Sequence>
 

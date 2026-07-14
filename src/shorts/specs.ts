@@ -25,9 +25,10 @@ export const SHORTS: ShortSpec[] = [
     hookAlt: "AI JUST GOT 5× CHEAPER", // A/B variant → Short-77Cents-B
     context: "GPT-5.6 = OpenAI's new flagship model",
     beats: [
-      { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "THE REAL WIN", logo: "chatgpt" }, // "not a dramatic benchmark victory" (3231); first beat visible at the split settle
-      // Artificial Analysis is the spoken source — their cost article is the receipt
-      { at: 204, scene: "receipt", tint: "#34D399", text: "THE COST REPORT", shot: { src: "assets/external/screenshots/aa-gpt56-landed-wide.png", url: "artificialanalysis.ai", imageW: 3840, imageH: 2052, from: { x: 700, y: 740, w: 1810, h: 375 }, to: { x: 490, y: 130, w: 2900, h: 600 }, zoomAt: 8 } }, // "Artificial Analysis report" (3365) — opens on the one-third-cost takeaway, settles on the headline banner
+      { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "THE REAL WIN" }, // "not a dramatic benchmark victory" (3231)
+      // EVIDENCE EARLY (Kris, July 2026): the cost article lands on "the change
+      // in cost and speed" — first beat visible at the split settle, logo here
+      { at: 127, scene: "receipt", tint: "#34D399", text: "THE PAPER TRAIL", logo: "chatgpt", shot: { src: "assets/external/screenshots/aa-gpt56-landed-wide.png", url: "artificialanalysis.ai", imageW: 3840, imageH: 2052, from: { x: 700, y: 740, w: 1810, h: 375 }, to: { x: 490, y: 130, w: 2900, h: 600 }, zoomAt: 8 } }, // "It is the change in cost and speed" (3288-3390); the spoken source "Artificial Analysis" (3365) lands mid-beat
       { at: 303, scene: "conveyor", labels: ["SOL PRO"], tint: "#E8B84B", text: "THE TEST RUN" }, // "GPT 5.6 Sol Pro completed…" (3464)
       { at: 425, scene: "check", obj: "clock", verdict: "check", tint: "#34D399", text: "1 MIN · 77¢" }, // "one minute (3586) for 77 cents (3624)"; span.from+13 = push midpoint
       { at: 591, scene: "coins", tint: "#EF4444", text: "6 MIN · $4" }, // "six minutes (3752)… cost $4 (3787)" — crossfades inside the span
@@ -53,16 +54,18 @@ export const SHORTS: ShortSpec[] = [
     hookAlt: "THE NEW CHATGPT SUPER-APP", // A/B variant → Short-SuperApp-B
     context: "OpenAI merged ChatGPT, Codex + browser",
     beats: [
-      { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "THE REAL UPGRADE", logo: "chatgpt" }, // "may be the biggest change right now" (100)
+      { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "THE REAL UPGRADE" }, // "may be the biggest change right now" (100)
+      // EVIDENCE EARLY (Kris, July 2026): @OpenAI's own launch tweet lands as
+      // the brand is first named — first beat visible at the split settle
+      { at: 147, scene: "receipt", tint: "#34D399", text: "THE ANNOUNCEMENT", logo: "chatgpt", shot: { src: "assets/external/screenshots/openai-tweet-work-launch.png", url: "x.com/OpenAI", imageW: 1100, imageH: 1010, from: { x: 100, y: 120, w: 940, h: 380 }, to: { x: 0, y: 0, w: 1100, h: 1010 }, zoomAt: 8 } }, // "OpenAI brought ChatGPT, Codex…" (153-305)
       // span-owning beat sits at span.from+13 — the push's HIDDEN midpoint —
       // so the pull-left slides the PREVIOUS beat out (never the new one)
-      { at: 203, scene: "bolt", trails: true, blockLabel: "CHATGPT", moduleLabel: "CODEX", tint: "#34D399", text: "ONE UNIFIED APP" }, // "brought ChatGPT, Codex… together" (250-371)
-      { at: 340, scene: "check", obj: "brain", verdict: "check", tint: "#E8B84B", text: "+ THE BROWSER" }, // "its browser experience" (305; label trails the phrase)
+      { at: 233, scene: "bolt", trails: true, blockLabel: "CHATGPT", moduleLabel: "CODEX", tint: "#E8B84B", text: "THE MEGA-MERGE" }, // "together inside of one unified app" (305-400)
       { at: 457, scene: "doors", labels: ["WORK", "CODEX"], value: 0, tint: "#D97757", text: "PICK YOUR MODE" }, // "choose between work mode and Codex mode" (463)
       { at: 617, scene: "queue", labels: ["FILES", "BROWSER", "TOOLS"], tint: "#34D399", text: "ALL IN ONE CHAT" }, // "files, browsers, and connected tools" (701-830); span.from+13
     ],
     // full-anim: the Codex bolt gag + the one-conversation queue
-    fullscreen: [{ from: 190, to: 320 }, { from: 604, to: 698 }],
+    fullscreen: [{ from: 220, to: 350 }, { from: 604, to: 698 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
     style: "paper",
@@ -81,9 +84,9 @@ export const SHORTS: ShortSpec[] = [
     context: "GPT-5.6 just beat rivals on cost + speed",
     beats: [
       { at: 8, scene: "migrate", tint: "#EF4444", text: "DON'T CHASE RANKINGS" }, // "do not switch… top of a leaderboard" (8940-9000)
-      // logo rides THIS beat: beat 8 hands over right at the split settle
-      // (~122) — the opening logo must sit on the first fully VISIBLE beat
-      { at: 128, scene: "testbench", tint: "#D97757", text: "PROVE IT YOURSELF", logo: "chatgpt" }, // "test one real workflow" (9040)
+      // EVIDENCE EARLY (Kris, July 2026): the leaderboard being warned about,
+      // on screen as it's spoken — first beat visible at the split settle
+      { at: 92, scene: "receipt", tint: "#D97757", text: "THE BAIT", logo: "chatgpt", shot: { src: "assets/external/screenshots/benchlm-leaderboard-wide.png", url: "benchlm.ai", imageW: 3840, imageH: 2052, from: { x: 300, y: 820, w: 1200, h: 340 }, to: { x: 260, y: 800, w: 3320, h: 940 }, zoomAt: 8 } }, // "one model reached the top of a leaderboard" (8977-9010)
       { at: 204, scene: "check", obj: "coin", verdict: "check", tint: "#E8B84B", text: "1 · THE BILL" }, // "cost per usable result" (9134)
       { at: 263, scene: "check", obj: "clock", verdict: "check", tint: "#34D399", text: "2 · THE CLOCK" }, // "how long the task takes" (9193)
       { at: 334, scene: "retry", tint: "#F59E0B", text: "3 · THE FIXES" }, // "how much correction work is still required" (9264)

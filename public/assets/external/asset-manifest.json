@@ -838,6 +838,20 @@
       ],
       "attributionRequired": false,
       "concerns": null
+    },
+    {
+      "filename": "openai-tweet-work-launch.png",
+      "localPath": "public/assets/external/screenshots/openai-tweet-work-launch.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/OpenAI/status/2075274275104399670",
+      "sourceName": "OpenAI on X (official account)",
+      "dateAccessed": "2026-07-14",
+      "usageNote": "@OpenAI launch tweet: 'getting real work done across web, mobile, and desktop... entire workflows with a single request' + the ChatGPT Work card image; cropped above the link-preview caption. Early-evidence receipt (tweets read native in shorts).",
+      "usedIn": [
+        "Short-SuperApp opening receipt"
+      ],
+      "attributionRequired": false,
+      "concerns": null
     }
   ]
 }

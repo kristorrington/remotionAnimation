@@ -55,10 +55,10 @@ const BeatLabel: React.FC<{ text: string; sub?: string; accent?: string }> = ({ 
   const subPop = spring({ frame: frame - 8, fps, config: { stiffness: 280, damping: 12 }, durationInFrames: 14 });
   const op = interpolate(frame, [2, 8], [0, 1], CLAMP);
   return (
-    // order -1: the label renders at the TOP of every beat scene's column — the
-    // panel lives in the BOTTOM band (face-top split), so punch text must stay
-    // up by the seam, clear of the platform-UI bottom zone.
-    <div style={{ order: -1, display: "flex", flexDirection: "column", alignItems: "center", gap: 14, opacity: op, transform: `scale(${interpolate(e, [0, 1], [1.12, 1])}) translateZ(0)`, padding: "0 40px", textAlign: "center" }}>
+    // order 2: the label renders at the BOTTOM of every beat scene's column —
+    // the panel lives in the TOP band (face-bottom split, Kris July 2026), so
+    // punch text hugs the seam by the captions, clear of the topic banner above.
+    <div style={{ order: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: 14, opacity: op, transform: `scale(${interpolate(e, [0, 1], [1.12, 1])}) translateZ(0)`, padding: "0 40px", textAlign: "center" }}>
       <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: fitted, lineHeight: 1.02, color: t.text, textShadow: t.glow ? "0 6px 30px rgba(0,0,0,0.6)" : undefined, whiteSpace: "nowrap" }}>{text}</span>
       {sub ? <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 30, letterSpacing: 3, color: accent, borderRadius: 12, padding: "6px 18px", ...glassCard(accent), opacity: frame < 8 ? 0 : 1, transform: `rotate(-2deg) scale(${interpolate(subPop, [0, 1], [1.5, 1])})` }}>{sub}</span> : null}
     </div>
@@ -973,8 +973,12 @@ const ReceiptBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
   const { zoom, shift, panelH } = React.useContext(PanelLayout);
   const s = beat.shot;
   if (!s) return null;
-  const labelZone = 194; // sticker label + clearance below the caption pill
-  const availH = Math.max(220, panelH - labelZone - 36);
+  // face-bottom split (Kris, July 2026): the band is the TOP of the frame, so
+  // the banner zone is at the top and the sticker label drops to the BOTTOM,
+  // hugging the seam with the captions cluster below it.
+  const bannerZone = 118; // topic banner overlays the band's top edge
+  const labelZone = 164; // sticker label above the seam
+  const availH = Math.max(220, panelH - bannerZone - labelZone);
   const aspect = s.to.w / s.to.h;
   let contentW = 952;
   let contentH = contentW / aspect;
@@ -986,24 +990,25 @@ const ReceiptBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
   const cardH = Math.round(contentH) + 54;
   return (
     <AbsoluteFill style={{ transform: `translateY(${-shift}px) scale(${1 / zoom})` }}>
-      <div style={{ position: "absolute", left: (1080 - cardW) / 2, top: labelZone + Math.max(0, (availH - cardH) / 2) }}>
+      <div style={{ position: "absolute", left: (1080 - cardW) / 2, top: bannerZone + Math.max(0, (availH - cardH) / 2) }}>
         <SourceScreenshot src={s.src} url={s.url} imageW={s.imageW} imageH={s.imageH} from={s.from} to={s.to} zoomAt={s.zoomAt} highlight={s.highlight} highlightAt={s.highlightAt} width={cardW} height={cardH} fit="cover" />
       </div>
-      {/* split: clear the seam-docked caption pill; full: clear the topic banner */}
-      <BleedLabel text={beat.text} top={interpolate(zoom, [1, 1.32], [96, 170], CLAMP)} />
+      {/* the sticker rides just above the seam (receipts are split-only) */}
+      <BleedLabel text={beat.text} top={Math.min(panelH - labelZone + 22, 1560)} />
     </AbsoluteFill>
   );
 };
 
-// Brand-mark pop — the product's real logo rides the beat (top-right dock,
-// same collision rules as EmojiPop). Opening beats of product videos use it.
+// Brand-mark pop — the product's real logo rides the beat (right dock under
+// the banner zone — the band owns the TOP of the frame since the face-bottom
+// flip; same collision rules as EmojiPop). Opening beats of product videos use it.
 const LogoPop: React.FC<{ logo: "chatgpt" }> = ({ logo }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const e = spring({ frame: frame - 6, fps, config: { stiffness: 260, damping: 13, mass: 0.8 }, durationInFrames: 16 });
   const bob = Math.sin(frame * 0.08) * 5;
   return (
-    <div style={{ position: "absolute", top: 44, right: 74, transform: `translateY(${bob}px) scale(${interpolate(e, [0, 1], [0.3, 1])}) rotate(${interpolate(e, [0, 1], [-14, -4])}deg)`, opacity: interpolate(e, [0, 0.3], [0, 1]) }}>
+    <div style={{ position: "absolute", top: 132, right: 74, transform: `translateY(${bob}px) scale(${interpolate(e, [0, 1], [0.3, 1])}) rotate(${interpolate(e, [0, 1], [-14, -4])}deg)`, opacity: interpolate(e, [0, 0.3], [0, 1]) }}>
       {logo === "chatgpt" && <ChatGptMark size={116} glow />}
     </div>
   );
@@ -1015,7 +1020,7 @@ const EmojiPop: React.FC<{ emoji: string }> = ({ emoji }) => {
   const e = spring({ frame: frame - 4, fps, config: { stiffness: 300, damping: 12, mass: 0.7 }, durationInFrames: 14 });
   const wob = Math.sin(frame * 0.2) * 5;
   return (
-    <div style={{ position: "absolute", top: 40, right: 70, transform: `scale(${interpolate(e, [0, 1], [0.2, 1])}) rotate(${-8 + wob}deg)`, opacity: interpolate(e, [0, 0.3], [0, 1]) }}>
+    <div style={{ position: "absolute", top: 128, right: 70, transform: `scale(${interpolate(e, [0, 1], [0.2, 1])}) rotate(${-8 + wob}deg)`, opacity: interpolate(e, [0, 0.3], [0, 1]) }}>
       <span style={{ fontSize: 130, filter: "drop-shadow(0 10px 24px rgba(0,0,0,0.5))" }}>{emoji}</span>
     </div>
   );
