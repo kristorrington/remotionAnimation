@@ -5,6 +5,7 @@ import { StyleDemo } from "./StyleDemo";
 import { TemplateLab, TEMPLATE_LAB_DUR } from "./TemplateLab";
 import { ArchivedVideoCompositions, SHOW_ARCHIVE } from "./archive";
 import { AiNewsVideo, AINEWS_DUR } from "./AiNewsVideo";
+import { AiNewsFinal } from "./AiNewsFinal";
 
 const transparentDefaults: CalculateMetadataFunction<
   Record<string, unknown>
@@ -49,7 +50,7 @@ export const RemotionRoot: React.FC = () => {
 
       {/* ── CURRENT: AI-news / GPT-5.6 super-app roundup (July 2026) ── */}
       <Composition id="AiNewsVideo" component={AiNewsVideo} durationInFrames={AINEWS_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
-      {/* AiNewsFinal registers here in Phase 2 */}
+      <Composition id="AiNewsFinal" component={AiNewsFinal} durationInFrames={AINEWS_DUR} fps={30} width={1920} height={1080} />
 
       {/* Previous videos — hidden unless SHOW_ARCHIVE (src/archive) is true */}
       {SHOW_ARCHIVE && <ArchivedVideoCompositions />}
