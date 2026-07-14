@@ -85,6 +85,11 @@ const main = async () => {
     [["gpt", "live"], "GPT-Live"],
     [["artificial", "analysis"], "Artificial Analysis"],
     [["video", "remakes"], "Video Remix"],
+    [["and", "thropic"], "Anthropic"],
+    [["wired", "access"], "widened access"],
+    [["intelligence", "leak"], "intelligence leap"],
+    [["claude", "devs"], "Claude Devs'"],
+    [["web", "and", "mobile"], "Web and Mobile"],
   ];
   const norm = (s) => s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
   for (const [parts, joined] of JOINS) {
@@ -106,6 +111,7 @@ const main = async () => {
     // AI-news / GPT-5.6 super-app video (07/2026)
     xai: "xAI", cdream: "Seedream", seedream: "Seedream",
     metareleased: "Meta released", grock: "Grok",
+    cost4: "cost $4",
   };
   for (const w of words) {
     const base = norm(w.text);

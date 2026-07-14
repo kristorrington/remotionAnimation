@@ -568,6 +568,276 @@
       ],
       "attributionRequired": false,
       "concerns": "Source URL unknown (user-uploaded webp of the SVG). Prefer an original SVG from an official OpenAI brand page if one becomes available."
+    },
+    {
+      "filename": "oai-gpt56-hero-wide.png",
+      "localPath": "public/assets/external/screenshots/oai-gpt56-hero-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://openai.com/index/gpt-5-6/",
+      "sourceName": "OpenAI official announcement",
+      "dateAccessed": "2026-07-13",
+      "usageNote": "GPT-5.6 launch headline + 'Introducing GPT-5.6 in ChatGPT' hero; -wide recut (1.871) of the full-page capture; receipt for the AI-news / GPT-5.6 super-app video; brand-first receipt for OpenAI",
+      "usedIn": [
+        "AiNews opener receipt (first cover)"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "oai-browsecomp-wide.png",
+      "localPath": "public/assets/external/screenshots/oai-browsecomp-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://openai.com/index/gpt-5-6/",
+      "sourceName": "OpenAI official announcement",
+      "dateAccessed": "2026-07-13",
+      "usageNote": "End-to-end knowledge work section: BrowseComp 92.2% / OSWorld 2.0 62.6% claim + BrowseComp chart; -wide recut (1.871) of the full-page capture; receipt for the AI-news / GPT-5.6 super-app video",
+      "usedIn": [
+        "AiNews browser computer-use beat"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "newstack-superapp-wide.png",
+      "localPath": "public/assets/external/screenshots/newstack-superapp-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://thenewstack.io/openai-codex-work-atlas/",
+      "sourceName": "The New Stack",
+      "dateAccessed": "2026-07-13",
+      "usageNote": "'OpenAI is folding Codex into the ChatGPT app' headline + ChatGPT Work hero; -wide recut (1.871) of the full-page capture; receipt for the AI-news / GPT-5.6 super-app video; the spoken 'According to The New Stack' receipt",
+      "usedIn": [
+        "AiNews unified-app beat",
+        "shorts"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "siliconangle-gptlive-wide.png",
+      "localPath": "public/assets/external/screenshots/siliconangle-gptlive-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://siliconangle.com/2026/07/08/openai-launches-gpt-live-voice-model-series-ahead-broad-gpt-5-6-release/",
+      "sourceName": "SiliconANGLE",
+      "dateAccessed": "2026-07-13",
+      "usageNote": "GPT-Live launch headline + photo, article column only (sidebar excluded); -wide recut (1.871) of the full-page capture; receipt for the AI-news / GPT-5.6 super-app video",
+      "usedIn": [
+        "AiNews GPT-Live beat"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "aa-gpt56-landed-wide.png",
+      "localPath": "public/assets/external/screenshots/aa-gpt56-landed-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://artificialanalysis.ai/articles/gpt-5-6-has-landed",
+      "sourceName": "Artificial Analysis",
+      "dateAccessed": "2026-07-13",
+      "usageNote": "'GPT-5.6 benchmarks across Intelligence, Speed and Cost' headline + key cost takeaways; -wide recut (1.871) of the full-page capture; receipt for the AI-news / GPT-5.6 super-app video; the spoken 'Artificial Analysis report' receipt",
+      "usedIn": [
+        "AiNews efficiency beat",
+        "shorts"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "benchlm-fable-vs-sol-wide.png",
+      "localPath": "public/assets/external/screenshots/benchlm-fable-vs-sol-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://benchlm.ai/compare/claude-fable-vs-gpt-5-6-sol",
+      "sourceName": "BenchLM",
+      "dateAccessed": "2026-07-13",
+      "usageNote": "Claude Fable 5 (91) vs GPT-5.6 Sol (86) head-to-head card; -wide recut (1.871) of the full-page capture; receipt for the AI-news / GPT-5.6 super-app video; 'sits just behind Claude Fable' receipt",
+      "usedIn": [
+        "AiNews GDPval/Fable beat"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "benchlm-leaderboard-wide.png",
+      "localPath": "public/assets/external/screenshots/benchlm-leaderboard-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://benchlm.ai/benchmarks/artificialAnalysis",
+      "sourceName": "BenchLM",
+      "dateAccessed": "2026-07-13",
+      "usageNote": "Artificial Analysis Intelligence Index top-3 cards (Sol 58.9 / Opus 4.8 55.7 / Terra 55.0) + score table; -wide recut (1.871) of the full-page capture; receipt for the AI-news / GPT-5.6 super-app video",
+      "usedIn": [
+        "AiNews leaderboard/premium-category beat"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "xai-grok45-wide.png",
+      "localPath": "public/assets/external/screenshots/xai-grok45-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.ai/news/grok-4-5",
+      "sourceName": "xAI official announcement",
+      "dateAccessed": "2026-07-13",
+      "usageNote": "'Introducing Grok 4.5' headline + engineering benchmark chart; -wide recut (1.871) of the full-page capture; receipt for the AI-news / GPT-5.6 super-app video; brand-first receipt for xAI",
+      "usedIn": [
+        "AiNews Grok beat",
+        "shorts"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "tc-grok45-wide.png",
+      "localPath": "public/assets/external/screenshots/tc-grok45-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://techcrunch.com/2026/07/08/spacexai-releases-grok-4-5-which-elon-describes-as-an-opus-class-model/",
+      "sourceName": "TechCrunch",
+      "dateAccessed": "2026-07-13",
+      "usageNote": "'SpaceXAI releases Grok 4.5... Opus-class model' hero; -wide recut (1.871) of the full-page capture; receipt for the AI-news / GPT-5.6 super-app video",
+      "usedIn": [
+        "AiNews Grok comparison beat"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "anthropic-fable5-redeploy-wide.png",
+      "localPath": "public/assets/external/screenshots/anthropic-fable5-redeploy-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.anthropic.com/news/redeploying-fable-5",
+      "sourceName": "Anthropic official announcement",
+      "dateAccessed": "2026-07-13",
+      "usageNote": "'Redeploying Fable 5' headline + UPDATE badge (access restored, export controls lifted); -wide recut (1.871) of the full-page capture; receipt for the AI-news / GPT-5.6 super-app video; brand-first receipt for Anthropic",
+      "usedIn": [
+        "AiNews Fable access beat",
+        "shorts"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "tc-cowork-wide.png",
+      "localPath": "public/assets/external/screenshots/tc-cowork-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://techcrunch.com/2026/07/07/the-coding-agent-wars-are-spilling-into-the-rest-of-the-office-claude-cowork/",
+      "sourceName": "TechCrunch",
+      "dateAccessed": "2026-07-13",
+      "usageNote": "'Claude Cowork expands to mobile and web' hero with Claude app screens; -wide recut (1.871) of the full-page capture; receipt for the AI-news / GPT-5.6 super-app video",
+      "usedIn": [
+        "AiNews Cowork beat"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "seedream5-pro-wide.png",
+      "localPath": "public/assets/external/screenshots/seedream5-pro-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://seed.bytedance.com/en/blog/beyond-generation-it-understands-design-introducing-seedream-5-0-pro",
+      "sourceName": "ByteDance Seed official blog",
+      "dateAccessed": "2026-07-13",
+      "usageNote": "Seedream 5.0 Pro announcement headline + capability bullets; -wide recut (1.871) of the full-page capture; receipt for the AI-news / GPT-5.6 super-app video; brand-first receipt for ByteDance",
+      "usedIn": [
+        "AiNews image-model roundup"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "meta-musespark-wide.png",
+      "localPath": "public/assets/external/screenshots/meta-musespark-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/",
+      "sourceName": "Meta AI official blog",
+      "dateAccessed": "2026-07-13",
+      "usageNote": "'Introducing Muse Spark 1.1' headline + hero; -wide recut (1.871) of the full-page capture; receipt for the AI-news / GPT-5.6 super-app video; brand-first receipt for Meta",
+      "usedIn": [
+        "AiNews image-model roundup"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "tc-video-remix-wide.png",
+      "localPath": "public/assets/external/screenshots/tc-video-remix-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://techcrunch.com/2026/07/08/google-photos-adds-a-new-ai-video-remix-tool/",
+      "sourceName": "TechCrunch",
+      "dateAccessed": "2026-07-13",
+      "usageNote": "'Google Photos adds a new AI Video Remix tool' hero with Google Photos phone; -wide recut (1.871) of the full-page capture; receipt for the AI-news / GPT-5.6 super-app video",
+      "usedIn": [
+        "AiNews image-model roundup"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "tc-gpt56-launch-wide.png",
+      "localPath": "public/assets/external/screenshots/tc-gpt56-launch-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://techcrunch.com/2026/07/09/openai-launches-its-new-family-of-models-with-gpt-5-6/",
+      "sourceName": "TechCrunch",
+      "dateAccessed": "2026-07-13",
+      "usageNote": "'OpenAI launches its new family of models with GPT-5.6' hero + Sol/Terra/Luna variants paragraph; -wide recut (1.871) of the full-page capture; receipt for the AI-news / GPT-5.6 super-app video",
+      "usedIn": [
+        "AiNews tiers beat (optional)"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "oai-launchvid-voiceprompt.png",
+      "localPath": "public/assets/external/screenshots/oai-launchvid-voiceprompt.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.youtube.com/watch?v=ELh8R7bGlxE",
+      "sourceName": "OpenAI official launch video (YouTube)",
+      "dateAccessed": "2026-07-13",
+      "usageNote": "'What should we build?' voice-prompt UI frame @86s. Frame extracted from OpenAI's official GPT-5.6 launch video (640x360 source) — card-scale use only, never full-bleed",
+      "usedIn": [
+        "AiNews GPT-Live/voice beat (card)"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "oai-launchvid-presentations.png",
+      "localPath": "public/assets/external/screenshots/oai-launchvid-presentations.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.youtube.com/watch?v=ELh8R7bGlxE",
+      "sourceName": "OpenAI official launch video (YouTube)",
+      "dateAccessed": "2026-07-13",
+      "usageNote": "Work-mode Presentations laptop frame @112s. Frame extracted from OpenAI's official GPT-5.6 launch video (640x360 source) — card-scale use only, never full-bleed",
+      "usedIn": [
+        "AiNews Work-mode beat (card)"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "oai-launchvid-spreadsheets.png",
+      "localPath": "public/assets/external/screenshots/oai-launchvid-spreadsheets.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.youtube.com/watch?v=ELh8R7bGlxE",
+      "sourceName": "OpenAI official launch video (YouTube)",
+      "dateAccessed": "2026-07-13",
+      "usageNote": "Work-mode Spreadsheets laptop frame @113s. Frame extracted from OpenAI's official GPT-5.6 launch video (640x360 source) — card-scale use only, never full-bleed",
+      "usedIn": [
+        "AiNews Work-mode beat (card)"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "oai-launchvid-codexui.png",
+      "localPath": "public/assets/external/screenshots/oai-launchvid-codexui.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.youtube.com/watch?v=ELh8R7bGlxE",
+      "sourceName": "OpenAI official launch video (YouTube)",
+      "dateAccessed": "2026-07-13",
+      "usageNote": "Dark coding/artifact UI frame @139.6s. Frame extracted from OpenAI's official GPT-5.6 launch video (640x360 source) — card-scale use only, never full-bleed",
+      "usedIn": [
+        "AiNews Codex-mode beat (card)"
+      ],
+      "attributionRequired": false,
+      "concerns": null
     }
   ]
 }
