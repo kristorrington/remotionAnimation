@@ -981,3 +981,93 @@ Follow @kristorrington for AI automation that survives the real world.
 ## Short-ImageWeek-B (A/B hook variant — hook "DON'T BUY THE LAUNCH DEMO")
 
 Same video + copy as Short-ImageWeek; post the loser as unlisted or delete after 48h.
+
+---
+
+## Short-GptLive
+
+**Title**
+```
+ChatGPT's New Voice Mode Passes One Simple Test #Shorts
+```
+
+**Description**
+```
+OpenAI just shipped GPT-Live — real-time voice for ChatGPT.
+
+The interesting part isn't that it talks. It's whether the conversation is responsive enough to be part of a real workflow: brainstorm while walking, practice a difficult conversation, run a tabletop game.
+
+The test is simple: interrupt it, change one instruction, and see if it keeps track of the conversation.
+
+What would you actually use voice AI for? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #ChatGPT #GPTLive #OpenAI #VoiceAI #Shorts
+```
+
+---
+
+## Short-GptLive-B (A/B hook variant — hook "CHATGPT'S NEW VOICE MODE")
+
+Same video + copy as Short-GptLive; post the loser as unlisted or delete after 48h.
+
+---
+
+## Short-JustBehindFable
+
+**Title**
+```
+OpenAI's New Model Almost Caught Claude on Real Work #Shorts
+```
+
+**Description**
+```
+On GDPval — the benchmark for real work tasks — GPT-5.6 Sol reportedly sits just behind Claude Fable 5 (BenchLM shows 91 vs 86 head-to-head).
+
+It's also strong on browser-based computer use, which makes it interesting for agents that navigate websites and complete tasks.
+
+But call it what it is: an efficiency release, not a massive intelligence leap. The receipts for cost and latency are much clearer.
+
+Would you take slightly-behind-but-cheaper? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #GPT56 #Claude #OpenAI #Anthropic #Shorts
+```
+
+---
+
+## Short-JustBehindFable-B (A/B hook variant — hook "CLAUDE'S LEAD IS SHRINKING")
+
+Same video + copy as Short-JustBehindFable; post the loser as unlisted or delete after 48h.
+
+---
+
+## Short-PremiumWar
+
+**Title**
+```
+Grok 4.5, GPT-5.6 and Claude Fable — One Premium Tier Now #Shorts
+```
+
+**Description**
+```
+OpenAI wasn't the only one shipping this week.
+
+xAI announced Grok 4.5 — putting a third model into the same premium category as GPT-5.6 and Claude Fable. And Anthropic widened Fable 5 access and reset rate limits, so more builders can test the newest models from both sides directly.
+
+Don't move your workloads on an announcement: give both models the same difficult task, then compare output quality, time taken, and how much fixing remains.
+
+Which of the three would you bet on? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Grok #GPT56 #Claude #xAI #Shorts
+```
+
+---
+
+## Short-PremiumWar-B (A/B hook variant — hook "GROK JUST CRASHED THE AI PARTY")
+
+Same video + copy as Short-PremiumWar; post the loser as unlisted or delete after 48h.

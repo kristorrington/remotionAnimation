@@ -98,6 +98,93 @@ export const SHORTS: ShortSpec[] = [
     style: "paper",
   },
   {
+    id: "Short-GptLive",
+    label: "GPT-Live: the real-time voice mode + the interrupt-it test",
+    source: "talking-head.mp4",
+    from: 1930, // "OpenAI also released GPT-Live during the same week."
+    // LOOP: ends right after "…keeps track of the conversation." (abs 2796) →
+    // replays into "OpenAI also released GPT-Live".
+    durationInFrames: 880, // ~29s
+    topic: "CHATGPT CAN TALK NOW",
+    hook: "THE AI YOU CAN INTERRUPT",
+    hookAlt: "CHATGPT'S NEW VOICE MODE", // A/B variant → Short-GptLive-B
+    context: "GPT-Live = OpenAI's real-time voice model",
+    beats: [
+      { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "ANOTHER LAUNCH" }, // "OpenAI also released GPT-Live during the same week" (1936-1985)
+      // logo rides the receipt: beat 8 hands over right at the split settle
+      // (~122), so this is the first beat fully visible when the band lands
+      { at: 138, scene: "receipt", tint: "#E8B84B", text: "GPT-LIVE IS HERE", logo: "chatgpt", shot: { src: "assets/external/screenshots/siliconangle-gptlive-wide.png", url: "siliconangle.com", imageW: 2280, imageH: 1219, from: { x: 500, y: 120, w: 1600, h: 624 }, to: { x: 40, y: 361, w: 2200, h: 858 }, zoomAt: 8 } }, // "the new real-time voice experience" (2074-2136) — opens on the phone photo, settles on the full headline (x 753-2222)
+      { at: 241, scene: "check", obj: "brain", verdict: "check", tint: "#34D399", text: "MORE THAN TALK" }, // "not simply that ChatGPT can speak" (2177-2245)
+      { at: 362, scene: "signal", tint: "#D97757", text: "RESPONSIVE ENOUGH?" }, // "feel responsive enough to become part of a real workflow" (2298-2410)
+      { at: 499, scene: "queue", labels: ["WALK", "PRACTICE", "GAME"], tint: "#E8B84B", text: "REAL USES" }, // "brainstorm while walking (2435) / practice (2481) / tabletop game (2555)"; span.from+13
+      { at: 703, scene: "emote", pose: "pointing", accent: "#EF4444", tint: "#EF4444", text: "INTERRUPT IT", sub: "change one thing" }, // "interrupt it (2639), change one instruction (2669)"
+    ],
+    // full-anim: the three use-case chips carry the middle
+    fullscreen: [{ from: 486, to: 660 }],
+    outro: "FOLLOW FOR MORE",
+    music: "music/tension.MP3",
+    style: "paper",
+  },
+  {
+    id: "Short-JustBehindFable",
+    label: "GDPval: Sol sits just behind Claude Fable — efficiency release, not IQ leap",
+    source: "talking-head.mp4",
+    from: 5136, // "On GDPval, the Sol tier reportedly sits just behind Claude Fable."
+    // LOOP: ends right after "…for cost and latency are much clearer." (abs
+    // 5882) → replays into "On GDPval".
+    durationInFrames: 760, // ~25s
+    topic: "CLAUDE STILL ON TOP?",
+    hook: "OPENAI ALMOST CAUGHT CLAUDE",
+    hookAlt: "CLAUDE'S LEAD IS SHRINKING", // A/B variant → Short-JustBehindFable-B
+    context: "GDPval measures real work-task performance",
+    beats: [
+      { at: 8, scene: "check", obj: "brain", verdict: "warn", tint: "#E8B84B", text: "GDPVAL: REAL WORK" }, // "On GDPval" (5142-5182)
+      // the head-to-head receipt lands ON "sits just behind Claude Fable";
+      // it is also the first beat visible at the split settle → logo here
+      { at: 82, scene: "receipt", tint: "#34D399", text: "91 VS 86", logo: "chatgpt", shot: { src: "assets/external/screenshots/benchlm-fable-vs-sol-wide.png", url: "benchlm.ai", imageW: 3840, imageH: 2052, from: { x: 700, y: 250, w: 2400, h: 640 }, to: { x: 420, y: 20, w: 3000, h: 800 }, zoomAt: 8 } }, // "sits just behind Claude Fable" (5224-5290)
+      { at: 243, scene: "check", obj: "gauge", verdict: "check", tint: "#60A5FA", text: "STRONG IN BROWSERS" }, // "performs strongly on browser based computer use" (5327-5440)
+      { at: 392, scene: "conveyor", labels: ["NAVIGATE", "COMPLETE"], tint: "#D97757", text: "AGENT-READY" }, // "agents that need to navigate websites and complete tasks" (5534-5592)
+      { at: 509, scene: "stamp", verdict: "cross", badge: "IQ LEAP?", tint: "#F59E0B", text: "EFFICIENCY RELEASE" }, // "an efficiency release before… a massive intelligence leap" (5651-5770); span.from+13
+    ],
+    // full-anim: the IQ-LEAP? DENIED stamp is the payoff
+    fullscreen: [{ from: 496, to: 614 }],
+    outro: "FOLLOW FOR MORE",
+    music: "music/tension.MP3",
+    style: "paper",
+  },
+  {
+    id: "Short-PremiumWar",
+    label: "Grok 4.5 + Fable 5 access back — three models now share the premium tier",
+    source: "talking-head.mp4",
+    from: 5960, // "…xAI also announced Grok 4.5" (5982)
+    // LOOP: ends right after "…one of the strongest competitors of GPT 5.6."
+    // (abs ~7015) → replays into the Grok announcement.
+    durationInFrames: 1062, // ~35s
+    topic: "THE PREMIUM AI WAR",
+    hook: "3 AI GIANTS IN ONE WEEK",
+    hookAlt: "GROK JUST CRASHED THE AI PARTY", // A/B variant → Short-PremiumWar-B
+    context: "Grok 4.5 and Fable 5 landed the same week",
+    // no logo beat: this short covers xAI/Anthropic moves — the ChatGPT mark
+    // would mislabel it (the §9 logo rule is per-product)
+    beats: [
+      { at: 8, scene: "emote", pose: "alarmed", tint: "#D97757", text: "THE WEEK GOT CROWDED" }, // "xAI also announced Grok 4.5" (5982-6100)
+      // brand first-mention receipt: xAI's own announcement page
+      { at: 96, scene: "receipt", tint: "#EF4444", text: "GROK 4.5", shot: { src: "assets/external/screenshots/xai-grok45-wide.png", url: "x.ai/news/grok-4-5", imageW: 3840, imageH: 2052, from: { x: 1050, y: 60, w: 1900, h: 481 }, to: { x: 340, y: 40, w: 3160, h: 800 }, zoomAt: 8 } }, // "Grok 4.5" (6034-6100)
+      { at: 216, scene: "doors", labels: ["GROK", "GPT-5.6", "FABLE"], tint: "#D97757", text: "THE PREMIUM TIER" }, // "same premium category as GPT 5.6 and Claude Fable" (6123-6299); span.from+13
+      { at: 360, scene: "reject", badge: "BLIND SWITCH", tint: "#F59E0B", text: "NOT SO FAST" }, // "not seen enough evidence… move their workloads" (6274-6359)
+      { at: 510, scene: "testbench", tint: "#34D399", text: "SAME HARD TASK" }, // "give both models the same difficult task" (6476-6515)
+      { at: 578, scene: "queue", labels: ["QUALITY", "TIME", "FIXES"], tint: "#E8B84B", text: "COMPARE 3 THINGS" }, // "output quality (6544), time taken, correction work (6617)"
+      // brand first-mention receipt: Anthropic's own redeploy post
+      { at: 732, scene: "receipt", tint: "#34D399", text: "FABLE 5: BACK", shot: { src: "assets/external/screenshots/anthropic-fable5-redeploy-wide.png", url: "anthropic.com", imageW: 3840, imageH: 2052, from: { x: 1100, y: 340, w: 1650, h: 435 }, to: { x: 480, y: 60, w: 2880, h: 760 }, zoomAt: 8 } }, // "Anthropic widened access to Claude Fable 5" (6670-6780)
+      { at: 836, scene: "breaker", tint: "#D97757", text: "LIMITS RESET" }, // "reset Claude Devs' rate limits" (6802-6833); span.from+13
+    ],
+    // full-anim: the three premium doors + the breaker reset
+    fullscreen: [{ from: 203, to: 340 }, { from: 823, to: 920 }],
+    outro: "FOLLOW FOR MORE",
+    music: "music/tension.MP3",
+    style: "paper",
+  },
+  {
     id: "Short-ImageWeek",
     label: "Seedream 5.0 Pro + Muse Spark 1.1 + Video Remix — same-prompt test advice",
     source: "talking-head.mp4",
