@@ -127,7 +127,7 @@ export const HiddenCostScene: React.FC<{ durationInFrames: number; kicker?: stri
 
 // SPEED ≠ SUCCESS — a boosted rocket flies FAST, straight into the WRONG ANSWER
 // wall. Fast, and still failed.
-export const SpeedWallScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; wallLabel?: string; rocketLabel?: string }> = ({ durationInFrames, kicker, title, wallLabel = "WRONG ANSWER", rocketLabel = "FAST" }) => {
+export const SpeedWallScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; wallLabel?: string; rocketLabel?: string; tint?: string }> = ({ durationInFrames, kicker, title, wallLabel = "WRONG ANSWER", rocketLabel = "FAST", tint }) => {
   const frame = useCurrentFrame();
   const hitAt = 88;
   const antic = interpolate(frame, [30, 44], [0, -34], CLAMP);
@@ -138,7 +138,7 @@ export const SpeedWallScene: React.FC<{ durationInFrames: number; kicker?: strin
   const rot = crashed ? Math.min((frame - hitAt) * 2.4, 38) : 0;
   const wallShake = crashed && frame < hitAt + 14 ? Math.sin(frame * 1.3) * 6 : 0;
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0x93} mood="danger" depth impacts={[hitAt]}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x93} mood="danger" depth impacts={[hitAt]} tint={tint}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 30 }}>
         <div style={{ position: "relative", width: 1340, height: 320 }}>
           <div style={{ position: "absolute", left: 0, right: 0, bottom: 30, height: 4, background: "rgba(120,112,102,0.5)" }} />
@@ -173,11 +173,12 @@ export const SpeedWallScene: React.FC<{ durationInFrames: number; kicker?: strin
 
 // CHEAPER TO SERVE — the "got smarter" meter tries to rise and gets crossed out;
 // the serve-cost meter actually DROPS. The real story, animated.
-export const CheaperToServeScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; leftLabel?: string; rightLabel?: string }> = ({ durationInFrames, kicker, title, leftLabel = "SMARTER?", rightLabel = "COST TO SERVE" }) => {
+export const CheaperToServeScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; leftLabel?: string; rightLabel?: string; crossAt?: number; serveAt?: number; checkAt?: number; tint?: string }> = ({ durationInFrames, kicker, title, leftLabel = "SMARTER?", rightLabel = "COST TO SERVE", crossAt: crossAtProp, serveAt, checkAt, tint }) => {
   const frame = useCurrentFrame();
-  // timings scale with the beat so short cards still land the check
-  const crossAt = Math.round(durationInFrames * 0.28);
-  const serveStart = Math.round(durationInFrames * 0.44);
+  // timings scale with the beat so short cards still land the check;
+  // crossAt/serveAt/checkAt pin them to whisper words instead (CLAUDE.md §8)
+  const crossAt = crossAtProp ?? Math.round(durationInFrames * 0.28);
+  const serveStart = serveAt ?? Math.round(durationInFrames * 0.44);
   const smart = interpolate(frame, [20, crossAt - 30, crossAt - 5], [0.2, 0.42, 0.38], CLAMP);
   const serve = interpolate(frame, [serveStart, serveStart + durationInFrames * 0.28], [0.82, 0.24], CLAMP);
   const meter = (label: string, level: number, color: string) => (
@@ -189,7 +190,7 @@ export const CheaperToServeScene: React.FC<{ durationInFrames: number; kicker?: 
     </div>
   );
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0xa4}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0xa4} tint={tint}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 44 }}>
         <div style={{ display: "flex", alignItems: "flex-end", gap: 130 }}>
           <div style={{ position: "relative" }}>
@@ -201,7 +202,7 @@ export const CheaperToServeScene: React.FC<{ durationInFrames: number; kicker?: 
           <div style={{ position: "relative" }}>
             {meter(rightLabel, serve, GREEN)}
             <div style={{ position: "absolute", top: 60, left: -14 }}>
-              <Mark kind="check" at={Math.round(serveStart + durationInFrames * 0.3)} size={120} />
+              <Mark kind="check" at={checkAt ?? Math.round(serveStart + durationInFrames * 0.3)} size={120} />
             </div>
             <div style={{ position: "absolute", left: 90, bottom: 40 }}>
               <TokenCoin at={serveStart + 40} fallH={200} size={44} />
@@ -307,7 +308,7 @@ export const BenchmarksLieScene: React.FC<{ durationInFrames: number; kicker?: s
 
 // DON'T MIGRATE — TEST: the robot carries its app toward the MIGRATE gate, the
 // STOP sign slams down, and it walks back to the TEST BENCH instead.
-export const MigrateStopScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; stopAtFrame?: number }> = ({ durationInFrames, kicker, title, stopAtFrame }) => {
+export const MigrateStopScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; stopAtFrame?: number; tint?: string }> = ({ durationInFrames, kicker, title, stopAtFrame, tint }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   // stopAtFrame pins the STOP slam to the whisper word when the beat starts late
@@ -324,7 +325,7 @@ export const MigrateStopScene: React.FC<{ durationInFrames: number; kicker?: str
     <div style={{ ...chipStyle(color), fontSize: 28 }}>{label}</div>
   );
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0xd2} depth impacts={[stopAt]}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0xd2} depth impacts={[stopAt]} tint={tint}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 26 }}>
         <div style={{ position: "relative", width: 1400, height: 380 }}>
           <div style={{ position: "absolute", left: 0, right: 0, bottom: 42, height: 5, background: "rgba(120,112,102,0.5)" }} />
@@ -539,13 +540,13 @@ export const WorkOverTokensScene: React.FC<{ durationInFrames: number; kicker?: 
 
 // CHEAPER TO FINISH? — the work block crosses the line, the stopwatch and cost
 // tag land, and the big check stamps the real test.
-export const FinishCheckScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; stamp?: string; stampAt?: number }> = ({ durationInFrames, kicker, title, stamp, stampAt = 150 }) => {
+export const FinishCheckScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; stamp?: string; stampAt?: number; tint?: string }> = ({ durationInFrames, kicker, title, stamp, stampAt = 150, tint }) => {
   const frame = useCurrentFrame();
   const move = interpolate(frame, [14, 96], [0, 430], CLAMP);
   const crossed = frame >= 96;
   const hand = interpolate(frame, [14, 96], [0, 300], CLAMP);
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0x116} mood="win" impacts={[96]}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x116} mood="win" impacts={[96]} tint={tint}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 40 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 80 }}>
           {/* stopwatch */}

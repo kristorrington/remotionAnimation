@@ -56,8 +56,8 @@ const Check: React.FC<{ at: number; size?: number; cross?: boolean }> = ({ at, s
 // `pickIndex`, it glows and swings open. Serves "five options, pick one".
 export const PathDoorsScene: React.FC<{
   durationInFrames: number; kicker?: string; title: string;
-  doors?: { label: string; at: number }[]; pickIndex?: number; pickAt?: number;
-}> = ({ durationInFrames, kicker, title, doors = [], pickIndex = 0, pickAt = 99999 }) => {
+  doors?: { label: string; at: number }[]; pickIndex?: number; pickAt?: number; tint?: string;
+}> = ({ durationInFrames, kicker, title, doors = [], pickIndex = 0, pickAt = 99999, tint }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const picked = frame >= pickAt;
@@ -65,7 +65,7 @@ export const PathDoorsScene: React.FC<{
   const hopP = spring({ frame: frame - pickAt, fps, config: { stiffness: 110, damping: 14 }, durationInFrames: 28 });
   const robotX = interpolate(hopP, [0, 1], [-((doors.length * (doorW + 26)) / 2) - 120, (pickIndex - (doors.length - 1) / 2) * (doorW + 26)]);
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0x401} depth impacts={[...doors.map((d) => d.at + 12), pickAt + 22]} tint={CYAN}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x401} depth impacts={[...doors.map((d) => d.at + 12), pickAt + 22]} tint={tint ?? CYAN}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 44 }}>
         <div style={{ position: "relative", display: "flex", gap: 26, alignItems: "flex-end" }}>
           {doors.map((d, i) => {
@@ -216,8 +216,8 @@ export const DocFunnelScene: React.FC<{
 // manual-step pile collapses into a single automated chip.
 export const AppFlowScene: React.FC<{
   durationInFrames: number; kicker?: string; title: string;
-  apps?: { label: string; at: number }[]; connectAt?: number; collapseAt?: number;
-}> = ({ durationInFrames, kicker, title, apps = [], connectAt = 200, collapseAt = 300 }) => {
+  apps?: { label: string; at: number }[]; connectAt?: number; collapseAt?: number; tint?: string;
+}> = ({ durationInFrames, kicker, title, apps = [], connectAt = 200, collapseAt = 300, tint }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const wire = spring({ frame: frame - connectAt, fps, config: { stiffness: 70, damping: 17 }, durationInFrames: 40 });
@@ -226,7 +226,7 @@ export const AppFlowScene: React.FC<{
   const tileW = 172;
   const rowW = n * (tileW + 24) - 24;
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0x434} depth impacts={[connectAt, collapseAt]} tint={GREEN}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x434} depth impacts={[connectAt, collapseAt]} tint={tint ?? GREEN}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 38 }}>
         <div style={{ position: "relative", width: Math.max(rowW, 900), height: 330 }}>
           {/* app tiles */}

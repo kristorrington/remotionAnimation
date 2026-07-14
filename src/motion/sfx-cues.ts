@@ -73,6 +73,35 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "solIncident": cues.push({ at: 58, type: "switch" }, { at: 92, type: "boom" }, { at: 172, type: "boom" }); break;
     case "backupRule": cues.push({ at: 40, type: "boom" }, { at: 148, type: "switch" }, { at: 158, type: "boom" }); break;
     case "sandbox": cues.push({ at: 100, type: "whip" }, { at: 120, type: "switch" }, { at: 145, type: "switch" }, { at: 245, type: "boom" }); break;
+    // ── AI-news / GPT-5.6 super-app video (July 2026) ──
+    case "heroProof": cues.push({ at: 14, type: "whip" }); break;
+    case "oneApp": cues.push({ at: 131 + 14, type: "boom" }, { at: 145, type: "ding" }); break; // panels merge, stamp
+    case "modeDoors": cues.push({ at: 12 + 12, type: "switch" }, { at: 48 + 12, type: "switch" }); break;
+    case "workFlow": cues.push({ at: 64, type: "switch" }, { at: 103, type: "switch" }, { at: 133, type: "switch" }, { at: 163, type: "whip" }); break;
+    case "codexSteps": cues.push({ at: 129, type: "switch" }, { at: 163, type: "switch" }, { at: 193, type: "switch" }, { at: 223, type: "switch" }); break;
+    case "newstackProof": cues.push({ at: 16, type: "whip" }, { at: 36, type: "switch" }); break;
+    case "modeCompare": cues.push({ at: 30, type: "switch" }, { at: 146, type: "switch" }); break;
+    case "gptliveProof": cues.push({ at: 14, type: "whip" }, { at: 47, type: "switch" }); break;
+    case "voiceLive": cues.push({ at: 35, type: "switch" }, { at: 92, type: "switch" }, { at: 162, type: "switch" }, { at: 239, type: "boom" }, { at: 337, type: "ding" }); break;
+    case "aaProof": cues.push({ at: 18, type: "whip" }, { at: 52, type: "switch" }); break;
+    case "statRace": cues.push({ at: 77, type: "switch" }, { at: 115, type: "switch" }, { at: 243, type: "switch" }, { at: 278, type: "switch" }); break;
+    case "sixthFifth": cues.push({ at: 63, type: "boom" }); break;
+    case "econScale": cues.push({ at: 17, type: "switch" }, { at: 135, type: "whip" }, { at: 190, type: "boom" }, { at: 225, type: "ding" }); break;
+    case "tierDoors": cues.push({ at: 30 + 12, type: "switch" }, { at: 73 + 12, type: "switch" }, { at: 100 + 12, type: "switch" }, { at: 303 + 22, type: "ding" }); break;
+    case "gdpvalProof": cues.push({ at: 16, type: "whip" }, { at: 103, type: "switch" }); break;
+    case "browsecompProof": cues.push({ at: 14, type: "whip" }, { at: 34, type: "switch" }); break;
+    case "efficiencyNotIq": cues.push({ at: 93, type: "boom" }); break;
+    case "xaiProof": cues.push({ at: 14, type: "whip" }, { at: 36, type: "switch" }); break;
+    case "premiumTrio": cues.push({ at: 10, type: "switch" }, { at: 63, type: "switch" }, { at: 115, type: "switch" }); break;
+    case "fableAccessProof": cues.push({ at: 16, type: "whip" }, { at: 46, type: "switch" }); break;
+    case "testBoth": cues.push({ at: 43, type: "switch" }, { at: 90, type: "switch" }, { at: 344, type: "boom" }); break;
+    case "coworkProof": cues.push({ at: 14, type: "whip" }, { at: 36, type: "switch" }); break;
+    case "envAssembles": [26, 42, 58, 74].forEach((s) => cues.push({ at: s + 6, type: "switch" })); break; // segments click on
+    case "seedreamProof": cues.push({ at: 12, type: "whip" }); break;
+    case "museProof": cues.push({ at: 12, type: "whip" }, { at: 36, type: "switch" }); break;
+    case "remixProof": cues.push({ at: 12, type: "whip" }); break;
+    case "takeCompare": cues.push({ at: 10, type: "switch" }, { at: 42, type: "switch" }); break;
+    case "threeMeters": cues.push({ at: 6, type: "switch" }, { at: 65, type: "switch" }, { at: 136, type: "switch" }, { at: 266, type: "boom" }); break;
     // ── GPT-5.6 video (July 2026) ──
     case "speedBoost":
       cues.push({ at: 40, type: "boom" }, { at: 70, type: "whoosh" }); // SOL module bolts on, gauge sweep
@@ -123,13 +152,15 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
       cues.push({ at: 34, type: "whip" }); // wand rejected
       break;
     case "hiddenCost":
-      cues.push({ at: Math.round(dur * 0.38), type: "whip" }); // the climb-back starts
+      if (dur === 147) cues.push({ at: 65, type: "whip" }, { at: 95, type: "switch" }, { at: 125, type: "switch" }); // AI-news: chips pinned
+      else cues.push({ at: Math.round(dur * 0.38), type: "whip" }); // the climb-back starts
       break;
     case "speedWall":
       cues.push({ at: 88, type: "boom" }); // the crash
       break;
     case "cheaperServe":
-      cues.push({ at: 105, type: "whip" }, { at: 290, type: "ding" }); // cross-out, then the check
+      if (dur === 248) cues.push({ at: 120, type: "whip" }, { at: 235, type: "ding" }); // AI-news: crossAt/checkAt pinned
+      else cues.push({ at: 105, type: "whip" }, { at: 290, type: "ding" }); // cross-out, then the check
       break;
     case "lessPain":
       cues.push({ at: 70, type: "whip" }, { at: 120, type: "whip" }, { at: 170, type: "whip" }); // pain badges pop
@@ -139,6 +170,7 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
       break;
     case "migrateStop":
       if (dur === 177) cues.push({ at: 40, type: "boom" }, { at: dur - 66, type: "ding" }); // n8n open: slam pinned via stopAtFrame
+      else if (dur === 194) cues.push({ at: 36, type: "boom" }, { at: dur - 66, type: "ding" }); // AI-news: slam pinned via stopAtFrame
       else cues.push({ at: Math.round(dur * 0.34), type: "boom" }, { at: dur - 66, type: "ding" }); // STOP slam, test-bench arrival
       break;
     case "thresholdGate":
@@ -153,6 +185,7 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
       break;
     case "finishCheck":
       cues.push({ at: 96, type: "ding" }); // crosses the flag
+      if (dur === 227) cues.push({ at: 100, type: "boom" }); // AI-news: REAL REASON stamp
       break;
     // ——— Claude-wealth scenes (fractions track the instance props used) ———
     case "questionFlip":

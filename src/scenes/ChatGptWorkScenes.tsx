@@ -31,15 +31,17 @@ const Lines: React.FC<{ w: number; n: number; color?: string }> = ({ w, n, color
 export const OneWorkspaceScene: React.FC<{
   durationInFrames: number; title?: string;
   panelAts?: [number, number, number, number]; // doc, apps, files, code fly-ins
+  panelNames?: [string, string, string, string]; // relabel the four surfaces
+  windowSuffix?: string; // the coloured word after "ChatGPT" in the window header
   mergeAt?: number; stampAt?: number; tint?: string;
-}> = ({ durationInFrames, title = "ONE WORKSPACE", panelAts = [10, 26, 42, 58], mergeAt = 110, stampAt = 138, tint }) => {
+}> = ({ durationInFrames, title = "ONE WORKSPACE", panelAts = [10, 26, 42, 58], panelNames = ["DOC", "APPS", "FILES", "CODE"], windowSuffix = "Work", mergeAt = 110, stampAt = 138, tint }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const kick = impulse(frame, mergeAt + 14);
   const panels: { name: string; color: string; x: number; y: number; body: React.ReactNode }[] = [
-    { name: "DOC", color: CYAN, x: -560, y: -190, body: <Lines w={150} n={4} /> },
+    { name: panelNames[0], color: CYAN, x: -560, y: -190, body: <Lines w={150} n={4} /> },
     {
-      name: "APPS", color: GREEN, x: 560, y: -190,
+      name: panelNames[1], color: GREEN, x: 560, y: -190,
       body: (
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 34px)", gap: 8 }}>
           {[CYAN, GREEN, AMBER, "#60A5FA", RED, "#A78BFA"].map((c, i) => (
@@ -49,7 +51,7 @@ export const OneWorkspaceScene: React.FC<{
       ),
     },
     {
-      name: "FILES", color: AMBER, x: -560, y: 210,
+      name: panelNames[2], color: AMBER, x: -560, y: 210,
       body: (
         <div style={{ display: "flex", gap: 10 }}>
           {[0, 1, 2].map((i) => (
@@ -61,7 +63,7 @@ export const OneWorkspaceScene: React.FC<{
       ),
     },
     {
-      name: "CODE", color: "#60A5FA", x: 560, y: 210,
+      name: panelNames[3], color: "#60A5FA", x: 560, y: 210,
       body: (
         <div style={{ fontFamily: MONO, fontSize: 15, lineHeight: 1.5, transform: "translateZ(0)" }}>
           <div style={{ color: GREEN }}>+ deploy(work)</div>
@@ -99,7 +101,7 @@ export const OneWorkspaceScene: React.FC<{
               <div style={{ ...glassCard(CYAN, 2), borderRadius: 24, width: 640, padding: 0, overflow: "hidden" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 14, padding: "16px 24px", borderBottom: "1px solid rgba(255,255,255,0.12)" }}>
                   <ChatGptMark size={46} />
-                  <span style={label(26)}>ChatGPT <span style={{ color: CYAN }}>Work</span></span>
+                  <span style={label(26)}>ChatGPT{windowSuffix ? <span style={{ color: CYAN }}> {windowSuffix}</span> : null}</span>
                 </div>
                 <div style={{ padding: "22px 24px", display: "flex", flexDirection: "column", gap: 14 }}>
                   <Lines w={560} n={3} />
@@ -126,10 +128,11 @@ export const OneWorkspaceScene: React.FC<{
 export const RivalryScene: React.FC<{
   durationInFrames: number; kicker?: string; title: string;
   colAts?: [number, number, number]; emphasizeAt?: number; tint?: string;
-}> = ({ durationInFrames, kicker, title, colAts = [16, 30, 44], emphasizeAt = 120, tint }) => {
+  cols?: { name: string; sub: string; color: string; mark?: React.ReactNode; fromY?: number }[];
+}> = ({ durationInFrames, kicker, title, colAts = [16, 30, 44], emphasizeAt = 120, tint, cols: colsProp }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const cols = [
+  const defaultCols = [
     { name: "CHATGPT", sub: "WORK", color: CYAN, mark: <ChatGptMark size={76} glow />, fromY: -420 },
     { name: "CLAUDE", sub: "COWORK", color: "#D97757", mark: <ClaudeMark size={64} />, fromY: 420 },
     { name: "COPILOT", sub: "COWORK", color: "#60A5FA", mark: (
@@ -138,6 +141,16 @@ export const RivalryScene: React.FC<{
         </div>
       ), fromY: -420 },
   ];
+  // custom columns (e.g. the premium-tier trio) — mark falls back to a letter tile
+  const cols = (colsProp ?? defaultCols).map((c, i) => ({
+    fromY: i % 2 === 0 ? -420 : 420,
+    mark: (
+      <div style={{ width: 64, height: 64, borderRadius: 16, background: `${c.color}22`, border: `2px solid ${c.color}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <span style={label(30, c.color)}>{c.name.slice(0, 1)}</span>
+      </div>
+    ),
+    ...c,
+  }));
   return (
     <SceneShell durationInFrames={durationInFrames} particleSeed={0xc2} tint={tint} impacts={[emphasizeAt]}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 40 }}>

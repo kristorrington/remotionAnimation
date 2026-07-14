@@ -86,13 +86,13 @@ export const SpeedLayerScene: React.FC<{ durationInFrames: number; kicker?: stri
 
 // NOT A NEW BRAIN: the core brain stays IDENTICAL while outer shell segments
 // click on around it. The core never changes color — the point, visualised.
-export const SameCoreScene: React.FC<{ durationInFrames: number; kicker?: string; title: string }> = ({ durationInFrames, kicker, title }) => {
+export const SameCoreScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; tint?: string }> = ({ durationInFrames, kicker, title, tint }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const corePulse = 0.6 + 0.4 * Math.sin(frame * 0.1);
   const segs = [0, 90, 180, 270];
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0xb2}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0xb2} tint={tint}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 44 }}>
         <div style={{ position: "relative", width: 320, height: 320, display: "flex", alignItems: "center", justifyContent: "center" }}>
           {/* constant core */}
