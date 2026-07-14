@@ -550,8 +550,15 @@ Shorts use even STRONGER cartoon/action animation than long-form:
   invisible), so the last beat must start well before dur−114 and payoffs that
   the VO speaks under the CTA move earlier; (7) `Beat.emoji` docks top-right
   and touches wide labels — don't combine an emoji with a near-full-width
-  BeatLabel on the same beat. QC stills of every short's transitions +
-  full-anim beats before shipping.
+  BeatLabel on the same beat; (8) **BeatLabels never duplicate the captions**
+  (Kris, July 2026 — the caption pill and the label stacked "SEEDREAM 5.0
+  PRO" twice): a label must not repeat the caption words shown during its
+  beat — captions narrate, labels PUNCH (verdict / payoff / countdown, e.g.
+  "DROP 1 OF 3" instead of the spoken product name). Prop/badge labels
+  naming their object and pure-number condensations ("2 OF 3", "1 MIN ·
+  77¢") are exempt. Run `node scripts/check-caption-dupes.mjs` after every
+  specs edit — it must exit clean before rendering. QC stills of every
+  short's transitions + full-anim beats before shipping.
 - **On-screen counts match the SPOKEN count** (Kris, July 2026): if the VO
   says "five options", the scene shows FIVE doors — never let a component
   cap (e.g. doors slice) silently drop items. DoorsBeat supports 5 (sizes
