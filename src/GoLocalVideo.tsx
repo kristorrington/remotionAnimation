@@ -7,6 +7,7 @@ import { sceneActionCues } from "./motion/sfx-cues";
 import { MusicBed } from "./components/MusicBed";
 import { FinalTakeawayScene } from "./scenes/FinalTakeawayScene";
 import { MigrateStopScene, HiddenCostScene, BenchmarksLieScene, FinishCheckScene } from "./scenes/MetaphorScenes";
+import { NotMagicScene } from "./scenes/RobotScenes";
 import { PathDoorsScene } from "./scenes/SideHustleScenes";
 import { GatesScene } from "./scenes/GptScenes";
 import { BalanceScaleScene } from "./scenes/GptScenes";
@@ -32,7 +33,9 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
   { scene: "gpuCatch", from: 217, dur: 112, fullscreen: true }, // "the catch? renting a GPU cluster" (223-275)
   { scene: "threeGates", from: 329, dur: 340, fullscreen: true }, // "really three: tier (409), licence (451), hardware (494); get one wrong (559)"
   { scene: "delangueProof", from: 780, dur: 180 }, // "cited by Hugging Face CEO Clément Delangue" (786-870)
-  { scene: "benchLieFinePrint", from: 1073, dur: 577, fullscreen: true }, // "71% (1073)… an LLM judge (1198)… a specific comparison (1379)… your current computer (1577)"
+  { scene: "benchLieFinePrint", from: 1073, dur: 241, fullscreen: true }, // "71% (1073)… an LLM judge (1198)… two local models (1219) against proprietary (1274)"
+  { scene: "oneComparisonKinetic", from: 1314, dur: 112 }, // "measured performance under a specific comparison (1379-1426)"
+  { scene: "notProven", from: 1426, dur: 224, fullscreen: true }, // "did not prove… good enough (1491)… your current computer (1577)"
   { scene: "tier1", from: 1854, dur: 497, fullscreen: true }, // "Tier one… ≤35B (1996)… gaming PC (2157)… most people picture (2264)"
   { scene: "tier2", from: 2351, dur: 399, fullscreen: true }, // "Tier two… hundreds of billions (2463)… rent that hardware (2675)"
   { scene: "nvidiaProof", from: 2906, dur: 180 }, // "1.6 trillion parameters" (2912-2949)
@@ -92,8 +95,18 @@ export const GoLocalVisuals: React.FC = () => {
       </Sequence>
 
       {/* 0:36 the shiny 71% placard vs the fine print behind it */}
-      <Sequence from={1073} durationInFrames={577} premountFor={30}>
-        <BenchmarksLieScene durationInFrames={577} title="HEADLINE VS FINE PRINT" messLabels={["ONE COMPARISON", "LLM AS JUDGE", "YOUR PC?"]} messAts={[300, 119, 498]} revealAt={110} tint="#EF4444" />
+      <Sequence from={1073} durationInFrames={241} premountFor={30}>
+        <BenchmarksLieScene durationInFrames={241} title="HEADLINE VS FINE PRINT" messLabels={["LLM AS JUDGE", "TWO LOCAL MODELS", "VS PROPRIETARY"]} messAts={[119, 140, 195]} revealAt={110} tint="#EF4444" />
+      </Sequence>
+
+      {/* 0:44 kinetic: the whole study = one narrow matchup */}
+      <Sequence from={1314} durationInFrames={112} premountFor={30}>
+        <FinalTakeawayScene durationInFrames={112} title="THE STUDY MEASURED" stamp="ONE COMPARISON" stampAt={59} accent="#F59E0B" />
+      </Sequence>
+
+      {/* 0:47 debunk: what the study did NOT prove — badges bounce off the shield */}
+      <Sequence from={1426} durationInFrames={224} premountFor={30}>
+        <NotMagicScene durationInFrames={224} kicker="THE FINE PRINT" title="DIDN'T PROVE THIS" badges={[{ label: "EVERY MODEL", at: 59 }, { label: "YOUR PC", at: 145 }]} tint="#EF4444" />
       </Sequence>
 
       {/* 1:02 TIER 1 — the genuine local tier (dev + tower + small block) */}
