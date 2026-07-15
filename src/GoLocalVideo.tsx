@@ -73,7 +73,7 @@ export const GoLocalVisuals: React.FC = () => {
     <AbsoluteFill>
       {/* 0:03 first cover — the Stanford study behind the 71% claim */}
       <Sequence from={90} durationInFrames={127} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={127} kicker="STANFORD STUDY" title="THE 71% SOURCE" titlePos="right" tint="#D97757" src={`${SHOT}/stanford-ipw-wide.png`} url="scalingintelligence.stanford.edu" imageW={3840} imageH={2052} from={{ x: 1000, y: 820, w: 2200, h: 1176 }} to={{ x: 880, y: 195, w: 2400, h: 1283 }} zoomAt={12} />
+        <ScreenshotReceiptScene durationInFrames={127} kicker="STANFORD STUDY" title="THE 71% SOURCE" titlePos="right" tint="#D97757" src={`${SHOT}/stanford-ipw-wide.png`} url="scalingintelligence.stanford.edu" imageW={3840} imageH={2052} from={{ x: 1000, y: 820, w: 2200, h: 1176 }} to={{ x: 790, y: 760, w: 2400, h: 1283 }} zoomAt={12} />
       </Sequence>
 
       {/* 0:07 the catch: "free" local drops the meter — GPU rent pumps it back */}
@@ -88,7 +88,7 @@ export const GoLocalVisuals: React.FC = () => {
 
       {/* 0:26 receipt: the Hugging Face CEO's tweet (his own words) */}
       <Sequence from={780} durationInFrames={180} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={180} kicker="HUGGING FACE CEO · ON X" title="THE 71% CLAIM" fullBleed={false} tint="#34D399" src={`${SHOT}/delangue-71pct-tweet.png`} url="x.com/ClementDelangue" imageW={1440} imageH={1860} from={{ x: 0, y: 700, w: 1440, h: 770 }} to={{ x: 0, y: 150, w: 1440, h: 770 }} zoomAt={14} />
+        <ScreenshotReceiptScene durationInFrames={180} kicker="HUGGING FACE CEO · ON X" title="THE 71% CLAIM" fullBleed={false} tint="#34D399" src={`${SHOT}/delangue-71pct-tweet.png`} url="x.com/ClementDelangue" imageW={1440} imageH={1860} from={{ x: 100, y: 120, w: 1240, h: 663 }} to={{ x: 0, y: 60, w: 1440, h: 770 }} zoomAt={14} highlight={{ x: 130, y: 105, w: 1180, h: 95 }} highlightAt={24} />
       </Sequence>
 
       {/* 0:36 the shiny 71% placard vs the fine print behind it */}

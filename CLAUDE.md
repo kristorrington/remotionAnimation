@@ -759,7 +759,22 @@ press kits, screenshots of official pages.
   the update-timeline block; minimax → licence lines 1-2). On wall-of-text
   pages (GitHub code/licence views) long lines MAY run off the card's right
   edge like a real narrow browser window — only the claim lines themselves
-  must be fully inside. A receipt HOLDS ≥ ~3.5s (Kris: "on
+  must be fully inside.
+  **B-ROLL STILL AUDIT — mandatory for every receipt (Kris, July 2026):**
+  before shipping a cut, render a STILL of every receipt beat at its settled
+  `to` state (the long-form Final AND every short — the stanford chart's
+  sliced "Intelligence per watt" axis label and the delangue tweet's cut-off
+  71.3% line only surfaced this way), LOOK at the image, and check: (1) the
+  claim is dominant and centered — not off to one side; (2) readable at the
+  target size (mobile for shorts); (3) NO glyph sliced at ANY crop edge —
+  headlines, body, chart axis labels included; (4) the sticker sits over
+  whitespace in this exact frame; (5) no dead margins; (6) **a viewer knows
+  where to look within 1 second** — the zoom OPENS on the claim (claim-zoom
+  `from`, never a contentless region like a banner or search box) and on
+  text-dense pages the claim line gets a `highlight` sweep. Recrop and
+  re-render until every receipt passes. A receipt still that errors instead
+  of rendering = the beat CRASHED (HiddenCostScene at dur 112) — investigate,
+  never skip it. A receipt HOLDS ≥ ~3.5s (Kris: "on
   screen long enough" — only a deliberate montage run goes quicker) and the
   frame stays LEAN: **no sticker label** (Kris: "remove that middle
   caption" — the receipt beat's `text` is a records-only note), **no
