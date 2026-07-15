@@ -148,7 +148,9 @@ export const SpeedWallScene: React.FC<{ durationInFrames: number; kicker?: strin
           {/* the wall */}
           <div style={{ position: "absolute", right: 120, bottom: 34, transform: `translateX(${wallShake}px)` }}>
             <div style={{ width: 34, height: 230, background: "rgba(239,68,68,0.5)", border: `4px solid ${RED}`, borderRadius: 8 }} />
-            <span style={{ position: "absolute", top: -44, left: -80, width: 200, textAlign: "center", fontFamily: FONT, fontWeight: 800, fontSize: 26, color: WHITE, transform: "translateZ(0)" }}>{wallLabel}</span>
+            <div style={{ position: "absolute", top: -62, left: -100, width: 240, display: "flex", justifyContent: "center" }}>
+              <span style={{ ...chipStyle(RED), fontSize: 21, textAlign: "center" }}>{wallLabel}</span>
+            </div>
             {crashed && <div style={{ position: "absolute", top: 40, left: 14, width: 5, height: 120, background: RED, transform: "rotate(14deg)", opacity: 0.8 }} />}
           </div>
           {/* the rocket */}

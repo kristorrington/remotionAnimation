@@ -11,7 +11,7 @@ const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 // "IT'S WAITING" as a SYSTEM BOTTLENECK: labelled request cards queue up in front
 // of a thinking model brain (thought bubble dots), an impatient robot waits at the
 // back, and the progress bar underneath stalls and jitters.
-export const WaitingScene: React.FC<{ durationInFrames: number; kicker?: string; chips: { label: string; at: number }[]; tint?: string }> = ({ durationInFrames, kicker = "THE REAL PROBLEM", chips, tint }) => {
+export const WaitingScene: React.FC<{ durationInFrames: number; kicker?: string; title?: string; chips: { label: string; at: number }[]; tint?: string }> = ({ durationInFrames, kicker = "THE REAL PROBLEM", title = "IT'S WAITING", chips, tint }) => {
   const frame = useCurrentFrame();
   const brainOp = interpolate(frame, [10, 24], [0, 1], CLAMP);
   return (
@@ -34,7 +34,7 @@ export const WaitingScene: React.FC<{ durationInFrames: number; kicker?: string;
         </div>
 
         <StalledBar width={640} />
-        <SceneHeadline kicker={kicker} title="IT'S WAITING" titleSize={92} />
+        <SceneHeadline kicker={kicker} title={title} titleSize={92} />
       </div>
     </SceneShell>
   );

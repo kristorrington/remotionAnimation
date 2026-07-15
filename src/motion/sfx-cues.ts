@@ -210,7 +210,7 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "reachProof": cues.push({ at: 16, type: "whip" }, { at: 131, type: "switch" }); break;
     case "reachFlow": cues.push({ at: 20, type: "switch" }, { at: 45, type: "switch" }, { at: 70, type: "switch" }, { at: 95, type: "switch" }, { at: 358, type: "whoosh" }, { at: 505, type: "boom" }); break;
     case "oneRepoStack": cues.push({ at: 203, type: "whip" }, { at: 229, type: "whip" }, { at: 249, type: "whip" }, { at: 283, type: "boom" }); break;
-    case "fitKinetic": cues.push({ at: 90, type: "boom" }); break;
+    case "fitKinetic": cues.push({ at: 39, type: "boom" }); break;
     case "loopProof": cues.push({ at: 16, type: "whip" }, { at: 40, type: "switch" }); break;
     case "eightyPercent": cues.push({ at: 121, type: "ding" }, { at: 222, type: "boom" }); break; // premature DONE, then the gap
     case "loopGates": cues.push({ at: 247, type: "switch" }, { at: 303, type: "switch" }); break;
@@ -220,7 +220,7 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "contextCost": cues.push({ at: 55, type: "whip" }, { at: 69, type: "whip" }, { at: 95, type: "whip" }, { at: 137, type: "whip" }); break;
     case "imageSwap": cues.push({ at: 8, type: "whip" }, { at: 40, type: "whip" }, { at: 72, type: "whip" }, { at: 84, type: "boom" }); break; // docs pour, the PNG pops
     case "seventyProof": cues.push({ at: 16, type: "whip" }, { at: 61, type: "switch" }); break;
-    case "whoBenefits": cues.push({ at: 207, type: "switch" }, { at: 410, type: "whip" }); break; // gate opens, small one drops
+    case "whoBenefits": cues.push({ at: 207, type: "whip" }, { at: 410, type: "whip" }, { at: 448, type: "boom" }, { at: 500, type: "ding" }); break; // pans drop, the scale tips
     case "rankThirdKinetic": cues.push({ at: 78, type: "boom" }); break;
     case "tasteProof": cues.push({ at: 16, type: "whip" }, { at: 73, type: "switch" }); break;
     case "slopFactory": cues.push({ at: 15, type: "whip" }, { at: 38, type: "whip" }, { at: 59, type: "whip" }, { at: 170, type: "boom" }); break; // cards thud, SAME AGAIN slams

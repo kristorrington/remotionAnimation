@@ -27,7 +27,7 @@ export const SHORTS: ShortSpec[] = [
     beats: [
       { at: 8, scene: "emote", pose: "celebrate", tint: "#E8B84B", text: "THE #1 PICK" }, // "Number one… is Superpowers" (6970-7090)
       // EVIDENCE EARLY: the official marketplace listing carries the install count
-      { at: 128, scene: "receipt", tint: "#D97757", text: "THE RECEIPT", shot: { src: "assets/external/screenshots/superpowers-plugin-wide.png", url: "claude.com/plugins/superpowers", imageW: 2560, imageH: 1368, from: { x: 1810, y: 330, w: 900, h: 450 }, to: { x: 1560, y: 100, w: 1400, h: 700 }, zoomAt: 8 } }, // "gives Claude a structured workflow" (7097-7232); holds ~6.8s
+      { at: 128, scene: "receipt", tint: "#D97757", text: "THE RECEIPT", shot: { src: "assets/external/screenshots/superpowers-plugin-wide.png", url: "claude.com/plugins/superpowers", imageW: 2560, imageH: 1368, from: { x: 1790, y: 330, w: 760, h: 380 }, to: { x: 1660, y: 140, w: 900, h: 450 }, zoomAt: 8 } }, // "gives Claude a structured workflow" (7097-7232); holds ~6.8s
       { at: 331, scene: "bolt", tint: "#60A5FA", text: "THINK FIRST" }, // "an operating system for Claude" (7295-7334)
       { at: 450, scene: "stamp", verdict: "cross", badge: "BUILD NOW", tint: "#EF4444", text: "PUMP THE BRAKES" }, // "stopping Claude from jumping straight into the build" (7414-7514); span.from+13
       { at: 612, scene: "check", obj: "gauge", verdict: "warn", tint: "#F59E0B", text: "DEMO ≠ DELIVERY" }, // "looks impressive early but creates more work later" (7576-7688)
@@ -106,7 +106,7 @@ export const SHORTS: ShortSpec[] = [
     beats: [
       { at: 8, scene: "emote", pose: "celebrate", tint: "#E8B84B", text: "No.1 DECIDED" }, // "Superpowers ranks first" (8804-8856)
       // EVIDENCE EARLY: the marketplace listing behind the winner
-      { at: 128, scene: "receipt", tint: "#D97757", text: "THE RECEIPT", shot: { src: "assets/external/screenshots/superpowers-plugin-wide.png", url: "claude.com/plugins/superpowers", imageW: 2560, imageH: 1368, from: { x: 1810, y: 330, w: 900, h: 450 }, to: { x: 1560, y: 100, w: 1400, h: 700 }, zoomAt: 8 } }, // "Taste… fastest visible improvement" (8872-8924); holds ~4s
+      { at: 128, scene: "receipt", tint: "#D97757", text: "THE RECEIPT", shot: { src: "assets/external/screenshots/superpowers-plugin-wide.png", url: "claude.com/plugins/superpowers", imageW: 2560, imageH: 1368, from: { x: 1790, y: 330, w: 760, h: 380 }, to: { x: 1660, y: 140, w: 900, h: 450 }, zoomAt: 8 } }, // "Taste… fastest visible improvement" (8872-8924); holds ~4s
       { at: 250, scene: "doors", labels: ["SUPER", "TASTE", "PX", "LOOP", "REACH"], tint: "#60A5FA", text: "THE LEADERBOARD" }, // "PX Pipe (8948)… Loop Library (9040)… Agent Reach (9116)"
       // no fullscreen span: the receipt + five doors carry the whole 20s recap
     ],

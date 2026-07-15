@@ -166,7 +166,8 @@ export const DocFunnelScene: React.FC<{
     <SceneShell durationInFrames={durationInFrames} particleSeed={0x423} impacts={[reportAt]} tint={tint ?? CYAN}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 36 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 90 }}>
-          <div style={{ position: "relative", width: 560, height: 470 }}>
+          {/* 560 tall so the popped-out report never reaches the headline below */}
+          <div style={{ position: "relative", width: 560, height: 560 }}>
             {/* falling messy docs */}
             {dropAts.map((at, i) => {
               const t = frame - at;

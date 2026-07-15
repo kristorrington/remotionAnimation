@@ -5,7 +5,7 @@ import { SFX, SfxCue, vary } from "./components/Sfx";
 import { sceneActionCues } from "./motion/sfx-cues";
 import { MusicBed } from "./components/MusicBed";
 import { FinalTakeawayScene } from "./scenes/FinalTakeawayScene";
-import { SpeedWallScene, ThresholdGateScene } from "./scenes/MetaphorScenes";
+import { SpeedWallScene } from "./scenes/MetaphorScenes";
 import { PathDoorsScene, DocFunnelScene, AppFlowScene, SkillCartridgeScene } from "./scenes/SideHustleScenes";
 import { GatesScene, BalanceScaleScene } from "./scenes/GptScenes";
 import { StepsScene } from "./scenes/StepsScene";
@@ -32,7 +32,7 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
   { scene: "reachProof", from: 759, dur: 201 }, // "Number five is Agent Reach (738-818)… X, Reddit, YouTube and GitHub (896-983)"
   { scene: "reachFlow", from: 985, dur: 535, fullscreen: true }, // "research across several platforms (996-1045)… inspect a GitHub repo (1349), Reddit (1390), X (1442), YouTube (1496)"
   { scene: "oneRepoStack", from: 1650, dur: 350, fullscreen: true }, // "one repo (1688), one source (1735), one task (1805); more sources (1859)… harder to control (1915-1939)"
-  { scene: "fitKinetic", from: 1949, dur: 166 }, // "if cross-platform research is central… remove a load of the friction (2045-2120)"
+  { scene: "fitKinetic", from: 2000, dur: 150 }, // "if cross-platform research is central… remove a load of the friction (2045-2120)"
   { scene: "loopProof", from: 2147, dur: 188 }, // "Number four is Loop Library (2128-2224)"
   { scene: "eightyPercent", from: 2360, dur: 290, fullscreen: true }, // "produces something acceptable (2411)… says the job is finished (2454-2510); the final 20% yourself (2576-2621)"
   { scene: "loopGates", from: 2650, dur: 375, fullscreen: true }, // "keep Claude working until a defined finish condition (2718-2830); every test passes (2903), checklist completed (2959-2985)"
@@ -42,12 +42,12 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
   { scene: "contextCost", from: 3860, dur: 440, fullscreen: true }, // "files (3921), screenshots (3935), logs (3961), previous outputs (4003-4019)… more tokens reminding than completing (4192-4290)"
   { scene: "imageSwap", from: 4300, dur: 220, fullscreen: true }, // "convert bulky context into images (4342-4390) instead of raw text (4480)"
   { scene: "seventyProof", from: 4520, dur: 180 }, // "the headline claim is up to 70% fewer tokens (4520-4622)"
-  { scene: "whoBenefits", from: 4700, dur: 450, fullscreen: true }, // "larger builds (4913), visual projects, long sessions (4972)… small project (5116)… don't actually need (5203-5234)"
+  { scene: "whoBenefits", from: 4700, dur: 550, fullscreen: true }, // "larger builds (4913), visual projects, long sessions (4972)… small project (5116)… don't actually need (5203-5234)"
   { scene: "rankThirdKinetic", from: 5290, dur: 150 }, // "cost matters more after the workflow is under control (5326-5409)"
   { scene: "tasteProof", from: 5537, dur: 193 }, // "Number two is Taste (5454-5552)… push Claude away from the generic look (5582-5629)"
   { scene: "slopFactory", from: 5745, dur: 245, fullscreen: true }, // "the same gradients (5760), the same oversized heading (5783-5804)… working doesn't mean well designed (5915-5972)"
   { scene: "abSteps", from: 6240, dur: 460 }, // "same design brief (6234)… with and without Taste (6294-6320): layout (6402), typography (6454), real product (6529-6592)"
-  { scene: "examplesProof", from: 6800, dur: 165 }, // "a better starting point than the usual AI-generated patterns (6845-6942)"
+  { scene: "examplesProof", from: 6800, dur: 160 }, // "a better starting point than the usual AI-generated patterns (6845-6942)"
   { scene: "superProof", from: 6964, dur: 276, fullscreen: true }, // "Number one is Superpowers (6970-7032)… planning, building, reviewing, checking (7149-7232)"
   { scene: "osKinetic", from: 7285, dur: 175 }, // "an operating system for Claude (7295-7334)… stopping Claude jumping into the build (7414-7514)"
   { scene: "speedWall", from: 7921, dur: 369, fullscreen: true }, // "starts building immediately (7804)… halfway it discovers (8009) an early decision created problems (8038-8106)"
@@ -77,12 +77,12 @@ export const SkillsVisuals: React.FC = () => {
 
       {/* 0:13 what a skill IS — the SKILL.MD cartridge clicks in */}
       <Sequence from={410} durationInFrames={330} premountFor={30}>
-        <SkillCartridgeScene durationInFrames={330} kicker="WHAT'S A SKILL?" title="PACKAGED INSTRUCTIONS" slotAt={54} runAts={[87, 206, 234]} cartridgeLabel="SKILL.MD" />
+        <SkillCartridgeScene durationInFrames={330} kicker="WHAT'S A SKILL?" title="PACKAGED RULES" slotAt={54} runAts={[87, 206, 234]} cartridgeLabel="SKILL.MD" />
       </Sequence>
 
       {/* 0:25 No.5 receipt — Agent Reach's own repo (busy page → card mode) */}
       <Sequence from={759} durationInFrames={201} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={201} kicker="GITHUB · No.5" title="AGENT REACH" fullBleed={false} tint="#D97757" src={`${SHOT}/agent-reach-github-wide.png`} url="github.com/Panniantong/agent-reach" imageW={3840} imageH={2052} from={{ x: 2350, y: 240, w: 1200, h: 641 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 2570, y: 405, w: 580, h: 200 }} highlightAt={131} />
+        <ScreenshotReceiptScene durationInFrames={201} kicker="GITHUB · No.5" title="AGENT REACH" fullBleed={false} tint="#D97757" src={`${SHOT}/agent-reach-github-wide.png`} url="github.com/Panniantong/agent-reach" imageW={3840} imageH={2052} from={{ x: 2350, y: 240, w: 1200, h: 641 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 2570, y: 405, w: 580, h: 235 }} highlightAt={131} />
       </Sequence>
 
       {/* 0:33 four platforms wire into one workflow */}
@@ -95,14 +95,14 @@ export const SkillsVisuals: React.FC = () => {
         <StackCollapseScene durationInFrames={350} kicker="MOST PEOPLE" title="ONE REPO. ONE TASK" labels={["+ SOURCES", "+ PLATFORMS", "+ TABS"]} drops={[203, 229, 249]} collapseAt={283} accent="#F59E0B" tint="#F59E0B" />
       </Sequence>
 
-      {/* 1:05 kinetic: when cross-platform research IS the job */}
-      <Sequence from={1949} durationInFrames={166} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={166} title="RESEARCH-HEAVY WORK?" stamp="THEN IT FITS" stampAt={90} accent="#34D399" />
+      {/* 1:07 kinetic: when cross-platform research IS the job */}
+      <Sequence from={2000} durationInFrames={150} premountFor={30}>
+        <FinalTakeawayScene durationInFrames={150} title="RESEARCH-HEAVY WORK?" stamp="THEN IT FITS" stampAt={39} accent="#34D399" />
       </Sequence>
 
       {/* 1:11 No.4 receipt — Loop Library's page */}
       <Sequence from={2147} durationInFrames={188} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={188} kicker="FORWARD FUTURE · No.4" title="LOOP LIBRARY" titlePos="right" tint="#60A5FA" src={`${SHOT}/loop-library-wide.png`} url="signals.forwardfuture.com/loop-library" imageW={2800} imageH={1497} from={{ x: 620, y: 220, w: 1600, h: 855 }} to={{ x: 0, y: 0, w: 2800, h: 1497 }} zoomAt={14} highlight={{ x: 115, y: 275, w: 1600, h: 90 }} highlightAt={40} />
+        <ScreenshotReceiptScene durationInFrames={188} kicker="FORWARD FUTURE · No.4" title="LOOP LIBRARY" titlePos="right" tint="#60A5FA" src={`${SHOT}/loop-library-wide.png`} url="signals.forwardfuture.com/loop-library" imageW={2800} imageH={1497} from={{ x: 620, y: 220, w: 1600, h: 855 }} to={{ x: 0, y: 0, w: 2800, h: 1497 }} zoomAt={14} highlight={{ x: 115, y: 288, w: 1600, h: 64 }} highlightAt={40} />
       </Sequence>
 
       {/* 1:18 the 80% trap — bar stops, robot says DONE, the gap flashes */}
@@ -127,12 +127,12 @@ export const SkillsVisuals: React.FC = () => {
 
       {/* 2:00 No.3 receipt — pxpipe.dev hero */}
       <Sequence from={3609} durationInFrames={191} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={191} kicker="PXPIPE.DEV · No.3" title="CONTEXT → PNG" titlePos="right" tint="#D97757" src={`${SHOT}/pxpipe-site-wide.png`} url="pxpipe.dev" imageW={2800} imageH={1497} from={{ x: 340, y: 430, w: 1700, h: 908 }} to={{ x: 0, y: 0, w: 2800, h: 1497 }} zoomAt={14} highlight={{ x: 230, y: 695, w: 1530, h: 140 }} highlightAt={55} />
+        <ScreenshotReceiptScene durationInFrames={191} kicker="PXPIPE.DEV · No.3" title="CONTEXT → PNG" titlePos="right" tint="#D97757" src={`${SHOT}/pxpipe-site-wide.png`} url="pxpipe.dev" imageW={2800} imageH={1497} from={{ x: 340, y: 430, w: 1700, h: 908 }} to={{ x: 0, y: 0, w: 2800, h: 1497 }} zoomAt={14} highlight={{ x: 230, y: 810, w: 1560, h: 145 }} highlightAt={55} />
       </Sequence>
 
       {/* 2:08 context gets expensive — the queue piles up in front of the brain */}
       <Sequence from={3860} durationInFrames={440} premountFor={30}>
-        <WaitingScene durationInFrames={440} kicker="CONTEXT GETS EXPENSIVE" chips={[{ label: "FILES", at: 55 }, { label: "SCREENSHOTS", at: 69 }, { label: "LOGS", at: 95 }, { label: "OUTPUTS", at: 137 }]} tint="#F59E0B" />
+        <WaitingScene durationInFrames={440} kicker="CONTEXT GETS EXPENSIVE" title="THE RE-EXPLAIN TAX" chips={[{ label: "FILES", at: 55 }, { label: "SCREENSHOTS", at: 69 }, { label: "LOGS", at: 95 }, { label: "OUTPUTS", at: 137 }]} tint="#F59E0B" />
       </Sequence>
 
       {/* 2:23 the swap — bulky context pours in, one PNG pops out */}
@@ -142,12 +142,12 @@ export const SkillsVisuals: React.FC = () => {
 
       {/* 2:30 the 70% claim — pxpipe's own README line (card mode) */}
       <Sequence from={4520} durationInFrames={180} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={180} kicker="GITHUB · PXPIPE" title="THE 70% CLAIM" fullBleed={false} tint="#34D399" src={`${SHOT}/pxpipe-github-wide.png`} url="github.com/teamchong/pxpipe" imageW={2100} imageH={1122} from={{ x: 20, y: 300, w: 1560, h: 834 }} to={{ x: 0, y: 0, w: 2100, h: 1122 }} zoomAt={14} highlight={{ x: 520, y: 485, w: 400, h: 60 }} highlightAt={61} />
+        <ScreenshotReceiptScene durationInFrames={180} kicker="GITHUB · PXPIPE" title="THE 70% CLAIM" fullBleed={false} tint="#34D399" src={`${SHOT}/pxpipe-github-wide.png`} url="github.com/teamchong/pxpipe" imageW={2100} imageH={1122} from={{ x: 20, y: 300, w: 1560, h: 834 }} to={{ x: 0, y: 0, w: 2100, h: 1122 }} zoomAt={14} highlight={{ x: 755, y: 700, w: 555, h: 70 }} highlightAt={61} />
       </Sequence>
 
-      {/* 2:37 who benefits — big builds pass the gate, small projects drop */}
-      <Sequence from={4700} durationInFrames={450} premountFor={30}>
-        <ThresholdGateScene durationInFrames={450} kicker="WORTH ADDING WHEN" title="BIG BUILDS ONLY" failLabel="SMALL PROJECT" passLabel="DAILY SESSIONS" zoneLabel="LONG BUILDS" skipStamp="EXTRA LAYER" dropAt={410} attempt2At={207} tint="#34D399" />
+      {/* 2:37 who benefits — the scale tips to big builds, small projects lose */}
+      <Sequence from={4700} durationInFrames={550} premountFor={30}>
+        <BalanceScaleScene durationInFrames={550} kicker="WORTH ADDING WHEN" title="BIG BUILDS ONLY" leftLabel="LONG BUILDS" rightLabel="SMALL PROJECT" dropLeftAt={207} dropRightAt={410} tipAt={448} stampText="BIG WINS" stampAt={500} tint="#34D399" />
       </Sequence>
 
       {/* 2:56 kinetic: workflow first, cost second */}
@@ -157,7 +157,7 @@ export const SkillsVisuals: React.FC = () => {
 
       {/* 3:04 No.2 receipt — tasteskill.dev hero */}
       <Sequence from={5537} durationInFrames={193} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={193} kicker="TASTESKILL.DEV · No.2" title="ANTI-SLOP" titlePos="left" titleTop={880} tint="#D97757" src={`${SHOT}/taste-site-wide.png`} url="tasteskill.dev" imageW={2800} imageH={1497} from={{ x: 140, y: 120, w: 1500, h: 801 }} to={{ x: 0, y: 0, w: 2800, h: 1497 }} zoomAt={14} highlight={{ x: 200, y: 335, w: 1080, h: 120 }} highlightAt={73} />
+        <ScreenshotReceiptScene durationInFrames={193} kicker="TASTESKILL.DEV · No.2" title="ANTI-SLOP" titlePos="left" titleTop={880} tint="#D97757" src={`${SHOT}/taste-site-wide.png`} url="tasteskill.dev" imageW={2800} imageH={1497} from={{ x: 140, y: 120, w: 1500, h: 801 }} to={{ x: 0, y: 0, w: 2800, h: 1497 }} zoomAt={14} highlight={{ x: 200, y: 505, w: 1080, h: 115 }} highlightAt={73} />
       </Sequence>
 
       {/* 3:11 the slop factory — identical gradient cards roll off the belt */}
@@ -171,13 +171,13 @@ export const SkillsVisuals: React.FC = () => {
       </Sequence>
 
       {/* 3:46 what Taste output looks like — the example designs (card mode) */}
-      <Sequence from={6800} durationInFrames={165} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={165} kicker="BUILT WITH TASTE" title="THE STARTING POINT" fullBleed={false} tint="#34D399" src={`${SHOT}/taste-examples-wide.png`} url="github.com/leonxlnx/taste-skill" imageW={1650} imageH={882} from={{ x: 60, y: 40, w: 1000, h: 535 }} to={{ x: 0, y: 0, w: 1650, h: 882 }} zoomAt={12} />
+      <Sequence from={6800} durationInFrames={160} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={160} kicker="BUILT WITH TASTE" title="THE STARTING POINT" fullBleed={false} tint="#34D399" src={`${SHOT}/taste-examples-wide.png`} url="github.com/leonxlnx/taste-skill" imageW={1650} imageH={882} from={{ x: 60, y: 40, w: 1000, h: 535 }} to={{ x: 0, y: 0, w: 1650, h: 882 }} zoomAt={12} />
       </Sequence>
 
       {/* 3:52 No.1 receipt — the official marketplace listing, 941k installs */}
       <Sequence from={6964} durationInFrames={276} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={276} kicker="CLAUDE.COM · No.1" title="941,207 INSTALLS" titleTop={620} tint="#D97757" src={`${SHOT}/superpowers-plugin-wide.png`} url="claude.com/plugins/superpowers" imageW={2560} imageH={1368} from={{ x: 1600, y: 100, w: 1400, h: 748 }} to={{ x: 0, y: 0, w: 2560, h: 1368 }} zoomAt={14} highlight={{ x: 1880, y: 480, w: 440, h: 90 }} highlightAt={62} />
+        <ScreenshotReceiptScene durationInFrames={276} kicker="CLAUDE.COM · No.1" title="941,207 INSTALLS" titleTop={620} tint="#D97757" src={`${SHOT}/superpowers-plugin-wide.png`} url="claude.com/plugins/superpowers" imageW={2560} imageH={1368} from={{ x: 1600, y: 100, w: 1400, h: 748 }} to={{ x: 0, y: 0, w: 2560, h: 1368 }} zoomAt={14} highlight={{ x: 1880, y: 560, w: 440, h: 85 }} highlightAt={62} />
       </Sequence>
 
       {/* 4:03 kinetic: an OS for Claude — really a brake */}
