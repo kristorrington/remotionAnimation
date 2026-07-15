@@ -168,7 +168,8 @@ export const LockGateScene: React.FC<{
   warnLabel?: string; warnAt?: number; tint?: string;
 }> = ({ durationInFrames, kicker, title, cardLabel, slamAt, reopenAt, warnLabel, warnAt, tint }) => {
   const frame = useCurrentFrame();
-  const walk = interpolate(frame, [10, slamAt], [-430, -120], CLAMP);
+  // card and robot keep separate lanes — the card never walks over the robot
+  const walk = interpolate(frame, [10, slamAt], [-360, -120], CLAMP);
   const bounce = frame >= slamAt ? Math.max(0, 1 - (frame - slamAt) / 14) * -46 : 0;
   const through = reopenAt !== undefined ? interpolate(frame, [reopenAt + 12, reopenAt + 44], [0, 300], CLAMP) : 0;
   const pose = frame < slamAt ? "walking" : reopenAt !== undefined && frame >= reopenAt ? "celebrate" : "alarmed";
@@ -191,8 +192,8 @@ export const LockGateScene: React.FC<{
               <span style={label(28)}>{cardLabel}</span>
             </div>
           </div>
-          <div style={{ position: "absolute", left: "50%", bottom: 40, transform: `translateX(${-330 + through * 0.4}px)` }}>
-            <CartoonRobot pose={pose} size={180} accent={pose === "celebrate" ? GREEN : CYAN} lookX={0.8} />
+          <div style={{ position: "absolute", left: "50%", bottom: 34, transform: `translateX(${-560 + through * 0.4}px)` }}>
+            <CartoonRobot pose={pose} size={190} accent={pose === "celebrate" ? GREEN : CYAN} lookX={0.8} />
           </div>
           <Sparks at={slamAt} x={600} y={200} color={RED} size={160} />
           {warnLabel && warnAt !== undefined && frame >= warnAt && (

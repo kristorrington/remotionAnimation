@@ -185,7 +185,8 @@ export const CardStackDrop: React.FC<{ drops: number[]; labels?: string[]; colla
           if (t < 0) return null;
           const fall = spring({ frame: t, fps, config: { stiffness: 130, damping: 12, mass: 0.9 }, durationInFrames: 22 });
           const restY = -(i * (cardH + 6));
-          const y = interpolate(fall, [0, 1], [restY - 380, restY]);
+          // landing overshoot may dip into the 6px gap only — never through the card below
+          const y = Math.min(interpolate(fall, [0, 1], [restY - 380, restY]), restY + 6);
           const squash = t > 10 && t < 18 ? 1 - 0.18 * Math.sin(((t - 10) / 8) * Math.PI) : 1;
           const sc = scatter[i];
           const cx = collapsed ? interpolate(Math.min(ct / 20, 1), [0, 1], [0, sc.dx]) : 0;

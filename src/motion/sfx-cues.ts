@@ -200,6 +200,9 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "benchLie":
       cues.push({ at: Math.round(dur * 0.4), type: "boom" }); // the placard drops
       break;
+    case "benchLieFinePrint": // go-local: reveal + chips whisper-pinned (revealAt/messAts props)
+      cues.push({ at: 110, type: "boom" }, { at: 119, type: "whip" }, { at: 300, type: "whip" }, { at: 498, type: "whip" });
+      break;
     case "migrateStop":
       if (dur === 177) cues.push({ at: 40, type: "boom" }, { at: dur - 66, type: "ding" }); // n8n open: slam pinned via stopAtFrame
       else if (dur === 194) cues.push({ at: 36, type: "boom" }, { at: dur - 66, type: "ding" }); // AI-news: slam pinned via stopAtFrame

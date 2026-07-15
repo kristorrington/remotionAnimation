@@ -54,7 +54,7 @@ export const SHORTS: ShortSpec[] = [
     beats: [
       { at: 8, scene: "emote", pose: "alarmed", tint: "#EF4444", text: "THE MONSTERS" }, // "tier three covers the giants" (2748-2798)
       // EVIDENCE EARLY: NVIDIA's model card carries the number
-      { at: 130, scene: "receipt", tint: "#60A5FA", text: "1.6T ON PAPER", shot: { src: "assets/external/screenshots/nvidia-dsv4-modelcard-wide.png", url: "build.nvidia.com", imageW: 3840, imageH: 2052, from: { x: 560, y: 200, w: 2000, h: 943 }, to: { x: 520, y: 120, w: 2560, h: 1207 }, zoomAt: 8 } }, // "1.6 trillion parameters" (2912-2949); holds ~6s
+      { at: 130, scene: "receipt", tint: "#60A5FA", text: "1.6T ON PAPER", shot: { src: "assets/external/screenshots/nvidia-dsv4-modelcard-wide.png", url: "build.nvidia.com", imageW: 3840, imageH: 2052, from: { x: 760, y: 390, w: 1160, h: 547 }, to: { x: 620, y: 300, w: 1560, h: 736 }, zoomAt: 8 } }, // "1.6 trillion parameters" (2912-2949); tight on the claim paragraph (mobile-readable, column edge clear); holds ~6s
       { at: 316, scene: "check", obj: "gauge", verdict: "warn", tint: "#F59E0B", text: "PAPER VS PRACTICE" }, // "weights may be downloadable, running them is another story" (2985-3086)
       { at: 374, scene: "racks", tint: "#D97757", text: "DATA-CENTRE TERRITORY" }, // "H100 or B100-class clusters" (3124-3196)
       { at: 468, scene: "reject", badge: "SPARE LAPTOP", tint: "#F59E0B", text: "DREAM ON" }, // "not a spare laptop under your desk" (3218-3270); span.from+13

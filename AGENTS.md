@@ -351,6 +351,18 @@ Transitions (reference: [CutFlash.tsx](src/components/CutFlash.tsx) +
   1080p H.264 proxy and point the composition at it:
   `npx remotion ffmpeg -y -i _source-4k.mp4 -vf scale=1920:1080 -c:v libx264 -crf 20 -preset veryfast -c:a aac -b:a 192k public/talking-head.mp4`.
   Keep the 4K original as a backup **outside** `public/`.
+- **Probe every new recording ACROSS the timeline before building** (go-local,
+  15/07/26): extract frames at ~6 spread timestamps
+  (`ffmpeg -ss <t> -i proxy -frames:v 1 …`) and LOOK at them — that recording's
+  camera picture collapsed to a 2296×1080 window on black from ~22.5s to the
+  end (in the 4K master too), and it only surfaced in QC stills after the whole
+  edit was built. Repair recipe when the picture window is ≥ 1080p native:
+  rebuild the proxy in SEPARATE bounded passes — segment A scaled, segment B
+  `crop=W:H:X:Y` (window from `cropdetect`), then concat-demuxer + mux the
+  master's audio (audio untouched = whisper timings stay valid). Never do it as
+  one `split → trim ×2 → concat` filter graph on a 4K decode: concat consumes
+  branch A first while split queues ALL of branch B's frames — unbounded
+  buffering, `get_buffer() failed` decode spam, dead output.
 - **Footage rotation (multi-video repo).** `public/talking-head.mp4` is always
   the CURRENT video. When new footage arrives: (1) rename the old proxy to
   `talking-head-DDMMYY.mp4` and repoint the old video's `FOOTAGE` const + its

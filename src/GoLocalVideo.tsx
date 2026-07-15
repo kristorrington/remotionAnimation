@@ -32,7 +32,7 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
   { scene: "gpuCatch", from: 217, dur: 112, fullscreen: true }, // "the catch? renting a GPU cluster" (223-275)
   { scene: "threeGates", from: 329, dur: 340, fullscreen: true }, // "really three: tier (409), licence (451), hardware (494); get one wrong (559)"
   { scene: "delangueProof", from: 780, dur: 180 }, // "cited by Hugging Face CEO Clément Delangue" (786-870)
-  { scene: "benchLie", from: 1073, dur: 420, fullscreen: true }, // "71% (1073)… an LLM judged… a specific comparison (1379)… good enough (1491)"
+  { scene: "benchLieFinePrint", from: 1073, dur: 577, fullscreen: true }, // "71% (1073)… an LLM judge (1198)… a specific comparison (1379)… your current computer (1577)"
   { scene: "tier1", from: 1854, dur: 497, fullscreen: true }, // "Tier one… ≤35B (1996)… gaming PC (2157)… most people picture (2264)"
   { scene: "tier2", from: 2351, dur: 399, fullscreen: true }, // "Tier two… hundreds of billions (2463)… rent that hardware (2675)"
   { scene: "nvidiaProof", from: 2906, dur: 180 }, // "1.6 trillion parameters" (2912-2949)
@@ -73,7 +73,7 @@ export const GoLocalVisuals: React.FC = () => {
     <AbsoluteFill>
       {/* 0:03 first cover — the Stanford study behind the 71% claim */}
       <Sequence from={90} durationInFrames={127} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={127} kicker="STANFORD STUDY" title="THE 71% SOURCE" titlePos="right" tint="#D97757" src={`${SHOT}/stanford-ipw-wide.png`} url="scalingintelligence.stanford.edu" imageW={3840} imageH={2052} from={{ x: 1000, y: 660, w: 2200, h: 1176 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={12} />
+        <ScreenshotReceiptScene durationInFrames={127} kicker="STANFORD STUDY" title="THE 71% SOURCE" titlePos="right" tint="#D97757" src={`${SHOT}/stanford-ipw-wide.png`} url="scalingintelligence.stanford.edu" imageW={3840} imageH={2052} from={{ x: 1000, y: 820, w: 2200, h: 1176 }} to={{ x: 880, y: 195, w: 2400, h: 1283 }} zoomAt={12} />
       </Sequence>
 
       {/* 0:07 the catch: "free" local drops the meter — GPU rent pumps it back */}
@@ -92,8 +92,8 @@ export const GoLocalVisuals: React.FC = () => {
       </Sequence>
 
       {/* 0:36 the shiny 71% placard vs the fine print behind it */}
-      <Sequence from={1073} durationInFrames={420} premountFor={30}>
-        <BenchmarksLieScene durationInFrames={420} title="HEADLINE VS FINE PRINT" messLabels={["ONE COMPARISON", "LLM AS JUDGE", "YOUR PC?"]} tint="#EF4444" />
+      <Sequence from={1073} durationInFrames={577} premountFor={30}>
+        <BenchmarksLieScene durationInFrames={577} title="HEADLINE VS FINE PRINT" messLabels={["ONE COMPARISON", "LLM AS JUDGE", "YOUR PC?"]} messAts={[300, 119, 498]} revealAt={110} tint="#EF4444" />
       </Sequence>
 
       {/* 1:02 TIER 1 — the genuine local tier (dev + tower + small block) */}
@@ -108,7 +108,7 @@ export const GoLocalVisuals: React.FC = () => {
 
       {/* 1:36 receipt: NVIDIA's model card — 1.6 trillion parameters */}
       <Sequence from={2906} durationInFrames={180} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={180} kicker="NVIDIA MODEL CARD" title="1.6 TRILLION" titlePos="left" tint="#60A5FA" src={`${SHOT}/nvidia-dsv4-modelcard-wide.png`} url="build.nvidia.com" imageW={3840} imageH={2052} from={{ x: 560, y: 200, w: 2560, h: 1368 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 650, y: 360, w: 1650, h: 60 }} highlightAt={20} /></Sequence>
+        <ScreenshotReceiptScene durationInFrames={180} kicker="NVIDIA MODEL CARD" title="1.6 TRILLION" titleTop={64} tint="#60A5FA" src={`${SHOT}/nvidia-dsv4-modelcard-wide.png`} url="build.nvidia.com" imageW={3840} imageH={2052} from={{ x: 560, y: 60, w: 2560, h: 1368 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 1565, y: 308, w: 490, h: 54 }} highlightAt={20} /></Sequence>
 
       {/* 1:42 TIER 3 — the rack wall; the spare laptop gets crossed out */}
       <Sequence from={3086} durationInFrames={380} premountFor={30}>
@@ -137,7 +137,7 @@ export const GoLocalVisuals: React.FC = () => {
 
       {/* 2:38 receipt: DeepSeek's MIT licence — commercial use permitted */}
       <Sequence from={4765} durationInFrames={200} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={200} kicker="GITHUB · DEEPSEEK" title="MIT: COMMERCIAL OK" titlePos="right" titleTop={720} tint="#34D399" src={`${SHOT}/deepseek-mit-licence-wide.png`} url="github.com/deepseek-ai" imageW={3840} imageH={2052} from={{ x: 600, y: 100, w: 2500, h: 1336 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 2130, y: 200, w: 420, h: 210 }} highlightAt={97} />
+        <ScreenshotReceiptScene durationInFrames={200} kicker="GITHUB · DEEPSEEK" title="MIT: COMMERCIAL OK" titlePos="right" titleTop={470} tint="#34D399" src={`${SHOT}/deepseek-mit-licence-wide.png`} url="github.com/deepseek-ai" imageW={3840} imageH={2052} from={{ x: 600, y: 100, w: 2500, h: 1336 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 2130, y: 200, w: 420, h: 210 }} highlightAt={97} />
       </Sequence>
 
       {/* 2:47 kinetic: same lab, different terms */}
@@ -152,7 +152,7 @@ export const GoLocalVisuals: React.FC = () => {
 
       {/* 2:58 receipt: MiniMax flipped to NON-COMMERCIAL */}
       <Sequence from={5366} durationInFrames={180} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={180} kicker="GITHUB · MINIMAX" title="NON-COMMERCIAL NOW" titlePos="right" titleTop={720} tint="#EF4444" src={`${SHOT}/minimax-licence-wide.png`} url="github.com/MiniMax-AI" imageW={3840} imageH={2052} from={{ x: 0, y: 0, w: 3840, h: 2052 }} to={{ x: 520, y: 120, w: 2760, h: 1476 }} zoomAt={16} highlight={{ x: 640, y: 420, w: 1900, h: 70 }} highlightAt={119} />
+        <ScreenshotReceiptScene durationInFrames={180} kicker="GITHUB · MINIMAX" title="NON-COMMERCIAL NOW" titlePos="left" titleTop={870} tint="#EF4444" src={`${SHOT}/minimax-licence-wide.png`} url="github.com/MiniMax-AI" imageW={3840} imageH={2052} from={{ x: 0, y: 0, w: 3840, h: 2052 }} to={{ x: 520, y: 120, w: 2760, h: 1476 }} zoomAt={16} highlight={{ x: 640, y: 420, w: 1900, h: 70 }} highlightAt={119} />
       </Sequence>
 
       {/* 3:07 Qwen's most capable models — the gate is closing */}
@@ -167,7 +167,7 @@ export const GoLocalVisuals: React.FC = () => {
 
       {/* 3:30 receipt: Anthropic's own page — launched, gone, restored */}
       <Sequence from={6319} durationInFrames={200} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={200} kicker="ANTHROPIC.COM" title="GONE IN 3 DAYS" titlePos="right" tint="#34D399" src={`${SHOT}/anthropic-fable-timeline-wide.png`} url="anthropic.com/news/claude-fable-5-mythos-5" imageW={3840} imageH={2052} from={{ x: 520, y: 1100, w: 2800, h: 1497 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 730, y: 1555, w: 1580, h: 100 }} highlightAt={114} />
+        <ScreenshotReceiptScene durationInFrames={200} kicker="ANTHROPIC.COM" title="GONE IN 3 DAYS" titlePos="left" titleTop={300} tint="#34D399" src={`${SHOT}/anthropic-fable-timeline-wide.png`} url="anthropic.com/news/claude-fable-5-mythos-5" imageW={3840} imageH={2052} from={{ x: 520, y: 1100, w: 2800, h: 1497 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 730, y: 1555, w: 1580, h: 100 }} highlightAt={114} />
       </Sequence>
 
       {/* 3:41 the gate slams on FABLE 5 — access is not guaranteed */}

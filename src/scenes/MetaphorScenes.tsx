@@ -252,10 +252,10 @@ export const LessPainScene: React.FC<{ durationInFrames: number; kicker?: string
 
 // BENCHMARKS LIE — the shiny scoreboard placard DROPS, revealing the messy
 // real-world workflow behind it while the siren spins up.
-export const BenchmarksLieScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; messLabels?: [string, string, string]; tint?: string }> = ({ durationInFrames, kicker, title, messLabels = ["RETRY LOOP", "TOOL FAIL", "TIMEOUT"], tint }) => {
+export const BenchmarksLieScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; messLabels?: [string, string, string]; messAts?: [number, number, number]; revealAt?: number; tint?: string }> = ({ durationInFrames, kicker, title, messLabels = ["RETRY LOOP", "TOOL FAIL", "TIMEOUT"], messAts, revealAt: revealAtProp, tint }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const revealAt = Math.round(durationInFrames * 0.4);
+  const revealAt = revealAtProp ?? Math.round(durationInFrames * 0.4);
   const drop = spring({ frame: frame - revealAt, fps, config: { stiffness: 120, damping: 12 }, durationInFrames: 24 });
   const boardY = interpolate(drop, [0, 1], [0, 340]);
   const boardRot = interpolate(drop, [0, 1], [0, 16]);
@@ -263,29 +263,36 @@ export const BenchmarksLieScene: React.FC<{ durationInFrames: number; kicker?: s
   const revealed = frame >= revealAt;
   const siren = revealed ? 0.4 + 0.6 * Math.abs(Math.sin((frame - revealAt) * 0.4)) : 0;
   const mess = [
-    { label: messLabels[0], x: -180, y: -30, rot: -8 },
-    { label: messLabels[1], x: 40, y: 40, rot: 6 },
-    { label: messLabels[2], x: -60, y: 110, rot: -4 },
+    { label: messLabels[0], x: -260, y: -30, rot: -8 },
+    { label: messLabels[1], x: 60, y: 50, rot: 6 },
+    { label: messLabels[2], x: -90, y: 140, rot: -4 },
   ];
   return (
     <SceneShell durationInFrames={durationInFrames} particleSeed={0xc8} mood="danger" impacts={[revealAt]} tint={tint}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 40 }}>
-        <div style={{ position: "relative", width: 700, height: 360 }}>
-          {/* the messy reality (behind) */}
-          <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", opacity: revealed ? 1 : 0 }}>
-            {mess.map((m) => (
-              <div key={m.label} style={{ position: "absolute", left: 300 + m.x, top: 120 + m.y, transform: `rotate(${m.rot + (revealed ? Math.sin(frame * 0.3) * 2 : 0)}deg)`, ...chipStyle(RED) }}>{m.label}</div>
-            ))}
+        <div style={{ position: "relative", width: 1000, height: 420 }}>
+          {/* the messy reality (behind) — each chip slams in on ITS spoken word */}
+          <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            {mess.map((m, i) => {
+              const at = messAts?.[i] ?? revealAt;
+              if (frame < at) return null;
+              const pop = spring({ frame: frame - at, fps, config: { stiffness: 170, damping: 13 }, durationInFrames: 24 });
+              return (
+                <div key={m.label} style={{ position: "absolute", left: 430 + m.x, top: 130 + m.y, transform: `rotate(${m.rot + Math.sin(frame * 0.3) * 2}deg) scale(${interpolate(pop, [0, 1], [1.6, 1])})`, opacity: Math.min(1, pop * 2), ...chipStyle(RED), fontSize: 30, padding: "14px 26px" }}>{m.label}</div>
+              );
+            })}
             {/* siren */}
-            <div style={{ position: "absolute", top: -8, left: 310 }}>
-              <svg width={90} height={70} viewBox="0 0 90 70">
-                <path d="M20 60 A25 25 0 0 1 70 60 Z" fill={RED} opacity={0.4 + 0.6 * siren} style={{ filter: `drop-shadow(0 0 ${16 * siren}px ${RED})` }} />
-                <rect x={12} y={58} width={66} height={10} rx={5} fill={PANEL} stroke={RED} strokeWidth={3} />
-              </svg>
-            </div>
+            {revealed && (
+              <div style={{ position: "absolute", top: -30, left: 440, transform: "scale(1.6)", transformOrigin: "top left" }}>
+                <svg width={90} height={70} viewBox="0 0 90 70">
+                  <path d="M20 60 A25 25 0 0 1 70 60 Z" fill={RED} opacity={0.4 + 0.6 * siren} style={{ filter: `drop-shadow(0 0 ${16 * siren}px ${RED})` }} />
+                  <rect x={12} y={58} width={66} height={10} rx={5} fill={PANEL} stroke={RED} strokeWidth={3} />
+                </svg>
+              </div>
+            )}
           </div>
           {/* the shiny scoreboard (drops away) */}
-          <div style={{ position: "absolute", left: 130, top: 20, transform: `translateY(${boardY}px) rotate(${boardRot}deg)`, opacity: boardOp }}>
+          <div style={{ position: "absolute", left: 280, top: 20, transform: `translateY(${boardY}px) rotate(${boardRot}deg)`, opacity: boardOp }}>
             <div style={{ width: 440, borderRadius: 20, border: `4px solid ${CYAN}`, background: PANEL, padding: "24px 30px", display: "flex", flexDirection: "column", gap: 16, boxShadow: "0 16px 44px rgba(0,0,0,0.5)" }}>
               <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 28, letterSpacing: 3, color: CYAN, transform: "translateZ(0)" }}>BENCHMARK</span>
               {[96, 98, 99].map((v, i) => (
@@ -298,7 +305,7 @@ export const BenchmarksLieScene: React.FC<{ durationInFrames: number; kicker?: s
               ))}
             </div>
           </div>
-          <Puff at={revealAt + 18} x={350} y={340} size={200} />
+          <Puff at={revealAt + 18} x={500} y={400} size={200} />
         </div>
         <SceneHeadline kicker={kicker} title={title} titleSize={92} accent={RED} />
       </div>
