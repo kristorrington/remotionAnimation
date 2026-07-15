@@ -88,7 +88,7 @@ export const GoLocalVisuals: React.FC = () => {
 
       {/* 0:26 receipt: the Hugging Face CEO's tweet (his own words) */}
       <Sequence from={780} durationInFrames={180} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={180} kicker="HUGGING FACE CEO · ON X" title="THE 71% CLAIM" fullBleed={false} tint="#34D399" src={`${SHOT}/delangue-71pct-tweet.png`} url="x.com/ClementDelangue" imageW={1440} imageH={1860} from={{ x: 100, y: 120, w: 1240, h: 663 }} to={{ x: 0, y: 60, w: 1440, h: 770 }} zoomAt={14} highlight={{ x: 130, y: 105, w: 1180, h: 95 }} highlightAt={24} />
+        <ScreenshotReceiptScene durationInFrames={180} kicker="HUGGING FACE CEO · ON X" title="THE 71% CLAIM" fullBleed={false} tint="#34D399" src={`${SHOT}/delangue-71pct-tweet.png`} url="x.com/ClementDelangue" imageW={1440} imageH={1860} from={{ x: 100, y: 20, w: 1240, h: 663 }} to={{ x: 0, y: 10, w: 1440, h: 770 }} zoomAt={14} highlight={{ x: 130, y: 105, w: 1180, h: 95 }} highlightAt={24} />
       </Sequence>
 
       {/* 0:36 the shiny 71% placard vs the fine print behind it */}

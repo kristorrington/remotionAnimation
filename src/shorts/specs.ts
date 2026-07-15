@@ -28,7 +28,7 @@ export const SHORTS: ShortSpec[] = [
     beats: [
       { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "THE VIRAL CLAIM" }, // "71%… can supposedly be run locally" (4-180)
       // EVIDENCE EARLY: the Hugging Face CEO's own tweet carries the claim
-      { at: 110, scene: "receipt", tint: "#34D399", text: "THE 71% TWEET", shot: { src: "assets/external/screenshots/delangue-71pct-tweet.png", url: "x.com/ClementDelangue", imageW: 1440, imageH: 1860, from: { x: 0, y: 60, w: 1200, h: 750 }, to: { x: 0, y: 30, w: 1440, h: 900 }, zoomAt: 8 } }, // the claim's source, on screen as it's spoken; holds ~3.6s
+      { at: 110, scene: "receipt", tint: "#34D399", text: "THE 71% TWEET", shot: { src: "assets/external/screenshots/delangue-71pct-tweet.png", url: "x.com/ClementDelangue", imageW: 1440, imageH: 1860, from: { x: 0, y: 20, w: 1200, h: 750 }, to: { x: 0, y: 8, w: 1440, h: 900 }, zoomAt: 8 } }, // the claim's source, on screen as it's spoken; holds ~3.6s
       { at: 217, scene: "coins", tint: "#EF4444", text: "PAID LOCAL?" }, // "local might mean renting a GPU cluster" (223-275)
       { at: 329, scene: "doors", labels: ["TIER?", "LICENCE?", "HARDWARE?"], tint: "#D97757", text: "THE TRIPLE CHECK" }, // "really three: tier (409), licence (451), hardware (494)"; span.from+13
       { at: 553, scene: "check", obj: "gauge", verdict: "cross", tint: "#F59E0B", text: "EXPENSIVE MISTAKE" }, // "get one wrong… overspend or waste an entire weekend" (559-700)
