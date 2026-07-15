@@ -751,7 +751,15 @@ press kits, screenshots of official pages.
   the card viewport sizes itself to the `to` aspect, so a tall crop = a
   tall, readable card. Keep the claim FULLY inside and tight on the claim
   BLOCK (x-slicing mid-word is never OK; the bottom edge cutting a body row
-  like a real browser fold is fine). A receipt HOLDS ≥ ~3.5s (Kris: "on
+  like a real browser fold is fine). **The claim DOMINATES the card, never
+  "off to the side"** (Kris, July 2026 — fourth b-roll pass): a whole-page
+  `to` that leaves the claim as a small corner block or text crammed against
+  one edge with dead whitespace is wrong even when readable — crop until the
+  claim block IS the card (deepseek → the Permissions ✓ ticks; anthropic →
+  the update-timeline block; minimax → licence lines 1-2). On wall-of-text
+  pages (GitHub code/licence views) long lines MAY run off the card's right
+  edge like a real narrow browser window — only the claim lines themselves
+  must be fully inside. A receipt HOLDS ≥ ~3.5s (Kris: "on
   screen long enough" — only a deliberate montage run goes quicker) and the
   frame stays LEAN: **no sticker label** (Kris: "remove that middle
   caption" — the receipt beat's `text` is a records-only note), **no

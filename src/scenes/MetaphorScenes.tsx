@@ -90,7 +90,10 @@ export const BillPrinterScene: React.FC<{ durationInFrames: number; kicker?: str
 export const HiddenCostScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; chipLabels?: [string, string, string]; chipAts?: [number, number, number]; tint?: string }> = ({ durationInFrames, kicker, title, chipLabels = ["RETRY", "LOOP", "TOOL CALLS"], chipAts, tint }) => {
   const frame = useCurrentFrame();
   const riseAt = Math.round(durationInFrames * 0.38);
-  const level = interpolate(frame, [10, riseAt - 20, riseAt + 60, durationInFrames - 30], [0.55, 0.28, 0.6, 0.92], CLAMP);
+  // keys must stay strictly increasing at ANY beat length (dur 112 broke: [10,23,103,82])
+  const dipAt = Math.max(riseAt - 20, 11);
+  const riseEnd = Math.max(Math.min(riseAt + 60, durationInFrames - 34), dipAt + 1);
+  const level = interpolate(frame, [10, dipAt, riseEnd, Math.max(durationInFrames - 30, riseEnd + 4)], [0.55, 0.28, 0.6, 0.92], CLAMP);
   const chips = [
     { label: chipLabels[0], at: chipAts?.[0] ?? riseAt },
     { label: chipLabels[1], at: chipAts?.[1] ?? riseAt + 45 },

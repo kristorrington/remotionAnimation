@@ -81,11 +81,11 @@ export const SHORTS: ShortSpec[] = [
     beats: [
       { at: 8, scene: "reject", badge: "FREE DOWNLOAD", tint: "#D97757", text: "READ THE FINE PRINT" }, // "free to download ≠ free to use inside a commercial product" (4620-4762)
       // EVIDENCE EARLY: DeepSeek's MIT permissions card, commercial use ticked
-      { at: 151, scene: "receipt", tint: "#34D399", text: "MIT = GO", shot: { src: "assets/external/screenshots/deepseek-mit-licence-wide.png", url: "github.com/deepseek-ai", imageW: 3840, imageH: 2052, from: { x: 600, y: 100, w: 2200, h: 1038 }, to: { x: 520, y: 100, w: 2760, h: 1302 }, zoomAt: 8 } }, // "DeepSeek and GLM… MIT terms" (4771-4886); holds ~6.8s
+      { at: 151, scene: "receipt", tint: "#34D399", text: "MIT = GO", shot: { src: "assets/external/screenshots/deepseek-mit-licence-wide.png", url: "github.com/deepseek-ai", imageW: 3840, imageH: 2052, from: { x: 2200, y: 240, w: 1100, h: 550 }, to: { x: 2150, y: 150, w: 1500, h: 750 }, zoomAt: 8 } }, // "DeepSeek and GLM… MIT terms" (4771-4886); CLAIM-focused: Permissions header + ✓ Commercial-use block fills the card; holds ~6.8s
       { at: 355, scene: "check", obj: "shield", verdict: "warn", tint: "#F59E0B", text: "VERSION BY VERSION" }, // "check the exact release you are downloading" (4976-5040)
       { at: 501, scene: "emote", pose: "confused", tint: "#EF4444", text: "TRUST NO DEFAULTS" }, // "do not assume… identical terms" (5040-5166)
       { at: 553, scene: "stamp", verdict: "check", badge: "KIMI K2", tint: "#34D399", text: "NAME-DROP REQUIRED" }, // "commercial use with attribution… credit the model" (5167-5372); span.from+13
-      { at: 758, scene: "receipt", tint: "#EF4444", text: "PULLED BACK", shot: { src: "assets/external/screenshots/minimax-licence-wide.png", url: "github.com/MiniMax-AI", imageW: 3840, imageH: 2052, from: { x: 0, y: 0, w: 3840, h: 2052 }, to: { x: 520, y: 120, w: 2760, h: 1302 }, zoomAt: 8 } }, // "MiniMax… free terms to non-commercial terms" (5372-5532); holds ~3.8s
+      { at: 758, scene: "receipt", tint: "#EF4444", text: "PULLED BACK", shot: { src: "assets/external/screenshots/minimax-licence-wide.png", url: "github.com/MiniMax-AI", imageW: 3840, imageH: 2052, from: { x: 780, y: 340, w: 1360, h: 680 }, to: { x: 680, y: 140, w: 1700, h: 850 }, zoomAt: 8 } }, // "MiniMax… free terms to non-commercial terms" (5372-5532); CLAIM-focused: NON-COMMERCIAL LICENSE lines 1-2 fully inside, long lines run off the card edge like a real narrow browser; holds ~3.8s
       { at: 871, scene: "check", obj: "shield", verdict: "cross", tint: "#F59E0B", text: "LAWYERS FIRST" }, // "commercial use may now require a signed agreement" (5540-5636)
     ],
     // full-anim: the Kimi NAME-DROP stamp gag
@@ -109,7 +109,7 @@ export const SHORTS: ShortSpec[] = [
     beats: [
       { at: 8, scene: "check", obj: "shield", verdict: "warn", tint: "#D97757", text: "LICENCE ≠ LIFELINE" }, // "a good licence does not guarantee stable access" (6212-6302)
       // EVIDENCE EARLY: Anthropic's own page, both availability badges
-      { at: 128, scene: "receipt", tint: "#34D399", text: "THE PAPER TRAIL", shot: { src: "assets/external/screenshots/anthropic-fable-timeline-wide.png", url: "anthropic.com", imageW: 3840, imageH: 2052, from: { x: 700, y: 1400, w: 1600, h: 755 }, to: { x: 660, y: 1118, w: 1980, h: 934 }, zoomAt: 8 } }, // "launched June 9th (6364)… taken offline (6427)"; holds ~6.8s
+      { at: 128, scene: "receipt", tint: "#34D399", text: "THE PAPER TRAIL", shot: { src: "assets/external/screenshots/anthropic-fable-timeline-wide.png", url: "anthropic.com", imageW: 3840, imageH: 2052, from: { x: 1240, y: 1502, w: 1100, h: 550 }, to: { x: 1180, y: 1370, w: 1364, h: 682 }, zoomAt: 8 } }, // "launched June 9th (6364)… taken offline (6427)"; CLAIM-focused: the update timeline block centered, dead left margin cut; holds ~6.8s
       { at: 331, scene: "signal", tint: "#EF4444", text: "BACK… FOR NOW" }, // "it was later restored… explanation still limited" (6531-6650)
       { at: 533, scene: "breaker", tint: "#F59E0B", text: "LIGHTS OUT, NO WARNING" }, // "available today… inaccessible days later" (6700-6839); span.from+13
       { at: 700, scene: "stack", tint: "#EF4444", text: "ALL YOUR EGGS" }, // "risky as your only dependency… products, clients, revenue" (6886-7060)
