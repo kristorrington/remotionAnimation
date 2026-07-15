@@ -11,11 +11,11 @@ const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 // "IT'S WAITING" as a SYSTEM BOTTLENECK: labelled request cards queue up in front
 // of a thinking model brain (thought bubble dots), an impatient robot waits at the
 // back, and the progress bar underneath stalls and jitters.
-export const WaitingScene: React.FC<{ durationInFrames: number; kicker?: string; chips: { label: string; at: number }[] }> = ({ durationInFrames, kicker = "THE REAL PROBLEM", chips }) => {
+export const WaitingScene: React.FC<{ durationInFrames: number; kicker?: string; chips: { label: string; at: number }[]; tint?: string }> = ({ durationInFrames, kicker = "THE REAL PROBLEM", chips, tint }) => {
   const frame = useCurrentFrame();
   const brainOp = interpolate(frame, [10, 24], [0, 1], CLAMP);
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0x11a}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x11a} tint={tint}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 44 }}>
         {/* the bottleneck: robot → queue → thinking brain */}
         <div style={{ display: "flex", alignItems: "center", gap: 30 }}>

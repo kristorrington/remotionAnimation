@@ -157,13 +157,13 @@ export const DraftPolishScene: React.FC<{
 // pops out with a price chip. Serves research-for-hire / distillation beats.
 export const DocFunnelScene: React.FC<{
   durationInFrames: number; kicker?: string; title: string;
-  dropAts?: number[]; reportAt?: number; reportLabel?: string; priceLabel?: string;
-}> = ({ durationInFrames, kicker, title, dropAts = [20, 44, 66, 88, 108], reportAt = 170, reportLabel = "ONE-PAGE SUMMARY", priceLabel = "PAID THIS WEEK" }) => {
+  dropAts?: number[]; reportAt?: number; reportLabel?: string; priceLabel?: string; tint?: string;
+}> = ({ durationInFrames, kicker, title, dropAts = [20, 44, 66, 88, 108], reportAt = 170, reportLabel = "ONE-PAGE SUMMARY", priceLabel = "PAID THIS WEEK", tint }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const out = spring({ frame: frame - reportAt, fps, config: { stiffness: 130, damping: 14 }, durationInFrames: 26 });
   return (
-    <SceneShell durationInFrames={durationInFrames} particleSeed={0x423} impacts={[reportAt]} tint={CYAN}>
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x423} impacts={[reportAt]} tint={tint ?? CYAN}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 36 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 90 }}>
           <div style={{ position: "relative", width: 560, height: 470 }}>
