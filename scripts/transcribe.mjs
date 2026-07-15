@@ -96,6 +96,13 @@ const main = async () => {
     [["clement", "delange"], "Clément Delangue"],
     [["deep", "seek"], "DeepSeek"],
     [["mini", "max"], "MiniMax"],
+    // Claude-skills ranking video (07/2026)
+    [["agent", "reach"], "Agent Reach"],
+    [["loop", "library"], "Loop Library"],
+    [["px", "pipe"], "PX Pipe"],
+    [["p", "x", "pipe"], "PX Pipe"],
+    [["pix", "pipe"], "PX Pipe"],
+    [["pyx", "pipe"], "PX Pipe"],
   ];
   const norm = (s) => s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
   for (const [parts, joined] of JOINS) {
@@ -121,6 +128,8 @@ const main = async () => {
     // go-local video (07/2026) — Kris says "licence"/"quantisation" (British)
     quinn: "Qwen", license: "licence", licenses: "licences",
     quantization: "quantisation",
+    // Claude-skills ranking video (07/2026)
+    pxpipe: "PX Pipe", pixpipe: "PX Pipe", superpowers: "Superpowers",
   };
   for (const w of words) {
     const base = norm(w.text);

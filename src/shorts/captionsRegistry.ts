@@ -8,6 +8,7 @@ import { CAPTIONS_110726 } from "./captions-110726";
 import { CAPTIONS_120726 } from "./captions-120726";
 import { CAPTIONS_130726 } from "./captions-130726";
 import { CAPTIONS_140726 } from "./captions-140726";
+import { CAPTIONS_150726 } from "./captions-150726";
 
 // Per-source caption lookup: captionsData.ts always holds the CURRENT footage
 // (scripts/transcribe.mjs overwrites it); older videos keep a frozen copy here
@@ -23,6 +24,7 @@ const REGISTRY: Record<string, CaptionWord[]> = {
   "talking-head-120726.mp4": CAPTIONS_120726,
   "talking-head-130726.mp4": CAPTIONS_130726,
   "talking-head-140726.mp4": CAPTIONS_140726,
+  "talking-head-150726.mp4": CAPTIONS_150726,
 };
 
 export const captionsFor = (source: string): CaptionWord[] => REGISTRY[source] ?? CAPTIONS;

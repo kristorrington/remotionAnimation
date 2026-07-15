@@ -10,7 +10,7 @@ import { ThemeProvider } from "./theme";
 
 // Final combined cut: talking head + go-local animation track + per-span PiP.
 // Same structure as AiNewsFinal (transitions v2, paper theme).
-const FOOTAGE = "talking-head.mp4"; // go-local footage (rotated in 2026-07-15)
+const FOOTAGE = "talking-head-150726.mp4"; // go-local footage (frozen 2026-07-16)
 
 const PIP_GAP_MAX = 180; // 6s
 const PIP_MIN = 90; // never show a PiP segment shorter than 3s (flicker)

@@ -32,6 +32,8 @@ import { ChatGptWorkVideo, CHATGPT_WORK_DUR } from "../ChatGptWorkVideo";
 import { ChatGptWorkFinal } from "../ChatGptWorkFinal";
 import { AiNewsVideo, AINEWS_DUR } from "../AiNewsVideo";
 import { AiNewsFinal } from "../AiNewsFinal";
+import { GoLocalVideo, GOLOCAL_DUR } from "../GoLocalVideo";
+import { GoLocalFinal } from "../GoLocalFinal";
 
 // ============================================================================
 // THE ARCHIVE — compositions from PREVIOUS videos. When a new video starts,
@@ -55,6 +57,10 @@ const transparentDefaults: CalculateMetadataFunction<
 export const ArchivedVideoCompositions: React.FC = () => {
   return (
     <>
+      {/* ── "Just go local" solves nothing (July 2026) ── */}
+      <Composition id="GoLocalVideo" component={GoLocalVideo} durationInFrames={GOLOCAL_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="GoLocalFinal" component={GoLocalFinal} durationInFrames={GOLOCAL_DUR} fps={30} width={1920} height={1080} />
+
       {/* ── AI-news / GPT-5.6 super-app roundup (July 2026) ── */}
       <Composition id="AiNewsVideo" component={AiNewsVideo} durationInFrames={AINEWS_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
       <Composition id="AiNewsFinal" component={AiNewsFinal} durationInFrames={AINEWS_DUR} fps={30} width={1920} height={1080} />
