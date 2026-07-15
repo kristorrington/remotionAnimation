@@ -1074,6 +1074,120 @@ Same video + copy as Short-PremiumWar; post the loser as unlisted or delete afte
 
 ---
 
+# 5 Claude Code skills ranked (2026-07-16)
+
+## Short-Superpowers (THE HOOK)
+
+**Title**
+```
+The #1 Claude Code Skill Right Now (941k Installs) #Shorts
+```
+
+**Description**
+```
+Superpowers is my #1 Claude Code skill — 941,207 installs on Anthropic's own marketplace.
+
+It's been called an operating system for Claude. Simpler: it's a brake. It stops Claude jumping straight into the build, making assumptions, and looking impressive early while quietly creating more work later. Plan, stage, review — then code.
+
+Which skill runs your setup? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #ClaudeCode #ClaudeSkills #AIAgents #Shorts
+```
+
+---
+
+## Short-Superpowers-B (A/B hook variant — hook "STOP CLAUDE JUMPING IN")
+
+Same video + copy as Short-Superpowers; post the loser as unlisted or delete after 48h.
+
+---
+
+## Short-80Percent
+
+**Title**
+```
+Claude Stops at 80% and Says It's Done — Fix It #Shorts
+```
+
+**Description**
+```
+You know the pattern: Claude completes part of the task, produces something acceptable, and confidently declares the job finished. The final 20% is you.
+
+Loop Library (free, by Matthew Berman's Forward Future) is a set of reusable prompts that keep Claude working until a DEFINED finish condition — every test passes, every checklist item done. Best for debugging, research, and tasks with a clear finish line.
+
+What does Claude leave unfinished for you? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #ClaudeCode #ClaudeSkills #AIAgents #Shorts
+```
+
+---
+
+## Short-80Percent-B (A/B hook variant — hook "THE 80% PROBLEM")
+
+Same video + copy as Short-80Percent; post the loser as unlisted or delete after 48h.
+
+---
+
+## Short-PxPipe
+
+**Title**
+```
+Your Claude Bill Is Mostly Context — PX Pipe Cuts It #Shorts
+```
+
+**Description**
+```
+Long Claude Code sessions get expensive because context piles up: files, screenshots, logs, instructions, old outputs. You end up spending more tokens reminding Claude about the work than completing it.
+
+PX Pipe converts bulky context into images instead of raw text — the headline claim is up to 70% fewer tokens. Worth testing on large builds and long daily sessions; probably an extra layer you don't need on a small project.
+
+How long do your Claude sessions run? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #ClaudeCode #AICosts #ClaudeSkills #Shorts
+```
+
+---
+
+## Short-PxPipe-B (A/B hook variant — hook "CUT CLAUDE TOKENS 70%")
+
+Same video + copy as Short-PxPipe; post the loser as unlisted or delete after 48h.
+
+---
+
+## Short-Ranked
+
+**Title**
+```
+5 Claude Code Skills, Ranked — One Clear Winner #Shorts
+```
+
+**Description**
+```
+The final board: 5 Agent Reach (cross-platform research), 4 Loop Library (keeps Claude working), 3 PX Pipe (cuts token costs), 2 Taste (kills the AI-slop look), 1 Superpowers.
+
+Why Superpowers wins: Taste is the fastest visible improvement and PX Pipe the clearest saving — but none of it matters while Claude is confidently walking the wrong path. Fix the path first.
+
+Would you rank them differently? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #ClaudeCode #ClaudeSkills #AIAgents #Shorts
+```
+
+---
+
+## Short-Ranked-B (A/B hook variant — hook "THE 5-SKILL LEADERBOARD")
+
+Same video + copy as Short-Ranked; post the loser as unlisted or delete after 48h.
+
+---
+
 # "Just go local" solves nothing (2026-07-15)
 
 ## Short-71Percent (THE HOOK)
