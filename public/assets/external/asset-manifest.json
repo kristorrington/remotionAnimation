@@ -997,6 +997,148 @@
       ],
       "attributionRequired": false,
       "concerns": null
+    },
+    {
+      "filename": "superpowers-plugin-wide.png",
+      "localPath": "public/assets/external/screenshots/superpowers-plugin-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://claude.com/plugins/superpowers",
+      "sourceName": "Anthropic Claude plugin marketplace",
+      "dateAccessed": "2026-07-16",
+      "usageNote": "Official marketplace listing: title, blurb, Installs 941,207 — receipt for the #1 pick",
+      "usedIn": [
+        "skillsVideo superpowersProof",
+        "Short-Superpowers"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "superpowers-github-wide.png",
+      "localPath": "public/assets/external/screenshots/superpowers-github-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/obra/superpowers",
+      "sourceName": "GitHub obra/superpowers",
+      "dateAccessed": "2026-07-16",
+      "usageNote": "Repo top: About + 255k stars — secondary Superpowers receipt",
+      "usedIn": [
+        "skillsVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "taste-github-wide.png",
+      "localPath": "public/assets/external/screenshots/taste-github-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/leonxlnx/taste-skill",
+      "sourceName": "GitHub Leonxlnx/taste-skill",
+      "dateAccessed": "2026-07-16",
+      "usageNote": "Repo top: About (anti-slop blurb) — spare Taste receipt",
+      "usedIn": [],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "taste-site-wide.png",
+      "localPath": "public/assets/external/screenshots/taste-site-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.tasteskill.dev/",
+      "sourceName": "tasteskill.dev",
+      "dateAccessed": "2026-07-16",
+      "usageNote": "Hero: Anti-Slop Frontend Framework + Less slop designs pop card — Taste receipt",
+      "usedIn": [
+        "skillsVideo tasteProof",
+        "Short-Taste"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "taste-examples-wide.png",
+      "localPath": "public/assets/external/screenshots/taste-examples-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/leonxlnx/taste-skill",
+      "sourceName": "GitHub Leonxlnx/taste-skill (README examples)",
+      "dateAccessed": "2026-07-16",
+      "usageNote": "Example designs built with Taste — visual proof for the with/without comparison",
+      "usedIn": [
+        "skillsVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "agent-reach-github-wide.png",
+      "localPath": "public/assets/external/screenshots/agent-reach-github-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/Panniantong/agent-reach",
+      "sourceName": "GitHub Panniantong/Agent-Reach",
+      "dateAccessed": "2026-07-16",
+      "usageNote": "Repo top: English About (X/Reddit/YouTube/GitHub platforms) + 56.6k stars",
+      "usedIn": [
+        "skillsVideo agentReachProof"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "loop-library-wide.png",
+      "localPath": "public/assets/external/screenshots/loop-library-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://signals.forwardfuture.com/loop-library/",
+      "sourceName": "Forward Future Signals — Loop Library",
+      "dateAccessed": "2026-07-16",
+      "usageNote": "Hero + Loopy install box + 85 loops list — Loop Library receipt",
+      "usedIn": [
+        "skillsVideo loopLibProof"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "berman-loop-tweet.png",
+      "localPath": "public/assets/external/screenshots/berman-loop-tweet.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/MatthewBerman/status/2068014073699348875",
+      "sourceName": "Matthew Berman on X",
+      "dateAccessed": "2026-07-16",
+      "usageNote": "Launch tweet for the Loop Library Skill — author block + claim",
+      "usedIn": [
+        "skillsVideo bermanProof",
+        "Short-LoopLibrary"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "pxpipe-github-wide.png",
+      "localPath": "public/assets/external/screenshots/pxpipe-github-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/teamchong/pxpipe",
+      "sourceName": "GitHub teamchong/pxpipe",
+      "dateAccessed": "2026-07-16",
+      "usageNote": "README title + claim paragraph incl. ~59-70% lower end-to-end bill + rendered-context image",
+      "usedIn": [
+        "skillsVideo pxpipeProof",
+        "Short-PxPipe"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "pxpipe-site-wide.png",
+      "localPath": "public/assets/external/screenshots/pxpipe-site-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://pxpipe.dev/",
+      "sourceName": "pxpipe.dev",
+      "dateAccessed": "2026-07-16",
+      "usageNote": "Hero: turns bulky AI coding context into compact PNG pages — PX Pipe receipt",
+      "usedIn": [
+        "skillsVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
     }
   ]
 }
