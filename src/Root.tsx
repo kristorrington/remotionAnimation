@@ -4,6 +4,18 @@ import { ShortsCompositions, SHORTS_ENABLED } from "./shorts";
 import { StyleDemo } from "./StyleDemo";
 import { TemplateLab, TEMPLATE_LAB_DUR } from "./TemplateLab";
 import { ArchivedVideoCompositions, SHOW_ARCHIVE } from "./archive";
+import { CalculateMetadataFunction } from "remotion";
+import { ReposVideo, REPOS_DUR } from "./ReposVideo";
+import { ReposFinal } from "./ReposFinal";
+
+const transparentDefaults: CalculateMetadataFunction<
+  Record<string, unknown>
+> = () => ({
+  defaultCodec: "prores",
+  defaultVideoImageFormat: "png",
+  defaultPixelFormat: "yuva444p10le",
+  defaultProResProfile: "4444",
+});
 
 // The sidebar shows TOOLS + the CURRENT video + its shorts. Previous videos
 // live in src/archive (long-form) and src/shorts/archivedSpecs.ts (shorts) —
@@ -37,8 +49,9 @@ export const RemotionRoot: React.FC = () => {
         height={1080}
       />
 
-      {/* ── CURRENT: 7 GitHub repos for Claude Code (July 2026) ──
-          ReposVideo / ReposFinal are registered here in Phase 1 */}
+      {/* ── CURRENT: 7 GitHub repos for Claude Code (July 2026) ── */}
+      <Composition id="ReposVideo" component={ReposVideo} durationInFrames={REPOS_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="ReposFinal" component={ReposFinal} durationInFrames={REPOS_DUR} fps={30} width={1920} height={1080} />
 
       {/* Previous videos — hidden unless SHOW_ARCHIVE (src/archive) is true */}
       {SHOW_ARCHIVE && <ArchivedVideoCompositions />}

@@ -232,6 +232,37 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "osKinetic": cues.push({ at: 123, type: "whip" }); break;
     case "slowJump": cues.push({ at: 132, type: "tick" }, { at: 197, type: "tick" }, { at: 265, type: "tick" }); break;
     case "workflowProof": cues.push({ at: 14, type: "whip" }, { at: 93, type: "swish" }); break;
+    // ── GitHub-repos video (July 2026) — palette spread wide, ≤3 booms ──
+    case "hookDoors7": cues.push({ at: 6, type: "clickPop" }, { at: 20, type: "clickPop" }, { at: 34, type: "clickPop" }, { at: 48, type: "clickPop" }, { at: 62, type: "clickPop" }, { at: 76, type: "clickPop" }, { at: 90, type: "clickPop" }); break;
+    case "awesomeProof": cues.push({ at: 16, type: "whip" }, { at: 107, type: "swish" }); break;
+    case "awesomeToc": cues.push({ at: 14, type: "paperSlide" }, { at: 283, type: "shutter" }); break;
+    case "nothingKinetic": cues.push({ at: 35, type: "pluck" }); break;
+    case "skillsProof": cues.push({ at: 16, type: "whip" }, { at: 80, type: "swish" }); break;
+    case "skillSplit": cues.push({ at: 124, type: "thud" }, { at: 220, type: "tick" }, { at: 302, type: "tick" }, { at: 338, type: "tick" }); break;
+    case "cleanKinetic": cues.push({ at: 123, type: "pluck" }); break;
+    case "contextLogo": cues.push({ at: 14, type: "whip" }, { at: 40, type: "shutter" }); break;
+    case "contextClaim": cues.push({ at: 16, type: "paperSlide" }, { at: 53, type: "swish" }); break;
+    case "authFlow": cues.push({ at: 8, type: "clickPop" }, { at: 30, type: "clickPop" }, { at: 75, type: "pluck" }); break;
+    case "milvusKinetic": cues.push({ at: 89, type: "thud" }); break;
+    case "eccProof": cues.push({ at: 16, type: "whip" }, { at: 110, type: "swish" }); break;
+    case "eccTable": cues.push({ at: 14, type: "paperSlide" }, { at: 40, type: "shutter" }); break;
+    case "eccTweet": cues.push({ at: 12, type: "whip" }, { at: 30, type: "swish" }); break;
+    case "dupeStack": cues.push({ at: 48, type: "thud" }, { at: 80, type: "thud" }, { at: 110, type: "thud" }, { at: 150, type: "boom" }); break; // boom 1/3: the pile falls
+    case "partsKinetic": cues.push({ at: 32, type: "whip" }); break;
+    case "actionHero": cues.push({ at: 16, type: "whip" }, { at: 40, type: "shutter" }); break;
+    case "actionConvo": cues.push({ at: 12, type: "paperSlide" }, { at: 34, type: "swish" }); break;
+    case "onePlaceKinetic": cues.push({ at: 99, type: "pluck" }); break;
+    case "memHero": cues.push({ at: 16, type: "whip" }, { at: 88, type: "swish" }); break;
+    case "memSteps": cues.push({ at: 21, type: "tick" }, { at: 189, type: "tick" }, { at: 271, type: "pluck" }); break;
+    case "memFeatures": cues.push({ at: 12, type: "paperSlide" }, { at: 34, type: "shutter" }); break;
+    case "staleKinetic": cues.push({ at: 128, type: "thud" }); break;
+    case "superProof7": cues.push({ at: 16, type: "whip" }, { at: 101, type: "swish" }); break;
+    case "workflowProof7": cues.push({ at: 14, type: "paperSlide" }, { at: 100, type: "swish" }); break;
+    case "inviteGates": cues.push({ at: 106, type: "switch" }, { at: 172, type: "switch" }, { at: 235, type: "boom" }); break; // boom 2/3: CAUGHT EARLY slams
+    case "heavyKinetic": cues.push({ at: 95, type: "whip" }); break;
+    case "recapAwesome": case "recapSkills": case "recapContext": case "recapEcc": case "recapAction": case "recapMem": case "recapSuper":
+      cues.push({ at: 4, type: "clickPop" }); break;
+    case "bottleneckKinetic": cues.push({ at: 39, type: "boom" }); break; // boom 3/3: the final verdict
     case "recapDoors": cues.push({ at: 22, type: "pop" }, { at: 76, type: "ding" }, { at: 90, type: "pop" }, { at: 166, type: "pop" }, { at: 258, type: "pop" }, { at: 334, type: "pop" }); break; // winner's door opens at 54+22
     case "wrongPathKinetic": cues.push({ at: 95, type: "whip" }); break;
     case "oneComparisonKinetic": cues.push({ at: 59, type: "boom" }); break; // ONE COMPARISON stamp
