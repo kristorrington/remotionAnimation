@@ -26,7 +26,7 @@ export const EightyPercentScene: React.FC<{
   const fill = interpolate(frame, [12, doneAt - 8], [0, 0.8], { ...CLAMP, easing: (t) => 1 - (1 - t) * (1 - t) });
   const gapOn = frame >= gapAt;
   const gapPulse = gapOn ? 0.5 + 0.5 * Math.sin((frame - gapAt) * 0.35) : 0;
-  const stamp = spring({ frame: frame - gapAt - 8, fps, config: { stiffness: 210, damping: 13 }, durationInFrames: 20 });
+  const stamp = spring({ frame: frame - gapAt - 8, fps, config: { stiffness: 210, damping: 16 }, durationInFrames: 20 });
   const pose = frame < doneAt ? "thinking" : gapOn ? "confused" : "celebrate";
   return (
     <SceneShell durationInFrames={durationInFrames} particleSeed={0x515} impacts={[doneAt, gapAt]} tint={tint}>
@@ -82,10 +82,10 @@ export const PlatformPopScene: React.FC<{
         <div style={{ display: "flex", alignItems: "flex-end", gap: 64 }}>
           {tiles.map((t, i) => {
             const at = popAts[i];
-            const pop = spring({ frame: frame - at, fps, config: { stiffness: 170, damping: 13 }, durationInFrames: 24 });
+            const pop = spring({ frame: frame - at, fps, config: { stiffness: 120, damping: 18 }, durationInFrames: 24 });
             return (
               <div key={t.label} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16, opacity: frame < at ? 0 : 1 }}>
-                <div style={{ position: "relative", width: 170, height: 170, borderRadius: 34, ...glassCard(CYAN, 2), display: "flex", alignItems: "center", justifyContent: "center", transform: `scale(${interpolate(pop, [0, 1], [1.6, 1])}) rotate(${(i % 2 ? 3 : -3) * (1 - pop)}deg)` }}>
+                <div style={{ position: "relative", width: 170, height: 170, borderRadius: 14, ...glassCard(CYAN, 2), display: "flex", alignItems: "center", justifyContent: "center", transform: `scale(${interpolate(pop, [0, 1], [1.6, 1])}) rotate(${(i % 2 ? 3 : -3) * (1 - pop)}deg)` }}>
                   {t.icon}
                   <Puff at={at + 12} x={85} y={170} />
                 </div>
@@ -93,9 +93,6 @@ export const PlatformPopScene: React.FC<{
               </div>
             );
           })}
-          <div style={{ marginBottom: 6, transform: `translateY(${-popAts.reduce((a, at) => a + Math.abs(impulse(frame, at, 8, 14)), 0)}px)` }}>
-            <CartoonRobot pose={frame >= popAts[3] + 20 ? "celebrate" : "pointing"} size={220} accent={GREEN} lookX={-9} />
-          </div>
         </div>
         <SceneHeadline kicker={kicker} title={title} titleSize={62} accent={AMBER} />
       </div>
@@ -119,7 +116,7 @@ export const SlopFactoryScene: React.FC<{
           <div style={{ position: "relative", width: 900, height: 300 }}>
             {/* identical generic UI cards, landing on the belt one by one */}
             {cardAts.map((at, i) => {
-              const drop = spring({ frame: frame - at, fps, config: { stiffness: 150, damping: 12 }, durationInFrames: 24 });
+              const drop = spring({ frame: frame - at, fps, config: { stiffness: 125, damping: 17 }, durationInFrames: 24 });
               if (frame < at) return null;
               const squash = interpolate(drop, [0.7, 0.85, 1], [1, 0.86, 1], CLAMP);
               return (

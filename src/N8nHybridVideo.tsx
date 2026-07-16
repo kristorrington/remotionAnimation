@@ -88,18 +88,18 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 0:06 n8n grew 10× while no-code was "dying" */}
       <Sequence from={350} durationInFrames={98} premountFor={30}>
-        <StatCountersScene durationInFrames={98} title="WHILE NO-CODE 'DIED'" stats={[{ label: "N8N REVENUE", value: 10, suffix: "×", at: 43 }]} accent="#34D399" />
+        <StatCountersScene durationInFrames={98} title="WHILE NO-CODE 'DIED'" stats={[{ label: "N8N REVENUE", value: 10, suffix: "×", at: 43 }]} accent="#4FA98A" />
       </Sequence>
 
       {/* 0:15 Klarna's FIRST MENTION → Klarna's OWN press page (brand rule, July 2026);
           the Forbes rehire proof still lands at 2694 on "began hiring people again" */}
       <Sequence from={452} durationInFrames={180} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={180} kicker="KLARNA.COM · FEB 2024" title="ALL-IN ON AI" tint="#F59E0B" src="assets/external/screenshots/klarna-pr-wide.png" url="klarna.com/press" imageW={2152} imageH={1150} from={{ x: 76, y: 48, w: 1980, h: 1058 }} to={{ x: 8, y: 48, w: 2062, h: 1102 }} zoomAt={16} highlight={{ x: 555, y: 372, w: 835, h: 95 }} highlightAt={26} />
+        <ScreenshotReceiptScene durationInFrames={180} kicker="KLARNA.COM · FEB 2024" title="ALL-IN ON AI" tint="#C9913D" src="assets/external/screenshots/klarna-pr-wide.png" url="klarna.com/press" imageW={2152} imageH={1150} from={{ x: 76, y: 48, w: 1980, h: 1058 }} to={{ x: 8, y: 48, w: 2062, h: 1102 }} zoomAt={16} highlight={{ x: 555, y: 372, w: 835, h: 95 }} highlightAt={26} />
       </Sequence>
 
       {/* 0:21 the verdict: hybrid — the workflow slab + the AI judgement module */}
       <Sequence from={641} durationInFrames={229} premountFor={30}>
-        <HybridStackScene durationInFrames={229} title="WORKFLOW + JUDGEMENT" slabLabel="WORKFLOW" agentLabel="AI" dockAt={171} tint="#34D399" />
+        <HybridStackScene durationInFrames={229} title="WORKFLOW + JUDGEMENT" slabLabel="WORKFLOW" agentLabel="AI" dockAt={171} tint="#4FA98A" />
       </Sequence>
 
       {/* 0:30 opening b-roll: n8n's own homepage sells "AI agents and workflows" — the blur on screen */}
@@ -114,7 +114,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 0:37 all three: trigger → run → predictable */}
       <Sequence from={1104} durationInFrames={320} premountFor={30}>
-        <StepsScene durationInFrames={320} title="PREDICTABLE STEPS" accent="#F59E0B" tint="#F59E0B" steps={[{ label: "Trigger fires", at: 179 }, { label: "Workflow runs", at: 216 }, { label: "Steps behave", at: 295 }]} />
+        <StepsScene durationInFrames={320} title="PREDICTABLE STEPS" accent="#C9913D" tint="#C9913D" steps={[{ label: "Trigger fires", at: 179 }, { label: "Workflow runs", at: 216 }, { label: "Steps behave", at: 295 }]} />
       </Sequence>
 
       {/* 0:48 AI-native freedom: messy input in, a decision out */}
@@ -124,22 +124,22 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 0:56 consistency vs ambiguity — you need both */}
       <Sequence from={1678} durationInFrames={175} premountFor={30}>
-        <CompareCard kicker="YOU NEED BOTH" tint="#34D399" left={{ title: "CONSISTENCY", items: ["fixed steps"], accent: "#D97757", mark: "✓" }} right={{ title: "AMBIGUITY", items: ["messy input"], accent: "#34D399", mark: "✓" }} leftDelay={22} rightDelay={94} durationInFrames={175} />
+        <CompareCard kicker="YOU NEED BOTH" tint="#4FA98A" left={{ title: "CONSISTENCY", items: ["fixed steps"], accent: "#D97757", mark: "✓" }} right={{ title: "AMBIGUITY", items: ["messy input"], accent: "#4FA98A", mark: "✓" }} leftDelay={22} rightDelay={94} durationInFrames={175} />
       </Sequence>
 
       {/* 1:02 kinetic: intelligence ≠ reliability */}
       <Sequence from={1862} durationInFrames={113} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={113} title="SMART ≠ RELIABLE" accent="#EF4444" />
+        <FinalTakeawayScene durationInFrames={113} title="SMART ≠ RELIABLE" accent="#C65B52" />
       </Sequence>
 
       {/* 1:06 Klarna 2024: the numbers that looked like the future */}
       <Sequence from={1987} durationInFrames={240} premountFor={30}>
-        <StatCountersScene durationInFrames={240} kicker="KLARNA, 2024" title="THE AI-ONLY DREAM" stats={[{ label: "AGENTS' WORK", value: 700, at: 176 }]} accent="#F59E0B" />
+        <StatCountersScene durationInFrames={240} kicker="KLARNA, 2024" title="THE AI-ONLY DREAM" stats={[{ label: "AGENTS' WORK", value: 700, at: 176 }]} accent="#C9913D" />
       </Sequence>
 
       {/* 1:14 receipt: Klarna's OWN press release carries the 11→2 claim */}
       <Sequence from={2239} durationInFrames={105} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={105} kicker="KLARNA.COM · FEB 2024" title="THEIR OWN NUMBERS" tint="#34D399" src="assets/external/screenshots/klarna-pr-wide.png" url="klarna.com/press" imageW={2152} imageH={1150} from={{ x: 129, y: 69, w: 1894, h: 1012 }} to={{ x: 8, y: 48, w: 2062, h: 1102 }} zoomAt={8} highlight={{ x: 115, y: 838, w: 1260, h: 72 }} highlightAt={34} />
+        <ScreenshotReceiptScene durationInFrames={105} kicker="KLARNA.COM · FEB 2024" title="THEIR OWN NUMBERS" tint="#4FA98A" src="assets/external/screenshots/klarna-pr-wide.png" url="klarna.com/press" imageW={2152} imageH={1150} from={{ x: 129, y: 69, w: 1894, h: 1012 }} to={{ x: 8, y: 48, w: 2062, h: 1102 }} zoomAt={8} highlight={{ x: 115, y: 838, w: 1260, h: 72 }} highlightAt={34} />
       </Sequence>
 
       {/* 1:18 then the quality wall */}
@@ -149,7 +149,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 1:29 receipt: Forbes — Klarna hires humans back ("began hiring people again" 2765) */}
       <Sequence from={2694} durationInFrames={168} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={168} kicker="FORBES · MAY 2025" title="HIRING AGAIN" titlePos="right" tint="#F59E0B" src="assets/external/screenshots/forbes-klarna-wide.png" url="forbes.com" imageW={1600} imageH={855} from={{ x: 160, y: 85, w: 1408, h: 753 }} to={{ x: 0, y: 0, w: 1600, h: 855 }} zoomAt={18} highlight={{ x: 2, y: 148, w: 1396, h: 112 }} highlightAt={71} />
+        <ScreenshotReceiptScene durationInFrames={168} kicker="FORBES · MAY 2025" title="HIRING AGAIN" titlePos="right" tint="#C9913D" src="assets/external/screenshots/forbes-klarna-wide.png" url="forbes.com" imageW={1600} imageH={855} from={{ x: 160, y: 85, w: 1408, h: 753 }} to={{ x: 0, y: 0, w: 1600, h: 855 }} zoomAt={18} highlight={{ x: 2, y: 148, w: 1396, h: 112 }} highlightAt={71} />
       </Sequence>
 
       {/* 1:35 the fix: AI keeps simple work, humans take judgement */}
@@ -159,7 +159,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 1:45 the real lesson: too much trust, no protection */}
       <Sequence from={3161} durationInFrames={279} premountFor={30}>
-        <BalanceScaleScene durationInFrames={279} title="TOO MUCH TRUST" leftLabel="PROTECTION" rightLabel="RESPONSIBILITY" dropLeftAt={40} dropRightAt={77} tipAt={112} stampText="DESIGN MISTAKE" stampAt={213} tint="#EF4444" />
+        <BalanceScaleScene durationInFrames={279} title="TOO MUCH TRUST" leftLabel="PROTECTION" rightLabel="RESPONSIBILITY" dropLeftAt={40} dropRightAt={77} tipAt={112} stampText="DESIGN MISTAKE" stampAt={213} tint="#C65B52" />
       </Sequence>
 
       {/* 1:55 n8n's money round */}
@@ -169,12 +169,12 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 2:13 receipt: the Series C post itself ("did not confirm that figure" 3957) */}
       <Sequence from={3995} durationInFrames={150} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={150} kicker="BLOG.N8N.IO · OCT 2025" title="THE RECEIPT" tint="#34D399" src="assets/external/screenshots/n8n-seriesc-wide.png" url="blog.n8n.io/series-c" imageW={1650} imageH={882} from={{ x: 99, y: 53, w: 1452, h: 776 }} to={{ x: 0, y: 0, w: 1650, h: 882 }} zoomAt={22} highlight={{ x: 260, y: 440, w: 1250, h: 118 }} highlightAt={56} />
+        <ScreenshotReceiptScene durationInFrames={150} kicker="BLOG.N8N.IO · OCT 2025" title="THE RECEIPT" tint="#4FA98A" src="assets/external/screenshots/n8n-seriesc-wide.png" url="blog.n8n.io/series-c" imageW={1650} imageH={882} from={{ x: 99, y: 53, w: 1452, h: 776 }} to={{ x: 0, y: 0, w: 1650, h: 882 }} zoomAt={22} highlight={{ x: 260, y: 440, w: 1250, h: 118 }} highlightAt={56} />
       </Sequence>
 
       {/* 2:18 receipt: the hype, measured — Zapier's own survey ("agent hype is accelerating" 4155) */}
       <Sequence from={4149} durationInFrames={91} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={91} kicker="ZAPIER SURVEY" title="HYPE, MEASURED" tint="#F59E0B" src="assets/external/screenshots/zapier-survey-wide.png" url="zapier.com/blog/ai-agents-survey" imageW={2040} imageH={1090} from={{ x: 122, y: 65, w: 1795, h: 959 }} to={{ x: 0, y: 0, w: 2040, h: 1090 }} zoomAt={10} highlight={{ x: 295, y: 175, w: 400, h: 155 }} highlightAt={32} />
+        <ScreenshotReceiptScene durationInFrames={91} kicker="ZAPIER SURVEY" title="HYPE, MEASURED" tint="#C9913D" src="assets/external/screenshots/zapier-survey-wide.png" url="zapier.com/blog/ai-agents-survey" imageW={2040} imageH={1090} from={{ x: 122, y: 65, w: 1795, h: 959 }} to={{ x: 0, y: 0, w: 2040, h: 1090 }} zoomAt={10} highlight={{ x: 295, y: 175, w: 400, h: 155 }} highlightAt={32} />
       </Sequence>
 
       {/* 2:21 n8n = models + tools + data + workflows in ONE place */}
@@ -204,7 +204,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 2:49 receipt: Akeneo bolts an agent layer onto its no-code platform ("launched an agent layer" 5201) */}
       <Sequence from={5080} durationInFrames={250} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={250} kicker="PR NEWSWIRE" title="AGENT LAYER" titlePos="right" tint="#34D399" src="assets/external/screenshots/akeneo-pr-wide.png" url="prnewswire.com" imageW={1497} imageH={800} from={{ x: 90, y: 48, w: 1317, h: 704 }} to={{ x: 0, y: 0, w: 1497, h: 800 }} zoomAt={20} highlight={{ x: 8, y: 78, w: 1190, h: 330 }} highlightAt={121} />
+        <ScreenshotReceiptScene durationInFrames={250} kicker="PR NEWSWIRE" title="AGENT LAYER" titlePos="right" tint="#4FA98A" src="assets/external/screenshots/akeneo-pr-wide.png" url="prnewswire.com" imageW={1497} imageH={800} from={{ x: 90, y: 48, w: 1317, h: 704 }} to={{ x: 0, y: 0, w: 1497, h: 800 }} zoomAt={20} highlight={{ x: 8, y: 78, w: 1190, h: 330 }} highlightAt={121} />
       </Sequence>
 
       {/* 3:05 McKinsey: experimenting vs actually scaling */}
@@ -214,12 +214,12 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 3:19 the gap is where it hurts */}
       <Sequence from={5976} durationInFrames={190} premountFor={30}>
-        <HiddenCostScene durationInFrames={190} title="WHERE IT HURTS" chipLabels={["RELIABILITY", "GOVERNANCE", "COST"]} chipAts={[100, 135, 161]} tint="#EF4444" />
+        <HiddenCostScene durationInFrames={190} title="WHERE IT HURTS" chipLabels={["RELIABILITY", "GOVERNANCE", "COST"]} chipAts={[100, 135, 161]} tint="#C65B52" />
       </Sequence>
 
       {/* 3:26 Gartner: 40% adopt AND 40% get cancelled */}
       <Sequence from={6179} durationInFrames={341} premountFor={30}>
-        <BalanceScaleScene durationInFrames={341} kicker="GARTNER" title="ADOPTED AND CANCELLED" leftLabel="40% ADOPT" rightLabel="40% KILLED" dropLeftAt={30} dropRightAt={242} tipAt={292} tint="#F59E0B" />
+        <BalanceScaleScene durationInFrames={341} kicker="GARTNER" title="ADOPTED AND CANCELLED" leftLabel="40% ADOPT" rightLabel="40% KILLED" dropLeftAt={30} dropRightAt={242} tipAt={292} tint="#C9913D" />
       </Sequence>
 
       {/* 3:38 kinetic: both happen */}
@@ -229,12 +229,12 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 3:42 receipt: Gartner's own headline right after the 40/40 tip */}
       <Sequence from={6664} durationInFrames={136} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={136} kicker="GARTNER · AUG 2025" title="40% BY 2026" tint="#F59E0B" src="assets/external/screenshots/gartner-40pct-agents-2026.png" url="gartner.com/newsroom" imageW={2000} imageH={600} to={{ x: 85, y: 68, w: 1660, h: 477 }} zoomAt={16} highlight={{ x: 112, y: 122, w: 1565, h: 100 }} highlightAt={44} cardH={545} />
+        <ScreenshotReceiptScene durationInFrames={136} kicker="GARTNER · AUG 2025" title="40% BY 2026" tint="#C9913D" src="assets/external/screenshots/gartner-40pct-agents-2026.png" url="gartner.com/newsroom" imageW={2000} imageH={600} to={{ x: 85, y: 68, w: 1660, h: 477 }} zoomAt={16} highlight={{ x: 112, y: 122, w: 1565, h: 100 }} highlightAt={44} cardH={545} />
       </Sequence>
 
       {/* 3:47 the $1T sell-off */}
       <Sequence from={6806} durationInFrames={195} premountFor={30}>
-        <StatCountersScene durationInFrames={195} kicker="FEBRUARY" title="PRICED FOR REPLACEMENT" stats={[{ label: "$ TRILLION SELL-OFF", value: 1, at: 28 }]} accent="#EF4444" />
+        <StatCountersScene durationInFrames={195} kicker="FEBRUARY" title="PRICED FOR REPLACEMENT" stats={[{ label: "$ TRILLION SELL-OFF", value: 1, at: 28 }]} accent="#C65B52" />
       </Sequence>
 
       {/* 3:53 receipt: the coverage of the sell-off ("market fear tells you" 7012) */}
@@ -244,7 +244,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 4:03 rule 1: known steps + expensive mistakes → workflow */}
       <Sequence from={7316} durationInFrames={330} premountFor={30}>
-        <FlowScene durationInFrames={330} kicker="KNOWN STEPS?" title="WORKFLOW." nodes={[{ label: "Payments" }, { label: "Approvals" }, { label: "Compliance" }]} nodeAts={[147, 194, 222]} tint="#34D399" />
+        <FlowScene durationInFrames={330} kicker="KNOWN STEPS?" title="WORKFLOW." nodes={[{ label: "Payments" }, { label: "Approvals" }, { label: "Compliance" }]} nodeAts={[147, 194, 222]} tint="#4FA98A" />
       </Sequence>
 
       {/* 4:15 rule 2: messy + bounded → agent (four bounded jobs, four gates) */}
@@ -254,7 +254,7 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 4:27 THE payoff: connect the two — agent recommends, workflow runs it */}
       <Sequence from={8018} durationInFrames={412} premountFor={30}>
-        <HybridStackScene durationInFrames={412} kicker="MY BET" title="CORE + DECISION POINTS" slabLabel="WORKFLOW" agentLabel="AGENT" dockAt={65} chipLabels={["VALIDATE", "EXECUTE", "LOG", "RETRY", "ESCALATE"]} chipAts={[146, 168, 188, 200, 221]} tint="#34D399" />
+        <HybridStackScene durationInFrames={412} kicker="MY BET" title="CORE + DECISION POINTS" slabLabel="WORKFLOW" agentLabel="AGENT" dockAt={65} chipLabels={["VALIDATE", "EXECUTE", "LOG", "RETRY", "ESCALATE"]} chipAts={[146, 168, 188, 200, 221]} tint="#4FA98A" />
       </Sequence>
 
       {/* 4:42 product b-roll: the actual canvas ("keep building in n8n, Make, or Zapier" 8479) */}
@@ -264,12 +264,12 @@ export const N8nHybridVisuals: React.FC = () => {
 
       {/* 4:47 the skills that survive every platform cycle */}
       <Sequence from={8623} durationInFrames={240} premountFor={30}>
-        <StepsScene durationInFrames={240} title="SKILLS THAT SURVIVE" accent="#F59E0B" tint="#F59E0B" steps={[{ label: "APIs + auth", at: 8 }, { label: "Webhooks", at: 51 }, { label: "Structured data", at: 69 }, { label: "Error handling", at: 107 }]} />
+        <StepsScene durationInFrames={240} title="SKILLS THAT SURVIVE" accent="#C9913D" tint="#C9913D" steps={[{ label: "APIs + auth", at: 8 }, { label: "Webhooks", at: 51 }, { label: "Structured data", at: 69 }, { label: "Error handling", at: 107 }]} />
       </Sequence>
 
       {/* 4:55 don't marry one framework */}
       <Sequence from={8868} durationInFrames={240} premountFor={30}>
-        <CompareCard kicker="CAREER ADVICE" tint="#D97757" left={{ title: "ONE FRAMEWORK", items: ["changes fast"], accent: "#EF4444", mark: "✗" }} right={{ title: "PORTABLE SKILLS", items: ["survive cycles"], accent: "#34D399", mark: "✓" }} leftDelay={22} rightDelay={145} durationInFrames={240} />
+        <CompareCard kicker="CAREER ADVICE" tint="#D97757" left={{ title: "ONE FRAMEWORK", items: ["changes fast"], accent: "#C65B52", mark: "✗" }} right={{ title: "PORTABLE SKILLS", items: ["survive cycles"], accent: "#4FA98A", mark: "✓" }} leftDelay={22} rightDelay={145} durationInFrames={240} />
       </Sequence>
 
       {/* 5:03 finale: the durable skill */}

@@ -10,7 +10,7 @@ import { loadFont as loadMono } from "@remotion/google-fonts/RobotoMono";
 export const BLUE = "#C15F3C";
 export const CYAN = "#D97757";
 export const WHITE = "#FFFFFF";
-export const RED = "#EF4444";
+export const RED = "#C65B52";
 // Attention roles (viral-shorts colour research, July 2026): HOT is the
 // scroll-stopper — hook keyword + impact stamps ONLY, never furniture; GOLD is
 // CTAs + the one big number (yellow-as-accent = top CTR combo on dark).
@@ -35,6 +35,9 @@ const { fontFamily: monoFamily } = loadMono("normal", {
 
 export const FONT = interFamily;
 export const MONO = monoFamily;
+// Editorial serif for kickers + hero figures (premium pass 13.1) - system
+// stack, render-safe without a webfont fetch.
+export const SERIF = 'Georgia, "Iowan Old Style", "Times New Roman", serif';
 
 // A rounded, semi-transparent dark pill. Inline-flex so it hugs its content.
 export const Pill: React.FC<{

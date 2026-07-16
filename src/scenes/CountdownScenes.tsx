@@ -356,7 +356,7 @@ export const ClassifierScene: React.FC<{ durationInFrames: number; kicker?: stri
             <div style={{ position: "absolute", left: 40 + approach + bounce, top: 120 + fallY, ...chip(RED, 24), opacity: badgeOp, transform: `translateZ(0) rotate(${c >= 18 ? -30 : 0}deg)` }}>REPORTED TECHNIQUE</div>
             <div style={{ position: "absolute", right: 30, top: 40 }}>
               <svg width={230} height={250} viewBox="0 0 100 110" style={{ filter: `drop-shadow(0 0 ${14 * pulse}px ${cracked ? AMBER : CYAN})` }}>
-                <path d="M50 6 L88 20 V52 C88 78 71 94 50 102 C29 94 12 78 12 52 V20 Z" stroke={cracked ? AMBER : CYAN} strokeWidth={6} fill={cracked ? "rgba(245,158,11,0.12)" : "rgba(217,119,87,0.14)"} />
+                <path d="M50 6 L88 20 V52 C88 78 71 94 50 102 C29 94 12 78 12 52 V20 Z" stroke={cracked ? AMBER : CYAN} strokeWidth={6} fill={cracked ? "rgba(201,145,61,0.12)" : "rgba(217,119,87,0.14)"} />
                 <path d="M42 30 L54 48 L44 62 L56 80" stroke={WHITE} strokeWidth={5} fill="none" strokeLinecap="round" opacity={cracked ? 0.9 : 0} />
               </svg>
               <Sparks at={blockAt + 26} x={40} y={120} color={CYAN} size={150} />
@@ -551,7 +551,7 @@ export const WatchWordingScene: React.FC<{ durationInFrames: number; kicker?: st
                 <ClaudeMark size={26} />
                 <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 22, color: WHITE, transform: "translateZ(0)" }}>Anthropic — official</span>
               </div>
-              <div style={{ position: "relative", padding: "8px 12px", borderRadius: 8, background: "rgba(52,211,153,0.14)", overflow: "hidden" }}>
+              <div style={{ position: "relative", padding: "8px 12px", borderRadius: 8, background: "rgba(79,169,138,0.14)", overflow: "hidden" }}>
                 <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 21, color: WHITE, transform: "translateZ(0)" }}>standard plans + a REAL DATE</span>
                 <HighlightSweep at={checkAt - 14} color={GREEN} />
               </div>

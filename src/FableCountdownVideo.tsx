@@ -83,7 +83,7 @@ export const FableCountdownVisuals: React.FC = () => {
 
       {/* 0:36 CLEAN RULES — routine falls through, result-changing work passes */}
       <Sequence from={1087} durationInFrames={420} premountFor={30}>
-        <ThresholdGateScene durationInFrames={420} kicker="MY CLEAN RULES" title="ONLY WHERE IT CHANGES THE RESULT" failLabel="ROUTINE" passLabel="CHANGES IT" zoneLabel="FABLE-WORTHY" skipStamp="CHEAPER MODEL" tint="#34D399" />
+        <ThresholdGateScene durationInFrames={420} kicker="MY CLEAN RULES" title="ONLY WHERE IT CHANGES THE RESULT" failLabel="ROUTINE" passLabel="CHANGES IT" zoneLabel="FABLE-WORTHY" skipStamp="CHEAPER MODEL" tint="#4FA98A" />
       </Sequence>
 
       {/* 0:50 WHAT CHANGED — the window slides July 7 → July 12 */}
@@ -100,12 +100,12 @@ export const FableCountdownVisuals: React.FC = () => {
 
       {/* 1:14 WHEN THE PROMO ENDS — credits, or switch back */}
       <Sequence from={2240} durationInFrames={360} premountFor={30}>
-        <CompareCard kicker="ONCE THE PROMO ENDS" tint="#F59E0B" left={{ title: "KEEP USING FABLE", items: ["usage credits"], accent: "#E8B84B", mark: "»" }} right={{ title: "OR SWITCH BACK", items: ["Opus · Sonnet"], accent: "#34D399", mark: "»" }} leftDelay={234} rightDelay={318} durationInFrames={360} />
+        <CompareCard kicker="ONCE THE PROMO ENDS" tint="#C9913D" left={{ title: "KEEP USING FABLE", items: ["usage credits"], accent: "#E8B84B", mark: "»" }} right={{ title: "OR SWITCH BACK", items: ["Opus · Sonnet"], accent: "#4FA98A", mark: "»" }} leftDelay={234} rightDelay={318} durationInFrames={360} />
       </Sequence>
 
       {/* 1:28 "EXTENDED" ≠ SAFE — relieved robot vs alarmed robot */}
       <Sequence from={2645} durationInFrames={400} premountFor={30}>
-        <ReactionsScene durationInFrames={400} kicker="DON'T RELAX YET" leftBubble="PRESSURE'S GONE" leftPose="celebrate" leftAccent="#34D399" leftAt={104} rightBubble="5 DAYS" rightPose="alarmed" rightAccent="#EF4444" rightAt={221} stamp="STILL A COUNTDOWN" stampColor="#EF4444" pointAt={317} tint="#EF4444" />
+        <ReactionsScene durationInFrames={400} kicker="DON'T RELAX YET" leftBubble="PRESSURE'S GONE" leftPose="celebrate" leftAccent="#4FA98A" leftAt={104} rightBubble="5 DAYS" rightPose="alarmed" rightAccent="#C65B52" rightAt={221} stamp="STILL A COUNTDOWN" stampColor="#C65B52" pointAt={317} tint="#C65B52" />
       </Sequence>
 
       {/* 1:55 THE SAFEST READ — demand high, capacity tight */}
@@ -123,9 +123,9 @@ export const FableCountdownVisuals: React.FC = () => {
       {/* 2:23 THE JUNE STORY — dated receipt cards */}
       <Sequence from={4290} durationInFrames={630} premountFor={30}>
         <JuneTimelineScene durationInFrames={630} kicker="THE IMPORTANT PART" title="JUNE EXPLAINS THE DRAMA" cards={[
-          { date: "JUN 12", label: "EXPORT CONTROLS → SHUTDOWN", color: "#EF4444", at: 75 },
-          { date: "JUN 30", label: "CONTROLS LIFTED", color: "#34D399", at: 513 },
-          { date: "JUL 1", label: "BACK — GLOBALLY", color: "#34D399", at: 552 },
+          { date: "JUN 12", label: "EXPORT CONTROLS → SHUTDOWN", color: "#C65B52", at: 75 },
+          { date: "JUN 30", label: "CONTROLS LIFTED", color: "#4FA98A", at: 513 },
+          { date: "JUL 1", label: "BACK — GLOBALLY", color: "#4FA98A", at: 552 },
         ]} />
       </Sequence>
 
@@ -136,7 +136,7 @@ export const FableCountdownVisuals: React.FC = () => {
 
       {/* 2:56 THE PUSHBACK — Messaros vs the jailbreak framing */}
       <Sequence from={5290} durationInFrames={440} premountFor={30}>
-        <ReactionsScene durationInFrames={440} kicker="THE PUSHBACK" leftBubble="DEFENSIVE WORK" leftPose="pointing" leftAccent="#D97757" leftAt={401} rightBubble="A JAILBREAK?" rightPose="shrug" rightAccent="#F59E0B" rightAt={241} stamp="OVERSTATED?" stampColor="#F59E0B" pointAt={271} tint="#F59E0B" />
+        <ReactionsScene durationInFrames={440} kicker="THE PUSHBACK" leftBubble="DEFENSIVE WORK" leftPose="pointing" leftAccent="#D97757" leftAt={401} rightBubble="A JAILBREAK?" rightPose="shrug" rightAccent="#C9913D" rightAt={241} stamp="OVERSTATED?" stampColor="#C9913D" pointAt={271} tint="#C9913D" />
       </Sequence>
 
       {/* 3:11 WHAT SHE ACTUALLY DID — find → fix → test */}
@@ -158,14 +158,14 @@ export const FableCountdownVisuals: React.FC = () => {
 
       {/* 3:57 CONDITIONAL — plan, limits, routing */}
       <Sequence from={7125} durationInFrames={350} premountFor={30}>
-        <StepsScene durationInFrames={350} kicker="NOT JUST EXPENSIVE" title="CONDITIONAL" accent="#F59E0B" tint="#D97757" steps={[
+        <StepsScene durationInFrames={350} kicker="NOT JUST EXPENSIVE" title="CONDITIONAL" accent="#C9913D" tint="#D97757" steps={[
           { label: "Access → your plan", at: 19 }, { label: "Usage → weekly limits", at: 70 }, { label: "Requests → safety routing", at: 138 },
         ]} />
       </Sequence>
 
       {/* 4:11 BURN THE LIMIT? — only on the right jobs */}
       <Sequence from={7545} durationInFrames={445} premountFor={30}>
-        <RoutingLanesScene durationInFrames={445} kicker="BURN THE LIMIT?" title="ONLY ON THE RIGHT JOBS" tint="#34D399" cards={[
+        <RoutingLanesScene durationInFrames={445} kicker="BURN THE LIMIT?" title="ONLY ON THE RIGHT JOBS" tint="#4FA98A" cards={[
           { label: "STUCK PROJECT", lane: 2, at: 83 },
           { label: "CODEBASE REVIEW", lane: 2, at: 155 },
           { label: "PLANNING PROBLEMS", lane: 2, at: 245 },
@@ -182,7 +182,7 @@ export const FableCountdownVisuals: React.FC = () => {
 
       {/* 4:45 THE DECISION RULE — before vs after July 12 */}
       <Sequence from={8547} durationInFrames={320} premountFor={30}>
-        <CompareCard kicker="THE DECISION RULE" tint="#D97757" left={{ title: "BEFORE JULY 12", items: ["hardest unfinished work"], accent: "#E8B84B", mark: "»" }} right={{ title: "AFTER JULY 12", items: ["only if it beats the credit cost"], accent: "#34D399", mark: "»" }} leftDelay={140} rightDelay={194} durationInFrames={320} />
+        <CompareCard kicker="THE DECISION RULE" tint="#D97757" left={{ title: "BEFORE JULY 12", items: ["hardest unfinished work"], accent: "#E8B84B", mark: "»" }} right={{ title: "AFTER JULY 12", items: ["only if it beats the credit cost"], accent: "#4FA98A", mark: "»" }} leftDelay={140} rightDelay={194} durationInFrames={320} />
       </Sequence>
 
       {/* 4:58 WATCH THE WORDING — screenshots lie, official dates don't */}
@@ -192,7 +192,7 @@ export const FableCountdownVisuals: React.FC = () => {
 
       {/* 5:14 TAKEAWAY — leverage (stamp lands on the spoken word) */}
       <Sequence from={9419} durationInFrames={190} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={190} kicker="IF YOU'RE A BUILDER" title="ONE THING MATTERS" stamp="LEVERAGE" stampAt={132} accent="#34D399" />
+        <FinalTakeawayScene durationInFrames={190} kicker="IF YOU'RE A BUILDER" title="ONE THING MATTERS" stamp="LEVERAGE" stampAt={132} accent="#4FA98A" />
       </Sequence>
 
       {/* 5:20 OUTRO — anchored to the spoken "subscribe" (9615) */}

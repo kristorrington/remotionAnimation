@@ -7,9 +7,9 @@ import { Img, staticFile, useCurrentFrame } from "remotion";
 const CYAN = "#D97757";
 const BLUE = "#C15F3C";
 const WHITE = "#FFFFFF";
-const RED = "#EF4444";
-const AMBER = "#F59E0B";
-const GREEN = "#34D399";
+const RED = "#C65B52";
+const AMBER = "#C9913D";
+const GREEN = "#4FA98A";
 
 const Svg: React.FC<{ size: number; children: React.ReactNode }> = ({ size, children }) => (
   <svg width={size} height={size} viewBox="0 0 100 100" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -204,7 +204,7 @@ export const IconCoinDown: React.FC<{ size?: number }> = ({ size = 120 }) => {
   const dy = 3 * Math.sin(frame * 0.2);
   return (
     <Svg size={size}>
-      <circle cx="50" cy="44" r="28" stroke={GREEN} strokeWidth="6" fill="rgba(52,211,153,0.12)" />
+      <circle cx="50" cy="44" r="28" stroke={GREEN} strokeWidth="6" fill="rgba(79,169,138,0.12)" />
       <g transform={`translate(0 ${dy})`}>
         <line x1="50" y1="30" x2="50" y2="54" stroke={GREEN} strokeWidth="7" />
         <path d="M38 44 L50 58 L62 44" stroke={GREEN} strokeWidth="7" />
@@ -220,7 +220,7 @@ export const IconUnlock: React.FC<{ size?: number }> = ({ size = 120 }) => {
   const glow = 0.5 + 0.5 * Math.sin(frame * 0.2);
   return (
     <Svg size={size}>
-      <rect x="30" y="48" width="40" height="34" rx="6" stroke={GREEN} strokeWidth="6" fill="rgba(52,211,153,0.1)" />
+      <rect x="30" y="48" width="40" height="34" rx="6" stroke={GREEN} strokeWidth="6" fill="rgba(79,169,138,0.1)" />
       <path d="M38 48 V38 A12 12 0 0 1 62 38 V44" stroke={GREEN} strokeWidth="6" transform={`rotate(${-34 * open} 38 48)`} />
       <circle cx="50" cy="63" r="5" fill={GREEN} opacity={glow} />
     </Svg>
@@ -248,7 +248,7 @@ export const IconError: React.FC<{ size?: number }> = ({ size = 120 }) => {
   return (
     <Svg size={size}>
       <g transform={`translate(${shake} 0)`}>
-        <path d="M50 16 L86 80 H14 Z" stroke={RED} strokeWidth="6" fill="rgba(239,68,68,0.12)" opacity={0.6 + 0.4 * p} />
+        <path d="M50 16 L86 80 H14 Z" stroke={RED} strokeWidth="6" fill="rgba(198,91,82,0.12)" opacity={0.6 + 0.4 * p} />
         <line x1="50" y1="40" x2="50" y2="62" stroke={RED} strokeWidth="7" />
         <circle cx="50" cy="72" r="3.5" fill={RED} />
       </g>
@@ -318,8 +318,8 @@ export const IconPrice: React.FC<{ size?: number }> = ({ size = 120 }) => {
   return (
     <Svg size={size}>
       <g transform={`translate(0 ${y})`}>
-        <circle cx="42" cy="52" r="30" stroke={AMBER} strokeWidth="6" fill="rgba(245,158,11,0.12)" />
-        <circle cx="58" cy="46" r="30" stroke={AMBER} strokeWidth="6" fill="rgba(245,158,11,0.16)" />
+        <circle cx="42" cy="52" r="30" stroke={AMBER} strokeWidth="6" fill="rgba(201,145,61,0.12)" />
+        <circle cx="58" cy="46" r="30" stroke={AMBER} strokeWidth="6" fill="rgba(201,145,61,0.16)" />
         <text x="58" y="58" textAnchor="middle" fontSize="34" fontWeight="800" fill={WHITE} fontFamily="sans-serif">$</text>
       </g>
     </Svg>
@@ -347,7 +347,7 @@ export const IconShieldAlert: React.FC<{ size?: number }> = ({ size = 120 }) => 
   const p = 0.5 + 0.5 * Math.sin(frame * 0.24);
   return (
     <Svg size={size}>
-      <path d="M50 12 L82 24 V50 C82 71 68 84 50 90 C32 84 18 71 18 50 V24 Z" stroke={AMBER} strokeWidth="6" fill="rgba(245,158,11,0.12)" opacity={0.7 + 0.3 * p} />
+      <path d="M50 12 L82 24 V50 C82 71 68 84 50 90 C32 84 18 71 18 50 V24 Z" stroke={AMBER} strokeWidth="6" fill="rgba(201,145,61,0.12)" opacity={0.7 + 0.3 * p} />
       <line x1="50" y1="36" x2="50" y2="58" stroke={AMBER} strokeWidth="7" />
       <circle cx="50" cy="69" r="4" fill={AMBER} />
     </Svg>
@@ -361,7 +361,7 @@ export const IconBug: React.FC<{ size?: number }> = ({ size = 120 }) => {
   return (
     <Svg size={size}>
       <g transform={`translate(${j} 0)`}>
-        <ellipse cx="50" cy="56" rx="17" ry="22" stroke={RED} strokeWidth="6" fill="rgba(239,68,68,0.12)" />
+        <ellipse cx="50" cy="56" rx="17" ry="22" stroke={RED} strokeWidth="6" fill="rgba(198,91,82,0.12)" />
         <circle cx="50" cy="32" r="8" stroke={RED} strokeWidth="6" />
         <line x1="45" y1="26" x2="40" y2="18" stroke={RED} strokeWidth="5" />
         <line x1="55" y1="26" x2="60" y2="18" stroke={RED} strokeWidth="5" />
@@ -418,7 +418,7 @@ export const IconStack: React.FC<{ size?: number }> = ({ size = 120 }) => {
     <Svg size={size}>
       {[26, 48, 70].map((y, i) => (
         <g key={y}>
-          <rect x="24" y={y} width="52" height="16" rx="4" stroke={i === 2 ? RED : CYAN} strokeWidth="5" fill={i === 2 ? `rgba(239,68,68,${0.15 * flick})` : "transparent"} />
+          <rect x="24" y={y} width="52" height="16" rx="4" stroke={i === 2 ? RED : CYAN} strokeWidth="5" fill={i === 2 ? `rgba(198,91,82,${0.15 * flick})` : "transparent"} />
           <circle cx="66" cy={y + 8} r="3" fill={i === 2 ? RED : GREEN} opacity={i === 2 ? 0.5 + 0.5 * flick : 1} />
         </g>
       ))}
@@ -432,7 +432,7 @@ export const IconGate: React.FC<{ size?: number }> = ({ size = 120 }) => {
   const p = 0.5 + 0.5 * Math.sin(frame * 0.2);
   return (
     <Svg size={size}>
-      <rect x="28" y="46" width="44" height="36" rx="6" stroke={AMBER} strokeWidth="6" fill="rgba(245,158,11,0.12)" />
+      <rect x="28" y="46" width="44" height="36" rx="6" stroke={AMBER} strokeWidth="6" fill="rgba(201,145,61,0.12)" />
       <path d="M38 46 V38 a12 12 0 0 1 24 0 V46" stroke={AMBER} strokeWidth="6" />
       <circle cx="50" cy="60" r="4" fill={WHITE} opacity={0.7 + 0.3 * p} />
       <line x1="50" y1="62" x2="50" y2="70" stroke={WHITE} strokeWidth="4" />

@@ -48,8 +48,8 @@ export const Fable5Video: React.FC = () => {
       <Sequence from={3540} durationInFrames={800} premountFor={30}>
         <CompareCard
           kicker="WHERE IT MATTERS"
-          left={{ title: "Simple tasks", items: ["Chatting", "Basic writing", "Barely any difference"], accent: "#34D399", mark: "✓" }}
-          right={{ title: "Complex work", items: ["Running a workflow", "Large documents", "Be more careful"], accent: "#F59E0B", mark: "!" }}
+          left={{ title: "Simple tasks", items: ["Chatting", "Basic writing", "Barely any difference"], accent: "#4FA98A", mark: "✓" }}
+          right={{ title: "Complex work", items: ["Running a workflow", "Large documents", "Be more careful"], accent: "#C9913D", mark: "!" }}
           leftDelay={70}
           rightDelay={200}
           durationInFrames={800}
@@ -60,8 +60,8 @@ export const Fable5Video: React.FC = () => {
       <Sequence from={7720} durationInFrames={620} premountFor={30}>
         <CompareCard
           kicker="SHOULD YOU SWITCH?"
-          left={{ title: "Use it", items: ["Deeper understanding", "Larger inputs", "Long docs & hard problems"], accent: "#34D399", mark: "✓" }}
-          right={{ title: "Avoid it", items: ["Repetitive tasks", "Low-value work", "No fallback plan"], accent: "#EF4444", mark: "✗" }}
+          left={{ title: "Use it", items: ["Deeper understanding", "Larger inputs", "Long docs & hard problems"], accent: "#4FA98A", mark: "✓" }}
+          right={{ title: "Avoid it", items: ["Repetitive tasks", "Low-value work", "No fallback plan"], accent: "#C65B52", mark: "✗" }}
           leftDelay={180}
           rightDelay={437}
           durationInFrames={620}

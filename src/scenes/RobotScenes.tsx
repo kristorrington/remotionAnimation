@@ -51,7 +51,7 @@ export const BoredMattersScene: React.FC<{ durationInFrames: number; kicker?: st
   return (
     <SceneShell durationInFrames={durationInFrames} particleSeed={0x36}>
       {/* red wake-up wash */}
-      {awake && <div style={{ position: "absolute", inset: 0, background: `radial-gradient(circle at 50% 40%, rgba(239,68,68,${0.12 * flash}), transparent 60%)` }} />}
+      {awake && <div style={{ position: "absolute", inset: 0, background: `radial-gradient(circle at 50% 40%, rgba(198,91,82,${0.12 * flash}), transparent 60%)` }} />}
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 30 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 90 }}>
           <CartoonRobot pose={awake ? "alarmed" : "sleepy"} size={260} accent={awake ? RED : CYAN} />
@@ -97,7 +97,7 @@ export const ObstacleRunScene: React.FC<{ durationInFrames: number; kicker?: str
             const t = dropped ? Math.min(1, (frame - clearAt - i * 6) / 16) : 0;
             const h = w.drops ? 170 : 120;
             return (
-              <div key={w.label} style={{ position: "absolute", left: w.x, bottom: 44, width: 26, height: h * (1 - 0.9 * t), background: dropped ? `rgba(239,68,68,${0.5 * (1 - t)})` : "rgba(239,68,68,0.55)", border: `3px solid ${RED}`, borderRadius: 6, opacity: 1 - 0.55 * t }}>
+              <div key={w.label} style={{ position: "absolute", left: w.x, bottom: 44, width: 26, height: h * (1 - 0.9 * t), background: dropped ? `rgba(198,91,82,${0.5 * (1 - t)})` : "rgba(198,91,82,0.55)", border: `3px solid ${RED}`, borderRadius: 6, opacity: 1 - 0.55 * t }}>
                 <span style={{ position: "absolute", top: -34, left: -34, width: 100, textAlign: "center", fontFamily: FONT, fontWeight: 800, fontSize: 20, letterSpacing: 1, color: dropped ? "rgba(255,255,255,0.4)" : WHITE, textDecoration: dropped ? "line-through" : "none" }}>{w.label}</span>
               </div>
             );

@@ -16,7 +16,7 @@ import { Beat } from "./types";
 // crossfade, so the gradient sweeps with each 1.5–3s reset; never the same
 // navy twice in a row). Explicit `Beat.tint` wins; the palette rotation covers
 // archived specs that predate the field.
-const BEAT_TINTS = ["#D97757", "#F59E0B", "#34D399", "#EF4444"];
+const BEAT_TINTS = ["#D97757", "#C9913D", "#4FA98A", "#C65B52"];
 
 // Shared glass-gradient fill for the one-off SVG machines (PREMIUM finish).
 const GLASS_DEFS = (
@@ -81,7 +81,7 @@ const Verdict: React.FC<{ kind: "check" | "warn" | "cross"; at: number; size?: n
       <svg width={size} height={size} viewBox="0 0 100 100" style={{ filter: `drop-shadow(0 0 14px ${color})` }}>
         {kind === "warn" ? (
           <>
-            <path d="M50 10 L92 84 H8 Z" fill="rgba(245,158,11,0.15)" stroke={AMBER} strokeWidth={7} strokeLinejoin="round" />
+            <path d="M50 10 L92 84 H8 Z" fill="rgba(201,145,61,0.15)" stroke={AMBER} strokeWidth={7} strokeLinejoin="round" />
             <line x1={50} y1={38} x2={50} y2={62} stroke={AMBER} strokeWidth={9} strokeLinecap="round" />
             <circle cx={50} cy={74} r={5} fill={AMBER} />
           </>
@@ -140,7 +140,7 @@ const BuyersBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
             const q = spring({ frame: frame - 26 - i * 9, fps, config: { stiffness: 240, damping: 12 }, durationInFrames: 14 });
             return (
               <div key={n} style={{ opacity: interpolate(e, [0, 0.3], [0, 1], CLAMP), transform: `translateY(${interpolate(e, [0, 1], [46, 0])}px)` }}>
-                <div style={{ position: "relative", width: 148, height: 196, borderRadius: 16, border: `3px dashed ${cross ? "rgba(239,68,68,0.6)" : `${c}77`}`, background: t.name === "paper" ? "rgba(255,255,255,0.55)" : "rgba(255,255,255,0.05)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8 }}>
+                <div style={{ position: "relative", width: 148, height: 196, borderRadius: 16, border: `3px dashed ${cross ? "rgba(198,91,82,0.6)" : `${c}77`}`, background: t.name === "paper" ? "rgba(255,255,255,0.55)" : "rgba(255,255,255,0.05)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8 }}>
                   <svg width={70} height={70} viewBox="0 0 100 100">
                     <circle cx={50} cy={32} r={19} fill="none" stroke={c} strokeWidth={7} opacity={0.8} />
                     <path d="M14 92 C22 62 78 62 86 92" fill="none" stroke={c} strokeWidth={7} strokeLinecap="round" opacity={0.8} />
@@ -211,7 +211,7 @@ const StackBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
           <CartoonRobot pose={collapsed ? "alarmed" : "worried"} size={170} accent={collapsed ? RED : CYAN} />
         </div>
       </div>
-      <BeatLabel text={beat.text} accent={beat.accent ?? "#F59E0B"} />
+      <BeatLabel text={beat.text} accent={beat.accent ?? "#C9913D"} />
     </Wrap>
   );
 };
@@ -244,7 +244,7 @@ const BoltBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
       </div>
       <BeatLabel text={beat.text} sub={beat.sub} accent={beat.accent} />
       {beat.warn ? (
-        <div style={{ opacity: warnOp, transform: "translateZ(0)", padding: "10px 22px", borderRadius: 12, border: `3px solid ${AMBER}`, background: "rgba(245,158,11,0.12)" }}>
+        <div style={{ opacity: warnOp, transform: "translateZ(0)", padding: "10px 22px", borderRadius: 12, border: `3px solid ${AMBER}`, background: "rgba(201,145,61,0.12)" }}>
           <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 30, letterSpacing: 2, color: AMBER }}>{beat.warn}</span>
         </div>
       ) : null}
@@ -311,7 +311,7 @@ const MigrateBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
         {/* test bench, the better destination */}
         <div style={{ position: "absolute", left: 6, bottom: 60, display: "flex", flexDirection: "column", alignItems: "center", gap: 8, opacity: interpolate(frame, [turnAt, turnAt + 10], [0.4, 1], CLAMP) }}>
           {sign("TEST BENCH", GREEN)}
-          <div style={{ width: 150, height: 16, borderRadius: 6, background: "rgba(52,211,153,0.3)", border: `3px solid ${GREEN}` }} />
+          <div style={{ width: 150, height: 16, borderRadius: 6, background: "rgba(79,169,138,0.3)", border: `3px solid ${GREEN}` }} />
         </div>
         {/* STOP sign drops in front of the gate */}
         {frame >= stopAt && (
@@ -452,7 +452,7 @@ const ConveyorBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
             {belt(160, 700, 40)}
             {card(labels[0] === "DONE" ? "WORKFLOW" : labels[0], interpolate(frame, [4, dur * 0.6], [40, 560], CLAMP), 118, CYAN)}
             {/* done tray + check */}
-            <div style={{ position: "absolute", right: 40, top: 96, width: 170, height: 110, borderRadius: 14, border: `2px solid ${GREEN}AA`, background: "rgba(52,211,153,0.1)", boxShadow: `inset 0 1px 0 rgba(255,255,255,0.08), 0 0 16px ${GREEN}22`, display: "flex", alignItems: "flex-end", justifyContent: "center", paddingBottom: 8 }}>
+            <div style={{ position: "absolute", right: 40, top: 96, width: 170, height: 110, borderRadius: 14, border: `2px solid ${GREEN}AA`, background: "rgba(79,169,138,0.1)", boxShadow: `inset 0 1px 0 rgba(255,255,255,0.08), 0 0 16px ${GREEN}22`, display: "flex", alignItems: "flex-end", justifyContent: "center", paddingBottom: 8 }}>
               <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 24, letterSpacing: 2, color: GREEN }}>DONE</span>
             </div>
             <div style={{ position: "absolute", right: 80, top: 40 }}>
@@ -889,7 +889,7 @@ const FunnelBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
           <div style={{ width: 196, borderRadius: 12, ...glassCard(GREEN, 2.5), padding: "16px 16px", textAlign: "center" }}>
             <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 21, letterSpacing: 1, color: WHITE, transform: "translateZ(0)" }}>{beat.badge ?? "THE REPORT"}</span>
             {[86, 70].map((w, k) => (
-              <div key={k} style={{ width: `${w}%`, height: 8, borderRadius: 4, background: "rgba(52,211,153,0.4)", margin: "10px auto" }} />
+              <div key={k} style={{ width: `${w}%`, height: 8, borderRadius: 4, background: "rgba(79,169,138,0.4)", margin: "10px auto" }} />
             ))}
           </div>
           <Sparks at={reportAt + 8} x={98} y={26} color={GREEN} size={140} />
@@ -928,7 +928,7 @@ const CartridgeBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => 
                 <div style={{ width: 128, borderRadius: 12, ...glassCard(GREEN, 2), padding: "10px 12px" }}>
                   <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 16, letterSpacing: 1, color: GREEN, transform: "translateZ(0)" }}>RUN {i + 1}</span>
                   {[84, 70].map((w, k) => (
-                    <div key={k} style={{ width: `${w}%`, height: 6, borderRadius: 3, background: "rgba(52,211,153,0.4)", margin: "7px 0" }} />
+                    <div key={k} style={{ width: `${w}%`, height: 6, borderRadius: 3, background: "rgba(79,169,138,0.4)", margin: "7px 0" }} />
                   ))}
                 </div>
               </div>

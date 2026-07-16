@@ -60,7 +60,7 @@ export const PickCheaperScene: React.FC<{ durationInFrames: number; kicker?: str
           <ClaudeMark size={42} />
           <div style={{ ...chip(hero ? GREEN : AMBER, 30) }}>{price}</div>
         </div>
-        <div style={{ filter: hero && picked ? `drop-shadow(0 0 42px ${GREEN}99)` : hero ? `drop-shadow(0 0 24px ${GREEN}66)` : "drop-shadow(0 0 20px rgba(245,158,11,0.35))", opacity: dim }}>
+        <div style={{ filter: hero && picked ? `drop-shadow(0 0 42px ${GREEN}99)` : hero ? `drop-shadow(0 0 24px ${GREEN}66)` : "drop-shadow(0 0 20px rgba(201,145,61,0.35))", opacity: dim }}>
           <ModelBlock label={label} width={hero ? 390 : 360} coreColor={hero ? GREEN : AMBER} />
         </div>
         <Puff at={at + 14} x={hero ? 195 : 180} y={hero ? 220 : 210} size={150} />
@@ -154,7 +154,7 @@ export const LeakDocScene: React.FC<{ durationInFrames: number; kicker?: string;
               <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 24, color: "#22293A", transform: "translateZ(0)", display: "block" }}>fable_system_prompt.txt</span>
               <span style={{ fontFamily: FONT, fontWeight: 600, fontSize: 16, color: "#7A8194", display: "block", marginBottom: 14 }}>"leaked" — origin unknown</span>
               {lines.map((l, i) => (
-                <div key={l} style={{ position: "relative", margin: "9px 0", padding: "7px 12px", borderRadius: 7, background: good ? "rgba(52,211,153,0.2)" : "rgba(34,41,58,0.08)", overflow: "hidden" }}>
+                <div key={l} style={{ position: "relative", margin: "9px 0", padding: "7px 12px", borderRadius: 7, background: good ? "rgba(79,169,138,0.2)" : "rgba(34,41,58,0.08)", overflow: "hidden" }}>
                   <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 19, color: "#38415A" }}>{l}</span>
                   {good && <HighlightSweep at={goodAt + 8 + i * 10} color={GREEN} />}
                 </div>

@@ -11,7 +11,7 @@ const ramp = (i: number, n: number) => {
   const t = n > 1 ? i / (n - 1) : 0;
   if (t < 0.5) return GREEN;
   if (t < 0.85) return AMBER;
-  return "#EF4444";
+  return "#C65B52";
 };
 
 const Rung: React.FC<{ label: string; at: number; color: string; i: number; n: number }> = ({ label, at, color, i, n }) => {
@@ -20,7 +20,7 @@ const Rung: React.FC<{ label: string; at: number; color: string; i: number; n: n
   const e = spring({ frame: frame - at, fps, config: { stiffness: 220, damping: 16, mass: 0.7 }, durationInFrames: 16 });
   const op = interpolate(frame, [at, at + 8], [0, 1], CLAMP);
   const width = 420 + (i / Math.max(1, n - 1)) * 560; // each rung wider = escalating
-  const danger = color === "#EF4444";
+  const danger = color === "#C65B52";
   const pulse = danger ? 0.6 + 0.4 * Math.sin(frame * 0.4) : 1;
   return (
     <div

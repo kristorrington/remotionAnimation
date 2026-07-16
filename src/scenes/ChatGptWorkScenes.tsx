@@ -44,7 +44,7 @@ export const OneWorkspaceScene: React.FC<{
       name: panelNames[1], color: GREEN, x: 560, y: -190,
       body: (
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 34px)", gap: 8 }}>
-          {[CYAN, GREEN, AMBER, "#60A5FA", RED, "#A78BFA"].map((c, i) => (
+          {[CYAN, GREEN, AMBER, "#6E93BD", RED, "#A78BFA"].map((c, i) => (
             <div key={i} style={{ width: 34, height: 34, borderRadius: 9, background: `${c}33`, border: `2px solid ${c}` }} />
           ))}
         </div>
@@ -63,7 +63,7 @@ export const OneWorkspaceScene: React.FC<{
       ),
     },
     {
-      name: panelNames[3], color: "#60A5FA", x: 560, y: 210,
+      name: panelNames[3], color: "#6E93BD", x: 560, y: 210,
       body: (
         <div style={{ fontFamily: MONO, fontSize: 15, lineHeight: 1.5, transform: "translateZ(0)" }}>
           <div style={{ color: GREEN }}>+ deploy(work)</div>
@@ -135,9 +135,9 @@ export const RivalryScene: React.FC<{
   const defaultCols = [
     { name: "CHATGPT", sub: "WORK", color: CYAN, mark: <ChatGptMark size={76} glow />, fromY: -420 },
     { name: "CLAUDE", sub: "COWORK", color: "#D97757", mark: <ClaudeMark size={64} />, fromY: 420 },
-    { name: "COPILOT", sub: "COWORK", color: "#60A5FA", mark: (
-        <div style={{ width: 64, height: 64, borderRadius: 16, background: "#60A5FA22", border: "2px solid #60A5FA", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <span style={label(30, "#60A5FA")}>C</span>
+    { name: "COPILOT", sub: "COWORK", color: "#6E93BD", mark: (
+        <div style={{ width: 64, height: 64, borderRadius: 16, background: "#6E93BD22", border: "2px solid #6E93BD", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <span style={label(30, "#6E93BD")}>C</span>
         </div>
       ), fromY: -420 },
   ];

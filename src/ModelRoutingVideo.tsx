@@ -76,12 +76,12 @@ export const ModelRoutingVisuals: React.FC = () => {
 
       {/* 0:25 NOT A TRANSFORMATION — wand rejected */}
       <Sequence from={743} durationInFrames={380} premountFor={30}>
-        <NotMagicScene durationInFrames={380} kicker="TO BE CLEAR" title="NOT OPUS → FABLE" badges={[{ label: "RIDICULOUS CLAIM", at: 76 }, { label: "BEHAVIOUR, NOT BRAIN", at: 170 }]} tint="#EF4444" />
+        <NotMagicScene durationInFrames={380} kicker="TO BE CLEAR" title="NOT OPUS → FABLE" badges={[{ label: "RIDICULOUS CLAIM", at: 76 }, { label: "BEHAVIOUR, NOT BRAIN", at: 170 }]} tint="#C65B52" />
       </Sequence>
 
       {/* 0:40 THE CLEAN VERSION — stronger vs cheaper */}
       <Sequence from={1200} durationInFrames={360} premountFor={30}>
-        <CompareCard kicker="THE CLEAN VERSION" tint="#F59E0B" left={{ title: "FABLE 5", items: ["stronger", "2× the price"], accent: "#E8B84B", mark: "»" }} right={{ title: "OPUS 4.8", items: ["cheaper", "often enough"], accent: "#34D399", mark: "»" }} leftDelay={55} rightDelay={129} durationInFrames={360} />
+        <CompareCard kicker="THE CLEAN VERSION" tint="#C9913D" left={{ title: "FABLE 5", items: ["stronger", "2× the price"], accent: "#E8B84B", mark: "»" }} right={{ title: "OPUS 4.8", items: ["cheaper", "often enough"], accent: "#4FA98A", mark: "»" }} leftDelay={55} rightDelay={129} durationInFrames={360} />
       </Sequence>
 
       {/* 0:53 THE 5 RULES */}
@@ -97,12 +97,12 @@ export const ModelRoutingVisuals: React.FC = () => {
       {/* 1:31 THE PATTERN WORTH STEALING */}
       <Sequence from={2748} durationInFrames={340} premountFor={30}>
         {/* tint cyan — the leak-doc scene before this one ends on a green wash */}
-        <StepsScene durationInFrames={340} kicker="THE PATTERN" title="GOOD AGENT BEHAVIOUR" accent="#34D399" tint="#D97757" steps={[{ label: "No stale knowledge", at: 12 }, { label: "Never assume files", at: 56 }, { label: "Resolve unknowns", at: 115 }]} />
+        <StepsScene durationInFrames={340} kicker="THE PATTERN" title="GOOD AGENT BEHAVIOUR" accent="#4FA98A" tint="#D97757" steps={[{ label: "No stale knowledge", at: 12 }, { label: "Never assume files", at: 56 }, { label: "Resolve unknowns", at: 115 }]} />
       </Sequence>
 
       {/* 1:43 IF FABLE DOES IT, OPUS CAN TOO — twin robots */}
       <Sequence from={3105} durationInFrames={540} premountFor={30}>
-        <ReactionsScene durationInFrames={540} kicker="THE WHOLE TRICK" leftBubble="CHECKS FIRST" leftPose="celebrate" leftAccent="#E8B84B" leftAt={60} rightBubble="CAN TOO" rightPose="celebrate" rightAccent="#34D399" rightAt={134} stamp="SAME MOVES" stampColor="#D97757" pointAt={338} tint="#34D399" />
+        <ReactionsScene durationInFrames={540} kicker="THE WHOLE TRICK" leftBubble="CHECKS FIRST" leftPose="celebrate" leftAccent="#E8B84B" leftAt={60} rightBubble="CAN TOO" rightPose="celebrate" rightAccent="#4FA98A" rightAt={134} stamp="SAME MOVES" stampColor="#D97757" pointAt={338} tint="#4FA98A" />
       </Sequence>
 
       {/* 2:07 THE OPERATING STYLE — nodes pop on the spoken verify/reason/act */}
@@ -133,7 +133,7 @@ export const ModelRoutingVisuals: React.FC = () => {
 
       {/* 3:22 MORE THINKING ≠ BETTER — chips land on the spoken failure modes */}
       <Sequence from={6074} durationInFrames={400} premountFor={30}>
-        <HiddenCostScene durationInFrames={400} kicker="THE TRAP" title="MORE ≠ BETTER" chipLabels={["OVEREXPLAINS", "SECOND-GUESSES", "BURNS TOKENS"]} chipAts={[134, 190, 279]} tint="#EF4444" />
+        <HiddenCostScene durationInFrames={400} kicker="THE TRAP" title="MORE ≠ BETTER" chipLabels={["OVEREXPLAINS", "SECOND-GUESSES", "BURNS TOKENS"]} chipAts={[134, 190, 279]} tint="#C65B52" />
       </Sequence>
 
       {/* 3:36 THE QUESTION FLIP */}
@@ -143,7 +143,7 @@ export const ModelRoutingVisuals: React.FC = () => {
 
       {/* 3:47 RULE 3 — package the behaviour as a SKILL */}
       <Sequence from={6816} durationInFrames={480} premountFor={30}>
-        <SpeedLayerScene durationInFrames={480} kicker="RULE 3" title="PACKAGE IT AS A SKILL" blockLabel="OPUS" moduleLabel="SKILL" tint="#34D399" />
+        <SpeedLayerScene durationInFrames={480} kicker="RULE 3" title="PACKAGE IT AS A SKILL" blockLabel="OPUS" moduleLabel="SKILL" tint="#4FA98A" />
       </Sequence>
 
       {/* 4:12 THE SKILL'S ONE JOB */}
@@ -153,12 +153,12 @@ export const ModelRoutingVisuals: React.FC = () => {
 
       {/* 4:30 DISCIPLINE, NOT BRAIN */}
       <Sequence from={8106} durationInFrames={420} premountFor={30}>
-        <FlowScene durationInFrames={420} kicker="THE BEHAVIOURAL UPGRADE" title="FABLE'S DISCIPLINE" nodes={[{ label: "Verify inputs" }, { label: "Plan" }, { label: "Execute" }]} nodeAts={[58, 97, 143]} tint="#34D399" />
+        <FlowScene durationInFrames={420} kicker="THE BEHAVIOURAL UPGRADE" title="FABLE'S DISCIPLINE" nodes={[{ label: "Verify inputs" }, { label: "Plan" }, { label: "Execute" }]} nodeAts={[58, 97, 143]} tint="#4FA98A" />
       </Sequence>
 
       {/* 4:44 RULE 4 — route by risk, not ego */}
       <Sequence from={8582} durationInFrames={540} premountFor={30}>
-        <ExpectationScene durationInFrames={540} kicker="RULE 4" title="ROUTE BY RISK, NOT EGO" leftAt={39} rightAt={206} leftLabel="PICK BY EGO" rightLabel="PICK BY RISK" leftCaption="OVERPAYS" rightCaption="SPENDS SMART" tint="#F59E0B" />
+        <ExpectationScene durationInFrames={540} kicker="RULE 4" title="ROUTE BY RISK, NOT EGO" leftAt={39} rightAt={206} leftLabel="PICK BY EGO" rightLabel="PICK BY RISK" leftCaption="OVERPAYS" rightCaption="SPENDS SMART" tint="#C9913D" />
       </Sequence>
 
       {/* 5:04 THE ROUTING LANES */}
@@ -175,7 +175,7 @@ export const ModelRoutingVisuals: React.FC = () => {
 
       {/* 5:35 THE ESCALATION PATH — cheapest that clears the bar */}
       <Sequence from={10062} durationInFrames={700} premountFor={30}>
-        <ThresholdGateScene durationInFrames={700} kicker="FABLE = ESCALATION, NOT DEFAULT" title="CHEAPEST THAT CLEARS THE BAR" failLabel="HYPE PICK" passLabel="CLEARS IT" zoneLabel="QUALITY BAR" skipStamp="SKIP" tint="#34D399" />
+        <ThresholdGateScene durationInFrames={700} kicker="FABLE = ESCALATION, NOT DEFAULT" title="CHEAPEST THAT CLEARS THE BAR" failLabel="HYPE PICK" passLabel="CLEARS IT" zoneLabel="QUALITY BAR" skipStamp="SKIP" tint="#4FA98A" />
       </Sequence>
 
       {/* 6:01 RULE 5 — the access window */}
@@ -186,7 +186,7 @@ export const ModelRoutingVisuals: React.FC = () => {
       {/* 6:22 THE FALLBACK RULE */}
       <Sequence from={11454} durationInFrames={560} premountFor={30}>
         {/* tint cyan — the access-window scene before this one sits on amber */}
-        <StepsScene durationInFrames={560} kicker="NOT PANIC — A ROUTING RULE" title="THE FALLBACK" accent="#F59E0B" tint="#D97757" steps={[{ label: "Fable down? Opus xhigh", at: 187 }, { label: "Too pricey? Step to high", at: 353 }, { label: "Ask: just enough?", at: 470 }]} />
+        <StepsScene durationInFrames={560} kicker="NOT PANIC — A ROUTING RULE" title="THE FALLBACK" accent="#C9913D" tint="#D97757" steps={[{ label: "Fable down? Opus xhigh", at: 187 }, { label: "Too pricey? Step to high", at: 353 }, { label: "Ask: just enough?", at: 470 }]} />
       </Sequence>
 
       {/* 6:41 THE RATE CARD — 2× on paper, more in practice */}

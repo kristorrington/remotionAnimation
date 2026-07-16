@@ -120,7 +120,7 @@ const sections: { title: string; node: React.ReactNode }[] = [
         </div>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
           <SpeechBubble text="SHIP IT!!" at={20} shout flip />
-          <CartoonRobot pose="celebrate" size={220} accent="#34D399" />
+          <CartoonRobot pose="celebrate" size={220} accent="#4FA98A" />
         </div>
       </Row>
     ),
@@ -151,7 +151,7 @@ const sections: { title: string; node: React.ReactNode }[] = [
       <RetryWheel size={330} />
       <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
         <ConveyorBelt width={560} speed={3} />
-        <ConveyorBelt width={560} speed={3} accelerate={{ to: 12, dur: 80 }} color="#F59E0B" />
+        <ConveyorBelt width={560} speed={3} accelerate={{ to: 12, dur: 80 }} color="#C9913D" />
       </div>
     </div>
   ) },
@@ -183,7 +183,7 @@ const sections: { title: string; node: React.ReactNode }[] = [
       <ExitWrap dur={DEMO} kind="push">
         <AbsoluteFill style={{ justifyContent: "center", alignItems: "center" }}>
           <DepthProps />
-          <CartoonRobot pose="celebrate" size={260} accent="#34D399" />
+          <CartoonRobot pose="celebrate" size={260} accent="#4FA98A" />
           <LightLeak at={26} dur={50} warm={false} />
         </AbsoluteFill>
       </ExitWrap>
@@ -255,7 +255,7 @@ const sections: { title: string; node: React.ReactNode }[] = [
   },
   {
     title: "BalanceScaleScene — tradeoff tips",
-    node: <BalanceScaleScene durationInFrames={DEMO} kicker="WORTH IT?" title="EFFICIENCY VS TRUST" dropLeftAt={10} dropRightAt={34} tipAt={48} stampText="SANDBOX FIRST" stampAt={64} tint="#EF4444" />,
+    node: <BalanceScaleScene durationInFrames={DEMO} kicker="WORTH IT?" title="EFFICIENCY VS TRUST" dropLeftAt={10} dropRightAt={34} tipAt={48} stampText="SANDBOX FIRST" stampAt={64} tint="#C65B52" />,
   },
   {
     title: "BenchBarsScene — recreated chart",
@@ -263,7 +263,7 @@ const sections: { title: string; node: React.ReactNode }[] = [
   },
   {
     title: "ScannerScene — inspection arch",
-    node: <ScannerScene durationInFrames={DEMO} kicker="FEDERAL PIPELINE" title="SCANNED FIRST" scanAt={30} tagAt={64} tint="#F59E0B" />,
+    node: <ScannerScene durationInFrames={DEMO} kicker="FEDERAL PIPELINE" title="SCANNED FIRST" scanAt={30} tagAt={64} tint="#C9913D" />,
   },
   {
     title: "GatesScene — the three gates",

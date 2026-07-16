@@ -26,8 +26,8 @@ const chip = (color: string, fontSize = 24): React.CSSProperties => ({
 export const BalanceScaleScene: React.FC<{
   durationInFrames: number; kicker?: string; title: string;
   leftLabel?: string; rightLabel?: string; dropLeftAt?: number; dropRightAt?: number; tipAt?: number;
-  stampText?: string; stampAt?: number; tint?: string;
-}> = ({ durationInFrames, kicker, title, leftLabel = "EFFICIENT", rightLabel = "IT CHEATED", dropLeftAt = 24, dropRightAt = 96, tipAt = 128, stampText, stampAt = 220, tint }) => {
+  stampText?: string; stampAt?: number; tint?: string; subject?: boolean;
+}> = ({ durationInFrames, kicker, title, leftLabel = "EFFICIENT", rightLabel = "IT CHEATED", dropLeftAt = 24, dropRightAt = 96, tipAt = 128, stampText, stampAt = 220, tint, subject = true }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const dropL = spring({ frame: frame - dropLeftAt, fps, config: { stiffness: 120, damping: 12 }, durationInFrames: 24 });
@@ -75,9 +75,11 @@ export const BalanceScaleScene: React.FC<{
               </div>
             )}
           </div>
-          <div style={{ transform: `translateY(${-Math.abs(impulse(frame, tipAt, 10, 16))}px)` }}>
-            <CartoonRobot pose={frame < tipAt ? "thinking" : "alarmed"} size={230} accent={frame < tipAt ? CYAN : RED} lookX={-8} />
-          </div>
+          {subject && (
+            <div style={{ transform: `translateY(${-Math.abs(impulse(frame, tipAt, 10, 16))}px)` }}>
+              <CartoonRobot pose={frame < tipAt ? "thinking" : "alarmed"} size={230} accent={frame < tipAt ? CYAN : RED} lookX={-8} />
+            </div>
+          )}
         </div>
         <SceneHeadline kicker={kicker} title={title} titleSize={62} />
       </div>
@@ -182,8 +184,8 @@ export const ScannerScene: React.FC<{
 // robot stops (stay supervised).
 export const GatesScene: React.FC<{
   durationInFrames: number; kicker?: string; title: string;
-  gates?: { label: string; at: number }[]; missingAt?: number; missingLabel?: string; tint?: string;
-}> = ({ durationInFrames, kicker, title, gates = [], missingAt, missingLabel = "STAY SUPERVISED", tint }) => {
+  gates?: { label: string; at: number }[]; missingAt?: number; missingLabel?: string; tint?: string; subject?: boolean;
+}> = ({ durationInFrames, kicker, title, gates = [], missingAt, missingLabel = "STAY SUPERVISED", tint, subject = true }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const slam = missingAt !== undefined ? spring({ frame: frame - missingAt, fps, config: { stiffness: 260, damping: 12 }, durationInFrames: 16 }) : 0;
@@ -191,9 +193,11 @@ export const GatesScene: React.FC<{
     <SceneShell durationInFrames={durationInFrames} particleSeed={0x564} impacts={missingAt !== undefined ? [missingAt] : gates.map((g) => g.at)} tint={tint}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 44 }}>
         <div style={{ display: "flex", alignItems: "flex-end", gap: 60 }}>
-          <div style={{ transform: `translateY(${missingAt !== undefined && frame >= missingAt ? -Math.abs(impulse(frame, missingAt, 8, 14)) : 0}px)` }}>
-            <CartoonRobot pose={missingAt !== undefined && frame >= missingAt ? "worried" : frame >= (gates[2]?.at ?? 9999) ? "celebrate" : "idle"} size={230} accent={CYAN} lookX={9} />
-          </div>
+          {subject && (
+            <div style={{ transform: `translateY(${missingAt !== undefined && frame >= missingAt ? -Math.abs(impulse(frame, missingAt, 8, 14)) : 0}px)` }}>
+              <CartoonRobot pose={missingAt !== undefined && frame >= missingAt ? "worried" : frame >= (gates[2]?.at ?? 9999) ? "celebrate" : "idle"} size={230} accent={CYAN} lookX={9} />
+            </div>
+          )}
           <div style={{ display: "flex", gap: 46 }}>
             {gates.map((g, i) => {
               const reslam = missingAt !== undefined && i === 1 && frame >= missingAt;

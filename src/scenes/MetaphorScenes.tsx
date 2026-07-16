@@ -74,7 +74,7 @@ export const BillPrinterScene: React.FC<{ durationInFrames: number; kicker?: str
             {/* the bill grows */}
             <div style={{ position: "absolute", left: 55, top: 112, width: 120, height: paperH, background: "rgba(240,244,255,0.92)", borderRadius: "0 0 8px 8px", overflow: "hidden", boxShadow: "0 10px 30px rgba(0,0,0,0.5)" }}>
               {Array.from({ length: 9 }, (_, i) => (
-                <div key={i} style={{ margin: "12px 12px 0", height: 8, borderRadius: 4, background: i % 3 === 2 ? "rgba(239,68,68,0.75)" : "rgba(10,15,24,0.5)", width: i % 3 === 2 ? 50 : 96 }} />
+                <div key={i} style={{ margin: "12px 12px 0", height: 8, borderRadius: 4, background: i % 3 === 2 ? "rgba(198,91,82,0.75)" : "rgba(10,15,24,0.5)", width: i % 3 === 2 ? 50 : 96 }} />
               ))}
             </div>
           </div>
@@ -147,7 +147,7 @@ export const SpeedWallScene: React.FC<{ durationInFrames: number; kicker?: strin
           <div style={{ position: "absolute", left: 0, right: 0, bottom: 30, height: 4, background: "rgba(120,112,102,0.5)" }} />
           {/* the wall */}
           <div style={{ position: "absolute", right: 120, bottom: 34, transform: `translateX(${wallShake}px)` }}>
-            <div style={{ width: 34, height: 230, background: "rgba(239,68,68,0.5)", border: `4px solid ${RED}`, borderRadius: 8 }} />
+            <div style={{ width: 34, height: 230, background: "rgba(198,91,82,0.5)", border: `4px solid ${RED}`, borderRadius: 8 }} />
             <div style={{ position: "absolute", top: -62, left: -100, width: 240, display: "flex", justifyContent: "center" }}>
               <span style={{ ...chipStyle(RED), fontSize: 21, textAlign: "center" }}>{wallLabel}</span>
             </div>
@@ -347,7 +347,7 @@ export const MigrateStopScene: React.FC<{ durationInFrames: number; kicker?: str
           </div>
           <div style={{ position: "absolute", left: 20, bottom: 56, display: "flex", flexDirection: "column", alignItems: "center", gap: 8, opacity: interpolate(frame, [turnAt, turnAt + 10], [0.45, 1], CLAMP) }}>
             {sign("TEST BENCH", GREEN)}
-            <div style={{ width: 170, height: 18, borderRadius: 6, background: "rgba(52,211,153,0.3)", border: `3px solid ${GREEN}` }} />
+            <div style={{ width: 170, height: 18, borderRadius: 6, background: "rgba(79,169,138,0.3)", border: `3px solid ${GREEN}` }} />
           </div>
           {frame >= stopAt && (
             <div style={{ position: "absolute", right: 240, bottom: 86, transform: `translateY(${stopY}px)` }}>

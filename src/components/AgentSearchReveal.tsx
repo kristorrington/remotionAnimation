@@ -8,7 +8,7 @@ import {
 } from "remotion";
 import { BLUE, CYAN, FONT, WHITE } from "./overlayUI";
 
-const GREEN = "#34D399";
+const GREEN = "#4FA98A";
 const TITLE = "AI AGENTS";
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 

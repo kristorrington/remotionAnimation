@@ -25,7 +25,7 @@ export const SystemBreakScene: React.FC<{ durationInFrames: number; kicker?: str
     <SceneShell durationInFrames={durationInFrames} particleSeed={0x2b0} tint={tint}>
       <AbsoluteFill style={{ transform: `translateX(${shake}px)`, justifyContent: "center", alignItems: "center" }}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 54 }}>
-          <SceneHeadline kicker={kicker} title={title} titleSize={96} accent="#EF4444" />
+          <SceneHeadline kicker={kicker} title={title} titleSize={96} accent="#C65B52" />
 
           <WorkflowChain
             nodes={[{ label: "Prompt" }, { label: "Model" }, { label: "Tool", state: "error" }, { label: "Output" }]}

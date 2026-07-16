@@ -348,8 +348,8 @@ export const BreakthroughScene: React.FC<{ durationInFrames: number; kicker?: st
           <div style={{ position: "absolute", left: 0, right: 0, bottom: 30, height: 4, background: "rgba(255,255,255,0.16)" }} />
           {/* the wall breaks into two halves */}
           <div style={{ position: "absolute", right: 460, bottom: 34 }}>
-            <div style={{ position: "absolute", bottom: 0, width: 34, height: 230 * (1 - gapT * 0.15), transform: `translateX(${-gapT * 26}px) rotate(${-gapT * 16}deg)`, transformOrigin: "bottom left", background: "rgba(52,211,153,0.35)", border: `4px solid ${broke ? GREEN : AMBER}`, borderRadius: 8, clipPath: "polygon(0 0, 100% 12%, 100% 100%, 0 100%)" }} />
-            <div style={{ position: "absolute", bottom: 0, width: 34, height: 230 * (1 - gapT * 0.15), transform: `translateX(${gapT * 40}px) rotate(${gapT * 18}deg)`, transformOrigin: "bottom right", background: "rgba(52,211,153,0.35)", border: `4px solid ${broke ? GREEN : AMBER}`, borderRadius: 8, clipPath: "polygon(0 12%, 100% 0, 100% 100%, 0 100%)" }} />
+            <div style={{ position: "absolute", bottom: 0, width: 34, height: 230 * (1 - gapT * 0.15), transform: `translateX(${-gapT * 26}px) rotate(${-gapT * 16}deg)`, transformOrigin: "bottom left", background: "rgba(79,169,138,0.35)", border: `4px solid ${broke ? GREEN : AMBER}`, borderRadius: 8, clipPath: "polygon(0 0, 100% 12%, 100% 100%, 0 100%)" }} />
+            <div style={{ position: "absolute", bottom: 0, width: 34, height: 230 * (1 - gapT * 0.15), transform: `translateX(${gapT * 40}px) rotate(${gapT * 18}deg)`, transformOrigin: "bottom right", background: "rgba(79,169,138,0.35)", border: `4px solid ${broke ? GREEN : AMBER}`, borderRadius: 8, clipPath: "polygon(0 12%, 100% 0, 100% 100%, 0 100%)" }} />
             <span style={{ position: "absolute", top: -270, left: -80, width: 200, textAlign: "center", fontFamily: FONT, fontWeight: 800, fontSize: 26, color: WHITE, transform: "translateZ(0)" }}>{wallLabel}</span>
           </div>
           {/* the rocket punches through and keeps going */}

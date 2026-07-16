@@ -57,7 +57,7 @@ export const GmailLiveTests: React.FC = () => {
         <ProcessChecklist title="TRIAGE INBOX" steps={TRIAGE.steps} durationInFrames={620} />
       </Sequence>
       <Sequence from={1920} durationInFrames={440} premountFor={30}>
-        <ResultCard title="Needs your attention" items={["Deadlines", "Invoices", "Awaiting a reply"]} accent="#F59E0B" durationInFrames={440} />
+        <ResultCard title="Needs your attention" items={["Deadlines", "Invoices", "Awaiting a reply"]} accent="#C9913D" durationInFrames={440} />
       </Sequence>
 
       {/* ===== TEST 3 — DRAFT A REPLY ===== */}
@@ -71,7 +71,7 @@ export const GmailLiveTests: React.FC = () => {
         <ProcessChecklist title="DRAFT A REPLY" steps={DRAFT.steps} durationInFrames={620} />
       </Sequence>
       <Sequence from={3290} durationInFrames={300} premountFor={30}>
-        <ResultCard title="Draft saved — not sent" items={["Replies to the latest thread", "Short, professional tone", "Waiting in your Drafts folder"]} accent="#34D399" durationInFrames={300} />
+        <ResultCard title="Draft saved — not sent" items={["Replies to the latest thread", "Short, professional tone", "Waiting in your Drafts folder"]} accent="#4FA98A" durationInFrames={300} />
       </Sequence>
 
       {/* ===== SOUND ===== */}

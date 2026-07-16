@@ -11,8 +11,8 @@ import { AnimatedBackground } from "./AnimatedBackground";
 import { TintWash } from "../scenes/SceneShell";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
-const GREEN = "#34D399";
-const AMBER = "#F59E0B";
+const GREEN = "#4FA98A";
+const AMBER = "#C9913D";
 
 type Side = { title: string; items: string[]; accent: string; mark: string };
 

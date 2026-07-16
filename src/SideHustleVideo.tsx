@@ -71,12 +71,12 @@ export const SideHustleVisuals: React.FC = () => {
           the trapdoor: drop on "waste your time" (166), pass run on "That is
           how people end up selling prompt packs" (202→) */}
       <Sequence from={90} durationInFrames={222} premountFor={30}>
-        <ThresholdGateScene durationInFrames={222} kicker="ZERO CODING EXPERIENCE?" title="STOP CHASING THE BIGGEST NUMBER" failLabel="HYPE NUMBER" passLabel="PAID IN 30 DAYS" zoneLabel="REALISTIC" skipStamp="WASTED WEEKEND" tint="#F59E0B" dropAt={74} attempt2At={112} />
+        <ThresholdGateScene durationInFrames={222} kicker="ZERO CODING EXPERIENCE?" title="STOP CHASING THE BIGGEST NUMBER" failLabel="HYPE NUMBER" passLabel="PAID IN 30 DAYS" zoneLabel="REALISTIC" skipStamp="WASTED WEEKEND" tint="#C9913D" dropAt={74} attempt2At={112} />
       </Sequence>
 
       {/* 0:10 THE BETTER QUESTION */}
       <Sequence from={318} durationInFrames={182} premountFor={30}>
-        <QuestionFlipScene durationInFrames={182} kicker="THE BETTER QUESTION" q1="WHAT'S THE BIGGEST HUSTLE?" q2="WHO PAYS YOU IN 30 DAYS?" q1At={6} crossAt={61} tint="#34D399" />
+        <QuestionFlipScene durationInFrames={182} kicker="THE BETTER QUESTION" q1="WHAT'S THE BIGGEST HUSTLE?" q2="WHO PAYS YOU IN 30 DAYS?" q1At={6} crossAt={61} tint="#4FA98A" />
       </Sequence>
 
       {/* 0:17 FIVE WAYS IN — the doors appear (names stay sealed until the end) */}
@@ -86,22 +86,22 @@ export const SideHustleVisuals: React.FC = () => {
 
       {/* 0:30 ZERO EXPERIENCE ≠ ZERO EFFORT */}
       <Sequence from={906} durationInFrames={245} premountFor={30}>
-        <StepsScene durationInFrames={245} kicker="THE HONEST PART" title="ZERO EXPERIENCE ≠ ZERO EFFORT" accent="#F59E0B" tint="#F59E0B" steps={[{ label: "You need taste", at: 86 }, { label: "You need judgement", at: 124 }, { label: "Sell what people want", at: 207 }]} />
+        <StepsScene durationInFrames={245} kicker="THE HONEST PART" title="ZERO EXPERIENCE ≠ ZERO EFFORT" accent="#C9913D" tint="#C9913D" steps={[{ label: "You need taste", at: 86 }, { label: "You need judgement", at: 124 }, { label: "Sell what people want", at: 207 }]} />
       </Sequence>
 
       {/* 0:38 NOT A TUTORIAL — a decision walkthrough */}
       <Sequence from={1157} durationInFrames={263} premountFor={30}>
-        <CompareCard kicker="WHAT THIS VIDEO IS" tint="#D97757" left={{ title: "BUILD TUTORIAL", items: ["screen by screen"], accent: "#EF4444", mark: "✗" }} right={{ title: "DECISION WALKTHROUGH", items: ["before you waste a weekend"], accent: "#34D399", mark: "✓" }} leftDelay={6} rightDelay={85} durationInFrames={263} />
+        <CompareCard kicker="WHAT THIS VIDEO IS" tint="#D97757" left={{ title: "BUILD TUTORIAL", items: ["screen by screen"], accent: "#C65B52", mark: "✗" }} right={{ title: "DECISION WALKTHROUGH", items: ["before you waste a weekend"], accent: "#4FA98A", mark: "✓" }} leftDelay={6} rightDelay={85} durationInFrames={263} />
       </Sequence>
 
       {/* 0:53 WHAT PEOPLE ALREADY USE CLAUDE FOR */}
       <Sequence from={1608} durationInFrames={382} premountFor={30}>
-        <FlowScene durationInFrames={382} kicker="ALREADY HAPPENING" title="WHAT PEOPLE USE CLAUDE FOR" nodes={[{ label: "Writing" }, { label: "Research" }, { label: "Admin" }, { label: "Automation" }]} nodeAts={[12, 47, 72, 92]} tint="#34D399" />
+        <FlowScene durationInFrames={382} kicker="ALREADY HAPPENING" title="WHAT PEOPLE USE CLAUDE FOR" nodes={[{ label: "Writing" }, { label: "Research" }, { label: "Admin" }, { label: "Automation" }]} nodeAts={[12, 47, 72, 92]} tint="#4FA98A" />
       </Sequence>
 
       {/* 1:06 NOT ONLY A CODING TOOL — business work beats software work */}
       <Sequence from={2000} durationInFrames={280} premountFor={30}>
-        <ExpectationScene durationInFrames={280} kicker="THAT SHOULD TELL YOU SOMETHING" title="THE MONEY IS IN BUSINESS WORK" leftAt={57} rightAt={145} leftLabel="SOFTWARE WORK" rightLabel="BUSINESS WORK" leftCaption="CROWDED" rightCaption="CLOSER TO MONEY" tint="#F59E0B" />
+        <ExpectationScene durationInFrames={280} kicker="THAT SHOULD TELL YOU SOMETHING" title="THE MONEY IS IN BUSINESS WORK" leftAt={57} rightAt={145} leftLabel="SOFTWARE WORK" rightLabel="BUSINESS WORK" leftCaption="CROWDED" rightCaption="CLOSER TO MONEY" tint="#C9913D" />
       </Sequence>
 
       {/* 1:16 WHY CLAUDE — when the deliverable is thinking */}
@@ -111,12 +111,12 @@ export const SideHustleVisuals: React.FC = () => {
 
       {/* 1:33 THE THINKING IS THE PRODUCT */}
       <Sequence from={2802} durationInFrames={130} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={130} kicker="THE TEST" title="THE THINKING IS THE PRODUCT" stamp="STRONG FIT" stampAt={75} accent="#34D399" />
+        <FinalTakeawayScene durationInFrames={130} kicker="THE TEST" title="THE THINKING IS THE PRODUCT" stamp="STRONG FIT" stampAt={75} accent="#4FA98A" />
       </Sequence>
 
       {/* 1:38 NOT MAGIC — it will not create a business for you */}
       <Sequence from={2935} durationInFrames={395} premountFor={30}>
-        <NotMagicScene durationInFrames={395} kicker="DO NOT HEAR THIS AS MAGIC" title="IT WON'T BUILD THE BUSINESS" badges={[{ label: "A BUSINESS FOR YOU", at: 70 }, { label: "MONEY BUTTON", at: 150 }]} tint="#EF4444" />
+        <NotMagicScene durationInFrames={395} kicker="DO NOT HEAR THIS AS MAGIC" title="IT WON'T BUILD THE BUSINESS" badges={[{ label: "A BUSINESS FOR YOU", at: 70 }, { label: "MONEY BUTTON", at: 150 }]} tint="#C65B52" />
       </Sequence>
 
       {/* 1:51 PATH 1 — assisted writing: Claude drafts, you fix the angle */}
@@ -126,12 +126,12 @@ export const SideHustleVisuals: React.FC = () => {
 
       {/* 2:11 SELL THE OUTCOME, NOT "AI WRITING" */}
       <Sequence from={3936} durationInFrames={584} premountFor={30}>
-        <CompareCard kicker="THE BEGINNER MISTAKE" tint="#F59E0B" left={{ title: "AI WRITING", items: ["nobody wants that"], accent: "#EF4444", mark: "✗" }} right={{ title: "A FINISHED OUTCOME", items: ["2 posts / week", "a clean newsletter", "a batch of scripts"], accent: "#34D399", mark: "✓" }} leftDelay={6} rightDelay={174} durationInFrames={584} />
+        <CompareCard kicker="THE BEGINNER MISTAKE" tint="#C9913D" left={{ title: "AI WRITING", items: ["nobody wants that"], accent: "#C65B52", mark: "✗" }} right={{ title: "A FINISHED OUTCOME", items: ["2 posts / week", "a clean newsletter", "a batch of scripts"], accent: "#4FA98A", mark: "✓" }} leftDelay={6} rightDelay={174} durationInFrames={584} />
       </Sequence>
 
       {/* 2:32 GOOD ENOUGH WINS — beat the busy person, not the best writer */}
       <Sequence from={4580} durationInFrames={430} premountFor={30}>
-        <ReactionsScene durationInFrames={430} kicker="THE BAR IS LOWER THAN YOU THINK" leftBubble="BEST WRITER? NO" leftPose="shrug" leftAccent="#F59E0B" leftAt={97} rightBubble="FASTER THAN BUSY" rightPose="celebrate" rightAccent="#34D399" rightAt={210} stamp="SPEED WINS" stampColor="#34D399" pointAt={250} tint="#34D399" />
+        <ReactionsScene durationInFrames={430} kicker="THE BAR IS LOWER THAN YOU THINK" leftBubble="BEST WRITER? NO" leftPose="shrug" leftAccent="#C9913D" leftAt={97} rightBubble="FASTER THAN BUSY" rightPose="celebrate" rightAccent="#4FA98A" rightAt={210} stamp="SPEED WINS" stampColor="#4FA98A" pointAt={250} tint="#4FA98A" />
       </Sequence>
 
       {/* 3:05 PATH 2 — research for hire: many docs → one paid report */}
@@ -141,7 +141,7 @@ export const SideHustleVisuals: React.FC = () => {
 
       {/* 3:19 KEEP IT SMALL — sell a package with a clear output */}
       <Sequence from={5967} durationInFrames={593} premountFor={30}>
-        <StepsScene durationInFrames={593} kicker="KEEP IT SMALL" title="SELL A SIMPLE PACKAGE" accent="#F59E0B" tint="#F59E0B" steps={[{ label: "5 competitors → 1-page summary", at: 245 }, { label: "3 tools → 1 recommendation", at: 389 }]} />
+        <StepsScene durationInFrames={593} kicker="KEEP IT SMALL" title="SELL A SIMPLE PACKAGE" accent="#C9913D" tint="#C9913D" steps={[{ label: "5 competitors → 1-page summary", at: 245 }, { label: "3 tools → 1 recommendation", at: 389 }]} />
       </Sequence>
 
       {/* 3:46 CLAUDE READS, YOU DECIDE */}
@@ -156,7 +156,7 @@ export const SideHustleVisuals: React.FC = () => {
 
       {/* 4:37 START SAFE — never money, deletions or final say */}
       <Sequence from={8306} durationInFrames={389} premountFor={30}>
-        <CompareCard kicker="LOW-RISK FIRST" tint="#EF4444" left={{ title: "START WITH", items: ["drafting", "organizing", "summarizing"], accent: "#34D399", mark: "✓" }} right={{ title: "NEVER AUTOMATE", items: ["sending money", "deleting records", "final decisions"], accent: "#EF4444", mark: "✗" }} leftDelay={6} rightDelay={261} durationInFrames={389} />
+        <CompareCard kicker="LOW-RISK FIRST" tint="#C65B52" left={{ title: "START WITH", items: ["drafting", "organizing", "summarizing"], accent: "#4FA98A", mark: "✓" }} right={{ title: "NEVER AUTOMATE", items: ["sending money", "deleting records", "final decisions"], accent: "#C65B52", mark: "✗" }} leftDelay={6} rightDelay={261} durationInFrames={389} />
       </Sequence>
 
       {/* 4:50 PATH 4 — the first-line helper for local businesses */}
@@ -176,7 +176,7 @@ export const SideHustleVisuals: React.FC = () => {
 
       {/* 6:12 PROMPT vs SKILL */}
       <Sequence from={11272} durationInFrames={428} premountFor={30}>
-        <CompareCard kicker="NOT JUST A PROMPT" tint="#F59E0B" left={{ title: "A PROMPT", items: ["disposable"], accent: "#EF4444", mark: "✗" }} right={{ title: "A SKILL", items: ["a mini operating system", "for one task"], accent: "#34D399", mark: "✓" }} leftDelay={112} rightDelay={228} durationInFrames={428} />
+        <CompareCard kicker="NOT JUST A PROMPT" tint="#C9913D" left={{ title: "A PROMPT", items: ["disposable"], accent: "#C65B52", mark: "✗" }} right={{ title: "A SKILL", items: ["a mini operating system", "for one task"], accent: "#4FA98A", mark: "✓" }} leftDelay={112} rightDelay={228} durationInFrames={428} />
       </Sequence>
 
       {/* 6:43 THE RULE — pick the door that attaches to what you already do */}
@@ -191,7 +191,7 @@ export const SideHustleVisuals: React.FC = () => {
 
       {/* 7:27 THE 30-DAY PROOF WINDOW */}
       <Sequence from={13423} durationInFrames={190} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={190} kicker="GIVE YOURSELF" title="A 30-DAY PROOF WINDOW" stamp="PICK ONE. GO." stampAt={92} accent="#34D399" />
+        <FinalTakeawayScene durationInFrames={190} kicker="GIVE YOURSELF" title="A 30-DAY PROOF WINDOW" stamp="PICK ONE. GO." stampAt={92} accent="#4FA98A" />
       </Sequence>
 
       {/* 7:38 OUTRO — anchored to the spoken "subscribe" (~13770) */}

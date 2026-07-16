@@ -20,7 +20,7 @@ export const StackCollapseScene: React.FC<{ durationInFrames: number; kicker?: s
   labels,
   stamp,
   stampAt,
-  accent = "#F59E0B",
+  accent = "#C9913D",
   tint,
 }) => {
   const frame = useCurrentFrame();
@@ -88,7 +88,7 @@ export const ScaleCostScene: React.FC<{ durationInFrames: number; kicker?: strin
             <CostMeterClimb level={level} label="COST" />
           </div>
         </div>
-        <SceneHeadline kicker={kicker} title={title} titleSize={84} accent={level > 0.7 ? "#EF4444" : GREEN} />
+        <SceneHeadline kicker={kicker} title={title} titleSize={84} accent={level > 0.7 ? "#C65B52" : GREEN} />
       </div>
     </SceneShell>
   );

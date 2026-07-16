@@ -86,7 +86,7 @@ export const ClaudeWealthVisuals: React.FC = () => {
 
       {/* 0:10 TWO VERSIONS — dream robot vs warning robot */}
       <Sequence from={320} durationInFrames={540} premountFor={30}>
-        <ReactionsScene durationInFrames={540} kicker="TWO VERSIONS OF THE STORY" leftBubble="THE DREAM" leftPose="celebrate" leftAccent="#34D399" leftAt={89} rightBubble="THE WARNING" rightPose="worried" rightAccent="#EF4444" rightAt={351} stamp="FASTER THAN TRUST" stampColor="#F59E0B" pointAt={463} />
+        <ReactionsScene durationInFrames={540} kicker="TWO VERSIONS OF THE STORY" leftBubble="THE DREAM" leftPose="celebrate" leftAccent="#4FA98A" leftAt={89} rightBubble="THE WARNING" rightPose="worried" rightAccent="#C65B52" rightAt={351} stamp="FASTER THAN TRUST" stampColor="#C9913D" pointAt={463} />
       </Sequence>
 
       {/* 0:29 HEADLINES HIDE — placard drops, no receipts behind it */}
@@ -109,8 +109,8 @@ export const ClaudeWealthVisuals: React.FC = () => {
         <StatCountersScene durationInFrames={615} kicker="MEDVI — REPORTED, NOT AUDITED" title="THE DREAM STORY" stats={[
           { value: 2, suffix: "", label: "People", at: 205, accent: "#D97757" },
           { value: 20, suffix: "K", label: "Upfront", at: 258, accent: "#C15F3C" },
-          { value: 401, suffix: "M", label: "2025 revenue*", at: 347, accent: "#34D399" },
-          { value: 1.8, suffix: "B", decimals: 1, label: "2026 pace*", at: 531, accent: "#F59E0B" },
+          { value: 401, suffix: "M", label: "2025 revenue*", at: 347, accent: "#4FA98A" },
+          { value: 1.8, suffix: "B", decimals: 1, label: "2026 pace*", at: 531, accent: "#C9913D" },
         ]} />
       </Sequence>
 
@@ -161,7 +161,7 @@ export const ClaudeWealthVisuals: React.FC = () => {
 
       {/* 3:18 MEDVI vs VULCAN */}
       <Sequence from={5943} durationInFrames={610} premountFor={30}>
-        <CompareCard kicker="EXCITING vs INSTRUCTIVE" left={{ title: "MEDVI", items: ["scaled growth", "fragile trust"], accent: "#F59E0B", mark: "!" }} right={{ title: "VULCAN", items: ["compressed execution", "validated buyer"], accent: "#34D399", mark: "»" }} leftDelay={100} rightDelay={285} durationInFrames={610} />
+        <CompareCard kicker="EXCITING vs INSTRUCTIVE" left={{ title: "MEDVI", items: ["scaled growth", "fragile trust"], accent: "#C9913D", mark: "!" }} right={{ title: "VULCAN", items: ["compressed execution", "validated buyer"], accent: "#4FA98A", mark: "»" }} leftDelay={100} rightDelay={285} durationInFrames={610} />
       </Sequence>
 
       {/* 3:43 OUTLIERS ≠ ADVICE — wand rejected */}
@@ -231,7 +231,7 @@ export const ClaudeWealthVisuals: React.FC = () => {
 
       {/* 6:52 VULCAN vs MEDVI — as roadmaps */}
       <Sequence from={12345} durationInFrames={640} premountFor={30}>
-        <CompareCard kicker="WHICH ROADMAP?" left={{ title: "VULCAN", items: ["public problem", "gov customer", "seed round"], accent: "#34D399", mark: "»" }} right={{ title: "MEDVI", items: ["growth claim", "FDA scrutiny", "ad questions"], accent: "#EF4444", mark: "!" }} leftDelay={60} rightDelay={290} durationInFrames={640} />
+        <CompareCard kicker="WHICH ROADMAP?" left={{ title: "VULCAN", items: ["public problem", "gov customer", "seed round"], accent: "#4FA98A", mark: "»" }} right={{ title: "MEDVI", items: ["growth claim", "FDA scrutiny", "ad questions"], accent: "#C65B52", mark: "!" }} leftDelay={60} rightDelay={290} durationInFrames={640} />
       </Sequence>
 
       {/* 7:16 THE MECHANISM */}

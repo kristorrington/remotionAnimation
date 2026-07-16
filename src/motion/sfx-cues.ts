@@ -206,34 +206,34 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     // ── Claude-skills ranking video (July 2026) ──
     case "hookDoors": cues.push({ at: 6, type: "pop" }, { at: 22, type: "pop" }, { at: 38, type: "pop" }, { at: 54, type: "pop" }, { at: 70, type: "pop" }); break;
     case "rankCriteria": cues.push({ at: 8, type: "tick" }, { at: 47, type: "tick" }, { at: 117, type: "tick" }); break;
-    case "skillDef": cues.push({ at: 78, type: "boom" }, { at: 87, type: "tick" }, { at: 206, type: "tick" }, { at: 234, type: "tick" }); break; // cartridge clunks in, runs tick out
+    case "skillDef": cues.push({ at: 78, type: "thud" }, { at: 87, type: "tick" }, { at: 206, type: "tick" }, { at: 234, type: "tick" }); break; // cartridge clunks in, runs tick out
     case "reachProof": cues.push({ at: 16, type: "whip" }, { at: 91, type: "swish" }); break;
     case "platformPops": cues.push({ at: 8, type: "pop" }, { at: 17, type: "pop" }, { at: 35, type: "pop" }, { at: 60, type: "pop" }); break;
-    case "reachFlow": cues.push({ at: 20, type: "pop" }, { at: 45, type: "pop" }, { at: 70, type: "pop" }, { at: 95, type: "pop" }, { at: 100, type: "whoosh" }, { at: 140, type: "boom" }); break;
+    case "reachFlow": cues.push({ at: 20, type: "pop" }, { at: 45, type: "pop" }, { at: 70, type: "pop" }, { at: 95, type: "pop" }, { at: 100, type: "whoosh" }, { at: 140, type: "thud" }); break;
     case "reachRun": cues.push({ at: 103, type: "tick" }, { at: 144, type: "tick" }, { at: 196, type: "tick" }, { at: 250, type: "tick" }); break; // repo->reddit->x->youtube stops
     case "oneRepoStack": cues.push({ at: 203, type: "thud" }, { at: 229, type: "thud" }, { at: 249, type: "thud" }, { at: 283, type: "boom" }); break;
-    case "fitKinetic": cues.push({ at: 39, type: "boom" }); break;
+    case "fitKinetic": cues.push({ at: 39, type: "whip" }); break;
     case "loopProof": cues.push({ at: 16, type: "whip" }, { at: 40, type: "swish" }); break;
-    case "eightyPercent": cues.push({ at: 121, type: "ding" }, { at: 222, type: "boom" }); break; // premature DONE, then the gap
+    case "eightyPercent": cues.push({ at: 121, type: "ding" }, { at: 222, type: "thud" }); break; // premature DONE, then the gap
     case "loopGates": cues.push({ at: 247, type: "switch" }, { at: 303, type: "switch" }); break;
-    case "acceptableKinetic": cues.push({ at: 110, type: "boom" }); break;
-    case "loopFits": cues.push({ at: 49, type: "thud" }, { at: 231, type: "thud" }, { at: 290, type: "boom" }, { at: 320, type: "ding" }); break;
+    case "acceptableKinetic": cues.push({ at: 110, type: "whip" }); break;
+    case "loopFits": cues.push({ at: 49, type: "thud" }, { at: 231, type: "thud" }, { at: 290, type: "thud" }, { at: 320, type: "ding" }); break;
     case "pxProof": cues.push({ at: 16, type: "whip" }, { at: 55, type: "swish" }); break;
     case "contextCost": cues.push({ at: 55, type: "pop" }, { at: 69, type: "pop" }, { at: 95, type: "pop" }, { at: 137, type: "pop" }); break;
-    case "imageSwap": cues.push({ at: 8, type: "thud" }, { at: 40, type: "thud" }, { at: 72, type: "thud" }, { at: 84, type: "boom" }); break; // docs plop in, the PNG pops
+    case "imageSwap": cues.push({ at: 8, type: "thud" }, { at: 40, type: "thud" }, { at: 72, type: "thud" }, { at: 84, type: "pop" }); break; // docs plop in, the PNG pops
     case "seventyProof": cues.push({ at: 16, type: "whip" }, { at: 61, type: "shutter" }); break;
-    case "whoBenefits": cues.push({ at: 207, type: "thud" }, { at: 410, type: "thud" }, { at: 448, type: "boom" }, { at: 500, type: "ding" }); break; // pans drop, the scale tips
-    case "rankThirdKinetic": cues.push({ at: 78, type: "boom" }); break;
+    case "whoBenefits": cues.push({ at: 207, type: "thud" }, { at: 410, type: "thud" }, { at: 448, type: "thud" }, { at: 500, type: "ding" }); break; // pans drop, the scale tips
+    case "rankThirdKinetic": cues.push({ at: 78, type: "whip" }); break;
     case "tasteProof": cues.push({ at: 16, type: "whip" }, { at: 73, type: "swish" }); break;
     case "slopFactory": cues.push({ at: 15, type: "thud" }, { at: 38, type: "thud" }, { at: 59, type: "thud" }, { at: 170, type: "boom" }); break; // identical dull thuds, SAME AGAIN slams
     case "abSteps": cues.push({ at: 156, type: "tick" }, { at: 208, type: "tick" }, { at: 283, type: "tick" }); break;
     case "examplesProof": cues.push({ at: 14, type: "whip" }, { at: 30, type: "swish" }); break;
     case "superProof": cues.push({ at: 16, type: "whip" }, { at: 62, type: "shutter" }); break;
-    case "osKinetic": cues.push({ at: 123, type: "boom" }); break;
+    case "osKinetic": cues.push({ at: 123, type: "whip" }); break;
     case "slowJump": cues.push({ at: 132, type: "tick" }, { at: 197, type: "tick" }, { at: 265, type: "tick" }); break;
     case "workflowProof": cues.push({ at: 14, type: "whip" }, { at: 93, type: "swish" }); break;
     case "recapDoors": cues.push({ at: 22, type: "pop" }, { at: 76, type: "ding" }, { at: 90, type: "pop" }, { at: 166, type: "pop" }, { at: 258, type: "pop" }, { at: 334, type: "pop" }); break; // winner's door opens at 54+22
-    case "wrongPathKinetic": cues.push({ at: 95, type: "boom" }); break;
+    case "wrongPathKinetic": cues.push({ at: 95, type: "whip" }); break;
     case "oneComparisonKinetic": cues.push({ at: 59, type: "boom" }); break; // ONE COMPARISON stamp
     case "notProven": // go-local: wand rejected + denied badges whisper-pinned
       cues.push({ at: 34, type: "whip" }, { at: 59, type: "whip" }, { at: 145, type: "whip" });

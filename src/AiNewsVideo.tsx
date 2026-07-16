@@ -81,7 +81,7 @@ export const AiNewsVisuals: React.FC = () => {
 
       {/* 0:08 LOGO OPENER — ChatGPT, Codex and the browser dive into ONE app */}
       <Sequence from={240} durationInFrames={217} premountFor={30}>
-        <OneWorkspaceScene durationInFrames={217} title="ONE UNIFIED APP" panelNames={["CHAT", "CODEX", "BROWSER", "FILES"]} windowSuffix="" panelAts={[10, 30, 65, 88]} mergeAt={131} stampAt={145} tint="#34D399" />
+        <OneWorkspaceScene durationInFrames={217} title="ONE UNIFIED APP" panelNames={["CHAT", "CODEX", "BROWSER", "FILES"]} windowSuffix="" panelAts={[10, 30, 65, 88]} mergeAt={131} stampAt={145} tint="#4FA98A" />
       </Sequence>
 
       {/* 0:15 two modes, two doors */}
@@ -91,12 +91,12 @@ export const AiNewsVisuals: React.FC = () => {
 
       {/* 0:21 work mode: files + browser + tools wire into one chat */}
       <Sequence from={637} durationInFrames={190} premountFor={30}>
-        <AppFlowScene durationInFrames={190} kicker="WORK MODE" title="ONE CONVERSATION" apps={[{ label: "FILES", at: 64 }, { label: "BROWSER", at: 103 }, { label: "TOOLS", at: 133 }]} connectAt={163} collapseAt={9999} tint="#34D399" />
+        <AppFlowScene durationInFrames={190} kicker="WORK MODE" title="ONE CONVERSATION" apps={[{ label: "FILES", at: 64 }, { label: "BROWSER", at: 103 }, { label: "TOOLS", at: 133 }]} connectAt={163} collapseAt={9999} tint="#4FA98A" />
       </Sequence>
 
       {/* 0:27 codex mode: the dev chain lights up step by step */}
       <Sequence from={827} durationInFrames={268} premountFor={30}>
-        <StepsScene durationInFrames={268} kicker="CODEX MODE" title="BUILT FOR DEV WORK" steps={[{ label: "REPOS", at: 129 }, { label: "BRANCHES", at: 163 }, { label: "TERMINAL", at: 193 }, { label: "REVIEW", at: 223 }]} accent="#60A5FA" tint="#60A5FA" subject />
+        <StepsScene durationInFrames={268} kicker="CODEX MODE" title="BUILT FOR DEV WORK" steps={[{ label: "REPOS", at: 129 }, { label: "BRANCHES", at: 163 }, { label: "TERMINAL", at: 193 }, { label: "REVIEW", at: 223 }]} accent="#6E93BD" tint="#6E93BD" subject />
       </Sequence>
 
       {/* 0:36 receipt: The New Stack — 3 products fold into one */}
@@ -106,7 +106,7 @@ export const AiNewsVisuals: React.FC = () => {
 
       {/* 0:52 which job goes where */}
       <Sequence from={1560} durationInFrames={390} premountFor={30}>
-        <CompareCard kicker="MATCH MODE TO JOB" tint="#34D399" left={{ title: "WORK MODE", items: ["Research", "Files", "Drafts"], accent: "#34D399", mark: "✓" }} right={{ title: "CODEX MODE", items: ["Repos", "Reviews", "Terminal"], accent: "#60A5FA", mark: "✓" }} leftDelay={30} rightDelay={146} durationInFrames={390} />
+        <CompareCard kicker="MATCH MODE TO JOB" tint="#4FA98A" left={{ title: "WORK MODE", items: ["Research", "Files", "Drafts"], accent: "#4FA98A", mark: "✓" }} right={{ title: "CODEX MODE", items: ["Repos", "Reviews", "Terminal"], accent: "#6E93BD", mark: "✓" }} leftDelay={30} rightDelay={146} durationInFrames={390} />
       </Sequence>
 
       {/* 1:05 receipt: SiliconANGLE — GPT-Live launches */}
@@ -121,21 +121,21 @@ export const AiNewsVisuals: React.FC = () => {
 
       {/* 1:43 the real story: not a benchmark win — the bill */}
       <Sequence from={3111} durationInFrames={248} premountFor={30}>
-        <CheaperToServeScene durationInFrames={248} kicker="THE STRONGEST RESULT" title="CHEAPER + FASTER" leftLabel="BENCHMARK WIN?" rightLabel="COST + SPEED" crossAt={120} serveAt={179} checkAt={235} tint="#34D399" />
+        <CheaperToServeScene durationInFrames={248} kicker="THE STRONGEST RESULT" title="CHEAPER + FASTER" leftLabel="BENCHMARK WIN?" rightLabel="COST + SPEED" crossAt={120} serveAt={179} checkAt={235} tint="#4FA98A" />
       </Sequence>
 
       {/* 1:51 receipt: the Artificial Analysis cost report */}
       <Sequence from={3359} durationInFrames={150} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={150} kicker="ARTIFICIAL ANALYSIS" title="COST REPORT" titlePos="right" tint="#34D399" src={`${SHOT}/aa-gpt56-landed-wide.png`} url="artificialanalysis.ai" imageW={3840} imageH={2052} from={{ x: 0, y: 0, w: 3840, h: 2052 }} to={{ x: 640, y: 60, w: 2880, h: 1539 }} zoomAt={18} highlight={{ x: 735, y: 790, w: 1600, h: 100 }} highlightAt={46} />
+        <ScreenshotReceiptScene durationInFrames={150} kicker="ARTIFICIAL ANALYSIS" title="COST REPORT" titlePos="right" tint="#4FA98A" src={`${SHOT}/aa-gpt56-landed-wide.png`} url="artificialanalysis.ai" imageW={3840} imageH={2052} from={{ x: 0, y: 0, w: 3840, h: 2052 }} to={{ x: 640, y: 60, w: 2880, h: 1539 }} zoomAt={18} highlight={{ x: 735, y: 790, w: 1600, h: 100 }} highlightAt={46} />
       </Sequence>
 
       {/* 1:57 THE numbers: 1 min / 77¢ vs 6 min / $4 */}
       <Sequence from={3509} durationInFrames={493} premountFor={30}>
         <StatCountersScene durationInFrames={493} kicker="SAME JOB, TWO BILLS" title="THE ECONOMICS" tint="#E8B84B" accent="#E8B84B" stats={[
-          { value: 1, suffix: " MIN", label: "SOL PRO · TIME", at: 77, accent: "#34D399" },
-          { value: 77, suffix: "¢", label: "SOL PRO · COST", at: 115, accent: "#34D399" },
-          { value: 6, suffix: " MIN", label: "GPT-5.5 PRO · TIME", at: 243, accent: "#EF4444" },
-          { value: 4, prefix: "$", label: "GPT-5.5 PRO · COST", at: 278, accent: "#EF4444" },
+          { value: 1, suffix: " MIN", label: "SOL PRO · TIME", at: 77, accent: "#4FA98A" },
+          { value: 77, suffix: "¢", label: "SOL PRO · COST", at: 115, accent: "#4FA98A" },
+          { value: 6, suffix: " MIN", label: "GPT-5.5 PRO · TIME", at: 243, accent: "#C65B52" },
+          { value: 4, prefix: "$", label: "GPT-5.5 PRO · COST", at: 278, accent: "#C65B52" },
         ]} />
       </Sequence>
 
@@ -146,7 +146,7 @@ export const AiNewsVisuals: React.FC = () => {
 
       {/* 2:25 the economics scale tips: acceptable + fast + cheap wins */}
       <Sequence from={4360} durationInFrames={260} premountFor={30}>
-        <BalanceScaleScene durationInFrames={260} kicker="WHAT MOVES THE NEEDLE" title="NEW ECONOMICS" leftLabel="2× SMARTER?" rightLabel="FASTER + CHEAPER" dropLeftAt={17} dropRightAt={135} tipAt={190} stampText="ECONOMICS" stampAt={225} tint="#34D399" />
+        <BalanceScaleScene durationInFrames={260} kicker="WHAT MOVES THE NEEDLE" title="NEW ECONOMICS" leftLabel="2× SMARTER?" rightLabel="FASTER + CHEAPER" dropLeftAt={17} dropRightAt={135} tipAt={190} stampText="ECONOMICS" stampAt={225} tint="#4FA98A" />
       </Sequence>
 
       {/* 2:34 the tier doors — three names, one clear pick */}
@@ -156,41 +156,41 @@ export const AiNewsVisuals: React.FC = () => {
 
       {/* 2:51 receipt: BenchLM — Fable 91 vs Sol 86 */}
       <Sequence from={5143} durationInFrames={220} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={220} kicker="BENCHLM · GDPVAL" title="JUST BEHIND FABLE" titlePos="right" tint="#34D399" src={`${SHOT}/benchlm-fable-vs-sol-wide.png`} url="benchlm.ai" imageW={3840} imageH={2052} from={{ x: 0, y: 0, w: 3840, h: 2052 }} to={{ x: 420, y: 30, w: 3000, h: 1604 }} zoomAt={16} highlight={{ x: 560, y: 440, w: 2720, h: 320 }} highlightAt={97} />
+        <ScreenshotReceiptScene durationInFrames={220} kicker="BENCHLM · GDPVAL" title="JUST BEHIND FABLE" titlePos="right" tint="#4FA98A" src={`${SHOT}/benchlm-fable-vs-sol-wide.png`} url="benchlm.ai" imageW={3840} imageH={2052} from={{ x: 0, y: 0, w: 3840, h: 2052 }} to={{ x: 420, y: 30, w: 3000, h: 1604 }} zoomAt={16} highlight={{ x: 560, y: 440, w: 2720, h: 320 }} highlightAt={97} />
       </Sequence>
 
       {/* 2:59 receipt: OpenAI's own BrowseComp section (different layout + zoom) */}
       <Sequence from={5363} durationInFrames={190} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={190} kicker="OPENAI.COM" title="STRONG IN BROWSERS" titlePos="right" titleTop={560} tint="#60A5FA" src={`${SHOT}/oai-browsecomp-wide.png`} url="openai.com/index/gpt-5-6" imageW={3840} imageH={2052} from={{ x: 480, y: 120, w: 2880, h: 1539 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 620, y: 225, w: 2000, h: 180 }} highlightAt={28} />
+        <ScreenshotReceiptScene durationInFrames={190} kicker="OPENAI.COM" title="STRONG IN BROWSERS" titlePos="right" titleTop={560} tint="#6E93BD" src={`${SHOT}/oai-browsecomp-wide.png`} url="openai.com/index/gpt-5-6" imageW={3840} imageH={2052} from={{ x: 480, y: 120, w: 2880, h: 1539 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 620, y: 225, w: 2000, h: 180 }} highlightAt={28} />
       </Sequence>
 
       {/* 3:08 kinetic: what this release actually is */}
       <Sequence from={5645} durationInFrames={155} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={155} title="EFFICIENCY RELEASE" stamp="NOT AN IQ LEAP" stampAt={93} accent="#F59E0B" />
+        <FinalTakeawayScene durationInFrames={155} title="EFFICIENCY RELEASE" stamp="NOT AN IQ LEAP" stampAt={93} accent="#C9913D" />
       </Sequence>
 
       {/* 3:19 receipt: x.ai — Grok 4.5 (brand-first: xAI) */}
       <Sequence from={5976} durationInFrames={141} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={141} kicker="X.AI · JUL 8" title="GROK 4.5" tint="#EF4444" src={`${SHOT}/xai-grok45-wide.png`} url="x.ai/news/grok-4-5" imageW={3840} imageH={2052} from={{ x: 520, y: 40, w: 2800, h: 1497 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 1150, y: 110, w: 900, h: 150 }} highlightAt={30} />
+        <ScreenshotReceiptScene durationInFrames={141} kicker="X.AI · JUL 8" title="GROK 4.5" tint="#C65B52" src={`${SHOT}/xai-grok45-wide.png`} url="x.ai/news/grok-4-5" imageW={3840} imageH={2052} from={{ x: 520, y: 40, w: 2800, h: 1497 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 1150, y: 110, w: 900, h: 150 }} highlightAt={30} />
       </Sequence>
 
       {/* 3:23 the premium tier is now three chairs */}
       <Sequence from={6117} durationInFrames={250} premountFor={30}>
         <RivalryScene durationInFrames={250} kicker="THE PREMIUM TIER" title="THREE AT THE TOP" colAts={[10, 63, 115]} emphasizeAt={9999} tint="#D97757" cols={[
-          { name: "GROK 4.5", sub: "XAI", color: "#EF4444" },
-          { name: "GPT-5.6", sub: "OPENAI", color: "#34D399", mark: <ChatGptMark size={76} glow /> },
+          { name: "GROK 4.5", sub: "XAI", color: "#C65B52" },
+          { name: "GPT-5.6", sub: "OPENAI", color: "#4FA98A", mark: <ChatGptMark size={76} glow /> },
           { name: "FABLE 5", sub: "ANTHROPIC", color: "#D97757", mark: <ClaudeMark size={64} /> },
         ]} />
       </Sequence>
 
       {/* 3:42 receipt: anthropic.com — Fable 5 access restored (brand-first: Anthropic) */}
       <Sequence from={6664} durationInFrames={200} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={200} kicker="ANTHROPIC.COM" title="ACCESS RESTORED" tint="#34D399" src={`${SHOT}/anthropic-fable5-redeploy-wide.png`} url="anthropic.com/news/redeploying-fable-5" imageW={3840} imageH={2052} from={{ x: 0, y: 0, w: 3840, h: 2052 }} to={{ x: 480, y: 60, w: 2880, h: 1539 }} zoomAt={16} highlight={{ x: 1170, y: 400, w: 1500, h: 95 }} highlightAt={40} />
+        <ScreenshotReceiptScene durationInFrames={200} kicker="ANTHROPIC.COM" title="ACCESS RESTORED" tint="#4FA98A" src={`${SHOT}/anthropic-fable5-redeploy-wide.png`} url="anthropic.com/news/redeploying-fable-5" imageW={3840} imageH={2052} from={{ x: 0, y: 0, w: 3840, h: 2052 }} to={{ x: 480, y: 60, w: 2880, h: 1539 }} zoomAt={16} highlight={{ x: 1170, y: 400, w: 1500, h: 95 }} highlightAt={40} />
       </Sequence>
 
       {/* 3:48 two robots hype two models — the point: test BOTH */}
       <Sequence from={6864} durationInFrames={377} premountFor={30}>
-        <ReactionsScene durationInFrames={377} kicker="NO LONGER OLD VS NEW" leftAt={43} rightAt={90} pointAt={344} leftBubble="GPT-5.6!" rightBubble="FABLE 5!" stamp="TEST BOTH" stampColor="#34D399" tint="#F59E0B" />
+        <ReactionsScene durationInFrames={377} kicker="NO LONGER OLD VS NEW" leftAt={43} rightAt={90} pointAt={344} leftBubble="GPT-5.6!" rightBubble="FABLE 5!" stamp="TEST BOTH" stampColor="#4FA98A" tint="#C9913D" />
       </Sequence>
 
       {/* 4:05 receipt: TechCrunch — Cowork goes web + mobile */}
@@ -200,18 +200,18 @@ export const AiNewsVisuals: React.FC = () => {
 
       {/* 4:11 the trend: the model is one part — the environment clicks on around it */}
       <Sequence from={7536} durationInFrames={215} premountFor={30}>
-        <SameCoreScene durationInFrames={215} kicker="THE TREND" title="ONE PART OF THE SYSTEM" tint="#34D399" />
+        <SameCoreScene durationInFrames={215} kicker="THE TREND" title="ONE PART OF THE SYSTEM" tint="#4FA98A" />
       </Sequence>
 
       {/* 4:18 image-model news flash: three quick receipts (varied layouts + zooms) */}
       <Sequence from={7751} durationInFrames={81} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={81} kicker="BYTEDANCE SEED" title="SEEDREAM 5.0 PRO" tint="#60A5FA" src={`${SHOT}/seedream5-pro-wide.png`} url="seed.bytedance.com" imageW={3840} imageH={2052} from={{ x: 300, y: 60, w: 3240, h: 1732 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={10} />
+        <ScreenshotReceiptScene durationInFrames={81} kicker="BYTEDANCE SEED" title="SEEDREAM 5.0 PRO" tint="#6E93BD" src={`${SHOT}/seedream5-pro-wide.png`} url="seed.bytedance.com" imageW={3840} imageH={2052} from={{ x: 300, y: 60, w: 3240, h: 1732 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={10} />
       </Sequence>
       <Sequence from={7832} durationInFrames={150} premountFor={30}>
         <ScreenshotReceiptScene durationInFrames={150} kicker="AI.META.COM" title="MUSE SPARK 1.1" titlePos="right" tint="#D97757" src={`${SHOT}/meta-musespark-wide.png`} url="ai.meta.com" imageW={3840} imageH={2052} from={{ x: 480, y: 20, w: 2880, h: 1539 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={12} highlight={{ x: 700, y: 50, w: 1200, h: 100 }} highlightAt={30} />
       </Sequence>
       <Sequence from={7982} durationInFrames={120} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={120} kicker="TECHCRUNCH" title="VIDEO REMIX" titlePos="right" tint="#34D399" src={`${SHOT}/tc-video-remix-wide.png`} url="techcrunch.com" imageW={3840} imageH={2052} from={{ x: 0, y: 0, w: 3840, h: 2052 }} to={{ x: 180, y: 0, w: 3480, h: 1860 }} zoomAt={12} />
+        <ScreenshotReceiptScene durationInFrames={120} kicker="TECHCRUNCH" title="VIDEO REMIX" titlePos="right" tint="#4FA98A" src={`${SHOT}/tc-video-remix-wide.png`} url="techcrunch.com" imageW={3840} imageH={2052} from={{ x: 0, y: 0, w: 3840, h: 2052 }} to={{ x: 180, y: 0, w: 3480, h: 1860 }} zoomAt={12} />
       </Sequence>
 
       {/* 4:45 the week's verdict, side by side */}
@@ -221,27 +221,27 @@ export const AiNewsVisuals: React.FC = () => {
 
       {/* 4:57 don't migrate on a leaderboard — test first */}
       <Sequence from={8934} durationInFrames={194} premountFor={30}>
-        <MigrateStopScene durationInFrames={194} kicker="LEADERBOARD ≠ REASON" title="DON'T SWITCH BLIND" stopAtFrame={36} tint="#EF4444" />
+        <MigrateStopScene durationInFrames={194} kicker="LEADERBOARD ≠ REASON" title="DON'T SWITCH BLIND" stopAtFrame={36} tint="#C65B52" />
       </Sequence>
 
       {/* 5:04 measure three things */}
       <Sequence from={9128} durationInFrames={327} premountFor={30}>
-        <BenefitMetersScene durationInFrames={327} kicker="ONE REAL WORKFLOW" title="MEASURE 3 THINGS" stampText="SWITCH AT 2 OF 3" delays={[6, 65, 136]} stampAt={266} tint="#34D399" />
+        <BenefitMetersScene durationInFrames={327} kicker="ONE REAL WORKFLOW" title="MEASURE 3 THINGS" stampText="SWITCH AT 2 OF 3" delays={[6, 65, 136]} stampAt={266} tint="#4FA98A" />
       </Sequence>
 
       {/* 5:15 cheap output that needs repair isn't cheap */}
       <Sequence from={9455} durationInFrames={147} premountFor={30}>
-        <HiddenCostScene durationInFrames={147} kicker="THE CATCH" title="REPAIR COSTS" chipLabels={["REPAIR", "REDO", "REVIEW"]} chipAts={[65, 95, 125]} tint="#F59E0B" />
+        <HiddenCostScene durationInFrames={147} kicker="THE CATCH" title="REPAIR COSTS" chipLabels={["REPAIR", "REDO", "REVIEW"]} chipAts={[65, 95, 125]} tint="#C9913D" />
       </Sequence>
 
       {/* 5:20 fast but wrong hits the wall */}
       <Sequence from={9602} durationInFrames={197} premountFor={30}>
-        <SpeedWallScene durationInFrames={197} kicker="THE OTHER TRAP" title="FAST ≠ USEFUL" wallLabel="WRONG ANSWER" rocketLabel="FAST" tint="#EF4444" />
+        <SpeedWallScene durationInFrames={197} kicker="THE OTHER TRAP" title="FAST ≠ USEFUL" wallLabel="WRONG ANSWER" rocketLabel="FAST" tint="#C65B52" />
       </Sequence>
 
       {/* 5:26 the real reason to move */}
       <Sequence from={9799} durationInFrames={227} premountFor={30}>
-        <FinishCheckScene durationInFrames={227} kicker="THE CALL" title="QUALITY, TIME, COST" stamp="REAL REASON TO MOVE" stampAt={100} tint="#34D399" />
+        <FinishCheckScene durationInFrames={227} kicker="THE CALL" title="QUALITY, TIME, COST" stamp="REAL REASON TO MOVE" stampAt={100} tint="#4FA98A" />
       </Sequence>
 
       {/* 5:34 OUTRO — anchored to the spoken "Subscribe" (10033) */}

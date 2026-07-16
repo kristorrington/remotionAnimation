@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { fitText } from "@remotion/layout-utils";
-import { FONT, CYAN } from "../components/overlayUI";
+import { FONT, SERIF, CYAN } from "../components/overlayUI";
 import { AnimatedBackground } from "../components/AnimatedBackground";
 import { LightSweep, ParticleField, SceneCameraPush, GlowDivider } from "../motion/primitives";
 import { DepthProps, useImpactShake } from "../motion/cinematics";
@@ -16,13 +16,14 @@ const MoodWash: React.FC<{ mood: "danger" | "win" }> = ({ mood }) => {
   const pulse = 0.5 + 0.5 * Math.sin(frame * 0.16);
   if (mood === "danger") {
     // edge-only vignette — the center must stay clean (no milky wash)
-    return <AbsoluteFill style={{ pointerEvents: "none", background: `radial-gradient(ellipse at center, transparent 58%, rgba(239,68,68,${0.1 + 0.07 * pulse}) 100%)` }} />;
+    return <AbsoluteFill style={{ pointerEvents: "none", background: `radial-gradient(ellipse at center, transparent 58%, rgba(198,91,82,${0.1 + 0.07 * pulse}) 100%)` }} />;
   }
-  return <AbsoluteFill style={{ pointerEvents: "none", background: `radial-gradient(ellipse at 50% 100%, rgba(52,211,153,${0.06 + 0.04 * pulse}), transparent 55%)` }} />;
+  return <AbsoluteFill style={{ pointerEvents: "none", background: `radial-gradient(ellipse at 50% 100%, rgba(79,169,138,${0.06 + 0.04 * pulse}), transparent 55%)` }} />;
 };
 
-// Ambient TOPIC tint — deliberately BOLD so each scene reads as a different
-// chapter, never "the same dark navy". Three gradient geometries rotate by the
+// Ambient TOPIC tint — SOFT (premium pass 13.6): each scene reads as a
+// different chapter via HUE, but colour never becomes a nursery wash. Three
+// gradient geometries rotate by the
 // scene's seed (top aurora / diagonal sweep / bottom horizon), so even two
 // same-colour scenes get a different wash shape. Exported for scenes that
 // don't sit on SceneShell (e.g. CompareCard).
@@ -30,10 +31,10 @@ export const TintWash: React.FC<{ tint: string; seed?: number }> = ({ tint, seed
   const variant = seed % 3;
   const background =
     variant === 0
-      ? `linear-gradient(175deg, ${tint}42 0%, transparent 46%), radial-gradient(ellipse 120% 50% at 50% 112%, ${tint}30, transparent 70%)`
+      ? `linear-gradient(175deg, ${tint}22 0%, transparent 46%), radial-gradient(ellipse 120% 50% at 50% 112%, ${tint}18, transparent 70%)`
       : variant === 1
-        ? `linear-gradient(118deg, ${tint}45 0%, transparent 52%), radial-gradient(ellipse 70% 90% at 88% 78%, ${tint}2a, transparent 68%)`
-        : `radial-gradient(ellipse 95% 75% at 50% 28%, ${tint}3d, transparent 68%), linear-gradient(0deg, ${tint}38 0%, transparent 38%)`;
+        ? `linear-gradient(118deg, ${tint}24 0%, transparent 52%), radial-gradient(ellipse 70% 90% at 88% 78%, ${tint}16, transparent 68%)`
+        : `radial-gradient(ellipse 95% 75% at 50% 28%, ${tint}20, transparent 68%), linear-gradient(0deg, ${tint}1e 0%, transparent 38%)`;
   return <AbsoluteFill style={{ background, pointerEvents: "none" }} />;
 };
 
@@ -89,8 +90,9 @@ export const SceneHeadline: React.FC<{ kicker?: string; title: string; titleSize
   const kickerOp = interpolate(frame, [0, 14], [0, 1], CLAMP);
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16, textAlign: "center" }}>
+      {/* serif tracked caps — the editorial voice (premium pass §13.1-2) */}
       {kicker ? (
-        <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 26, letterSpacing: 8, color: accent, opacity: kickerOp, filter: t.glow ? "drop-shadow(0 4px 14px rgba(0,0,0,0.6))" : undefined }}>{kicker}</span>
+        <span style={{ fontFamily: SERIF, fontWeight: 600, fontSize: 27, letterSpacing: 6, color: accent, opacity: kickerOp, filter: t.glow ? "drop-shadow(0 4px 14px rgba(0,0,0,0.6))" : undefined }}>{kicker}</span>
       ) : null}
       {/* paper: near-black editorial type, no neon glow (theme-aware) */}
       <div style={{ opacity: titleOp, transform: `scale(${titleScale})`, fontFamily: FONT, fontWeight: 800, fontSize: fitted, letterSpacing: 1, color: t.text, lineHeight: 1.02, textShadow: t.glow ? "0 0 40px rgba(193,95,60,0.55)" : undefined, whiteSpace: "nowrap" }}>

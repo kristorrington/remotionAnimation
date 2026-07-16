@@ -56,8 +56,8 @@ const Check: React.FC<{ at: number; size?: number; cross?: boolean }> = ({ at, s
 // `pickIndex`, it glows and swings open. Serves "five options, pick one".
 export const PathDoorsScene: React.FC<{
   durationInFrames: number; kicker?: string; title: string;
-  doors?: { label: string; at: number }[]; pickIndex?: number; pickAt?: number; tint?: string;
-}> = ({ durationInFrames, kicker, title, doors = [], pickIndex = 0, pickAt = 99999, tint }) => {
+  doors?: { label: string; at: number }[]; pickIndex?: number; pickAt?: number; tint?: string; subject?: boolean;
+}> = ({ durationInFrames, kicker, title, doors = [], pickIndex = 0, pickAt = 99999, tint, subject = true }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const picked = frame >= pickAt;
@@ -69,7 +69,7 @@ export const PathDoorsScene: React.FC<{
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 44 }}>
         <div style={{ position: "relative", display: "flex", gap: 26, alignItems: "flex-end" }}>
           {doors.map((d, i) => {
-            const e = spring({ frame: frame - d.at, fps, config: { stiffness: 130, damping: 14 }, durationInFrames: 26 });
+            const e = spring({ frame: frame - d.at, fps, config: { stiffness: 118, damping: 18 }, durationInFrames: 26 });
             const isPick = picked && i === pickIndex;
             const open = isPick ? spring({ frame: frame - pickAt - 16, fps, config: { stiffness: 120, damping: 15 }, durationInFrames: 26 }) : 0;
             return (
@@ -89,12 +89,14 @@ export const PathDoorsScene: React.FC<{
             );
           })}
           {/* the chooser — walks the row, then hops into the picked doorway */}
+          {subject && (
           <div style={{ position: "absolute", left: "50%", bottom: 46, transform: `translateX(${robotX}px)` }}>
             <div style={{ transform: `translateY(${-Math.abs(impulse(frame, pickAt + 22, 12, 18))}px) translateX(-50%)` }}>
               <CartoonRobot pose={picked ? "celebrate" : "thinking"} size={170} accent={picked ? GOLD : CYAN} lookX={picked ? 0 : 5} />
             </div>
             <Puff at={pickAt + 24} x={0} y={160} size={120} />
           </div>
+          )}
         </div>
         <SceneHeadline kicker={kicker} title={title} titleSize={62} />
       </div>
@@ -117,7 +119,7 @@ export const DraftPolishScene: React.FC<{
       <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 21, letterSpacing: 2, color: "rgba(255,255,255,0.6)", transform: "translateZ(0)" }}>{x ? "THE OUTCOME" : "CLAUDE'S DRAFT"}</span>
       {[92, 78, 86, 64, 82].map((w, i) => {
         const wob = x ? (1 - clean) * Math.sin(i * 2.7) * 4 : Math.sin(frame * 0.06 + i * 2.1) * 2.5;
-        return <div key={i} style={{ width: `${w}%`, height: 12, borderRadius: 6, background: x ? `rgba(52,211,153,${0.25 + 0.3 * clean})` : "rgba(255,255,255,0.16)", margin: "13px 0", transform: `translateY(${wob}px)` }} />;
+        return <div key={i} style={{ width: `${w}%`, height: 12, borderRadius: 6, background: x ? `rgba(79,169,138,${0.25 + 0.3 * clean})` : "rgba(255,255,255,0.16)", margin: "13px 0", transform: `translateY(${wob}px)` }} />;
       })}
       {/* red edit marks fade away as the human polishes */}
       {x && [1, 3].map((i) => (
@@ -194,7 +196,7 @@ export const DocFunnelScene: React.FC<{
               <div style={{ width: 180, borderRadius: 12, ...glassCard(GREEN, 2.5), padding: "16px 16px", textAlign: "center" }}>
                 <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 19, letterSpacing: 1, color: WHITE, transform: "translateZ(0)" }}>{reportLabel}</span>
                 {[86, 70, 78].map((w, k) => (
-                  <div key={k} style={{ width: `${w}%`, height: 8, borderRadius: 4, background: `rgba(52,211,153,0.4)`, margin: "10px auto" }} />
+                  <div key={k} style={{ width: `${w}%`, height: 8, borderRadius: 4, background: `rgba(79,169,138,0.4)`, margin: "10px auto" }} />
                 ))}
               </div>
               <Sparks at={reportAt + 8} x={90} y={30} color={GREEN} size={130} />
@@ -337,8 +339,8 @@ export const FirstLineDeskScene: React.FC<{
 // produces the SAME clean output (repeatable > disposable prompts).
 export const SkillCartridgeScene: React.FC<{
   durationInFrames: number; kicker?: string; title: string;
-  slotAt?: number; runAts?: number[]; cartridgeLabel?: string;
-}> = ({ durationInFrames, kicker, title, slotAt = 90, runAts = [170, 220, 270], cartridgeLabel = "SKILL.MD" }) => {
+  slotAt?: number; runAts?: number[]; cartridgeLabel?: string; subject?: boolean;
+}> = ({ durationInFrames, kicker, title, slotAt = 90, runAts = [170, 220, 270], cartridgeLabel = "SKILL.MD", subject = true }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const slot = spring({ frame: frame - slotAt, fps, config: { stiffness: 110, damping: 14 }, durationInFrames: 28 });
@@ -369,7 +371,7 @@ export const SkillCartridgeScene: React.FC<{
                     <div style={{ width: 140, borderRadius: 12, ...glassCard(GREEN, 2), padding: "12px 14px" }}>
                       <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 17, letterSpacing: 1, color: GREEN, transform: "translateZ(0)" }}>RUN {i + 1}</span>
                       {[84, 70, 78].map((w, k) => (
-                        <div key={k} style={{ width: `${w}%`, height: 7, borderRadius: 4, background: "rgba(52,211,153,0.4)", margin: "8px 0" }} />
+                        <div key={k} style={{ width: `${w}%`, height: 7, borderRadius: 4, background: "rgba(79,169,138,0.4)", margin: "8px 0" }} />
                       ))}
                     </div>
                   </div>
@@ -378,9 +380,11 @@ export const SkillCartridgeScene: React.FC<{
             </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
-            <div style={{ transform: `translateY(${-runAts.reduce((a, at) => a + Math.abs(impulse(frame, at, 8, 14)), 0)}px)` }}>
-              <CartoonRobot pose={frame >= (runAts[runAts.length - 1] ?? 0) ? "celebrate" : seated ? "pointing" : "thinking"} size={220} accent={seated ? GREEN : CYAN} lookX={-7} />
-            </div>
+            {subject && (
+              <div style={{ transform: `translateY(${-runAts.reduce((a, at) => a + Math.abs(impulse(frame, at, 8, 14)), 0)}px)` }}>
+                <CartoonRobot pose={frame >= (runAts[runAts.length - 1] ?? 0) ? "celebrate" : seated ? "pointing" : "thinking"} size={220} accent={seated ? GREEN : CYAN} lookX={-7} />
+              </div>
+            )}
             <Sticker label="SAME RESULT, EVERY RUN" at={(runAts[1] ?? 0) + 10} color={GREEN} rot={-2} fontSize={21} />
           </div>
         </div>

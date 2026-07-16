@@ -81,7 +81,7 @@ export const GoLocalVisuals: React.FC = () => {
 
       {/* 0:07 the catch: "free" local drops the meter — GPU rent pumps it back */}
       <Sequence from={217} durationInFrames={112} premountFor={30}>
-        <HiddenCostScene durationInFrames={112} kicker="THE CATCH" title="LOCAL ≠ FREE" chipLabels={["GPU RENT", "CLUSTER", "BILLS"]} chipAts={[12, 42, 72]} tint="#F59E0B" />
+        <HiddenCostScene durationInFrames={112} kicker="THE CATCH" title="LOCAL ≠ FREE" chipLabels={["GPU RENT", "CLUSTER", "BILLS"]} chipAts={[12, 42, 72]} tint="#C9913D" />
       </Sequence>
 
       {/* 0:11 the REAL question is three gates: tier, licence, hardware */}
@@ -91,41 +91,41 @@ export const GoLocalVisuals: React.FC = () => {
 
       {/* 0:26 receipt: the Hugging Face CEO's tweet (his own words) */}
       <Sequence from={780} durationInFrames={180} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={180} kicker="HUGGING FACE CEO · ON X" title="THE 71% CLAIM" fullBleed={false} tint="#34D399" src={`${SHOT}/delangue-71pct-tweet.png`} url="x.com/ClementDelangue" imageW={1440} imageH={1860} from={{ x: 100, y: 20, w: 1240, h: 663 }} to={{ x: 0, y: 10, w: 1440, h: 770 }} zoomAt={14} highlight={{ x: 130, y: 105, w: 1180, h: 95 }} highlightAt={24} />
+        <ScreenshotReceiptScene durationInFrames={180} kicker="HUGGING FACE CEO · ON X" title="THE 71% CLAIM" fullBleed={false} tint="#4FA98A" src={`${SHOT}/delangue-71pct-tweet.png`} url="x.com/ClementDelangue" imageW={1440} imageH={1860} from={{ x: 100, y: 20, w: 1240, h: 663 }} to={{ x: 0, y: 10, w: 1440, h: 770 }} zoomAt={14} highlight={{ x: 130, y: 105, w: 1180, h: 95 }} highlightAt={24} />
       </Sequence>
 
       {/* 0:36 the shiny 71% placard vs the fine print behind it */}
       <Sequence from={1073} durationInFrames={241} premountFor={30}>
-        <BenchmarksLieScene durationInFrames={241} title="HEADLINE VS FINE PRINT" messLabels={["LLM AS JUDGE", "TWO LOCAL MODELS", "VS PROPRIETARY"]} messAts={[119, 140, 195]} revealAt={110} tint="#EF4444" />
+        <BenchmarksLieScene durationInFrames={241} title="HEADLINE VS FINE PRINT" messLabels={["LLM AS JUDGE", "TWO LOCAL MODELS", "VS PROPRIETARY"]} messAts={[119, 140, 195]} revealAt={110} tint="#C65B52" />
       </Sequence>
 
       {/* 0:44 kinetic: the whole study = one narrow matchup */}
       <Sequence from={1314} durationInFrames={112} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={112} title="THE STUDY MEASURED" stamp="ONE COMPARISON" stampAt={59} accent="#F59E0B" />
+        <FinalTakeawayScene durationInFrames={112} title="THE STUDY MEASURED" stamp="ONE COMPARISON" stampAt={59} accent="#C9913D" />
       </Sequence>
 
       {/* 0:47 debunk: what the study did NOT prove — badges bounce off the shield */}
       <Sequence from={1426} durationInFrames={224} premountFor={30}>
-        <NotMagicScene durationInFrames={224} kicker="THE FINE PRINT" title="DIDN'T PROVE THIS" badges={[{ label: "EVERY MODEL", at: 59 }, { label: "YOUR PC", at: 145 }]} tint="#EF4444" />
+        <NotMagicScene durationInFrames={224} kicker="THE FINE PRINT" title="DIDN'T PROVE THIS" badges={[{ label: "EVERY MODEL", at: 59 }, { label: "YOUR PC", at: 145 }]} tint="#C65B52" />
       </Sequence>
 
       {/* 1:02 TIER 1 — the genuine local tier (dev + tower + small block) */}
       <Sequence from={1854} durationInFrames={497} premountFor={30}>
-        <TierOneScene durationInFrames={497} kicker="TIER 1" title="THE REAL LOCAL TIER" chipAts={[142, 303, 410]} tint="#34D399" />
+        <TierOneScene durationInFrames={497} kicker="TIER 1" title="THE REAL LOCAL TIER" chipAts={[142, 303, 410]} tint="#4FA98A" />
       </Sequence>
 
       {/* 1:18 TIER 2 — rented racks, climbing rent meter */}
       <Sequence from={2351} durationInFrames={399} premountFor={30}>
-        <TierTwoScene durationInFrames={399} kicker="TIER 2" title="RENTED MUSCLE" chipAts={[112, 209, 324]} tint="#F59E0B" />
+        <TierTwoScene durationInFrames={399} kicker="TIER 2" title="RENTED MUSCLE" chipAts={[112, 209, 324]} tint="#C9913D" />
       </Sequence>
 
       {/* 1:36 receipt: NVIDIA's model card — 1.6 trillion parameters */}
       <Sequence from={2906} durationInFrames={180} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={180} kicker="NVIDIA MODEL CARD" title="1.6 TRILLION" titleTop={64} tint="#60A5FA" src={`${SHOT}/nvidia-dsv4-modelcard-wide.png`} url="build.nvidia.com" imageW={3840} imageH={2052} from={{ x: 560, y: 60, w: 2560, h: 1368 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 1565, y: 308, w: 490, h: 54 }} highlightAt={20} /></Sequence>
+        <ScreenshotReceiptScene durationInFrames={180} kicker="NVIDIA MODEL CARD" title="1.6 TRILLION" titleTop={64} tint="#6E93BD" src={`${SHOT}/nvidia-dsv4-modelcard-wide.png`} url="build.nvidia.com" imageW={3840} imageH={2052} from={{ x: 560, y: 60, w: 2560, h: 1368 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 1565, y: 308, w: 490, h: 54 }} highlightAt={20} /></Sequence>
 
       {/* 1:42 TIER 3 — the rack wall; the spare laptop gets crossed out */}
       <Sequence from={3086} durationInFrames={380} premountFor={30}>
-        <TierThreeScene durationInFrames={380} kicker="TIER 3" title="THE GIANTS" clusterChipAt={38} laptopAt={130} stampAt={195} tint="#EF4444" />
+        <TierThreeScene durationInFrames={380} kicker="TIER 3" title="THE GIANTS" clusterChipAt={38} laptopAt={130} stampAt={195} tint="#C65B52" />
       </Sequence>
 
       {/* 1:56 kinetic: the one question that sorts all advice */}
@@ -135,7 +135,7 @@ export const GoLocalVisuals: React.FC = () => {
 
       {/* 2:04 privacy: sensitive docs stay inside the boundary */}
       <Sequence from={3745} durationInFrames={330} premountFor={30}>
-        <SandboxScene durationInFrames={330} kicker="THE PRIVACY WIN" title="NOTHING LEAVES" copyAts={[120, 184, 234]} boundaryAt={60} chipAts={[134, 198, 248]} tint="#34D399" />
+        <SandboxScene durationInFrames={330} kicker="THE PRIVACY WIN" title="NOTHING LEAVES" copyAts={[120, 184, 234]} boundaryAt={60} chipAts={[134, 198, 248]} tint="#4FA98A" />
       </Sequence>
 
       {/* 2:18 control: you choose the model, updates, data location */}
@@ -145,32 +145,32 @@ export const GoLocalVisuals: React.FC = () => {
 
       {/* 2:32 kinetic: the licence trap begins */}
       <Sequence from={4576} durationInFrames={189} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={189} title="FREE TO DOWNLOAD…" stamp="≠ FREE TO SELL" stampAt={145} accent="#F59E0B" />
+        <FinalTakeawayScene durationInFrames={189} title="FREE TO DOWNLOAD…" stamp="≠ FREE TO SELL" stampAt={145} accent="#C9913D" />
       </Sequence>
 
       {/* 2:38 receipt: DeepSeek's MIT licence — commercial use permitted */}
       <Sequence from={4765} durationInFrames={200} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={200} kicker="GITHUB · DEEPSEEK" title="MIT: COMMERCIAL OK" titlePos="right" titleTop={470} tint="#34D399" src={`${SHOT}/deepseek-mit-licence-wide.png`} url="github.com/deepseek-ai" imageW={3840} imageH={2052} from={{ x: 600, y: 100, w: 2500, h: 1336 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 2130, y: 200, w: 420, h: 210 }} highlightAt={97} />
+        <ScreenshotReceiptScene durationInFrames={200} kicker="GITHUB · DEEPSEEK" title="MIT: COMMERCIAL OK" titlePos="right" titleTop={470} tint="#4FA98A" src={`${SHOT}/deepseek-mit-licence-wide.png`} url="github.com/deepseek-ai" imageW={3840} imageH={2052} from={{ x: 600, y: 100, w: 2500, h: 1336 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 2130, y: 200, w: 420, h: 210 }} highlightAt={97} />
       </Sequence>
 
       {/* 2:47 kinetic: same lab, different terms */}
       <Sequence from={5034} durationInFrames={127} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={127} title="SAME LAB" stamp="≠ SAME TERMS" stampAt={87} accent="#EF4444" />
+        <FinalTakeawayScene durationInFrames={127} title="SAME LAB" stamp="≠ SAME TERMS" stampAt={87} accent="#C65B52" />
       </Sequence>
 
       {/* 2:52 Kimi rides the licence scanner — CREDIT REQUIRED */}
       <Sequence from={5161} durationInFrames={205} premountFor={30}>
-        <ScannerScene durationInFrames={205} kicker="THE ATTRIBUTION CLAUSE" title="KIMI'S CONDITION" cardLabel="KIMI K2" archLabel="LICENCE CHECK" tagLabel="CREDIT REQUIRED" scanAt={40} tagAt={175} tint="#60A5FA" />
+        <ScannerScene durationInFrames={205} kicker="THE ATTRIBUTION CLAUSE" title="KIMI'S CONDITION" cardLabel="KIMI K2" archLabel="LICENCE CHECK" tagLabel="CREDIT REQUIRED" scanAt={40} tagAt={175} tint="#6E93BD" />
       </Sequence>
 
       {/* 2:58 receipt: MiniMax flipped to NON-COMMERCIAL */}
       <Sequence from={5366} durationInFrames={180} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={180} kicker="GITHUB · MINIMAX" title="NON-COMMERCIAL NOW" titlePos="left" titleTop={870} tint="#EF4444" src={`${SHOT}/minimax-licence-wide.png`} url="github.com/MiniMax-AI" imageW={3840} imageH={2052} from={{ x: 0, y: 0, w: 3840, h: 2052 }} to={{ x: 520, y: 120, w: 2760, h: 1476 }} zoomAt={16} highlight={{ x: 640, y: 420, w: 1900, h: 70 }} highlightAt={119} />
+        <ScreenshotReceiptScene durationInFrames={180} kicker="GITHUB · MINIMAX" title="NON-COMMERCIAL NOW" titlePos="left" titleTop={870} tint="#C65B52" src={`${SHOT}/minimax-licence-wide.png`} url="github.com/MiniMax-AI" imageW={3840} imageH={2052} from={{ x: 0, y: 0, w: 3840, h: 2052 }} to={{ x: 520, y: 120, w: 2760, h: 1476 }} zoomAt={16} highlight={{ x: 640, y: 420, w: 1900, h: 70 }} highlightAt={119} />
       </Sequence>
 
       {/* 3:07 Qwen's most capable models — the gate is closing */}
       <Sequence from={5630} durationInFrames={261} premountFor={30}>
-        <LockGateScene durationInFrames={261} kicker="OPEN… FOR NOW" title="QWEN IS CLOSING UP" cardLabel="QWEN-MAX" slamAt={223} tint="#F59E0B" />
+        <LockGateScene durationInFrames={261} kicker="OPEN… FOR NOW" title="QWEN IS CLOSING UP" cardLabel="QWEN-MAX" slamAt={223} tint="#C9913D" />
       </Sequence>
 
       {/* 3:18 version + licence + date ride the release scanner */}
@@ -180,22 +180,22 @@ export const GoLocalVisuals: React.FC = () => {
 
       {/* 3:30 receipt: Anthropic's own page — launched, gone, restored */}
       <Sequence from={6319} durationInFrames={200} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={200} kicker="ANTHROPIC.COM" title="GONE IN 3 DAYS" titlePos="left" titleTop={300} tint="#34D399" src={`${SHOT}/anthropic-fable-timeline-wide.png`} url="anthropic.com/news/claude-fable-5-mythos-5" imageW={3840} imageH={2052} from={{ x: 520, y: 1100, w: 2800, h: 1497 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 730, y: 1555, w: 1580, h: 100 }} highlightAt={114} />
+        <ScreenshotReceiptScene durationInFrames={200} kicker="ANTHROPIC.COM" title="GONE IN 3 DAYS" titlePos="left" titleTop={300} tint="#4FA98A" src={`${SHOT}/anthropic-fable-timeline-wide.png`} url="anthropic.com/news/claude-fable-5-mythos-5" imageW={3840} imageH={2052} from={{ x: 520, y: 1100, w: 2800, h: 1497 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 730, y: 1555, w: 1580, h: 100 }} highlightAt={114} />
       </Sequence>
 
       {/* 3:41 the gate slams on FABLE 5 — access is not guaranteed */}
       <Sequence from={6649} durationInFrames={231} premountFor={30}>
-        <LockGateScene durationInFrames={231} kicker="EVEN GOOD LICENCES" title="ACCESS CAN VANISH" cardLabel="FABLE 5" slamAt={127} warnLabel="BACK TODAY. TOMORROW?" warnAt={170} tint="#EF4444" />
+        <LockGateScene durationInFrames={231} kicker="EVEN GOOD LICENCES" title="ACCESS CAN VANISH" cardLabel="FABLE 5" slamAt={127} warnLabel="BACK TODAY. TOMORROW?" warnAt={170} tint="#C65B52" />
       </Sequence>
 
       {/* 3:49 the dependency stack collapses */}
       <Sequence from={6880} durationInFrames={190} premountFor={30}>
-        <StackCollapseScene durationInFrames={190} kicker="THE REAL RISK" title="YOUR ONLY DEPENDENCY?" labels={["PRODUCTS", "CLIENTS", "REVENUE"]} drops={[20, 45, 70]} collapseAt={110} accent="#F59E0B" tint="#F59E0B" />
+        <StackCollapseScene durationInFrames={190} kicker="THE REAL RISK" title="YOUR ONLY DEPENDENCY?" labels={["PRODUCTS", "CLIENTS", "REVENUE"]} drops={[20, 45, 70]} collapseAt={110} accent="#C9913D" tint="#C9913D" />
       </Sequence>
 
       {/* 3:57 own vs rent */}
       <Sequence from={7102} durationInFrames={300} premountFor={30}>
-        <CompareCard kicker="THE HARDWARE FILTER" tint="#D97757" left={{ title: "TIER 1", items: ["Hardware you own"], accent: "#34D399", mark: "✓" }} right={{ title: "TIER 2–3", items: ["Rented infrastructure"], accent: "#F59E0B", mark: "$" }} leftDelay={6} rightDelay={96} durationInFrames={300} />
+        <CompareCard kicker="THE HARDWARE FILTER" tint="#D97757" left={{ title: "TIER 1", items: ["Hardware you own"], accent: "#4FA98A", mark: "✓" }} right={{ title: "TIER 2–3", items: ["Rented infrastructure"], accent: "#C9913D", mark: "$" }} leftDelay={6} rightDelay={96} durationInFrames={300} />
       </Sequence>
 
       {/* 4:13 kinetic: the punchline */}
@@ -205,7 +205,7 @@ export const GoLocalVisuals: React.FC = () => {
 
       {/* 4:17 worth it? the scale decides per case */}
       <Sequence from={7714} durationInFrames={244} premountFor={30}>
-        <BalanceScaleScene durationInFrames={244} kicker="SOMETIMES / SOMETIMES" title="WORTH THE STEPS?" leftLabel="CONTROL" rightLabel="COST + UPKEEP" dropLeftAt={12} dropRightAt={74} tipAt={130} stampText="IT DEPENDS" stampAt={160} tint="#34D399" />
+        <BalanceScaleScene durationInFrames={244} kicker="SOMETIMES / SOMETIMES" title="WORTH THE STEPS?" leftLabel="CONTROL" rightLabel="COST + UPKEEP" dropLeftAt={12} dropRightAt={74} tipAt={130} stampText="IT DEPENDS" stampAt={160} tint="#4FA98A" />
       </Sequence>
 
       {/* 4:30 rule step 1 — pick the SMALLEST door that fits the job */}
@@ -215,27 +215,27 @@ export const GoLocalVisuals: React.FC = () => {
 
       {/* 4:43 rule step 2 — the licence gates must all open */}
       <Sequence from={8486} durationInFrames={320} premountFor={30}>
-        <GatesScene durationInFrames={320} kicker="RULE STEP 2 · LICENCE" title="OPEN THE MODEL CARD" gates={[{ label: "COMMERCIAL USE", at: 114 }, { label: "ATTRIBUTION", at: 167 }, { label: "RESTRICTIONS", at: 244 }]} tint="#34D399" />
+        <GatesScene durationInFrames={320} kicker="RULE STEP 2 · LICENCE" title="OPEN THE MODEL CARD" gates={[{ label: "COMMERCIAL USE", at: 114 }, { label: "ATTRIBUTION", at: 167 }, { label: "RESTRICTIONS", at: 244 }]} tint="#4FA98A" />
       </Sequence>
 
       {/* 4:54 rule step 3 — make it fit the hardware you own */}
       <Sequence from={8823} durationInFrames={248} premountFor={30}>
-        <StepsScene durationInFrames={248} kicker="RULE STEP 3 · HARDWARE" title="MAKE IT FIT" steps={[{ label: "MEMORY", at: 113 }, { label: "MODEL SIZE", at: 167 }, { label: "QUANTISE", at: 200 }]} accent="#60A5FA" tint="#60A5FA" subject />
+        <StepsScene durationInFrames={248} kicker="RULE STEP 3 · HARDWARE" title="MAKE IT FIT" steps={[{ label: "MEMORY", at: 113 }, { label: "MODEL SIZE", at: 167 }, { label: "QUANTISE", at: 200 }]} accent="#6E93BD" tint="#6E93BD" subject />
       </Sequence>
 
       {/* 5:02 all three pass → local gets the green light */}
       <Sequence from={9071} durationInFrames={280} premountFor={30}>
-        <FinishCheckScene durationInFrames={280} kicker="ALL THREE PASS?" title="LOCAL: GREEN LIGHT" stamp="GREAT OPTION" stampAt={165} tint="#34D399" />
+        <FinishCheckScene durationInFrames={280} kicker="ALL THREE PASS?" title="LOCAL: GREEN LIGHT" stamp="GREAT OPTION" stampAt={165} tint="#4FA98A" />
       </Sequence>
 
       {/* 5:15 kinetic: tier 2-3 reality check */}
       <Sequence from={9451} durationInFrames={152} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={152} title="TIER 2–3 = RENTING" stamp="NOT A CHEAP LAPTOP" stampAt={53} accent="#F59E0B" />
+        <FinalTakeawayScene durationInFrames={152} title="TIER 2–3 = RENTING" stamp="NOT A CHEAP LAPTOP" stampAt={53} accent="#C9913D" />
       </Sequence>
 
       {/* 5:20 unclear licence? STOP — test bench, written permission */}
       <Sequence from={9603} durationInFrames={248} premountFor={30}>
-        <MigrateStopScene durationInFrames={248} kicker="NON-COMMERCIAL OR UNCLEAR" title="STOP. GET IT IN WRITING" stopAtFrame={46} tint="#EF4444" />
+        <MigrateStopScene durationInFrames={248} kicker="NON-COMMERCIAL OR UNCLEAR" title="STOP. GET IT IN WRITING" stopAtFrame={46} tint="#C65B52" />
       </Sequence>
 
       {/* 5:32 the recap: three doors to ask about */}

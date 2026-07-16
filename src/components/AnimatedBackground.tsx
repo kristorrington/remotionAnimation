@@ -79,6 +79,15 @@ export const AnimatedBackground: React.FC<Props> = ({ durationInFrames, words, f
           }}
         />
         <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 42%, transparent 55%, rgba(120,90,60,0.10) 100%)" }} />
+        {/* film grain (premium pass 13.10) - kills the flat digital field */}
+        <AbsoluteFill style={{ opacity: 0.028, mixBlendMode: "multiply" }}>
+          <svg width="100%" height="100%">
+            <filter id="paperGrain">
+              <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" />
+            </filter>
+            <rect width="100%" height="100%" filter="url(#paperGrain)" />
+          </svg>
+        </AbsoluteFill>
       </AbsoluteFill>
     );
   }

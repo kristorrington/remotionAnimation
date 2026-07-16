@@ -40,7 +40,7 @@ export const ScreenshotReceiptScene: React.FC<{
   // chrome/URL bar spans the top (credibility stays) and the title rides a
   // white sticker pill over the page. Set fullBleed={false} for the 90% card.
   if (fullBleed) {
-    const pop = spring({ frame: frame - 8, fps, config: { stiffness: 240, damping: 14 }, durationInFrames: 18 });
+    const pop = spring({ frame: frame - 8, fps, config: { stiffness: 130, damping: 18 }, durationInFrames: 26 });
     const slot = titlePos === "right" ? { right: 60 } : titlePos === "left" ? { left: 60 } : { left: "50%" };
     return (
       <AbsoluteFill>
@@ -86,9 +86,9 @@ export const SourceCardScene: React.FC<{
         <FloatingPanel delay={16} accent={accent} style={{ width: 940, padding: 0, overflow: "hidden" }}>
           {/* window chrome */}
           <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "16px 22px", background: "rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-            <span style={{ width: 12, height: 12, borderRadius: "50%", background: "#EF4444" }} />
-            <span style={{ width: 12, height: 12, borderRadius: "50%", background: "#F59E0B" }} />
-            <span style={{ width: 12, height: 12, borderRadius: "50%", background: "#34D399" }} />
+            <span style={{ width: 12, height: 12, borderRadius: "50%", background: "#C65B52" }} />
+            <span style={{ width: 12, height: 12, borderRadius: "50%", background: "#C9913D" }} />
+            <span style={{ width: 12, height: 12, borderRadius: "50%", background: "#4FA98A" }} />
             <span style={{ marginLeft: 14, fontFamily: MONO, fontWeight: 500, fontSize: 24, letterSpacing: 1, color: "rgba(255,255,255,0.65)" }}>{sourceName}</span>
           </div>
           {/* lines */}

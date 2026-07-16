@@ -79,7 +79,7 @@ export const ChatGptWorkVisuals: React.FC = () => {
 
       {/* 0:10 b-roll: the Unified Plugins Directory, first glance ("adds one directory" 296) */}
       <Sequence from={300} durationInFrames={150} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={150} kicker="OPENAI.COM" title="ONE DIRECTORY" tint="#34D399" src={`${SHOT}/openai-plugins-grid.png`} url="openai.com/business/plugins" imageW={2880} imageH={5500} from={{ x: 0, y: 760, w: 2880, h: 1539 }} to={{ x: 0, y: 60, w: 2880, h: 1539 }} zoomAt={12} />
+        <ScreenshotReceiptScene durationInFrames={150} kicker="OPENAI.COM" title="ONE DIRECTORY" tint="#4FA98A" src={`${SHOT}/openai-plugins-grid.png`} url="openai.com/business/plugins" imageW={2880} imageH={5500} from={{ x: 0, y: 760, w: 2880, h: 1539 }} to={{ x: 0, y: 60, w: 2880, h: 1539 }} zoomAt={12} />
       </Sequence>
 
       {/* 0:14 kinetic: the promise */}
@@ -99,17 +99,17 @@ export const ChatGptWorkVisuals: React.FC = () => {
 
       {/* 0:43 kinetic: not a rebrand */}
       <Sequence from={1290} durationInFrames={100} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={100} title="NOT A REBRAND" accent="#F59E0B" />
+        <FinalTakeawayScene durationInFrames={100} title="NOT A REBRAND" accent="#C9913D" />
       </Sequence>
 
       {/* 0:46 receipt: help center — Codex merged into ChatGPT ("merged directly" 1392) */}
       <Sequence from={1400} durationInFrames={220} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={220} kicker="HELP.OPENAI.COM" title="CODEX, FOLDED IN" tint="#34D399" src={`${SHOT}/openai-help-codex-wide.png`} url="help.openai.com" imageW={2535} imageH={1355} from={{ x: 102, y: 54, w: 2332, h: 1246 }} to={{ x: 0, y: 0, w: 2535, h: 1355 }} zoomAt={16} highlight={{ x: 385, y: 592, w: 1360, h: 80 }} highlightAt={34} />
+        <ScreenshotReceiptScene durationInFrames={220} kicker="HELP.OPENAI.COM" title="CODEX, FOLDED IN" tint="#4FA98A" src={`${SHOT}/openai-help-codex-wide.png`} url="help.openai.com" imageW={2535} imageH={1355} from={{ x: 102, y: 54, w: 2332, h: 1246 }} to={{ x: 0, y: 0, w: 2535, h: 1355 }} zoomAt={16} highlight={{ x: 385, y: 592, w: 1360, h: 80 }} highlightAt={34} />
       </Sequence>
 
       {/* 1:00 receipt: the "ChatGPT Classic" rename, from the FAQ ("renamed" 1803) */}
       <Sequence from={1810} durationInFrames={180} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={180} kicker="HELP.OPENAI.COM" title="MEET 'CLASSIC'" tint="#F59E0B" src={`${SHOT}/openai-help-classic-wide.png`} url="help.openai.com" imageW={2535} imageH={1355} from={{ x: 0, y: 0, w: 2535, h: 1355 }} to={{ x: 180, y: 40, w: 1980, h: 1058 }} zoomAt={14} highlight={{ x: 385, y: 86, w: 1130, h: 76 }} highlightAt={31} />
+        <ScreenshotReceiptScene durationInFrames={180} kicker="HELP.OPENAI.COM" title="MEET 'CLASSIC'" tint="#C9913D" src={`${SHOT}/openai-help-classic-wide.png`} url="help.openai.com" imageW={2535} imageH={1355} from={{ x: 0, y: 0, w: 2535, h: 1355 }} to={{ x: 180, y: 40, w: 1980, h: 1058 }} zoomAt={14} highlight={{ x: 385, y: 86, w: 1130, h: 76 }} highlightAt={31} />
       </Sequence>
 
       {/* 1:10 the product split: two doors, one direction pushed */}
@@ -119,7 +119,7 @@ export const ChatGptWorkVisuals: React.FC = () => {
 
       {/* 1:21 the rivalry: three work-AI columns, subject enlarged */}
       <Sequence from={2445} durationInFrames={250} premountFor={30}>
-        <RivalryScene durationInFrames={250} kicker="THE OBVIOUS COMPARISON" title="WORK-AI RIVALRY" colAts={[10, 45, 78]} emphasizeAt={219} tint="#34D399" />
+        <RivalryScene durationInFrames={250} kicker="THE OBVIOUS COMPARISON" title="WORK-AI RIVALRY" colAts={[10, 45, 78]} emphasizeAt={219} tint="#4FA98A" />
       </Sequence>
 
       {/* 1:36 receipt: help-center table naming Sol, Terra, Luna (2893) */}
@@ -129,37 +129,37 @@ export const ChatGptWorkVisuals: React.FC = () => {
 
       {/* 1:42 kinetic: the fine print */}
       <Sequence from={3060} durationInFrames={110} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={110} title="ROLES: UNCLEAR" accent="#F59E0B" />
+        <FinalTakeawayScene durationInFrames={110} title="ROLES: UNCLEAR" accent="#C9913D" />
       </Sequence>
 
       {/* 1:48 receipt: TechSpot's staggered-release headline (3240) */}
       <Sequence from={3250} durationInFrames={140} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={140} kicker="TECHSPOT · JUN 27" title="STAGGERED RELEASE" titlePos="right" tint="#EF4444" src={`${SHOT}/techspot-staggered-wide.png`} url="techspot.com" imageW={2900} imageH={1550} from={{ x: 116, y: 62, w: 2668, h: 1426 }} to={{ x: 0, y: 0, w: 2900, h: 1550 }} zoomAt={14} highlight={{ x: 300, y: 150, w: 1715, h: 340 }} highlightAt={28} />
+        <ScreenshotReceiptScene durationInFrames={140} kicker="TECHSPOT · JUN 27" title="STAGGERED RELEASE" titlePos="right" tint="#C65B52" src={`${SHOT}/techspot-staggered-wide.png`} url="techspot.com" imageW={2900} imageH={1550} from={{ x: 116, y: 62, w: 2668, h: 1426 }} to={{ x: 0, y: 0, w: 2900, h: 1550 }} zoomAt={14} highlight={{ x: 300, y: 150, w: 1715, h: 340 }} highlightAt={28} />
       </Sequence>
 
       {/* 1:53 the review, acted out: GPT-5.6 rides through the scan arch */}
       <Sequence from={3400} durationInFrames={180} premountFor={30}>
-        <ScannerScene durationInFrames={180} kicker="NATIONAL-SECURITY REVIEW" title="HELD AT THE GATE" cardLabel="GPT-5.6" archLabel="US REVIEW" tagLabel="RESTRICTED" scanAt={40} tagAt={95} tint="#EF4444" />
+        <ScannerScene durationInFrames={180} kicker="NATIONAL-SECURITY REVIEW" title="HELD AT THE GATE" cardLabel="GPT-5.6" archLabel="US REVIEW" tagLabel="RESTRICTED" scanAt={40} tagAt={95} tint="#C65B52" />
       </Sequence>
 
       {/* 1:59 receipt: the review scope — cyber, biological, military (3590) */}
       <Sequence from={3590} durationInFrames={230} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={230} kicker="THETECHPORTAL" title="THE REVIEW SCOPE" titlePos="right" tint="#F59E0B" src={`${SHOT}/techportal-review-wide.png`} url="thetechportal.com" imageW={2021} imageH={1080} from={{ x: 80, y: 43, w: 1859, h: 994 }} to={{ x: 0, y: 0, w: 2021, h: 1080 }} zoomAt={14} highlight={{ x: 450, y: 620, w: 1120, h: 130 }} highlightAt={20} />
+        <ScreenshotReceiptScene durationInFrames={230} kicker="THETECHPORTAL" title="THE REVIEW SCOPE" titlePos="right" tint="#C9913D" src={`${SHOT}/techportal-review-wide.png`} url="thetechportal.com" imageW={2021} imageH={1080} from={{ x: 80, y: 43, w: 1859, h: 994 }} to={{ x: 0, y: 0, w: 2021, h: 1080 }} zoomAt={14} highlight={{ x: 450, y: 620, w: 1120, h: 130 }} highlightAt={20} />
       </Sequence>
 
       {/* 2:12 receipt: MacRumors — who gets it first (3971) */}
       <Sequence from={3980} durationInFrames={190} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={190} kicker="MACRUMORS · JUL 9" title="WHO GETS IT" titlePos="right" tint="#34D399" src={`${SHOT}/macrumors-rollout-wide.png`} url="macrumors.com" imageW={2535} imageH={1355} from={{ x: 102, y: 54, w: 2332, h: 1246 }} to={{ x: 0, y: 0, w: 2535, h: 1355 }} zoomAt={14} highlight={{ x: 195, y: 262, w: 1490, h: 92 }} highlightAt={22} />
+        <ScreenshotReceiptScene durationInFrames={190} kicker="MACRUMORS · JUL 9" title="WHO GETS IT" titlePos="right" tint="#4FA98A" src={`${SHOT}/macrumors-rollout-wide.png`} url="macrumors.com" imageW={2535} imageH={1355} from={{ x: 102, y: 54, w: 2332, h: 1246 }} to={{ x: 0, y: 0, w: 2535, h: 1355 }} zoomAt={14} highlight={{ x: 195, y: 262, w: 1490, h: 92 }} highlightAt={22} />
       </Sequence>
 
       {/* 2:19 today vs the coming days */}
       <Sequence from={4180} durationInFrames={300} premountFor={30}>
-        <CompareCard kicker="THE ROLLOUT" tint="#D97757" left={{ title: "TODAY", items: ["Pro", "Enterprise", "Edu"], accent: "#34D399", mark: "✓" }} right={{ title: "COMING DAYS", items: ["Plus", "Business"], accent: "#F59E0B", mark: "→" }} leftDelay={20} rightDelay={50} durationInFrames={300} />
+        <CompareCard kicker="THE ROLLOUT" tint="#D97757" left={{ title: "TODAY", items: ["Pro", "Enterprise", "Edu"], accent: "#4FA98A", mark: "✓" }} right={{ title: "COMING DAYS", items: ["Plus", "Business"], accent: "#C9913D", mark: "→" }} leftDelay={20} rightDelay={50} durationInFrames={300} />
       </Sequence>
 
       {/* 2:29 kinetic: don't chase access */}
       <Sequence from={4495} durationInFrames={115} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={115} title="DON'T CHASE ACCESS" accent="#EF4444" />
+        <FinalTakeawayScene durationInFrames={115} title="DON'T CHASE ACCESS" accent="#C65B52" />
       </Sequence>
 
       {/* 2:34 billing, acted out: the meter runs while the task runs */}
@@ -169,7 +169,7 @@ export const ChatGptWorkVisuals: React.FC = () => {
 
       {/* 2:42 receipt: the pricing page has no Work price (4876) */}
       <Sequence from={4870} durationInFrames={210} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={210} kicker="CHATGPT.COM/PRICING" title="NO WORK PRICE" tint="#F59E0B" src={`${SHOT}/chatgpt-pricing-wide.png`} url="chatgpt.com/pricing" imageW={3200} imageH={1710} from={{ x: 0, y: 0, w: 3200, h: 1710 }} to={{ x: 340, y: 260, w: 2560, h: 1368 }} zoomAt={18} />
+        <ScreenshotReceiptScene durationInFrames={210} kicker="CHATGPT.COM/PRICING" title="NO WORK PRICE" tint="#C9913D" src={`${SHOT}/chatgpt-pricing-wide.png`} url="chatgpt.com/pricing" imageW={3200} imageH={1710} from={{ x: 0, y: 0, w: 3200, h: 1710 }} to={{ x: 340, y: 260, w: 2560, h: 1368 }} zoomAt={18} />
       </Sequence>
 
       {/* 2:51 kinetic: cost gets real */}
@@ -179,7 +179,7 @@ export const ChatGptWorkVisuals: React.FC = () => {
 
       {/* 2:57 b-roll: the directory pan — Slack, Gmail, Salesforce… (5311) */}
       <Sequence from={5311} durationInFrames={150} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={150} kicker="UNIFIED PLUGINS DIRECTORY" title="YOUR APPS, LISTED" titlePos="right" tint="#34D399" src={`${SHOT}/openai-plugins-grid.png`} url="openai.com/business/plugins" imageW={2880} imageH={5500} from={{ x: 0, y: 1500, w: 2880, h: 1539 }} to={{ x: 0, y: 100, w: 2880, h: 1539 }} zoomAt={14} highlight={{ x: 55, y: 120, w: 900, h: 210 }} highlightAt={130} />
+        <ScreenshotReceiptScene durationInFrames={150} kicker="UNIFIED PLUGINS DIRECTORY" title="YOUR APPS, LISTED" titlePos="right" tint="#4FA98A" src={`${SHOT}/openai-plugins-grid.png`} url="openai.com/business/plugins" imageW={2880} imageH={5500} from={{ x: 0, y: 1500, w: 2880, h: 1539 }} to={{ x: 0, y: 100, w: 2880, h: 1539 }} zoomAt={14} highlight={{ x: 55, y: 120, w: 900, h: 210 }} highlightAt={130} />
       </Sequence>
 
       {/* 3:02 the point: apps wire into ONE surface */}
@@ -189,7 +189,7 @@ export const ChatGptWorkVisuals: React.FC = () => {
 
       {/* 3:16 kinetic: day-one limits */}
       <Sequence from={5900} durationInFrames={150} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={150} title="DAY-ONE LIMITS" stamp="CHECK PERMISSIONS" stampAt={80} accent="#F59E0B" />
+        <FinalTakeawayScene durationInFrames={150} title="DAY-ONE LIMITS" stamp="CHECK PERMISSIONS" stampAt={80} accent="#C9913D" />
       </Sequence>
 
       {/* 3:24 receipt backdrop: OpenAI pitching itself across the work stack */}
@@ -204,17 +204,17 @@ export const ChatGptWorkVisuals: React.FC = () => {
 
       {/* 3:42 kinetic: the trust test */}
       <Sequence from={6655} durationInFrames={120} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={120} title="THE TRUST TEST" accent="#EF4444" />
+        <FinalTakeawayScene durationInFrames={120} title="THE TRUST TEST" accent="#C65B52" />
       </Sequence>
 
       {/* 3:47 the July-11 noise, clearly flagged as unverified */}
       <Sequence from={6830} durationInFrames={150} premountFor={30}>
-        <SourceCardScene durationInFrames={150} kicker="JULY 11 · UNVERIFIED" title="LAUNCH-WEEK NOISE" sourceName="community reports — unconfirmed" lines={[{ text: "Quota resets", highlight: true }, { text: "Redesign confusion" }]} highlightAt={60} accent="#F59E0B" />
+        <SourceCardScene durationInFrames={150} kicker="JULY 11 · UNVERIFIED" title="LAUNCH-WEEK NOISE" sourceName="community reports — unconfirmed" lines={[{ text: "Quota resets", highlight: true }, { text: "Redesign confusion" }]} highlightAt={60} accent="#C9913D" />
       </Sequence>
 
       {/* 3:53 THE beat: the reported Sol incidents (illustration, then NOT CONFIRMED) */}
       <Sequence from={6990} durationInFrames={330} premountFor={30}>
-        <SolIncidentScene durationInFrames={330} kicker="ONE UNVERIFIED REPORT" title="TWO SOL INCIDENTS" deleteAt={58} warnAt={92} freezeAt={172} tint="#EF4444" />
+        <SolIncidentScene durationInFrames={330} kicker="ONE UNVERIFIED REPORT" title="TWO SOL INCIDENTS" deleteAt={58} warnAt={92} freezeAt={172} tint="#C65B52" />
       </Sequence>
 
       {/* 4:08 damage at speed: the fast agent hits the wall it was avoiding */}
@@ -227,7 +227,7 @@ export const ChatGptWorkVisuals: React.FC = () => {
         <FinalTakeawayScene durationInFrames={95} title="AGENTS NEED PERMISSIONS" accent="#D97757" />
       </Sequence>
       <Sequence from={7755} durationInFrames={170} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={170} title="TRUST NEEDS LIMITS" stamp="SANDBOX IT" stampAt={60} accent="#EF4444" />
+        <FinalTakeawayScene durationInFrames={170} title="TRUST NEEDS LIMITS" stamp="SANDBOX IT" stampAt={60} accent="#C65B52" />
       </Sequence>
 
       {/* 4:22 the coverage gap: shiny demos in front, file safety behind */}
@@ -237,12 +237,12 @@ export const ChatGptWorkVisuals: React.FC = () => {
 
       {/* 4:30 MY RULE: no backup, no agent (stamp lands as "lacks a backup" ends, 8268) */}
       <Sequence from={8110} durationInFrames={200} premountFor={30}>
-        <NoBackupNoAgentScene durationInFrames={200} kicker="MY RULE" title="BACK IT UP FIRST" stopAt={40} copyAt={148} goAt={168} stampAt={158} tint="#34D399" />
+        <NoBackupNoAgentScene durationInFrames={200} kicker="MY RULE" title="BACK IT UP FIRST" stopAt={40} copyAt={148} goAt={168} stampAt={158} tint="#4FA98A" />
       </Sequence>
 
       {/* 4:37 kinetic: what flips the light ("green light" 8290-8310) */}
       <Sequence from={8310} durationInFrames={130} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={130} title="GREEN LIGHT: PATCH NOTES" accent="#34D399" />
+        <FinalTakeawayScene durationInFrames={130} title="GREEN LIGHT: PATCH NOTES" accent="#4FA98A" />
       </Sequence>
 
       {/* 4:54 the playbook: sandbox first, write access last */}
@@ -252,12 +252,12 @@ export const ChatGptWorkVisuals: React.FC = () => {
 
       {/* 5:04 kinetic: the red line */}
       <Sequence from={9140} durationInFrames={160} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={160} title="NOT YOUR ONLY COPY" accent="#EF4444" />
+        <FinalTakeawayScene durationInFrames={160} title="NOT YOUR ONLY COPY" accent="#C65B52" />
       </Sequence>
 
       {/* 5:10 launch day vs patch notes */}
       <Sequence from={9300} durationInFrames={220} premountFor={30}>
-        <CompareCard kicker="THE VERDICT" tint="#34D399" left={{ title: "LAUNCH DAY", items: ["it's available"], accent: "#D97757", mark: "→" }} right={{ title: "PATCH NOTES", items: ["it's trustworthy"], accent: "#34D399", mark: "✓" }} leftDelay={20} rightDelay={90} durationInFrames={220} />
+        <CompareCard kicker="THE VERDICT" tint="#4FA98A" left={{ title: "LAUNCH DAY", items: ["it's available"], accent: "#D97757", mark: "→" }} right={{ title: "PATCH NOTES", items: ["it's trustworthy"], accent: "#4FA98A", mark: "✓" }} leftDelay={20} rightDelay={90} durationInFrames={220} />
       </Sequence>
 
       {/* 5:17 closing verdict: learn now, trust later */}

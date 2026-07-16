@@ -60,7 +60,7 @@ const CARDS: Card[] = [
   { from: 5496, dur: 280, scene: "speedWall", kicker: "SPEED ISN'T SUCCESS", title: "SPEED ≠ SUCCESS" }, // 2:59.5
   { from: 5801, dur: 400, scene: "cheaperServe", kicker: "THE REAL STORY", title: "CHEAPER TO SERVE" }, // 3:13.4
   { from: 6218, dur: 620, scene: "scaleCost", kicker: "SPEED = MONEY AT SCALE", title: "AT SCALE IT ADDS UP", itemDelays: [6, 237, 567] }, // 3:27.5
-  { from: 6950, dur: 560, scene: "stats", kicker: "AND IT'S NOT SMALL", title: "V4 IS HUGE", stats: [{ value: 284, suffix: "B", label: "Flash", at: 87, accent: "#D97757" }, { value: 1.6, suffix: "T", decimals: 1, label: "Pro", at: 303, accent: "#C15F3C" }, { value: 1, suffix: "M", label: "Context", at: 502, accent: "#34D399" }] }, // 3:51.9
+  { from: 6950, dur: 560, scene: "stats", kicker: "AND IT'S NOT SMALL", title: "V4 IS HUGE", stats: [{ value: 284, suffix: "B", label: "Flash", at: 87, accent: "#D97757" }, { value: 1.6, suffix: "T", decimals: 1, label: "Pro", at: 303, accent: "#C15F3C" }, { value: 1, suffix: "M", label: "Context", at: 502, accent: "#4FA98A" }] }, // 3:51.9
   { from: 7652, dur: 275, scene: "lessPain", kicker: "THE REAL GOAL", title: "BIG MODELS, LESS PAIN" }, // 4:15.3
   { from: 7930, dur: 320, scene: "benefits", kicker: "IF IT WORKS", title: "CHEAPER · FASTER · USABLE", itemDelays: [14, 90, 164] }, // 4:24.4
   { from: 8257, dur: 300, scene: "benchLie", kicker: "THE CATCH", title: "BENCHMARKS LIE" }, // 4:35.4
@@ -166,7 +166,7 @@ export const DSparkVisuals: React.FC = () => {
 
       {/* 2:09 — the reported numbers */}
       <Sequence from={3875} durationInFrames={480} premountFor={30}>
-        <CompareCard kicker="THE REPORTED NUMBERS" left={{ title: "V4 FLASH", items: ["60–85% faster", "per user"], accent: "#34D399", mark: "»" }} right={{ title: "V4 PRO", items: ["57–78% faster", "per user"], accent: "#D97757", mark: "»" }} leftDelay={87} rightDelay={306} durationInFrames={480} />
+        <CompareCard kicker="THE REPORTED NUMBERS" left={{ title: "V4 FLASH", items: ["60–85% faster", "per user"], accent: "#4FA98A", mark: "»" }} right={{ title: "V4 PRO", items: ["57–78% faster", "per user"], accent: "#D97757", mark: "»" }} leftDelay={87} rightDelay={306} durationInFrames={480} />
       </Sequence>
 
       {/* 6:29 — outro, anchored to the spoken "subscribe" (11678), runs to the end */}

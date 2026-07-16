@@ -62,7 +62,7 @@ export const SourceScreenshot: React.FC<{
     <div style={{ width, borderRadius: bleed ? 0 : 18, overflow: "hidden", border: bleed ? "none" : `2px solid ${CYAN}55`, boxShadow: bleed ? "none" : `0 30px 80px rgba(0,0,0,0.55), 0 0 40px ${CYAN}22`, opacity: op, background: "#0B0F17", transform: bleed ? undefined : `scale(${drift})`, transformOrigin: "50% 50%" }}>
       {/* browser chrome */}
       <div style={{ height: 54, display: "flex", alignItems: "center", gap: 10, padding: "0 20px", background: "#111827", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-        {["#EF4444", "#F59E0B", "#34D399"].map((c) => (
+        {["#C65B52", "#C9913D", "#4FA98A"].map((c) => (
           <span key={c} style={{ width: 13, height: 13, borderRadius: "50%", background: c, opacity: 0.85 }} />
         ))}
         <div style={{ flex: 1, marginLeft: 12, padding: "7px 18px", borderRadius: 999, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.1)" }}>
@@ -75,8 +75,10 @@ export const SourceScreenshot: React.FC<{
           {/* maxWidth:none — Tailwind preflight's img{max-width:100%} squishes pages wider than the card */}
           <Img src={staticFile(src)} style={{ width: imageW, height: imageH, maxWidth: "none", display: "block" }} />
           {highlight && (
-            <div style={{ position: "absolute", left: highlight.x, top: highlight.y, width: highlight.w, height: highlight.h, borderRadius: 8, border: `3px solid ${CYAN}`, background: `${CYAN}1A`, opacity: interpolate(frame, [highlightAt, highlightAt + 10], [0, 1], CLAMP), overflow: "hidden" }}>
+            <div style={{ position: "absolute", left: highlight.x, top: highlight.y, width: highlight.w, height: highlight.h, borderRadius: 4, background: `${CYAN}10`, opacity: interpolate(frame, [highlightAt, highlightAt + 10], [0, 1], CLAMP), overflow: "hidden" }}>
               <HighlightSweep at={highlightAt + 6} />
+              {/* editor's pen: the underline draws on (premium pass 13.26) */}
+              <div style={{ position: "absolute", left: 0, bottom: 0, height: 4, borderRadius: 2, background: CYAN, width: `${interpolate(frame, [highlightAt + 4, highlightAt + 24], [0, 100], CLAMP)}%` }} />
             </div>
           )}
         </div>

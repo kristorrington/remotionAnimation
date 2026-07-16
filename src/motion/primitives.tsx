@@ -4,8 +4,8 @@ import { FONT, BLUE, CYAN, HOT, WHITE, RED } from "../components/overlayUI";
 
 // Reusable, render-safe motion primitives that give scenes cinematic depth
 // without new dependencies. All frame-driven. Colors kept on the project palette.
-const AMBER = "#F59E0B";
-const GREEN = "#34D399";
+const AMBER = "#C9913D";
+const GREEN = "#4FA98A";
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
 const mulberry32 = (seed: number) => {

@@ -12,9 +12,9 @@ import { FONT } from "../components/overlayUI";
 const CYAN = "#D97757";
 const BLUE = "#C15F3C";
 const WHITE = "#FFFFFF";
-const RED = "#EF4444";
-const AMBER = "#F59E0B";
-const GREEN = "#34D399";
+const RED = "#C65B52";
+const AMBER = "#C9913D";
+const GREEN = "#4FA98A";
 const PANEL = "#101826";
 
 export type RobotPose =

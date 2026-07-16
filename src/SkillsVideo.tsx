@@ -71,17 +71,17 @@ export const SkillsVisuals: React.FC = () => {
     <AbsoluteFill>
       {/* 0:03 the hook — five doors, one for each skill */}
       <Sequence from={90} durationInFrames={160} premountFor={30}>
-        <PathDoorsScene durationInFrames={160} kicker="5 CLAUDE CODE SKILLS" title="RANKED" doors={[{ label: "5", at: 6 }, { label: "4", at: 22 }, { label: "3", at: 38 }, { label: "2", at: 54 }, { label: "1", at: 70 }]} tint="#D97757" />
+        <PathDoorsScene durationInFrames={160} kicker="5 CLAUDE CODE SKILLS" title="RANKED" doors={[{ label: "5", at: 6 }, { label: "4", at: 22 }, { label: "3", at: 38 }, { label: "2", at: 54 }, { label: "1", at: 70 }]} subject={false} tint="#D97757" />
       </Sequence>
 
       {/* 0:08 the three ranking tests */}
       <Sequence from={250} durationInFrames={160} premountFor={30}>
-        <StepsScene durationInFrames={160} kicker="RANKED BY" title="THREE TESTS" steps={[{ label: "THE PROBLEM", at: 8 }, { label: "USEFULNESS", at: 47 }, { label: "TESTABILITY", at: 117 }]} accent="#E8B84B" tint="#34D399" subject />
+        <StepsScene durationInFrames={160} kicker="RANKED BY" title="THREE TESTS" steps={[{ label: "THE PROBLEM", at: 8 }, { label: "USEFULNESS", at: 47 }, { label: "TESTABILITY", at: 117 }]} accent="#E8B84B" tint="#4FA98A" />
       </Sequence>
 
       {/* 0:13 what a skill IS — the SKILL.MD cartridge clicks in */}
       <Sequence from={410} durationInFrames={349} premountFor={30}>
-        <SkillCartridgeScene durationInFrames={349} kicker="WHAT'S A SKILL?" title="PACKAGED RULES" slotAt={54} runAts={[87, 206, 234]} cartridgeLabel="SKILL.MD" />
+        <SkillCartridgeScene durationInFrames={349} kicker="WHAT'S A SKILL?" title="PACKAGED RULES" slotAt={54} runAts={[87, 206, 234]} cartridgeLabel="SKILL.MD" subject={false} />
       </Sequence>
 
       {/* 0:25 No.5 receipt — Agent Reach's own repo (busy page → card mode) */}
@@ -91,12 +91,12 @@ export const SkillsVisuals: React.FC = () => {
 
       {/* 0:29 the four platforms — real marks pop as each is named */}
       <Sequence from={890} durationInFrames={95} premountFor={30}>
-        <PlatformPopScene durationInFrames={95} kicker="AGENT REACH CONNECTS" title="FOUR PLATFORMS" popAts={[8, 17, 35, 60]} tint="#60A5FA" />
+        <PlatformPopScene durationInFrames={95} kicker="AGENT REACH CONNECTS" title="FOUR PLATFORMS" popAts={[8, 17, 35, 60]} tint="#6E93BD" />
       </Sequence>
 
       {/* 0:33 four platforms wire into one workflow */}
       <Sequence from={985} durationInFrames={255} premountFor={30}>
-        <AppFlowScene durationInFrames={255} kicker="ONE SESSION, FOUR SOURCES" title="RESEARCH WIRED IN" apps={[{ label: "GITHUB", at: 20 }, { label: "REDDIT", at: 45 }, { label: "X", at: 70 }, { label: "YOUTUBE", at: 95 }]} connectAt={100} collapseAt={140} tint="#34D399" />
+        <AppFlowScene durationInFrames={255} kicker="ONE SESSION, FOUR SOURCES" title="RESEARCH WIRED IN" apps={[{ label: "GITHUB", at: 20 }, { label: "REDDIT", at: 45 }, { label: "X", at: 70 }, { label: "YOUTUBE", at: 95 }]} connectAt={100} collapseAt={140} tint="#4FA98A" />
       </Sequence>
 
       {/* 0:41 the walkthrough - one project, four research stops */}
@@ -106,37 +106,37 @@ export const SkillsVisuals: React.FC = () => {
 
       {/* 0:55 the counter — most people live in ONE repo; extra sources topple */}
       <Sequence from={1650} durationInFrames={350} premountFor={30}>
-        <StackCollapseScene durationInFrames={350} kicker="MOST PEOPLE" title="ONE REPO. ONE TASK" labels={["+ SOURCES", "+ PLATFORMS", "+ TABS"]} drops={[203, 229, 249]} collapseAt={283} accent="#F59E0B" tint="#F59E0B" />
+        <StackCollapseScene durationInFrames={350} kicker="MOST PEOPLE" title="ONE REPO. ONE TASK" labels={["+ SOURCES", "+ PLATFORMS", "+ TABS"]} drops={[203, 229, 249]} collapseAt={283} accent="#C9913D" tint="#C9913D" />
       </Sequence>
 
       {/* 1:07 kinetic: when cross-platform research IS the job */}
       <Sequence from={2000} durationInFrames={147} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={147} title="RESEARCH-HEAVY WORK?" stamp="THEN IT FITS" stampAt={39} accent="#34D399" />
+        <FinalTakeawayScene durationInFrames={147} title="RESEARCH-HEAVY WORK?" stamp="THEN IT FITS" stampAt={39} accent="#4FA98A" />
       </Sequence>
 
       {/* 1:11 No.4 receipt — Loop Library's page */}
       <Sequence from={2147} durationInFrames={213} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={213} kicker="FORWARD FUTURE · No.4" title="LOOP LIBRARY" titlePos="right" tint="#60A5FA" src={`${SHOT}/loop-library-wide.png`} url="signals.forwardfuture.com/loop-library" imageW={2800} imageH={1497} from={{ x: 620, y: 220, w: 1600, h: 855 }} to={{ x: 0, y: 0, w: 2800, h: 1497 }} zoomAt={14} highlight={{ x: 115, y: 272, w: 1600, h: 56 }} highlightAt={40} />
+        <ScreenshotReceiptScene durationInFrames={213} kicker="FORWARD FUTURE · No.4" title="LOOP LIBRARY" titlePos="right" tint="#6E93BD" src={`${SHOT}/loop-library-wide.png`} url="signals.forwardfuture.com/loop-library" imageW={2800} imageH={1497} from={{ x: 620, y: 220, w: 1600, h: 855 }} to={{ x: 0, y: 0, w: 2800, h: 1497 }} zoomAt={14} highlight={{ x: 115, y: 272, w: 1600, h: 56 }} highlightAt={40} />
       </Sequence>
 
       {/* 1:18 the 80% trap — bar stops, robot says DONE, the gap flashes */}
       <Sequence from={2360} durationInFrames={290} premountFor={30}>
-        <EightyPercentScene durationInFrames={290} kicker="THE PROBLEM IT FIXES" title="THE 80% TRAP" doneAt={121} gapAt={222} tint="#F59E0B" />
+        <EightyPercentScene durationInFrames={290} kicker="THE PROBLEM IT FIXES" title="THE 80% TRAP" doneAt={121} gapAt={222} tint="#C9913D" />
       </Sequence>
 
       {/* 1:28 loop until the finish condition — gates open per condition */}
       <Sequence from={2650} durationInFrames={380} premountFor={30}>
-        <GatesScene durationInFrames={380} kicker="LOOP UNTIL" title="A DEFINED FINISH" gates={[{ label: "TESTS PASS", at: 247 }, { label: "CHECKLIST DONE", at: 303 }]} tint="#34D399" />
+        <GatesScene durationInFrames={380} kicker="LOOP UNTIL" title="A DEFINED FINISH" gates={[{ label: "TESTS PASS", at: 247 }, { label: "CHECKLIST DONE", at: 303 }]} subject={false} tint="#4FA98A" />
       </Sequence>
 
       {/* 1:41 kinetic: acceptable is not finished */}
       <Sequence from={3030} durationInFrames={175} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={175} title="LOOKS ACCEPTABLE" stamp="≠ FINISHED" stampAt={110} accent="#EF4444" />
+        <FinalTakeawayScene durationInFrames={175} title="LOOKS ACCEPTABLE" stamp="≠ FINISHED" stampAt={110} accent="#C65B52" />
       </Sequence>
 
       {/* 1:47 where loops fit — the scale tips toward clear finish lines */}
       <Sequence from={3205} durationInFrames={404} premountFor={30}>
-        <BalanceScaleScene durationInFrames={404} kicker="WHERE IT FITS" title="LOOPS NEED A FINISH LINE" leftLabel="CLEAR FINISH" rightLabel="SUBJECTIVE WORK" dropLeftAt={49} dropRightAt={231} tipAt={290} stampText="CLEAR = FIT" stampAt={320} tint="#F59E0B" />
+        <BalanceScaleScene durationInFrames={404} kicker="WHERE IT FITS" title="LOOPS NEED A FINISH LINE" leftLabel="CLEAR FINISH" rightLabel="SUBJECTIVE WORK" dropLeftAt={49} dropRightAt={231} tipAt={290} stampText="CLEAR = FIT" stampAt={320} subject={false} tint="#C9913D" />
       </Sequence>
 
       {/* 2:00 No.3 receipt — pxpipe.dev hero */}
@@ -146,22 +146,22 @@ export const SkillsVisuals: React.FC = () => {
 
       {/* 2:08 context gets expensive — the queue piles up in front of the brain */}
       <Sequence from={3860} durationInFrames={440} premountFor={30}>
-        <WaitingScene durationInFrames={440} kicker="CONTEXT GETS EXPENSIVE" title="THE RE-EXPLAIN TAX" chips={[{ label: "FILES", at: 55 }, { label: "SCREENSHOTS", at: 69 }, { label: "LOGS", at: 95 }, { label: "OUTPUTS", at: 137 }]} tint="#F59E0B" />
+        <WaitingScene durationInFrames={440} kicker="CONTEXT GETS EXPENSIVE" title="THE RE-EXPLAIN TAX" chips={[{ label: "FILES", at: 55 }, { label: "SCREENSHOTS", at: 69 }, { label: "LOGS", at: 95 }, { label: "OUTPUTS", at: 137 }]} tint="#C9913D" />
       </Sequence>
 
       {/* 2:23 the swap — bulky context pours in, one PNG pops out */}
       <Sequence from={4300} durationInFrames={220} premountFor={30}>
-        <DocFunnelScene durationInFrames={220} kicker="PX PIPE'S TRICK" title="CONTEXT → IMAGES" dropAts={[8, 24, 40, 56, 72]} reportAt={84} reportLabel="ONE PNG" priceLabel="SAME CONTEXT" tint="#60A5FA" />
+        <DocFunnelScene durationInFrames={220} kicker="PX PIPE'S TRICK" title="CONTEXT → IMAGES" dropAts={[8, 24, 40, 56, 72]} reportAt={84} reportLabel="ONE PNG" priceLabel="SAME CONTEXT" tint="#6E93BD" />
       </Sequence>
 
       {/* 2:30 the 70% claim — pxpipe's own README line (card mode) */}
       <Sequence from={4520} durationInFrames={180} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={180} kicker="GITHUB · PXPIPE" title="THE 70% CLAIM" fullBleed={false} tint="#34D399" src={`${SHOT}/pxpipe-github-wide.png`} url="github.com/teamchong/pxpipe" imageW={2100} imageH={1122} from={{ x: 20, y: 300, w: 1560, h: 834 }} to={{ x: 0, y: 0, w: 2100, h: 1122 }} zoomAt={14} highlight={{ x: 755, y: 700, w: 555, h: 70 }} highlightAt={61} />
+        <ScreenshotReceiptScene durationInFrames={180} kicker="GITHUB · PXPIPE" title="THE 70% CLAIM" fullBleed={false} tint="#4FA98A" src={`${SHOT}/pxpipe-github-wide.png`} url="github.com/teamchong/pxpipe" imageW={2100} imageH={1122} from={{ x: 20, y: 300, w: 1560, h: 834 }} to={{ x: 0, y: 0, w: 2100, h: 1122 }} zoomAt={14} highlight={{ x: 755, y: 700, w: 555, h: 70 }} highlightAt={61} />
       </Sequence>
 
       {/* 2:37 who benefits — the scale tips to big builds, small projects lose */}
       <Sequence from={4700} durationInFrames={590} premountFor={30}>
-        <BalanceScaleScene durationInFrames={590} kicker="WORTH ADDING WHEN" title="BIG BUILDS ONLY" leftLabel="LONG BUILDS" rightLabel="SMALL PROJECT" dropLeftAt={207} dropRightAt={410} tipAt={448} stampText="BIG WINS" stampAt={500} tint="#34D399" />
+        <BalanceScaleScene durationInFrames={590} kicker="WORTH ADDING WHEN" title="BIG BUILDS ONLY" leftLabel="LONG BUILDS" rightLabel="SMALL PROJECT" dropLeftAt={207} dropRightAt={410} tipAt={448} stampText="BIG WINS" stampAt={500} subject={false} tint="#4FA98A" />
       </Sequence>
 
       {/* 2:56 kinetic: workflow first, cost second */}
@@ -176,17 +176,17 @@ export const SkillsVisuals: React.FC = () => {
 
       {/* 3:11 the slop factory — identical gradient cards roll off the belt */}
       <Sequence from={5745} durationInFrames={245} premountFor={30}>
-        <SlopFactoryScene durationInFrames={245} kicker="YOU KNOW THE STYLE" title="THE SLOP FACTORY" cardAts={[15, 38, 59]} stampAt={170} tint="#EF4444" />
+        <SlopFactoryScene durationInFrames={245} kicker="YOU KNOW THE STYLE" title="THE SLOP FACTORY" cardAts={[15, 38, 59]} stampAt={170} tint="#C65B52" />
       </Sequence>
 
       {/* 3:28 the A/B test — same brief, three checks */}
       <Sequence from={6240} durationInFrames={460} premountFor={30}>
-        <StepsScene durationInFrames={460} kicker="SAME BRIEF · WITH + WITHOUT" title="THREE CHECKS" steps={[{ label: "LAYOUT", at: 156 }, { label: "TYPOGRAPHY", at: 208 }, { label: "REAL PRODUCT?", at: 283 }]} accent="#60A5FA" tint="#60A5FA" subject />
+        <StepsScene durationInFrames={460} kicker="SAME BRIEF · WITH + WITHOUT" title="THREE CHECKS" steps={[{ label: "LAYOUT", at: 156 }, { label: "TYPOGRAPHY", at: 208 }, { label: "REAL PRODUCT?", at: 283 }]} accent="#6E93BD" tint="#6E93BD" />
       </Sequence>
 
       {/* 3:46 what Taste output looks like — the example designs (card mode) */}
       <Sequence from={6800} durationInFrames={164} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={164} kicker="BUILT WITH TASTE" title="THE STARTING POINT" fullBleed={false} tint="#34D399" src={`${SHOT}/taste-examples-wide.png`} url="github.com/leonxlnx/taste-skill" imageW={1650} imageH={882} from={{ x: 60, y: 40, w: 1000, h: 535 }} to={{ x: 0, y: 0, w: 1650, h: 882 }} zoomAt={12} />
+        <ScreenshotReceiptScene durationInFrames={164} kicker="BUILT WITH TASTE" title="THE STARTING POINT" fullBleed={false} tint="#4FA98A" src={`${SHOT}/taste-examples-wide.png`} url="github.com/leonxlnx/taste-skill" imageW={1650} imageH={882} from={{ x: 60, y: 40, w: 1000, h: 535 }} to={{ x: 0, y: 0, w: 1650, h: 882 }} zoomAt={12} />
       </Sequence>
 
       {/* 3:52 No.1 receipt — the official marketplace listing, 941k installs */}
@@ -201,17 +201,17 @@ export const SkillsVisuals: React.FC = () => {
 
       {/* 4:24 the usual pattern — BUILD NOW rocket meets the assumptions wall */}
       <Sequence from={7921} durationInFrames={419} premountFor={30}>
-        <SpeedWallScene durationInFrames={419} kicker="THE USUAL PATTERN" title="FAST START, HARD WALL" wallLabel="EARLY ASSUMPTIONS" rocketLabel="BUILD NOW" tint="#EF4444" />
+        <SpeedWallScene durationInFrames={419} kicker="THE USUAL PATTERN" title="FAST START, HARD WALL" wallLabel="EARLY ASSUMPTIONS" rocketLabel="BUILD NOW" tint="#C65B52" />
       </Sequence>
 
       {/* 4:38 what Superpowers does instead — plan, stage, review */}
       <Sequence from={8340} durationInFrames={300} premountFor={30}>
-        <StepsScene durationInFrames={300} kicker="SUPERPOWERS SLOWS THE JUMP" title="PLAN → BUILD → REVIEW" steps={[{ label: "UNDERSTAND", at: 132 }, { label: "STAGES", at: 197 }, { label: "REVIEW", at: 265 }]} accent="#34D399" tint="#34D399" subject />
+        <StepsScene durationInFrames={300} kicker="SUPERPOWERS SLOWS THE JUMP" title="PLAN → BUILD → REVIEW" steps={[{ label: "UNDERSTAND", at: 132 }, { label: "STAGES", at: 197 }, { label: "REVIEW", at: 265 }]} accent="#4FA98A" tint="#4FA98A" subject />
       </Sequence>
 
       {/* 4:48 the repo's own words — it steps back instead of jumping in */}
       <Sequence from={8640} durationInFrames={136} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={136} kicker="GITHUB · SUPERPOWERS" title="ITS OWN WORDS" fullBleed={false} tint="#34D399" src={`${SHOT}/superpowers-workflow-wide.png`} url="github.com/obra/superpowers" imageW={1920} imageH={1026} from={{ x: 60, y: 331, w: 1300, h: 695 }} to={{ x: 0, y: 0, w: 1920, h: 1026 }} zoomAt={12} highlight={{ x: 90, y: 850, w: 1450, h: 110 }} highlightAt={93} />
+        <ScreenshotReceiptScene durationInFrames={136} kicker="GITHUB · SUPERPOWERS" title="ITS OWN WORDS" fullBleed={false} tint="#4FA98A" src={`${SHOT}/superpowers-workflow-wide.png`} url="github.com/obra/superpowers" imageW={1920} imageH={1026} from={{ x: 60, y: 331, w: 1300, h: 695 }} to={{ x: 0, y: 0, w: 1920, h: 1026 }} zoomAt={12} highlight={{ x: 90, y: 850, w: 1450, h: 110 }} highlightAt={93} />
       </Sequence>
 
       {/* 4:52 the recap — the winner's door opens, the rest pop dimmed */}
@@ -221,7 +221,7 @@ export const SkillsVisuals: React.FC = () => {
 
       {/* 5:07 kinetic: nothing helps on the wrong path */}
       <Sequence from={9216} durationInFrames={139} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={139} title="ON THE WRONG PATH" stamp="NOTHING HELPS" stampAt={95} accent="#EF4444" />
+        <FinalTakeawayScene durationInFrames={139} title="ON THE WRONG PATH" stamp="NOTHING HELPS" stampAt={95} accent="#C65B52" />
       </Sequence>
 
       {/* 5:13 OUTRO — anchored to the spoken "subscribe" (9419) */}
@@ -256,7 +256,7 @@ export const SkillsVideo: React.FC = () => {
       ))}
       <SfxCue from={9411} src={SFX.whoosh} volume={0.45} />
       {BEATS.flatMap((b) => sceneActionCues(b.scene, b.from, b.dur)).map((cue, i) => (
-        <SfxCue key={`ac-${cue.at}-${cue.type}-${i}`} from={cue.at} src={SFX[cue.type]} volume={cue.type === "boom" ? 0.4 : cue.type === "whip" ? 0.3 : 0.4} rate={vary(i + 1)} />
+        <SfxCue key={`ac-${cue.at}-${cue.type}-${i}`} from={cue.at} src={SFX[cue.type]} volume={cue.type === "boom" ? 0.34 : cue.type === "whip" ? 0.26 : cue.type === "tick" ? 0.22 : cue.type === "pop" ? 0.3 : 0.32} rate={vary(i + 1)} />
       ))}
       <SfxCue from={9423} src={SFX.ding} volume={0.45} />
     </AbsoluteFill>

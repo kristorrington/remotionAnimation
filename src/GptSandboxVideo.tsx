@@ -58,13 +58,13 @@ export const GptSandboxVisuals: React.FC = () => {
     <AbsoluteFill>
       {/* 0:03 HOOK CLAIM — the SOL module bolts on: 54% more token-efficient */}
       <Sequence from={90} durationInFrames={320} premountFor={30}>
-        <SpeedLayerScene durationInFrames={320} kicker="SAM ALTMAN, ON CNBC" title="54% MORE TOKEN-EFFICIENT" blockLabel="GPT-5.6" moduleLabel="SOL" tint="#34D399" />
+        <SpeedLayerScene durationInFrames={320} kicker="SAM ALTMAN, ON CNBC" title="54% MORE TOKEN-EFFICIENT" blockLabel="GPT-5.6" moduleLabel="SOL" tint="#4FA98A" />
       </Sequence>
 
       {/* 0:13 THE CATCH — efficiency vs "it cheated": the scale tips, the rule
           stamps on the spoken "sandbox" (649) */}
       <Sequence from={412} durationInFrames={294} premountFor={30}>
-        <BalanceScaleScene durationInFrames={294} kicker="OPENAI'S OWN SAFETY CARD" title="FAST — BUT IT CHEATED" leftLabel="54% EFFICIENT" rightLabel="IT CHEATED" dropLeftAt={24} dropRightAt={94} tipAt={124} stampText="SANDBOX FIRST" stampAt={231} tint="#EF4444" />
+        <BalanceScaleScene durationInFrames={294} kicker="OPENAI'S OWN SAFETY CARD" title="FAST — BUT IT CHEATED" leftLabel="54% EFFICIENT" rightLabel="IT CHEATED" dropLeftAt={24} dropRightAt={94} tipAt={124} stampText="SANDBOX FIRST" stampAt={231} tint="#C65B52" />
       </Sequence>
 
       {/* 0:31 THREE TIERS — the doors appear on their names (993/1020/1051) */}
@@ -74,7 +74,7 @@ export const GptSandboxVisuals: React.FC = () => {
 
       {/* 0:36 PRICING — each tier's price lands on its spoken numbers */}
       <Sequence from={1080} durationInFrames={532} premountFor={30}>
-        <StepsScene durationInFrames={532} kicker="PER MILLION TOKENS" title="A REAL ROUTING DECISION" accent="#F59E0B" tint="#F59E0B" steps={[{ label: "SOL — $5 in / $30 out", at: 6 }, { label: "TERRA — $2.50 in / $15 out", at: 168 }, { label: "LUNA — $1 in / $6 out", at: 293 }]} />
+        <StepsScene durationInFrames={532} kicker="PER MILLION TOKENS" title="A REAL ROUTING DECISION" accent="#C9913D" tint="#C9913D" steps={[{ label: "SOL — $5 in / $30 out", at: 6 }, { label: "TERRA — $2.50 in / $15 out", at: 168 }, { label: "LUNA — $1 in / $6 out", at: 293 }]} />
       </Sequence>
 
       {/* 0:54 THE RECEIPT — recreated Terminal-Bench chart; bars grow on 91.9
@@ -86,13 +86,13 @@ export const GptSandboxVisuals: React.FC = () => {
       {/* 1:18 FEDERAL PIPELINE — the model card rides through CAIS testing;
           scan on "CAIS" (2549), tag on "early precedent" (2718) */}
       <Sequence from={2362} durationInFrames={442} premountFor={30}>
-        <ScannerScene durationInFrames={442} kicker="AXIOS · BANKINFOSECURITY" title="TESTED BY THE FEDS FIRST" cardLabel="GPT-5.6" archLabel="CAIS" tagLabel="EARLY PRECEDENT" scanAt={181} tagAt={350} tint="#F59E0B" />
+        <ScannerScene durationInFrames={442} kicker="AXIOS · BANKINFOSECURITY" title="TESTED BY THE FEDS FIRST" cardLabel="GPT-5.6" archLabel="CAIS" tagLabel="EARLY PRECEDENT" scanAt={181} tagAt={350} tint="#C9913D" />
       </Sequence>
 
       {/* 1:33 SYSTEM CARD — the workflow breaks: cheated (2986), fabricated
           (3010), destructive (3091) */}
       <Sequence from={2810} durationInFrames={490} premountFor={30}>
-        <SystemBreakScene durationInFrames={490} kicker="JUNE 26 SYSTEM CARD" title="IT CHEATED ON TASKS" badges={[{ label: "TASK CHEATING", at: 170 }, { label: "FAKE RESULTS", at: 194 }, { label: "MOVED CREDENTIALS", at: 275 }]} errorAt={170} tint="#EF4444" />
+        <SystemBreakScene durationInFrames={490} kicker="JUNE 26 SYSTEM CARD" title="IT CHEATED ON TASKS" badges={[{ label: "TASK CHEATING", at: 170 }, { label: "FAKE RESULTS", at: 194 }, { label: "MOVED CREDENTIALS", at: 275 }]} errorAt={170} tint="#C65B52" />
       </Sequence>
 
       {/* 1:50 SCORES ≠ SAFE TOOLS — the benchmark meter is crossed out, the
@@ -109,7 +109,7 @@ export const GptSandboxVisuals: React.FC = () => {
 
       {/* 2:25 TAKEAWAY — capable is not the same as controlled */}
       <Sequence from={4360} durationInFrames={176} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={176} kicker="THE REAL READ" title="CAPABLE ≠ CONTROLLED" stamp="GATE IT" stampAt={95} accent="#EF4444" />
+        <FinalTakeawayScene durationInFrames={176} kicker="THE REAL READ" title="CAPABLE ≠ CONTROLLED" stamp="GATE IT" stampAt={95} accent="#C65B52" />
       </Sequence>
 
       {/* 2:31 LAUNCH-DAY PLACEMENT — the app tiles wire straight into the
@@ -121,7 +121,7 @@ export const GptSandboxVisuals: React.FC = () => {
 
       {/* 2:58 PERMISSIONS > LEADERBOARD */}
       <Sequence from={5345} durationInFrames={255} premountFor={30}>
-        <CompareCard kicker="ALREADY IN YOUR TOOLS?" tint="#D97757" left={{ title: "LEADERBOARD SPOT", items: ["bragging rights"], accent: "#EF4444", mark: "✗" }} right={{ title: "PERMISSIONS", items: ["what it can touch"], accent: "#34D399", mark: "✓" }} leftDelay={20} rightDelay={168} durationInFrames={255} />
+        <CompareCard kicker="ALREADY IN YOUR TOOLS?" tint="#D97757" left={{ title: "LEADERBOARD SPOT", items: ["bragging rights"], accent: "#C65B52", mark: "✗" }} right={{ title: "PERMISSIONS", items: ["what it can touch"], accent: "#4FA98A", mark: "✓" }} leftDelay={20} rightDelay={168} durationInFrames={255} />
       </Sequence>
 
       {/* 3:06 EXPLOITBENCH — same score as Mythos Preview on a third of the
@@ -148,7 +148,7 @@ export const GptSandboxVisuals: React.FC = () => {
 
       {/* 4:03 TWO SIGNALS — safeguards update (7429) + Commerce guidance (7600) */}
       <Sequence from={7301} durationInFrames={552} premountFor={30}>
-        <StepsScene durationInFrames={552} kicker="BEFORE YOU MIGRATE" title="WATCH TWO SIGNALS" accent="#34D399" tint="#34D399" steps={[{ label: "Stronger system-card safeguards", at: 122 }, { label: "Commerce testing guidance", at: 293 }]} />
+        <StepsScene durationInFrames={552} kicker="BEFORE YOU MIGRATE" title="WATCH TWO SIGNALS" accent="#4FA98A" tint="#4FA98A" steps={[{ label: "Stronger system-card safeguards", at: 122 }, { label: "Commerce testing guidance", at: 293 }]} />
       </Sequence>
 
       {/* 4:22 FINALE — the rule, stamped on the spoken "sandbox" (8009) */}

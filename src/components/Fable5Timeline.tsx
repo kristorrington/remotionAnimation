@@ -10,9 +10,9 @@ import { CYAN, DROP_SHADOW, FONT, PILL_BORDER, WHITE } from "./overlayUI";
 import { AnimatedBackground } from "./AnimatedBackground";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
-const GREEN = "#34D399";
-const RED = "#EF4444";
-const AMBER = "#F59E0B";
+const GREEN = "#4FA98A";
+const RED = "#C65B52";
+const AMBER = "#C9913D";
 
 // Local sync points (Sequence starts at f1364, the "let's start with the timeline" beat).
 const EVENTS = [

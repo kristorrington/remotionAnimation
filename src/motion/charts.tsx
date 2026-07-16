@@ -22,7 +22,7 @@ const INK_MUTED = "rgba(255,255,255,0.62)";
 const TRACK = "rgba(255,255,255,0.09)";
 const BASELINE = "rgba(255,255,255,0.22)";
 // fixed categorical order — never cycled, never re-ranked by value
-export const CHART_COLORS = ["#D97757", "#C15F3C", "#F59E0B", "#34D399"] as const;
+export const CHART_COLORS = ["#D97757", "#C15F3C", "#C9913D", "#4FA98A"] as const;
 
 export type ChartDatum = { label: string; value: number; series?: string };
 export type ChartData = {

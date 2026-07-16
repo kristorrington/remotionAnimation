@@ -28,9 +28,9 @@ export const SHORTS: ShortSpec[] = [
       { at: 8, scene: "emote", pose: "celebrate", tint: "#E8B84B", text: "THE #1 PICK" }, // "Number one… is Superpowers" (6970-7090)
       // EVIDENCE EARLY: the official marketplace listing carries the install count
       { at: 128, scene: "receipt", tint: "#D97757", text: "THE RECEIPT", shot: { src: "assets/external/screenshots/superpowers-plugin-wide.png", url: "claude.com/plugins/superpowers", imageW: 2560, imageH: 1368, from: { x: 1790, y: 330, w: 760, h: 380 }, to: { x: 1660, y: 140, w: 900, h: 450 }, zoomAt: 8 } }, // "gives Claude a structured workflow" (7097-7232); holds ~6.8s
-      { at: 331, scene: "bolt", tint: "#60A5FA", text: "THINK FIRST" }, // "an operating system for Claude" (7295-7334)
-      { at: 450, scene: "stamp", verdict: "cross", badge: "BUILD NOW", tint: "#EF4444", text: "PUMP THE BRAKES" }, // "stopping Claude from jumping straight into the build" (7414-7514); span.from+13
-      { at: 612, scene: "check", obj: "gauge", verdict: "warn", tint: "#F59E0B", text: "DEMO ≠ DELIVERY" }, // "looks impressive early but creates more work later" (7576-7688)
+      { at: 331, scene: "bolt", tint: "#6E93BD", text: "THINK FIRST" }, // "an operating system for Claude" (7295-7334)
+      { at: 450, scene: "stamp", verdict: "cross", badge: "BUILD NOW", tint: "#C65B52", text: "PUMP THE BRAKES" }, // "stopping Claude from jumping straight into the build" (7414-7514); span.from+13
+      { at: 612, scene: "check", obj: "gauge", verdict: "warn", tint: "#C9913D", text: "DEMO ≠ DELIVERY" }, // "looks impressive early but creates more work later" (7576-7688)
     ],
     // full-anim: the BUILD NOW stamp gag
     fullscreen: [{ from: 437, to: 590 }],
@@ -51,13 +51,13 @@ export const SHORTS: ShortSpec[] = [
     hookAlt: "THE 80% PROBLEM", // A/B variant → Short-80Percent-B
     context: "Loop Library = free prompts that finish the job",
     beats: [
-      { at: 8, scene: "emote", pose: "confused", tint: "#F59E0B", text: "SOUND FAMILIAR?" }, // "completes part of a task" (2322-2400)
-      { at: 130, scene: "stamp", verdict: "check", badge: "80% DONE", tint: "#EF4444", text: "DECLARES VICTORY" }, // "confidently says the job is finished" (2434-2510)
+      { at: 8, scene: "emote", pose: "confused", tint: "#C9913D", text: "SOUND FAMILIAR?" }, // "completes part of a task" (2322-2400)
+      { at: 130, scene: "stamp", verdict: "check", badge: "80% DONE", tint: "#C65B52", text: "DECLARES VICTORY" }, // "confidently says the job is finished" (2434-2510)
       // EVIDENCE: Matthew Berman's own launch tweet, on the claim it fixes
-      { at: 323, scene: "receipt", tint: "#34D399", text: "THE RECEIPT", shot: { src: "assets/external/screenshots/berman-loop-tweet.png", url: "x.com/MatthewBerman", imageW: 1100, imageH: 1058, from: { x: 20, y: 10, w: 1060, h: 530 }, to: { x: 10, y: 5, w: 1080, h: 640 }, zoomAt: 8 } }, // "Loop Library gives you reusable prompts" (2635-2712); holds ~3.6s
-      { at: 445, scene: "retry", tint: "#60A5FA", text: "RUN IT AGAIN" }, // "keep Claude working until… finish condition" (2718-2830); span.from+13
-      { at: 579, scene: "check", obj: "shield", verdict: "check", tint: "#34D399", text: "GREEN OR NOTHING" }, // "every test passes… checklist completed" (2903-2985)
-      { at: 706, scene: "emote", pose: "shrug", tint: "#EF4444", text: "GOOD ENOUGH ≠ DONE" }, // "stops when the answer looks acceptable" (3030-3092)
+      { at: 323, scene: "receipt", tint: "#4FA98A", text: "THE RECEIPT", shot: { src: "assets/external/screenshots/berman-loop-tweet.png", url: "x.com/MatthewBerman", imageW: 1100, imageH: 1058, from: { x: 20, y: 10, w: 1060, h: 530 }, to: { x: 10, y: 5, w: 1080, h: 640 }, zoomAt: 8 } }, // "Loop Library gives you reusable prompts" (2635-2712); holds ~3.6s
+      { at: 445, scene: "retry", tint: "#6E93BD", text: "RUN IT AGAIN" }, // "keep Claude working until… finish condition" (2718-2830); span.from+13
+      { at: 579, scene: "check", obj: "shield", verdict: "check", tint: "#4FA98A", text: "GREEN OR NOTHING" }, // "every test passes… checklist completed" (2903-2985)
+      { at: 706, scene: "emote", pose: "shrug", tint: "#C65B52", text: "GOOD ENOUGH ≠ DONE" }, // "stops when the answer looks acceptable" (3030-3092)
     ],
     // full-anim: the retry wheel loop gag
     fullscreen: [{ from: 432, to: 570 }],
@@ -78,12 +78,12 @@ export const SHORTS: ShortSpec[] = [
     hookAlt: "CUT CLAUDE TOKENS 70%", // A/B variant → Short-PxPipe-B
     context: "PX Pipe = turns bulky context into images",
     beats: [
-      { at: 8, scene: "coins", tint: "#F59E0B", text: "TOKENS ADD UP" }, // "context becomes expensive" (3811-3860)
+      { at: 8, scene: "coins", tint: "#C9913D", text: "TOKENS ADD UP" }, // "context becomes expensive" (3811-3860)
       { at: 110, scene: "stack", tint: "#D97757", text: "THE PILE GROWS" }, // "files, screenshots, logs… previous outputs" (3921-4019)
-      { at: 381, scene: "emote", pose: "alarmed", tint: "#EF4444", text: "THE MEMORY TAX" }, // "more tokens reminding Claude than completing it" (4192-4290)
-      { at: 531, scene: "funnel", tint: "#60A5FA", text: "WORDS → PICTURES" }, // "convert bulky context into images" (4342-4390); span.from+13
+      { at: 381, scene: "emote", pose: "alarmed", tint: "#C65B52", text: "THE MEMORY TAX" }, // "more tokens reminding Claude than completing it" (4192-4290)
+      { at: 531, scene: "funnel", tint: "#6E93BD", text: "WORDS → PICTURES" }, // "convert bulky context into images" (4342-4390); span.from+13
       // EVIDENCE: pxpipe's own README paragraph with the 59-70% line
-      { at: 776, scene: "receipt", tint: "#34D399", text: "THE RECEIPT", shot: { src: "assets/external/screenshots/pxpipe-github-wide.png", url: "github.com/teamchong/pxpipe", imageW: 2100, imageH: 1122, from: { x: 30, y: 622, w: 1000, h: 500 }, to: { x: 20, y: 180, w: 1560, h: 780 }, zoomAt: 8 } }, // "up to 70% fewer tokens" (4575-4622); opens on the what-the-model-sees noise image, settles on the claim paragraph; holds ~4.7s into the CTA
+      { at: 776, scene: "receipt", tint: "#4FA98A", text: "THE RECEIPT", shot: { src: "assets/external/screenshots/pxpipe-github-wide.png", url: "github.com/teamchong/pxpipe", imageW: 2100, imageH: 1122, from: { x: 30, y: 622, w: 1000, h: 500 }, to: { x: 20, y: 180, w: 1560, h: 780 }, zoomAt: 8 } }, // "up to 70% fewer tokens" (4575-4622); opens on the what-the-model-sees noise image, settles on the claim paragraph; holds ~4.7s into the CTA
     ],
     // full-anim: the funnel swap gag
     fullscreen: [{ from: 518, to: 700 }],
@@ -106,10 +106,10 @@ export const SHORTS: ShortSpec[] = [
     beats: [
       { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "SEEN THIS BEFORE?" }, // "push Claude away from the generic look" (5582-5629)
       // EVIDENCE EARLY: tasteskill.dev's own hero
-      { at: 110, scene: "receipt", tint: "#34D399", text: "THE RECEIPT", shot: { src: "assets/external/screenshots/taste-site-wide.png", url: "tasteskill.dev", imageW: 2800, imageH: 1497, from: { x: 180, y: 380, w: 900, h: 450 }, to: { x: 140, y: 80, w: 1300, h: 650 }, zoomAt: 8 } }, // "the generic look seen across many AI interfaces" (5616-5710); holds ~6.5s
-      { at: 306, scene: "conveyor", labels: ["SAME UI AGAIN"], tint: "#EF4444", text: "SPOT THE DIFFERENCE" }, // "the same gradients, the same oversized heading" (5760-5804)
-      { at: 470, scene: "check", obj: "gauge", verdict: "warn", tint: "#F59E0B", text: "RUNS FINE. LOOKS OFF." }, // "working doesn't mean it's always well designed" (5915-5972); span.from+13
-      { at: 690, scene: "testbench", tint: "#60A5FA", text: "RUN IT TWICE" }, // "give Claude the same design brief and test it with and without Taste" (6194-6320)
+      { at: 110, scene: "receipt", tint: "#4FA98A", text: "THE RECEIPT", shot: { src: "assets/external/screenshots/taste-site-wide.png", url: "tasteskill.dev", imageW: 2800, imageH: 1497, from: { x: 180, y: 380, w: 900, h: 450 }, to: { x: 140, y: 80, w: 1300, h: 650 }, zoomAt: 8 } }, // "the generic look seen across many AI interfaces" (5616-5710); holds ~6.5s
+      { at: 306, scene: "conveyor", labels: ["SAME UI AGAIN"], tint: "#C65B52", text: "SPOT THE DIFFERENCE" }, // "the same gradients, the same oversized heading" (5760-5804)
+      { at: 470, scene: "check", obj: "gauge", verdict: "warn", tint: "#C9913D", text: "RUNS FINE. LOOKS OFF." }, // "working doesn't mean it's always well designed" (5915-5972); span.from+13
+      { at: 690, scene: "testbench", tint: "#6E93BD", text: "RUN IT TWICE" }, // "give Claude the same design brief and test it with and without Taste" (6194-6320)
     ],
     // full-anim: the warning gauge gag
     fullscreen: [{ from: 457, to: 610 }],
@@ -133,7 +133,7 @@ export const SHORTS: ShortSpec[] = [
       { at: 8, scene: "emote", pose: "celebrate", tint: "#E8B84B", text: "No.1 DECIDED" }, // "Superpowers ranks first" (8804-8856)
       // EVIDENCE EARLY: the marketplace listing behind the winner
       { at: 128, scene: "receipt", tint: "#D97757", text: "THE RECEIPT", shot: { src: "assets/external/screenshots/superpowers-plugin-wide.png", url: "claude.com/plugins/superpowers", imageW: 2560, imageH: 1368, from: { x: 1790, y: 330, w: 760, h: 380 }, to: { x: 1660, y: 140, w: 900, h: 450 }, zoomAt: 8 } }, // "Taste… fastest visible improvement" (8872-8924); holds ~4s
-      { at: 250, scene: "doors", labels: ["SUPER", "TASTE", "PX", "LOOP", "REACH"], tint: "#60A5FA", text: "THE LEADERBOARD" }, // "PX Pipe (8948)… Loop Library (9040)… Agent Reach (9116)"
+      { at: 250, scene: "doors", labels: ["SUPER", "TASTE", "PX", "LOOP", "REACH"], tint: "#6E93BD", text: "THE LEADERBOARD" }, // "PX Pipe (8948)… Loop Library (9040)… Agent Reach (9116)"
       // no fullscreen span: the receipt + five doors carry the whole 20s recap
     ],
     fullscreen: [],
