@@ -33,6 +33,8 @@ import { ChatGptWorkFinal } from "../ChatGptWorkFinal";
 import { AiNewsVideo, AINEWS_DUR } from "../AiNewsVideo";
 import { AiNewsFinal } from "../AiNewsFinal";
 import { GoLocalVideo, GOLOCAL_DUR } from "../GoLocalVideo";
+import { SkillsVideo, SKILLS_DUR } from "../SkillsVideo";
+import { SkillsFinal } from "../SkillsFinal";
 import { GoLocalFinal } from "../GoLocalFinal";
 
 // ============================================================================
@@ -57,6 +59,10 @@ const transparentDefaults: CalculateMetadataFunction<
 export const ArchivedVideoCompositions: React.FC = () => {
   return (
     <>
+      {/* ── 5 Claude Code skills ranked (July 2026) ── */}
+      <Composition id="SkillsVideo" component={SkillsVideo} durationInFrames={SKILLS_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="SkillsFinal" component={SkillsFinal} durationInFrames={SKILLS_DUR} fps={30} width={1920} height={1080} />
+
       {/* ── "Just go local" solves nothing (July 2026) ── */}
       <Composition id="GoLocalVideo" component={GoLocalVideo} durationInFrames={GOLOCAL_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
       <Composition id="GoLocalFinal" component={GoLocalFinal} durationInFrames={GOLOCAL_DUR} fps={30} width={1920} height={1080} />

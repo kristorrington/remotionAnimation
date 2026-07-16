@@ -20,17 +20,24 @@ export const SFX = {
   tick: staticFile("sfx/tick.wav"), // tiny UI tick — steps/runs under VO
   thud: staticFile("sfx/thud.wav"), // dull low landing — cards/pans dropping
   swish: staticFile("sfx/swish.wav"), // soft air sweep — receipt zoom settles
+  pluck: staticFile("sfx/pluck.wav"), // warm marimba pluck — confirmations, alt-ding
+  paperSlide: staticFile("sfx/paper-slide.wav"), // low paper drag — card slides / pans
+  clickPop: staticFile("sfx/click-pop.wav"), // tiny click-pop — list items / counters
 } as const;
 
 // Subtle pitch variation so a repeated sample never sounds machine-gunned:
 // rotate rates by index (`rate={vary(i)}`) — same file, three slightly
 // different pitches. Drop extra samples into the arrays below to widen it.
-export const vary = (i: number) => [1, 0.94, 1.07][i % 3];
+export const vary = (i: number) => [1, 0.94, 1.07, 0.89, 1.13][i % 5];
 
 // Sample pools per role — add files to a pool and pick(pool, i) rotates them.
 export const SFX_POOLS = {
   whoosh: [SFX.whoosh],
-  accent: [SFX.ding, SFX.whip, SFX.switch],
+  accent: [SFX.ding, SFX.whip, SFX.switch, SFX.pop, SFX.tick, SFX.thud],
+  // rotating beat-entry textures for PiP beats — never the same sample twice
+  // in a row (Kris, July 2026: "vary the audio effects more")
+  entry: [SFX.pageTurn, SFX.swish, SFX.paperSlide, SFX.shutterOld],
+  confirm: [SFX.ding, SFX.pluck, SFX.clickPop],
 } as const;
 export const pick = (pool: readonly string[], i: number) => pool[i % pool.length];
 

@@ -5,7 +5,7 @@
 // When a scene's choreography changes, update its entry HERE in the same commit.
 // ============================================================================
 
-export type SfxKind = "boom" | "ding" | "whip" | "switch" | "whoosh" | "shutter" | "pageTurn" | "pop" | "tick" | "thud" | "swish";
+export type SfxKind = "boom" | "ding" | "whip" | "switch" | "whoosh" | "shutter" | "pageTurn" | "pop" | "tick" | "thud" | "swish" | "pluck" | "paperSlide" | "clickPop";
 export type ActionCue = { at: number; type: SfxKind };
 
 export const sceneActionCues = (scene: string, from: number, dur: number): ActionCue[] => {

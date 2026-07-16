@@ -103,6 +103,10 @@ const main = async () => {
     [["p", "x", "pipe"], "PX Pipe"],
     [["pix", "pipe"], "PX Pipe"],
     [["pyx", "pipe"], "PX Pipe"],
+    // GitHub-repos video (07/2026)
+    [["claude", "mem"], "Claude-Mem"],
+    [["cloud", "mem"], "Claude-Mem"],
+    [["clod", "mem"], "Claude-Mem"],
   ];
   const norm = (s) => s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
   for (const [parts, joined] of JOINS) {
@@ -130,6 +134,9 @@ const main = async () => {
     quantization: "quantisation",
     // Claude-skills ranking video (07/2026)
     pxpipe: "PX Pipe", pixpipe: "PX Pipe", superpowers: "Superpowers",
+    // GitHub-repos video (07/2026)
+    milvus: "Milvus", melvis: "Milvus", milbus: "Milvus",
+    claudemd: "CLAUDE.md", skillmd: "SKILL.md", organized: "organised",
   };
   for (const w of words) {
     const base = norm(w.text);
