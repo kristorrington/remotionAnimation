@@ -1074,6 +1074,120 @@ Same video + copy as Short-PremiumWar; post the loser as unlisted or delete afte
 
 ---
 
+# 7 GitHub repos for Claude Code (2026-07-17)
+
+## Short-SevenRepos (THE HOOK)
+
+**Title**
+```
+7 GitHub Repos That 10x Your Claude Code Projects #Shorts
+```
+
+**Description**
+```
+The full stack, one job each: Awesome Claude Code to discover tools, Anthropic Skills to organise instructions, Claude Context for semantic codebase search, Everything Claude Code as a parts library, Claude Code Action for GitHub issues/PRs, Claude-Mem for memory across sessions, and Superpowers for planning before code.
+
+Don't install them all — pick the repo that solves the bottleneck you already have.
+
+Which bottleneck is yours? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #ClaudeCode #GitHub #OpenSource #Shorts
+```
+
+---
+
+## Short-SevenRepos-B (A/B hook variant — hook "MY CLAUDE CODE STARTER PACK")
+
+Same video + copy as Short-SevenRepos; post the loser as unlisted or delete after 48h.
+
+---
+
+## Short-TagClaude
+
+**Title**
+```
+Tag @claude on a GitHub Bug and Watch It File a Fix #Shorts
+```
+
+**Description**
+```
+Claude Code Action is Anthropic's official GitHub Action: it brings Claude into your issues and pull requests.
+
+Tag Claude on a bug report and it investigates, prepares a proposed fix, and keeps the task, code changes and discussion in one thread. It makes the most sense when GitHub already runs your development workflow.
+
+Would you let Claude answer your issues? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #ClaudeCode #GitHub #DevTools #Shorts
+```
+
+---
+
+## Short-TagClaude-B (A/B hook variant — hook "CLAUDE LIVES IN GITHUB NOW")
+
+Same video + copy as Short-TagClaude; post the loser as unlisted or delete after 48h.
+
+---
+
+## Short-ClaudeMem
+
+**Title**
+```
+Claude Forgets Your Whole Project — This Repo Fixes It #Shorts
+```
+
+**Description**
+```
+Close a session and Claude forgets everything. Claude-Mem gives it searchable memory across sessions — reopen the project two days later and it can recover why you chose that database structure.
+
+It hit #1 Repository of the Day on GitHub trending. One caution: stored assumptions age, so review the old context instead of trusting it blindly.
+
+How do you carry context between sessions? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #ClaudeCode #GitHub #AIAgents #Shorts
+```
+
+---
+
+## Short-ClaudeMem-B (A/B hook variant — hook "STOP RE-EXPLAINING YOUR PROJECT")
+
+Same video + copy as Short-ClaudeMem; post the loser as unlisted or delete after 48h.
+
+---
+
+## Short-PartsStore
+
+**Title**
+```
+38 Agents, 156 Skills, One Repo — Don't Install It All #Shorts
+```
+
+**Description**
+```
+Everything Claude Code ships a huge library: 38 agents and 156 skills, plus rules, hooks and commands.
+
+The right move is cherry-picking — pull out one planning agent or one testing rule. Installing everything creates duplicated instructions and unnecessary complexity. Treat it like a parts store, not a package.
+
+Which single part would you grab first? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #ClaudeCode #GitHub #OpenSource #Shorts
+```
+
+---
+
+## Short-PartsStore-B (A/B hook variant — hook "THE CLAUDE CODE MEGA PACK")
+
+Same video + copy as Short-PartsStore; post the loser as unlisted or delete after 48h.
+
+---
+
 # 5 Claude Code skills ranked (2026-07-16)
 
 ## Short-Superpowers (THE HOOK)
