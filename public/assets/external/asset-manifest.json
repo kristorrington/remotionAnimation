@@ -1216,6 +1216,221 @@
       ],
       "attributionRequired": false,
       "concerns": null
+    },
+    {
+      "filename": "awesome-cc-top-wide.png",
+      "localPath": "public/assets/external/screenshots/awesome-cc-top-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/hesreallyhim/awesome-claude-code",
+      "sourceName": "GitHub hesreallyhim/awesome-claude-code",
+      "dateAccessed": "2026-07-17",
+      "usageNote": "Repo top: the curated directory, About + stars",
+      "usedIn": [
+        "reposVideo ch1"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "awesome-toc-wide.png",
+      "localPath": "public/assets/external/screenshots/awesome-toc-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/hesreallyhim/awesome-claude-code",
+      "sourceName": "GitHub hesreallyhim/awesome-claude-code (ToC)",
+      "dateAccessed": "2026-07-17",
+      "usageNote": "The directory index — tools/skills/plugins/workflows categories",
+      "usedIn": [
+        "reposVideo ch1",
+        "Short"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "anthropic-skills-top-wide.png",
+      "localPath": "public/assets/external/screenshots/anthropic-skills-top-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/anthropics/skills",
+      "sourceName": "GitHub anthropics/skills",
+      "dateAccessed": "2026-07-17",
+      "usageNote": "Repo top: official Anthropic skills examples",
+      "usedIn": [
+        "reposVideo ch2"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "claude-context-top-wide.png",
+      "localPath": "public/assets/external/screenshots/claude-context-top-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/zilliztech/claude-context",
+      "sourceName": "GitHub zilliztech/claude-context",
+      "dateAccessed": "2026-07-17",
+      "usageNote": "Repo top: About + stars",
+      "usedIn": [
+        "reposVideo ch3"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "claude-context-logo-wide.png",
+      "localPath": "public/assets/external/screenshots/claude-context-logo-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/zilliztech/claude-context",
+      "sourceName": "GitHub zilliztech/claude-context (README)",
+      "dateAccessed": "2026-07-17",
+      "usageNote": "Pixel wordmark banner",
+      "usedIn": [
+        "reposVideo ch3",
+        "Short"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "claude-context-claim-wide.png",
+      "localPath": "public/assets/external/screenshots/claude-context-claim-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/zilliztech/claude-context",
+      "sourceName": "GitHub zilliztech/claude-context (README)",
+      "dateAccessed": "2026-07-17",
+      "usageNote": "MCP semantic-search claim + codebase-as-context bullets + terminal demo",
+      "usedIn": [
+        "reposVideo ch3"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "everything-cc-top-wide.png",
+      "localPath": "public/assets/external/screenshots/everything-cc-top-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/affaan-m/everything-claude-code",
+      "sourceName": "GitHub affaan-m/everything-claude-code",
+      "dateAccessed": "2026-07-17",
+      "usageNote": "Repo top: About + stars",
+      "usedIn": [
+        "reposVideo ch4"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "ecc-skills-table-wide.png",
+      "localPath": "public/assets/external/screenshots/ecc-skills-table-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/affaan-m/everything-claude-code",
+      "sourceName": "GitHub affaan-m/everything-claude-code (README)",
+      "dateAccessed": "2026-07-17",
+      "usageNote": "The huge skills table — the library visual",
+      "usedIn": [
+        "reposVideo ch4",
+        "Short"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "affaan-ecc-tweet.png",
+      "localPath": "public/assets/external/screenshots/affaan-ecc-tweet.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/affaan/status/2014040193557471352",
+      "sourceName": "Affaan (creator) on X",
+      "dateAccessed": "2026-07-17",
+      "usageNote": "Creator announcement tweet for Everything Claude Code",
+      "usedIn": [
+        "reposVideo ch4"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "cc-action-top-wide.png",
+      "localPath": "public/assets/external/screenshots/cc-action-top-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/anthropics/claude-code-action",
+      "sourceName": "GitHub anthropics/claude-code-action",
+      "dateAccessed": "2026-07-17",
+      "usageNote": "Repo top: official Anthropic action, About + stars",
+      "usedIn": [
+        "reposVideo ch5"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "cc-action-hero-wide.png",
+      "localPath": "public/assets/external/screenshots/cc-action-hero-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/anthropics/claude-code-action",
+      "sourceName": "GitHub anthropics/claude-code-action (README)",
+      "dateAccessed": "2026-07-17",
+      "usageNote": "Hero: tag @claude on an issue -> Claude fixes with checklist",
+      "usedIn": [
+        "reposVideo ch5",
+        "Short"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "claude-mem-top-wide.png",
+      "localPath": "public/assets/external/screenshots/claude-mem-top-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/thedotmack/claude-mem",
+      "sourceName": "GitHub thedotmack/claude-mem",
+      "dateAccessed": "2026-07-17",
+      "usageNote": "Repo top: About + stars",
+      "usedIn": [
+        "reposVideo ch6"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "claude-mem-hero-wide.png",
+      "localPath": "public/assets/external/screenshots/claude-mem-hero-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/thedotmack/claude-mem",
+      "sourceName": "GitHub thedotmack/claude-mem (README)",
+      "dateAccessed": "2026-07-17",
+      "usageNote": "Persistent-memory tagline + #1 Repository Of The Day trophy",
+      "usedIn": [
+        "reposVideo ch6",
+        "Short"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "claude-mem-features-wide.png",
+      "localPath": "public/assets/external/screenshots/claude-mem-features-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/thedotmack/claude-mem",
+      "sourceName": "GitHub thedotmack/claude-mem (README)",
+      "dateAccessed": "2026-07-17",
+      "usageNote": "Key Features list incl. privacy control + automatic operation",
+      "usedIn": [
+        "reposVideo ch6"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "superpowers-top-wide.png",
+      "localPath": "public/assets/external/screenshots/superpowers-top-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/obra/superpowers",
+      "sourceName": "GitHub obra/superpowers",
+      "dateAccessed": "2026-07-17",
+      "usageNote": "Repo top: About + 255k stars",
+      "usedIn": [
+        "reposVideo ch7"
+      ],
+      "attributionRequired": false,
+      "concerns": null
     }
   ]
 }
