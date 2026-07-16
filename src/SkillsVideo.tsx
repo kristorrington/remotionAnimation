@@ -228,10 +228,14 @@ export const SkillsVideo: React.FC = () => {
       {/* opening punch-in whoosh — fires with the Final's intro zoom */}
       <SfxCue from={1} src={SFX.whoosh} volume={0.45} rate={1.12} />
 
-      {/* ===== SFX — a whoosh per beat + per-scene action hits ===== */}
-      {[...BEATS.map((b) => b.from), 9411].map((f, i) => (
-        <SfxCue key={`w-${f}`} from={f} src={SFX.whoosh} volume={0.45} rate={vary(i)} />
+      {/* ===== SFX — entry sound per beat + per-scene action hits. The sample
+          ROTATES (Kris, July 2026 — "the sound is repetitive"): whooshes are
+          reserved for the pull-left fullscreen spans; PiP beats enter on the
+          softer page-turn; receipts settle with a camera shutter (sfx-cues). */}
+      {BEATS.map((b, i) => (
+        <SfxCue key={`w-${b.from}`} from={b.from} src={b.fullscreen ? SFX.whoosh : SFX.pageTurn} volume={b.fullscreen ? 0.45 : 0.38} rate={vary(i)} />
       ))}
+      <SfxCue from={9411} src={SFX.whoosh} volume={0.45} />
       {BEATS.flatMap((b) => sceneActionCues(b.scene, b.from, b.dur)).map((cue, i) => (
         <SfxCue key={`ac-${cue.at}-${cue.type}-${i}`} from={cue.at} src={SFX[cue.type]} volume={cue.type === "boom" ? 0.4 : cue.type === "whip" ? 0.3 : 0.4} rate={vary(i + 1)} />
       ))}

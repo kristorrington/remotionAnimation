@@ -347,7 +347,9 @@ export const SkillCartridgeScene: React.FC<{
     <SceneShell durationInFrames={durationInFrames} particleSeed={0x456} impacts={[slotAt + 24, ...runAts]} tint={GREEN}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 40 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 90 }}>
-          <div style={{ position: "relative" }}>
+          {/* paddingBottom reserves the run-card row INSIDE the stage — the
+              cards must never spill into the headline below */}
+          <div style={{ position: "relative", paddingBottom: 150 }}>
             <ModelBlock label="CLAUDE" width={400} coreColor={seated ? GREEN : CYAN} />
             {/* the cartridge slides down into the slot */}
             <div style={{ position: "absolute", left: 120, top: interpolate(slot, [0, 1], [-170, -34]), transform: `rotate(${interpolate(slot, [0, 1], [-6, 0])}deg)` }}>

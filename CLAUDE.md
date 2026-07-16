@@ -255,7 +255,10 @@ screenshots/charts), `WordPop`/`SpokenWordPop` (pop ONE spoken word, whisper-tim
 **Sound**: scenes' action beats live in `src/motion/sfx-cues.ts` (retiming a
 scene retimes its sound); `SfxCue rate={vary(i)}` pitch-varies repeated samples;
 VO-reactive glow via `useVoiceLevel`/`VoiceGlow` (run `node scripts/voice-levels.mjs`
-after new footage).
+after new footage). **The palette ROTATES** (Kris, July 2026 — "the sound is
+repetitive"): the whoosh is reserved for pull-left fullscreen-span starts; PiP
+beats enter on the softer `pageTurn`; receipt settles fire the camera `shutter`;
+never give every beat the same entry sample.
 
 **Preview catalog**: the `TemplateLab` composition shows every component (~3s
 each) — scrub it in Studio before designing scenes.
