@@ -73,7 +73,7 @@ export const PathDoorsScene: React.FC<{
             const isPick = picked && i === pickIndex;
             const open = isPick ? spring({ frame: frame - pickAt - 16, fps, config: { stiffness: 120, damping: 15 }, durationInFrames: 26 }) : 0;
             return (
-              <div key={d.label} style={{ opacity: interpolate(e, [0, 0.3], [0, 1]), transform: `translateY(${interpolate(e, [0, 1], [-120, 0])}px)` }}>
+              <div key={i} style={{ opacity: interpolate(e, [0, 0.3], [0, 1]), transform: `translateY(${interpolate(e, [0, 1], [-120, 0])}px)` }}>
                 <div style={{ position: "relative", width: doorW, height: 300, borderRadius: 18, ...glassCard(isPick ? GOLD : CYAN, isPick ? 2.5 : 2), overflow: "hidden", opacity: picked && !isPick ? 0.45 : 1 }}>
                   {/* interior glow revealed as the door slides up */}
                   <div style={{ position: "absolute", inset: 4, borderRadius: 14, background: `radial-gradient(ellipse at 50% 80%, ${GOLD}44, transparent 70%)`, opacity: open }} />
