@@ -67,7 +67,7 @@ export const SkillsVisuals: React.FC = () => {
     <AbsoluteFill>
       {/* 0:03 the hook — five doors, one for each skill */}
       <Sequence from={90} durationInFrames={160} premountFor={30}>
-        <PathDoorsScene durationInFrames={160} kicker="5 CLAUDE CODE SKILLS" title="RANKED" doors={[{ label: "REACH", at: 8 }, { label: "LOOP", at: 32 }, { label: "PX PIPE", at: 56 }, { label: "TASTE", at: 80 }, { label: "SUPER", at: 104 }]} tint="#D97757" />
+        <PathDoorsScene durationInFrames={160} kicker="5 CLAUDE CODE SKILLS" title="RANKED" doors={[{ label: "REACH", at: 6 }, { label: "LOOP", at: 22 }, { label: "PX PIPE", at: 38 }, { label: "TASTE", at: 54 }, { label: "SUPER", at: 70 }]} tint="#D97757" />
       </Sequence>
 
       {/* 0:08 the three ranking tests */}

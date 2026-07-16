@@ -204,7 +204,7 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
       cues.push({ at: 110, type: "boom" }, { at: 119, type: "whip" }, { at: 140, type: "whip" }, { at: 195, type: "whip" });
       break;
     // ── Claude-skills ranking video (July 2026) ──
-    case "hookDoors": cues.push({ at: 8, type: "switch" }, { at: 32, type: "switch" }, { at: 56, type: "switch" }, { at: 80, type: "switch" }, { at: 104, type: "switch" }); break;
+    case "hookDoors": cues.push({ at: 6, type: "switch" }, { at: 22, type: "switch" }, { at: 38, type: "switch" }, { at: 54, type: "switch" }, { at: 70, type: "switch" }); break;
     case "rankCriteria": cues.push({ at: 8, type: "switch" }, { at: 47, type: "switch" }, { at: 117, type: "switch" }); break;
     case "skillDef": cues.push({ at: 78, type: "boom" }, { at: 87, type: "switch" }, { at: 206, type: "switch" }, { at: 234, type: "switch" }); break; // cartridge clunks in, runs pop
     case "reachProof": cues.push({ at: 16, type: "whip" }, { at: 131, type: "switch" }); break;
