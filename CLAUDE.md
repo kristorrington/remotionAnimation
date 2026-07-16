@@ -389,10 +389,10 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   savings/win, amber = cost/effort, red = trap/danger, terracotta #D97757 =
   system/process (the Claude-brand house hue — the whole palette is Claude
   Code branding as of 07/2026: terracotta accent, deep-clay #C15F3C secondary;
-  the shared constants CYAN/BLUE now hold these values). Tints are BOLD
-  (`TintWash`: ~25% alpha, three gradient geometries rotated by
-  `particleSeed`) — a scene must never read as "the same dark
-  charcoal". EVERY
+  the shared constants CYAN/BLUE now hold these values). Tints are SOFT
+  (`TintWash`: ~10–14% alpha — §13.6 superseded the old bold ~25% wash;
+  three gradient geometries rotated by `particleSeed`) — a scene must never
+  read as "the same dark charcoal", but colour lives on elements. EVERY
   scene in a final cut gets a tint (pass it through shared scenes if missing),
   and adjacent scenes never share one — it's part of the visual reset.
 - **Colour ROLES (attention research, July 2026 — applies to shorts AND
@@ -413,10 +413,11 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   rotated STICKERS that spring-slam in (scale ~1.5–1.8 → 1, ±2–5° tilt,
   scattered offsets) — never a flat fading row. Camera `impacts` + a subject
   hop/kick on every landing, bolt, stamp and check.
-- **Pacing breathes too**: element entrances settle in ~0.7–1.0s (spring
-  stiffness ~110–190, `durationInFrames` 22–30, gentler for big panels/slides)
-  — never everything snapping in under half a second; that reads frantic.
-  Reserve the hard sub-0.5s snap for impact stamps. Grouped elements stagger
+- **Pacing breathes too**: element entrances settle in ~0.7–1.2s (default
+  spring stiffness ~110, damping ~18 — NO overshoot; §13.16 reserves bounce
+  for designated gag scenes) — never everything snapping in under half a
+  second; that reads frantic. Reserve the hard sub-0.5s snap for impact
+  stamps. Grouped elements stagger
   ≥ 8–10f apart, and physical landings (hops, drops) get their Puff/impact at
   the TOUCHDOWN frame, not the launch frame.
 - **The shorts layout fixes apply to LONG-FORM too** (Kris, July 2026): on-
@@ -924,7 +925,94 @@ integrate only assets that improve the video.**
 
 ---
 
-## 13. Apply this automatically
+## 13. PREMIUM PASS — de-cartoonify (Kris, July 2026)
+
+Kris's verdict on the skills video: **"it feels too cartoony."** Frame audit
+(37 stills) traced it to: saturated toy colours, bouncy overshoot springs,
+comic devices everywhere, the robot in most scenes, chunky rounded shapes,
+centred symmetric layouts, and near-empty pastel frames. These THIRTY rules
+move the system toward **premium editorial** (Vox/Cleo-Abram-class doc-motion
+on the Anthropic paper look). They override anything older that conflicts.
+
+**Typography**
+1. Pair the sans headlines with an editorial SERIF display for kickers and
+   one hero word/number per chapter — serif = instant gravitas on paper.
+2. Caps discipline: headlines may stay caps; kickers become tracked small
+   caps; chips/labels go sentence case — never three all-caps tiers stacked.
+3. Two text sizes per scene MAX (headline + label). No mid-size strays.
+4. Anchor the headline block to one baseline (~y760) across all scenes so
+   cuts feel designed, not floating.
+5. Big numbers become editorial figures: serif/tabular digits with hairline
+   rules above/below (broadsheet style), not glass chips.
+
+**Colour & surface**
+6. TintWash alpha drops to ~10–14% (was ~25%) — colour lives in ink,
+   underlines and one accent, never a full-page nursery wash.
+7. Max TWO hues per scene (near-black ink + one accent) plus the semantic
+   exception; never a rainbow chip row.
+8. Desaturate the semantic set ~20% toward clay/sage/ochre/slate — no pure
+   #FF-anything toy primaries.
+9. Half the dark glass tiles become PAPER cards (ivory fill, 1px ink border,
+   soft shadow) — "print sticker", not "app icon".
+10. Add a ~2–3% film-grain overlay to the backdrop — kills the flat digital
+    pastel field.
+
+**Shape language**
+11. Corner-radius diet: cards/tiles 10–14px, chips 6px. 30px+ superellipses
+    read toddler-toy.
+12. ONE glow per scene, on the hero element only. Everything else matte.
+13. Props move from filled blobs to architectural line-drawing: 1.5–2px ink
+    outlines, one restrained fill, measured/diagram feel.
+14. Robot budget: the CartoonRobot appears in ≤ 30% of scenes, and only to
+    REACT in a gag. "Robot stands and watches X" is banned as filler — let
+    the object system act.
+15. Scale hierarchy: one dominant element ≥ 45% of frame width; supports
+    ≤ 15%. Never 4–6 equal mid-size elements scattered (clip-art field).
+
+**Motion**
+16. Default spring: stiffness ~110, damping ~18 — settles with NO overshoot.
+    Squash/stretch and overshoot survive ONLY in designated physical-gag
+    scenes (the §2 mode-C list).
+17. Furniture holds still: no idle sine wobble on chips, cards or text.
+    Only characters idle.
+18. Receipts and cards enter slow and weighty (0.9–1.2s, eased, no bounce).
+19. Held scenes get a 4–6% documentary push-in/parallax instead of pop-in
+    events — motion without bounce.
+20. Elements enter ONLY on whisper words; no decorative second-wave pop-ins.
+
+**Composition**
+21. Kill centred symmetry as the default: subject group on one third,
+    headline on the opposite lower third (rule-of-thirds pairs).
+22. Min 20% clear margin on one side of every scene — deliberate negative
+    space reads premium; accidental emptiness does not.
+23. Explanation beats prefer thin-line animated DIAGRAMS (arrows, dotted
+    flows, measured labels) over icon tiles.
+24. Shared ground line: object scenes sit on a consistent 1px ground with
+    contact shadows at one y — no floating clip-art.
+
+**Evidence & data**
+25. One receipt chrome spec: same shadow, muted URL bar, and a 100.5%→100%
+    settle after the zoom — no restless Ken Burns on every receipt.
+26. Annotate receipts like an editor's pen: 2px ink underline/circle that
+    draws on (LabelArrow), replacing the orange highlighter BOX everywhere
+    the claim is a single line.
+27. One recreated NATIVE chart per video (charts.tsx + SourceChip) — an
+    analytic moment anchors the whole edit as journalism, not cartoon.
+
+**Sound & structure**
+28. SFX restraint: pops/booms −30% volume; no sound on minor label
+    entrances; ≤ 3 booms per video. Ticks/page-turns carry the rhythm.
+29. Chapter interstitials: a 0.8s minimal card (serif number + skill name on
+    bare paper, pull-left in/out) replaces kinetic-stamp filler between
+    chapters.
+30. Talking-head ratio: opinion/credibility lines stay ON the face; a scene
+    must earn full-screen with a real visual idea. When a beat's only idea
+    is "robot + chips", cut it and let Kris carry the line.
+
+Retrofit order for an existing cut: 6→8 (colour), 16→18 (springs), 14
+(robot cull), 21–22 (composition), then the rest scene by scene.
+
+## 14. Apply this automatically
 
 For **all future Remotion work in this project**, Claude Code MUST apply this
 framework before creating or editing scenes: **run the asset research pass (§10)
