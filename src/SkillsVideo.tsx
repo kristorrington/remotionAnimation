@@ -12,7 +12,7 @@ import { StepsScene } from "./scenes/StepsScene";
 import { FlowScene } from "./scenes/FlowScene";
 import { StackCollapseScene } from "./scenes/CostScenes";
 import { WaitingScene } from "./scenes/WaitingScene";
-import { EightyPercentScene, SlopFactoryScene } from "./scenes/SkillsScenes";
+import { EightyPercentScene, SlopFactoryScene, PlatformPopScene } from "./scenes/SkillsScenes";
 import { ScreenshotReceiptScene } from "./scenes/SourceCardScene";
 import { ThemeProvider } from "./theme";
 
@@ -30,7 +30,8 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
   { scene: "hookDoors", from: 90, dur: 160, fullscreen: true }, // "five Claude Code skills (53-105)… rank (109)… worth installing (148-202)"
   { scene: "rankCriteria", from: 250, dur: 160 }, // "the problem they solve (256-297), how useful (303), how easily you can test (346-384)"
   { scene: "skillDef", from: 410, dur: 349, fullscreen: true }, // "a packaged set of instructions (448-493)… changes how Claude approaches (503-551)… different way to work (622-670)"
-  { scene: "reachProof", from: 759, dur: 226 }, // "Number five is Agent Reach (738-818)… X, Reddit, YouTube and GitHub (896-983)"
+  { scene: "reachProof", from: 759, dur: 131 }, // "Number five is Agent Reach (738-818)… connects Claude with platforms (818-896)"
+  { scene: "platformPops", from: 890, dur: 95, fullscreen: true }, // "X (896), Reddit (905), YouTube (923) and GitHub (948)" — the real marks slam in
   { scene: "reachFlow", from: 985, dur: 255, fullscreen: true }, // "research across several platforms (996-1045) without switching between tools (1076-1138)"
   { scene: "reachRun", from: 1240, dur: 280, fullscreen: true }, // "inspect a GitHub repo (1349), Reddit (1390), check X (1442), YouTube (1496)"
   { scene: "oneRepoStack", from: 1650, dur: 350, fullscreen: true }, // "one repo (1688), one source (1735), one task (1805); more sources (1859)… harder to control (1915-1939)"
@@ -70,7 +71,7 @@ export const SkillsVisuals: React.FC = () => {
     <AbsoluteFill>
       {/* 0:03 the hook — five doors, one for each skill */}
       <Sequence from={90} durationInFrames={160} premountFor={30}>
-        <PathDoorsScene durationInFrames={160} kicker="5 CLAUDE CODE SKILLS" title="RANKED" doors={[{ label: "?", at: 6 }, { label: "?", at: 22 }, { label: "?", at: 38 }, { label: "?", at: 54 }, { label: "?", at: 70 }]} tint="#D97757" />
+        <PathDoorsScene durationInFrames={160} kicker="5 CLAUDE CODE SKILLS" title="RANKED" doors={[{ label: "5", at: 6 }, { label: "4", at: 22 }, { label: "3", at: 38 }, { label: "2", at: 54 }, { label: "1", at: 70 }]} tint="#D97757" />
       </Sequence>
 
       {/* 0:08 the three ranking tests */}
@@ -84,8 +85,13 @@ export const SkillsVisuals: React.FC = () => {
       </Sequence>
 
       {/* 0:25 No.5 receipt — Agent Reach's own repo (busy page → card mode) */}
-      <Sequence from={759} durationInFrames={226} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={226} kicker="GITHUB · No.5" title="AGENT REACH" fullBleed={false} tint="#D97757" src={`${SHOT}/agent-reach-github-wide.png`} url="github.com/Panniantong/agent-reach" imageW={3840} imageH={2052} from={{ x: 2350, y: 240, w: 1200, h: 641 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 2570, y: 405, w: 580, h: 235 }} highlightAt={131} />
+      <Sequence from={759} durationInFrames={131} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={131} kicker="GITHUB · No.5" title="AGENT REACH" fullBleed={false} tint="#D97757" src={`${SHOT}/agent-reach-github-wide.png`} url="github.com/Panniantong/agent-reach" imageW={3840} imageH={2052} from={{ x: 2350, y: 240, w: 1200, h: 641 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={14} highlight={{ x: 2570, y: 405, w: 580, h: 235 }} highlightAt={91} />
+      </Sequence>
+
+      {/* 0:29 the four platforms — real marks pop as each is named */}
+      <Sequence from={890} durationInFrames={95} premountFor={30}>
+        <PlatformPopScene durationInFrames={95} kicker="AGENT REACH CONNECTS" title="FOUR PLATFORMS" popAts={[8, 17, 35, 60]} tint="#60A5FA" />
       </Sequence>
 
       {/* 0:33 four platforms wire into one workflow */}
@@ -110,7 +116,7 @@ export const SkillsVisuals: React.FC = () => {
 
       {/* 1:11 No.4 receipt — Loop Library's page */}
       <Sequence from={2147} durationInFrames={213} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={213} kicker="FORWARD FUTURE · No.4" title="LOOP LIBRARY" titlePos="right" tint="#60A5FA" src={`${SHOT}/loop-library-wide.png`} url="signals.forwardfuture.com/loop-library" imageW={2800} imageH={1497} from={{ x: 620, y: 220, w: 1600, h: 855 }} to={{ x: 0, y: 0, w: 2800, h: 1497 }} zoomAt={14} highlight={{ x: 115, y: 288, w: 1600, h: 64 }} highlightAt={40} />
+        <ScreenshotReceiptScene durationInFrames={213} kicker="FORWARD FUTURE · No.4" title="LOOP LIBRARY" titlePos="right" tint="#60A5FA" src={`${SHOT}/loop-library-wide.png`} url="signals.forwardfuture.com/loop-library" imageW={2800} imageH={1497} from={{ x: 620, y: 220, w: 1600, h: 855 }} to={{ x: 0, y: 0, w: 2800, h: 1497 }} zoomAt={14} highlight={{ x: 115, y: 272, w: 1600, h: 56 }} highlightAt={40} />
       </Sequence>
 
       {/* 1:18 the 80% trap — bar stops, robot says DONE, the gap flashes */}

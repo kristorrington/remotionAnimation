@@ -207,7 +207,8 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "hookDoors": cues.push({ at: 6, type: "pop" }, { at: 22, type: "pop" }, { at: 38, type: "pop" }, { at: 54, type: "pop" }, { at: 70, type: "pop" }); break;
     case "rankCriteria": cues.push({ at: 8, type: "tick" }, { at: 47, type: "tick" }, { at: 117, type: "tick" }); break;
     case "skillDef": cues.push({ at: 78, type: "boom" }, { at: 87, type: "tick" }, { at: 206, type: "tick" }, { at: 234, type: "tick" }); break; // cartridge clunks in, runs tick out
-    case "reachProof": cues.push({ at: 16, type: "whip" }, { at: 131, type: "swish" }); break;
+    case "reachProof": cues.push({ at: 16, type: "whip" }, { at: 91, type: "swish" }); break;
+    case "platformPops": cues.push({ at: 8, type: "pop" }, { at: 17, type: "pop" }, { at: 35, type: "pop" }, { at: 60, type: "pop" }); break;
     case "reachFlow": cues.push({ at: 20, type: "pop" }, { at: 45, type: "pop" }, { at: 70, type: "pop" }, { at: 95, type: "pop" }, { at: 100, type: "whoosh" }, { at: 140, type: "boom" }); break;
     case "reachRun": cues.push({ at: 103, type: "tick" }, { at: 144, type: "tick" }, { at: 196, type: "tick" }, { at: 250, type: "tick" }); break; // repo->reddit->x->youtube stops
     case "oneRepoStack": cues.push({ at: 203, type: "thud" }, { at: 229, type: "thud" }, { at: 249, type: "thud" }, { at: 283, type: "boom" }); break;

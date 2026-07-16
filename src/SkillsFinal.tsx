@@ -35,8 +35,11 @@ for (const s of SPANS) {
   if (s.to - cursor >= PIP_MIN) PIP_SEGMENTS.push({ from: cursor, to: s.to });
 }
 
-// CapCut-style pull-left on every full-screen span START (the v2 rule).
-const CUTS = FULL.map((f) => f.from);
+// CapCut-style pull-left on every full-screen span START (the v2 rule), plus
+// one on every "Number N is…" chapter intro (Kris, July 2026) — the wipe's
+// hidden midpoint sits just before each skill's receipt takes over.
+const CHAPTER_CUTS = [756, 2147, 3609, 5537];
+const CUTS = [...FULL.map((f) => f.from), ...CHAPTER_CUTS].sort((a, b) => a - b);
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 

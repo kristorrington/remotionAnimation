@@ -2,9 +2,10 @@ import React from "react";
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { FONT } from "../components/overlayUI";
 import { SceneShell, SceneHeadline } from "./SceneShell";
-import { CartoonRobot, SpeechBubble, Sparks, glassCard, impulse, CYAN, WHITE, RED, AMBER, GREEN } from "../motion/subjects";
+import { CartoonRobot, SpeechBubble, Sparks, Puff, glassCard, impulse, CYAN, WHITE, RED, AMBER, GREEN } from "../motion/subjects";
 import { ConveyorBelt } from "../motion/objects";
 import { ImpactStamp } from "../motion/primitives";
+import { XMark, RedditMark, YouTubeMark, GitHubMark } from "../components/Cartoons";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
@@ -56,6 +57,47 @@ export const EightyPercentScene: React.FC<{
           </div>
         </div>
         <SceneHeadline kicker={kicker} title={title} titleSize={62} accent={gapOn ? RED : GREEN} />
+      </div>
+    </SceneShell>
+  );
+};
+
+// FOUR PLATFORMS — the real X / Reddit / YouTube / GitHub marks slam onto
+// glass app-tiles as each platform is named; the robot watches them land.
+export const PlatformPopScene: React.FC<{
+  durationInFrames: number; kicker?: string; title: string;
+  popAts: [number, number, number, number]; tint?: string;
+}> = ({ durationInFrames, kicker, title, popAts, tint }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const tiles = [
+    { label: "X", icon: <XMark size={92} /> },
+    { label: "REDDIT", icon: <RedditMark size={92} /> },
+    { label: "YOUTUBE", icon: <YouTubeMark size={92} /> },
+    { label: "GITHUB", icon: <GitHubMark size={92} /> },
+  ];
+  return (
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x53f} impacts={[...popAts]} tint={tint}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 48 }}>
+        <div style={{ display: "flex", alignItems: "flex-end", gap: 64 }}>
+          {tiles.map((t, i) => {
+            const at = popAts[i];
+            const pop = spring({ frame: frame - at, fps, config: { stiffness: 170, damping: 13 }, durationInFrames: 24 });
+            return (
+              <div key={t.label} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16, opacity: frame < at ? 0 : 1 }}>
+                <div style={{ position: "relative", width: 170, height: 170, borderRadius: 34, ...glassCard(CYAN, 2), display: "flex", alignItems: "center", justifyContent: "center", transform: `scale(${interpolate(pop, [0, 1], [1.6, 1])}) rotate(${(i % 2 ? 3 : -3) * (1 - pop)}deg)` }}>
+                  {t.icon}
+                  <Puff at={at + 12} x={85} y={170} />
+                </div>
+                <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 22, letterSpacing: 2, color: WHITE, opacity: interpolate(pop, [0.3, 1], [0, 1]), transform: "translateZ(0)", background: "rgba(31,30,29,0.85)", borderRadius: 10, padding: "6px 16px" }}>{t.label}</span>
+              </div>
+            );
+          })}
+          <div style={{ marginBottom: 6, transform: `translateY(${-popAts.reduce((a, at) => a + Math.abs(impulse(frame, at, 8, 14)), 0)}px)` }}>
+            <CartoonRobot pose={frame >= popAts[3] + 20 ? "celebrate" : "pointing"} size={220} accent={GREEN} lookX={-9} />
+          </div>
+        </div>
+        <SceneHeadline kicker={kicker} title={title} titleSize={62} accent={AMBER} />
       </div>
     </SceneShell>
   );
