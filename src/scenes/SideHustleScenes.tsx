@@ -56,7 +56,7 @@ const Check: React.FC<{ at: number; size?: number; cross?: boolean }> = ({ at, s
 // `pickIndex`, it glows and swings open. Serves "five options, pick one".
 export const PathDoorsScene: React.FC<{
   durationInFrames: number; kicker?: string; title: string;
-  doors?: { label: string; at: number }[]; pickIndex?: number; pickAt?: number; tint?: string; subject?: boolean;
+  doors?: { label: string; at: number; icon?: React.ReactNode }[]; pickIndex?: number; pickAt?: number; tint?: string; subject?: boolean;
 }> = ({ durationInFrames, kicker, title, doors = [], pickIndex = 0, pickAt = 99999, tint, subject = true }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -81,6 +81,12 @@ export const PathDoorsScene: React.FC<{
                     <div style={{ position: "absolute", right: 16, top: 140, width: 12, height: 12, borderRadius: "50%", background: "rgba(255,255,255,0.25)" }} />
                   </div>
                   {isPick && <Sparks at={pickAt + 22} x={doorW / 2} y={150} color={GOLD} size={150} />}
+                  {/* the product's own nameplate (its real wordmark) on the door */}
+                  {d.icon && (
+                    <div style={{ position: "absolute", left: 12, right: 12, top: 96, height: 46, borderRadius: 8, background: "rgba(250,249,245,0.96)", display: "flex", alignItems: "center", justifyContent: "center", padding: "6px 10px", opacity: interpolate(e, [0.5, 1], [0, 1]) }}>
+                      {d.icon}
+                    </div>
+                  )}
                 </div>
                 <div style={{ marginTop: 12, display: "flex", justifyContent: "center" }}>
                   <Sticker label={d.label} at={d.at + 6} color={isPick ? GOLD : CYAN} rot={i % 2 ? 2 : -2} fontSize={21} />

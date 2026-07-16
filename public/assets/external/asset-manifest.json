@@ -1141,6 +1141,81 @@
       ],
       "attributionRequired": false,
       "concerns": null
+    },
+    {
+      "filename": "superpowers-wordmark.png",
+      "localPath": "public/assets/external/logos/superpowers-wordmark.png",
+      "type": "logo",
+      "sourceUrl": "https://claude.com/plugins/superpowers",
+      "sourceName": "Anthropic Claude plugin marketplace",
+      "dateAccessed": "2026-07-16",
+      "usageNote": "Product wordmark cropped from its own listing",
+      "usedIn": [
+        "skillsVideo recapDoors",
+        "skillsVideo chapter badges"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "looplibrary-wordmark.png",
+      "localPath": "public/assets/external/logos/looplibrary-wordmark.png",
+      "type": "logo",
+      "sourceUrl": "https://signals.forwardfuture.com/loop-library/",
+      "sourceName": "Forward Future Signals",
+      "dateAccessed": "2026-07-16",
+      "usageNote": "Product wordmark cropped from its own page hero",
+      "usedIn": [
+        "skillsVideo recapDoors",
+        "skillsVideo chapter badges"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "pxpipe-wordmark.png",
+      "localPath": "public/assets/external/logos/pxpipe-wordmark.png",
+      "type": "logo",
+      "sourceUrl": "https://github.com/teamchong/pxpipe",
+      "sourceName": "GitHub teamchong/pxpipe",
+      "dateAccessed": "2026-07-16",
+      "usageNote": "Product wordmark cropped from its own README",
+      "usedIn": [
+        "skillsVideo recapDoors",
+        "skillsVideo chapter badges"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "taste-wordmark.png",
+      "localPath": "public/assets/external/logos/taste-wordmark.png",
+      "type": "logo",
+      "sourceUrl": "https://www.tasteskill.dev/",
+      "sourceName": "tasteskill.dev",
+      "dateAccessed": "2026-07-16",
+      "usageNote": "Product wordmark cropped from its own hero",
+      "usedIn": [
+        "skillsVideo recapDoors",
+        "skillsVideo chapter badges"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "agentreach-wordmark.png",
+      "localPath": "public/assets/external/logos/agentreach-wordmark.png",
+      "type": "logo",
+      "sourceUrl": "https://github.com/Panniantong/agent-reach",
+      "sourceName": "GitHub Panniantong/Agent-Reach",
+      "dateAccessed": "2026-07-16",
+      "usageNote": "Product wordmark + eye mark cropped from its own README",
+      "usedIn": [
+        "skillsVideo recapDoors",
+        "skillsVideo chapter badges"
+      ],
+      "attributionRequired": false,
+      "concerns": null
     }
   ]
 }

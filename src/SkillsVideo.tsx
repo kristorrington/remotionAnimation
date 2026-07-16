@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, Img, Sequence, interpolate, staticFile, useCurrentFrame } from "remotion";
 import { Fable5Outro } from "./components/Fable5Outro";
 import { SFX, SfxCue, vary } from "./components/Sfx";
 import { sceneActionCues } from "./motion/sfx-cues";
@@ -14,7 +14,30 @@ import { StackCollapseScene } from "./scenes/CostScenes";
 import { WaitingScene } from "./scenes/WaitingScene";
 import { EightyPercentScene, SlopFactoryScene, PlatformPopScene } from "./scenes/SkillsScenes";
 import { ScreenshotReceiptScene } from "./scenes/SourceCardScene";
+import { SERIF } from "./components/overlayUI";
 import { ThemeProvider } from "./theme";
+
+const WM = "assets/external/logos";
+const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+
+// The product's own wordmark on a door nameplate (recap doors).
+const Plate: React.FC<{ src: string }> = ({ src }) => (
+  <Img src={staticFile(src)} style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }} />
+);
+
+// Broadcast-style chapter badge: serif rank numeral + the product's real
+// wordmark on an ivory chip, docked top-left for the chapter's animated beats
+// (§10.6 product identification — never decoration-only).
+const ChapterBadge: React.FC<{ rank: string; src: string; wide?: boolean }> = ({ rank, src, wide }) => {
+  const frame = useCurrentFrame();
+  const op = interpolate(frame, [0, 12], [0, 1], CLAMP);
+  return (
+    <div style={{ position: "absolute", top: 44, left: 56, display: "flex", alignItems: "center", gap: 14, padding: "12px 20px", borderRadius: 12, background: "rgba(250,249,245,0.95)", border: "1px solid rgba(31,30,29,0.25)", boxShadow: "0 8px 26px rgba(31,30,29,0.16)", opacity: op }}>
+      <span style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 30, color: "#C15F3C" }}>{rank}</span>
+      <Img src={staticFile(src)} style={{ height: 30, width: wide ? 210 : 150, objectFit: "contain" }} />
+    </div>
+  );
+};
 
 // SkillsVideo — transparent cutaway overlay for the "5 Claude Code skills
 // ranked" video (~5m19s, 9556f @ 30fps). Beats classified per CLAUDE.md §3;
@@ -216,13 +239,22 @@ export const SkillsVisuals: React.FC = () => {
 
       {/* 4:52 the recap — the winner's door opens, the rest pop dimmed */}
       <Sequence from={8776} durationInFrames={440} premountFor={30}>
-        <PathDoorsScene durationInFrames={440} kicker="THE FINAL RANKING" title="WHY No.1 WINS" doors={[{ label: "SUPER", at: 22 }, { label: "TASTE", at: 90 }, { label: "PX PIPE", at: 166 }, { label: "LOOP", at: 258 }, { label: "REACH", at: 334 }]} pickIndex={0} pickAt={54} tint="#E8B84B" />
+        <PathDoorsScene durationInFrames={440} kicker="THE FINAL RANKING" title="WHY No.1 WINS" doors={[{ label: "SUPER", at: 22, icon: <Plate src={`${WM}/superpowers-wordmark.png`} /> }, { label: "TASTE", at: 90, icon: <Plate src={`${WM}/taste-wordmark.png`} /> }, { label: "PX PIPE", at: 166, icon: <Plate src={`${WM}/pxpipe-wordmark.png`} /> }, { label: "LOOP", at: 258, icon: <Plate src={`${WM}/looplibrary-wordmark.png`} /> }, { label: "REACH", at: 334, icon: <Plate src={`${WM}/agentreach-wordmark.png`} /> }]} pickIndex={0} pickAt={54} tint="#E8B84B" />
       </Sequence>
 
       {/* 5:07 kinetic: nothing helps on the wrong path */}
       <Sequence from={9216} durationInFrames={139} premountFor={30}>
         <FinalTakeawayScene durationInFrames={139} title="ON THE WRONG PATH" stamp="NOTHING HELPS" stampAt={95} accent="#C65B52" />
       </Sequence>
+
+      {/* chapter badges — each skill's real wordmark rides its chapter's
+          animated beats (skipped over receipts: the sticker zone is theirs) */}
+      <Sequence from={890} durationInFrames={1257}><ChapterBadge rank="No.5" src={`${WM}/agentreach-wordmark.png`} wide /></Sequence>
+      <Sequence from={2360} durationInFrames={1249}><ChapterBadge rank="No.4" src={`${WM}/looplibrary-wordmark.png`} wide /></Sequence>
+      <Sequence from={3860} durationInFrames={660}><ChapterBadge rank="No.3" src={`${WM}/pxpipe-wordmark.png`} /></Sequence>
+      <Sequence from={4700} durationInFrames={740}><ChapterBadge rank="No.3" src={`${WM}/pxpipe-wordmark.png`} /></Sequence>
+      <Sequence from={5745} durationInFrames={1055}><ChapterBadge rank="No.2" src={`${WM}/taste-wordmark.png`} /></Sequence>
+      <Sequence from={7285} durationInFrames={1355}><ChapterBadge rank="No.1" src={`${WM}/superpowers-wordmark.png`} wide /></Sequence>
 
       {/* 5:13 OUTRO — anchored to the spoken "subscribe" (9419) */}
       <Sequence from={9411} durationInFrames={SKILLS_DUR - 9411} premountFor={30}>
