@@ -1160,6 +1160,34 @@ Same video + copy as Short-PxPipe; post the loser as unlisted or delete after 48
 
 ---
 
+## Short-Taste
+
+**Title**
+```
+Your AI Apps All Look the Same — Taste Fixes It #Shorts
+```
+
+**Description**
+```
+You know the style: the same gradients, the same oversized heading. Claude builds a working interface fast — but working doesn't mean well designed.
+
+Taste is a free skill that pushes Claude away from the generic AI-slop look. And it's the easiest skill to test: give Claude the same design brief with and without it, then compare the results.
+
+Would you spot an AI-built interface instantly? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #ClaudeCode #ClaudeSkills #WebDesign #Shorts
+```
+
+---
+
+## Short-Taste-B (A/B hook variant — hook "KILL THE AI SLOP LOOK")
+
+Same video + copy as Short-Taste; post the loser as unlisted or delete after 48h.
+
+---
+
 ## Short-Ranked
 
 **Title**

@@ -14,6 +14,12 @@ export const SFX = {
   pageTurn: staticFile("sfx/page-turn.wav"), // soft page flip — section changes
   boom: staticFile("sfx/boom.wav"), // deep impact — the biggest reveals only (use rarely)
   shutterOld: staticFile("sfx/shutter-old.wav"), // vintage camera flash — alt accent
+  // Synthesized pack (2026-07-16, ffmpeg-built, licence-clean — the palette
+  // must ROTATE, CLAUDE.md §7 Sound):
+  pop: staticFile("sfx/pop.wav"), // cartoon pop — doors/tiles/chips landing
+  tick: staticFile("sfx/tick.wav"), // tiny UI tick — steps/runs under VO
+  thud: staticFile("sfx/thud.wav"), // dull low landing — cards/pans dropping
+  swish: staticFile("sfx/swish.wav"), // soft air sweep — receipt zoom settles
 } as const;
 
 // Subtle pitch variation so a repeated sample never sounds machine-gunned:

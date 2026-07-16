@@ -12,7 +12,7 @@ import { ThemeProvider } from "./theme";
 // PiP. Same structure as GoLocalFinal (transitions v2, paper theme).
 const FOOTAGE = "talking-head.mp4"; // skills footage (rotated in 2026-07-16)
 
-const PIP_GAP_MAX = 180; // 6s
+const PIP_GAP_MAX = 90; // 3s - a longer VO-only gap BREAKS the span back to full footage (no bare-paper holds)
 const PIP_MIN = 90; // never show a PiP segment shorter than 3s (flicker)
 const COVERS = [...SKILLS_WINDOWS].sort((a, b) => a.from - b.from);
 const SPANS: { from: number; to: number }[] = [];

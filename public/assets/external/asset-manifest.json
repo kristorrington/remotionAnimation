@@ -1028,18 +1028,6 @@
       "concerns": null
     },
     {
-      "filename": "taste-github-wide.png",
-      "localPath": "public/assets/external/screenshots/taste-github-wide.png",
-      "type": "screenshot",
-      "sourceUrl": "https://github.com/leonxlnx/taste-skill",
-      "sourceName": "GitHub Leonxlnx/taste-skill",
-      "dateAccessed": "2026-07-16",
-      "usageNote": "Repo top: About (anti-slop blurb) — spare Taste receipt",
-      "usedIn": [],
-      "attributionRequired": false,
-      "concerns": null
-    },
-    {
       "filename": "taste-site-wide.png",
       "localPath": "public/assets/external/screenshots/taste-site-wide.png",
       "type": "screenshot",
@@ -1136,6 +1124,20 @@
       "usageNote": "Hero: turns bulky AI coding context into compact PNG pages — PX Pipe receipt",
       "usedIn": [
         "skillsVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "superpowers-workflow-wide.png",
+      "localPath": "public/assets/external/screenshots/superpowers-workflow-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/obra/superpowers",
+      "sourceName": "GitHub obra/superpowers (README)",
+      "dateAccessed": "2026-07-16",
+      "usageNote": "How-it-works section: steps back instead of jumping into code — receipt for the slow-the-jump chapter",
+      "usedIn": [
+        "skillsVideo workflowProof"
       ],
       "attributionRequired": false,
       "concerns": null

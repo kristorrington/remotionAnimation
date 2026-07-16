@@ -83,10 +83,36 @@ export const SHORTS: ShortSpec[] = [
       { at: 381, scene: "emote", pose: "alarmed", tint: "#EF4444", text: "THE MEMORY TAX" }, // "more tokens reminding Claude than completing it" (4192-4290)
       { at: 531, scene: "funnel", tint: "#60A5FA", text: "WORDS → PICTURES" }, // "convert bulky context into images" (4342-4390); span.from+13
       // EVIDENCE: pxpipe's own README paragraph with the 59-70% line
-      { at: 776, scene: "receipt", tint: "#34D399", text: "THE RECEIPT", shot: { src: "assets/external/screenshots/pxpipe-github-wide.png", url: "github.com/teamchong/pxpipe", imageW: 2100, imageH: 1122, from: { x: 480, y: 420, w: 900, h: 450 }, to: { x: 20, y: 180, w: 1560, h: 780 }, zoomAt: 8 } }, // "up to 70% fewer tokens" (4575-4622); holds ~4.7s into the CTA
+      { at: 776, scene: "receipt", tint: "#34D399", text: "THE RECEIPT", shot: { src: "assets/external/screenshots/pxpipe-github-wide.png", url: "github.com/teamchong/pxpipe", imageW: 2100, imageH: 1122, from: { x: 30, y: 622, w: 1000, h: 500 }, to: { x: 20, y: 180, w: 1560, h: 780 }, zoomAt: 8 } }, // "up to 70% fewer tokens" (4575-4622); opens on the what-the-model-sees noise image, settles on the claim paragraph; holds ~4.7s into the CTA
     ],
     // full-anim: the funnel swap gag
     fullscreen: [{ from: 518, to: 700 }],
+    outro: "FOLLOW FOR MORE",
+    music: "music/tension.MP3",
+    style: "paper",
+  },
+  {
+    id: "Short-Taste",
+    label: "Taste: kill the AI-slop look — same brief, with and without",
+    source: "talking-head.mp4",
+    from: 5448, // "So number two on my list is Taste."
+    // LOOP: ends right after "…then compare the results." (abs 6371) → replays
+    // into "number two is Taste".
+    durationInFrames: 943, // ~31s
+    topic: "THE ANTI-SLOP SKILL",
+    hook: "AI APPS ALL LOOK THE SAME",
+    hookAlt: "KILL THE AI SLOP LOOK", // A/B variant → Short-Taste-B
+    context: "Taste = free anti-slop skill for Claude",
+    beats: [
+      { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "SEEN THIS BEFORE?" }, // "push Claude away from the generic look" (5582-5629)
+      // EVIDENCE EARLY: tasteskill.dev's own hero
+      { at: 110, scene: "receipt", tint: "#34D399", text: "THE RECEIPT", shot: { src: "assets/external/screenshots/taste-site-wide.png", url: "tasteskill.dev", imageW: 2800, imageH: 1497, from: { x: 180, y: 380, w: 900, h: 450 }, to: { x: 140, y: 80, w: 1300, h: 650 }, zoomAt: 8 } }, // "the generic look seen across many AI interfaces" (5616-5710); holds ~6.5s
+      { at: 306, scene: "conveyor", labels: ["SAME UI AGAIN"], tint: "#EF4444", text: "SPOT THE DIFFERENCE" }, // "the same gradients, the same oversized heading" (5760-5804)
+      { at: 470, scene: "check", obj: "gauge", verdict: "warn", tint: "#F59E0B", text: "RUNS FINE. LOOKS OFF." }, // "working doesn't mean it's always well designed" (5915-5972); span.from+13
+      { at: 690, scene: "testbench", tint: "#60A5FA", text: "RUN IT TWICE" }, // "give Claude the same design brief and test it with and without Taste" (6194-6320)
+    ],
+    // full-anim: the warning gauge gag
+    fullscreen: [{ from: 457, to: 610 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
     style: "paper",
