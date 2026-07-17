@@ -203,13 +203,13 @@ const StackBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
   const collapseAt = long ? Math.round(dur * 0.72) : undefined;
   const collapsed = collapseAt !== undefined && frame >= collapseAt;
   return (
-    <Wrap gap={10}>
+    <Wrap gap={26}>
       <div style={{ display: "flex", alignItems: "flex-end" }}>
-        <div style={{ transform: "scale(0.9)", transformOrigin: "bottom center" }}>
+        <div style={{ transform: "scale(1.05)", transformOrigin: "bottom center" }}>
           <CardStackDrop drops={drops} collapseAt={collapseAt} />
         </div>
         <div style={{ marginLeft: -90, marginBottom: 6 }}>
-          <CartoonRobot pose={collapsed ? "alarmed" : "worried"} size={170} accent={collapsed ? RED : CYAN} />
+          <CartoonRobot pose={collapsed ? "alarmed" : "worried"} size={210} accent={collapsed ? RED : CYAN} />
         </div>
       </div>
       <BeatLabel text={beat.text} accent={beat.accent ?? "#C9913D"} />
@@ -412,22 +412,24 @@ const ConveyorBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
     </div>
   );
   const card = (label: string, x: number, y: number, color: string) => (
-    <div style={{ position: "absolute", left: x, top: y, padding: "10px 18px", borderRadius: 10, ...glassCard(color), transform: `translateY(${2 * Math.sin(frame * 0.3)}px)` }}>
-      <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 24, color: WHITE, whiteSpace: "nowrap" }}>{label}</span>
+    <div style={{ position: "absolute", left: x, top: y, padding: "12px 22px", borderRadius: 10, ...glassCard(color), transform: `translateY(${2 * Math.sin(frame * 0.3)}px)` }}>
+      <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 30, color: WHITE, whiteSpace: "nowrap" }}>{label}</span>
     </div>
   );
-  const mainX = interpolate(frame, [4, splitAt], [0, 330], CLAMP);
-  const laneX = interpolate(frame, [splitAt + 6, dur - 16], [330, 700], CLAMP);
+  const mainX = interpolate(frame, [4, splitAt], [0, 290], CLAMP);
+  const laneX = interpolate(frame, [splitAt + 6, dur - 16], [290, 560], CLAMP);
   const watch = spring({ frame: frame - splitAt, fps, config: { stiffness: 220, damping: 15 }, durationInFrames: 16 });
   const hand = interpolate(frame, [splitAt, dur], [0, 320], CLAMP);
+  // stage stays ≤ ~780 wide: full-anim spans zoom the panel ×1.32, and a
+  // wider stage clips at the frame edges (the DONE tray used to get cut)
   return (
     <Wrap gap={40}>
-      <div style={{ position: "relative", width: 940, height: 320 }}>
+      <div style={{ position: "relative", width: 780, height: 320 }}>
         {split ? (
           <>
-            {belt(60, 420)}
-            {belt(150, 500, 420)}
-            {belt(250, 500, 420)}
+            {belt(60, 380)}
+            {belt(150, 420, 360)}
+            {belt(250, 420, 360)}
             {frame < splitAt + 6 && card("WORKFLOW", mainX, 22, AMBER)}
             {frame >= splitAt + 6 && (
               <>
@@ -437,7 +439,7 @@ const ConveyorBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
             )}
             {/* stopwatch starts at the split */}
             {frame >= splitAt && (
-              <div style={{ position: "absolute", left: 20, top: 130, transform: `scale(${interpolate(watch, [0, 1], [0.4, 1])})`, opacity: interpolate(watch, [0, 0.4], [0, 1]) }}>
+              <div style={{ position: "absolute", left: 8, top: 130, transform: `scale(${interpolate(watch, [0, 1], [0.4, 1])})`, opacity: interpolate(watch, [0, 0.4], [0, 1]) }}>
                 <svg width={150} height={170} viewBox="0 0 100 114">
                   <line x1={50} y1={14} x2={50} y2={4} stroke={WHITE} strokeWidth={6} strokeLinecap="round" />
                   <circle cx={50} cy={62} r={44} fill={PANEL} stroke={CYAN} strokeWidth={6} />
@@ -446,20 +448,20 @@ const ConveyorBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
                 </svg>
               </div>
             )}
-            <Sparks at={splitAt} x={420} y={60} color={CYAN} size={120} />
+            <Sparks at={splitAt} x={360} y={60} color={CYAN} size={120} />
           </>
         ) : (
           <>
-            {belt(160, 700, 40)}
-            {card(labels[0] === "DONE" ? "WORKFLOW" : labels[0], interpolate(frame, [4, dur * 0.6], [40, 560], CLAMP), 118, CYAN)}
+            {belt(160, 620, 10)}
+            {card(labels[0] === "DONE" ? "WORKFLOW" : labels[0], interpolate(frame, [4, dur * 0.6], [10, 470], CLAMP), 118, CYAN)}
             {/* done tray + check */}
-            <div style={{ position: "absolute", right: 40, top: 96, width: 170, height: 110, borderRadius: 14, border: `2px solid ${GREEN}AA`, background: "rgba(79,169,138,0.1)", boxShadow: `inset 0 1px 0 rgba(255,255,255,0.08), 0 0 16px ${GREEN}22`, display: "flex", alignItems: "flex-end", justifyContent: "center", paddingBottom: 8 }}>
+            <div style={{ position: "absolute", right: 0, top: 96, width: 170, height: 110, borderRadius: 14, border: `2px solid ${GREEN}AA`, background: "rgba(79,169,138,0.1)", boxShadow: `inset 0 1px 0 rgba(255,255,255,0.08), 0 0 16px ${GREEN}22`, display: "flex", alignItems: "flex-end", justifyContent: "center", paddingBottom: 8 }}>
               <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 24, letterSpacing: 2, color: GREEN }}>DONE</span>
             </div>
-            <div style={{ position: "absolute", right: 80, top: 40 }}>
+            <div style={{ position: "absolute", right: 40, top: 40 }}>
               <Verdict kind="check" at={Math.round(dur * 0.62)} size={90} />
             </div>
-            <Sparks at={Math.round(dur * 0.62)} x={760} y={140} color={GREEN} size={130} />
+            <Sparks at={Math.round(dur * 0.62)} x={640} y={140} color={GREEN} size={130} />
           </>
         )}
       </div>
@@ -534,12 +536,18 @@ const CheckBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
   const tileColor = beat.verdict === "cross" ? RED : beat.verdict === "warn" ? AMBER : beat.verdict === "check" ? GREEN : CYAN;
   return (
     <Wrap gap={40}>
-      <div style={{ display: "flex", alignItems: "center", gap: 30, transform: `translateY(${float}px)` }}>
+      {/* the verdict DOCKS on the tile's corner — a ring floating beside the
+          tile read as two unrelated props (improvement pass, July 2026) */}
+      <div style={{ position: "relative", transform: `translateY(${float}px)` }}>
         {/* the icon sits on a glass app-tile — big icons never float bare */}
-        <div style={{ width: 270, height: 270, borderRadius: 48, display: "flex", alignItems: "center", justifyContent: "center", ...glassCard(tileColor), transform: `scale(${interpolate(enter, [0, 1], [0.3, 1]) * react})` }}>
+        <div style={{ width: 300, height: 300, borderRadius: 48, display: "flex", alignItems: "center", justifyContent: "center", ...glassCard(tileColor), transform: `scale(${interpolate(enter, [0, 1], [0.3, 1]) * react})` }}>
           {icon}
         </div>
-        {beat.verdict ? <Verdict kind={beat.verdict} at={stampAt} size={130} /> : null}
+        {beat.verdict ? (
+          <div style={{ position: "absolute", right: -34, top: -34 }}>
+            <Verdict kind={beat.verdict} at={stampAt} size={130} />
+          </div>
+        ) : null}
       </div>
       {beat.labels ? (
         <div style={{ display: "flex", gap: 18 }}>
@@ -864,11 +872,16 @@ const DoorsBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
 const FunnelBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const t = useTheme();
   const reportAt = Math.min(Math.round(dur * 0.5), 120);
   const out = spring({ frame: frame - reportAt, fps, config: { stiffness: 130, damping: 14 }, durationInFrames: 26 });
+  // the white-alpha funnel outline vanishes on ivory paper — ink it in
+  // (improvement pass, July 2026); dark comps keep the glass look
+  const funnelStroke = t.glow ? "rgba(255,255,255,0.25)" : "rgba(60,54,48,0.55)";
+  const funnelFill = t.glow ? "rgba(160,200,255,0.06)" : "rgba(120,110,100,0.10)";
   return (
     <Wrap gap={40}>
-      <div style={{ position: "relative", width: 620, height: 500 }}>
+      <div style={{ position: "relative", width: 620, height: 500, transform: "scale(1.12)" }}>
         {[10, 34, 56, 78].map((at, i) => {
           const t = frame - at;
           if (t < 0) return null;
@@ -884,7 +897,7 @@ const FunnelBeat: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur }) => {
           );
         })}
         <svg width={620} height={500} viewBox="0 0 620 500" style={{ overflow: "visible" }}>
-          <path d="M 110 190 L 510 190 L 350 340 L 350 420 L 270 420 L 270 340 Z" fill="rgba(160,200,255,0.06)" stroke="rgba(255,255,255,0.25)" strokeWidth={2.5} />
+          <path d="M 110 190 L 510 190 L 350 340 L 350 420 L 270 420 L 270 340 Z" fill={funnelFill} stroke={funnelStroke} strokeWidth={3} />
         </svg>
         <div style={{ position: "absolute", left: 212, top: 414, opacity: interpolate(out, [0, 0.3], [0, 1]), transform: `translateY(${interpolate(out, [0, 1], [-26, 4])}px) scale(${interpolate(out, [0, 1], [0.7, 1])})` }}>
           <div style={{ width: 196, borderRadius: 12, ...glassCard(GREEN, 2.5), padding: "16px 16px", textAlign: "center" }}>

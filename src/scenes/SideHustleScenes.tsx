@@ -356,9 +356,17 @@ export const SkillCartridgeScene: React.FC<{
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 40 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 90 }}>
           {/* paddingBottom reserves the run-card row INSIDE the stage — the
-              cards must never spill into the headline below */}
-          <div style={{ position: "relative", paddingBottom: 150 }}>
+              cards must never spill into the headline below. Without the
+              robot the machine is the only element, so it scales UP and the
+              sticker docks INSIDE the stage instead of reserving an empty
+              flex column (improvement pass, July 2026). */}
+          <div style={{ position: "relative", paddingBottom: 150, transform: subject ? undefined : "scale(1.18)" }}>
             <ModelBlock label="CLAUDE" width={400} coreColor={seated ? GREEN : CYAN} />
+            {!subject && (
+              <div style={{ position: "absolute", left: 430, top: 60 }}>
+                <Sticker label="SAME RESULT, EVERY RUN" at={(runAts[1] ?? 0) + 10} color={GREEN} rot={-2} fontSize={21} />
+              </div>
+            )}
             {/* the cartridge slides down into the slot */}
             <div style={{ position: "absolute", left: 120, top: interpolate(slot, [0, 1], [-170, -34]), transform: `rotate(${interpolate(slot, [0, 1], [-6, 0])}deg)` }}>
               <div style={{ width: 160, height: 54, borderRadius: 10, ...glassCard(GOLD, 2.5), display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -385,14 +393,14 @@ export const SkillCartridgeScene: React.FC<{
               })}
             </div>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
-            {subject && (
+          {subject && (
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
               <div style={{ transform: `translateY(${-runAts.reduce((a, at) => a + Math.abs(impulse(frame, at, 8, 14)), 0)}px)` }}>
                 <CartoonRobot pose={frame >= (runAts[runAts.length - 1] ?? 0) ? "celebrate" : seated ? "pointing" : "thinking"} size={220} accent={seated ? GREEN : CYAN} lookX={-7} />
               </div>
-            )}
-            <Sticker label="SAME RESULT, EVERY RUN" at={(runAts[1] ?? 0) + 10} color={GREEN} rot={-2} fontSize={21} />
-          </div>
+              <Sticker label="SAME RESULT, EVERY RUN" at={(runAts[1] ?? 0) + 10} color={GREEN} rot={-2} fontSize={21} />
+            </div>
+          )}
         </div>
         <SceneHeadline kicker={kicker} title={title} titleSize={60} accent={GREEN} />
       </div>

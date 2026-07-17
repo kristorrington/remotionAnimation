@@ -6,13 +6,16 @@ import { CartoonRobot, Puff, impulse, poseTimeline, RobotPose } from "../motion/
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
-const StepRow: React.FC<{ n: number; label: string; at: number; accent: string; last: boolean }> = ({ n, label, at, accent, last }) => {
+const StepRow: React.FC<{ n: number; label: string; at: number; accent: string; last: boolean; railAt?: number }> = ({ n, label, at, accent, last, railAt }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const e = spring({ frame: frame - at, fps, config: { stiffness: 210, damping: 18, mass: 0.7 }, durationInFrames: 16 });
   const op = interpolate(frame, [at, at + 8], [0, 1], CLAMP);
   const x = interpolate(e, [0, 1], [-40, 0]);
-  const rail = interpolate(frame, [at + 8, at + 26], [0, 1], CLAMP);
+  // the rail draws just before the NEXT step lands — a connector to an empty
+  // slot reads unfinished (improvement pass, July 2026)
+  const railFrom = railAt !== undefined ? railAt - 14 : at + 8;
+  const rail = interpolate(frame, [railFrom, railFrom + 18], [0, 1], CLAMP);
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 24, opacity: op, transform: `translateX(${x}px)` }}>
       <div style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center" }}>
@@ -21,8 +24,8 @@ const StepRow: React.FC<{ n: number; label: string; at: number; accent: string; 
         </div>
         {!last && <div style={{ position: "absolute", top: 62, width: 4, height: 40 * rail, background: `${accent}66` }} />}
       </div>
-      <div style={{ padding: "18px 30px", borderRadius: 14, background: "rgba(12,18,30,0.9)", border: `1px solid ${accent}44`, minWidth: 560, boxShadow: `0 14px 34px rgba(0,0,0,0.4)` }}>
-        <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 38, color: WHITE }}>{label}</span>
+      <div style={{ padding: "18px 34px", borderRadius: 14, background: "rgba(12,18,30,0.9)", border: `1px solid ${accent}44`, minWidth: 420, boxShadow: `0 14px 34px rgba(0,0,0,0.4)` }}>
+        <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 42, color: WHITE }}>{label}</span>
       </div>
     </div>
   );
@@ -57,13 +60,13 @@ export const StepsScene: React.FC<{ durationInFrames: number; kicker?: string; t
         <div style={{ display: "flex", alignItems: "center", gap: 90 }}>
           <div style={{ display: "flex", flexDirection: "column", gap: 14, alignItems: "flex-start" }}>
             {steps.map((s, i) => (
-              <StepRow key={s.label} n={i + 1} label={s.label} at={s.at} accent={accent} last={i === steps.length - 1} />
+              <StepRow key={s.label} n={i + 1} label={s.label} at={s.at} accent={accent} last={i === steps.length - 1} railAt={steps[i + 1]?.at} />
             ))}
           </div>
           {subject && (
             <div style={{ position: "relative", transform: `scale(${enter}) translateY(${-hop}px)` }}>
-              <CartoonRobot pose={poseTimeline(frame, poseSteps)} size={215} lookX={-7} accent={accent} />
-              <Puff at={16} x={107} y={210} size={130} />
+              <CartoonRobot pose={poseTimeline(frame, poseSteps)} size={250} lookX={-7} accent={accent} />
+              <Puff at={16} x={125} y={245} size={130} />
             </div>
           )}
         </div>

@@ -28,11 +28,11 @@ export const StackCollapseScene: React.FC<{ durationInFrames: number; kicker?: s
   const built = collapseAt === undefined && frame >= (drops[drops.length - 1] ?? 0) + 24;
   return (
     <SceneShell durationInFrames={durationInFrames} particleSeed={0x91} impacts={collapseAt !== undefined ? [collapseAt] : []} mood={collapseAt === undefined ? "win" : "neutral"} tint={tint}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 34 }}>
         <div style={{ display: "flex", alignItems: "flex-end", gap: 0 }}>
           <CardStackDrop drops={drops} collapseAt={collapseAt} labels={labels} />
           <div style={{ marginLeft: -70, marginBottom: 6 }}>
-            <CartoonRobot pose={collapsed ? "alarmed" : built ? "celebrate" : "worried"} size={180} accent={built ? GREEN : CYAN} />
+            <CartoonRobot pose={collapsed ? "alarmed" : built ? "celebrate" : "worried"} size={240} accent={built ? GREEN : CYAN} />
           </div>
           {stamp ? (
             <div style={{ marginLeft: 40, marginBottom: 120 }}>
@@ -40,7 +40,7 @@ export const StackCollapseScene: React.FC<{ durationInFrames: number; kicker?: s
             </div>
           ) : null}
         </div>
-        <SceneHeadline kicker={kicker} title={title} titleSize={88} accent={collapseAt === undefined ? GREEN : accent} />
+        <SceneHeadline kicker={kicker} title={title} titleSize={64} accent={collapseAt === undefined ? GREEN : accent} />
       </div>
     </SceneShell>
   );

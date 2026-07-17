@@ -1,6 +1,7 @@
 import React from "react";
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { FONT, BLUE, CYAN, HOT, WHITE, RED } from "../components/overlayUI";
+import { useTheme } from "../theme";
 
 // Reusable, render-safe motion primitives that give scenes cinematic depth
 // without new dependencies. All frame-driven. Colors kept on the project palette.
@@ -112,9 +113,14 @@ export const ImpactStamp: React.FC<{ text: string; at?: number; color?: string }
   const e = spring({ frame: frame - at, fps, config: { stiffness: 240, damping: 12, mass: 0.9 }, durationInFrames: 18 });
   const op = interpolate(frame, [at, at + 5], [0, 1], CLAMP);
   const scale = interpolate(e, [0, 1], [1.8, 1]);
+  // theme-aware: on PAPER the old dark fill read as a dead grey box — the
+  // stamp becomes a print sticker (ivory fill, ink text, accent border);
+  // dark comps keep the original glass look.
+  const t = useTheme();
+  const paper = !t.glow;
   return (
-    <div style={{ transform: `scale(${scale}) rotate(-3deg)`, opacity: op, display: "inline-block", padding: "12px 34px", border: `4px solid ${color}`, borderRadius: 10, background: "rgba(6,9,16,0.35)", boxShadow: `0 0 30px ${color}55` }}>
-      <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 52, letterSpacing: 3, color: WHITE, textTransform: "uppercase" }}>{text}</span>
+    <div style={{ transform: `scale(${scale}) rotate(-3deg)`, opacity: op, display: "inline-block", padding: "12px 34px", border: `4px solid ${color}`, borderRadius: 10, background: paper ? "rgba(253,251,246,0.95)" : "rgba(6,9,16,0.35)", boxShadow: paper ? "0 10px 26px rgba(31,30,29,0.16)" : `0 0 30px ${color}55` }}>
+      <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 52, letterSpacing: 3, color: paper ? "#1F1E1D" : WHITE, textTransform: "uppercase" }}>{text}</span>
     </div>
   );
 };

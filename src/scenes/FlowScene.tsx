@@ -19,9 +19,9 @@ export const FlowScene: React.FC<{
 }> = ({ durationInFrames, kicker, title, nodes, retry, retryLabel = "Wrong", accent = "#D97757", nodeAts, tint }) => {
   return (
     <SceneShell durationInFrames={durationInFrames} particleSeed={0x4f} tint={tint}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 60 }}>
-        <SceneHeadline kicker={kicker} title={title} titleSize={88} accent={accent} />
-        <WorkflowChain nodes={nodes} retry={retry} retryColor={AMBER} retryLabel={retryLabel} startAt={24} width={1360} nodeAts={nodeAts} />
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 76 }}>
+        <SceneHeadline kicker={kicker} title={title} titleSize={64} accent={accent} />
+        <WorkflowChain nodes={nodes} retry={retry} retryColor={AMBER} retryLabel={retryLabel} startAt={24} width={1560} nodeAts={nodeAts} scale={1.28} />
       </div>
     </SceneShell>
   );
