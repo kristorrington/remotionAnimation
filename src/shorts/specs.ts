@@ -13,6 +13,28 @@ export const SHORTS: ShortSpec[] = [
   // 7 GitHub repos video (talking-head.mp4, 2026-07-17).
   // ==========================================================================
   {
+    id: "Short-RepoIntro",
+    label: "THE TEASER: the video's own intro, 0:00 → 'let's get into it' (~11s)",
+    source: "talking-head.mp4",
+    from: 0, // "In this video, I'm breaking down seven GitHub repos…"
+    // LOOP: ends exactly as "…so let's get into it." lands (abs 329) →
+    // replays into the intro. No fullscreen span fits an 11s clip (span
+    // must start ≥190 and end ≤ dur−140), so it stays face + split.
+    durationInFrames: 330, // ~11s
+    topic: "WHICH ONE DO YOU NEED?",
+    hook: "THE 7 REPOS I ACTUALLY USE",
+    hookAlt: "7 FREE CLAUDE CODE UPGRADES", // A/B → Short-RepoIntro-B
+    context: "GitHub repos that level up Claude Code",
+    beats: [
+      { at: 8, scene: "emote", pose: "pointing", tint: "#D97757", text: "BOOKMARK THESE" }, // "I'm breaking down seven GitHub repos" (35-97)
+      // EVIDENCE EARLY: the directory index — a wall of Claude Code categories
+      { at: 128, scene: "receipt", tint: "#4FA98A", text: "the directory ToC", shot: { src: "assets/external/screenshots/awesome-toc-wide.png", url: "github.com/hesreallyhim/awesome-claude-code", imageW: 1500, imageH: 1700, from: { x: 60, y: 40, w: 1000, h: 707 }, to: { x: 0, y: 0, w: 1500, h: 1060 }, zoomAt: 8 } }, // "seriously upgrade your next Claude Code project" (110-206); holds to the CTA
+    ],
+    outro: "FULL VIDEO ON THE CHANNEL",
+    music: "music/tension.MP3",
+    style: "paper",
+  },
+  {
     id: "Short-SevenRepos",
     label: "THE HOOK: the full 7-repo recap — pick by bottleneck",
     source: "talking-head.mp4",

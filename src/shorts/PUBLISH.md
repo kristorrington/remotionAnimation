@@ -1076,6 +1076,34 @@ Same video + copy as Short-PremiumWar; post the loser as unlisted or delete afte
 
 # 7 GitHub repos for Claude Code (2026-07-17)
 
+## Short-RepoIntro (THE TEASER — the video's own intro, ~11s)
+
+**Title**
+```
+The 7 GitHub Repos I Actually Use With Claude Code #Shorts
+```
+
+**Description**
+```
+Seven GitHub repos that seriously upgrade your next Claude Code project — each one fixes a different problem.
+
+The full breakdown (all seven, what each fixes, and which to skip) is on the channel.
+
+Which part of your setup breaks first? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Claude #ClaudeCode #GitHub #OpenSource #Shorts
+```
+
+---
+
+## Short-RepoIntro-B (A/B hook variant — hook "7 FREE CLAUDE CODE UPGRADES")
+
+Same video + copy as Short-RepoIntro; post the loser as unlisted or delete after 48h.
+
+---
+
 ## Short-SevenRepos (THE HOOK)
 
 **Title**
