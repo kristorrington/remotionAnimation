@@ -201,6 +201,19 @@ viewers read one short phrase per beat, fast):**
 If any answer is weak, **redesign the scene**. The goal is never "animated text
 screens" — it is **tiny animated scenes**.
 
+### 6.1 The improvement pass — still audit of EVERY scene (Kris, July 2026)
+
+Before declaring any cut done (the long-form Final AND every short), render a
+STILL of **every scene/beat** at its settled state (animated scenes
+mid-action; receipts at the settled `to` — §10's b-roll audit), LOOK at each
+image, and write **2–3 concrete improvements** for the scene — composition,
+proportions, spacing, dead space, subject size, readability, overlap,
+count-vs-VO, timing. Then **apply them and re-render the changed frames** to
+verify. "Looks fine" is not an audit result: the default assumption is that
+every frame has at least two fixable weaknesses — if a scene genuinely can't
+be improved, say why. Record the per-scene critique (QC notes or the commit
+message) so the trail survives. Re-run the pass after any later scene change.
+
 ---
 
 ## 7. Visual component library (reuse/extend before writing one-offs)
