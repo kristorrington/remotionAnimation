@@ -42,7 +42,7 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
   { scene: "authFlow", from: 2366, dur: 258, fullscreen: true }, // "asking where authentication is handled (2301-2372)… surface the relevant files (2395-2444)"
   { scene: "milvusKinetic", from: 2624, dur: 145 }, // "the trade-off: embeddings and a Milvus vector database (2630-2781)"
   // ── CH4 · Everything Claude Code ──
-  { scene: "eccProof", from: 2775, dur: 205 }, // "Fourth is Everything Claude Code (2781-2866)" - the skills table, top shot
+  { scene: "eccProof", from: 2775, dur: 205 }, // "Fourth is Everything Claude Code (2781-2866)" - the repo page top
   { scene: "eccTable", from: 2980, dur: 414 }, // "38 agents and 156 skills (2898-2980)... pull out one planning agent (3234-3331)"
   { scene: "dupeStack", from: 3394, dur: 206, fullscreen: true }, // "installing everything → duplicated instructions (3448-3487) and unnecessary complexity (3494-3547)"
   { scene: "partsKinetic", from: 3600, dur: 93 }, // "a parts store rather than a package (3578-3676)"
@@ -84,7 +84,7 @@ const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 // Receipt-forward: the receipts are the cast; no doors, no robot.
 const FAN = [
   "awesome-cc-top-wide.png", "anthropic-skills-top-wide.png", "claude-context-logo-wide.png",
-  "ecc-skills-table-wide.png", "cc-action-hero-wide.png", "claude-mem-hero-wide.png", "superpowers-top-wide.png",
+  "ecc-top-wide.png", "cc-action-hero-wide.png", "claude-mem-hero-wide.png", "superpowers-top-wide.png",
 ];
 const FAN_ATS = [6, 20, 34, 48, 62, 76, 90];
 const RepoFanScene: React.FC<{ durationInFrames: number }> = ({ durationInFrames }) => {
@@ -151,7 +151,7 @@ export const ReposVisuals: React.FC = () => {
 
       {/* CH1 0:10 — the directory, its own repo page */}
       <Sequence from={323} durationInFrames={237} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={237} kicker="GITHUB · REPO 1" title="THE DIRECTORY" tint="#D97757" src={`${SHOT}/awesome-cc-top-wide.png`} url="github.com/hesreallyhim/awesome-claude-code" imageW={3840} imageH={2052} from={{ x: 700, y: 90, w: 1660, h: 887 }} to={{ x: 620, y: 40, w: 2160, h: 1155 }} zoomAt={12} highlight={{ x: 710, y: 610, w: 1760, h: 200 }} highlightAt={107} />
+        <ScreenshotReceiptScene durationInFrames={237} kicker="GITHUB · REPO 1" title="THE DIRECTORY" fullBleed={false} tint="#D97757" src={`${SHOT}/awesome-cc-top-wide.png`} url="github.com/hesreallyhim/awesome-claude-code" imageW={3840} imageH={2052} from={{ x: 740, y: 470, w: 1700, h: 909 }} to={{ x: 640, y: 460, w: 1960, h: 1048 }} zoomAt={12} highlight={{ x: 750, y: 575, w: 1630, h: 200 }} highlightAt={107} />
       </Sequence>
       {/* 0:18 the table of contents IS the pitch */}
       <Sequence from={560} durationInFrames={390} premountFor={30}>
@@ -190,10 +190,10 @@ export const ReposVisuals: React.FC = () => {
 
       {/* CH4 1:32 — the 38/156 library */}
       <Sequence from={2775} durationInFrames={205} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={205} kicker="GITHUB · REPO 4" title="EVERYTHING CLAUDE CODE" titlePos="left" titleTop={640} tint="#C9913D" src={`${SHOT}/ecc-skills-table-wide.png`} url="github.com/affaan-m/everything-claude-code" imageW={1760} imageH={941} from={{ x: 40, y: 20, w: 900, h: 481 }} to={{ x: 20, y: 10, w: 1300, h: 695 }} zoomAt={12} />
+        <ScreenshotReceiptScene durationInFrames={205} kicker="GITHUB · REPO 4" title="EVERYTHING CLAUDE CODE" fullBleed={false} tint="#C9913D" src={`${SHOT}/ecc-top-wide.png`} url="github.com/affaan-m/everything-claude-code" imageW={3840} imageH={2052} from={{ x: 2440, y: 440, w: 1400, h: 748 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={12} />
       </Sequence>
       <Sequence from={2980} durationInFrames={414} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={414} kicker="README CLAIMS" title="38 AGENTS · 156 SKILLS" titlePos="left" titleTop={640} tint="#4FA98A" src={`${SHOT}/ecc-skills-table-wide.png`} url="github.com/affaan-m/everything-claude-code" imageW={1760} imageH={941} from={{ x: 300, y: 300, w: 900, h: 481 }} to={{ x: 130, y: 120, w: 1560, h: 834 }} zoomAt={14} /></Sequence>
+        <ScreenshotReceiptScene durationInFrames={414} kicker="README CLAIMS" title="38 AGENTS · 156 SKILLS" fullBleed={false} tint="#4FA98A" src={`${SHOT}/ecc-skills-table-wide.png`} url="github.com/affaan-m/everything-claude-code" imageW={1760} imageH={941} from={{ x: 40, y: 20, w: 1200, h: 641 }} to={{ x: 0, y: 0, w: 1760, h: 941 }} zoomAt={14} /></Sequence>
       {/* 1:53 install everything → duplicate pile collapses */}
       <Sequence from={3394} durationInFrames={206} premountFor={30}>
         <StackCollapseScene durationInFrames={206} kicker="INSTALL IT ALL?" title="THE PILE FALLS OVER" labels={["DUPES", "CONFLICTS", "BLOAT"]} drops={[48, 80, 110]} collapseAt={150} accent="#C9913D" tint="#C9913D" />
@@ -204,7 +204,7 @@ export const ReposVisuals: React.FC = () => {
 
       {/* CH5 2:02 — the official action, tag @claude */}
       <Sequence from={3687} durationInFrames={203} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={203} kicker="GITHUB · REPO 5" title="CLAUDE CODE ACTION" fullBleed={false} tint="#D97757" src={`${SHOT}/cc-action-hero-wide.png`} url="github.com/anthropics/claude-code-action" imageW={1900} imageH={1016} from={{ x: 320, y: 570, w: 1200, h: 641 }} to={{ x: 0, y: 0, w: 1900, h: 1016 }} zoomAt={12} />
+        <ScreenshotReceiptScene durationInFrames={203} kicker="GITHUB · REPO 5" title="CLAUDE CODE ACTION" fullBleed={false} tint="#D97757" src={`${SHOT}/cc-action-top-wide.png`} url="github.com/anthropics/claude-code-action" imageW={3840} imageH={2052} from={{ x: 620, y: 260, w: 1660, h: 887 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={12} />
       </Sequence>
       <Sequence from={4047} durationInFrames={191} premountFor={30}>
         <ScreenshotReceiptScene durationInFrames={191} kicker="ON A REAL ISSUE" title="TAG. FIX. REVIEW." fullBleed={false} tint="#4FA98A" src={`${SHOT}/cc-action-hero-wide.png`} url="github.com/anthropics/claude-code-action" imageW={1900} imageH={1016} from={{ x: 480, y: 260, w: 900, h: 481 }} to={{ x: 380, y: 170, w: 1300, h: 695 }} zoomAt={12} />
@@ -247,7 +247,7 @@ export const ReposVisuals: React.FC = () => {
       <Sequence from={6390} durationInFrames={85} premountFor={30}><Montage dur={85} src={`${SHOT}/awesome-cc-top-wide.png`} url="github.com/hesreallyhim/awesome-claude-code" /></Sequence>
       <Sequence from={6475} durationInFrames={103} premountFor={30}><Montage dur={103} src={`${SHOT}/anthropic-skills-top-wide.png`} url="github.com/anthropics/skills" /></Sequence>
       <Sequence from={6578} durationInFrames={110} premountFor={30}><Montage dur={110} src={`${SHOT}/claude-context-top-wide.png`} url="github.com/zilliztech/claude-context" /></Sequence>
-      <Sequence from={6688} durationInFrames={118} premountFor={30}><Montage dur={118} src={`${SHOT}/ecc-skills-table-wide.png`} url="github.com/affaan-m/everything-claude-code" w={1760} h={941} /></Sequence>
+      <Sequence from={6688} durationInFrames={118} premountFor={30}><Montage dur={118} src={`${SHOT}/ecc-top-wide.png`} url="github.com/affaan-m/everything-claude-code" /></Sequence>
       <Sequence from={6806} durationInFrames={103} premountFor={30}><Montage dur={103} src={`${SHOT}/cc-action-top-wide.png`} url="github.com/anthropics/claude-code-action" /></Sequence>
       <Sequence from={6909} durationInFrames={100} premountFor={30}><Montage dur={100} src={`${SHOT}/claude-mem-top-wide.png`} url="github.com/thedotmack/claude-mem" /></Sequence>
       <Sequence from={7009} durationInFrames={135} premountFor={30}><Montage dur={135} src={`${SHOT}/superpowers-top-wide.png`} url="github.com/obra/superpowers" /></Sequence>

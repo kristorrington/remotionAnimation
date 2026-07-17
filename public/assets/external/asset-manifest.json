@@ -1403,6 +1403,22 @@
       ],
       "attributionRequired": false,
       "concerns": null
+    },
+    {
+      "filename": "ecc-top-wide.png",
+      "localPath": "public/assets/external/screenshots/ecc-top-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/affaan-m/everything-claude-code",
+      "sourceName": "GitHub affaan-m/everything-claude-code (repo top)",
+      "dateAccessed": "2026-07-17",
+      "usageNote": "Repo page top (header + About + stars) \u2014 chapter 4 opener, hook fan, recap montage",
+      "usedIn": [
+        "reposVideo hook fan",
+        "reposVideo ch4 opener",
+        "reposVideo recap montage"
+      ],
+      "attributionRequired": false,
+      "concerns": null
     }
   ]
 }
