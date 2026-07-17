@@ -9,6 +9,7 @@ import { IconBrain, IconClock, IconGuard, IconPrice, IconBug, IconGauge, ChatGpt
 import { TintWash } from "../scenes/SceneShell";
 import { useTheme } from "../theme";
 import { SourceScreenshot } from "../motion/SourceScreenshot";
+import { SFX, SfxCue, vary } from "../components/Sfx";
 import { PanelLayout } from "./panelLayout";
 import { Beat } from "./types";
 
@@ -982,6 +983,58 @@ const ReceiptBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
   );
 };
 
+// montage — the long-form recap treatment inside the band (Kris, July 2026 —
+// "show the b-roll of each of the 7 repos like the long video"): full pages
+// flick through the padded card, each arrival a pull-left push. Page 0 rides
+// the split entrance; the flick starts at `montageStart` (beat-local) and
+// each later page holds `montageStep` frames. All pages should share one
+// aspect so the card never resizes mid-flick.
+const MONTAGE_SLIDE = 9; // frames per pull-left push
+const MontageBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
+  const { zoom, shift, panelH } = React.useContext(PanelLayout);
+  const frame = useCurrentFrame();
+  const pages = beat.montage ?? [];
+  if (pages.length === 0) return null;
+  const start = beat.montageStart ?? 122;
+  const step = beat.montageStep ?? 13;
+  const bannerZone = 112;
+  const seamZone = 52;
+  const availH = Math.max(220, panelH - bannerZone - seamZone);
+  const rect = (k: number) => pages[k].to ?? { x: 0, y: 0, w: pages[k].imageW, h: pages[k].imageH };
+  const aspect = rect(0).w / rect(0).h;
+  let contentW = 1016;
+  let contentH = contentW / aspect;
+  if (contentH > availH - 46) {
+    contentH = availH - 46;
+    contentW = contentH * aspect;
+  }
+  const cardW = Math.round(contentW);
+  const cardH = Math.round(contentH) + 54;
+  const flipAt = (k: number) => start + (k - 1) * step; // the flip INTO page k
+  let idx = 0;
+  while (idx + 1 < pages.length && frame >= flipAt(idx + 1)) idx++;
+  const cardTop = bannerZone + Math.max(0, (availH - cardH) / 2);
+  const cardLeft = (1080 - cardW) / 2;
+  const page = (k: number, x: number) => (
+    <div key={k} style={{ position: "absolute", left: cardLeft, top: cardTop, transform: `translateX(${x}px)` }}>
+      <SourceScreenshot src={pages[k].src} url={pages[k].url} imageW={pages[k].imageW} imageH={pages[k].imageH} to={rect(k)} width={cardW} height={cardH} fit="cover" />
+    </div>
+  );
+  const tIn = flipAt(idx);
+  const p = idx === 0 ? 1 : interpolate(frame, [tIn, tIn + MONTAGE_SLIDE], [0, 1], CLAMP);
+  const e = p < 0.5 ? 4 * p ** 3 : 1 - (-2 * p + 2) ** 3 / 2; // easeInOutCubic
+  const travel = cardW + 140;
+  return (
+    <AbsoluteFill style={{ transform: `translateY(${-shift}px) scale(${1 / zoom})` }}>
+      {e < 1 && idx > 0 && page(idx - 1, -travel * e)}
+      {page(idx, idx === 0 ? 0 : travel * (1 - e))}
+      {pages.slice(1).map((_, i) => (
+        <SfxCue key={i} from={flipAt(i + 1)} src={SFX.clickPop} volume={0.4} rate={vary(i)} />
+      ))}
+    </AbsoluteFill>
+  );
+};
+
 // Brand-mark pop — the product's real logo rides the beat (right dock under
 // the banner zone — the band owns the TOP of the frame since the face-bottom
 // flip; same collision rules as EmojiPop). Opening beats of product videos use it.
@@ -1039,18 +1092,20 @@ export const BeatSceneView: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur
       case "funnel": return <FunnelBeat beat={beat} dur={dur} />;
       case "cartridge": return <CartridgeBeat beat={beat} dur={dur} />;
       case "receipt": return <ReceiptBeat beat={beat} />;
+      case "montage": return <MontageBeat beat={beat} />;
       default: return null;
     }
   };
+  const lean = beat.scene === "receipt" || beat.scene === "montage";
   return (
     <AbsoluteFill style={{ opacity: op }}>
       <TintWash tint={beat.tint ?? BEAT_TINTS[beat.at % BEAT_TINTS.length]} seed={beat.at} />
       {scene()}
-      {/* receipt beats never stack the logo/emoji on top of the page — the
-          branded card IS the mark, and receipt frames must stay lean
+      {/* receipt/montage beats never stack the logo/emoji on top of the page —
+          the branded card IS the mark, and receipt frames must stay lean
           (Kris, July 2026: "too many text elements on the screen") */}
-      {beat.emoji && beat.scene !== "receipt" ? <EmojiPop emoji={beat.emoji} /> : null}
-      {beat.logo && beat.scene !== "receipt" ? <LogoPop logo={beat.logo} /> : null}
+      {beat.emoji && !lean ? <EmojiPop emoji={beat.emoji} /> : null}
+      {beat.logo && !lean ? <LogoPop logo={beat.logo} /> : null}
     </AbsoluteFill>
   );
 };

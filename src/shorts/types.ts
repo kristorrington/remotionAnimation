@@ -32,7 +32,8 @@ export type BeatSceneKey =
   | "buyers"     // 3-people test: THREE buyer slots (+ robot); verdict "cross" = all ✗
   | "funnel"     // messy docs pour in, ONE clean report (`badge`) pops out
   | "cartridge"  // SKILL.MD (`badge`) clicks into the model; identical runs pop out
-  | "receipt";   // REAL page screenshot receipt (`shot`) — zoom hard, big headlines only
+  | "receipt"    // REAL page screenshot receipt (`shot`) — zoom hard, big headlines only
+  | "montage";   // the long-form recap flick: `montage` pages pull-left through the card
 
 // Image-pixel rectangle for receipt shots (crop / highlight regions).
 export type ShotRect = { x: number; y: number; w: number; h: number };
@@ -75,6 +76,17 @@ export type Beat = {
     from?: ShotRect; to: ShotRect; zoomAt?: number;
     highlight?: ShotRect; highlightAt?: number;
   };
+  // montage: the long-form recap treatment — full pages flick through the
+  // padded card with a pull-left push per page. Page 0 rides the split
+  // entrance; flips start at `montageStart` (beat-local frames) and each
+  // later page holds `montageStep` frames. Schedule EVERY flip to land
+  // before the CTA (beats never render past dur−114). Like receipt beats,
+  // `text` is a records-only note (no BeatLabel, no logo/emoji). `to` crops a
+  // page to its content region (default = the full image) — keep every
+  // page's rect on ONE aspect so the card never resizes mid-flick.
+  montage?: { src: string; url: string; imageW: number; imageH: number; to?: ShotRect }[];
+  montageStart?: number;
+  montageStep?: number;
 };
 
 // One short = one data entry. To turn a viral transcript moment into a Short,

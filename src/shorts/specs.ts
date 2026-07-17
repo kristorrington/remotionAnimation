@@ -26,9 +26,21 @@ export const SHORTS: ShortSpec[] = [
     hookAlt: "7 FREE CLAUDE CODE UPGRADES", // A/B → Short-RepoIntro-B
     context: "GitHub repos that level up Claude Code",
     beats: [
-      { at: 8, scene: "emote", pose: "pointing", tint: "#D97757", text: "BOOKMARK THESE" }, // "I'm breaking down seven GitHub repos" (35-97)
-      // EVIDENCE EARLY: the directory index — a wall of Claude Code categories
-      { at: 128, scene: "receipt", tint: "#4FA98A", text: "the directory ToC", shot: { src: "assets/external/screenshots/awesome-toc-wide.png", url: "github.com/hesreallyhim/awesome-claude-code", imageW: 1500, imageH: 1700, from: { x: 60, y: 40, w: 1000, h: 707 }, to: { x: 0, y: 0, w: 1500, h: 1060 }, zoomAt: 8 } }, // "seriously upgrade your next Claude Code project" (110-206); holds to the CTA
+      // ALL SEVEN repo pages flick through the card like the long-form recap
+      // montage (Kris, July 2026): page 1 rides the split entrance, flips
+      // every 13f from local 122 (abs 130) — the last page lands abs 195,
+      // well before the CTA at dur−114 = 216.
+      { at: 8, scene: "montage", tint: "#D97757", text: "the 7-page flick", montageStart: 122, montageStep: 13, montage: [
+        // content-column crop: the full capture is mostly page margin, and the
+        // banner's top row is sliced in the source — start below the remnant
+        { src: "assets/external/screenshots/awesome-cc-top-wide.png", url: "github.com/hesreallyhim/awesome-claude-code", imageW: 3840, imageH: 2052, to: { x: 620, y: 180, w: 1980, h: 1058 } },
+        { src: "assets/external/screenshots/anthropic-skills-top-wide.png", url: "github.com/anthropics/skills", imageW: 3840, imageH: 2052 },
+        { src: "assets/external/screenshots/claude-context-logo-wide.png", url: "github.com/zilliztech/claude-context", imageW: 1900, imageH: 1016 },
+        { src: "assets/external/screenshots/ecc-top-wide.png", url: "github.com/affaan-m/everything-claude-code", imageW: 3840, imageH: 2052 },
+        { src: "assets/external/screenshots/cc-action-hero-wide.png", url: "github.com/anthropics/claude-code-action", imageW: 1900, imageH: 1016 },
+        { src: "assets/external/screenshots/claude-mem-hero-wide.png", url: "github.com/thedotmack/claude-mem", imageW: 1900, imageH: 1016 },
+        { src: "assets/external/screenshots/superpowers-top-wide.png", url: "github.com/obra/superpowers", imageW: 3840, imageH: 2052 },
+      ] }, // "I'm breaking down seven GitHub repos… upgrade your next Claude Code project" (35-206)
     ],
     outro: "FULL VIDEO ON THE CHANNEL",
     music: "music/tension.MP3",
