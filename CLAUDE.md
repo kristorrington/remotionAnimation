@@ -687,6 +687,30 @@ For **every future Remotion video or Short**, run an asset research pass BEFORE
 building or editing scenes. Goal: find external visual assets that make the video
 more credible, current, and visually rich.
 
+**OFFICIAL VIDEO CLIPS ARE A PRIORITY (Kris, July 2026).** When the subject
+has an OFFICIAL launch/product/announcement video (the brand's own YouTube
+reveal, keynote, product film — NEVER another creator's review/reaction), it
+is a FIRST-CLASS asset, on par with screenshots: clip it and thread real
+footage through the cut. Rules: (1) **intro first** — the opening cover (the
+~3s product shot after the face) is the official reveal clip whenever one
+exists, then **more clips throughout** (aim for ~4+ across the runtime,
+spread across chapters — reveal in the intro, capability/demo clips on the
+matching claims, a closing flourish); (2) capture the official video in the
+b-roll pass, then cut MUTED segments with ffmpeg into
+`public/assets/external/clips/` (re-encode to the comp's fps, light upscale
+if low-res, `-an`), each file trimmed to ITS labelled moment and slightly
+LONGER than its beat so it never freezes; (3) present each clip as a
+`KimiClipScene`-style **play-framed film card** (rounded dark frame, thin
+accent border, an "· OFFICIAL FILM" chrome pill recording the source, the
+editorial kicker/title on the paper ABOVE the card so text never sits on the
+moving footage) — never dump raw video full-bleed; (4) the VO always leads —
+clips are muted; (5) manifest every clip (`type: reference`, sourceUrl = the
+official video, usageNote "official brand footage, commentary/reference");
+(6) map clips to the claim being spoken (a coding demo on the coding line, a
+knowledge-work demo on the context line) exactly like receipts, and prefer a
+clip over a repeated screenshot. Third-party videos stay OFF (licence, §10.2)
+— recreate or use official footage only.
+
 **Asset types to look for:** official logos · official product icons · brand
 assets · official screenshots · model cards · pricing screenshots · benchmark
 charts · public documentation screenshots · public GitHub screenshots · official
