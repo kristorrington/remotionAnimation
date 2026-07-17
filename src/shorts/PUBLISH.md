@@ -1074,6 +1074,122 @@ Same video + copy as Short-PremiumWar; post the loser as unlisted or delete afte
 
 ---
 
+# Kimi K3 — the new king? (2026-07-18)
+
+## Short-KimiIntro (THE TEASER — the video's own hook)
+
+**Title**
+```
+Kimi K3 Is #1 In Coding — But There Are 3 Catches #Shorts
+```
+
+**Description**
+```
+Moonshot's Kimi K3 just took #1 in front-end coding and landed 0.44% behind Claude Fable 5 in independent testing.
+
+But: it's slower than some open rivals, it burns a surprising number of tokens, and you can't download the weights yet.
+
+Full verdict (benchmarks, speed, pricing, July 27 weights) on the channel.
+
+Would YOU call it the new king? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #KimiK3 #Moonshot #OpenSource #LLM #Shorts
+```
+
+---
+
+## Short-KimiIntro-B (A/B hook variant — hook "3 CATCHES BEFORE THE CROWN")
+
+Same video + copy as Short-KimiIntro; post the loser as unlisted or delete after 48h.
+
+---
+
+## Short-HalfAPoint
+
+**Title**
+```
+Kimi K3 Came 0.44% From Beating Claude Fable 5 #Shorts
+```
+
+**Description**
+```
+Vals AI independently tested Kimi K3: 74.70%, second of 38 models — 0.44 behind Claude Fable 5 and ahead of GPT-5.6 Sol.
+
+Its coding subset scores are wild: 95.10% on SWE-bench Verified, 91.27% on Vibe Code Bench.
+
+Is the gap to Claude small enough to switch? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #KimiK3 #Claude #Benchmarks #LLM #Shorts
+```
+
+---
+
+## Short-HalfAPoint-B (A/B hook variant — hook "THE TEST MOONSHOT DIDN'T RUN")
+
+Same video + copy as Short-HalfAPoint; post the loser as unlisted or delete after 48h.
+
+---
+
+## Short-TokenTax
+
+**Title**
+```
+Kimi K3's Hidden Cost: 130 Million Output Tokens #Shorts
+```
+
+**Description**
+```
+Artificial Analysis measured Kimi K3 producing 130M output tokens — more than twice the comparison median — while running slower than average.
+
+Slower output × more tokens = longer completion times and a bigger bill, especially for hour-long coding agents.
+
+Would that stop you using it? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #KimiK3 #LLM #AIAgents #APIcosts #Shorts
+```
+
+---
+
+## Short-TokenTax-B (A/B hook variant — hook "THE 130-MILLION-TOKEN PROBLEM")
+
+Same video + copy as Short-TokenTax; post the loser as unlisted or delete after 48h.
+
+---
+
+## Short-NotOpenYet
+
+**Title**
+```
+Kimi K3 Is Called Open — You Still Can't Download It #Shorts
+```
+
+**Description**
+```
+Right now Kimi K3 is API-only. Moonshot promises the full weights on July 27 — and even then, a 2.8-trillion-parameter model needs serious infrastructure, not a gaming PC.
+
+The benchmarks are real, but "open" is still a promise.
+
+Will the weights actually land on the 27th? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #KimiK3 #OpenSource #OpenWeights #LLM #Shorts
+```
+
+---
+
+## Short-NotOpenYet-B (A/B hook variant — hook "THE OPEN MODEL YOU CAN'T HAVE")
+
+Same video + copy as Short-NotOpenYet; post the loser as unlisted or delete after 48h.
+
+---
+
 # 7 GitHub repos for Claude Code (2026-07-17)
 
 ## Short-RepoIntro (THE TEASER — the video's own intro, ~11s)
