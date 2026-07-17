@@ -1419,6 +1419,276 @@
       ],
       "attributionRequired": false,
       "concerns": null
+    },
+    {
+      "filename": "kimi-app-wide.png",
+      "localPath": "public/assets/external/screenshots/kimi-app-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.kimi.com/",
+      "sourceName": "Kimi app",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "the product UI (sidebar + agent input) - opener identity shot",
+      "usedIn": [
+        "kimiVideo hook"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "kimi-blog-hero-wide.png",
+      "localPath": "public/assets/external/screenshots/kimi-blog-hero-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.kimi.com/blog/kimi-k3",
+      "sourceName": "Moonshot Kimi K3 announcement",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "blog hero: title + art",
+      "usedIn": [
+        "kimiVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "kimi-blog-claims-wide.png",
+      "localPath": "public/assets/external/screenshots/kimi-blog-claims-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.kimi.com/blog/kimi-k3",
+      "sourceName": "Moonshot Kimi K3 announcement",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "the claims paragraph: 2.8T params, KDA, 1M context + Moonshot's own 'still trails' admission",
+      "usedIn": [
+        "kimiVideo ch3"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "kimi-blog-july27-wide.png",
+      "localPath": "public/assets/external/screenshots/kimi-blog-july27-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.kimi.com/blog/kimi-k3",
+      "sourceName": "Moonshot Kimi K3 announcement",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "availability para: API today, full weights July 27 + An Open 3T-Class Model",
+      "usedIn": [
+        "kimiVideo ch6"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "vals-chart-wide.png",
+      "localPath": "public/assets/external/screenshots/vals-chart-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.vals.ai/home",
+      "sourceName": "Vals AI",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "open-weight Vals Index chart - Kimi K3 #1 at 74.70%",
+      "usedIn": [
+        "kimiVideo ch1"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "vals-kimi-card-wide.png",
+      "localPath": "public/assets/external/screenshots/vals-kimi-card-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.vals.ai/home",
+      "sourceName": "Vals AI",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "the K3 evaluation card: 74.70% #2 of 38, SWE-bench Verified 95.10%, Vibe Code Bench 91.27%",
+      "usedIn": [
+        "kimiVideo ch1",
+        "Short"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "arena-webdev-top-wide.png",
+      "localPath": "public/assets/external/screenshots/arena-webdev-top-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://arena.ai/leaderboard/code/webdev",
+      "sourceName": "Arena Code | WebDev leaderboard",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "K3 #1 1679 (Preliminary, Proprietary), Claude Fable 5 1631, GPT-5.6 Sol 1618",
+      "usedIn": [
+        "kimiVideo ch2",
+        "Short"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "arena-k3-tweet.png",
+      "localPath": "public/assets/external/screenshots/arena-k3-tweet.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/arena/status/2077824029126504525",
+      "sourceName": "Arena on X",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "announcement tweet with full text + embedded Kimi-K3-Ranked-#1 chart",
+      "usedIn": [
+        "kimiVideo ch2"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "aa-kimi-tiles-wide.png",
+      "localPath": "public/assets/external/screenshots/aa-kimi-tiles-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://artificialanalysis.ai/models/kimi-k3",
+      "sourceName": "Artificial Analysis",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "the stat-tile row: Intelligence 57 (#4), Speed 62.0 (#89), $3/$15, $0.30 cache, 130M verbosity",
+      "usedIn": [
+        "kimiVideo ch2"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "aa-kimi-intel.png",
+      "localPath": "public/assets/external/screenshots/aa-kimi-intel.png",
+      "type": "screenshot",
+      "sourceUrl": "https://artificialanalysis.ai/models/kimi-k3",
+      "sourceName": "Artificial Analysis",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "Intelligence tile: 57, #4 of 187",
+      "usedIn": [
+        "kimiVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "aa-kimi-speed.png",
+      "localPath": "public/assets/external/screenshots/aa-kimi-speed.png",
+      "type": "screenshot",
+      "sourceUrl": "https://artificialanalysis.ai/models/kimi-k3",
+      "sourceName": "Artificial Analysis",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "Speed tile: 62.0 tok/s, #89 of 187",
+      "usedIn": [
+        "kimiVideo ch4"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "aa-kimi-price.png",
+      "localPath": "public/assets/external/screenshots/aa-kimi-price.png",
+      "type": "screenshot",
+      "sourceUrl": "https://artificialanalysis.ai/models/kimi-k3",
+      "sourceName": "Artificial Analysis",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "Price tile: $3.00 in / $15.00 out",
+      "usedIn": [
+        "kimiVideo ch5"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "aa-kimi-tokens.png",
+      "localPath": "public/assets/external/screenshots/aa-kimi-tokens.png",
+      "type": "screenshot",
+      "sourceUrl": "https://artificialanalysis.ai/models/kimi-k3",
+      "sourceName": "Artificial Analysis",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "Verbosity tile: 130M output tokens, #63 of 187",
+      "usedIn": [
+        "kimiVideo ch5"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "aa-compare-table-wide.png",
+      "localPath": "public/assets/external/screenshots/aa-compare-table-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://artificialanalysis.ai/models/comparisons/kimi-k3-vs-glm-5-2",
+      "sourceName": "Artificial Analysis",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "K3 vs GLM-5.2 model-comparison table: speed 62 vs 167, TTFT 1.99 vs 1.54, intel 57 vs 51",
+      "usedIn": [
+        "kimiVideo ch4",
+        "Short"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "aa-compare-charts-wide.png",
+      "localPath": "public/assets/external/screenshots/aa-compare-charts-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://artificialanalysis.ai/models/comparisons/kimi-k3-vs-glm-5-2",
+      "sourceName": "Artificial Analysis",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "K3 vs GLM-5.2 highlight charts (intelligence / speed / cost per task)",
+      "usedIn": [
+        "kimiVideo ch4"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "kimi-linear-top-wide.png",
+      "localPath": "public/assets/external/screenshots/kimi-linear-top-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/MoonshotAI/Kimi-Linear",
+      "sourceName": "MoonshotAI/Kimi-Linear",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "repo top: banner + file list + About",
+      "usedIn": [
+        "kimiVideo ch3"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "kimi-linear-graph-wide.png",
+      "localPath": "public/assets/external/screenshots/kimi-linear-graph-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/MoonshotAI/Kimi-Linear",
+      "sourceName": "MoonshotAI/Kimi-Linear",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "the performance figures with the 6.3x TPOT arrow + caption (1M tokens)",
+      "usedIn": [
+        "kimiVideo ch3",
+        "Short"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "moonshot-pricing-wide.png",
+      "localPath": "public/assets/external/screenshots/moonshot-pricing-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://platform.moonshot.ai/docs/pricing/chat-k3",
+      "sourceName": "Moonshot platform docs",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "official pricing table: $0.30 cache hit, $3 cache miss, $15 out, 1,048,576-token context",
+      "usedIn": [
+        "kimiVideo ch5"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "moonshot-quickstart-wide.png",
+      "localPath": "public/assets/external/screenshots/moonshot-quickstart-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://platform.moonshot.ai/docs/guide/kimi-k3-quickstart",
+      "sourceName": "Moonshot platform docs",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "Introducing Kimi K3 guide top: 2.8T/KDA/1M intro + open-source model chart",
+      "usedIn": [
+        "kimiVideo ch6"
+      ],
+      "attributionRequired": false,
+      "concerns": null
     }
   ]
 }
