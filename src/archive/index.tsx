@@ -36,6 +36,8 @@ import { GoLocalVideo, GOLOCAL_DUR } from "../GoLocalVideo";
 import { SkillsVideo, SKILLS_DUR } from "../SkillsVideo";
 import { SkillsFinal } from "../SkillsFinal";
 import { GoLocalFinal } from "../GoLocalFinal";
+import { ReposVideo, REPOS_DUR } from "../ReposVideo";
+import { ReposFinal } from "../ReposFinal";
 
 // ============================================================================
 // THE ARCHIVE — compositions from PREVIOUS videos. When a new video starts,
@@ -59,6 +61,10 @@ const transparentDefaults: CalculateMetadataFunction<
 export const ArchivedVideoCompositions: React.FC = () => {
   return (
     <>
+      {/* ── 7 GitHub repos for Claude Code (July 2026) ── */}
+      <Composition id="ReposVideo" component={ReposVideo} durationInFrames={REPOS_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="ReposFinal" component={ReposFinal} durationInFrames={REPOS_DUR} fps={30} width={1920} height={1080} />
+
       {/* ── 5 Claude Code skills ranked (July 2026) ── */}
       <Composition id="SkillsVideo" component={SkillsVideo} durationInFrames={SKILLS_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
       <Composition id="SkillsFinal" component={SkillsFinal} durationInFrames={SKILLS_DUR} fps={30} width={1920} height={1080} />

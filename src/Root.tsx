@@ -5,10 +5,8 @@ import { StyleDemo } from "./StyleDemo";
 import { TemplateLab, TEMPLATE_LAB_DUR } from "./TemplateLab";
 import { ArchivedVideoCompositions, SHOW_ARCHIVE } from "./archive";
 import { CalculateMetadataFunction } from "remotion";
-import { ReposVideo, REPOS_DUR } from "./ReposVideo";
-import { ReposFinal } from "./ReposFinal";
 
-const transparentDefaults: CalculateMetadataFunction<
+export const transparentDefaults: CalculateMetadataFunction<
   Record<string, unknown>
 > = () => ({
   defaultCodec: "prores",
@@ -49,9 +47,6 @@ export const RemotionRoot: React.FC = () => {
         height={1080}
       />
 
-      {/* ── CURRENT: 7 GitHub repos for Claude Code (July 2026) ── */}
-      <Composition id="ReposVideo" component={ReposVideo} durationInFrames={REPOS_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
-      <Composition id="ReposFinal" component={ReposFinal} durationInFrames={REPOS_DUR} fps={30} width={1920} height={1080} />
 
       {/* Previous videos — hidden unless SHOW_ARCHIVE (src/archive) is true */}
       {SHOW_ARCHIVE && <ArchivedVideoCompositions />}

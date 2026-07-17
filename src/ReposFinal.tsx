@@ -12,7 +12,7 @@ import { ThemeProvider } from "./theme";
 // Same structure as SkillsFinal (transitions v2, paper theme), with EXTRA
 // pull-left cuts on every chapter intro and mid-chapter receipt swap
 // (Kris, July 2026: "use more left slide transitions").
-const FOOTAGE = "talking-head.mp4"; // repos footage (rotated in 2026-07-17)
+const FOOTAGE = "talking-head-170726.mp4"; // rotated out 2026-07-18
 
 const PIP_GAP_MAX = 90; // 3s — a longer VO-only gap BREAKS the span back to full footage
 const PIP_MIN = 90; // never show a PiP segment shorter than 3s (flicker)

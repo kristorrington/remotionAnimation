@@ -69,6 +69,8 @@ const main = async () => {
     // ChatGPT Work video (07/2026)
     [["chatch", "ept"], "ChatGPT"],
     [["chat", "gpt"], "ChatGPT"],
+    // Kimi K3 video (07/2026)
+    [["moon", "shot"], "Moonshot"],
     [["in", "gadget"], "Engadget"],
     [["the", "dakota"], "The Decoder"],
     [["mac", "room", "is"], "MacRumors"],
@@ -131,6 +133,8 @@ const main = async () => {
     cost4: "cost $4",
     // go-local video (07/2026) — Kris says "licence"/"quantisation" (British)
     quinn: "Qwen", license: "licence", licenses: "licences",
+    // Kimi K3 video (07/2026)
+    ello: "Elo", moonshore: "Moonshot", moonshot: "Moonshot", kimi: "Kimi",
     quantization: "quantisation",
     // Claude-skills ranking video (07/2026)
     pxpipe: "PX Pipe", pixpipe: "PX Pipe", superpowers: "Superpowers",
