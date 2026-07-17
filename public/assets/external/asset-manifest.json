@@ -23,7 +23,7 @@
       "sourceUrl": null,
       "sourceName": "DeepSeek DSpark announcement (reported claims, via video transcript)",
       "dateAccessed": "2026-07-06",
-      "usageNote": "Extracted claim numbers for native Remotion chart recreation (CLAUDE.md 10.3) — data-as-asset, no third-party chart image used",
+      "usageNote": "Extracted claim numbers for native Remotion chart recreation (CLAUDE.md 10.3) \u2014 data-as-asset, no third-party chart image used",
       "usedIn": [
         "TemplateLab chart demos"
       ],
@@ -37,7 +37,7 @@
       "sourceUrl": "https://decrypt.co",
       "sourceName": "Decrypt (reported Terminal-Bench 2.1 scores, via video transcript)",
       "dateAccessed": "2026-07-11",
-      "usageNote": "Reported agentic-coding benchmark scores (Sol Ultra 91.9 / Mythos 5 88 / Fable 5 84.3) recreated as a native Remotion chart (BenchBarsScene) — no third-party chart image downloaded.",
+      "usageNote": "Reported agentic-coding benchmark scores (Sol Ultra 91.9 / Mythos 5 88 / Fable 5 84.3) recreated as a native Remotion chart (BenchBarsScene) \u2014 no third-party chart image downloaded.",
       "usedIn": [
         "GptSandboxVideo benchmark receipt scene"
       ],
@@ -51,7 +51,7 @@
       "sourceUrl": "https://mckinsey.com",
       "sourceName": "McKinsey (reported adoption stats, via video transcript)",
       "dateAccessed": "2026-07-11",
-      "usageNote": "Recreated natively (BenchBarsScene data prop) — 62% experimenting vs 23% scaling.",
+      "usageNote": "Recreated natively (BenchBarsScene data prop) \u2014 62% experimenting vs 23% scaling.",
       "usedIn": [
         "N8nHybridVideo McKinsey gap scene"
       ],
@@ -134,14 +134,14 @@
       "localPath": "public/assets/external/screenshots/fireship-saas-selloff-yt.png",
       "type": "screenshot",
       "sourceUrl": "https://www.youtube.com/watch?v=cxcb55zr2Q8",
-      "sourceName": "YouTube — Fireship",
+      "sourceName": "YouTube \u2014 Fireship",
       "dateAccessed": "2026-07-12",
       "usageNote": "Watch-page screenshot (player UI + title + channel row) as coverage receipt for the $1T SaaS sell-off.",
       "usedIn": [
         "source master for -wide recuts"
       ],
       "attributionRequired": false,
-      "concerns": "Third-party creator content — page UI shown briefly for commentary with channel name visible; do not linger or crop out attribution."
+      "concerns": "Third-party creator content \u2014 page UI shown briefly for commentary with channel name visible; do not linger or crop out attribution."
     },
     {
       "filename": "n8n-homepage-hero.png",
@@ -192,7 +192,7 @@
       "sourceUrl": "https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/",
       "sourceName": "Klarna press release (Feb 27, 2024)",
       "dateAccessed": "2026-07-12",
-      "usageNote": "Klarna own announcement: 700 full-time agents equivalent, 11 min → under 2 min; first-party receipt for the Klarna stats beats.",
+      "usageNote": "Klarna own announcement: 700 full-time agents equivalent, 11 min \u2192 under 2 min; first-party receipt for the Klarna stats beats.",
       "usedIn": [
         "source master for -wide recuts"
       ],
@@ -206,7 +206,7 @@
       "sourceUrl": "https://n8n.io/",
       "sourceName": "n8n official site",
       "dateAccessed": "2026-07-12",
-      "usageNote": "1.871 recut, workflow-CENTERED (x790 y1381 1800x962 of n8n-homepage-hero.png) — left text column excluded; long-form full-bleed AND shorts receipt card.",
+      "usageNote": "1.871 recut, workflow-CENTERED (x790 y1381 1800x962 of n8n-homepage-hero.png) \u2014 left text column excluded; long-form full-bleed AND shorts receipt card.",
       "usedIn": [
         "N8nHybridVideo n8nOpenShot",
         "Short-DontAbandon 196",
@@ -321,14 +321,14 @@
       "localPath": "public/assets/external/screenshots/fireship-selloff-wide.png",
       "type": "screenshot",
       "sourceUrl": "https://www.youtube.com/watch?v=cxcb55zr2Q8",
-      "sourceName": "YouTube — Fireship",
+      "sourceName": "YouTube \u2014 Fireship",
       "dateAccessed": "2026-07-12",
       "usageNote": "long-form 1.871 recut: player + title + channel (recut from fireship-saas-selloff-yt.png)",
       "usedIn": [
         "N8nHybridVideo selloffProof"
       ],
       "attributionRequired": false,
-      "concerns": "Third-party creator content — page UI shown briefly for commentary with channel name visible; do not linger or crop out attribution."
+      "concerns": "Third-party creator content \u2014 page UI shown briefly for commentary with channel name visible; do not linger or crop out attribution."
     },
     {
       "filename": "openai-help-codex-wide.png",
@@ -337,7 +337,7 @@
       "sourceUrl": "https://help.openai.com/en/articles/20001276-moving-to-the-new-chatgpt-desktop-app",
       "sourceName": "OpenAI Help Center",
       "dateAccessed": "2026-07-13",
-      "usageNote": "1.871 recut: H1 + 'combines Chat, ChatGPT Work, and Codex' paragraph — Codex-merge receipt. (2535x1355)",
+      "usageNote": "1.871 recut: H1 + 'combines Chat, ChatGPT Work, and Codex' paragraph \u2014 Codex-merge receipt. (2535x1355)",
       "usedIn": [
         "ChatGptWorkVideo codexMergeProof (1400)"
       ],
@@ -351,7 +351,7 @@
       "sourceUrl": "https://help.openai.com/en/articles/20001276-moving-to-the-new-chatgpt-desktop-app",
       "sourceName": "OpenAI Help Center",
       "dateAccessed": "2026-07-13",
-      "usageNote": "1.871 recut: ChatGPT Classic FAQ block — Classic-rename receipt. (2535x1355)",
+      "usageNote": "1.871 recut: ChatGPT Classic FAQ block \u2014 Classic-rename receipt. (2535x1355)",
       "usedIn": [
         "ChatGptWorkVideo classicProof (1810)"
       ],
@@ -365,7 +365,7 @@
       "sourceUrl": "https://openai.com/index/chatgpt-for-your-most-ambitious-work/",
       "sourceName": "OpenAI (launch post)",
       "dateAccessed": "2026-07-13",
-      "usageNote": "1.871 recut: July 9 2026 dateline + launch H1 — first-5s launch receipt. (3840x2052)",
+      "usageNote": "1.871 recut: July 9 2026 dateline + launch H1 \u2014 first-5s launch receipt. (3840x2052)",
       "usedIn": [
         "ChatGptWorkVideo launchProof (1060)"
       ],
@@ -379,7 +379,7 @@
       "sourceUrl": "https://openai.com/index/chatgpt-for-your-most-ambitious-work/",
       "sourceName": "OpenAI (launch post)",
       "dateAccessed": "2026-07-13",
-      "usageNote": "1.871 recut: delegate-tasks section — backdrop for the control-layer strategy diagram. (3840x2052)",
+      "usageNote": "1.871 recut: delegate-tasks section \u2014 backdrop for the control-layer strategy diagram. (3840x2052)",
       "usedIn": [
         "ChatGptWorkVideo strategyProof (6120)"
       ],
@@ -393,7 +393,7 @@
       "sourceUrl": "https://openai.com/index/gpt-5-6/",
       "sourceName": "OpenAI (GPT-5.6 post)",
       "dateAccessed": "2026-07-13",
-      "usageNote": "1.871 recut: GPT-5.6 launch H1 — Sol/Terra/Luna beat opener. (3840x2052)",
+      "usageNote": "1.871 recut: GPT-5.6 launch H1 \u2014 Sol/Terra/Luna beat opener. (3840x2052)",
       "usedIn": [
         "reserve (shorts b-roll)"
       ],
@@ -407,7 +407,7 @@
       "sourceUrl": "https://help.openai.com/en/articles/20001325-a-preview-of-gpt-56-sol-terra-and-luna",
       "sourceName": "OpenAI Help Center",
       "dateAccessed": "2026-07-13",
-      "usageNote": "1.871 recut: availability table naming Sol, Terra, Luna + roles line — models receipt. (2535x1355)",
+      "usageNote": "1.871 recut: availability table naming Sol, Terra, Luna + roles line \u2014 models receipt. (2535x1355)",
       "usedIn": [
         "ChatGptWorkVideo modelsProof (2900)"
       ],
@@ -533,7 +533,7 @@
       "sourceUrl": "https://chatgpt.com/pricing/",
       "sourceName": "ChatGPT pricing page",
       "dateAccessed": "2026-07-13",
-      "usageNote": "1.871 recut: plan cards with NO ChatGPT Work price — no-fixed-price receipt. (3200x1710)",
+      "usageNote": "1.871 recut: plan cards with NO ChatGPT Work price \u2014 no-fixed-price receipt. (3200x1710)",
       "usedIn": [
         "ChatGptWorkVideo noPriceProof (4870)"
       ],
@@ -790,7 +790,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=ELh8R7bGlxE",
       "sourceName": "OpenAI official launch video (YouTube)",
       "dateAccessed": "2026-07-13",
-      "usageNote": "'What should we build?' voice-prompt UI frame @86s. Frame extracted from OpenAI's official GPT-5.6 launch video (640x360 source) — card-scale use only, never full-bleed",
+      "usageNote": "'What should we build?' voice-prompt UI frame @86s. Frame extracted from OpenAI's official GPT-5.6 launch video (640x360 source) \u2014 card-scale use only, never full-bleed",
       "usedIn": [
         "AiNews GPT-Live/voice beat (card)"
       ],
@@ -804,7 +804,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=ELh8R7bGlxE",
       "sourceName": "OpenAI official launch video (YouTube)",
       "dateAccessed": "2026-07-13",
-      "usageNote": "Work-mode Presentations laptop frame @112s. Frame extracted from OpenAI's official GPT-5.6 launch video (640x360 source) — card-scale use only, never full-bleed",
+      "usageNote": "Work-mode Presentations laptop frame @112s. Frame extracted from OpenAI's official GPT-5.6 launch video (640x360 source) \u2014 card-scale use only, never full-bleed",
       "usedIn": [
         "AiNews Work-mode beat (card)"
       ],
@@ -818,7 +818,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=ELh8R7bGlxE",
       "sourceName": "OpenAI official launch video (YouTube)",
       "dateAccessed": "2026-07-13",
-      "usageNote": "Work-mode Spreadsheets laptop frame @113s. Frame extracted from OpenAI's official GPT-5.6 launch video (640x360 source) — card-scale use only, never full-bleed",
+      "usageNote": "Work-mode Spreadsheets laptop frame @113s. Frame extracted from OpenAI's official GPT-5.6 launch video (640x360 source) \u2014 card-scale use only, never full-bleed",
       "usedIn": [
         "AiNews Work-mode beat (card)"
       ],
@@ -832,7 +832,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=ELh8R7bGlxE",
       "sourceName": "OpenAI official launch video (YouTube)",
       "dateAccessed": "2026-07-13",
-      "usageNote": "Dark coding/artifact UI frame @139.6s. Frame extracted from OpenAI's official GPT-5.6 launch video (640x360 source) — card-scale use only, never full-bleed",
+      "usageNote": "Dark coding/artifact UI frame @139.6s. Frame extracted from OpenAI's official GPT-5.6 launch video (640x360 source) \u2014 card-scale use only, never full-bleed",
       "usedIn": [
         "AiNews Codex-mode beat (card)"
       ],
@@ -1005,7 +1005,7 @@
       "sourceUrl": "https://claude.com/plugins/superpowers",
       "sourceName": "Anthropic Claude plugin marketplace",
       "dateAccessed": "2026-07-16",
-      "usageNote": "Official marketplace listing: title, blurb, Installs 941,207 — receipt for the #1 pick",
+      "usageNote": "Official marketplace listing: title, blurb, Installs 941,207 \u2014 receipt for the #1 pick",
       "usedIn": [
         "skillsVideo superpowersProof",
         "Short-Superpowers"
@@ -1020,7 +1020,7 @@
       "sourceUrl": "https://github.com/obra/superpowers",
       "sourceName": "GitHub obra/superpowers",
       "dateAccessed": "2026-07-16",
-      "usageNote": "Repo top: About + 255k stars — secondary Superpowers receipt",
+      "usageNote": "Repo top: About + 255k stars \u2014 secondary Superpowers receipt",
       "usedIn": [
         "skillsVideo"
       ],
@@ -1034,7 +1034,7 @@
       "sourceUrl": "https://www.tasteskill.dev/",
       "sourceName": "tasteskill.dev",
       "dateAccessed": "2026-07-16",
-      "usageNote": "Hero: Anti-Slop Frontend Framework + Less slop designs pop card — Taste receipt",
+      "usageNote": "Hero: Anti-Slop Frontend Framework + Less slop designs pop card \u2014 Taste receipt",
       "usedIn": [
         "skillsVideo tasteProof",
         "Short-Taste"
@@ -1049,7 +1049,7 @@
       "sourceUrl": "https://github.com/leonxlnx/taste-skill",
       "sourceName": "GitHub Leonxlnx/taste-skill (README examples)",
       "dateAccessed": "2026-07-16",
-      "usageNote": "Example designs built with Taste — visual proof for the with/without comparison",
+      "usageNote": "Example designs built with Taste \u2014 visual proof for the with/without comparison",
       "usedIn": [
         "skillsVideo"
       ],
@@ -1075,9 +1075,9 @@
       "localPath": "public/assets/external/screenshots/loop-library-wide.png",
       "type": "screenshot",
       "sourceUrl": "https://signals.forwardfuture.com/loop-library/",
-      "sourceName": "Forward Future Signals — Loop Library",
+      "sourceName": "Forward Future Signals \u2014 Loop Library",
       "dateAccessed": "2026-07-16",
-      "usageNote": "Hero + Loopy install box + 85 loops list — Loop Library receipt",
+      "usageNote": "Hero + Loopy install box + 85 loops list \u2014 Loop Library receipt",
       "usedIn": [
         "skillsVideo loopLibProof"
       ],
@@ -1091,7 +1091,7 @@
       "sourceUrl": "https://x.com/MatthewBerman/status/2068014073699348875",
       "sourceName": "Matthew Berman on X",
       "dateAccessed": "2026-07-16",
-      "usageNote": "Launch tweet for the Loop Library Skill — author block + claim",
+      "usageNote": "Launch tweet for the Loop Library Skill \u2014 author block + claim",
       "usedIn": [
         "skillsVideo bermanProof",
         "Short-LoopLibrary"
@@ -1121,7 +1121,7 @@
       "sourceUrl": "https://pxpipe.dev/",
       "sourceName": "pxpipe.dev",
       "dateAccessed": "2026-07-16",
-      "usageNote": "Hero: turns bulky AI coding context into compact PNG pages — PX Pipe receipt",
+      "usageNote": "Hero: turns bulky AI coding context into compact PNG pages \u2014 PX Pipe receipt",
       "usedIn": [
         "skillsVideo"
       ],
@@ -1135,7 +1135,7 @@
       "sourceUrl": "https://github.com/obra/superpowers",
       "sourceName": "GitHub obra/superpowers (README)",
       "dateAccessed": "2026-07-16",
-      "usageNote": "How-it-works section: steps back instead of jumping into code — receipt for the slow-the-jump chapter",
+      "usageNote": "How-it-works section: steps back instead of jumping into code \u2014 receipt for the slow-the-jump chapter",
       "usedIn": [
         "skillsVideo workflowProof"
       ],
@@ -1238,7 +1238,7 @@
       "sourceUrl": "https://github.com/hesreallyhim/awesome-claude-code",
       "sourceName": "GitHub hesreallyhim/awesome-claude-code (ToC)",
       "dateAccessed": "2026-07-17",
-      "usageNote": "The directory index — tools/skills/plugins/workflows categories",
+      "usageNote": "The directory index \u2014 tools/skills/plugins/workflows categories",
       "usedIn": [
         "reposVideo ch1",
         "Short"
@@ -1304,27 +1304,13 @@
       "concerns": null
     },
     {
-      "filename": "everything-cc-top-wide.png",
-      "localPath": "public/assets/external/screenshots/everything-cc-top-wide.png",
-      "type": "screenshot",
-      "sourceUrl": "https://github.com/affaan-m/everything-claude-code",
-      "sourceName": "GitHub affaan-m/everything-claude-code",
-      "dateAccessed": "2026-07-17",
-      "usageNote": "Repo top: About + stars",
-      "usedIn": [
-        "reposVideo ch4"
-      ],
-      "attributionRequired": false,
-      "concerns": null
-    },
-    {
       "filename": "ecc-skills-table-wide.png",
       "localPath": "public/assets/external/screenshots/ecc-skills-table-wide.png",
       "type": "screenshot",
       "sourceUrl": "https://github.com/affaan-m/everything-claude-code",
       "sourceName": "GitHub affaan-m/everything-claude-code (README)",
       "dateAccessed": "2026-07-17",
-      "usageNote": "The huge skills table — the library visual",
+      "usageNote": "The huge skills table \u2014 the library visual",
       "usedIn": [
         "reposVideo ch4",
         "Short"
