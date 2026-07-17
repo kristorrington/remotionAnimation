@@ -1,0 +1,11 @@
+{
+  "sourceName": "Vals AI",
+  "sourceUrl": "https://www.vals.ai/home",
+  "dateAccessed": "2026-07-18",
+  "note": "Vals Index overall top three (38 models tested) - spoken in the VO; the site's overall tab is client-side state so the chart is recreated natively (CLAUDE.md 10.3)",
+  "data": [
+    { "label": "Claude Fable 5", "value": 75.14 },
+    { "label": "Kimi K3", "value": 74.7 },
+    { "label": "GPT-5.6 Sol", "value": 73.12 }
+  ]
+}

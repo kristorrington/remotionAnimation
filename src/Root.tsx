@@ -5,6 +5,7 @@ import { StyleDemo } from "./StyleDemo";
 import { TemplateLab, TEMPLATE_LAB_DUR } from "./TemplateLab";
 import { ArchivedVideoCompositions, SHOW_ARCHIVE } from "./archive";
 import { CalculateMetadataFunction } from "remotion";
+import { KimiVideo, KIMI_DUR } from "./KimiVideo";
 
 export const transparentDefaults: CalculateMetadataFunction<
   Record<string, unknown>
@@ -47,6 +48,9 @@ export const RemotionRoot: React.FC = () => {
         height={1080}
       />
 
+
+      {/* ── CURRENT: Kimi K3 — the new king? (July 2026) ── */}
+      <Composition id="KimiVideo" component={KimiVideo} durationInFrames={KIMI_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
 
       {/* Previous videos — hidden unless SHOW_ARCHIVE (src/archive) is true */}
       {SHOW_ARCHIVE && <ArchivedVideoCompositions />}

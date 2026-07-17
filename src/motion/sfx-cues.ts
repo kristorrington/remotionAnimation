@@ -232,6 +232,37 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "osKinetic": cues.push({ at: 123, type: "whip" }); break;
     case "slowJump": cues.push({ at: 132, type: "tick" }, { at: 197, type: "tick" }, { at: 265, type: "tick" }); break;
     case "workflowProof": cues.push({ at: 14, type: "whip" }, { at: 93, type: "swish" }); break;
+    // ── Kimi K3 video (July 2026) — palette spread wide, 3 booms:
+    //    catches chip 3 / MoE 16-flare / the WEIGHTS gate slam ──
+    case "kimiHero": cues.push({ at: 14, type: "whip" }, { at: 40, type: "shutter" }); break;
+    case "arenaTop": cues.push({ at: 16, type: "paperSlide" }, { at: 60, type: "swish" }); break;
+    case "threeCatches": cues.push({ at: 9, type: "thud" }, { at: 100, type: "thud" }, { at: 256, type: "boom" }); break; // boom 1/3
+    case "kingKinetic": cues.push({ at: 66, type: "pluck" }); break;
+    case "valsProof": cues.push({ at: 16, type: "pageTurn" }, { at: 214, type: "swish" }); break;
+    case "valsBars": cues.push({ at: 8, type: "tick" }, { at: 72, type: "tick" }, { at: 207, type: "tick" }, { at: 247, type: "ding" }); break;
+    case "valsCard": cues.push({ at: 14, type: "paperSlide" }, { at: 137, type: "swish" }); break;
+    case "homeworkKinetic": cues.push({ at: 215, type: "pluck" }); break;
+    case "arenaTweet": cues.push({ at: 16, type: "whip" }, { at: 50, type: "shutter" }); break;
+    case "laneKinetic": cues.push({ at: 52, type: "whip" }); break;
+    case "aaProof": cues.push({ at: 14, type: "pageTurn" }, { at: 234, type: "swish" }); break;
+    case "trioBoards": cues.push({ at: 55, type: "clickPop" }, { at: 113, type: "clickPop" }, { at: 159, type: "clickPop" }, { at: 329, type: "tick" }); break;
+    case "frontierKinetic": cues.push({ at: 126, type: "thud" }); break;
+    case "paramsProof": cues.push({ at: 12, type: "paperSlide" }, { at: 31, type: "swish" }); break;
+    case "moeScene": cues.push({ at: 8, type: "pageTurn" }, { at: 218, type: "boom" }, { at: 319, type: "ding" }, { at: 473, type: "switch" }); break; // boom 2/3
+    case "contextProof": cues.push({ at: 14, type: "pageTurn" }, { at: 104, type: "swish" }); break;
+    case "kdaProof": cues.push({ at: 14, type: "shutter" }, { at: 169, type: "swish" }); break;
+    case "speedRace": cues.push({ at: 30, type: "whip" }, { at: 240, type: "swish" }); break;
+    case "compareProof": cues.push({ at: 14, type: "paperSlide" }, { at: 60, type: "shutter" }); break;
+    case "speedKinetic": cues.push({ at: 104, type: "thud" }); break;
+    case "tokensProof": cues.push({ at: 14, type: "pageTurn" }, { at: 50, type: "swish" }); break;
+    case "billPrinter": cues.push({ at: 60, type: "tick" }, { at: 120, type: "tick" }, { at: 200, type: "thud" }); break;
+    case "pricingProof": cues.push({ at: 14, type: "shutter" }, { at: 37, type: "swish" }); break;
+    case "openClaim": cues.push({ at: 14, type: "paperSlide" }, { at: 253, type: "swish" }); break;
+    case "gateBeat": cues.push({ at: 110, type: "switch" }, { at: 132, type: "switch" }, { at: 155, type: "boom" }); break; // boom 3/3
+    case "infraKinetic": cues.push({ at: 164, type: "thud" }); break;
+    case "recapArena": case "recapVals": case "recapAA": cues.push({ at: 4, type: "clickPop" }); break;
+    case "catchesEcho": cues.push({ at: 36, type: "thud" }, { at: 108, type: "thud" }, { at: 164, type: "thud" }); break;
+    case "crownKinetic": cues.push({ at: 169, type: "pluck" }); break;
     // ── GitHub-repos video (July 2026) — palette spread wide, ≤3 booms ──
     case "repoFan": cues.push({ at: 6, type: "paperSlide" }, { at: 20, type: "clickPop" }, { at: 34, type: "paperSlide" }, { at: 48, type: "clickPop" }, { at: 62, type: "paperSlide" }, { at: 76, type: "clickPop" }, { at: 90, type: "paperSlide" }); break; // cards deal in, alternating textures
     case "awesomeProof": cues.push({ at: 16, type: "whip" }, { at: 107, type: "swish" }); break;

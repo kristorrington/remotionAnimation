@@ -127,31 +127,33 @@ export const SameCoreScene: React.FC<{ durationInFrames: number; kicker?: string
 
 // JUST FASTER: two lanes, the SAME brain block — the top one crawls, the bottom
 // one flies with trails. Same brain, faster path.
-export const RaceFasterScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; slowLabel?: string; fastLabel?: string; blockLabel?: string }> = ({ durationInFrames, kicker, title, slowLabel = "BEFORE", fastLabel = "WITH DSPARK", blockLabel = "V4" }) => {
+export const RaceFasterScene: React.FC<{ durationInFrames: number; kicker?: string; title: string; slowLabel?: string; fastLabel?: string; blockLabel?: string; slowBlock?: string; fastBlock?: string }> = ({ durationInFrames, kicker, title, slowLabel = "BEFORE", fastLabel = "WITH DSPARK", blockLabel = "V4", slowBlock, fastBlock }) => {
   const frame = useCurrentFrame();
   const loop = durationInFrames * 0.55;
-  const slowX = interpolate(frame % loop, [0, loop], [0, 300]);
-  const fastX = interpolate(frame % loop, [0, loop], [0, 860]);
-  const lane = (label: string, x: number, fast: boolean, y: number) => (
+  const slowX = interpolate(frame % loop, [0, loop], [0, 240]);
+  const fastX = interpolate(frame % loop, [0, loop], [0, 740]);
+  // labels own the lane's left slot (blocks start past them); ink-dim slow
+  // label reads on paper AND dark (the old white-alpha vanished on ivory)
+  const lane = (label: string, x: number, fast: boolean, y: number, block: string) => (
     <div style={{ position: "absolute", top: y, left: 0, right: 0 }}>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 66, height: 3, background: "rgba(255,255,255,0.12)" }} />
-      <span style={{ position: "absolute", left: 4, top: 8, fontFamily: FONT, fontWeight: 800, fontSize: 22, letterSpacing: 2, color: fast ? CYAN : "rgba(255,255,255,0.5)" }}>{label}</span>
-      <div style={{ position: "absolute", left: 130 + x, top: 14 }}>
+      <div style={{ position: "absolute", left: 0, right: 0, top: 66, height: 3, background: "rgba(120,112,102,0.35)" }} />
+      <span style={{ position: "absolute", left: 4, top: 26, fontFamily: FONT, fontWeight: 800, fontSize: 24, letterSpacing: 2, color: fast ? CYAN : "rgba(120,112,102,0.85)", whiteSpace: "nowrap", transform: "translateZ(0)" }}>{label}</span>
+      <div style={{ position: "absolute", left: 320 + x, top: 14 }}>
         <div style={{ position: "relative" }}>
-          <ModelBlock label={blockLabel} width={150} />
-          {fast && <div style={{ position: "absolute", left: -150, top: 26 }}><SpeedTrails width={150} /></div>}
+          <ModelBlock label={block} width={180} />
+          {fast && <div style={{ position: "absolute", left: -170, top: 30 }}><SpeedTrails width={170} /></div>}
         </div>
       </div>
     </div>
   );
   return (
     <SceneShell durationInFrames={durationInFrames} particleSeed={0xc4}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 34 }}>
-        <div style={{ position: "relative", width: 1240, height: 300 }}>
-          {lane(slowLabel, slowX, false, 0)}
-          {lane(fastLabel, fastX, true, 160)}
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 44 }}>
+        <div style={{ position: "relative", width: 1240, height: 320 }}>
+          {lane(slowLabel, slowX, false, 0, slowBlock ?? blockLabel)}
+          {lane(fastLabel, fastX, true, 170, fastBlock ?? blockLabel)}
         </div>
-        <SceneHeadline kicker={kicker} title={title} titleSize={92} />
+        <SceneHeadline kicker={kicker} title={title} titleSize={64} />
       </div>
     </SceneShell>
   );

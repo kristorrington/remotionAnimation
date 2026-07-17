@@ -1689,6 +1689,20 @@
       ],
       "attributionRequired": false,
       "concerns": null
+    },
+    {
+      "filename": "vals-index-top3.json",
+      "localPath": "public/assets/external/charts/vals-index-top3.json",
+      "type": "chart",
+      "sourceUrl": "https://www.vals.ai/home",
+      "sourceName": "Vals AI",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "Vals Index overall top-3 data (Claude 75.14 / Kimi K3 74.70 / GPT-5.6 Sol 73.12) for the native BenchBarsScene recreation",
+      "usedIn": [
+        "kimiVideo valsBars"
+      ],
+      "attributionRequired": false,
+      "concerns": null
     }
   ]
 }

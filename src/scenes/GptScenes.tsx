@@ -92,8 +92,8 @@ export const BalanceScaleScene: React.FC<{
 // along. Data lives in public/assets/external/charts (manifested).
 export const BenchBarsScene: React.FC<{
   durationInFrames: number; kicker?: string; title: string; barAts?: number[]; tint?: string;
-  data?: { label: string; value: number }[]; sourceName?: string; sourceUrl?: string;
-}> = ({ durationInFrames, kicker, title, barAts = [40, 120, 200], tint, data, sourceName, sourceUrl }) => {
+  data?: { label: string; value: number }[]; sourceName?: string; sourceUrl?: string; decimals?: number;
+}> = ({ durationInFrames, kicker, title, barAts = [40, 120, 200], tint, data, sourceName, sourceUrl, decimals = 1 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const bars = (data ?? benchData.data) as { label: string; value: number }[];
@@ -115,7 +115,7 @@ export const BenchBarsScene: React.FC<{
                 <div style={{ position: "relative", flex: 1, height: 46, borderRadius: 10, background: "rgba(120,112,102,0.25)", overflow: "hidden" }}>
                   <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: `${(val / max) * 100}%`, borderRadius: 10, background: `linear-gradient(90deg, ${c}88, ${c})`, boxShadow: `0 0 18px ${c}66` }} />
                 </div>
-                <span style={{ width: 120, fontFamily: FONT, fontWeight: 900, fontSize: 34, color: i === 0 ? c : WHITE, transform: "translateZ(0)" }}>{val.toFixed(1)}%</span>
+                <span style={{ width: 140, fontFamily: FONT, fontWeight: 900, fontSize: 34, color: i === 0 ? c : WHITE, transform: "translateZ(0)" }}>{val.toFixed(decimals)}%</span>
                 {i === 0 && frame >= at + 24 && <Sparks at={at + 24} x={-60} y={20} color={c} size={110} />}
               </div>
             );
