@@ -1,16 +1,17 @@
 import React from "react";
-import { AbsoluteFill, Sequence, interpolate, staticFile, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Img, Sequence, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { Fable5Outro } from "./components/Fable5Outro";
 import { SFX, SfxCue, SFX_POOLS, pick, vary } from "./components/Sfx";
 import { sceneActionCues } from "./motion/sfx-cues";
 import { MusicBed } from "./components/MusicBed";
 import { FinalTakeawayScene } from "./scenes/FinalTakeawayScene";
-import { PathDoorsScene, SkillCartridgeScene } from "./scenes/SideHustleScenes";
+import { SkillCartridgeScene } from "./scenes/SideHustleScenes";
 import { GatesScene } from "./scenes/GptScenes";
 import { StepsScene } from "./scenes/StepsScene";
 import { FlowScene } from "./scenes/FlowScene";
 import { StackCollapseScene } from "./scenes/CostScenes";
 import { ScreenshotReceiptScene } from "./scenes/SourceCardScene";
+import { SceneShell, SceneHeadline } from "./scenes/SceneShell";
 import { SERIF } from "./components/overlayUI";
 import { ThemeProvider } from "./theme";
 
@@ -26,7 +27,7 @@ export const REPOS_DUR = 7403;
 
 const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[] = [
   // face-first open + punch-in (§8); first cover at ~3s
-  { scene: "hookDoors7", from: 90, dur: 224, fullscreen: true }, // "seven GitHub repos (54-97)… upgrade your next Claude Code project (127-206)… let's get into it (279-314)"
+  { scene: "repoFan", from: 90, dur: 224, fullscreen: true }, // "seven GitHub repos (54-97)… upgrade your next Claude Code project (127-206)… let's get into it (279-314)"
   // ── CH1 · Awesome Claude Code ──
   { scene: "awesomeProof", from: 323, dur: 237 }, // "First is Awesome Claude Code (329-412): a curated directory (424-449)"
   { scene: "awesomeToc", from: 560, dur: 390 }, // "where you go when your setup's missing something (562-717)… search the directory for memory tools (811-872)"
@@ -41,7 +42,7 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
   { scene: "authFlow", from: 2366, dur: 258, fullscreen: true }, // "asking where authentication is handled (2301-2372)… surface the relevant files (2395-2444)"
   { scene: "milvusKinetic", from: 2624, dur: 145 }, // "the trade-off: embeddings and a Milvus vector database (2630-2781)"
   // ── CH4 · Everything Claude Code ──
-  { scene: "eccProof", from: 2775, dur: 205 }, // "Fourth is Everything Claude Code (2781-2866)" - the creator tweet
+  { scene: "eccProof", from: 2775, dur: 205 }, // "Fourth is Everything Claude Code (2781-2866)" - the skills table, top shot
   { scene: "eccTable", from: 2980, dur: 414 }, // "38 agents and 156 skills (2898-2980)... pull out one planning agent (3234-3331)"
   { scene: "dupeStack", from: 3394, dur: 206, fullscreen: true }, // "installing everything → duplicated instructions (3448-3487) and unnecessary complexity (3494-3547)"
   { scene: "partsKinetic", from: 3600, dur: 93 }, // "a parts store rather than a package (3578-3676)"
@@ -79,6 +80,46 @@ export const REPOS_EXTRA_CUTS = [323, 560, 1108, 1864, 2059, 2775, 2980, 3229, 3
 const SHOT = "assets/external/screenshots";
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
+// THE HOOK — the seven real repo pages dealt as a fan of paper cards.
+// Receipt-forward: the receipts are the cast; no doors, no robot.
+const FAN = [
+  "awesome-cc-top-wide.png", "anthropic-skills-top-wide.png", "claude-context-logo-wide.png",
+  "ecc-skills-table-wide.png", "cc-action-hero-wide.png", "claude-mem-hero-wide.png", "superpowers-top-wide.png",
+];
+const FAN_ATS = [6, 20, 34, 48, 62, 76, 90];
+const RepoFanScene: React.FC<{ durationInFrames: number }> = ({ durationInFrames }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  return (
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x707} impacts={FAN_ATS} tint="#D97757">
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 54 }}>
+        <div style={{ position: "relative", width: 1560, height: 420 }}>
+          {FAN.map((f, i) => {
+            const at = FAN_ATS[i];
+            if (frame < at) return null;
+            const deal = spring({ frame: frame - at, fps, config: { stiffness: 120, damping: 18 }, durationInFrames: 26 });
+            const k = i - 3;
+            const x = 780 + k * 186 - 150;
+            const y = 60 + Math.pow(Math.abs(k), 1.35) * 13;
+            const rot = k * 3.5;
+            return (
+              <div key={f} style={{ position: "absolute", left: x, top: interpolate(deal, [0, 1], [y + 320, y]), transform: `rotate(${interpolate(deal, [0, 1], [rot + 10, rot])}deg)`, opacity: interpolate(deal, [0, 0.25], [0, 1]) }}>
+                <div style={{ position: "relative", width: 300, height: 188, borderRadius: 12, overflow: "hidden", border: "1px solid rgba(31,30,29,0.35)", boxShadow: "0 16px 38px rgba(31,30,29,0.22)", background: "#fff" }}>
+                  <Img src={staticFile(`${SHOT}/${f}`)} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top left" }} />
+                  <div style={{ position: "absolute", left: 10, top: 10, width: 38, height: 38, borderRadius: 8, background: "rgba(250,249,245,0.96)", border: "1px solid rgba(31,30,29,0.3)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 22, color: "#C15F3C" }}>{i + 1}</span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <SceneHeadline kicker="7 GITHUB REPOS" title="FOR CLAUDE CODE" titleSize={62} />
+      </div>
+    </SceneShell>
+  );
+};
+
 // Chapter badge: serif rank numeral + repo name on an ivory chip, top-left
 // through each chapter's beats (§10.6 product identification).
 const ChapterBadge: React.FC<{ rank: string; name: string }> = ({ rank, name }) => {
@@ -102,18 +143,19 @@ export const ReposVisuals: React.FC = () => {
   return (
     <ThemeProvider style="paper">
     <AbsoluteFill>
-      {/* 0:03 the hook — seven numbered doors */}
+      {/* 0:03 the hook — the seven REAL repo pages dealt as a fan of cards
+          (receipt-forward: the receipts are the cast, no doors) */}
       <Sequence from={90} durationInFrames={224} premountFor={30}>
-        <PathDoorsScene durationInFrames={224} kicker="7 GITHUB REPOS" title="FOR CLAUDE CODE" doors={[{ label: "1", at: 6 }, { label: "2", at: 20 }, { label: "3", at: 34 }, { label: "4", at: 48 }, { label: "5", at: 62 }, { label: "6", at: 76 }, { label: "7", at: 90 }]} subject={false} tint="#D97757" />
+        <RepoFanScene durationInFrames={224} />
       </Sequence>
 
       {/* CH1 0:10 — the directory, its own repo page */}
       <Sequence from={323} durationInFrames={237} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={237} kicker="GITHUB · REPO 1" title="AWESOME CLAUDE CODE" tint="#D97757" src={`${SHOT}/awesome-cc-top-wide.png`} url="github.com/hesreallyhim/awesome-claude-code" imageW={3840} imageH={2052} from={{ x: 700, y: 60, w: 1660, h: 887 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={12} highlight={{ x: 730, y: 700, w: 1720, h: 170 }} highlightAt={107} />
+        <ScreenshotReceiptScene durationInFrames={237} kicker="GITHUB · REPO 1" title="THE DIRECTORY" tint="#D97757" src={`${SHOT}/awesome-cc-top-wide.png`} url="github.com/hesreallyhim/awesome-claude-code" imageW={3840} imageH={2052} from={{ x: 700, y: 90, w: 1660, h: 887 }} to={{ x: 620, y: 40, w: 2160, h: 1155 }} zoomAt={12} highlight={{ x: 710, y: 610, w: 1760, h: 200 }} highlightAt={107} />
       </Sequence>
       {/* 0:18 the table of contents IS the pitch */}
       <Sequence from={560} durationInFrames={390} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={390} kicker="THE DIRECTORY" title="PICK A CATEGORY" titlePos="right" tint="#4FA98A" src={`${SHOT}/awesome-toc-wide.png`} url="github.com/hesreallyhim/awesome-claude-code" imageW={1500} imageH={1100} from={{ x: 40, y: 30, w: 1000, h: 535 }} to={{ x: 0, y: 240, w: 1500, h: 802 }} zoomAt={14} highlight={{ x: 110, y: 885, w: 560, h: 52 }} highlightAt={283} />
+        <ScreenshotReceiptScene durationInFrames={390} kicker="THE DIRECTORY" title="PICK A CATEGORY" titlePos="right" tint="#4FA98A" src={`${SHOT}/awesome-toc-wide.png`} url="github.com/hesreallyhim/awesome-claude-code" imageW={1500} imageH={1700} from={{ x: 40, y: 30, w: 1000, h: 535 }} to={{ x: 0, y: 1000, w: 1500, h: 802 }} zoomAt={14} highlight={{ x: 110, y: 1462, w: 640, h: 55 }} highlightAt={283} />
       </Sequence>
       <Sequence from={950} durationInFrames={164} premountFor={30}>
         <FinalTakeawayScene durationInFrames={164} title="NOTHING TO INSTALL" stamp="IT'S A MAP" stampAt={35} accent="#4FA98A" />
@@ -148,10 +190,10 @@ export const ReposVisuals: React.FC = () => {
 
       {/* CH4 1:32 — the 38/156 library */}
       <Sequence from={2775} durationInFrames={205} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={205} kicker="THE CREATOR'S DROP" title="EVERYTHING CLAUDE CODE" fullBleed={false} tint="#C9913D" src={`${SHOT}/affaan-ecc-tweet.png`} url="x.com/affaan" imageW={1100} imageH={450} from={{ x: 30, y: 20, w: 900, h: 368 }} to={{ x: 0, y: 0, w: 1100, h: 450 }} zoomAt={10} />
+        <ScreenshotReceiptScene durationInFrames={205} kicker="GITHUB · REPO 4" title="EVERYTHING CLAUDE CODE" titlePos="left" titleTop={640} tint="#C9913D" src={`${SHOT}/ecc-skills-table-wide.png`} url="github.com/affaan-m/everything-claude-code" imageW={1760} imageH={941} from={{ x: 40, y: 20, w: 900, h: 481 }} to={{ x: 20, y: 10, w: 1300, h: 695 }} zoomAt={12} />
       </Sequence>
       <Sequence from={2980} durationInFrames={414} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={414} kicker="README CLAIMS" title="38 AGENTS · 156 SKILLS" titlePos="left" titleTop={640} tint="#4FA98A" src={`${SHOT}/ecc-skills-table-wide.png`} url="github.com/affaan-m/everything-claude-code" imageW={1760} imageH={941} from={{ x: 40, y: 20, w: 1200, h: 641 }} to={{ x: 130, y: 120, w: 1560, h: 834 }} zoomAt={14} /></Sequence>
+        <ScreenshotReceiptScene durationInFrames={414} kicker="README CLAIMS" title="38 AGENTS · 156 SKILLS" titlePos="left" titleTop={640} tint="#4FA98A" src={`${SHOT}/ecc-skills-table-wide.png`} url="github.com/affaan-m/everything-claude-code" imageW={1760} imageH={941} from={{ x: 300, y: 300, w: 900, h: 481 }} to={{ x: 130, y: 120, w: 1560, h: 834 }} zoomAt={14} /></Sequence>
       {/* 1:53 install everything → duplicate pile collapses */}
       <Sequence from={3394} durationInFrames={206} premountFor={30}>
         <StackCollapseScene durationInFrames={206} kicker="INSTALL IT ALL?" title="THE PILE FALLS OVER" labels={["DUPES", "CONFLICTS", "BLOAT"]} drops={[48, 80, 110]} collapseAt={150} accent="#C9913D" tint="#C9913D" />

@@ -27,7 +27,7 @@ export const SHORTS: ShortSpec[] = [
     beats: [
       { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "SAVE THIS LIST" }, // "in conclusion… helps you discover tools" (6351-6450)
       // EVIDENCE EARLY: the directory index itself
-      { at: 130, scene: "receipt", tint: "#4FA98A", text: "THE RECEIPT", shot: { src: "assets/external/screenshots/awesome-toc-wide.png", url: "github.com/hesreallyhim/awesome-claude-code", imageW: 1400, imageH: 748, from: { x: 40, y: 30, w: 800, h: 400 }, to: { x: 20, y: 15, w: 1360, h: 680 }, zoomAt: 8 } }, // "Anthropic Skills keeps instructions organised" (6475-6548); holds ~7s
+      { at: 130, scene: "receipt", tint: "#4FA98A", text: "THE RECEIPT", shot: { src: "assets/external/screenshots/awesome-toc-wide.png", url: "github.com/hesreallyhim/awesome-claude-code", imageW: 1500, imageH: 1700, from: { x: 60, y: 40, w: 1000, h: 707 }, to: { x: 0, y: 0, w: 1500, h: 1060 }, zoomAt: 8 } }, // "Anthropic Skills keeps instructions organised" (6475-6548); holds ~7s
       { at: 345, scene: "conveyor", labels: ["7 REPOS"], tint: "#C9913D", text: "ONE JOB EACH" }, // "Everything Claude Code… library (6688-6774)"; span.from+13
       { at: 658, scene: "receipt", tint: "#E8B84B", text: "LAST ONE IN", shot: { src: "assets/external/screenshots/superpowers-top-wide.png", url: "github.com/obra/superpowers", imageW: 3840, imageH: 2052, from: { x: 2300, y: 200, w: 1300, h: 694 }, to: { x: 1980, y: 100, w: 1800, h: 900 }, zoomAt: 8 } }, // "Superpowers improves the decisions" (7009-7127); holds ~4.5s
     ],

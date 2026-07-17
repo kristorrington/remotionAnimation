@@ -1319,20 +1319,6 @@
       "concerns": null
     },
     {
-      "filename": "affaan-ecc-tweet.png",
-      "localPath": "public/assets/external/screenshots/affaan-ecc-tweet.png",
-      "type": "screenshot",
-      "sourceUrl": "https://x.com/affaan/status/2014040193557471352",
-      "sourceName": "Affaan (creator) on X",
-      "dateAccessed": "2026-07-17",
-      "usageNote": "Creator announcement tweet for Everything Claude Code",
-      "usedIn": [
-        "reposVideo ch4"
-      ],
-      "attributionRequired": false,
-      "concerns": null
-    },
-    {
       "filename": "cc-action-top-wide.png",
       "localPath": "public/assets/external/screenshots/cc-action-top-wide.png",
       "type": "screenshot",

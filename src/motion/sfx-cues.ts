@@ -233,7 +233,7 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "slowJump": cues.push({ at: 132, type: "tick" }, { at: 197, type: "tick" }, { at: 265, type: "tick" }); break;
     case "workflowProof": cues.push({ at: 14, type: "whip" }, { at: 93, type: "swish" }); break;
     // ── GitHub-repos video (July 2026) — palette spread wide, ≤3 booms ──
-    case "hookDoors7": cues.push({ at: 6, type: "clickPop" }, { at: 20, type: "clickPop" }, { at: 34, type: "clickPop" }, { at: 48, type: "clickPop" }, { at: 62, type: "clickPop" }, { at: 76, type: "clickPop" }, { at: 90, type: "clickPop" }); break;
+    case "repoFan": cues.push({ at: 6, type: "paperSlide" }, { at: 20, type: "clickPop" }, { at: 34, type: "paperSlide" }, { at: 48, type: "clickPop" }, { at: 62, type: "paperSlide" }, { at: 76, type: "clickPop" }, { at: 90, type: "paperSlide" }); break; // cards deal in, alternating textures
     case "awesomeProof": cues.push({ at: 16, type: "whip" }, { at: 107, type: "swish" }); break;
     case "awesomeToc": cues.push({ at: 14, type: "paperSlide" }, { at: 283, type: "shutter" }); break;
     case "nothingKinetic": cues.push({ at: 35, type: "pluck" }); break;
@@ -246,7 +246,6 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "milvusKinetic": cues.push({ at: 89, type: "thud" }); break;
     case "eccProof": cues.push({ at: 16, type: "whip" }, { at: 110, type: "swish" }); break;
     case "eccTable": cues.push({ at: 14, type: "paperSlide" }, { at: 40, type: "shutter" }); break;
-    case "eccTweet": cues.push({ at: 12, type: "whip" }, { at: 30, type: "swish" }); break;
     case "dupeStack": cues.push({ at: 48, type: "thud" }, { at: 80, type: "thud" }, { at: 110, type: "thud" }, { at: 150, type: "boom" }); break; // boom 1/3: the pile falls
     case "partsKinetic": cues.push({ at: 32, type: "whip" }); break;
     case "actionHero": cues.push({ at: 16, type: "whip" }, { at: 40, type: "shutter" }); break;
