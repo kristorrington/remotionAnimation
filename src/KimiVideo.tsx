@@ -84,10 +84,12 @@ const GREEN = "#4FA98A";
 const CatchesScene: React.FC<{ durationInFrames: number; kicker: string; title: string; chips: string[]; chipAts: number[] }> = ({ durationInFrames, kicker, title, chips, chipAts }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  // slots spread wide + staggered vertically so the widest chip never
+  // touches its neighbour (audit fix: TOKEN-HUNGRY grazed NO WEIGHTS)
   const slots = [
-    { x: -320, y: -40, rot: -3 },
-    { x: 0, y: 24, rot: 2 },
-    { x: 320, y: -18, rot: -2 },
+    { x: -360, y: -44, rot: -3 },
+    { x: -10, y: 62, rot: 2 },
+    { x: 360, y: -28, rot: -2 },
   ];
   const worry = frame >= chipAts[2] ? "alarmed" : frame >= chipAts[1] ? "worried" : frame >= chipAts[0] ? "thinking" : "idle";
   return (
@@ -243,7 +245,7 @@ export const KimiVisuals: React.FC = () => {
       </Sequence>
       {/* 1:05 the coding numbers card */}
       <Sequence from={1940} durationInFrames={420} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={420} kicker="VALS AI · CODING" title="95.1% SWE-BENCH" fullBleed={false} tint="#4FA98A" src={`${SHOT}/vals-kimi-card-wide.png`} url="vals.ai" imageW={2900} imageH={1550} from={{ x: 60, y: 60, w: 1500, h: 802 }} to={{ x: 0, y: 0, w: 2900, h: 1550 }} zoomAt={12} highlight={{ x: 120, y: 565, w: 760, h: 180 }} highlightAt={137} />
+        <ScreenshotReceiptScene durationInFrames={420} kicker="VALS AI · CODING" title="95.1% SWE-BENCH" fullBleed={false} tint="#4FA98A" src={`${SHOT}/vals-kimi-card-wide.png`} url="vals.ai" imageW={2900} imageH={1550} from={{ x: 60, y: 60, w: 1500, h: 802 }} to={{ x: 0, y: 0, w: 2900, h: 1550 }} zoomAt={12} highlight={{ x: 120, y: 560, w: 760, h: 158 }} highlightAt={137} />
       </Sequence>
       <Sequence from={2360} durationInFrames={240} premountFor={30}>
         <FinalTakeawayScene durationInFrames={240} kicker="NOT MOONSHOT'S NUMBERS" title="INDEPENDENTLY CONFIRMED" stamp="FRONT OF THE PACK" stampAt={215} accent="#4FA98A" />
@@ -258,7 +260,7 @@ export const KimiVisuals: React.FC = () => {
       </Sequence>
       {/* 1:48 Artificial Analysis tiles */}
       <Sequence from={3234} durationInFrames={330} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={330} kicker="ARTIFICIAL ANALYSIS" title="INTELLIGENCE: 57" titlePos="right" tint={AMBER} src={`${SHOT}/aa-kimi-tiles-wide.png`} url="artificialanalysis.ai/models/kimi-k3" imageW={3840} imageH={2052} from={{ x: 420, y: 180, w: 2600, h: 1389 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={12} highlight={{ x: 480, y: 240, w: 560, h: 420 }} highlightAt={234} />
+        <ScreenshotReceiptScene durationInFrames={330} kicker="ARTIFICIAL ANALYSIS" title="INTELLIGENCE: 57" fullBleed={false} tint={AMBER} src={`${SHOT}/aa-kimi-tiles-wide.png`} url="artificialanalysis.ai/models/kimi-k3" imageW={3840} imageH={2052} from={{ x: 420, y: 180, w: 2600, h: 1389 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={12} highlight={{ x: 480, y: 240, w: 560, h: 420 }} highlightAt={234} />
       </Sequence>
       {/* 1:59 one model, three boards */}
       <Sequence from={3564} durationInFrames={420} premountFor={30}>
@@ -278,7 +280,7 @@ export const KimiVisuals: React.FC = () => {
       </Sequence>
       {/* 2:58 the 1M context, official docs */}
       <Sequence from={5358} durationInFrames={340} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={340} kicker="MOONSHOT DOCS" title="1M-TOKEN CONTEXT" fullBleed={false} tint="#4FA98A" src={`${SHOT}/moonshot-quickstart-wide.png`} url="platform.moonshot.ai/docs" imageW={3840} imageH={2052} from={{ x: 900, y: 100, w: 2100, h: 1123 }} to={{ x: 560, y: 0, w: 2740, h: 1465 }} zoomAt={12} highlight={{ x: 1130, y: 255, w: 1540, h: 95 }} highlightAt={104} />
+        <ScreenshotReceiptScene durationInFrames={340} kicker="MOONSHOT DOCS" title="1M-TOKEN CONTEXT" fullBleed={false} tint="#4FA98A" src={`${SHOT}/moonshot-quickstart-wide.png`} url="platform.moonshot.ai/docs" imageW={3840} imageH={2052} from={{ x: 900, y: 100, w: 2100, h: 1123 }} to={{ x: 560, y: 0, w: 2740, h: 1465 }} zoomAt={12} highlight={{ x: 1130, y: 496, w: 1540, h: 60 }} highlightAt={104} />
       </Sequence>
 
       {/* CH4 3:10 — Kimi Delta Attention, the 6.3× figure WITH its caveat */}
