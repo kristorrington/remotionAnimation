@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, Sequence, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, OffthreadVideo, Sequence, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { Fable5Outro } from "./components/Fable5Outro";
 import { SFX, SfxCue, SFX_POOLS, pick, vary } from "./components/Sfx";
 import { sceneActionCues } from "./motion/sfx-cues";
@@ -26,8 +26,8 @@ import valsTop3 from "../public/assets/external/charts/vals-index-top3.json";
 export const KIMI_DUR = 11128;
 
 const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[] = [
-  // face-first open + punch-in (§8); first cover at ~3s = the product
-  { scene: "kimiHero", from: 90, dur: 110 }, // "Moonshot AI just revealed… most powerful open AI model (1-141)"
+  // face-first open + punch-in (§8); first cover at ~3s = the OFFICIAL reveal film
+  { scene: "clipReveal", from: 90, dur: 110 }, // "Moonshot AI just revealed… most powerful open AI model (1-141)"
   { scene: "arenaTop", from: 200, dur: 340 }, // "number-one spot in front-end coding (194-282)… half a point behind Claude Fable 5 (357-470)"
   { scene: "threeCatches", from: 540, dur: 320, fullscreen: true }, // "three catches (502): slower (555), tokens (688), can't download the weights (802)"
   { scene: "kingKinetic", from: 860, dur: 170 }, // "is Kimi K3 really the new king? (823-894)… start with the results (932-1014)"
@@ -43,9 +43,11 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
   { scene: "trioBoards", from: 3564, dur: 420, fullscreen: true }, // "number one in one arena (3619), second on Vals (3677), fourth on AA (3723)… different things (3903)"
   { scene: "frontierKinetic", from: 3984, dur: 200 }, // "the honest conclusion: frontier-level (3999-4087)… best overall is shaky (4130-4225)"
   // ── CH3 · The ridiculous size ──
+  { scene: "clipBuild", from: 4184, dur: 134, fullscreen: true }, // OFFICIAL FILM — "that ridiculous size (4242-4307)": what the 2.8T model builds
   { scene: "paramsProof", from: 4318, dur: 270 }, // "2.8 trillion total parameters (4349-4430)"
   { scene: "moeScene", from: 4588, dur: 770, fullscreen: true }, // "mixture of experts (4611): 896 experts (4709), only 16 active (4806), ~50B working (4907)… 896 teams (5061), 16 teams (5176)"
-  { scene: "contextProof", from: 5358, dur: 340 }, // "context window just over one million tokens (5407-5488)… codebases, documents, agents (5568-5674)"
+  { scene: "contextProof", from: 5358, dur: 200 }, // "context window just over one million tokens (5407-5488)"
+  { scene: "clipKnowledge", from: 5558, dur: 140, fullscreen: true }, // OFFICIAL FILM — "codebases, long documents, extended agent workflows (5568-5674)"
   // ── CH4 · Speed ──
   { scene: "kdaProof", from: 5698, dur: 390 }, // "Kimi Delta Attention (5758-5779)… 6.3× faster under specific million-token conditions (5867-5981)"
   { scene: "speedRace", from: 6088, dur: 620, fullscreen: true }, // "not 6× faster than competitors (6172-6239)… 62 tok/s (6336-6400)… GLM-5.2 167 (6610-6692)"
@@ -62,7 +64,7 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
   // ── the verdict: recap montage + the catches return ──
   { scene: "recapArena", from: 9940, dur: 145, fullscreen: true }, // "largest open-weight model Moonshot has announced (9969-10030)"
   { scene: "recapVals", from: 10085, dur: 140, fullscreen: true }, // "compete with the leading closed models (10118-10166)"
-  { scene: "recapAA", from: 10225, dur: 105, fullscreen: true }, // "coding results genuinely impressive (10190-10243)"
+  { scene: "clipCoding", from: 10225, dur: 105, fullscreen: true }, // OFFICIAL FILM — "coding results genuinely impressive (10190-10243)"
   { scene: "catchesEcho", from: 10330, dur: 310, fullscreen: true }, // "API relatively slow (10366), unusually verbose (10438), weights haven't arrived (10494)"
   { scene: "crownKinetic", from: 10640, dur: 280 }, // "opens up the competition (10576-10600)… whether it deserves the crown depends (10778-10865)"
 ];
@@ -73,10 +75,42 @@ export const KIMI_FULLSCREEN: { from: number; to: number }[] = BEATS.filter((b) 
 export const KIMI_EXTRA_CUTS = [200, 1030, 1940, 2714, 3234, 4318, 5358, 5698, 6708, 7495, 8430, 8905];
 
 const SHOT = "assets/external/screenshots";
+const CLIPS = "assets/external/clips";
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const AMBER = "#C9913D";
 const RED = "#C65B52";
 const GREEN = "#4FA98A";
+
+// OFFICIAL LAUNCH-FILM CLIP — real footage from Moonshot's "Meet Kimi K3"
+// reveal film, presented as a play-framed film card on the paper (kicker +
+// headline above, so the editorial frame never sits on the moving footage).
+// Official brand footage used for commentary/reference (§10). The clip file
+// IS the trimmed segment; it plays from 0 and is longer than its beat so it
+// never freezes. Muted — the VO leads.
+const KimiClipScene: React.FC<{
+  durationInFrames: number; kicker: string; title: string; src: string; tint: string; accent?: string;
+}> = ({ durationInFrames, kicker, title, src, tint, accent = "#D97757" }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const pop = spring({ frame, fps, config: { stiffness: 120, damping: 18 }, durationInFrames: 22 });
+  const cardW = 1180;
+  const cardH = Math.round((cardW * 9) / 16);
+  return (
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x11} tint={tint}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 30 }}>
+        <SceneHeadline kicker={kicker} title={title} titleSize={56} accent={accent} />
+        <div style={{ position: "relative", width: cardW, height: cardH, borderRadius: 16, overflow: "hidden", border: `2px solid ${accent}`, boxShadow: "0 24px 60px rgba(31,30,29,0.28)", background: "#0e0d0c", transform: `scale(${interpolate(pop, [0, 1], [0.93, 1])})`, opacity: interpolate(pop, [0, 0.3], [0, 1]) }}>
+          <OffthreadVideo src={staticFile(src)} muted style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+          {/* official-film chrome pill — records the source on the footage */}
+          <div style={{ position: "absolute", left: 22, top: 22, display: "flex", alignItems: "center", gap: 10, padding: "8px 16px", borderRadius: 10, background: "rgba(14,13,12,0.74)", border: "1px solid rgba(255,255,255,0.18)" }}>
+            <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#E03E36", boxShadow: "0 0 8px #E03E36" }} />
+            <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 19, letterSpacing: 2, color: "#fff", transform: "translateZ(0)" }}>MEET KIMI K3 · OFFICIAL FILM</span>
+          </div>
+        </div>
+      </div>
+    </SceneShell>
+  );
+};
 
 // THE THREE CATCHES — three ink sticker chips slam in scattered on their
 // spoken frames while the robot gets progressively more worried. Reused at
@@ -219,9 +253,9 @@ export const KimiVisuals: React.FC = () => {
   return (
     <ThemeProvider style="paper">
     <AbsoluteFill>
-      {/* 0:03 the product itself — first cover names the subject */}
+      {/* 0:03 the reveal — the OFFICIAL "Meet Kimi K3" launch film */}
       <Sequence from={90} durationInFrames={110} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={110} kicker="MOONSHOT AI" title="KIMI K3" tint="#D97757" src={`${SHOT}/kimi-app-wide.png`} url="kimi.com" imageW={3840} imageH={2052} from={{ x: 380, y: 100, w: 3080, h: 1646 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={10} />
+        <KimiClipScene durationInFrames={110} kicker="MOONSHOT AI · JUST REVEALED" title="KIMI K3" src={`${CLIPS}/kimi-clip-reveal.mp4`} tint="#D97757" />
       </Sequence>
       {/* 0:06 the #1 claim — the arena table, Claude + GPT visibly below */}
       <Sequence from={200} durationInFrames={340} premountFor={30}>
@@ -270,6 +304,10 @@ export const KimiVisuals: React.FC = () => {
         <FinalTakeawayScene durationInFrames={200} kicker="THE HONEST CONCLUSION" title="FRONTIER-LEVEL" stamp="BEST OVERALL? SHAKY" stampAt={126} accent={AMBER} />
       </Sequence>
 
+      {/* CH3 2:19 — OFFICIAL FILM: what the 2.8T model actually builds */}
+      <Sequence from={4184} durationInFrames={134} premountFor={30}>
+        <KimiClipScene durationInFrames={134} kicker="2.8 TRILLION, IN ACTION" title="WHAT IT BUILDS" src={`${CLIPS}/kimi-clip-build.mp4`} tint="#6E93BD" accent="#6E93BD" />
+      </Sequence>
       {/* CH3 2:23 — the size, from Moonshot's own blog */}
       <Sequence from={4318} durationInFrames={270} premountFor={30}>
         <ScreenshotReceiptScene durationInFrames={270} kicker="MOONSHOT'S ANNOUNCEMENT" title="2.8 TRILLION" fullBleed={false} tint="#6E93BD" src={`${SHOT}/kimi-blog-claims-wide.png`} url="kimi.com/blog/kimi-k3" imageW={2900} imageH={1550} from={{ x: 480, y: 80, w: 2100, h: 1123 }} to={{ x: 0, y: 0, w: 2900, h: 1550 }} zoomAt={10} highlight={{ x: 660, y: 106, w: 1860, h: 95 }} highlightAt={31} />
@@ -279,8 +317,12 @@ export const KimiVisuals: React.FC = () => {
         <KimiMoEScene durationInFrames={770} labelAt={121} pickAt={218} countAt={319} teamsAt={473} />
       </Sequence>
       {/* 2:58 the 1M context, official docs */}
-      <Sequence from={5358} durationInFrames={340} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={340} kicker="MOONSHOT DOCS" title="1M-TOKEN CONTEXT" fullBleed={false} tint="#4FA98A" src={`${SHOT}/moonshot-quickstart-wide.png`} url="platform.moonshot.ai/docs" imageW={3840} imageH={2052} from={{ x: 900, y: 100, w: 2100, h: 1123 }} to={{ x: 560, y: 0, w: 2740, h: 1465 }} zoomAt={12} highlight={{ x: 1130, y: 496, w: 1540, h: 60 }} highlightAt={104} />
+      <Sequence from={5358} durationInFrames={200} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={200} kicker="MOONSHOT DOCS" title="1M-TOKEN CONTEXT" fullBleed={false} tint="#4FA98A" src={`${SHOT}/moonshot-quickstart-wide.png`} url="platform.moonshot.ai/docs" imageW={3840} imageH={2052} from={{ x: 900, y: 100, w: 2100, h: 1123 }} to={{ x: 560, y: 0, w: 2740, h: 1465 }} zoomAt={12} highlight={{ x: 1130, y: 496, w: 1540, h: 60 }} highlightAt={104} />
+      </Sequence>
+      {/* 3:05 — OFFICIAL FILM: codebases, documents, extended agent workflows */}
+      <Sequence from={5558} durationInFrames={140} premountFor={30}>
+        <KimiClipScene durationInFrames={140} kicker="ENORMOUS CONTEXT, IN ACTION" title="KNOWLEDGE WORK" src={`${CLIPS}/kimi-clip-knowledge.mp4`} tint="#4FA98A" accent="#4FA98A" />
       </Sequence>
 
       {/* CH4 3:10 — Kimi Delta Attention, the 6.3× figure WITH its caveat */}
@@ -324,10 +366,13 @@ export const KimiVisuals: React.FC = () => {
         <FinalTakeawayScene durationInFrames={250} kicker="EVEN WHEN THEY ARRIVE" title="SERIOUS INFRASTRUCTURE" stamp="NOT A GAMING PC" stampAt={164} accent="#6E93BD" />
       </Sequence>
 
-      {/* 5:31 the verdict — the boards return */}
+      {/* 5:31 the verdict — the boards return, then the OFFICIAL film on
+          "coding results are genuinely impressive" */}
       <Sequence from={9940} durationInFrames={145} premountFor={30}><Montage dur={145} src={`${SHOT}/arena-webdev-top-wide.png`} url="arena.ai/leaderboard/code/webdev" w={2820} h={1507} /></Sequence>
       <Sequence from={10085} durationInFrames={140} premountFor={30}><Montage dur={140} src={`${SHOT}/vals-chart-wide.png`} url="vals.ai" w={2900} h={1550} /></Sequence>
-      <Sequence from={10225} durationInFrames={105} premountFor={30}><Montage dur={105} src={`${SHOT}/aa-kimi-tiles-wide.png`} url="artificialanalysis.ai/models/kimi-k3" w={3840} h={2052} /></Sequence>
+      <Sequence from={10225} durationInFrames={105} premountFor={30}>
+        <KimiClipScene durationInFrames={105} kicker="GENUINELY IMPRESSIVE" title="CODING, INTERACTIVE 3D" src={`${CLIPS}/kimi-clip-typewriter.mp4`} tint="#4FA98A" accent="#4FA98A" />
+      </Sequence>
       {/* 5:44 the catches, one last time */}
       <Sequence from={10330} durationInFrames={310} premountFor={30}>
         <CatchesScene durationInFrames={310} kicker="STILL TRUE" title="THE THREE CATCHES" chips={["SLOW API", "VERBOSE", "NO WEIGHTS YET"]} chipAts={[36, 108, 164]} />

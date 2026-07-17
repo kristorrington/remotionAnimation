@@ -235,6 +235,9 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     // ── Kimi K3 video (July 2026) — palette spread wide, 3 booms:
     //    catches chip 3 / MoE 16-flare / the WEIGHTS gate slam ──
     case "kimiHero": cues.push({ at: 14, type: "whip" }, { at: 40, type: "shutter" }); break;
+    // official launch-film clips: one soft camera settle on the card pop
+    case "clipReveal": case "clipBuild": case "clipKnowledge": case "clipCoding":
+      cues.push({ at: 10, type: "shutter" }); break;
     case "arenaTop": cues.push({ at: 16, type: "paperSlide" }, { at: 60, type: "swish" }); break;
     case "threeCatches": cues.push({ at: 9, type: "thud" }, { at: 100, type: "thud" }, { at: 256, type: "boom" }); break; // boom 1/3
     case "kingKinetic": cues.push({ at: 66, type: "pluck" }); break;

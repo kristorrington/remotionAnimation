@@ -1703,6 +1703,62 @@
       ],
       "attributionRequired": false,
       "concerns": null
+    },
+    {
+      "filename": "kimi-clip-reveal.mp4",
+      "localPath": "public/assets/external/clips/kimi-clip-reveal.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=bn0atstgavo",
+      "sourceName": "Moonshot AI - 'Meet Kimi K3' official launch film (YouTube)",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "Clip of the OFFICIAL brand launch film used for commentary/reference (muted). the 'meet kimi k3' branding reveal collage - the intro cover",
+      "usedIn": [
+        "kimiVideo intro"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "kimi-clip-build.mp4",
+      "localPath": "public/assets/external/clips/kimi-clip-build.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=bn0atstgavo",
+      "sourceName": "Moonshot AI - 'Meet Kimi K3' official launch film (YouTube)",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "Clip of the OFFICIAL brand launch film used for commentary/reference (muted). 3D Game Emulator capability demo (Game Boy render) - 'what it builds' beat",
+      "usedIn": [
+        "kimiVideo ch3"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "kimi-clip-knowledge.mp4",
+      "localPath": "public/assets/external/clips/kimi-clip-knowledge.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=bn0atstgavo",
+      "sourceName": "Moonshot AI - 'Meet Kimi K3' official launch film (YouTube)",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "Clip of the OFFICIAL brand launch film used for commentary/reference (muted). Research with Interactive Visualization demo - knowledge-work beat",
+      "usedIn": [
+        "kimiVideo ch3 context"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "kimi-clip-typewriter.mp4",
+      "localPath": "public/assets/external/clips/kimi-clip-typewriter.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=bn0atstgavo",
+      "sourceName": "Moonshot AI - 'Meet Kimi K3' official launch film (YouTube)",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "Clip of the OFFICIAL brand launch film used for commentary/reference (muted). World Time / Interactive 3D watch demo - coding-verdict beat",
+      "usedIn": [
+        "kimiVideo verdict"
+      ],
+      "attributionRequired": false,
+      "concerns": null
     }
   ]
 }
