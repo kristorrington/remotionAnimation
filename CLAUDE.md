@@ -792,7 +792,18 @@ press kits, screenshots of official pages.
   pan/zoom direction between adjacent receipts, and never place two
   browser-card receipts back to back (same-layout rule) — UNLESS the two pages
   read as different layouts (dark text page vs bright stat graphic) AND the
-  zoom treatment changes. Shorts: max ~1–2
+  zoom treatment changes. **Never use the same screenshot FILE on two
+  consecutive receipt beats** (Kris, July 2026 — the ecc skills table ran
+  twice in a row): each receipt in a run shows a different capture — crop a
+  different region of the source page, or capture a fresh page (headless
+  Chrome direct with an ABSOLUTE --screenshot path when fetch-assets fails).
+  This also applies across a talking-head gap: the two receipts of one
+  chapter come from two different files. **Banner-less GitHub repo tops go
+  CARD mode** (same round): a repo page without a README banner is dense
+  chrome + text with no whitespace in ANY zoom state, so a full-bleed
+  sticker always lands on text — use `fullBleed={false}` and put the
+  kicker/title on the paper above the card (edge-to-edge text pages like
+  the awesome-cc README get the same treatment). Shorts: max ~1–2
   receipts per short, big headlines only — body text never carries the message.
   **A screenshot lands inside the first 5 seconds** (Kris, July 2026): the
   video's FIRST COVER (frame ~90) is a product/receipt shot when the opening
