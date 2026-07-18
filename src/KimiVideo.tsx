@@ -26,9 +26,10 @@ import valsTop3 from "../public/assets/external/charts/vals-index-top3.json";
 export const KIMI_DUR = 11128;
 
 const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[] = [
-  // face-first open + punch-in (§8); first cover at ~3s = the OFFICIAL reveal film
-  { scene: "clipReveal", from: 90, dur: 110 }, // "Moonshot AI just revealed… most powerful open AI model (1-141)"
-  { scene: "arenaTop", from: 200, dur: 340 }, // "number-one spot in front-end coding (194-282)… half a point behind Claude Fable 5 (357-470)"
+  // face-first open + punch-in (§8); the OFFICIAL reveal MONTAGE cuts in early
+  // (~2.2s) and plays long over the whole hook (Kris, July 2026)
+  { scene: "clipReveal", from: 66, dur: 194 }, // "just revealed… the world's most powerful open AI model (27-141)"
+  { scene: "arenaTop", from: 260, dur: 280 }, // "number-one spot in front-end coding (194-282)… half a point behind Claude Fable 5 (357-470)"
   { scene: "threeCatches", from: 540, dur: 320, fullscreen: true }, // "three catches (502): slower (555), tokens (688), can't download the weights (802)"
   { scene: "kingKinetic", from: 860, dur: 170 }, // "is Kimi K3 really the new king? (823-894)… start with the results (932-1014)"
   // ── CH1 · Vals AI independent testing ──
@@ -72,7 +73,7 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
 export const KIMI_WINDOWS: { from: number; dur: number }[] = BEATS.map((b) => ({ from: b.from, dur: b.dur }));
 export const KIMI_FULLSCREEN: { from: number; to: number }[] = BEATS.filter((b) => b.fullscreen).map((b) => ({ from: b.from, to: b.from + b.dur }));
 // receipt swaps + chapter intros also ride the pull-left
-export const KIMI_EXTRA_CUTS = [200, 1030, 1940, 2714, 3234, 4318, 5358, 5698, 6708, 7495, 8430, 8905];
+export const KIMI_EXTRA_CUTS = [260, 1030, 1940, 2714, 3234, 4318, 5358, 5698, 6708, 7495, 8430, 8905];
 
 const SHOT = "assets/external/screenshots";
 const CLIPS = "assets/external/clips";
@@ -253,13 +254,13 @@ export const KimiVisuals: React.FC = () => {
   return (
     <ThemeProvider style="paper">
     <AbsoluteFill>
-      {/* 0:03 the reveal — a MONTAGE from the OFFICIAL launch film (pops) */}
-      <Sequence from={90} durationInFrames={110} premountFor={30}>
-        <KimiClipScene durationInFrames={110} kicker="MOONSHOT AI · JUST REVEALED" title="KIMI K3" src={`${CLIPS}/kimi-open-montage.mp4`} tint="#D97757" />
+      {/* 0:02 the reveal — a long MONTAGE from the OFFICIAL launch film (pops) */}
+      <Sequence from={66} durationInFrames={194} premountFor={30}>
+        <KimiClipScene durationInFrames={194} kicker="MOONSHOT AI · JUST REVEALED" title="KIMI K3" src={`${CLIPS}/kimi-open-montage.mp4`} tint="#D97757" />
       </Sequence>
-      {/* 0:06 the #1 claim — the arena table, Claude + GPT visibly below */}
-      <Sequence from={200} durationInFrames={340} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={340} kicker="ARENA · CODE | WEBDEV" title="K3 = #1" fullBleed={false} tint="#4FA98A" src={`${SHOT}/arena-webdev-top-wide.png`} url="arena.ai/leaderboard/code/webdev" imageW={2820} imageH={1507} from={{ x: 40, y: 30, w: 1800, h: 962 }} to={{ x: 0, y: 0, w: 2820, h: 1507 }} zoomAt={12} highlight={{ x: 46, y: 494, w: 2720, h: 108 }} highlightAt={15} />
+      {/* 0:08 the #1 claim — the arena table, Claude + GPT visibly below */}
+      <Sequence from={260} durationInFrames={280} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={280} kicker="ARENA · CODE | WEBDEV" title="K3 = #1" fullBleed={false} tint="#4FA98A" src={`${SHOT}/arena-webdev-top-wide.png`} url="arena.ai/leaderboard/code/webdev" imageW={2820} imageH={1507} from={{ x: 40, y: 30, w: 1800, h: 962 }} to={{ x: 0, y: 0, w: 2820, h: 1507 }} zoomAt={12} highlight={{ x: 46, y: 494, w: 2720, h: 108 }} highlightAt={15} />
       </Sequence>
       {/* 0:18 THE THREE CATCHES */}
       <Sequence from={540} durationInFrames={320} premountFor={30}>

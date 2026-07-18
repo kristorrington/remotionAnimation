@@ -99,7 +99,7 @@ export const KimiFinal: React.FC = () => {
         <CornerPip key={`pip-${s.from}`} footage={FOOTAGE} from={s.from} dur={s.to - s.from} />
       ))}
       </SlideLeftPush>
-      <CutFlash at={90} peak={0.5} />
+      <CutFlash at={66} peak={0.5} />
     </AbsoluteFill>
     </ThemeProvider>
   );
