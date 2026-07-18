@@ -278,7 +278,7 @@ export const KimiVisuals: React.FC = () => {
 
       {/* CH1 0:34 — Vals: the open-weight chart */}
       <Sequence from={1030} durationInFrames={340} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={340} kicker="VALS AI · INDEPENDENT" title="74.7% · #2 OF 38" titlePos="right" tint="#D97757" src={`${SHOT}/vals-chart-wide.png`} url="vals.ai" imageW={2900} imageH={1550} from={{ x: 60, y: 40, w: 1900, h: 1015 }} to={{ x: 0, y: 0, w: 2900, h: 1550 }} zoomAt={12} highlight={{ x: 195, y: 1222, w: 2390, h: 66 }} highlightAt={214} />
+        <ScreenshotReceiptScene durationInFrames={340} kicker="VALS AI · INDEPENDENT" title="74.7% · #2 OF 38" titlePos="right" tint="#D97757" src={`${SHOT}/vals-chart-wide.png`} url="vals.ai" imageW={2900} imageH={1550} to={{ x: 60, y: 760, w: 2600, h: 790 }} waypoints={[{ rect: { x: 0, y: 0, w: 2900, h: 1550 }, at: 0 }, { rect: { x: 60, y: 760, w: 2600, h: 790 }, at: 200 }]} highlight={{ x: 100, y: 1235, w: 2400, h: 60 }} highlightAt={214} />
       </Sequence>
       {/* 0:45 the top-3 — recreated natively (the overall tab isn't captured) */}
       <Sequence from={1370} durationInFrames={570} premountFor={30}>
@@ -295,7 +295,7 @@ export const KimiVisuals: React.FC = () => {
 
       {/* CH2 1:30 — the arena tweet */}
       <Sequence from={2714} durationInFrames={320} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={320} kicker="ARENA · ON X" title="1,679 ELO" fullBleed={false} tint="#D97757" src={`${SHOT}/arena-k3-tweet.png`} url="x.com/arena" imageW={1620} imageH={2600} from={{ x: 40, y: 30, w: 1540, h: 1100 }} to={{ x: 20, y: 10, w: 1580, h: 2560 }} zoomAt={12} />
+        <ScreenshotReceiptScene durationInFrames={320} kicker="ARENA · ON X" title="1,679 ELO" fullBleed={false} tint="#D97757" src={`${SHOT}/arena-k3-tweet.png`} url="x.com/arena" imageW={1620} imageH={2600} to={{ x: 430, y: 850, w: 1150, h: 620 }} waypoints={[{ rect: { x: 20, y: 40, w: 1580, h: 900 }, at: 0 }, { rect: { x: 40, y: 90, w: 1540, h: 700 }, at: 24 }, { rect: { x: 430, y: 855, w: 1150, h: 560 }, at: 175 }]} />
       </Sequence>
       <Sequence from={3034} durationInFrames={200} premountFor={30}>
         <FinalTakeawayScene durationInFrames={200} kicker="THE ARENA MEASURES" title="FRONT-END ONLY" stamp="ONE LANE" stampAt={52} accent={AMBER} />
