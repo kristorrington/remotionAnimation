@@ -715,16 +715,16 @@ the source, editorial kicker/title on the paper ABOVE the card so text never
 sits on the moving footage) — never dump raw video full-bleed; give each
 internal hard cut a `swish`; (5) the VO always leads — clips are muted; (6)
 manifest every clip (`type: reference`, sourceUrl = the official video); (7)
-**do this in the SHORTS too, FULL-SCREEN right after the face** (Kris, July
-2026 — "i dont see any montage in the shorts" → "the first scene needs to
-show my face"): the short still OPENS on the FACE (the hook — never animHook;
-the face IS scene 1), then the reveal montage is the FIRST animation scene,
-FULL-SCREEN. Structure: face hook → full-screen reveal montage → proof
-receipt → analysis. Keep a brief `emote` reaction as the first band beat
-(`at:8`) so the montage span (`{from:185,to:355}`, `clip` beat at span.from+13
-= 198) has a prior beat to pull-left FROM; the receipt/gags follow. Do NOT
-use animHook (it removes the face opener). The `clip` beat scene lives in
-BeatScenes (OFFICIAL FILM pill). The montage span obeys
+**do this in the SHORTS too, in the TOP SPLIT BAND** (Kris, July 2026 — "i
+dont see any montage" → "first scene needs to show my face" → "the montage
+should be on the top here, in the split"): the short OPENS on the FACE hook
+(never animHook — the face IS the opener), then the reveal montage is the
+FIRST animation scene, riding the TOP split band with the face BELOW —
+`clip` beat as the FIRST band beat (`at:8`, NO fullscreen span of its own),
+holding ~4-5s (montage cuts through several demos) before the proof receipt.
+It replaces the old emote-reaction first beat. The gag `fullscreen` spans
+(catches / token-rain / stamp) still fire LATER. The `clip` beat scene lives
+in BeatScenes (OFFICIAL FILM pill), sized for both the band and full-screen. The montage span obeys
 the shorts span rules (span-owning `clip` beat at span.from+13, ≥90f from
 other spans, start ≥190, end ≤dur−140); a receipt may TRAIL to after the
 montage span. The `clip` beat scene lives in BeatScenes (OFFICIAL FILM pill).
