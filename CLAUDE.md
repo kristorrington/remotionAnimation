@@ -715,10 +715,17 @@ the source, editorial kicker/title on the paper ABOVE the card so text never
 sits on the moving footage) — never dump raw video full-bleed; give each
 internal hard cut a `swish`; (5) the VO always leads — clips are muted; (6)
 manifest every clip (`type: reference`, sourceUrl = the official video); (7)
-**do this in the SHORTS too, FULL-SCREEN** (Kris, July 2026 — "i dont see any
-montage in the shorts; add them"): give EVERY short a `clip` montage as a
-FULL-SCREEN span, not a small band clip. Structure: hook (face) → full-screen
-reveal/capability montage → proof receipt → analysis. The montage span obeys
+**do this in the SHORTS too, as SCENE 1** (Kris, July 2026 — "i dont see any
+montage in the shorts; it should be in scene 1"): every product-video short
+OPENS on the reveal montage full-screen — set `animHook: true` and make the
+`clip` montage the first beat (`at:~4`) with its fullscreen span at
+`{from:108,to:190}` (animHook converts a span starting <190 into the opening
+full-screen phase). Frame 0 is then the montage's branding under the hook
+title (the recognizable thumbnail), and the receipt/gags follow after the
+split (~230, landing right on their claims). Structure: montage (scene 1,
+full-screen) → proof receipt → analysis. This intentionally overrides the
+"always open on the face" default FOR product-video shorts (the official
+reveal is the stronger open). The montage span obeys
 the shorts span rules (span-owning `clip` beat at span.from+13, ≥90f from
 other spans, start ≥190, end ≤dur−140); a receipt may TRAIL to after the
 montage span. The `clip` beat scene lives in BeatScenes (OFFICIAL FILM pill).
