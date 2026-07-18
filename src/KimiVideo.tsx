@@ -26,10 +26,10 @@ import valsTop3 from "../public/assets/external/charts/vals-index-top3.json";
 export const KIMI_DUR = 11128;
 
 const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[] = [
-  // face-first open + punch-in (§8); the OFFICIAL reveal MONTAGE cuts in early
-  // (~2.2s) and plays long over the whole hook (Kris, July 2026)
-  { scene: "clipReveal", from: 66, dur: 194 }, // "just revealed… the world's most powerful open AI model (27-141)"
-  { scene: "arenaTop", from: 260, dur: 280 }, // "number-one spot in front-end coding (194-282)… half a point behind Claude Fable 5 (357-470)"
+  // the video OPENS on the OFFICIAL reveal MONTAGE — it punches in the moment
+  // "Moonshot AI" is spoken (frame 0) and plays the whole hook (Kris, July 2026)
+  { scene: "clipReveal", from: 0, dur: 240 }, // "Moonshot AI just revealed… the world's most powerful open AI model (0-141)… number-one spot (141-240)"
+  { scene: "arenaTop", from: 240, dur: 300 }, // "number-one spot in front-end coding (194-282)… half a point behind Claude Fable 5 (357-470)"
   { scene: "threeCatches", from: 540, dur: 320, fullscreen: true }, // "three catches (502): slower (555), tokens (688), can't download the weights (802)"
   { scene: "kingKinetic", from: 860, dur: 170 }, // "is Kimi K3 really the new king? (823-894)… start with the results (932-1014)"
   // ── CH1 · Vals AI independent testing ──
@@ -73,7 +73,7 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
 export const KIMI_WINDOWS: { from: number; dur: number }[] = BEATS.map((b) => ({ from: b.from, dur: b.dur }));
 export const KIMI_FULLSCREEN: { from: number; to: number }[] = BEATS.filter((b) => b.fullscreen).map((b) => ({ from: b.from, to: b.from + b.dur }));
 // receipt swaps + chapter intros also ride the pull-left
-export const KIMI_EXTRA_CUTS = [260, 1030, 1940, 2714, 3234, 4318, 5358, 5698, 6708, 7495, 8430, 8905];
+export const KIMI_EXTRA_CUTS = [240, 1030, 1940, 2714, 3234, 4318, 5358, 5698, 6708, 7495, 8430, 8905];
 
 const SHOT = "assets/external/screenshots";
 const CLIPS = "assets/external/clips";
@@ -89,18 +89,23 @@ const GREEN = "#4FA98A";
 // IS the trimmed segment; it plays from 0 and is longer than its beat so it
 // never freezes. Muted — the VO leads.
 const KimiClipScene: React.FC<{
-  durationInFrames: number; kicker: string; title: string; src: string; tint: string; accent?: string;
-}> = ({ durationInFrames, kicker, title, src, tint, accent = "#D97757" }) => {
+  durationInFrames: number; kicker: string; title: string; src: string; tint: string; accent?: string; opening?: boolean;
+}> = ({ durationInFrames, kicker, title, src, tint, accent = "#D97757", opening = false }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const pop = spring({ frame, fps, config: { stiffness: 120, damping: 18 }, durationInFrames: 22 });
+  // opening montage PUNCHES in from a small card (§8 punch-in energy) — the
+  // video literally opens on the reveal film the moment "Moonshot AI" lands
+  const punch = interpolate(frame, [0, 16], [0.5, 1], { ...CLAMP, easing: (x) => 1 - (1 - x) * (1 - x) });
+  const cardScale = opening ? punch : interpolate(pop, [0, 1], [0.93, 1]);
+  const cardOp = opening ? interpolate(frame, [0, 6], [0, 1], CLAMP) : interpolate(pop, [0, 0.3], [0, 1]);
   const cardW = 1180;
   const cardH = Math.round((cardW * 9) / 16);
   return (
     <SceneShell durationInFrames={durationInFrames} particleSeed={0x11} tint={tint}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 30 }}>
         <SceneHeadline kicker={kicker} title={title} titleSize={56} accent={accent} />
-        <div style={{ position: "relative", width: cardW, height: cardH, borderRadius: 16, overflow: "hidden", border: `2px solid ${accent}`, boxShadow: "0 24px 60px rgba(31,30,29,0.28)", background: "#0e0d0c", transform: `scale(${interpolate(pop, [0, 1], [0.93, 1])})`, opacity: interpolate(pop, [0, 0.3], [0, 1]) }}>
+        <div style={{ position: "relative", width: cardW, height: cardH, borderRadius: opening ? interpolate(frame, [0, 16], [40, 16], CLAMP) : 16, overflow: "hidden", border: `2px solid ${accent}`, boxShadow: "0 24px 60px rgba(31,30,29,0.28)", background: "#0e0d0c", transform: `scale(${cardScale})`, opacity: cardOp }}>
           <OffthreadVideo src={staticFile(src)} muted style={{ width: "100%", height: "100%", objectFit: "cover" }} />
           {/* official-film chrome pill — records the source on the footage */}
           <div style={{ position: "absolute", left: 22, top: 22, display: "flex", alignItems: "center", gap: 10, padding: "8px 16px", borderRadius: 10, background: "rgba(14,13,12,0.74)", border: "1px solid rgba(255,255,255,0.18)" }}>
@@ -254,13 +259,14 @@ export const KimiVisuals: React.FC = () => {
   return (
     <ThemeProvider style="paper">
     <AbsoluteFill>
-      {/* 0:02 the reveal — a long MONTAGE from the OFFICIAL launch film (pops) */}
-      <Sequence from={66} durationInFrames={194} premountFor={30}>
-        <KimiClipScene durationInFrames={194} kicker="MOONSHOT AI · JUST REVEALED" title="KIMI K3" src={`${CLIPS}/kimi-open-montage.mp4`} tint="#D97757" />
+      {/* 0:00 the OPENER — the OFFICIAL launch-film montage punches in on
+          "Moonshot AI" and plays the whole hook */}
+      <Sequence from={0} durationInFrames={240} premountFor={30}>
+        <KimiClipScene durationInFrames={240} kicker="MOONSHOT AI · JUST REVEALED" title="KIMI K3" src={`${CLIPS}/kimi-open-montage.mp4`} tint="#D97757" opening />
       </Sequence>
       {/* 0:08 the #1 claim — the arena table, Claude + GPT visibly below */}
-      <Sequence from={260} durationInFrames={280} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={280} kicker="ARENA · CODE | WEBDEV" title="K3 = #1" fullBleed={false} tint="#4FA98A" src={`${SHOT}/arena-webdev-top-wide.png`} url="arena.ai/leaderboard/code/webdev" imageW={2820} imageH={1507} to={{ x: 0, y: 0, w: 2820, h: 1507 }} waypoints={[{ rect: { x: 0, y: 0, w: 2820, h: 1507 }, at: 0 }, { rect: { x: 40, y: 428, w: 2740, h: 700 }, at: 20 }, { rect: { x: 40, y: 470, w: 2740, h: 470 }, at: 175 }]} highlight={{ x: 46, y: 500, w: 2720, h: 100 }} highlightAt={26} />
+      <Sequence from={240} durationInFrames={300} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={300} kicker="ARENA · CODE | WEBDEV" title="K3 = #1" fullBleed={false} tint="#4FA98A" src={`${SHOT}/arena-webdev-top-wide.png`} url="arena.ai/leaderboard/code/webdev" imageW={2820} imageH={1507} to={{ x: 0, y: 0, w: 2820, h: 1507 }} waypoints={[{ rect: { x: 0, y: 0, w: 2820, h: 1507 }, at: 0 }, { rect: { x: 40, y: 428, w: 2740, h: 700 }, at: 20 }, { rect: { x: 40, y: 470, w: 2740, h: 470 }, at: 175 }]} highlight={{ x: 46, y: 500, w: 2720, h: 100 }} highlightAt={26} />
       </Sequence>
       {/* 0:18 THE THREE CATCHES */}
       <Sequence from={540} durationInFrames={320} premountFor={30}>

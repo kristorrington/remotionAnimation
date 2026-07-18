@@ -237,7 +237,7 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "kimiHero": cues.push({ at: 14, type: "whip" }, { at: 40, type: "shutter" }); break;
     // official launch-film clip montages: a soft camera settle on the card
     // pop + a page-turn tick on each internal hard cut so the montage reads
-    case "clipReveal": cues.push({ at: 10, type: "shutter" }, { at: 48, type: "swish" }, { at: 81, type: "swish" }, { at: 111, type: "swish" }, { at: 141, type: "swish" }, { at: 171, type: "swish" }); break;
+    case "clipReveal": cues.push({ at: 2, type: "shutter" }, { at: 54, type: "swish" }, { at: 84, type: "swish" }, { at: 113, type: "swish" }, { at: 140, type: "swish" }, { at: 167, type: "swish" }, { at: 194, type: "swish" }, { at: 221, type: "swish" }); break;
     case "clipReal": cues.push({ at: 10, type: "shutter" }, { at: 67, type: "swish" }, { at: 124, type: "swish" }, { at: 181, type: "swish" }); break;
     case "clipBuild": cues.push({ at: 10, type: "shutter" }, { at: 58, type: "swish" }, { at: 103, type: "swish" }); break;
     case "clipKnowledge": cues.push({ at: 10, type: "shutter" }, { at: 85, type: "swish" }); break;

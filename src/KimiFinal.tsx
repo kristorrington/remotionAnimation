@@ -99,7 +99,9 @@ export const KimiFinal: React.FC = () => {
         <CornerPip key={`pip-${s.from}`} footage={FOOTAGE} from={s.from} dur={s.to - s.from} />
       ))}
       </SlideLeftPush>
-      <CutFlash at={66} peak={0.5} />
+      {/* the montage OPENS the video (no face→cover cut); flash the
+          montage→arena hand-off instead */}
+      <CutFlash at={240} peak={0.5} />
     </AbsoluteFill>
     </ThemeProvider>
   );
