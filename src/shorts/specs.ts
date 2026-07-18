@@ -54,8 +54,8 @@ export const SHORTS: ShortSpec[] = [
     context: "Vals AI = independent model benchmarks",
     beats: [
       { at: 8, scene: "emote", pose: "thinking", tint: "#D97757", text: "THE REAL TEST" }, // "Vals AI independently tested" (1036-1083)
-      // OFFICIAL FILM — FULL-SCREEN coding montage (what those scores mean)
-      { at: 225, scene: "clip", tint: "#4FA98A", text: "coding, in action", clip: { src: "assets/external/clips/kimi-coding-montage.mp4" } }, // "tested across coding, finance, professional tasks" (1126-1205); span.from+13
+      // OFFICIAL FILM — FULL-SCREEN opening reveal montage
+      { at: 225, scene: "clip", tint: "#4FA98A", text: "the reveal", clip: { src: "assets/external/clips/kimi-open-montage.mp4" } }, // "tested across coding, finance, professional tasks" (1126-1205); span.from+13
       // EVIDENCE: the evaluation card with the 74.70% / #2-of-38 claim
       { at: 410, scene: "receipt", tint: "#4FA98A", text: "the vals card", shot: { src: "assets/external/screenshots/vals-kimi-card-wide.png", url: "vals.ai", imageW: 2900, imageH: 1550, from: { x: 100, y: 100, w: 1400, h: 748 }, to: { x: 40, y: 40, w: 2820, h: 1507 }, zoomAt: 8, highlight: { x: 120, y: 300, w: 760, h: 180 }, highlightAt: 120 } }, // "scored 74.7%, placing second of 38" (1244-1452)
       { at: 620, scene: "check", obj: "brain", verdict: "check", tint: "#6E93BD", text: "JUST 0.44 SHORT" }, // "within half a percentage point" (1725-1768)
@@ -80,8 +80,8 @@ export const SHORTS: ShortSpec[] = [
     context: "Kimi K3 = Moonshot's new 2.8T model",
     beats: [
       { at: 8, scene: "emote", pose: "worried", tint: "#C9913D", text: "THE HIDDEN CATCH" }, // "slower output is only half the problem" (7409-7477)
-      // OFFICIAL FILM — FULL-SCREEN capability montage (what those tokens build)
-      { at: 223, scene: "clip", tint: "#6E93BD", text: "what it builds", clip: { src: "assets/external/clips/kimi-build-montage.mp4" } }, // "K3 generated 130 million output tokens" (7596-7673); span.from+13
+      // OFFICIAL FILM — FULL-SCREEN opening reveal montage
+      { at: 223, scene: "clip", tint: "#6E93BD", text: "the reveal", clip: { src: "assets/external/clips/kimi-open-montage.mp4" } }, // "K3 generated 130 million output tokens" (7596-7673); span.from+13
       // EVIDENCE: the AA verbosity tile
       { at: 400, scene: "receipt", tint: "#C65B52", text: "the 130M tile", shot: { src: "assets/external/screenshots/aa-kimi-tokens.png", url: "artificialanalysis.ai/models/kimi-k3", imageW: 660, imageH: 560, from: { x: 60, y: 50, w: 540, h: 458 }, to: { x: 0, y: 0, w: 660, h: 560 }, zoomAt: 8 } }, // "more than twice the median" (7805-7897)
       { at: 543, scene: "coins", tint: "#C9913D", text: "2× THE MEDIAN" }, // "twice the median number of tokens" (7850-7897); span.from+13
