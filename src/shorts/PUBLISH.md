@@ -1100,12 +1100,6 @@ Follow @kristorrington for AI automation that survives the real world.
 
 ---
 
-## Short-KimiIntro-B (A/B hook variant — hook "3 CATCHES BEFORE THE CROWN")
-
-Same video + copy as Short-KimiIntro; post the loser as unlisted or delete after 48h.
-
----
-
 ## Short-HalfAPoint
 
 **Title**
@@ -1125,12 +1119,6 @@ Follow @kristorrington for AI automation that survives the real world.
 
 #AI #KimiK3 #Claude #Benchmarks #LLM #Shorts
 ```
-
----
-
-## Short-HalfAPoint-B (A/B hook variant — hook "THE TEST MOONSHOT DIDN'T RUN")
-
-Same video + copy as Short-HalfAPoint; post the loser as unlisted or delete after 48h.
 
 ---
 
@@ -1156,12 +1144,6 @@ Follow @kristorrington for AI automation that survives the real world.
 
 ---
 
-## Short-TokenTax-B (A/B hook variant — hook "THE 130-MILLION-TOKEN PROBLEM")
-
-Same video + copy as Short-TokenTax; post the loser as unlisted or delete after 48h.
-
----
-
 ## Short-NotOpenYet
 
 **Title**
@@ -1181,12 +1163,6 @@ Follow @kristorrington for AI automation that survives the real world.
 
 #AI #KimiK3 #OpenSource #OpenWeights #LLM #Shorts
 ```
-
----
-
-## Short-NotOpenYet-B (A/B hook variant — hook "THE OPEN MODEL YOU CAN'T HAVE")
-
-Same video + copy as Short-NotOpenYet; post the loser as unlisted or delete after 48h.
 
 ---
 

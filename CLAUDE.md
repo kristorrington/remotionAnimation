@@ -631,7 +631,8 @@ under the hook title (house default — set it on every short). Also:
 `Beat.tint` drives the per-beat `TintWash`; `Beat.emoji` pops ONE meme emoji on
 a beat (~1 per short); the progress bar shows beat milestone ticks
 automatically and fades in with the topic banner after the hook;
-`ShortSpec.hookAlt` registers a `<id>-B` composition for A/B hook testing; the
+`ShortSpec.hookAlt` (A/B `<id>-B` composition) is DEPRECATED — do NOT create B
+variants (Kris, July 2026): ship ONE hook per short, no `hookAlt`; the
 final ~9 frames dip to dark so the auto-replay loop never visibly jumps; toggle
 `showSafeZones` in Studio props to see platform-UI safe zones (never renders).
 

@@ -50,8 +50,9 @@ Legacy `icon` cards ([CartoonBeat.tsx](CartoonBeat.tsx)) are a fallback — max 
 per short.
 
 **Extras:** `Beat.emoji` pops ONE oversized meme emoji with the beat (use ~1 per
-short — animated-meme energy, not confetti). `ShortSpec.hookAlt` auto-registers
-a `<id>-B` composition (same clip, different hook) for A/B testing.
+short — animated-meme energy, not confetti). `ShortSpec.hookAlt` is DEPRECATED
+(Kris, July 2026: "you don't need to create b variants anymore") — ship ONE
+hook per short, no `<id>-B` composition.
 The TopBar progress bar shows a milestone tick per beat automatically. The last
 ~9 frames dip toward dark so the platform auto-replay (last frame → first) never
 visibly jumps — pair that with a loop-back line (see "Loop endings"). While

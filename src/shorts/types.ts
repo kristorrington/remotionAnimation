@@ -143,8 +143,10 @@ export type ShortSpec = {
   // beat's gag IS the hook. Either way keep a beat at frame ~8 so the panel
   // is populated the moment it appears.
   animHook?: boolean;
-  // A/B hook test: registers a second composition (`<id>-B`) identical except
-  // for this hook line. Render both, post both, keep the winner.
+  // DEPRECATED — do NOT set (Kris, July 2026: "you don't need to create b
+  // variants anymore"). Previously registered a second `<id>-B` composition
+  // for A/B hook testing; new shorts ship a single hook. Kept only so the
+  // archived specs still type-check.
   hookAlt?: string;
   outro: string; // CTA shown in the last ~3s (e.g. "FOLLOW FOR MORE")
   music?: string; // optional low bed in public/music/ (e.g. "music/tension.MP3")

@@ -22,7 +22,6 @@ export const SHORTS: ShortSpec[] = [
     durationInFrames: 1036, // ~35s
     topic: "THE 2.8T CHALLENGER",
     hook: "THE NEW AI KING?",
-    hookAlt: "3 CATCHES BEFORE THE CROWN", // A/B → Short-KimiIntro-B
     context: "Kimi K3 = Moonshot's giant new open model",
     beats: [
       // SCENE 1 = the FACE hook. The reveal montage is the FIRST scene in the
@@ -50,7 +49,6 @@ export const SHORTS: ShortSpec[] = [
     durationInFrames: 926, // ~31s
     topic: "CAN IT BEAT CLAUDE?",
     hook: "0.44% FROM THE THRONE",
-    hookAlt: "THE TEST MOONSHOT DIDN'T RUN", // A/B → Short-HalfAPoint-B
     context: "Vals AI = independent model benchmarks",
     beats: [
       // SCENE 1 = the FACE hook. The reveal montage rides the TOP split band
@@ -76,7 +74,6 @@ export const SHORTS: ShortSpec[] = [
     durationInFrames: 907, // ~30s
     topic: "THE TOKEN TAX",
     hook: "SLOW AND EXPENSIVE?",
-    hookAlt: "THE 130-MILLION-TOKEN PROBLEM", // A/B → Short-TokenTax-B
     context: "Kimi K3 = Moonshot's new 2.8T model",
     beats: [
       // SCENE 1 = the FACE hook. The reveal montage rides the TOP split band
@@ -102,7 +99,6 @@ export const SHORTS: ShortSpec[] = [
     durationInFrames: 947, // ~32s
     topic: "IS IT EVEN OPEN?",
     hook: "CALLED OPEN. CAN'T DOWNLOAD.",
-    hookAlt: "THE OPEN MODEL YOU CAN'T HAVE", // A/B → Short-NotOpenYet-B
     context: "Kimi K3's weights ship July 27 — API only today",
     beats: [
       // SCENE 1 = the FACE hook. The reveal montage rides the TOP split band
