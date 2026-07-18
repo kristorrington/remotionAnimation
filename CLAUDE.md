@@ -692,10 +692,13 @@ When the subject has an OFFICIAL launch/product/announcement video (the
 brand's own YouTube reveal, keynote, product film — NEVER another creator's
 review/reaction), it is a FIRST-CLASS asset, on par with screenshots: clip it
 and thread real footage through the cut so the edit is **not just performance
-charts**. Rules: (1) **the opening POPS with a MONTAGE** — the opening cover
-(the ~3s product shot after the face) is a MULTI-SCENE montage cut from the
-official film (the branding reveal PLUS 2-3 capability/demo scenes, hard cuts,
-so the first cover sizzles — never a single static clip); (2) **more montages
+charts**. Rules: (1) **the video OPENS on the MONTAGE, on the product name**
+(Kris, July 2026 — "add the montage as soon as I say Moonshot AI in the
+opening frame"): the opening montage starts at frame ~0 and PUNCHES in
+(`KimiClipScene opening` — card 0.5→1.0) the moment the VO says the
+product/company name, playing the WHOLE hook (~8s, 6-8 hard-cut scenes:
+branding reveal + capability demos) before the first receipt lands — the
+sizzle IS the open, not a 3s cover after the face; (2) **more montages
 throughout** — build several clip beats across the runtime (aim ~4-5, spread
 across chapters), and prefer a 2-4 scene MONTAGE per beat over a single scene
 (concat the labelled demos with ffmpeg's concat filter). Map each to the claim
@@ -712,11 +715,15 @@ the source, editorial kicker/title on the paper ABOVE the card so text never
 sits on the moving footage) — never dump raw video full-bleed; give each
 internal hard cut a `swish`; (5) the VO always leads — clips are muted; (6)
 manifest every clip (`type: reference`, sourceUrl = the official video); (7)
-**do this in the SHORTS too** — the `clip` beat scene (BeatScenes) shows a
-muted montage as a film card in the band (OFFICIAL FILM pill, same split-view
-rules as `receipt`: never inside a fullscreen span); add at least one to the
-opening/relevant shorts. Third-party videos stay OFF (licence, §10.2) —
-recreate or use official footage only.
+**do this in the SHORTS too, FULL-SCREEN** (Kris, July 2026 — "i dont see any
+montage in the shorts; add them"): give EVERY short a `clip` montage as a
+FULL-SCREEN span, not a small band clip. Structure: hook (face) → full-screen
+reveal/capability montage → proof receipt → analysis. The montage span obeys
+the shorts span rules (span-owning `clip` beat at span.from+13, ≥90f from
+other spans, start ≥190, end ≤dur−140); a receipt may TRAIL to after the
+montage span. The `clip` beat scene lives in BeatScenes (OFFICIAL FILM pill).
+Third-party videos stay OFF (licence, §10.2) — recreate or use official
+footage only.
 
 **Asset types to look for:** official logos · official product icons · brand
 assets · official screenshots · model cards · pricing screenshots · benchmark
@@ -820,7 +827,20 @@ press kits, screenshots of official pages.
   where to look within 1 second** — the zoom OPENS on the claim (claim-zoom
   `from`, never a contentless region like a banner or search box) and on
   text-dense pages the claim line gets a `highlight` sweep. Recrop and
-  re-render until every receipt passes. A receipt still that errors instead
+  re-render until every receipt passes.
+  **ZOOM INTO EACH SPOKEN CLAIM with `waypoints` (Kris, July 2026 — "add key
+  frames so it zooms into exactly what you're talking about").** When a
+  receipt proves SEVERAL claims (a leaderboard's rows, a comparison table's
+  rows, a card's two scores), don't sit on a static whole-page view — pass
+  `SourceScreenshot`/`ScreenshotReceiptScene` a `waypoints` array: `{ rect,
+  at }[]` where each crop LANDS at the frame its claim is SPOKEN (pans in over
+  the preceding ~24f), `waypoints[0]` the establishing view at `at:0`. The
+  view then travels claim-to-claim in sync with the VO (arena: establish →
+  zoom the ranking → settle on #1 with the runners-up below; AA compare:
+  the speed row → the time-to-first-token row; a scores card: zoom the exact
+  sentence). Verify with a still AT each waypoint's landing frame — the right
+  claim must be centred and readable. Single-claim receipts keep the plain
+  `from`→`to`+`highlight`. A receipt still that errors instead
   of rendering = the beat CRASHED (HiddenCostScene at dur 112) — investigate,
   never skip it. A receipt HOLDS ≥ ~3.5s (Kris: "on
   screen long enough" — only a deliberate montage run goes quicker) and the
