@@ -260,7 +260,7 @@ export const KimiVisuals: React.FC = () => {
       </Sequence>
       {/* 0:08 the #1 claim — the arena table, Claude + GPT visibly below */}
       <Sequence from={260} durationInFrames={280} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={280} kicker="ARENA · CODE | WEBDEV" title="K3 = #1" fullBleed={false} tint="#4FA98A" src={`${SHOT}/arena-webdev-top-wide.png`} url="arena.ai/leaderboard/code/webdev" imageW={2820} imageH={1507} from={{ x: 40, y: 30, w: 1800, h: 962 }} to={{ x: 0, y: 0, w: 2820, h: 1507 }} zoomAt={12} highlight={{ x: 46, y: 494, w: 2720, h: 108 }} highlightAt={15} />
+        <ScreenshotReceiptScene durationInFrames={280} kicker="ARENA · CODE | WEBDEV" title="K3 = #1" fullBleed={false} tint="#4FA98A" src={`${SHOT}/arena-webdev-top-wide.png`} url="arena.ai/leaderboard/code/webdev" imageW={2820} imageH={1507} to={{ x: 0, y: 0, w: 2820, h: 1507 }} waypoints={[{ rect: { x: 0, y: 0, w: 2820, h: 1507 }, at: 0 }, { rect: { x: 40, y: 428, w: 2740, h: 700 }, at: 20 }, { rect: { x: 40, y: 470, w: 2740, h: 470 }, at: 175 }]} highlight={{ x: 46, y: 500, w: 2720, h: 100 }} highlightAt={26} />
       </Sequence>
       {/* 0:18 THE THREE CATCHES */}
       <Sequence from={540} durationInFrames={320} premountFor={30}>
@@ -280,7 +280,7 @@ export const KimiVisuals: React.FC = () => {
       </Sequence>
       {/* 1:05 the coding numbers card */}
       <Sequence from={1940} durationInFrames={420} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={420} kicker="VALS AI · CODING" title="95.1% SWE-BENCH" fullBleed={false} tint="#4FA98A" src={`${SHOT}/vals-kimi-card-wide.png`} url="vals.ai" imageW={2900} imageH={1550} from={{ x: 60, y: 60, w: 1500, h: 802 }} to={{ x: 0, y: 0, w: 2900, h: 1550 }} zoomAt={12} highlight={{ x: 120, y: 560, w: 760, h: 158 }} highlightAt={137} />
+        <ScreenshotReceiptScene durationInFrames={420} kicker="VALS AI · CODING" title="95.1% SWE-BENCH" fullBleed={false} tint="#4FA98A" src={`${SHOT}/vals-kimi-card-wide.png`} url="vals.ai" imageW={2900} imageH={1550} to={{ x: 150, y: 285, w: 850, h: 500 }} waypoints={[{ rect: { x: 80, y: 90, w: 1740, h: 1000 }, at: 0 }, { rect: { x: 150, y: 285, w: 850, h: 500 }, at: 137 }]} highlight={{ x: 150, y: 592, w: 770, h: 165 }} highlightAt={150} />
       </Sequence>
       {/* 1:18 — OFFICIAL FILM: what those scores look like in practice */}
       <Sequence from={2360} durationInFrames={240} premountFor={30}>
@@ -337,7 +337,7 @@ export const KimiVisuals: React.FC = () => {
       </Sequence>
       {/* 3:44 the side-by-side table */}
       <Sequence from={6708} durationInFrames={450} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={450} kicker="ARTIFICIAL ANALYSIS" title="2.7× THE THROUGHPUT" fullBleed={false} tint={AMBER} src={`${SHOT}/aa-compare-table-wide.png`} url="artificialanalysis.ai" imageW={2900} imageH={1550} from={{ x: 60, y: 40, w: 1600, h: 855 }} to={{ x: 0, y: 0, w: 2900, h: 1550 }} zoomAt={12} />
+        <ScreenshotReceiptScene durationInFrames={450} kicker="ARTIFICIAL ANALYSIS" title="2.7× THE THROUGHPUT" fullBleed={false} tint={AMBER} src={`${SHOT}/aa-compare-table-wide.png`} url="artificialanalysis.ai" imageW={2900} imageH={1550} to={{ x: 440, y: 250, w: 1720, h: 440 }} waypoints={[{ rect: { x: 0, y: 0, w: 2900, h: 1550 }, at: 0 }, { rect: { x: 440, y: 250, w: 1720, h: 440 }, at: 90 }, { rect: { x: 440, y: 445, w: 1720, h: 380 }, at: 240 }]} />
       </Sequence>
       <Sequence from={7356} durationInFrames={139} premountFor={30}>
         <FinalTakeawayScene durationInFrames={139} kicker="KDA HELPS, BUT" title="NOT A SPEED LEADER" stamp="HALF THE PROBLEM" stampAt={104} accent={RED} />

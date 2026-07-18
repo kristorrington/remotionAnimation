@@ -36,27 +36,53 @@ export const SourceScreenshot: React.FC<{
   from?: Rect; // start view (defaults to the full page)
   to: Rect; // the crop that proves the claim (zoomed into over `zoomAt..+26`)
   zoomAt?: number;
+  // WAYPOINTS (Kris, July 2026 — "zoom into exactly what you're talking
+  // about"): when a receipt proves SEVERAL spoken claims, pan/zoom through
+  // them in order — each crop LANDS at its `at` (the frame the claim is
+  // spoken), pans in over the preceding ~24f. Overrides from/to/zoomAt.
+  // waypoints[0] is the opening view (its `at` is the hold-from, usually ~0).
+  waypoints?: { rect: Rect; at: number }[];
   highlight?: Rect; // the exact line, in image pixels — gets a sweep
   highlightAt?: number;
   width?: number;
   height?: number;
   bleed?: boolean; // full-frame mode: no radius/border/glow — the page IS the frame
   fit?: "contain" | "cover"; // cover: the to-rect always fills the viewport
-}> = ({ src, url, imageW, imageH, from, to, zoomAt = 20, highlight, highlightAt = 52, width = 1100, height = 640, bleed = false, fit = "contain" }) => {
+}> = ({ src, url, imageW, imageH, from, to, zoomAt = 20, waypoints, highlight, highlightAt = 52, width = 1100, height = 640, bleed = false, fit = "contain" }) => {
   const frame = useCurrentFrame();
   const inner = height - 54;
-  const a = rectTransform(from ?? { x: 0, y: 0, w: imageW, h: imageH }, width, inner, fit);
-  const b = rectTransform(to, width, inner, fit);
-  const t = interpolate(frame, [zoomAt, zoomAt + 26], [0, 1], { ...CLAMP, easing: (x) => 1 - (1 - x) * (1 - x) });
-  const scale = a.scale + (b.scale - a.scale) * t;
-  const tx = a.tx + (b.tx - a.tx) * t;
-  const ty = a.ty + (b.ty - a.ty) * t;
-  // Ken Burns tail: once the zoom lands, keep a slow drift going so the
-  // receipt never sits static (editing research: slow purposeful motion).
-  // Bleed mode drifts the PAGE (frame-edge crop is fine full-screen); card
-  // mode drifts the whole CARD outward instead — an inner drift would crop
-  // the page at the card edge and nibble text (the "leclining" bug).
-  const drift = interpolate(frame, [zoomAt + 26, zoomAt + 26 + 260], [1, 1.05], CLAMP);
+  const useWaypoints = waypoints !== undefined && waypoints.length >= 1;
+  let scale: number;
+  let tx: number;
+  let ty: number;
+  let drift = 1;
+  if (useWaypoints) {
+    const wps = waypoints!;
+    const T = wps.map((w) => rectTransform(w.rect, width, inner, fit));
+    const PAN = 24;
+    // the latest waypoint we've begun panning toward
+    let i = 0;
+    for (let k = 1; k < wps.length; k++) if (frame >= wps[k].at - PAN) i = k;
+    const A = T[Math.max(0, i - 1)];
+    const B = T[i];
+    const p = i === 0 ? 1 : interpolate(frame, [wps[i].at - PAN, wps[i].at], [0, 1], { ...CLAMP, easing: (x) => 1 - (1 - x) * (1 - x) });
+    scale = A.scale + (B.scale - A.scale) * p;
+    tx = A.tx + (B.tx - A.tx) * p;
+    ty = A.ty + (B.ty - A.ty) * p;
+  } else {
+    const a = rectTransform(from ?? { x: 0, y: 0, w: imageW, h: imageH }, width, inner, fit);
+    const b = rectTransform(to, width, inner, fit);
+    const t = interpolate(frame, [zoomAt, zoomAt + 26], [0, 1], { ...CLAMP, easing: (x) => 1 - (1 - x) * (1 - x) });
+    scale = a.scale + (b.scale - a.scale) * t;
+    tx = a.tx + (b.tx - a.tx) * t;
+    ty = a.ty + (b.ty - a.ty) * t;
+    // Ken Burns tail: once the zoom lands, keep a slow drift going so the
+    // receipt never sits static (editing research: slow purposeful motion).
+    // Bleed mode drifts the PAGE (frame-edge crop is fine full-screen); card
+    // mode drifts the whole CARD outward instead — an inner drift would crop
+    // the page at the card edge and nibble text (the "leclining" bug).
+    drift = interpolate(frame, [zoomAt + 26, zoomAt + 26 + 260], [1, 1.05], CLAMP);
+  }
   const op = interpolate(frame, [0, 12], [0, 1], CLAMP);
   return (
     <div style={{ width, borderRadius: bleed ? 0 : 18, overflow: "hidden", border: bleed ? "none" : `2px solid ${CYAN}55`, boxShadow: bleed ? "none" : `0 30px 80px rgba(0,0,0,0.55), 0 0 40px ${CYAN}22`, opacity: op, background: "#0B0F17", transform: bleed ? undefined : `scale(${drift})`, transformOrigin: "50% 50%" }}>
