@@ -302,7 +302,7 @@ export const KimiVisuals: React.FC = () => {
       </Sequence>
       {/* 1:48 Artificial Analysis tiles */}
       <Sequence from={3234} durationInFrames={330} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={330} kicker="ARTIFICIAL ANALYSIS" title="INTELLIGENCE: 57" fullBleed={false} tint={AMBER} src={`${SHOT}/aa-kimi-tiles-wide.png`} url="artificialanalysis.ai/models/kimi-k3" imageW={3840} imageH={2052} from={{ x: 420, y: 180, w: 2600, h: 1389 }} to={{ x: 0, y: 0, w: 3840, h: 2052 }} zoomAt={12} highlight={{ x: 480, y: 240, w: 560, h: 420 }} highlightAt={234} />
+        <ScreenshotReceiptScene durationInFrames={330} kicker="ARTIFICIAL ANALYSIS" title="INTELLIGENCE: 57" fullBleed={false} tint={AMBER} src={`${SHOT}/aa-kimi-tiles-wide.png`} url="artificialanalysis.ai/models/kimi-k3" imageW={3840} imageH={2052} to={{ x: 120, y: 60, w: 2000, h: 926 }} waypoints={[{ rect: { x: 0, y: 0, w: 3840, h: 2052 }, at: 0 }, { rect: { x: 120, y: 60, w: 2000, h: 926 }, at: 200 }]} highlight={{ x: 480, y: 240, w: 560, h: 420 }} highlightAt={234} />
       </Sequence>
       {/* 1:59 one model, three boards */}
       <Sequence from={3564} durationInFrames={420} premountFor={30}>
@@ -318,7 +318,7 @@ export const KimiVisuals: React.FC = () => {
       </Sequence>
       {/* CH3 2:23 — the size, from Moonshot's own blog */}
       <Sequence from={4318} durationInFrames={270} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={270} kicker="MOONSHOT'S ANNOUNCEMENT" title="2.8 TRILLION" fullBleed={false} tint="#6E93BD" src={`${SHOT}/kimi-blog-claims-wide.png`} url="kimi.com/blog/kimi-k3" imageW={2900} imageH={1550} from={{ x: 480, y: 80, w: 2100, h: 1123 }} to={{ x: 0, y: 0, w: 2900, h: 1550 }} zoomAt={10} highlight={{ x: 660, y: 106, w: 1860, h: 95 }} highlightAt={31} />
+        <ScreenshotReceiptScene durationInFrames={270} kicker="MOONSHOT'S ANNOUNCEMENT" title="2.8 TRILLION" fullBleed={false} tint="#6E93BD" src={`${SHOT}/kimi-blog-claims-wide.png`} url="kimi.com/blog/kimi-k3" imageW={2900} imageH={1550} to={{ x: 440, y: 40, w: 2200, h: 1019 }} waypoints={[{ rect: { x: 0, y: 0, w: 2900, h: 1550 }, at: 0 }, { rect: { x: 440, y: 40, w: 2200, h: 1019 }, at: 20 }]} highlight={{ x: 660, y: 106, w: 1860, h: 95 }} highlightAt={40} />
       </Sequence>
       {/* 2:32 mixture of experts — the custom grid */}
       <Sequence from={4588} durationInFrames={770} premountFor={30}>
@@ -326,7 +326,7 @@ export const KimiVisuals: React.FC = () => {
       </Sequence>
       {/* 2:58 the 1M context, official docs */}
       <Sequence from={5358} durationInFrames={200} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={200} kicker="MOONSHOT DOCS" title="1M-TOKEN CONTEXT" fullBleed={false} tint="#4FA98A" src={`${SHOT}/moonshot-quickstart-wide.png`} url="platform.moonshot.ai/docs" imageW={3840} imageH={2052} from={{ x: 900, y: 100, w: 2100, h: 1123 }} to={{ x: 560, y: 0, w: 2740, h: 1465 }} zoomAt={12} highlight={{ x: 1130, y: 496, w: 1540, h: 60 }} highlightAt={104} />
+        <ScreenshotReceiptScene durationInFrames={200} kicker="MOONSHOT DOCS" title="1M-TOKEN CONTEXT" fullBleed={false} tint="#4FA98A" src={`${SHOT}/moonshot-quickstart-wide.png`} url="platform.moonshot.ai/docs" imageW={3840} imageH={2052} to={{ x: 800, y: 120, w: 2200, h: 1019 }} waypoints={[{ rect: { x: 400, y: 0, w: 3000, h: 1390 }, at: 0 }, { rect: { x: 800, y: 120, w: 2200, h: 1019 }, at: 96 }]} highlight={{ x: 1130, y: 496, w: 1540, h: 60 }} highlightAt={110} />
       </Sequence>
       {/* 3:05 — OFFICIAL FILM: codebases, documents, extended agent workflows */}
       <Sequence from={5558} durationInFrames={140} premountFor={30}>
@@ -335,7 +335,7 @@ export const KimiVisuals: React.FC = () => {
 
       {/* CH4 3:10 — Kimi Delta Attention, the 6.3× figure WITH its caveat */}
       <Sequence from={5698} durationInFrames={390} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={390} kicker="GITHUB · KIMI LINEAR" title="6.3× — SPECIFIC CONDITIONS" fullBleed={false} tint="#6E93BD" src={`${SHOT}/kimi-linear-graph-wide.png`} url="github.com/MoonshotAI/Kimi-Linear" imageW={2200} imageH={1176} from={{ x: 60, y: 40, w: 1400, h: 748 }} to={{ x: 0, y: 0, w: 2200, h: 1176 }} zoomAt={12} highlight={{ x: 1400, y: 380, w: 260, h: 200 }} highlightAt={169} />
+        <ScreenshotReceiptScene durationInFrames={390} kicker="GITHUB · KIMI LINEAR" title="6.3× — SPECIFIC CONDITIONS" fullBleed={false} tint="#6E93BD" src={`${SHOT}/kimi-linear-graph-wide.png`} url="github.com/MoonshotAI/Kimi-Linear" imageW={2200} imageH={1176} to={{ x: 880, y: 220, w: 1300, h: 602 }} waypoints={[{ rect: { x: 0, y: 0, w: 2200, h: 1176 }, at: 0 }, { rect: { x: 880, y: 220, w: 1300, h: 602 }, at: 160 }]} highlight={{ x: 1400, y: 380, w: 260, h: 200 }} highlightAt={175} />
       </Sequence>
       {/* 3:28 the race K3 vs GLM — GLM's lane is the fast one */}
       <Sequence from={6088} durationInFrames={620} premountFor={30}>
@@ -351,7 +351,7 @@ export const KimiVisuals: React.FC = () => {
 
       {/* CH5 4:10 — 130M output tokens */}
       <Sequence from={7495} durationInFrames={445} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={445} kicker="ARTIFICIAL ANALYSIS" title="130M OUTPUT TOKENS" fullBleed={false} tint={RED} src={`${SHOT}/aa-kimi-tokens.png`} url="artificialanalysis.ai/models/kimi-k3" imageW={660} imageH={560} from={{ x: 30, y: 20, w: 600, h: 509 }} to={{ x: 0, y: 0, w: 660, h: 560 }} zoomAt={12} />
+        <ScreenshotReceiptScene durationInFrames={445} kicker="ARTIFICIAL ANALYSIS" title="130M OUTPUT TOKENS" fullBleed={false} tint={RED} src={`${SHOT}/aa-kimi-tokens.png`} url="artificialanalysis.ai/models/kimi-k3" imageW={660} imageH={560} to={{ x: 20, y: 200, w: 620, h: 287 }} waypoints={[{ rect: { x: 0, y: 0, w: 660, h: 560 }, at: 0 }, { rect: { x: 20, y: 200, w: 620, h: 287 }, at: 130 }]} />
       </Sequence>
       {/* 4:24 the bill printer — slower AND more tokens */}
       <Sequence from={7940} durationInFrames={490} premountFor={30}>
@@ -359,12 +359,12 @@ export const KimiVisuals: React.FC = () => {
       </Sequence>
       {/* 4:41 official pricing */}
       <Sequence from={8430} durationInFrames={475} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={475} kicker="MOONSHOT · OFFICIAL" title="$3 IN · $15 OUT" fullBleed={false} tint={AMBER} src={`${SHOT}/moonshot-pricing-wide.png`} url="platform.moonshot.ai/docs/pricing" imageW={1720} imageH={920} from={{ x: 40, y: 30, w: 1200, h: 641 }} to={{ x: 0, y: 0, w: 1720, h: 920 }} zoomAt={12} highlight={{ x: 100, y: 630, w: 1470, h: 70 }} highlightAt={37} />
+        <ScreenshotReceiptScene durationInFrames={475} kicker="MOONSHOT · OFFICIAL" title="$3 IN · $15 OUT" fullBleed={false} tint={AMBER} src={`${SHOT}/moonshot-pricing-wide.png`} url="platform.moonshot.ai/docs/pricing" imageW={1720} imageH={920} to={{ x: 50, y: 170, w: 1620, h: 750 }} waypoints={[{ rect: { x: 0, y: 0, w: 1720, h: 920 }, at: 0 }, { rect: { x: 50, y: 170, w: 1620, h: 750 }, at: 30 }]} highlight={{ x: 100, y: 630, w: 1470, h: 70 }} highlightAt={44} />
       </Sequence>
 
       {/* CH6 4:57 — the open-model claim: July 27 */}
       <Sequence from={8905} durationInFrames={405} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={405} kicker="THE OPEN-MODEL CLAIM" title="WEIGHTS: JULY 27" fullBleed={false} tint="#6E93BD" src={`${SHOT}/kimi-blog-july27-wide.png`} url="kimi.com/blog/kimi-k3" imageW={2400} imageH={1283} from={{ x: 400, y: 120, w: 1500, h: 802 }} to={{ x: 0, y: 0, w: 2400, h: 1283 }} zoomAt={12} highlight={{ x: 435, y: 372, w: 1280, h: 84 }} highlightAt={253} />
+        <ScreenshotReceiptScene durationInFrames={405} kicker="THE OPEN-MODEL CLAIM" title="WEIGHTS: JULY 27" fullBleed={false} tint="#6E93BD" src={`${SHOT}/kimi-blog-july27-wide.png`} url="kimi.com/blog/kimi-k3" imageW={2400} imageH={1283} to={{ x: 250, y: 120, w: 1900, h: 880 }} waypoints={[{ rect: { x: 0, y: 0, w: 2400, h: 1283 }, at: 0 }, { rect: { x: 250, y: 120, w: 1900, h: 880 }, at: 230 }]} highlight={{ x: 435, y: 372, w: 1280, h: 84 }} highlightAt={253} />
       </Sequence>
       {/* 5:10 API gate open, weights gate shut */}
       <Sequence from={9310} durationInFrames={350} premountFor={30}>
