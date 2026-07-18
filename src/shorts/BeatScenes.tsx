@@ -990,7 +990,7 @@ const ReceiptBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
   return (
     <AbsoluteFill style={{ transform: `translateY(${-shift}px) scale(${1 / zoom})` }}>
       <div style={{ position: "absolute", left: (1080 - cardW) / 2, top: bannerZone + Math.max(0, (availH - cardH) / 2) }}>
-        <SourceScreenshot src={s.src} url={s.url} imageW={s.imageW} imageH={s.imageH} from={s.from} to={s.to} zoomAt={s.zoomAt} highlight={s.highlight} highlightAt={s.highlightAt} width={cardW} height={cardH} fit="cover" />
+        <SourceScreenshot src={s.src} url={s.url} imageW={s.imageW} imageH={s.imageH} from={s.from} to={s.to} zoomAt={s.zoomAt} waypoints={s.waypoints} highlight={s.highlight} highlightAt={s.highlightAt} width={cardW} height={cardH} fit="cover" />
       </div>
     </AbsoluteFill>
   );

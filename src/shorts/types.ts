@@ -76,6 +76,10 @@ export type Beat = {
     src: string; url: string; imageW: number; imageH: number;
     from?: ShotRect; to: ShotRect; zoomAt?: number;
     highlight?: ShotRect; highlightAt?: number;
+    // CapCut-style keyframe zoom (Kris, July 2026): pan/zoom through each
+    // spoken claim — each crop LANDS at its `at` (beat-local frame). `to`
+    // stays the card-sizing aspect; keep every waypoint rect on ~that aspect.
+    waypoints?: { rect: ShotRect; at: number }[];
   };
   // montage: the long-form recap treatment — full pages flick through the
   // padded card with a pull-left push per page. Page 0 rides the split
