@@ -1705,13 +1705,13 @@
       "concerns": null
     },
     {
-      "filename": "kimi-clip-reveal.mp4",
-      "localPath": "public/assets/external/clips/kimi-clip-reveal.mp4",
+      "filename": "kimi-open-montage.mp4",
+      "localPath": "public/assets/external/clips/kimi-open-montage.mp4",
       "type": "reference",
       "sourceUrl": "https://www.youtube.com/watch?v=bn0atstgavo",
       "sourceName": "Moonshot AI - 'Meet Kimi K3' official launch film (YouTube)",
       "dateAccessed": "2026-07-18",
-      "usageNote": "Clip of the OFFICIAL brand launch film used for commentary/reference (muted). the 'meet kimi k3' branding reveal collage - the intro cover",
+      "usageNote": "MUTED montage cut from the OFFICIAL brand launch film for commentary/reference. OPENING sizzle montage: branding reveal + Swing Physics + FPS Gameplay + Browser RPG",
       "usedIn": [
         "kimiVideo intro"
       ],
@@ -1719,13 +1719,27 @@
       "concerns": null
     },
     {
-      "filename": "kimi-clip-build.mp4",
-      "localPath": "public/assets/external/clips/kimi-clip-build.mp4",
+      "filename": "kimi-real-montage.mp4",
+      "localPath": "public/assets/external/clips/kimi-real-montage.mp4",
       "type": "reference",
       "sourceUrl": "https://www.youtube.com/watch?v=bn0atstgavo",
       "sourceName": "Moonshot AI - 'Meet Kimi K3' official launch film (YouTube)",
       "dateAccessed": "2026-07-18",
-      "usageNote": "Clip of the OFFICIAL brand launch film used for commentary/reference (muted). 3D Game Emulator capability demo (Game Boy render) - 'what it builds' beat",
+      "usageNote": "MUTED montage cut from the OFFICIAL brand launch film for commentary/reference. capability montage: 3D Game Emulator + Interactive 3D watch + typewriter + FPS - 'real output' beat",
+      "usedIn": [
+        "kimiVideo ch1"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "kimi-build-montage.mp4",
+      "localPath": "public/assets/external/clips/kimi-build-montage.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=bn0atstgavo",
+      "sourceName": "Moonshot AI - 'Meet Kimi K3' official launch film (YouTube)",
+      "dateAccessed": "2026-07-18",
+      "usageNote": "MUTED montage cut from the OFFICIAL brand launch film for commentary/reference. game montage: FPS + Browser RPG + 3D Game Emulator - 'what it builds' beat",
       "usedIn": [
         "kimiVideo ch3"
       ],
@@ -1733,13 +1747,13 @@
       "concerns": null
     },
     {
-      "filename": "kimi-clip-knowledge.mp4",
-      "localPath": "public/assets/external/clips/kimi-clip-knowledge.mp4",
+      "filename": "kimi-knowledge-montage.mp4",
+      "localPath": "public/assets/external/clips/kimi-knowledge-montage.mp4",
       "type": "reference",
       "sourceUrl": "https://www.youtube.com/watch?v=bn0atstgavo",
       "sourceName": "Moonshot AI - 'Meet Kimi K3' official launch film (YouTube)",
       "dateAccessed": "2026-07-18",
-      "usageNote": "Clip of the OFFICIAL brand launch film used for commentary/reference (muted). Research with Interactive Visualization demo - knowledge-work beat",
+      "usageNote": "MUTED montage cut from the OFFICIAL brand launch film for commentary/reference. knowledge montage: Research Visualization + Scientific Illustration",
       "usedIn": [
         "kimiVideo ch3 context"
       ],
@@ -1747,13 +1761,13 @@
       "concerns": null
     },
     {
-      "filename": "kimi-clip-typewriter.mp4",
-      "localPath": "public/assets/external/clips/kimi-clip-typewriter.mp4",
+      "filename": "kimi-coding-montage.mp4",
+      "localPath": "public/assets/external/clips/kimi-coding-montage.mp4",
       "type": "reference",
       "sourceUrl": "https://www.youtube.com/watch?v=bn0atstgavo",
       "sourceName": "Moonshot AI - 'Meet Kimi K3' official launch film (YouTube)",
       "dateAccessed": "2026-07-18",
-      "usageNote": "Clip of the OFFICIAL brand launch film used for commentary/reference (muted). World Time / Interactive 3D watch demo - coding-verdict beat",
+      "usageNote": "MUTED montage cut from the OFFICIAL brand launch film for commentary/reference. coding montage: Interactive 3D watch + 242-part typewriter - coding verdict",
       "usedIn": [
         "kimiVideo verdict"
       ],

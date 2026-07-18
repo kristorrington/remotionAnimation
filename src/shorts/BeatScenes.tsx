@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, OffthreadVideo, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { fitText } from "@remotion/layout-utils";
 import { FONT } from "../components/overlayUI";
 import { CartoonRobot, ThoughtBubble, Sparks, SpeechBubble, RobotPose, glassCard, CYAN, WHITE, RED, AMBER, GREEN, PANEL } from "../motion/subjects";
@@ -1048,6 +1048,39 @@ const MontageBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
   );
 };
 
+// clip — an OFFICIAL brand video clip (muted) as a film card in the band, the
+// short-form of KimiClipScene (Kris, July 2026: "add clips in the shorts too").
+// Same lean split-view frame as ReceiptBeat; the "OFFICIAL FILM" pill records
+// the source. Never placed inside a fullscreen span.
+const ClipBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
+  const { zoom, shift, panelH } = React.useContext(PanelLayout);
+  const c = beat.clip;
+  if (!c) return null;
+  const bannerZone = 112;
+  const seamZone = 52;
+  const availH = Math.max(220, panelH - bannerZone - seamZone);
+  const aspect = 16 / 9;
+  let contentW = 1016;
+  let contentH = contentW / aspect;
+  if (contentH > availH - 40) {
+    contentH = availH - 40;
+    contentW = contentH * aspect;
+  }
+  const cardW = Math.round(contentW);
+  const cardH = Math.round(contentH);
+  return (
+    <AbsoluteFill style={{ transform: `translateY(${-shift}px) scale(${1 / zoom})` }}>
+      <div style={{ position: "absolute", left: (1080 - cardW) / 2, top: bannerZone + Math.max(0, (availH - cardH) / 2), width: cardW, height: cardH, borderRadius: 16, overflow: "hidden", border: "2px solid rgba(217,119,87,0.92)", boxShadow: "0 18px 44px rgba(31,30,29,0.32)", background: "#0e0d0c" }}>
+        <OffthreadVideo src={staticFile(c.src)} muted style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        <div style={{ position: "absolute", left: 18, top: 18, display: "flex", alignItems: "center", gap: 8, padding: "7px 14px", borderRadius: 9, background: "rgba(14,13,12,0.74)", border: "1px solid rgba(255,255,255,0.18)" }}>
+          <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#E03E36", boxShadow: "0 0 8px #E03E36" }} />
+          <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 22, letterSpacing: 2, color: "#fff", transform: "translateZ(0)" }}>OFFICIAL FILM</span>
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 // Brand-mark pop — the product's real logo rides the beat (right dock under
 // the banner zone — the band owns the TOP of the frame since the face-bottom
 // flip; same collision rules as EmojiPop). Opening beats of product videos use it.
@@ -1106,10 +1139,11 @@ export const BeatSceneView: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur
       case "cartridge": return <CartridgeBeat beat={beat} dur={dur} />;
       case "receipt": return <ReceiptBeat beat={beat} />;
       case "montage": return <MontageBeat beat={beat} />;
+      case "clip": return <ClipBeat beat={beat} />;
       default: return null;
     }
   };
-  const lean = beat.scene === "receipt" || beat.scene === "montage";
+  const lean = beat.scene === "receipt" || beat.scene === "montage" || beat.scene === "clip";
   return (
     <AbsoluteFill style={{ opacity: op }}>
       <TintWash tint={beat.tint ?? BEAT_TINTS[beat.at % BEAT_TINTS.length]} seed={beat.at} />

@@ -33,7 +33,8 @@ export type BeatSceneKey =
   | "funnel"     // messy docs pour in, ONE clean report (`badge`) pops out
   | "cartridge"  // SKILL.MD (`badge`) clicks into the model; identical runs pop out
   | "receipt"    // REAL page screenshot receipt (`shot`) — zoom hard, big headlines only
-  | "montage";   // the long-form recap flick: `montage` pages pull-left through the card
+  | "montage"    // the long-form recap flick: `montage` pages pull-left through the card
+  | "clip";      // OFFICIAL video clip (`clip.src`) — muted brand footage in the band
 
 // Image-pixel rectangle for receipt shots (crop / highlight regions).
 export type ShotRect = { x: number; y: number; w: number; h: number };
@@ -87,6 +88,10 @@ export type Beat = {
   montage?: { src: string; url: string; imageW: number; imageH: number; to?: ShotRect }[];
   montageStart?: number;
   montageStep?: number;
+  // clip: an OFFICIAL video clip (muted brand footage) shown as a film card in
+  // the band — same split-view rules as `receipt` (never inside a fullscreen
+  // span). `src` is a bundled mp4 in public/assets/external/clips.
+  clip?: { src: string };
 };
 
 // One short = one data entry. To turn a viral transcript moment into a Short,

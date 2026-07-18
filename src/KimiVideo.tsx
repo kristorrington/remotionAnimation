@@ -35,7 +35,7 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
   { scene: "valsProof", from: 1030, dur: 340 }, // "Vals AI independently tested (1036-1126)… 74.7%, second of 38 (1244-1350)"
   { scene: "valsBars", from: 1370, dur: 570, fullscreen: true }, // "Claude first 75.14 (1430-1452)… GPT-5.6 Sol 73.12 (1577)… ahead of GPT (1811)"
   { scene: "valsCard", from: 1940, dur: 420 }, // "coding even stronger (1971-2020): 95.1% SWE-bench Verified (2077-2190), 91.27% Vibe Code Bench (2261-2342)"
-  { scene: "homeworkKinetic", from: 2360, dur: 240 }, // "not just Moonshot grading its own homework (2385-2441)… near the front of the pack (2575-2599)"
+  { scene: "clipReal", from: 2360, dur: 240, fullscreen: true }, // OFFICIAL FILM montage — "not just grading its own homework… near the front of the pack (2385-2599)"
   // ── CH2 · Arena vs Artificial Analysis ──
   { scene: "arenaTweet", from: 2714, dur: 320 }, // "K3 reached 1,679 Elo (2735-2827)… ahead of Claude and GPT (2903-3025)"
   { scene: "laneKinetic", from: 3034, dur: 200 }, // "the arena measures front-end generation only (3053-3122)"
@@ -253,9 +253,9 @@ export const KimiVisuals: React.FC = () => {
   return (
     <ThemeProvider style="paper">
     <AbsoluteFill>
-      {/* 0:03 the reveal — the OFFICIAL "Meet Kimi K3" launch film */}
+      {/* 0:03 the reveal — a MONTAGE from the OFFICIAL launch film (pops) */}
       <Sequence from={90} durationInFrames={110} premountFor={30}>
-        <KimiClipScene durationInFrames={110} kicker="MOONSHOT AI · JUST REVEALED" title="KIMI K3" src={`${CLIPS}/kimi-clip-reveal.mp4`} tint="#D97757" />
+        <KimiClipScene durationInFrames={110} kicker="MOONSHOT AI · JUST REVEALED" title="KIMI K3" src={`${CLIPS}/kimi-open-montage.mp4`} tint="#D97757" />
       </Sequence>
       {/* 0:06 the #1 claim — the arena table, Claude + GPT visibly below */}
       <Sequence from={200} durationInFrames={340} premountFor={30}>
@@ -281,8 +281,9 @@ export const KimiVisuals: React.FC = () => {
       <Sequence from={1940} durationInFrames={420} premountFor={30}>
         <ScreenshotReceiptScene durationInFrames={420} kicker="VALS AI · CODING" title="95.1% SWE-BENCH" fullBleed={false} tint="#4FA98A" src={`${SHOT}/vals-kimi-card-wide.png`} url="vals.ai" imageW={2900} imageH={1550} from={{ x: 60, y: 60, w: 1500, h: 802 }} to={{ x: 0, y: 0, w: 2900, h: 1550 }} zoomAt={12} highlight={{ x: 120, y: 560, w: 760, h: 158 }} highlightAt={137} />
       </Sequence>
+      {/* 1:18 — OFFICIAL FILM: what those scores look like in practice */}
       <Sequence from={2360} durationInFrames={240} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={240} kicker="NOT MOONSHOT'S NUMBERS" title="INDEPENDENTLY CONFIRMED" stamp="FRONT OF THE PACK" stampAt={215} accent="#4FA98A" />
+        <KimiClipScene durationInFrames={240} kicker="NOT JUST BENCHMARKS" title="REAL OUTPUT" src={`${CLIPS}/kimi-real-montage.mp4`} tint="#4FA98A" accent="#4FA98A" />
       </Sequence>
 
       {/* CH2 1:30 — the arena tweet */}
@@ -306,7 +307,7 @@ export const KimiVisuals: React.FC = () => {
 
       {/* CH3 2:19 — OFFICIAL FILM: what the 2.8T model actually builds */}
       <Sequence from={4184} durationInFrames={134} premountFor={30}>
-        <KimiClipScene durationInFrames={134} kicker="2.8 TRILLION, IN ACTION" title="WHAT IT BUILDS" src={`${CLIPS}/kimi-clip-build.mp4`} tint="#6E93BD" accent="#6E93BD" />
+        <KimiClipScene durationInFrames={134} kicker="2.8 TRILLION, IN ACTION" title="WHAT IT BUILDS" src={`${CLIPS}/kimi-build-montage.mp4`} tint="#6E93BD" accent="#6E93BD" />
       </Sequence>
       {/* CH3 2:23 — the size, from Moonshot's own blog */}
       <Sequence from={4318} durationInFrames={270} premountFor={30}>
@@ -322,7 +323,7 @@ export const KimiVisuals: React.FC = () => {
       </Sequence>
       {/* 3:05 — OFFICIAL FILM: codebases, documents, extended agent workflows */}
       <Sequence from={5558} durationInFrames={140} premountFor={30}>
-        <KimiClipScene durationInFrames={140} kicker="ENORMOUS CONTEXT, IN ACTION" title="KNOWLEDGE WORK" src={`${CLIPS}/kimi-clip-knowledge.mp4`} tint="#4FA98A" accent="#4FA98A" />
+        <KimiClipScene durationInFrames={140} kicker="ENORMOUS CONTEXT, IN ACTION" title="KNOWLEDGE WORK" src={`${CLIPS}/kimi-knowledge-montage.mp4`} tint="#4FA98A" accent="#4FA98A" />
       </Sequence>
 
       {/* CH4 3:10 — Kimi Delta Attention, the 6.3× figure WITH its caveat */}
@@ -371,7 +372,7 @@ export const KimiVisuals: React.FC = () => {
       <Sequence from={9940} durationInFrames={145} premountFor={30}><Montage dur={145} src={`${SHOT}/arena-webdev-top-wide.png`} url="arena.ai/leaderboard/code/webdev" w={2820} h={1507} /></Sequence>
       <Sequence from={10085} durationInFrames={140} premountFor={30}><Montage dur={140} src={`${SHOT}/vals-chart-wide.png`} url="vals.ai" w={2900} h={1550} /></Sequence>
       <Sequence from={10225} durationInFrames={105} premountFor={30}>
-        <KimiClipScene durationInFrames={105} kicker="GENUINELY IMPRESSIVE" title="CODING, INTERACTIVE 3D" src={`${CLIPS}/kimi-clip-typewriter.mp4`} tint="#4FA98A" accent="#4FA98A" />
+        <KimiClipScene durationInFrames={105} kicker="GENUINELY IMPRESSIVE" title="CODING, INTERACTIVE 3D" src={`${CLIPS}/kimi-coding-montage.mp4`} tint="#4FA98A" accent="#4FA98A" />
       </Sequence>
       {/* 5:44 the catches, one last time */}
       <Sequence from={10330} durationInFrames={310} premountFor={30}>

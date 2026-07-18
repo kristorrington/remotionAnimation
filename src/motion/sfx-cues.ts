@@ -235,9 +235,13 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     // ── Kimi K3 video (July 2026) — palette spread wide, 3 booms:
     //    catches chip 3 / MoE 16-flare / the WEIGHTS gate slam ──
     case "kimiHero": cues.push({ at: 14, type: "whip" }, { at: 40, type: "shutter" }); break;
-    // official launch-film clips: one soft camera settle on the card pop
-    case "clipReveal": case "clipBuild": case "clipKnowledge": case "clipCoding":
-      cues.push({ at: 10, type: "shutter" }); break;
+    // official launch-film clip montages: a soft camera settle on the card
+    // pop + a page-turn tick on each internal hard cut so the montage reads
+    case "clipReveal": cues.push({ at: 10, type: "shutter" }, { at: 43, type: "swish" }, { at: 68, type: "swish" }, { at: 93, type: "swish" }); break;
+    case "clipReal": cues.push({ at: 10, type: "shutter" }, { at: 67, type: "swish" }, { at: 124, type: "swish" }, { at: 181, type: "swish" }); break;
+    case "clipBuild": cues.push({ at: 10, type: "shutter" }, { at: 58, type: "swish" }, { at: 103, type: "swish" }); break;
+    case "clipKnowledge": cues.push({ at: 10, type: "shutter" }, { at: 85, type: "swish" }); break;
+    case "clipCoding": cues.push({ at: 10, type: "shutter" }, { at: 70, type: "swish" }); break;
     case "arenaTop": cues.push({ at: 16, type: "paperSlide" }, { at: 60, type: "swish" }); break;
     case "threeCatches": cues.push({ at: 9, type: "thud" }, { at: 100, type: "thud" }, { at: 256, type: "boom" }); break; // boom 1/3
     case "kingKinetic": cues.push({ at: 66, type: "pluck" }); break;

@@ -124,7 +124,7 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
   const blockers: { from: number; to: number }[] = [
     ...spans.map((s) => ({ from: s.from - TRANS, to: s.to + TRANS })),
     ...spec.beats
-      .map((b, i) => (b.scene === "receipt" || b.scene === "montage" ? { from: b.at, to: spec.beats[i + 1]?.at ?? dur } : null))
+      .map((b, i) => (b.scene === "receipt" || b.scene === "montage" || b.scene === "clip" ? { from: b.at, to: spec.beats[i + 1]?.at ?? dur } : null))
       .filter((w): w is { from: number; to: number } => w !== null),
   ].sort((a, b) => a.from - b.from);
   let lowerThirdFrom = hookFullTo !== null ? hookFullTo + 18 : seamEnd + 6;
