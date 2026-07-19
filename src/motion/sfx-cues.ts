@@ -232,6 +232,27 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "osKinetic": cues.push({ at: 123, type: "whip" }); break;
     case "slowJump": cues.push({ at: 132, type: "tick" }, { at: 197, type: "tick" }, { at: 265, type: "tick" }); break;
     case "workflowProof": cues.push({ at: 14, type: "whip" }, { at: 93, type: "swish" }); break;
+    // ── Agentic-pricing video (July 2026) — 3 booms: DELETE?, HTML stamp, $800 ──
+    case "hookInvoice": cues.push({ at: 70, type: "tick" }, { at: 150, type: "thud" }); break;
+    case "gartner40": cues.push({ at: 14, type: "pageTurn" }, { at: 40, type: "swish" }); break;
+    case "gartner130": cues.push({ at: 16, type: "paperSlide" }, { at: 40, type: "swish" }); break;
+    case "gartnerWashing": cues.push({ at: 14, type: "shutter" }, { at: 40, type: "swish" }); break;
+    case "washKinetic": cues.push({ at: 60, type: "boom" }); break; // boom 1/3: the AGENTIC sticker slaps
+    case "homeworkKinetic": cues.push({ at: 130, type: "thud" }); break;
+    case "fortune95": cues.push({ at: 14, type: "pageTurn" }, { at: 40, type: "swish" }); break;
+    case "ellvero26": cues.push({ at: 14, type: "paperSlide" }, { at: 40, type: "swish" }); break;
+    case "forbes40": cues.push({ at: 14, type: "shutter" }, { at: 40, type: "swish" }); break;
+    case "scopeKinetic": cues.push({ at: 150, type: "boom" }); break; // boom 2/3: NOBODY BLAMES HTML
+    case "undercutKinetic": cues.push({ at: 150, type: "thud" }); break;
+    case "guiltScale": cues.push({ at: 40, type: "tick" }, { at: 150, type: "tick" }, { at: 210, type: "thud" }, { at: 300, type: "ding" }); break;
+    case "deloitte": cues.push({ at: 14, type: "pageTurn" }, { at: 40, type: "swish" }); break;
+    case "sapJoule": cues.push({ at: 10, type: "shutter" }, { at: 90, type: "swish" }); break;
+    case "zendesk": cues.push({ at: 14, type: "paperSlide" }, { at: 44, type: "swish" }); break;
+    case "growthunhinged": cues.push({ at: 14, type: "shutter" }, { at: 120, type: "swish" }); break;
+    case "ratesTable": cues.push({ at: 14, type: "pageTurn" }, { at: 44, type: "swish" }); break;
+    case "ratesPremium": cues.push({ at: 14, type: "paperSlide" }, { at: 44, type: "swish" }, { at: 300, type: "swish" }); break;
+    case "closingKinetic": cues.push({ at: 200, type: "boom" }); break; // boom 3/3: $800 WAS NEVER IT
+    case "priceKinetic": cues.push({ at: 200, type: "ding" }); break;
     // ── Kimi K3 video (July 2026) — palette spread wide, 3 booms:
     //    catches chip 3 / MoE 16-flare / the WEIGHTS gate slam ──
     case "kimiHero": cues.push({ at: 14, type: "whip" }, { at: 40, type: "shutter" }); break;

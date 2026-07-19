@@ -5,6 +5,7 @@ import { StyleDemo } from "./StyleDemo";
 import { TemplateLab, TEMPLATE_LAB_DUR } from "./TemplateLab";
 import { ArchivedVideoCompositions, SHOW_ARCHIVE } from "./archive";
 import { CalculateMetadataFunction } from "remotion";
+import { AgenticPricingVideo, AGP_DUR } from "./AgenticPricingVideo";
 
 export const transparentDefaults: CalculateMetadataFunction<
   Record<string, unknown>
@@ -48,6 +49,9 @@ export const RemotionRoot: React.FC = () => {
       />
 
 
+
+      {/* ── CURRENT: Should you charge more for 'agentic'? (July 2026) ── */}
+      <Composition id="AgenticPricingVideo" component={AgenticPricingVideo} durationInFrames={AGP_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
 
       {/* Previous videos — hidden unless SHOW_ARCHIVE (src/archive) is true */}
       {SHOW_ARCHIVE && <ArchivedVideoCompositions />}
