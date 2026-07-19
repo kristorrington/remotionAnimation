@@ -1773,6 +1773,216 @@
       ],
       "attributionRequired": false,
       "concerns": null
+    },
+    {
+      "filename": "gartner-40-wide.png",
+      "localPath": "public/assets/external/screenshots/gartner-40-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027",
+      "sourceName": "Gartner press release",
+      "dateAccessed": "2026-07-19",
+      "usageNote": "Headline: >40% of agentic AI projects canceled by 2027",
+      "usedIn": [
+        "agenticVideo ch1"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "gartner-130-wide.png",
+      "localPath": "public/assets/external/screenshots/gartner-130-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027",
+      "sourceName": "Gartner press release",
+      "dateAccessed": "2026-07-19",
+      "usageNote": "Body: only ~130 of thousands of vendors genuinely agentic (agent-washing)",
+      "usedIn": [
+        "agenticVideo ch1"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "gartner-hype-cycle.png",
+      "localPath": "public/assets/external/screenshots/gartner-hype-cycle.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.youtube.com/shorts/za3IYyhbobI",
+      "sourceName": "Gartner Hype Cycle for Agentic AI (video still)",
+      "dateAccessed": "2026-07-19",
+      "usageNote": "The Gartner Hype Cycle for Agentic AI graphic",
+      "usedIn": [
+        "agenticVideo ch1"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "gartner-washing-wide.png",
+      "localPath": "public/assets/external/screenshots/gartner-washing-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.gartner.com/en/newsroom/press-releases/2026-05-20-gartner-warns-of-agent-washing-risks-in-supply-chain-planning-technology-market",
+      "sourceName": "Gartner press release",
+      "dateAccessed": "2026-07-19",
+      "usageNote": "Headline: Gartner Warns of Agent Washing Risks",
+      "usedIn": [
+        "agenticVideo ch1"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "fortune-95-wide.png",
+      "localPath": "public/assets/external/screenshots/fortune-95-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/",
+      "sourceName": "Fortune / MIT NANDA",
+      "dateAccessed": "2026-07-19",
+      "usageNote": "Headline: MIT report 95% of generative AI pilots failing",
+      "usedIn": [
+        "agenticVideo ch2"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "ellvero-26-wide.png",
+      "localPath": "public/assets/external/screenshots/ellvero-26-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.ellvero.com/insights/ai-roi-in-2026-why-95-percent-of-pilots-fail-and-how-to-measure-what-matters",
+      "sourceName": "Ellvero (citing BCG 2026)",
+      "dateAccessed": "2026-07-19",
+      "usageNote": "Only 26% of companies report meaningful financial value from AI",
+      "usedIn": [
+        "agenticVideo ch2"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "forbes-40-wide.png",
+      "localPath": "public/assets/external/screenshots/forbes-40-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.forbes.com/sites/robertszczerba/2026/07/07/why-40-of-agentic-ai-projects-may-be-canceled-by-2027/",
+      "sourceName": "Forbes",
+      "dateAccessed": "2026-07-19",
+      "usageNote": "Reframes the 40% cancellation as a management/strategy failure",
+      "usedIn": [
+        "agenticVideo ch3"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "deloitte-outcome-wide.png",
+      "localPath": "public/assets/external/screenshots/deloitte-outcome-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://dart.deloitte.com/USDART/home/publications/deloitte/industry/technology/accounting-outcome-based-pricing-agentic-ai",
+      "sourceName": "Deloitte DART",
+      "dateAccessed": "2026-07-19",
+      "usageNote": "Accounting for Outcome-Based Pricing in an Agentic AI Software Product",
+      "usedIn": [
+        "agenticVideo ch4"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "zendesk-pricing-wide.png",
+      "localPath": "public/assets/external/screenshots/zendesk-pricing-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.zendesk.com/newsroom/articles/zendesk-outcome-based-pricing/",
+      "sourceName": "Zendesk newsroom",
+      "dateAccessed": "2026-07-19",
+      "usageNote": "Outcome-Based Pricing: customers only pay for issues resolved automatically",
+      "usedIn": [
+        "agenticVideo ch4"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "growthunhinged-shift-wide.png",
+      "localPath": "public/assets/external/screenshots/growthunhinged-shift-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.growthunhinged.com/p/the-state-of-b2b-monetization-in-2026",
+      "sourceName": "Growth Unhinged",
+      "dateAccessed": "2026-07-19",
+      "usageNote": "Chart: hybrid pricing 37% now the most popular; seat-based falling",
+      "usedIn": [
+        "agenticVideo ch4"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "rates-table-wide.png",
+      "localPath": "public/assets/external/screenshots/rates-table-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.ai-agentsplus.com/blog/ai-agent-freelance-rates-2026",
+      "sourceName": "ai-agentsplus rate guide",
+      "dateAccessed": "2026-07-19",
+      "usageNote": "2026 rate table: $50-$300+/hr by region/level",
+      "usedIn": [
+        "agenticVideo ch5"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "rates-premium-wide.png",
+      "localPath": "public/assets/external/screenshots/rates-premium-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.ai-agentsplus.com/blog/ai-agent-freelance-rates-2026",
+      "sourceName": "ai-agentsplus rate guide",
+      "dateAccessed": "2026-07-19",
+      "usageNote": "Premiums: 5+ shipped projects +30-50%, domain expertise +20-40%",
+      "usedIn": [
+        "agenticVideo ch5"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "sap-hero-wide.png",
+      "localPath": "public/assets/external/screenshots/sap-hero-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://news.sap.com/2026/05/sap-sapphire-keynote-business-ai-platform-power-autonomous-enterprise/",
+      "sourceName": "SAP news keynote",
+      "dateAccessed": "2026-07-19",
+      "usageNote": "SAP autonomous-enterprise / Joule agents keynote hero",
+      "usedIn": [
+        "agenticVideo ch4"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "sap-keynote-clip.mp4",
+      "localPath": "public/assets/external/clips/sap-keynote-clip.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=wU4FQd6Ps3Q",
+      "sourceName": "SAP Sapphire keynote highlights (YouTube)",
+      "dateAccessed": "2026-07-19",
+      "usageNote": "MUTED clip: SAP Joule Assistants / AI models keynote footage",
+      "usedIn": [
+        "agenticVideo ch4"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "sap-joule-clip.mp4",
+      "localPath": "public/assets/external/clips/sap-joule-clip.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=wU4FQd6Ps3Q",
+      "sourceName": "SAP Sapphire keynote highlights (YouTube)",
+      "dateAccessed": "2026-07-19",
+      "usageNote": "MUTED clip: SAP stage + Joule Studio 'time to first iteration'",
+      "usedIn": [
+        "agenticVideo ch4"
+      ],
+      "attributionRequired": false,
+      "concerns": null
     }
   ]
 }
