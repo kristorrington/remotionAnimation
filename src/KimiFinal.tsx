@@ -10,7 +10,7 @@ import { ThemeProvider } from "./theme";
 
 // Final combined cut: talking head + the Kimi receipt track + per-span PiP.
 // Transitions v2 (pull-left on fullscreen starts + receipt swaps), paper theme.
-const FOOTAGE = "talking-head.mp4"; // Kimi K3 recording (2026-07-18)
+const FOOTAGE = "talking-head-180726.mp4"; // rotated out 2026-07-19
 
 const PIP_GAP_MAX = 90; // 3s — a longer VO-only gap BREAKS the span back to full footage
 const PIP_MIN = 90; // never show a PiP segment shorter than 3s (flicker)

@@ -133,6 +133,9 @@ const main = async () => {
     cost4: "cost $4",
     // go-local video (07/2026) — Kris says "licence"/"quantisation" (British)
     quinn: "Qwen", license: "licence", licenses: "licences",
+    // Agentic-pricing video (07/2026)
+    zendes: "Zendesk", zendesk: "Zendesk", joule: "Joule", deloitte: "Deloitte",
+    gartner: "Gartner", nanda: "NANDA", ellvero: "Ellvero",
     // Kimi K3 video (07/2026)
     ello: "Elo", moonshore: "Moonshot", moonshot: "Moonshot", kimi: "Kimi",
     quantization: "quantisation",

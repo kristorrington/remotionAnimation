@@ -1,5 +1,7 @@
 import React from "react";
 import { CalculateMetadataFunction, Composition } from "remotion";
+import { KimiVideo, KIMI_DUR } from "../KimiVideo";
+import { KimiFinal } from "../KimiFinal";
 import { KrisIntro } from "../KrisIntro";
 import { KrisHero } from "../KrisHero";
 import { TutorialOverlays } from "../TutorialOverlays";
@@ -61,6 +63,10 @@ const transparentDefaults: CalculateMetadataFunction<
 export const ArchivedVideoCompositions: React.FC = () => {
   return (
     <>
+      {/* ── Kimi K3 — the new king? (July 2026) ── */}
+      <Composition id="KimiVideo" component={KimiVideo} durationInFrames={KIMI_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="KimiFinal" component={KimiFinal} durationInFrames={KIMI_DUR} fps={30} width={1920} height={1080} />
+
       {/* ── 7 GitHub repos for Claude Code (July 2026) ── */}
       <Composition id="ReposVideo" component={ReposVideo} durationInFrames={REPOS_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
       <Composition id="ReposFinal" component={ReposFinal} durationInFrames={REPOS_DUR} fps={30} width={1920} height={1080} />
