@@ -198,12 +198,12 @@ export const AgenticPricingVisuals: React.FC = () => {
       </Sequence>
       {/* 1:34 — BCG 26% */}
       <Sequence from={2819} durationInFrames={320} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={320} kicker="ELLVERO · BCG 2026" title="ONLY 26% PAID OFF" fullBleed={false} tint={AMBER} src={`${SHOT}/ellvero-26-wide.png`} url="ellvero.com" imageW={2080} imageH={1112} to={{ x: 120, y: 380, w: 1840, h: 985 }} waypoints={[{ rect: { x: 0, y: 0, w: 2080, h: 1112 }, at: 0 }, { rect: { x: 120, y: 380, w: 1840, h: 985 }, at: 26 }]} highlight={{ x: 230, y: 500, w: 1560, h: 160 }} highlightAt={40} />
+        <ScreenshotReceiptScene durationInFrames={320} kicker="ELLVERO · BCG 2026" title="ONLY 26% PAID OFF" fullBleed={false} tint={AMBER} src={`${SHOT}/ellvero-26-wide.png`} url="ellvero.com" imageW={2080} imageH={1112} to={{ x: 70, y: 300, w: 1700, h: 812 }} waypoints={[{ rect: { x: 0, y: 0, w: 2080, h: 1112 }, at: 0 }, { rect: { x: 70, y: 300, w: 1700, h: 812 }, at: 26 }]} highlight={{ x: 230, y: 500, w: 1560, h: 150 }} highlightAt={40} />
       </Sequence>
 
       {/* CH3 1:50 — Forbes reframes the 40% */}
       <Sequence from={3313} durationInFrames={340} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={340} kicker="FORBES · THE TWIST" title="A STRATEGY FAILURE" fullBleed={false} tint={GREEN} src={`${SHOT}/forbes-40-wide.png`} url="forbes.com" imageW={2500} imageH={1336} to={{ x: 200, y: 180, w: 1560, h: 834 }} waypoints={[{ rect: { x: 0, y: 0, w: 2500, h: 1336 }, at: 0 }, { rect: { x: 200, y: 180, w: 1560, h: 834 }, at: 26 }]} highlight={{ x: 225, y: 225, w: 2040, h: 270 }} highlightAt={40} />
+        <ScreenshotReceiptScene durationInFrames={340} kicker="FORBES · THE TWIST" title="A STRATEGY FAILURE" fullBleed={false} tint={GREEN} src={`${SHOT}/forbes-40-wide.png`} url="forbes.com" imageW={2500} imageH={1336} to={{ x: 80, y: 170, w: 2340, h: 1252 }} waypoints={[{ rect: { x: 0, y: 0, w: 2500, h: 1336 }, at: 0 }, { rect: { x: 80, y: 170, w: 2340, h: 1252 }, at: 26 }]} highlight={{ x: 120, y: 200, w: 2280, h: 320 }} highlightAt={40} />
       </Sequence>
       <Sequence from={3690} durationInFrames={250} premountFor={30}>
         <FinalTakeawayScene durationInFrames={250} kicker="A BADLY SCOPED PROJECT FAILS LIKE A WEBSITE BUILD" title="NOBODY BLAMES HTML" stamp="IT'S THE SCOPE" stampAt={150} accent={GREEN} />
@@ -226,7 +226,7 @@ export const AgenticPricingVisuals: React.FC = () => {
       </Sequence>
       {/* 3:00 — Zendesk per-resolution */}
       <Sequence from={5400} durationInFrames={236} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={236} kicker="ZENDESK · NEWSROOM" title="PAY PER RESOLUTION" fullBleed={false} tint={GREEN} src={`${SHOT}/zendesk-pricing-wide.png`} url="zendesk.com/newsroom" imageW={3840} imageH={2052} to={{ x: 260, y: 60, w: 1740, h: 930 }} waypoints={[{ rect: { x: 200, y: 40, w: 2200, h: 1176 }, at: 0 }, { rect: { x: 260, y: 60, w: 1740, h: 930 }, at: 26 }]} highlight={{ x: 280, y: 430, w: 1720, h: 150 }} highlightAt={44} />
+        <ScreenshotReceiptScene durationInFrames={236} kicker="ZENDESK · NEWSROOM" title="PAY PER RESOLUTION" fullBleed={false} tint={GREEN} src={`${SHOT}/zendesk-pricing-wide.png`} url="zendesk.com/newsroom" imageW={3840} imageH={2052} to={{ x: 980, y: 60, w: 2100, h: 1123 }} waypoints={[{ rect: { x: 900, y: 40, w: 2400, h: 1283 }, at: 0 }, { rect: { x: 980, y: 60, w: 2100, h: 1123 }, at: 26 }]} highlight={{ x: 1000, y: 600, w: 1600, h: 130 }} highlightAt={44} />
       </Sequence>
       {/* 3:08 — Growth Unhinged: hybrid/outcome is the new default */}
       <Sequence from={5649} durationInFrames={320} premountFor={30}>
@@ -239,7 +239,7 @@ export const AgenticPricingVisuals: React.FC = () => {
       </Sequence>
       {/* 3:27 — the premiums: shipped proof + specialisation */}
       <Sequence from={6199} durationInFrames={470} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={470} kicker="THE PREMIUM" title="PROOF > THE WORD" fullBleed={false} tint={GREEN} src={`${SHOT}/rates-premium-wide.png`} url="ai-agentsplus.com" imageW={2960} imageH={1582} to={{ x: 420, y: 900, w: 1900, h: 1016 }} waypoints={[{ rect: { x: 0, y: 0, w: 2960, h: 1582 }, at: 0 }, { rect: { x: 420, y: 900, w: 1900, h: 1016 }, at: 26 }, { rect: { x: 420, y: 220, w: 1900, h: 1016 }, at: 300 }]} highlight={{ x: 560, y: 1040, w: 1750, h: 230 }} highlightAt={44} />
+        <ScreenshotReceiptScene durationInFrames={470} kicker="THE PREMIUM" title="PROOF > THE WORD" fullBleed={false} tint={GREEN} src={`${SHOT}/rates-premium-wide.png`} url="ai-agentsplus.com" imageW={2960} imageH={1582} to={{ x: 380, y: 40, w: 2100, h: 1123 }} waypoints={[{ rect: { x: 0, y: 0, w: 2960, h: 1582 }, at: 0 }, { rect: { x: 380, y: 300, w: 1900, h: 1016 }, at: 26 }, { rect: { x: 380, y: 20, w: 1900, h: 1016 }, at: 300 }]} highlight={{ x: 500, y: 500, w: 1780, h: 130 }} highlightAt={44} />
       </Sequence>
 
       {/* CLOSING 3:43 — the $800 was never the question */}
