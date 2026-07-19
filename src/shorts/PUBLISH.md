@@ -1074,6 +1074,96 @@ Same video + copy as Short-PremiumWar; post the loser as unlisted or delete afte
 
 ---
 
+# Should you charge more for 'agentic'? (2026-07-19)
+
+## Short-RipOff (THE HOOK — the $800 line item)
+
+**Title**
+```
+Am I Ripping Clients Off Charging For 'Agentic' Work? #Shorts
+```
+
+**Description**
+```
+You add "Agentic Workflow — $800" to a proposal and your thumb hovers over delete. Gartner says over 40% of agentic AI projects get cancelled by 2027 — so are you charging for real value, or are you the reason that stat exists?
+
+Full breakdown of what to actually put on that line item is on the channel.
+
+What do you charge for agentic work? 👇
+
+Follow @kristorrington for the business side of AI, not just the setup tutorials.
+
+#AI #AIautomation #Freelance #n8n #AgenticAI #Shorts
+```
+
+---
+
+## Short-AgentWashing (only ~130 vendors are real)
+
+**Title**
+```
+Gartner: Most 'Agentic AI' Is Fake (Only ~130 Are Real) #Shorts
+```
+
+**Description**
+```
+Gartner looked at the market and found only about 130 vendors — out of thousands calling themselves "agentic AI" — are actually building the real thing. Everybody else is agent-washing: slapping the word on ordinary automation.
+
+So the guilt on your cursor isn't irrational. The real question is whether it's justified for YOUR work.
+
+Is your automation actually agentic? 👇
+
+Follow @kristorrington for the business side of AI.
+
+#AI #AgenticAI #Gartner #AIautomation #n8n #Shorts
+```
+
+---
+
+## Short-MarketSettled (the big vendors already do this)
+
+**Title**
+```
+The Biggest Software Vendors Already Price On Outcomes #Shorts
+```
+
+**Description**
+```
+Deloitte published accounting guidance on outcome-based pricing for agentic AI. SAP's Joule agents bill on consumption, not seats. Zendesk charges per automated resolution — no seats, no "agentic" markup, just the result.
+
+If the biggest vendors on earth moved from hours to outcomes, a freelancer doing the same isn't overcharging. They're just caught up.
+
+Are you still billing hourly? 👇
+
+Follow @kristorrington for the business side of AI.
+
+#AI #Pricing #SAP #Zendesk #AgenticAI #Shorts
+```
+
+---
+
+## Short-TheNumber (what to charge)
+
+**Title**
+```
+What To Charge For Agentic Automation In 2026 #Shorts
+```
+
+**Description**
+```
+2026 rate guides put agentic automation work at $50 to $250+ an hour. Five or more shipped projects earns a 30-50% premium. Stack a specialised industry — healthcare, finance, legal — and that's another 20-40%.
+
+Shipped proof earns the premium far more than the word "agentic" ever will.
+
+Drop your current agentic rate 👇
+
+Follow @kristorrington for the business side of AI.
+
+#AI #Freelance #Pricing #AIautomation #AgenticAI #Shorts
+```
+
+---
+
 # Kimi K3 — the new king? (2026-07-18)
 
 ## Short-KimiIntro (THE TEASER — the video's own hook)
