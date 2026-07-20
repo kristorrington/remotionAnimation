@@ -11,6 +11,96 @@ pattern"). Copy-paste at upload time. Rules used here:
 
 ---
 
+# Claude Fable 5 is now permanent (2026-07-21)
+
+## Short-FiftyPercent (THE HOOK — the 50% catch)
+
+**Title**
+```
+Claude Fable 5 Is Now Permanent — But There's a Catch #Shorts
+```
+
+**Description**
+```
+Claude Fable 5 just became a permanent part of Max and Team Premium plans — but permanent doesn't mean unlimited.
+
+Even on the plans that qualify, Fable 5 can only use up to 50% of your weekly limits. And Pro and Team Standard don't get it bundled at all — they move to usage credits after a one-time $100 credit.
+
+Is it actually worth upgrading for? 👇
+
+Follow @kristorrington for the business side of AI.
+
+#AI #Claude #Fable5 #Anthropic #ClaudeCode #Shorts
+```
+
+---
+
+## Short-WhoGetsIt (who actually gets it free)
+
+**Title**
+```
+Which Claude Plans Actually Get Fable 5 Free? #Shorts
+```
+
+**Description**
+```
+Anthropic drew a hard line through its paid tiers. Max and Team Premium get Claude Fable 5 as a permanent included allowance. Pro and Team Standard do NOT — they keep access only through usage credits, plus a one-time $100 credit to soften the switch.
+
+So before you upgrade, check which side of the line your plan is on.
+
+Which plan are you on? 👇
+
+Follow @kristorrington for the business side of AI.
+
+#AI #Claude #Fable5 #Anthropic #AICosts #Shorts
+```
+
+---
+
+## Short-PriceShock (the real price)
+
+**Title**
+```
+Fable 5 Is the Most Expensive Claude Model — $10/$50 #Shorts
+```
+
+**Description**
+```
+Once you move outside the bundled subscription, Claude Fable 5 is the steepest-priced Claude model there is: $10 per million input tokens and $50 per million output tokens.
+
+That sounds fine for a short chat — but Claude Code plans, edits, tests and revises across files, and those output tokens pile up fast in long agentic sessions.
+
+Are you tracking your Fable 5 spend? 👇
+
+Follow @kristorrington for the business side of AI.
+
+#AI #Claude #Fable5 #APIcosts #ClaudeCode #Shorts
+```
+
+---
+
+## Short-ReserveIt (don't overpay)
+
+**Title**
+```
+Don't Upgrade Just for Claude Fable 5 — Do This #Shorts
+```
+
+**Description**
+```
+Fable 5 was #1 at launch — but that doesn't mean you should run everything on it. If you only need it occasionally, upgrading purely because it's now permanent may not make financial sense.
+
+The smart move: reserve Fable 5 for the hard stuff — difficult planning, reasoning, big repos — and route docs, small edits and routine work to Sonnet or Opus.
+
+What do you actually use your top model for? 👇
+
+Follow @kristorrington for the business side of AI.
+
+#AI #Claude #Fable5 #ClaudeCode #AIAutomation #Shorts
+```
+
+---
+
 ## Short-Waiting
 
 **Title**
