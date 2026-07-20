@@ -233,7 +233,7 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "slowJump": cues.push({ at: 132, type: "tick" }, { at: 197, type: "tick" }, { at: 265, type: "tick" }); break;
     case "workflowProof": cues.push({ at: 14, type: "whip" }, { at: 93, type: "swish" }); break;
     // ── Agentic-pricing video (July 2026) — 3 booms: DELETE?, HTML stamp, $800 ──
-    case "hookInvoice": cues.push({ at: 128, type: "clickPop" }, { at: 152, type: "tick" }, { at: 172, type: "tick" }, { at: 250, type: "pluck" }); break; // row selected, ⌫ taps, doubt
+    case "hookInvoice": cues.push({ at: 206, type: "clickPop" }, { at: 347, type: "pluck" }); break; // the $800 line selected, then the doubt
 
     case "invoiceQuestion": cues.push({ at: 8, type: "pageTurn" }, { at: 30, type: "tick" }, { at: 43, type: "tick" }, { at: 56, type: "tick" }); break; // ? bubbles pop
     case "invoicePause": cues.push({ at: 8, type: "pageTurn" }, { at: 46, type: "tick" }); break; // the cursor hovers in

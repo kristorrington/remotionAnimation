@@ -134,7 +134,8 @@ const InvoiceBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
   const selected = frame >= 46;
   const doubt = spring({ frame: frame - 62, fps, config: { stiffness: 180, damping: 13 }, durationInFrames: 18 });
   const items = [
-    { label: "n8n build", price: "$650" },
+    { label: "Discovery + scoping", price: "$300" },
+    { label: "Setup + integrations", price: "$500" },
     { label: "Agentic Workflow", price: "$800", hot: true },
   ];
   return (
@@ -154,11 +155,11 @@ const InvoiceBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
               const op = interpolate(frame, [at, at + 8], [0, 1], CLAMP);
               const isSel = "hot" in it && it.hot && selected;
               return (
-                <div key={it.label} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 14px", borderRadius: 10, opacity: op, background: isSel ? "rgba(96,132,196,0.24)" : "transparent" }}>
-                  <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 44, color: "#1F1E1D" }}>{it.label}</span>
-                  <span style={{ display: "flex", alignItems: "center", fontFamily: FONT, fontWeight: 900, fontSize: 46, color: "#1F1E1D" }}>
+                <div key={it.label} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "14px 12px", borderRadius: 10, opacity: op, background: isSel ? "rgba(96,132,196,0.24)" : "transparent" }}>
+                  <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 40, color: "#1F1E1D" }}>{it.label}</span>
+                  <span style={{ display: "flex", alignItems: "center", fontFamily: FONT, fontWeight: 900, fontSize: 42, color: "#1F1E1D" }}>
                     {it.price}
-                    {"hot" in it && it.hot && <span style={{ marginLeft: 4, width: 4, height: 46, background: cursorOn ? "#1F1E1D" : "transparent" }} />}
+                    {"hot" in it && it.hot && <span style={{ marginLeft: 4, width: 4, height: 42, background: cursorOn ? "#1F1E1D" : "transparent" }} />}
                   </span>
                 </div>
               );
@@ -173,9 +174,9 @@ const InvoiceBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
             </div>
           </div>
         )}
-        {/* the mouse pointer glides to the $800 line */}
+        {/* the mouse pointer glides to the selected $800 line (the 3rd row) */}
         {frame >= 26 && (
-          <div style={{ position: "absolute", left: interpolate(pointerP, [0, 1], [830, 700], CLAMP), top: interpolate(pointerP, [0, 1], [420, 258], CLAMP) }}>
+          <div style={{ position: "absolute", left: interpolate(pointerP, [0, 1], [830, 700], CLAMP), top: interpolate(pointerP, [0, 1], [446, 316], CLAMP) }}>
             <svg width="52" height="58" viewBox="0 0 46 52"><path d="M3 2 L3 40 L13 30 L21 48 L28 45 L20 27 L34 27 Z" fill="#1F1E1D" stroke="#fff" strokeWidth="2.2" strokeLinejoin="round" /></svg>
           </div>
         )}

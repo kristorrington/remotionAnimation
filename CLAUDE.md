@@ -352,7 +352,21 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   Final; the whoosh lives in the overlay's sound block). The face then holds
   full-frame delivering the hook — the first animation cover must NEVER
   start at frame 0. It cuts in at ~90f (≈3s, at the first natural phrase
-  break) with a `CutFlash` at the cut. **Outro rule** (Kris, July 2026): the
+  break) with a `CutFlash` at the cut.
+  **EXCEPTION — cold-open when the hook NAMES the on-screen artifact** (Kris,
+  July 2026): if the opening line describes the thing the animation shows
+  ("You've got a proposal open…"), the golden rule wins over the face-hold —
+  cold-open on that animation so it is on screen BEFORE the word is spoken
+  (proposal up by ~f14, the VO says "proposal" at ~f21). Set that beat
+  `from: 0` (so its internal anchors ARE the absolute VO frames), give it its
+  own punch-in (a scale-in on the artifact, opacity starts visible ~0.55 so
+  frame 0 isn't blank), make it NON-fullscreen so the FACE rides the corner
+  PiP (brand stays), and drop the footage punch-in + face→cover `CutFlash`
+  (there is no full-frame face hold to cut from). Any props the hook mentions
+  (line items, a client name for the "small business owner") must read as a
+  REAL, LOGICAL document — non-overlapping items in a sensible sequence
+  (scope → connect → the agentic layer), never two line items that bill the
+  same work twice. **Outro rule** (Kris, July 2026): the
   CTA/tag line enters right after the subscribe button (~0.8s in) and stays
   readable ≥ ~3s; no third-party logos on the end screen. Re-anchor
   the first scene's internal gags to the whisper words from the new start

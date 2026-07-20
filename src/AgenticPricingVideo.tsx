@@ -23,8 +23,9 @@ import { ThemeProvider } from "./theme";
 export const AGP_DUR = 7566;
 
 const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[] = [
-  // ── HOOK · the $800 proposal ──
-  { scene: "hookInvoice", from: 90, dur: 384, fullscreen: true }, // "proposal open… 'Agentic Workflow +$800'… who doesn't even know what that word means (21-474)"
+  // ── HOOK · the $800 proposal (COLD OPEN — the proposal is up before the VO
+  //    says "proposal" at f21; face rides the corner PiP so the brand stays) ──
+  { scene: "hookInvoice", from: 0, dur: 474 }, // "You've got a proposal open… 'Agentic Workflow +$800'… who doesn't even know what that word means (1-474)"
   // ── CH1 · the scary stats ──
   { scene: "gartner40", from: 474, dur: 326 }, // "Gartner just said over 40% of these agentic projects get cancelled by 2027 (474-660) → 'so which is it?'"
   // hook-wrap bridges (break up the 16s talking-head stretch) — the line-item spine
@@ -68,26 +69,28 @@ const RED = "#C65B52";
 const GREEN = "#4FA98A";
 const INK = "#1F1E1D";
 
-// THE HOOK — a real proposal being edited: the doc sits in an app window, a
-// mouse pointer glides to the "Agentic Workflow — $800" line, SELECTS it, a ⌫
-// keycap taps hesitantly (about to delete), and the voice in your head pops as
-// a doubt bubble. Reads as a genuine editing moment, not a floating fake card.
+// THE HOOK — a real proposal being edited (the COLD OPEN): the doc punches in,
+// its line items settle before the VO says "proposal", a mouse pointer glides
+// to the "Agentic Workflow — $800" line and SELECTS it, and the voice in your
+// head pops as a doubt bubble. The three items are a logical build sequence
+// (scope it → connect it → the agentic layer) — no overlap. from:0, so every
+// internal anchor is the absolute VO whisper frame.
 const HookInvoiceScene: React.FC<{ durationInFrames: number }> = ({ durationInFrames }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const items = [
     { label: "Discovery + scoping", price: "$300" },
-    { label: "n8n build + testing", price: "$650" },
+    { label: "Setup + integrations", price: "$500" },
     { label: "Agentic Workflow", price: "$800", hot: true },
   ];
   const cursorOn = Math.floor(frame / 16) % 2 === 0;
-  const winPop = spring({ frame: frame - 4, fps, config: { stiffness: 110, damping: 19 }, durationInFrames: 26 });
-  const pointerP = spring({ frame: frame - 90, fps, config: { stiffness: 70, damping: 16 }, durationInFrames: 40 });
-  const selected = frame >= 128; // the $800 row gets selected as the pointer lands
-  const doubt = spring({ frame: frame - 250, fps, config: { stiffness: 170, damping: 14 }, durationInFrames: 20 });
+  const winPop = spring({ frame, fps, config: { stiffness: 120, damping: 18 }, durationInFrames: 16 }); // opener punch-in
+  const pointerP = spring({ frame: frame - 51, fps, config: { stiffness: 70, damping: 16 }, durationInFrames: 40 }); // "cursor blinking on the line item" (51)
+  const selected = frame >= 206; // "your thumb is hovering over the delete key" (206) — the line selects
+  const doubt = spring({ frame: frame - 347, fps, config: { stiffness: 170, damping: 14 }, durationInFrames: 20 }); // "rip off a small business owner" (347)
   return (
     <SceneShell durationInFrames={durationInFrames} particleSeed={0x811} tint={AMBER}>
-      <div style={{ position: "relative", width: 1120, transform: `scale(${interpolate(winPop, [0, 1], [0.94, 1])})`, opacity: interpolate(winPop, [0, 0.35], [0, 1]) }}>
+      <div style={{ position: "relative", width: 1120, transform: `scale(${interpolate(winPop, [0, 1], [0.72, 1])})`, opacity: interpolate(winPop, [0, 0.3], [0.55, 1]) }}>
         {/* the document app window */}
         <div style={{ borderRadius: 16, overflow: "hidden", boxShadow: "0 30px 84px rgba(31,30,29,0.30)", border: "1px solid rgba(31,30,29,0.12)", background: "#fdfbf6" }}>
           {/* light title bar */}
@@ -103,7 +106,7 @@ const HookInvoiceScene: React.FC<{ durationInFrames: number }> = ({ durationInFr
             </div>
             <div style={{ borderBottom: "2px solid rgba(31,30,29,0.10)", marginBottom: 6 }} />
             {items.map((it, i) => {
-              const at = 14 + i * 15;
+              const at = 8 + i * 10;
               const op = interpolate(frame, [at, at + 10], [0, 1], CLAMP);
               const isSel = it.hot && selected;
               return (
@@ -119,7 +122,7 @@ const HookInvoiceScene: React.FC<{ durationInFrames: number }> = ({ durationInFr
           </div>
         </div>
         {/* the voice in your head */}
-        {frame >= 250 && (
+        {frame >= 347 && (
           <div style={{ position: "absolute", left: -46, top: -74, transform: `scale(${doubt})`, transformOrigin: "bottom left" }}>
             <div style={{ padding: "13px 26px", borderRadius: 18, background: "#fff", border: "2px solid rgba(31,30,29,0.14)", boxShadow: "0 14px 32px rgba(31,30,29,0.18)" }}>
               <span style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 600, fontSize: 32, color: "#B4322C" }}>am I ripping them off?</span>
@@ -127,7 +130,7 @@ const HookInvoiceScene: React.FC<{ durationInFrames: number }> = ({ durationInFr
           </div>
         )}
         {/* the mouse pointer glides to the selected $800 line */}
-        {frame >= 88 && (
+        {frame >= 49 && (
           <div style={{ position: "absolute", left: interpolate(pointerP, [0, 1], [1210, 946], CLAMP), top: interpolate(pointerP, [0, 1], [470, 338], CLAMP) }}>
             <svg width="46" height="52" viewBox="0 0 46 52"><path d="M3 2 L3 40 L13 30 L21 48 L28 45 L20 27 L34 27 Z" fill="#1F1E1D" stroke="#fff" strokeWidth="2.2" strokeLinejoin="round" /></svg>
           </div>
@@ -282,9 +285,9 @@ export const AgenticPricingVisuals: React.FC = () => {
   return (
     <ThemeProvider style="paper">
     <AbsoluteFill>
-      {/* HOOK — the $800 proposal */}
-      <Sequence from={90} durationInFrames={384} premountFor={30}>
-        <HookInvoiceScene durationInFrames={384} />
+      {/* HOOK — the $800 proposal (cold open at f0, before the VO says "proposal") */}
+      <Sequence from={0} durationInFrames={474} premountFor={30}>
+        <HookInvoiceScene durationInFrames={474} />
       </Sequence>
 
       {/* CH1 0:16 — Gartner: >40% cancelled by 2027 */}

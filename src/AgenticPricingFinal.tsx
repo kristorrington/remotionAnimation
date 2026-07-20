@@ -1,7 +1,6 @@
 import React from "react";
-import { AbsoluteFill, Easing, interpolate, Sequence, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Sequence, useCurrentFrame } from "remotion";
 import { AgenticPricingVideo, AGP_WINDOWS, AGP_FULLSCREEN, AGP_EXTRA_CUTS } from "./AgenticPricingVideo";
-import { CutFlash } from "./components/CutFlash";
 import { FootageDirector } from "./components/FootageDirector";
 import { CornerPip } from "./components/CornerPip";
 import { AnimatedBackground } from "./components/AnimatedBackground";
@@ -37,14 +36,14 @@ for (const s of SPANS) {
 
 const CUTS = [...new Set([...FULL.map((f) => f.from), ...AGP_EXTRA_CUTS])].sort((a, b) => a - b);
 
-const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
-
 export const AgenticPricingFinal: React.FC = () => {
   const frame = useCurrentFrame();
-  // OPENING PUNCH-IN (§8): footage starts as a rounded card at 0.5 on the
-  // ivory paper, zooms to exactly 1.0 over ~0.7s with the whoosh.
-  const introZoom = interpolate(frame, [0, 22], [0.5, 1], { ...CLAMP, easing: Easing.out(Easing.cubic) });
-  const introRadius = interpolate(frame, [0, 22], [40, 0], CLAMP);
+  // COLD OPEN (Kris, July 2026): the video opens straight on the PROPOSAL
+  // animation (it must be up before the VO says "proposal" at f21), so the
+  // proposal carries its own punch-in and the face rides the corner PiP from
+  // frame 0 — no full-frame footage punch-in / face→cover cut at the open.
+  const introZoom = 1;
+  const introRadius = 0;
   return (
     <ThemeProvider style="paper">
     <AbsoluteFill style={{ backgroundColor: "black" }}>
@@ -94,8 +93,6 @@ export const AgenticPricingFinal: React.FC = () => {
         <CornerPip key={`pip-${s.from}`} footage={FOOTAGE} from={s.from} dur={s.to - s.from} />
       ))}
       </SlideLeftPush>
-      {/* face → first cover (the $800 invoice) at ~90 */}
-      <CutFlash at={90} peak={0.5} />
     </AbsoluteFill>
     </ThemeProvider>
   );
