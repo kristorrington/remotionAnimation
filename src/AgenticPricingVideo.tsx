@@ -84,7 +84,6 @@ const HookInvoiceScene: React.FC<{ durationInFrames: number }> = ({ durationInFr
   const winPop = spring({ frame: frame - 4, fps, config: { stiffness: 110, damping: 19 }, durationInFrames: 26 });
   const pointerP = spring({ frame: frame - 90, fps, config: { stiffness: 70, damping: 16 }, durationInFrames: 40 });
   const selected = frame >= 128; // the $800 row gets selected as the pointer lands
-  const tap = frame >= 150 ? Math.max(0, Math.sin((frame - 150) * 0.45)) * Math.max(0, 1 - (frame - 150) / 170) : 0;
   const doubt = spring({ frame: frame - 250, fps, config: { stiffness: 170, damping: 14 }, durationInFrames: 20 });
   return (
     <SceneShell durationInFrames={durationInFrames} particleSeed={0x811} tint={AMBER}>
@@ -127,17 +126,9 @@ const HookInvoiceScene: React.FC<{ durationInFrames: number }> = ({ durationInFr
             </div>
           </div>
         )}
-        {/* a real ⌫ keycap, tapped hesitantly (about to delete the line) */}
-        {frame >= 144 && (
-          <div style={{ position: "absolute", right: -34, bottom: -78, transform: `translateY(${tap * 5}px)` }}>
-            <div style={{ width: 132, height: 76, borderRadius: 13, background: "#2a2926", border: "1px solid #3a3833", boxShadow: `0 ${9 - tap * 5}px 0 #141311, 0 ${13 - tap * 5}px 22px rgba(31,30,29,0.32)`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 32, color: "#e8e5de" }}>⌫</span>
-            </div>
-          </div>
-        )}
-        {/* the mouse pointer glides to the $800 line */}
+        {/* the mouse pointer glides to the selected $800 line */}
         {frame >= 88 && (
-          <div style={{ position: "absolute", left: interpolate(pointerP, [0, 1], [1210, 968], CLAMP), top: interpolate(pointerP, [0, 1], [470, 300], CLAMP) }}>
+          <div style={{ position: "absolute", left: interpolate(pointerP, [0, 1], [1210, 946], CLAMP), top: interpolate(pointerP, [0, 1], [470, 338], CLAMP) }}>
             <svg width="46" height="52" viewBox="0 0 46 52"><path d="M3 2 L3 40 L13 30 L21 48 L28 45 L20 27 L34 27 Z" fill="#1F1E1D" stroke="#fff" strokeWidth="2.2" strokeLinejoin="round" /></svg>
           </div>
         )}
@@ -298,7 +289,7 @@ export const AgenticPricingVisuals: React.FC = () => {
 
       {/* CH1 0:16 — Gartner: >40% cancelled by 2027 */}
       <Sequence from={474} durationInFrames={326} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={326} kicker="GARTNER · PRESS RELEASE" title="40% CANCELLED BY 2027" fullBleed={false} tint={RED} src={`${SHOT}/gartner-40-wide.png`} url="gartner.com/newsroom" imageW={3644} imageH={1948} to={{ x: 140, y: 60, w: 2000, h: 1070 }} waypoints={[{ rect: { x: 0, y: 0, w: 3644, h: 1948 }, at: 0 }, { rect: { x: 140, y: 60, w: 2000, h: 1070 }, at: 26 }]} notes={[{ at: 36, rect: { x: 1185, y: 92, w: 320, h: 96 }, kind: "box" }]} />
+        <ScreenshotReceiptScene durationInFrames={326} kicker="GARTNER · PRESS RELEASE" title="40% CANCELLED BY 2027" fullBleed={false} tint={RED} src={`${SHOT}/gartner-40-wide.png`} url="gartner.com/newsroom" imageW={3644} imageH={1948} to={{ x: 140, y: 60, w: 2000, h: 1070 }} waypoints={[{ rect: { x: 0, y: 0, w: 3644, h: 1948 }, at: 0 }, { rect: { x: 140, y: 60, w: 2000, h: 1070 }, at: 26 }]} notes={[{ at: 36, rect: { x: 1200, y: 120, w: 300, h: 96 }, kind: "box" }]} />
       </Sequence>
       {/* 0:27 — hook-wrap bridges (the line-item spine) break up the talking-head */}
       <Sequence from={800} durationInFrames={221} premountFor={30}>
