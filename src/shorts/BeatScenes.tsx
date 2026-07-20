@@ -121,6 +121,70 @@ const EmoteBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
   );
 };
 
+// invoice — the HOOK: the $800 proposal being second-guessed. The doc sits in
+// an app window, a mouse pointer glides to the "Agentic Workflow — $800" line,
+// SELECTS it (blinking cursor), and the voice in your head pops as a doubt
+// bubble. A real editing moment, not a floating card (matches the long-form open).
+const InvoiceBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const cursorOn = Math.floor(frame / 16) % 2 === 0;
+  const winPop = spring({ frame: frame - 2, fps, config: { stiffness: 150, damping: 17 }, durationInFrames: 20 });
+  const pointerP = spring({ frame: frame - 28, fps, config: { stiffness: 80, damping: 16 }, durationInFrames: 34 });
+  const selected = frame >= 46;
+  const doubt = spring({ frame: frame - 62, fps, config: { stiffness: 180, damping: 13 }, durationInFrames: 18 });
+  const items = [
+    { label: "n8n build", price: "$650" },
+    { label: "Agentic Workflow", price: "$800", hot: true },
+  ];
+  return (
+    <Wrap gap={26}>
+      <div style={{ position: "relative", width: 860, transform: `scale(${interpolate(winPop, [0, 1], [0.9, 1])})`, opacity: interpolate(winPop, [0, 0.4], [0, 1]) }}>
+        {/* app window */}
+        <div style={{ borderRadius: 22, overflow: "hidden", boxShadow: "0 26px 70px rgba(0,0,0,0.4)", border: "1px solid rgba(0,0,0,0.14)", background: "#fdfbf6" }}>
+          <div style={{ height: 62, display: "flex", alignItems: "center", padding: "0 24px", background: "#ece8e0", borderBottom: "1px solid rgba(31,30,29,0.10)" }}>
+            {["#E0655C", "#E6B34D", "#5FBF7E"].map((c) => <span key={c} style={{ width: 16, height: 16, borderRadius: "50%", background: c, marginRight: 11 }} />)}
+            <span style={{ flex: 1, textAlign: "center", fontFamily: FONT, fontWeight: 600, fontSize: 26, color: "rgba(31,30,29,0.5)" }}>Proposal.pdf</span>
+          </div>
+          <div style={{ padding: "28px 40px 34px" }}>
+            <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 25, letterSpacing: 2, color: "rgba(31,30,29,0.42)" }}>PREPARED FOR CORNER BAKERY</span>
+            <div style={{ borderBottom: "2px solid rgba(31,30,29,0.10)", margin: "14px 0 6px" }} />
+            {items.map((it, i) => {
+              const at = 6 + i * 12;
+              const op = interpolate(frame, [at, at + 8], [0, 1], CLAMP);
+              const isSel = "hot" in it && it.hot && selected;
+              return (
+                <div key={it.label} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 14px", borderRadius: 10, opacity: op, background: isSel ? "rgba(96,132,196,0.24)" : "transparent" }}>
+                  <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 44, color: "#1F1E1D" }}>{it.label}</span>
+                  <span style={{ display: "flex", alignItems: "center", fontFamily: FONT, fontWeight: 900, fontSize: 46, color: "#1F1E1D" }}>
+                    {it.price}
+                    {"hot" in it && it.hot && <span style={{ marginLeft: 4, width: 4, height: 46, background: cursorOn ? "#1F1E1D" : "transparent" }} />}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        {/* the voice in your head */}
+        {frame >= 62 && (
+          <div style={{ position: "absolute", left: -26, top: -56, transform: `scale(${doubt})`, transformOrigin: "bottom left" }}>
+            <div style={{ padding: "14px 30px", borderRadius: 24, background: "#fff", border: "2px solid rgba(0,0,0,0.12)", boxShadow: "0 12px 30px rgba(0,0,0,0.28)" }}>
+              <span style={{ fontFamily: FONT, fontStyle: "italic", fontWeight: 700, fontSize: 36, color: "#B4322C" }}>ripping them off?</span>
+            </div>
+          </div>
+        )}
+        {/* the mouse pointer glides to the $800 line */}
+        {frame >= 26 && (
+          <div style={{ position: "absolute", left: interpolate(pointerP, [0, 1], [830, 700], CLAMP), top: interpolate(pointerP, [0, 1], [420, 258], CLAMP) }}>
+            <svg width="52" height="58" viewBox="0 0 46 52"><path d="M3 2 L3 40 L13 30 L21 48 L28 45 L20 27 L34 27 Z" fill="#1F1E1D" stroke="#fff" strokeWidth="2.2" strokeLinejoin="round" /></svg>
+          </div>
+        )}
+      </div>
+      <BeatLabel text={beat.text} accent={beat.accent} />
+    </Wrap>
+  );
+};
+
 // buyers — the 3-people test: THREE buyer slots pop in beside the robot (the
 // on-screen count must match the spoken "three" — CLAUDE.md §9). Default:
 // each slot holds a silhouette + "?" (name them); `verdict: "cross"` slams a
@@ -1115,6 +1179,7 @@ export const BeatSceneView: React.FC<{ beat: Beat; dur: number }> = ({ beat, dur
   const scene = () => {
     switch (beat.scene) {
       case "emote": return <EmoteBeat beat={beat} />;
+      case "invoice": return <InvoiceBeat beat={beat} />;
       case "buyers": return <BuyersBeat beat={beat} />;
       case "queue": return <QueueBeat beat={beat} />;
       case "stack": return <StackBeat beat={beat} dur={dur} />;

@@ -23,7 +23,7 @@ export const SHORTS: ShortSpec[] = [
     hook: "AM I RIPPING THEM OFF?",
     context: "Pricing 'agentic' automation for small-business clients",
     beats: [
-      { at: 8, scene: "emote", pose: "worried", tint: "#C9913D", text: "THE $800 GUILT" }, // "proposal… Agentic Workflow +$800… rip off a small business owner" (21-260)
+      { at: 8, scene: "invoice", tint: "#C9913D", accent: "#C65B52", text: "THE $800 GUILT" }, // "proposal… Agentic Workflow +$800… rip off a small business owner" (21-260)
       // EVIDENCE: Gartner's 40% cancellation stat
       { at: 474, scene: "receipt", tint: "#C65B52", text: "the 40% stat", shot: { src: "assets/external/screenshots/gartner-40-wide.png", url: "gartner.com/newsroom", imageW: 3644, imageH: 1948, to: { x: 140, y: 60, w: 2000, h: 1070 }, waypoints: [{ rect: { x: 0, y: 0, w: 3644, h: 1948 }, at: 0 }, { rect: { x: 140, y: 60, w: 2000, h: 1070 }, at: 26 }], highlight: { x: 170, y: 90, w: 1960, h: 300 }, highlightAt: 40 } }, // "Gartner said over 40% cancelled by 2027" (474-660)
       { at: 663, scene: "check", obj: "coin", verdict: "warn", tint: "#C9913D", text: "VALUE — OR THE PROBLEM?" }, // "are you charging for real value or are you the reason the stat exists?" (490-660); span.from+13

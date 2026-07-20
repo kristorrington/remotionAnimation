@@ -68,49 +68,79 @@ const RED = "#C65B52";
 const GREEN = "#4FA98A";
 const INK = "#1F1E1D";
 
-// THE HOOK — the proposal on screen: line items fade in, the "Agentic Workflow
-// $800" line highlights with a blinking cursor, and a delete-key hovers with a
-// nervous shake (the subject = the invoice + the tempted cursor).
+// THE HOOK — a real proposal being edited: the doc sits in an app window, a
+// mouse pointer glides to the "Agentic Workflow — $800" line, SELECTS it, a ⌫
+// keycap taps hesitantly (about to delete), and the voice in your head pops as
+// a doubt bubble. Reads as a genuine editing moment, not a floating fake card.
 const HookInvoiceScene: React.FC<{ durationInFrames: number }> = ({ durationInFrames }) => {
   const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
   const items = [
     { label: "Discovery + scoping", price: "$300" },
     { label: "n8n build + testing", price: "$650" },
     { label: "Agentic Workflow", price: "$800", hot: true },
   ];
-  const cursorOn = Math.floor(frame / 15) % 2 === 0;
-  const delShake = frame >= 150 ? Math.sin(frame * 0.5) * 3 * Math.max(0, 1 - (frame - 150) / 120) : 0;
+  const cursorOn = Math.floor(frame / 16) % 2 === 0;
+  const winPop = spring({ frame: frame - 4, fps, config: { stiffness: 110, damping: 19 }, durationInFrames: 26 });
+  const pointerP = spring({ frame: frame - 90, fps, config: { stiffness: 70, damping: 16 }, durationInFrames: 40 });
+  const selected = frame >= 128; // the $800 row gets selected as the pointer lands
+  const tap = frame >= 150 ? Math.max(0, Math.sin((frame - 150) * 0.45)) * Math.max(0, 1 - (frame - 150) / 170) : 0;
+  const doubt = spring({ frame: frame - 250, fps, config: { stiffness: 170, damping: 14 }, durationInFrames: 20 });
   return (
     <SceneShell durationInFrames={durationInFrames} particleSeed={0x811} tint={AMBER}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 40 }}>
-        {/* the proposal document */}
-        <div style={{ width: 1080, borderRadius: 16, padding: "34px 44px", background: "rgba(253,251,246,0.97)", border: "1px solid rgba(31,30,29,0.18)", boxShadow: "0 26px 64px rgba(31,30,29,0.22)" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", borderBottom: "2px solid rgba(31,30,29,0.12)", paddingBottom: 16, marginBottom: 10 }}>
-            <span style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 40, color: INK }}>Proposal</span>
-            <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 24, letterSpacing: 3, color: "rgba(31,30,29,0.5)" }}>DRAFT</span>
+      <div style={{ position: "relative", width: 1120, transform: `scale(${interpolate(winPop, [0, 1], [0.94, 1])})`, opacity: interpolate(winPop, [0, 0.35], [0, 1]) }}>
+        {/* the document app window */}
+        <div style={{ borderRadius: 16, overflow: "hidden", boxShadow: "0 30px 84px rgba(31,30,29,0.30)", border: "1px solid rgba(31,30,29,0.12)", background: "#fdfbf6" }}>
+          {/* light title bar */}
+          <div style={{ height: 54, display: "flex", alignItems: "center", padding: "0 20px", background: "#ece8e0", borderBottom: "1px solid rgba(31,30,29,0.10)" }}>
+            {["#E0655C", "#E6B34D", "#5FBF7E"].map((c) => <span key={c} style={{ width: 13, height: 13, borderRadius: "50%", background: c, marginRight: 9 }} />)}
+            <span style={{ flex: 1, textAlign: "center", fontFamily: FONT, fontWeight: 600, fontSize: 22, color: "rgba(31,30,29,0.5)" }}>Automation Proposal — Corner Bakery.pdf</span>
           </div>
-          {items.map((it, i) => {
-            const at = 14 + i * 22;
-            const op = interpolate(frame, [at, at + 10], [0, 1], CLAMP);
-            const hot = it.hot && frame >= 70;
-            return (
-              <div key={it.label} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 16px", borderRadius: 10, opacity: op, background: hot ? "rgba(224,62,54,0.10)" : "transparent", border: hot ? "2px solid rgba(224,62,54,0.55)" : "2px solid transparent", transform: `translateX(${hot ? delShake : 0}px)` }}>
-                <span style={{ fontFamily: FONT, fontWeight: it.hot ? 800 : 600, fontSize: 34, color: it.hot ? "#B4322C" : "rgba(31,30,29,0.82)" }}>{it.label}</span>
-                <span style={{ display: "flex", alignItems: "center", fontFamily: FONT, fontWeight: 900, fontSize: 36, color: it.hot ? "#B4322C" : INK }}>
-                  {it.price}
-                  {it.hot && <span style={{ marginLeft: 4, width: 4, height: 40, background: cursorOn ? "#B4322C" : "transparent" }} />}
-                </span>
-              </div>
-            );
-          })}
+          {/* body */}
+          <div style={{ padding: "32px 46px 40px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
+              <span style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 40, color: INK }}>Proposal</span>
+              <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 19, letterSpacing: 2, color: "rgba(31,30,29,0.4)" }}>PREPARED FOR CORNER BAKERY</span>
+            </div>
+            <div style={{ borderBottom: "2px solid rgba(31,30,29,0.10)", marginBottom: 6 }} />
+            {items.map((it, i) => {
+              const at = 14 + i * 15;
+              const op = interpolate(frame, [at, at + 10], [0, 1], CLAMP);
+              const isSel = it.hot && selected;
+              return (
+                <div key={it.label} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 12px", borderRadius: 8, opacity: op, background: isSel ? "rgba(96,132,196,0.22)" : "transparent" }}>
+                  <span style={{ fontFamily: FONT, fontWeight: 600, fontSize: 34, color: "rgba(31,30,29,0.86)" }}>{it.label}</span>
+                  <span style={{ display: "flex", alignItems: "center", fontFamily: FONT, fontWeight: 800, fontSize: 36, color: INK }}>
+                    {it.price}
+                    {it.hot && <span style={{ marginLeft: 3, width: 3, height: 38, background: cursorOn ? INK : "transparent" }} />}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
         </div>
-        {/* the delete key hovering (the temptation) */}
-        {frame >= 150 && (
-          <div style={{ transform: `translateY(${delShake}px) rotate(${delShake * 0.4}deg)`, padding: "14px 30px", borderRadius: 12, ...glassCard(RED, 2.5), display: "flex", alignItems: "center", gap: 14 }}>
-            <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 30, letterSpacing: 2, color: "#fff", transform: "translateZ(0)" }}>⌫ DELETE?</span>
+        {/* the voice in your head */}
+        {frame >= 250 && (
+          <div style={{ position: "absolute", left: -46, top: -74, transform: `scale(${doubt})`, transformOrigin: "bottom left" }}>
+            <div style={{ padding: "13px 26px", borderRadius: 18, background: "#fff", border: "2px solid rgba(31,30,29,0.14)", boxShadow: "0 14px 32px rgba(31,30,29,0.18)" }}>
+              <span style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 600, fontSize: 32, color: "#B4322C" }}>am I ripping them off?</span>
+            </div>
           </div>
         )}
-        <SceneHeadline kicker="THE PAUSE BEFORE YOU HIT SEND" title="IS $800 FAIR?" titleSize={60} accent={AMBER} />
+        {/* a real ⌫ keycap, tapped hesitantly (about to delete the line) */}
+        {frame >= 144 && (
+          <div style={{ position: "absolute", right: -34, bottom: -78, transform: `translateY(${tap * 5}px)` }}>
+            <div style={{ width: 132, height: 76, borderRadius: 13, background: "#2a2926", border: "1px solid #3a3833", boxShadow: `0 ${9 - tap * 5}px 0 #141311, 0 ${13 - tap * 5}px 22px rgba(31,30,29,0.32)`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 32, color: "#e8e5de" }}>⌫</span>
+            </div>
+          </div>
+        )}
+        {/* the mouse pointer glides to the $800 line */}
+        {frame >= 88 && (
+          <div style={{ position: "absolute", left: interpolate(pointerP, [0, 1], [1210, 968], CLAMP), top: interpolate(pointerP, [0, 1], [470, 300], CLAMP) }}>
+            <svg width="46" height="52" viewBox="0 0 46 52"><path d="M3 2 L3 40 L13 30 L21 48 L28 45 L20 27 L34 27 Z" fill="#1F1E1D" stroke="#fff" strokeWidth="2.2" strokeLinejoin="round" /></svg>
+          </div>
+        )}
       </div>
     </SceneShell>
   );

@@ -10,6 +10,7 @@ export type IconKey =
 // acting out the idea. PREFER these over `icon` cards (CLAUDE.md §9).
 export type BeatSceneKey =
   | "emote"      // big robot pose + optional speech bubble (sub = bubble text)
+  | "invoice"    // the $800 proposal being second-guessed: line SELECTED + cursor + doubt bubble (hook)
   | "queue"      // robot → prompt queue → thinking brain + stalled bar
   | "stack"      // call cards pile up and collapse on a robot
   | "bolt"       // DSpark module bolts onto the model block (trails/warn opts)
