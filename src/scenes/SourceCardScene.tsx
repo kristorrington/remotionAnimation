@@ -3,7 +3,7 @@ import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } fr
 import { FONT, MONO, CYAN, WHITE } from "../components/overlayUI";
 import { SceneShell, SceneHeadline } from "./SceneShell";
 import { FloatingPanel, HighlightSweep } from "../motion/primitives";
-import { SourceScreenshot } from "../motion/SourceScreenshot";
+import { SourceScreenshot, Note } from "../motion/SourceScreenshot";
 
 type Rect = { x: number; y: number; w: number; h: number };
 
@@ -25,6 +25,7 @@ export const ScreenshotReceiptScene: React.FC<{
   waypoints?: { rect: Rect; at: number }[]; // pan through each spoken claim
   highlight?: Rect;
   highlightAt?: number;
+  notes?: Note[]; // draw-on annotations pinned to the claim, timed to the VO
   cardW?: number;
   cardH?: number;
   fullBleed?: boolean;
@@ -34,7 +35,7 @@ export const ScreenshotReceiptScene: React.FC<{
   // with titleTop when even the top corner holds text.
   titlePos?: "center" | "right" | "left";
   titleTop?: number;
-}> = ({ durationInFrames, kicker, title, tint, src, url, imageW, imageH, from, to, zoomAt, waypoints, highlight, highlightAt, cardW = 1700, cardH = 840, fullBleed = true, titlePos = "center", titleTop = 88 }) => {
+}> = ({ durationInFrames, kicker, title, tint, src, url, imageW, imageH, from, to, zoomAt, waypoints, highlight, highlightAt, notes, cardW = 1700, cardH = 840, fullBleed = true, titlePos = "center", titleTop = 88 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   // FULL-BLEED trial (Kris, July 2026): the page fills the whole frame; the
@@ -45,7 +46,7 @@ export const ScreenshotReceiptScene: React.FC<{
     const slot = titlePos === "right" ? { right: 60 } : titlePos === "left" ? { left: 60 } : { left: "50%" };
     return (
       <AbsoluteFill>
-        <SourceScreenshot src={src} url={url} imageW={imageW} imageH={imageH} from={from} to={to} zoomAt={zoomAt} waypoints={waypoints} highlight={highlight} highlightAt={highlightAt} width={1920} height={1080} bleed />
+        <SourceScreenshot src={src} url={url} imageW={imageW} imageH={imageH} from={from} to={to} zoomAt={zoomAt} waypoints={waypoints} highlight={highlight} highlightAt={highlightAt} notes={notes} width={1920} height={1080} bleed />
         {title.trim() !== "" && (
         <div style={{ position: "absolute", top: titleTop, ...slot, transform: `${titlePos === "center" ? "translateX(-50%) " : ""}rotate(-1.5deg) scale(${interpolate(pop, [0, 1], [1.18, 1])})`, opacity: interpolate(pop, [0, 0.3], [0, 1]) }}>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, padding: "14px 34px", borderRadius: 18, background: "rgba(255,255,255,0.96)", boxShadow: "0 18px 50px rgba(31,30,29,0.35)" }}>
@@ -61,7 +62,7 @@ export const ScreenshotReceiptScene: React.FC<{
     <SceneShell durationInFrames={durationInFrames} particleSeed={0x77} tint={tint}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 22 }}>
         <SceneHeadline kicker={kicker} title={title} titleSize={46} />
-        <SourceScreenshot src={src} url={url} imageW={imageW} imageH={imageH} from={from} to={to} zoomAt={zoomAt} waypoints={waypoints} highlight={highlight} highlightAt={highlightAt} width={cardW} height={cardH} />
+        <SourceScreenshot src={src} url={url} imageW={imageW} imageH={imageH} from={from} to={to} zoomAt={zoomAt} waypoints={waypoints} highlight={highlight} highlightAt={highlightAt} notes={notes} width={cardW} height={cardH} />
       </div>
     </SceneShell>
   );

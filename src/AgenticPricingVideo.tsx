@@ -24,37 +24,41 @@ export const AGP_DUR = 7566;
 
 const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[] = [
   // ── HOOK · the $800 proposal ──
-  { scene: "hookInvoice", from: 90, dur: 320, fullscreen: true }, // "proposal open… 'Agentic Workflow +$800'… thumb on delete (21-260)"
+  { scene: "hookInvoice", from: 90, dur: 384, fullscreen: true }, // "proposal open… 'Agentic Workflow +$800'… who doesn't even know what that word means (21-474)"
   // ── CH1 · the scary stats ──
-  { scene: "gartner40", from: 474, dur: 300 }, // "Gartner just said over 40% of these agentic projects get cancelled by 2027 (474-660)"
-  { scene: "gartner130", from: 1264, dur: 220 }, // "only about 130 vendors out of thousands (1264-1470)"
+  { scene: "gartner40", from: 474, dur: 326 }, // "Gartner just said over 40% of these agentic projects get cancelled by 2027 (474-660) → 'so which is it?'"
+  // hook-wrap bridges (break up the 16s talking-head stretch) — the line-item spine
+  { scene: "invoiceQuestion", from: 800, dur: 221, fullscreen: true }, // "the answer isn't about the word at all… what to put on that line item instead (787-1012)"
+  { scene: "invoicePause", from: 1021, dur: 180, fullscreen: true }, // "that pause before you hit send. That's the whole video right there (1012-1121)"
+  { scene: "gartner130", from: 1201, dur: 283 }, // "they looked at the market and said only about 130 vendors out of thousands (1201-1470)"
   { scene: "gartnerWashing", from: 1484, dur: 236 }, // "everybody else is agent-washing, slapping the word on ordinary automation (1484-1650)"
-  { scene: "washKinetic", from: 1724, dur: 170, fullscreen: true }, // "relabelled workflows wearing a new coat of paint (1560-1720)… fear justified for YOUR work"
-  { scene: "homeworkKinetic", from: 2110, dur: 190, fullscreen: true }, // "your client already did their homework before your quote landed (2200-2300)"
+  { scene: "washKinetic", from: 1724, dur: 170, fullscreen: true }, // "relabelled workflows wearing a new coat of paint (1560-1720)"
+  { scene: "magnifier", from: 1900, dur: 210, fullscreen: true }, // "the real question is whether that fear is justified for YOUR work specifically (1900-2059)"
+  { scene: "homeworkKinetic", from: 2110, dur: 231, fullscreen: true }, // "your client already did their homework before your quote landed (2110-2341)"
   // ── CH2 · your client did the homework ──
   { scene: "fortune95", from: 2341, dur: 320 }, // "MIT's NANDA research, reported by Fortune, 95% of pilots show zero impact (2341-2560)"
   { scene: "ellvero26", from: 2819, dur: 320 }, // "only 26% of companies say AI actually paid off (2819-3020)"
   // ── CH3 · the twist / the diagnosis ──
-  { scene: "forbes40", from: 3313, dur: 340 }, // "Forbes went back and dug into the same 40% — a management & strategy failure (3313-3560)"
+  { scene: "forbes40", from: 3313, dur: 377 }, // "Forbes went back and dug into the same 40% — a management & strategy failure (3313-3608)"
   { scene: "scopeKinetic", from: 3690, dur: 250, fullscreen: true }, // "a badly scoped agentic project fails like a website build. Nobody blames HTML (3660-3830)"
   { scene: "undercutKinetic", from: 4060, dur: 250, fullscreen: true }, // "consultants undercut themselves… shave the number down… guilt-pricing (4060-4300)"
   { scene: "guiltScale", from: 4430, dur: 420, fullscreen: true }, // "small businesses weigh the OUTCOME far more than the label (4400-4600)… doesn't need a discount"
   // ── CH4 · the market already settled it ──
-  { scene: "deloitte", from: 4952, dur: 300 }, // "Deloitte published accounting guidance on outcome-based pricing for agentic AI (4952-5200)"
+  { scene: "deloitte", from: 4952, dur: 327 }, // "Deloitte published accounting guidance on outcome-based pricing for agentic AI (4952-5200)"
   { scene: "sapJoule", from: 5279, dur: 121, fullscreen: true }, // OFFICIAL FILM — "SAP's own Joule agents now bill on consumption, not seats (5279-5400)"
-  { scene: "zendesk", from: 5400, dur: 236 }, // "Zendesk charges $1.50 to $2 per automated resolution (5400-5620)"
-  { scene: "growthunhinged", from: 5649, dur: 320 }, // "the biggest software vendors moved from pricing on hours to pricing on outcomes (5649-5870)"
+  { scene: "zendesk", from: 5400, dur: 249 }, // "Zendesk charges $1.50 to $2 per automated resolution (5400-5620)"
+  { scene: "growthunhinged", from: 5649, dur: 347 }, // "the biggest software vendors moved from pricing on hours to pricing on outcomes (5649-5870)"
   // ── CH5 · the number ──
   { scene: "ratesTable", from: 5996, dur: 200 }, // "2026 rate guides put agentic automation work at $50 to $250-plus an hour (5996-6190)"
-  { scene: "ratesPremium", from: 6199, dur: 470 }, // "5+ shipped projects → 30-50% premium (6199)… specialised industry → another 20-40% (6496)"
+  { scene: "ratesPremium", from: 6199, dur: 503 }, // "5+ shipped projects → 30-50% premium (6199)… specialised industry → another 20-40% (6675)"
   // ── CLOSING ──
-  { scene: "closingKinetic", from: 6702, dur: 320, fullscreen: true }, // "the $800 was never the question — it's whether you have the shipped work + outcome (6702-6980)"
+  { scene: "closingKinetic", from: 6702, dur: 333, fullscreen: true }, // "the $800 was never the question — it's whether you have the shipped work + outcome (6702-6980)"
   { scene: "priceKinetic", from: 7035, dur: 300, fullscreen: true }, // "deliver outcomes with agentic workflows and price like you actually can (7035-7300)"
 ];
 
 export const AGP_WINDOWS: { from: number; dur: number }[] = BEATS.map((b) => ({ from: b.from, dur: b.dur }));
 export const AGP_FULLSCREEN: { from: number; to: number }[] = BEATS.filter((b) => b.fullscreen).map((b) => ({ from: b.from, to: b.from + b.dur }));
-export const AGP_EXTRA_CUTS = [474, 1264, 1484, 2341, 2819, 3313, 4952, 5400, 5649, 5996, 6199];
+export const AGP_EXTRA_CUTS = [474, 1201, 1484, 2341, 2819, 3313, 4952, 5400, 5649, 5996, 6199];
 
 const SHOT = "assets/external/screenshots";
 const CLIPS = "assets/external/clips";
@@ -164,46 +168,146 @@ const WashScene: React.FC<{ durationInFrames: number }> = ({ durationInFrames })
   );
 };
 
+// THE LINE-ITEM CALLBACK — the spine of the video: we keep coming back to the
+// "Agentic Workflow — $800" line on the proposal (the SUBJECT is the cursor).
+// mode "question": ? bubbles interrogate the WORD (is that what you're pricing?).
+// mode "pause": a SEND button with a cursor that hovers in and HESITATES — the
+// pause before you hit send. Breaks up the hook-wrap talking-head stretch.
+const InvoiceAsideScene: React.FC<{ durationInFrames: number; mode: "question" | "pause"; kicker: string; title: string; tint: string; accent: string }> = ({ durationInFrames, mode, kicker, title, tint, accent }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const pop = spring({ frame: frame - 6, fps, config: { stiffness: 110, damping: 18 }, durationInFrames: 24 });
+  const cursorOn = Math.floor(frame / 15) % 2 === 0;
+  const hover = interpolate(frame, [18, 46], [46, 0], CLAMP);
+  const hesitate = frame >= 52 ? Math.sin(frame * 0.42) * 5 * Math.max(0, 1 - (frame - 52) / 130) : 0;
+  return (
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x5c1} tint={tint}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 44 }}>
+        <div style={{ position: "relative", width: 900, transform: `scale(${interpolate(pop, [0, 1], [0.9, 1])})`, opacity: interpolate(pop, [0, 0.3], [0, 1]) }}>
+          {/* the single line item, lifted from the proposal */}
+          <div style={{ position: "relative", borderRadius: 14, padding: "26px 38px", background: "rgba(253,251,246,0.97)", border: "1px solid rgba(31,30,29,0.16)", boxShadow: "0 22px 54px rgba(31,30,29,0.20)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 40, color: "#B4322C", letterSpacing: 0.3 }}>
+              Agentic Workflow{mode === "question" && <span style={{ opacity: cursorOn ? 1 : 0.12 }}>|</span>}
+            </span>
+            <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 44, color: INK }}>$800</span>
+          </div>
+          {/* question mode: ? bubbles pop over the word */}
+          {mode === "question" && [0, 1, 2].map((i) => {
+            const at = 30 + i * 13;
+            const p = spring({ frame: frame - at, fps, config: { stiffness: 190, damping: 12 }, durationInFrames: 18 });
+            return <div key={i} style={{ position: "absolute", left: 150 + i * 92, top: -46, transform: `translateY(${interpolate(p, [0, 1], [24, -10])}px) scale(${p})`, fontFamily: SERIF, fontWeight: 800, fontSize: 64, color: accent, textShadow: "0 4px 12px rgba(31,30,29,0.18)" }}>?</div>;
+          })}
+          {/* pause mode: the SEND button + a cursor that hovers in and hesitates */}
+          {mode === "pause" && (
+            <div style={{ position: "relative", height: 132, marginTop: 8 }}>
+              <div style={{ position: "absolute", right: 0, top: 30, padding: "16px 46px", borderRadius: 12, background: accent, boxShadow: `0 12px 28px ${accent}66` }}>
+                <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 34, letterSpacing: 1.5, color: "#fff", transform: "translateZ(0)" }}>SEND</span>
+              </div>
+              <div style={{ position: "absolute", right: 44 + hesitate, top: 44 + hover }}>
+                <svg width="48" height="54" viewBox="0 0 48 54"><path d="M3 2 L3 42 L14 31 L22 50 L30 47 L21 28 L36 28 Z" fill="#1F1E1D" stroke="#fff" strokeWidth="2.4" strokeLinejoin="round" /></svg>
+              </div>
+            </div>
+          )}
+        </div>
+        <SceneHeadline kicker={kicker} title={title} titleSize={58} accent={accent} />
+      </div>
+    </SceneShell>
+  );
+};
+
+// "IS IT YOUR WORK?" — a magnifier lens sweeps across a small workflow (the
+// SUBJECT scanning), lands on the middle node with an impact, verdict pops.
+// Breaks up the "is that fear justified for your work" talking-head stretch.
+const MagnifierScene: React.FC<{ durationInFrames: number; kicker: string; title: string; tint: string; accent: string }> = ({ durationInFrames, kicker, title, tint, accent }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const sweep = spring({ frame: frame - 10, fps, config: { stiffness: 80, damping: 15 }, durationInFrames: 40 });
+  const lensX = interpolate(sweep, [0, 1], [420, 0]);
+  const chip = spring({ frame: frame - 52, fps, config: { stiffness: 190, damping: 13 }, durationInFrames: 18 });
+  const nodes = ["SCOPE", "BUILD", "SHIP"];
+  return (
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x99f} impacts={[48]} tint={tint}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 60 }}>
+        <div style={{ position: "relative", width: 860, height: 260, display: "flex", alignItems: "center", justifyContent: "center", gap: 44 }}>
+          {nodes.map((n, i) => (
+            <React.Fragment key={n}>
+              {i > 0 && <div style={{ width: 56, height: 3, borderRadius: 2, background: "rgba(120,112,102,0.55)" }} />}
+              <div style={{ ...glassCard(accent + "aa", 2), padding: "26px 32px", borderRadius: 14 }}>
+                <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 30, letterSpacing: 1.5, color: "#fff", transform: "translateZ(0)" }}>{n}</span>
+              </div>
+            </React.Fragment>
+          ))}
+          {/* the magnifier lens scanning the middle node */}
+          <div style={{ position: "absolute", left: "50%", top: 30, transform: `translateX(calc(-50% + ${lensX}px))` }}>
+            <div style={{ position: "relative", width: 172, height: 172 }}>
+              <div style={{ width: 172, height: 172, borderRadius: "50%", border: `9px solid ${INK}`, background: "rgba(217,119,87,0.10)", boxShadow: "inset 0 0 0 3px rgba(255,255,255,0.55), 0 16px 34px rgba(31,30,29,0.32)" }} />
+              <div style={{ position: "absolute", right: -40, bottom: -26, width: 58, height: 18, borderRadius: 9, background: INK, transform: "rotate(45deg)" }} />
+            </div>
+          </div>
+          {/* verdict */}
+          {frame >= 52 && (
+            <div style={{ position: "absolute", top: -18, left: "50%", transform: `translateX(-50%) rotate(-3deg) scale(${chip})`, padding: "10px 28px", borderRadius: 10, background: accent, boxShadow: `0 12px 26px ${accent}55` }}>
+              <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 30, letterSpacing: 1.5, color: "#fff", transform: "translateZ(0)" }}>YOUR WORK?</span>
+            </div>
+          )}
+        </div>
+        <SceneHeadline kicker={kicker} title={title} titleSize={58} accent={accent} />
+      </div>
+    </SceneShell>
+  );
+};
+
 export const AgenticPricingVisuals: React.FC = () => {
   return (
     <ThemeProvider style="paper">
     <AbsoluteFill>
       {/* HOOK — the $800 proposal */}
-      <Sequence from={90} durationInFrames={320} premountFor={30}>
-        <HookInvoiceScene durationInFrames={320} />
+      <Sequence from={90} durationInFrames={384} premountFor={30}>
+        <HookInvoiceScene durationInFrames={384} />
       </Sequence>
 
       {/* CH1 0:16 — Gartner: >40% cancelled by 2027 */}
-      <Sequence from={474} durationInFrames={300} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={300} kicker="GARTNER · PRESS RELEASE" title="40% CANCELLED BY 2027" fullBleed={false} tint={RED} src={`${SHOT}/gartner-40-wide.png`} url="gartner.com/newsroom" imageW={3644} imageH={1948} to={{ x: 140, y: 60, w: 2000, h: 1070 }} waypoints={[{ rect: { x: 0, y: 0, w: 3644, h: 1948 }, at: 0 }, { rect: { x: 140, y: 60, w: 2000, h: 1070 }, at: 26 }]} highlight={{ x: 170, y: 90, w: 1960, h: 300 }} highlightAt={40} />
+      <Sequence from={474} durationInFrames={326} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={326} kicker="GARTNER · PRESS RELEASE" title="40% CANCELLED BY 2027" fullBleed={false} tint={RED} src={`${SHOT}/gartner-40-wide.png`} url="gartner.com/newsroom" imageW={3644} imageH={1948} to={{ x: 140, y: 60, w: 2000, h: 1070 }} waypoints={[{ rect: { x: 0, y: 0, w: 3644, h: 1948 }, at: 0 }, { rect: { x: 140, y: 60, w: 2000, h: 1070 }, at: 26 }]} notes={[{ at: 36, rect: { x: 1185, y: 92, w: 320, h: 96 }, kind: "box" }]} />
       </Sequence>
-      {/* 0:42 — only ~130 real vendors */}
-      <Sequence from={1264} durationInFrames={220} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={220} kicker="GARTNER · THE MARKET" title="ONLY ~130 REAL" fullBleed={false} tint={AMBER} src={`${SHOT}/gartner-130-wide.png`} url="gartner.com/newsroom" imageW={3840} imageH={2052} to={{ x: 440, y: 940, w: 1820, h: 973 }} waypoints={[{ rect: { x: 300, y: 800, w: 2400, h: 1283 }, at: 0 }, { rect: { x: 440, y: 940, w: 1820, h: 973 }, at: 26 }]} highlight={{ x: 470, y: 1075, w: 1720, h: 100 }} highlightAt={40} />
+      {/* 0:27 — hook-wrap bridges (the line-item spine) break up the talking-head */}
+      <Sequence from={800} durationInFrames={221} premountFor={30}>
+        <InvoiceAsideScene durationInFrames={221} mode="question" kicker="STICK AROUND" title="IS IT THE WORD?" tint={AMBER} accent={AMBER} />
+      </Sequence>
+      <Sequence from={1021} durationInFrames={180} premountFor={30}>
+        <InvoiceAsideScene durationInFrames={180} mode="pause" kicker="THAT'S THE WHOLE VIDEO" title="THE PAUSE BEFORE SEND" tint={RED} accent={RED} />
+      </Sequence>
+      {/* 0:40 — only ~130 real vendors (establish the page, zoom on the spoken "130") */}
+      <Sequence from={1201} durationInFrames={283} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={283} kicker="GARTNER · THE MARKET" title="ONLY ~130 REAL" fullBleed={false} tint={AMBER} src={`${SHOT}/gartner-130-wide.png`} url="gartner.com/newsroom" imageW={3840} imageH={2052} to={{ x: 440, y: 940, w: 1820, h: 973 }} waypoints={[{ rect: { x: 300, y: 800, w: 2400, h: 1283 }, at: 0 }, { rect: { x: 440, y: 940, w: 1820, h: 973 }, at: 89 }]} notes={[{ at: 93, rect: { x: 470, y: 1075, w: 1720, h: 100 }, kind: "underline" }]} />
       </Sequence>
       {/* 0:49 — agent washing */}
       <Sequence from={1484} durationInFrames={236} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={236} kicker="GARTNER · WARNING" title="AGENT-WASHING" fullBleed={false} tint={RED} src={`${SHOT}/gartner-washing-wide.png`} url="gartner.com/newsroom" imageW={3840} imageH={2052} to={{ x: 420, y: 40, w: 1820, h: 973 }} waypoints={[{ rect: { x: 0, y: 0, w: 3840, h: 2052 }, at: 0 }, { rect: { x: 420, y: 40, w: 1820, h: 973 }, at: 26 }]} highlight={{ x: 480, y: 90, w: 1700, h: 210 }} highlightAt={40} />
+        <ScreenshotReceiptScene durationInFrames={236} kicker="GARTNER · WARNING" title="AGENT-WASHING" fullBleed={false} tint={RED} src={`${SHOT}/gartner-washing-wide.png`} url="gartner.com/newsroom" imageW={3840} imageH={2052} to={{ x: 420, y: 40, w: 1820, h: 973 }} waypoints={[{ rect: { x: 0, y: 0, w: 3840, h: 2052 }, at: 0 }, { rect: { x: 420, y: 40, w: 1820, h: 973 }, at: 26 }]} notes={[{ at: 40, rect: { x: 480, y: 90, w: 1700, h: 210 }, kind: "box" }]} />
       </Sequence>
       <Sequence from={1724} durationInFrames={170} premountFor={30}>
         <WashScene durationInFrames={170} />
       </Sequence>
-      <Sequence from={2110} durationInFrames={190} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={190} kicker="BEFORE YOUR QUOTE LANDED" title="THEY DID THE HOMEWORK" stamp="THE FEAR IS REAL" stampAt={130} accent={AMBER} />
+      {/* 1:03 — is that fear justified for YOUR work? (lens scans the workflow) */}
+      <Sequence from={1900} durationInFrames={210} premountFor={30}>
+        <MagnifierScene durationInFrames={210} kicker="THE REAL QUESTION" title="IS IT YOUR WORK?" tint={RED} accent={RED} />
+      </Sequence>
+      <Sequence from={2110} durationInFrames={231} premountFor={30}>
+        <FinalTakeawayScene durationInFrames={231} kicker="BEFORE YOUR QUOTE LANDED" title="THEY DID THE HOMEWORK" stamp="THE FEAR IS REAL" stampAt={130} accent={AMBER} />
       </Sequence>
 
       {/* CH2 1:18 — MIT/Fortune 95% */}
       <Sequence from={2341} durationInFrames={320} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={320} kicker="FORTUNE · MIT NANDA" title="95% SHOW ZERO IMPACT" fullBleed={false} tint={RED} src={`${SHOT}/fortune-95-wide.png`} url="fortune.com" imageW={3840} imageH={2052} to={{ x: 480, y: 90, w: 1500, h: 802 }} waypoints={[{ rect: { x: 0, y: 0, w: 3840, h: 2052 }, at: 0 }, { rect: { x: 480, y: 90, w: 1500, h: 802 }, at: 26 }]} highlight={{ x: 520, y: 120, w: 1320, h: 280 }} highlightAt={40} />
+        <ScreenshotReceiptScene durationInFrames={320} kicker="FORTUNE · MIT NANDA" title="95% SHOW ZERO IMPACT" fullBleed={false} tint={RED} src={`${SHOT}/fortune-95-wide.png`} url="fortune.com" imageW={3840} imageH={2052} to={{ x: 480, y: 90, w: 1500, h: 802 }} waypoints={[{ rect: { x: 0, y: 0, w: 3840, h: 2052 }, at: 0 }, { rect: { x: 480, y: 90, w: 1500, h: 802 }, at: 26 }]} notes={[{ at: 112, rect: { x: 510, y: 110, w: 1410, h: 250 }, kind: "box" }]} />
       </Sequence>
       {/* 1:34 — BCG 26% */}
       <Sequence from={2819} durationInFrames={320} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={320} kicker="ELLVERO · BCG 2026" title="ONLY 26% PAID OFF" fullBleed={false} tint={AMBER} src={`${SHOT}/ellvero-26-wide.png`} url="ellvero.com" imageW={2080} imageH={1112} to={{ x: 70, y: 300, w: 1700, h: 812 }} waypoints={[{ rect: { x: 0, y: 0, w: 2080, h: 1112 }, at: 0 }, { rect: { x: 70, y: 300, w: 1700, h: 812 }, at: 26 }]} highlight={{ x: 230, y: 500, w: 1560, h: 150 }} highlightAt={40} />
+        <ScreenshotReceiptScene durationInFrames={320} kicker="ELLVERO · BCG 2026" title="ONLY 26% PAID OFF" fullBleed={false} tint={AMBER} src={`${SHOT}/ellvero-26-wide.png`} url="ellvero.com" imageW={2080} imageH={1112} to={{ x: 70, y: 300, w: 1700, h: 812 }} waypoints={[{ rect: { x: 0, y: 0, w: 2080, h: 1112 }, at: 0 }, { rect: { x: 70, y: 300, w: 1700, h: 812 }, at: 26 }]} notes={[{ at: 16, rect: { x: 230, y: 515, w: 1630, h: 140 }, kind: "box" }]} />
       </Sequence>
 
       {/* CH3 1:50 — Forbes reframes the 40% */}
-      <Sequence from={3313} durationInFrames={340} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={340} kicker="FORBES · THE TWIST" title="A STRATEGY FAILURE" fullBleed={false} tint={GREEN} src={`${SHOT}/forbes-40-wide.png`} url="forbes.com" imageW={2500} imageH={1336} to={{ x: 80, y: 170, w: 2340, h: 1252 }} waypoints={[{ rect: { x: 0, y: 0, w: 2500, h: 1336 }, at: 0 }, { rect: { x: 80, y: 170, w: 2340, h: 1252 }, at: 26 }]} highlight={{ x: 120, y: 200, w: 2280, h: 320 }} highlightAt={40} />
+      <Sequence from={3313} durationInFrames={377} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={377} kicker="FORBES · THE TWIST" title="A STRATEGY FAILURE" fullBleed={false} tint={GREEN} src={`${SHOT}/forbes-40-wide.png`} url="forbes.com" imageW={2500} imageH={1336} to={{ x: 80, y: 170, w: 2340, h: 1252 }} waypoints={[{ rect: { x: 0, y: 0, w: 2500, h: 1336 }, at: 0 }, { rect: { x: 80, y: 170, w: 2340, h: 1252 }, at: 26 }]} notes={[{ at: 76, rect: { x: 470, y: 250, w: 320, h: 120 }, kind: "box" }, { at: 223, rect: { x: 263, y: 896, w: 1340, h: 90 }, kind: "underline" }]} />
       </Sequence>
       <Sequence from={3690} durationInFrames={250} premountFor={30}>
         <FinalTakeawayScene durationInFrames={250} kicker="A BADLY SCOPED PROJECT FAILS LIKE A WEBSITE BUILD" title="NOBODY BLAMES HTML" stamp="IT'S THE SCOPE" stampAt={150} accent={GREEN} />
@@ -217,34 +321,34 @@ export const AgenticPricingVisuals: React.FC = () => {
       </Sequence>
 
       {/* CH4 2:45 — Deloitte accounting guidance */}
-      <Sequence from={4952} durationInFrames={300} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={300} kicker="DELOITTE · JUNE 2026" title="OUTCOME-BASED, OFFICIAL" fullBleed={false} tint="#6E93BD" src={`${SHOT}/deloitte-outcome-wide.png`} url="dart.deloitte.com" imageW={3840} imageH={2052} to={{ x: 1240, y: 640, w: 1900, h: 1016 }} waypoints={[{ rect: { x: 1000, y: 500, w: 2500, h: 1337 }, at: 0 }, { rect: { x: 1240, y: 640, w: 1900, h: 1016 }, at: 26 }]} highlight={{ x: 1280, y: 720, w: 1810, h: 250 }} highlightAt={40} />
+      <Sequence from={4952} durationInFrames={327} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={327} kicker="DELOITTE · JUNE 2026" title="OUTCOME-BASED, OFFICIAL" fullBleed={false} tint="#6E93BD" src={`${SHOT}/deloitte-outcome-wide.png`} url="dart.deloitte.com" imageW={3840} imageH={2052} to={{ x: 1240, y: 640, w: 1900, h: 1016 }} waypoints={[{ rect: { x: 1000, y: 500, w: 2500, h: 1337 }, at: 0 }, { rect: { x: 1240, y: 640, w: 1900, h: 1016 }, at: 26 }]} notes={[{ at: 120, rect: { x: 1280, y: 700, w: 1810, h: 270 }, kind: "box" }]} />
       </Sequence>
       {/* 2:56 — SAP Joule: consumption, not seats (official film) */}
       <Sequence from={5279} durationInFrames={121} premountFor={30}>
         <ClipFilmScene durationInFrames={121} kicker="SAP · JOULE AGENTS" title="BILL ON CONSUMPTION" src={`${CLIPS}/sap-joule-clip.mp4`} tint="#6E93BD" accent="#6E93BD" />
       </Sequence>
       {/* 3:00 — Zendesk per-resolution */}
-      <Sequence from={5400} durationInFrames={236} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={236} kicker="ZENDESK · NEWSROOM" title="PAY PER RESOLUTION" fullBleed={false} tint={GREEN} src={`${SHOT}/zendesk-pricing-wide.png`} url="zendesk.com/newsroom" imageW={3840} imageH={2052} to={{ x: 980, y: 60, w: 2100, h: 1123 }} waypoints={[{ rect: { x: 900, y: 40, w: 2400, h: 1283 }, at: 0 }, { rect: { x: 980, y: 60, w: 2100, h: 1123 }, at: 26 }]} highlight={{ x: 1000, y: 600, w: 1600, h: 130 }} highlightAt={44} />
+      <Sequence from={5400} durationInFrames={249} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={249} kicker="ZENDESK · NEWSROOM" title="PAY PER RESOLUTION" fullBleed={false} tint={GREEN} src={`${SHOT}/zendesk-pricing-wide.png`} url="zendesk.com/newsroom" imageW={3840} imageH={2052} to={{ x: 980, y: 60, w: 2100, h: 1123 }} waypoints={[{ rect: { x: 900, y: 40, w: 2400, h: 1283 }, at: 0 }, { rect: { x: 980, y: 60, w: 2100, h: 1123 }, at: 26 }]} notes={[{ at: 100, rect: { x: 1180, y: 490, w: 1400, h: 100 }, kind: "box" }]} />
       </Sequence>
       {/* 3:08 — Growth Unhinged: hybrid/outcome is the new default */}
-      <Sequence from={5649} durationInFrames={320} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={320} kicker="GROWTH UNHINGED · 2026" title="OUTCOMES, NOT HOURS" fullBleed={false} tint="#6E93BD" src={`${SHOT}/growthunhinged-shift-wide.png`} url="growthunhinged.com" imageW={2432} imageH={1300} to={{ x: 60, y: 40, w: 2312, h: 1236 }} waypoints={[{ rect: { x: 0, y: 0, w: 2432, h: 1300 }, at: 0 }, { rect: { x: 900, y: 300, w: 1400, h: 748 }, at: 120 }]} highlight={{ x: 1460, y: 490, w: 460, h: 580 }} highlightAt={130} />
+      <Sequence from={5649} durationInFrames={347} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={347} kicker="GROWTH UNHINGED · 2026" title="OUTCOMES, NOT HOURS" fullBleed={false} tint="#6E93BD" src={`${SHOT}/growthunhinged-shift-wide.png`} url="growthunhinged.com" imageW={2432} imageH={1300} to={{ x: 60, y: 40, w: 2312, h: 1236 }} waypoints={[{ rect: { x: 0, y: 0, w: 2432, h: 1300 }, at: 0 }, { rect: { x: 900, y: 300, w: 1400, h: 748 }, at: 120 }]} notes={[{ at: 145, rect: { x: 1500, y: 480, w: 430, h: 220 }, kind: "box" }]} />
       </Sequence>
 
       {/* CH5 3:20 — the rate table */}
       <Sequence from={5996} durationInFrames={200} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={200} kicker="2026 RATE GUIDE" title="$50–$250+ / HOUR" fullBleed={false} tint={GREEN} src={`${SHOT}/rates-table-wide.png`} url="ai-agentsplus.com" imageW={2694} imageH={1440} to={{ x: 440, y: 320, w: 1860, h: 995 }} waypoints={[{ rect: { x: 0, y: 0, w: 2694, h: 1440 }, at: 0 }, { rect: { x: 440, y: 320, w: 1860, h: 995 }, at: 26 }]} highlight={{ x: 460, y: 380, w: 1830, h: 700 }} highlightAt={44} />
+        <ScreenshotReceiptScene durationInFrames={200} kicker="2026 RATE GUIDE" title="$50–$250+ / HOUR" fullBleed={false} tint={GREEN} src={`${SHOT}/rates-table-wide.png`} url="ai-agentsplus.com" imageW={2694} imageH={1440} to={{ x: 440, y: 320, w: 1860, h: 995 }} waypoints={[{ rect: { x: 0, y: 0, w: 2694, h: 1440 }, at: 0 }, { rect: { x: 440, y: 320, w: 1860, h: 995 }, at: 26 }]} notes={[{ at: 100, rect: { x: 1030, y: 440, w: 1160, h: 600 }, kind: "box" }]} />
       </Sequence>
       {/* 3:27 — the premiums: shipped proof + specialisation */}
-      <Sequence from={6199} durationInFrames={470} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={470} kicker="THE PREMIUM" title="PROOF > THE WORD" fullBleed={false} tint={GREEN} src={`${SHOT}/rates-premium-wide.png`} url="ai-agentsplus.com" imageW={2960} imageH={1582} to={{ x: 380, y: 40, w: 2100, h: 1123 }} waypoints={[{ rect: { x: 0, y: 0, w: 2960, h: 1582 }, at: 0 }, { rect: { x: 380, y: 300, w: 1900, h: 1016 }, at: 26 }, { rect: { x: 380, y: 20, w: 1900, h: 1016 }, at: 300 }]} highlight={{ x: 500, y: 500, w: 1780, h: 130 }} highlightAt={44} />
+      <Sequence from={6199} durationInFrames={503} premountFor={30}>
+        <ScreenshotReceiptScene durationInFrames={503} kicker="THE PREMIUM" title="PROOF > THE WORD" fullBleed={false} tint={GREEN} src={`${SHOT}/rates-premium-wide.png`} url="ai-agentsplus.com" imageW={2960} imageH={1582} to={{ x: 380, y: 40, w: 2100, h: 1123 }} waypoints={[{ rect: { x: 0, y: 0, w: 2960, h: 1582 }, at: 0 }, { rect: { x: 380, y: 300, w: 1900, h: 1016 }, at: 26 }, { rect: { x: 380, y: 20, w: 1900, h: 1016 }, at: 300 }]} notes={[{ at: 92, rect: { x: 810, y: 495, w: 230, h: 85 }, kind: "box" }, { at: 460, rect: { x: 1660, y: 130, w: 250, h: 80 }, kind: "box" }]} />
       </Sequence>
 
       {/* CLOSING 3:43 — the $800 was never the question */}
-      <Sequence from={6702} durationInFrames={320} premountFor={30}>
-        <FinalTakeawayScene durationInFrames={320} kicker="GO BACK TO THAT PROPOSAL" title="$800 WAS NEVER IT" stamp="SHIPPED WORK + OUTCOME" stampAt={200} accent={AMBER} />
+      <Sequence from={6702} durationInFrames={333} premountFor={30}>
+        <FinalTakeawayScene durationInFrames={333} kicker="GO BACK TO THAT PROPOSAL" title="$800 WAS NEVER IT" stamp="SHIPPED WORK + OUTCOME" stampAt={200} accent={AMBER} />
       </Sequence>
       <Sequence from={7035} durationInFrames={300} premountFor={30}>
         <FinalTakeawayScene durationInFrames={300} kicker="DON'T APOLOGISE FOR THE WORD" title="PRICE LIKE YOU CAN" stamp="DELIVER OUTCOMES" stampAt={200} accent={GREEN} />

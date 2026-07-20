@@ -14,6 +14,14 @@ const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const CYAN = "#D97757";
 
 type Rect = { x: number; y: number; w: number; h: number };
+export type Note = {
+  at: number; // frame the marker draws on (the whisper word for this claim)
+  rect: Rect; // image-space box around the claim line / number
+  kind?: "underline" | "circle" | "box"; // default underline
+  label?: string; // optional caption chip beside the marker (true screen size)
+  labelPos?: "above" | "below"; // where the chip sits (default below)
+  color?: string; // default terracotta
+};
 
 // transform that shows image-rect `r` inside a `w`×`h` viewport.
 // contain: the whole rect fits (default). cover: the rect always FILLS the
@@ -44,11 +52,18 @@ export const SourceScreenshot: React.FC<{
   waypoints?: { rect: Rect; at: number }[];
   highlight?: Rect; // the exact line, in image pixels — gets a sweep
   highlightAt?: number;
+  // NOTES (Kris, July 2026 — "add animation on top of the b-roll that aligns
+  // to the transcript"): editor's-pen annotations pinned to the PAGE (image
+  // pixels) that DRAW ON at their `at` (the whisper frame the claim is
+  // spoken). Each is an underline/circle/box marker on the claim + an optional
+  // label chip that pops beside it (rendered at true screen size regardless of
+  // the page zoom). Multi-claim receipts get one note per waypoint landing.
+  notes?: Note[];
   width?: number;
   height?: number;
   bleed?: boolean; // full-frame mode: no radius/border/glow — the page IS the frame
   fit?: "contain" | "cover"; // cover: the to-rect always fills the viewport
-}> = ({ src, url, imageW, imageH, from, to, zoomAt = 20, waypoints, highlight, highlightAt = 52, width = 1100, height = 640, bleed = false, fit = "contain" }) => {
+}> = ({ src, url, imageW, imageH, from, to, zoomAt = 20, waypoints, highlight, highlightAt = 52, notes, width = 1100, height = 640, bleed = false, fit = "contain" }) => {
   const frame = useCurrentFrame();
   const inner = height - 54;
   const useWaypoints = waypoints !== undefined && waypoints.length >= 1;
@@ -107,6 +122,39 @@ export const SourceScreenshot: React.FC<{
               <div style={{ position: "absolute", left: 0, bottom: 0, height: 4, borderRadius: 2, background: CYAN, width: `${interpolate(frame, [highlightAt + 4, highlightAt + 24], [0, 100], CLAMP)}%` }} />
             </div>
           )}
+          {notes?.map((n, i) => {
+            const kind = n.kind ?? "underline";
+            const col = n.color ?? CYAN;
+            const draw = interpolate(frame, [n.at, n.at + 16], [0, 1], { ...CLAMP, easing: (x) => 1 - (1 - x) * (1 - x) });
+            const sw = 5 / scale; // marker stroke ≈ 5 screen px at any page zoom
+            const gap = sw * 2.4;
+            const peri = Math.PI * (n.rect.w + n.rect.h);
+            const below = n.labelPos !== "above";
+            return (
+              <div key={`note-${i}`} style={{ position: "absolute", left: n.rect.x, top: n.rect.y, width: n.rect.w, height: n.rect.h }}>
+                {kind === "underline" && (
+                  <div style={{ position: "absolute", left: 0, bottom: -gap, height: sw, borderRadius: sw / 2, background: col, width: `${draw * 100}%`, boxShadow: `0 0 ${sw * 2}px ${col}` }} />
+                )}
+                {kind === "box" && (
+                  <div style={{ position: "absolute", inset: -sw, border: `${sw}px solid ${col}`, borderRadius: sw * 2.4, opacity: interpolate(frame, [n.at, n.at + 8], [0, 1], CLAMP), transform: `scale(${interpolate(draw, [0, 1], [1.05, 1])})`, boxShadow: `0 0 ${sw * 3}px ${col}55` }} />
+                )}
+                {kind === "circle" && (
+                  <svg width={n.rect.w} height={n.rect.h} viewBox={`0 0 ${n.rect.w} ${n.rect.h}`} style={{ position: "absolute", inset: 0, overflow: "visible" }}>
+                    <ellipse cx={n.rect.w / 2} cy={n.rect.h / 2} rx={n.rect.w / 2} ry={n.rect.h / 2} fill="none" stroke={col} strokeWidth={sw} strokeLinecap="round" strokeDasharray={peri} strokeDashoffset={(1 - draw) * peri} />
+                  </svg>
+                )}
+                {n.label && (
+                  <div style={{ position: "absolute", left: 0, right: 0, [below ? "top" : "bottom"]: n.rect.h + gap, display: "flex", justifyContent: "center", pointerEvents: "none" }}>
+                    <div style={{ transform: `scale(${1 / scale})`, transformOrigin: below ? "top center" : "bottom center", opacity: interpolate(frame, [n.at + 6, n.at + 16], [0, 1], CLAMP) }}>
+                      <div style={{ whiteSpace: "nowrap", padding: "8px 18px", borderRadius: 10, background: col, boxShadow: "0 8px 22px rgba(0,0,0,0.45)", transform: `translateY(${interpolate(frame, [n.at + 6, n.at + 16], [below ? -8 : 8, 0], CLAMP)}px)` }}>
+                        <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 30, letterSpacing: 0.4, color: "#fff" }}>{n.label}</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

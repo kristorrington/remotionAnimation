@@ -387,6 +387,20 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   look. Never bare white text on the backdrop.
 - Do NOT make the edit mostly talking head — talking head is corner PiP / a quick
   reaction / an emphasis beat; motion graphics drive the visuals.
+- **No dead-face stretches; no blank+PiP flashes** (Kris, July 2026 — "a screen
+  with my face and a blank animation" / "spaces where it's my face talking too
+  long"): (1) any span the overlay leaves uncovered for **> ~8s** reads as
+  "face talking too long" — break it with an animated BRIDGE beat (a compact
+  mode-A/D subject scene, whisper-pinned; reuse a running motif like the
+  `InvoiceAsideScene` line-item spine or `MagnifierScene` rather than a kinetic
+  slide). Aim to alternate face ↔ cutaway so no rhetorical stretch runs long.
+  (2) The Final's per-span ivory bridge sits UNDER the cards, so an inter-beat
+  gap INSIDE a merged span shows ivory + corner-PiP with **no card** — a blank
+  flash. Beats within one span (gap ≤ `PIP_GAP_MAX`) must be **contiguous**:
+  extend the earlier beat's `dur` to meet the next (receipts/kinetics hold their
+  settled state fine), or start the next receipt earlier on an establishing
+  waypoint that zooms to the claim on the spoken word. Audit with Final stills
+  at every inter-beat gap AND every long face stretch before shipping.
 - **Every non-receipt scene has a subject doing something** (§1); route each beat
   to a mode (§2) and metaphor (§4) before writing code.
 - Give subjects **reaction beats** synced to the VO — a pose change or impact on
@@ -847,7 +861,26 @@ press kits, screenshots of official pages.
   the speed row → the time-to-first-token row; a scores card: zoom the exact
   sentence). Verify with a still AT each waypoint's landing frame — the right
   claim must be centred and readable. Single-claim receipts keep the plain
-  `from`→`to`+`highlight`. A receipt still that errors instead
+  `from`→`to`.
+  **DRAW-ON ANNOTATIONS pinned to the claim, timed to the VO (`notes`)** (Kris,
+  July 2026 — "the b-roll can have an animation on top of it that aligns to the
+  transcript"): pass `SourceScreenshot`/`ScreenshotReceiptScene` a `notes`
+  array — editor's-pen markers in **image-pixel space** (same coords as the
+  crop, so they PIN to the page): `{ at, rect, kind?: "underline"|"box"|"circle",
+  label? }[]`. Each marker DRAWS ON at its `at` (the LOCAL scene frame the
+  claim's whisper word is spoken; `at = spokenAbsFrame − beat.from`), so a box
+  frames the headline / a number, or an underline wipes under the exact line,
+  exactly as Kris says it. This SUPERSEDES the old `highlight` box — it was
+  routinely misplaced (Kris caught the Forbes + Fortune sweeps sitting on the
+  BYLINE, one line below the headline). **Place coords off a settled still**:
+  render the receipt at its `to`/last-waypoint frame, read where the claim sits,
+  set `rect`, then re-render at `at+16` and nudge until the marker frames the
+  claim (headline claims: box the number/headline on the RIGHT line — not the
+  byline below it; a multi-claim receipt gets one note per waypoint). Prefer NO
+  `label` when the title sticker already states the number (avoid duplication) —
+  the marker alone is the synced animation. Ensure the beat is long enough for
+  the note to finish drawing (≥ ~20f after `at`) — extend the beat if the last
+  claim lands near its end. A receipt still that errors instead
   of rendering = the beat CRASHED (HiddenCostScene at dur 112) — investigate,
   never skip it. A receipt HOLDS ≥ ~3.5s (Kris: "on
   screen long enough" — only a deliberate montage run goes quicker) and the

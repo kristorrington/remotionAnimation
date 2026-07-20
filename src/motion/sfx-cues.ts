@@ -234,6 +234,9 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "workflowProof": cues.push({ at: 14, type: "whip" }, { at: 93, type: "swish" }); break;
     // ── Agentic-pricing video (July 2026) — 3 booms: DELETE?, HTML stamp, $800 ──
     case "hookInvoice": cues.push({ at: 70, type: "tick" }, { at: 150, type: "thud" }); break;
+    case "invoiceQuestion": cues.push({ at: 8, type: "pageTurn" }, { at: 30, type: "tick" }, { at: 43, type: "tick" }, { at: 56, type: "tick" }); break; // ? bubbles pop
+    case "invoicePause": cues.push({ at: 8, type: "pageTurn" }, { at: 46, type: "tick" }); break; // the cursor hovers in
+    case "magnifier": cues.push({ at: 10, type: "whip" }, { at: 48, type: "thud" }, { at: 54, type: "clickPop" }); break; // lens sweeps, lands, verdict
     case "gartner40": cues.push({ at: 14, type: "pageTurn" }, { at: 40, type: "swish" }); break;
     case "gartner130": cues.push({ at: 16, type: "paperSlide" }, { at: 40, type: "swish" }); break;
     case "gartnerWashing": cues.push({ at: 14, type: "shutter" }, { at: 40, type: "swish" }); break;
