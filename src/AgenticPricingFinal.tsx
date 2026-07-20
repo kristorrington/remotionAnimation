@@ -10,7 +10,7 @@ import { ThemeProvider } from "./theme";
 // Final combined cut: talking head + the agentic-pricing receipt track + per-
 // span PiP. Transitions v2 (pull-left on fullscreen starts + receipt swaps),
 // paper theme. Face-first punch-in open (the presenter delivers the hook).
-const FOOTAGE = "talking-head.mp4"; // agentic-pricing recording (2026-07-19)
+const FOOTAGE = "talking-head-190726.mp4"; // agentic-pricing recording (2026-07-19, rotated 07-21)
 
 const PIP_GAP_MAX = 90; // 3s — a longer VO-only gap BREAKS the span back to full footage
 const PIP_MIN = 90; // never show a PiP segment shorter than 3s (flicker)

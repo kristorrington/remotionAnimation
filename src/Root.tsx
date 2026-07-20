@@ -5,8 +5,8 @@ import { StyleDemo } from "./StyleDemo";
 import { TemplateLab, TEMPLATE_LAB_DUR } from "./TemplateLab";
 import { ArchivedVideoCompositions, SHOW_ARCHIVE } from "./archive";
 import { CalculateMetadataFunction } from "remotion";
-import { AgenticPricingVideo, AGP_DUR } from "./AgenticPricingVideo";
-import { AgenticPricingFinal } from "./AgenticPricingFinal";
+import { FablePermanentVideo, FP_DUR } from "./FablePermanentVideo";
+import { FablePermanentFinal } from "./FablePermanentFinal";
 
 export const transparentDefaults: CalculateMetadataFunction<
   Record<string, unknown>
@@ -51,9 +51,9 @@ export const RemotionRoot: React.FC = () => {
 
 
 
-      {/* ── CURRENT: Should you charge more for 'agentic'? (July 2026) ── */}
-      <Composition id="AgenticPricingVideo" component={AgenticPricingVideo} durationInFrames={AGP_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
-      <Composition id="AgenticPricingFinal" component={AgenticPricingFinal} durationInFrames={AGP_DUR} fps={30} width={1920} height={1080} />
+      {/* ── CURRENT: Claude Fable 5 is now permanent (July 2026) ── */}
+      <Composition id="FablePermanentVideo" component={FablePermanentVideo} durationInFrames={FP_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="FablePermanentFinal" component={FablePermanentFinal} durationInFrames={FP_DUR} fps={30} width={1920} height={1080} />
 
       {/* Previous videos — hidden unless SHOW_ARCHIVE (src/archive) is true */}
       {SHOW_ARCHIVE && <ArchivedVideoCompositions />}

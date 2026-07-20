@@ -122,6 +122,7 @@ const main = async () => {
   }
   const FIX = {
     anthropic: "Anthropic", anthropics: "Anthropic", thorpek: "Anthropic", thorpey: "Anthropic",
+    anthropix: "Anthropic", anthropik: "Anthropic", thoropik: "Anthropic", // Fable-permanent video (07/2026)
     anthorpey: "Anthropic", fable: "Fable", mythos: "Mythos", miffos: "Mythos", mifos: "Mythos",
     misaris: "Messaros", claude: "Claude",
     // ChatGPT Work video (07/2026)

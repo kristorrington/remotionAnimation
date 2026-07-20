@@ -40,6 +40,8 @@ import { SkillsFinal } from "../SkillsFinal";
 import { GoLocalFinal } from "../GoLocalFinal";
 import { ReposVideo, REPOS_DUR } from "../ReposVideo";
 import { ReposFinal } from "../ReposFinal";
+import { AgenticPricingVideo, AGP_DUR } from "../AgenticPricingVideo";
+import { AgenticPricingFinal } from "../AgenticPricingFinal";
 
 // ============================================================================
 // THE ARCHIVE — compositions from PREVIOUS videos. When a new video starts,
@@ -63,6 +65,10 @@ const transparentDefaults: CalculateMetadataFunction<
 export const ArchivedVideoCompositions: React.FC = () => {
   return (
     <>
+      {/* ── Should you charge more for 'agentic'? (July 2026) ── */}
+      <Composition id="AgenticPricingVideo" component={AgenticPricingVideo} durationInFrames={AGP_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="AgenticPricingFinal" component={AgenticPricingFinal} durationInFrames={AGP_DUR} fps={30} width={1920} height={1080} />
+
       {/* ── Kimi K3 — the new king? (July 2026) ── */}
       <Composition id="KimiVideo" component={KimiVideo} durationInFrames={KIMI_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
       <Composition id="KimiFinal" component={KimiFinal} durationInFrames={KIMI_DUR} fps={30} width={1920} height={1080} />

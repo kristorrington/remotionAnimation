@@ -257,6 +257,33 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "ratesPremium": cues.push({ at: 14, type: "paperSlide" }, { at: 44, type: "swish" }, { at: 300, type: "swish" }); break;
     case "closingKinetic": cues.push({ at: 200, type: "boom" }); break; // boom 3/3: $800 WAS NEVER IT
     case "priceKinetic": cues.push({ at: 200, type: "ding" }); break;
+    // ── Fable-5-permanent video (July 2026) — 3 booms: 50% ceiling, cost redline, the payoff ──
+    case "permTweet": cues.push({ at: 14, type: "shutter" }, { at: 300, type: "switch" }); break;
+    case "notUnlimited": cues.push({ at: 70, type: "boom" }); break; // boom 1/3: the 50% ceiling
+    case "extendedPromo": cues.push({ at: 180, type: "thud" }); break;
+    case "techtimes": cues.push({ at: 14, type: "pageTurn" }, { at: 40, type: "swish" }); break;
+    case "availability": cues.push({ at: 140, type: "thud" }); break;
+    case "tierSplit": cues.push({ at: 20, type: "tick" }, { at: 40, type: "tick" }, { at: 100, type: "switch" }, { at: 130, type: "tick" }); break;
+    case "viaCredits": cues.push({ at: 200, type: "thud" }); break;
+    case "credit100": cues.push({ at: 220, type: "ding" }); break;
+    case "enterprise": cues.push({ at: 240, type: "thud" }); break;
+    case "halfLimitDeep": cues.push({ at: 70, type: "switch" }); break;
+    case "usageVaries": cues.push({ at: 300, type: "thud" }); break;
+    case "expensive": cues.push({ at: 200, type: "thud" }); break;
+    case "pricing": cues.push({ at: 14, type: "paperSlide" }, { at: 44, type: "swish" }); break;
+    case "costClimb": cues.push({ at: 200, type: "boom" }); break; // boom 2/3: the cost redline
+    case "predictable": cues.push({ at: 150, type: "tick" }); break;
+    case "launchClip": cues.push({ at: 4, type: "shutter" }, { at: 54, type: "swish" }); break;
+    case "suspendTweet": cues.push({ at: 10, type: "shutter" }, { at: 26, type: "switch" }); break;
+    case "forbesSuspend": cues.push({ at: 14, type: "pageTurn" }, { at: 40, type: "swish" }); break;
+    case "redeploy": cues.push({ at: 14, type: "paperSlide" }, { at: 40, type: "swish" }); break;
+    case "bleeping": cues.push({ at: 14, type: "shutter" }, { at: 40, type: "swish" }); break;
+    case "techcrunch": cues.push({ at: 14, type: "pageTurn" }, { at: 30, type: "swish" }); break;
+    case "tierLine": cues.push({ at: 20, type: "tick" }, { at: 40, type: "tick" }, { at: 100, type: "switch" }); break;
+    case "shouldUpgrade": cues.push({ at: 60, type: "tick" }, { at: 170, type: "tick" }, { at: 250, type: "thud" }, { at: 360, type: "ding" }); break;
+    case "benchmark": cues.push({ at: 14, type: "shutter" }, { at: 40, type: "swish" }); break;
+    case "routeReserve": cues.push({ at: 20, type: "switch" }, { at: 60, type: "switch" }); break;
+    case "nowPermanent": cues.push({ at: 230, type: "boom" }); break; // boom 3/3: the payoff
     // ── Kimi K3 video (July 2026) — palette spread wide, 3 booms:
     //    catches chip 3 / MoE 16-flare / the WEIGHTS gate slam ──
     case "kimiHero": cues.push({ at: 14, type: "whip" }, { at: 40, type: "shutter" }); break;
