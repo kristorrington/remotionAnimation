@@ -109,6 +109,12 @@ const main = async () => {
     [["claude", "mem"], "Claude-Mem"],
     [["cloud", "mem"], "Claude-Mem"],
     [["clod", "mem"], "Claude-Mem"],
+    // Qwen-3.8-Max video (07/2026)
+    [["ali", "baba"], "Alibaba"],
+    [["ali", "babas"], "Alibaba's"],
+    [["lm", "arena"], "LMArena"],
+    [["l", "m", "arena"], "LMArena"],
+    [["qoder", "work"], "QoderWork"],
   ];
   const norm = (s) => s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
   for (const [parts, joined] of JOINS) {
@@ -123,6 +129,7 @@ const main = async () => {
   const FIX = {
     anthropic: "Anthropic", anthropics: "Anthropic", thorpek: "Anthropic", thorpey: "Anthropic",
     anthropix: "Anthropic", anthropik: "Anthropic", thoropik: "Anthropic", // Fable-permanent video (07/2026)
+    coda: "Qoder", macs: "Max", // Qwen-3.8-Max video (07/2026): "CODA and CODA work" = Qoder/QoderWork; "Macs" = Max
     anthorpey: "Anthropic", fable: "Fable", mythos: "Mythos", miffos: "Mythos", mifos: "Mythos",
     misaris: "Messaros", claude: "Claude",
     // ChatGPT Work video (07/2026)

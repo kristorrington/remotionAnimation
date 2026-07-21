@@ -11,7 +11,7 @@ import { ThemeProvider } from "./theme";
 // Final combined cut: talking head + the Fable-permanent receipt track + per-
 // span PiP. Face-first punch-in open (the presenter delivers the hook, first
 // cover — the @claudeai tweet — cuts in at ~88f). Transitions v2 (pull-left).
-const FOOTAGE = "talking-head.mp4"; // Fable-permanent recording (2026-07-21)
+const FOOTAGE = "talking-head-210726.mp4"; // Fable-permanent recording (2026-07-21, rotated 07-22)
 
 const PIP_GAP_MAX = 90; // 3s — a longer VO-only gap BREAKS the span back to full footage
 const PIP_MIN = 90; // never show a PiP segment shorter than 3s (flicker)

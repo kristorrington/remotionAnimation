@@ -42,6 +42,8 @@ import { ReposVideo, REPOS_DUR } from "../ReposVideo";
 import { ReposFinal } from "../ReposFinal";
 import { AgenticPricingVideo, AGP_DUR } from "../AgenticPricingVideo";
 import { AgenticPricingFinal } from "../AgenticPricingFinal";
+import { FablePermanentVideo, FP_DUR } from "../FablePermanentVideo";
+import { FablePermanentFinal } from "../FablePermanentFinal";
 
 // ============================================================================
 // THE ARCHIVE — compositions from PREVIOUS videos. When a new video starts,
@@ -65,6 +67,10 @@ const transparentDefaults: CalculateMetadataFunction<
 export const ArchivedVideoCompositions: React.FC = () => {
   return (
     <>
+      {/* ── Claude Fable 5 is now permanent (July 2026) ── */}
+      <Composition id="FablePermanentVideo" component={FablePermanentVideo} durationInFrames={FP_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="FablePermanentFinal" component={FablePermanentFinal} durationInFrames={FP_DUR} fps={30} width={1920} height={1080} />
+
       {/* ── Should you charge more for 'agentic'? (July 2026) ── */}
       <Composition id="AgenticPricingVideo" component={AgenticPricingVideo} durationInFrames={AGP_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
       <Composition id="AgenticPricingFinal" component={AgenticPricingFinal} durationInFrames={AGP_DUR} fps={30} width={1920} height={1080} />
