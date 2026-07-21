@@ -2137,6 +2137,188 @@
       ],
       "attributionRequired": false,
       "concerns": null
+    },
+    {
+      "filename": "qwen-tweet.png",
+      "localPath": "public/assets/external/screenshots/qwen-tweet.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/Alibaba_Qwen/status/2078759124914098291",
+      "sourceName": "Qwen (@Alibaba_Qwen) on X",
+      "dateAccessed": "2026-07-22",
+      "usageNote": "The launch post: 2.4T, open-weight soon, second only to Fable 5",
+      "usedIn": [
+        "Qwen-3.8-Max video"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "qwen-mark-tweet.png",
+      "localPath": "public/assets/external/screenshots/qwen-mark-tweet.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/mark_k/status/2078893789167391061",
+      "sourceName": "Mark Kretschmann (@mark_k) on X",
+      "dateAccessed": "2026-07-22",
+      "usageNote": "Community KingBench chart: Qwen 3.8 Max 81.25 vs Fable 5 82.5 (unverified)",
+      "usedIn": [
+        "Qwen-3.8-Max video"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "qwen-requesty-wide.png",
+      "localPath": "public/assets/external/screenshots/qwen-requesty-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.requesty.ai/models/compare/alibaba--qwen3.7-plus/anthropic--claude-fable-5",
+      "sourceName": "Requesty model compare",
+      "dateAccessed": "2026-07-22",
+      "usageNote": "Qwen3.7-plus vs Fable 5 across 7 shared benchmarks",
+      "usedIn": [
+        "Qwen-3.8-Max video"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "qwen-marktechpost-wide.png",
+      "localPath": "public/assets/external/screenshots/qwen-marktechpost-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.marktechpost.com/2026/07/19/alibaba-previews-qwen3-8-max-a-2-4-trillion-parameter-multimodal-model-days-after-moonshots-kimi-k3-open-weight-launch/",
+      "sourceName": "Marktechpost",
+      "dateAccessed": "2026-07-22",
+      "usageNote": "Preview debut: 2.4T, Token Plan/Qoder access, no benchmark table/model card/licence",
+      "usedIn": [
+        "Qwen-3.8-Max video"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "qwen-dataconomy-hero-wide.png",
+      "localPath": "public/assets/external/screenshots/qwen-dataconomy-hero-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://dataconomy.com/2026/07/20/qwen3-8-24t-parameters-alibaba-ai-model-launch/",
+      "sourceName": "Dataconomy",
+      "dateAccessed": "2026-07-22",
+      "usageNote": "Headline: Alibaba unveils 2.4T-parameter Qwen3.8",
+      "usedIn": [
+        "Qwen-3.8-Max video"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "qwen-dataconomy-open-wide.png",
+      "localPath": "public/assets/external/screenshots/qwen-dataconomy-open-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://dataconomy.com/2026/07/20/qwen3-8-24t-parameters-alibaba-ai-model-launch/",
+      "sourceName": "Dataconomy",
+      "dateAccessed": "2026-07-22",
+      "usageNote": "Open-weight soon + internal evaluations, no independent benchmarks paragraphs",
+      "usedIn": [
+        "Qwen-3.8-Max video"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "qwen-technosports-wide.png",
+      "localPath": "public/assets/external/screenshots/qwen-technosports-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://technosports.co.in/qwen3-8-max-preview-gets-rapid-update/",
+      "sourceName": "TechnoSports",
+      "dateAccessed": "2026-07-22",
+      "usageNote": "Jul 20 rapid update claiming broad gains, no new numbers",
+      "usedIn": [
+        "Qwen-3.8-Max video"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "qwen-aa-wide.png",
+      "localPath": "public/assets/external/screenshots/qwen-aa-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://artificialanalysis.ai/models/qwen3-7-max",
+      "sourceName": "Artificial Analysis",
+      "dateAccessed": "2026-07-22",
+      "usageNote": "Qwen3.7 Max scored page (46 Intelligence Index) — 3.8 absent",
+      "usedIn": [
+        "Qwen-3.8-Max video"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "qwen-benchlm-compare.png",
+      "localPath": "public/assets/external/screenshots/qwen-benchlm-compare.png",
+      "type": "screenshot",
+      "sourceUrl": "https://benchlm.ai/compare/claude-fable-vs-qwen3-7-max",
+      "sourceName": "BenchLM",
+      "dateAccessed": "2026-07-22",
+      "usageNote": "Fable 83.68 vs Qwen3.7 Max 72.84 + category breakdown (different wins per category)",
+      "usedIn": [
+        "Qwen-3.8-Max video"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "qwen-eesel-table-wide.png",
+      "localPath": "public/assets/external/screenshots/qwen-eesel-table-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.eesel.ai/blog/qwen-pricing",
+      "sourceName": "Eesel AI blog",
+      "dateAccessed": "2026-07-22",
+      "usageNote": "Full Qwen API price table — no Qwen3.8 row (no published per-token price)",
+      "usedIn": [
+        "Qwen-3.8-Max video"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "qwen-eesel-moe-wide.png",
+      "localPath": "public/assets/external/screenshots/qwen-eesel-moe-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.eesel.ai/blog/qwen-pricing",
+      "sourceName": "Eesel AI blog",
+      "dateAccessed": "2026-07-22",
+      "usageNote": "MoE diagram: total params vs active per token",
+      "usedIn": [
+        "Qwen-3.8-Max video"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "qwen-chat-ui-wide.png",
+      "localPath": "public/assets/external/screenshots/qwen-chat-ui-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://chat.qwen.ai/",
+      "sourceName": "Qwen Chat (official)",
+      "dateAccessed": "2026-07-22",
+      "usageNote": "Product UI wide still",
+      "usedIn": [
+        "Qwen-3.8-Max video"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "qwen-home-wide.png",
+      "localPath": "public/assets/external/screenshots/qwen-home-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://qwen.ai/",
+      "sourceName": "Qwen.ai (official)",
+      "dateAccessed": "2026-07-22",
+      "usageNote": "Official homepage hero",
+      "usedIn": [
+        "Qwen-3.8-Max video"
+      ],
+      "attributionRequired": false,
+      "concerns": null
     }
   ]
 }

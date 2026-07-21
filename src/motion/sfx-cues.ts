@@ -284,6 +284,35 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "benchmark": cues.push({ at: 14, type: "shutter" }, { at: 40, type: "swish" }); break;
     case "routeReserve": cues.push({ at: 20, type: "switch" }, { at: 60, type: "switch" }); break;
     case "nowPermanent": cues.push({ at: 230, type: "boom" }); break; // boom 3/3: the payoff
+    // ── Qwen-3.8-Max video (July 2026) — 3 booms: YOU CAN'T, the +3pts land, EVIDENCE: NOT YET ──
+    case "qwenTweet": cues.push({ at: 14, type: "shutter" }, { at: 99, type: "swish" }, { at: 210, type: "switch" }); break;
+    case "cantCheck": cues.push({ at: 80, type: "boom" }); break; // boom 1/3
+    case "whereSits": cues.push({ at: 14, type: "pageTurn" }, { at: 30, type: "swish" }); break;
+    case "markK": cues.push({ at: 14, type: "paperSlide" }, { at: 120, type: "swish" }); break;
+    case "threeQTease": cues.push({ at: 16, type: "tick" }, { at: 34, type: "tick" }, { at: 52, type: "tick" }); break;
+    case "marktechpost": cues.push({ at: 14, type: "pageTurn" }, { at: 199, type: "swish" }); break;
+    case "specTweet": cues.push({ at: 14, type: "shutter" }, { at: 30, type: "swish" }); break;
+    case "openSoon": cues.push({ at: 14, type: "paperSlide" }, { at: 30, type: "swish" }); break;
+    case "moeDiagram": cues.push({ at: 14, type: "pageTurn" }, { at: 60, type: "swish" }); break;
+    case "benchClaim": cues.push({ at: 14, type: "shutter" }, { at: 199, type: "swish" }); break;
+    case "notShown": cues.push({ at: 180, type: "thud" }); break;
+    case "technosports": cues.push({ at: 14, type: "pageTurn" }, { at: 90, type: "swish" }); break;
+    case "aaStats": cues.push({ at: 30, type: "switch" }, { at: 391, type: "switch" }, { at: 484, type: "thud" }); break;
+    case "tradeoff": cues.push({ at: 140, type: "thud" }); break;
+    case "noScore": cues.push({ at: 14, type: "paperSlide" }, { at: 40, type: "swish" }); break;
+    case "duel": cues.push({ at: 14, type: "switch" }, { at: 286, type: "clickPop" }, { at: 567, type: "boom" }, { at: 703, type: "tick" }, { at: 847, type: "tick" }, { at: 887, type: "tick" }); break; // boom 2/3: the +3pts land
+    case "sevenGroups": cues.push({ at: 150, type: "thud" }); break;
+    case "onTask": cues.push({ at: 180, type: "thud" }); break;
+    case "benchlm": cues.push({ at: 14, type: "shutter" }, { at: 130, type: "swish" }); break;
+    case "prices": cues.push({ at: 20, type: "tick" }, { at: 221, type: "tick" }, { at: 446, type: "thud" }); break;
+    case "eeselTable": cues.push({ at: 14, type: "pageTurn" }, { at: 20, type: "swish" }); break;
+    case "openCaution": cues.push({ at: 160, type: "thud" }); break;
+    case "openUnknowns": cues.push({ at: 14, type: "tick" }, { at: 175, type: "clickPop" }, { at: 225, type: "clickPop" }, { at: 275, type: "clickPop" }); break;
+    case "notLaptop": cues.push({ at: 130, type: "thud" }); break;
+    case "threeQs": cues.push({ at: 26, type: "switch" }, { at: 295, type: "switch" }, { at: 596, type: "switch" }); break;
+    case "qwenHome": cues.push({ at: 14, type: "shutter" }, { at: 30, type: "swish" }); break;
+    case "chatUi": cues.push({ at: 14, type: "pageTurn" }, { at: 30, type: "swish" }); break;
+    case "verdict": cues.push({ at: 140, type: "boom" }); break; // boom 3/3: the verdict stamp
     // ── Kimi K3 video (July 2026) — palette spread wide, 3 booms:
     //    catches chip 3 / MoE 16-flare / the WEIGHTS gate slam ──
     case "kimiHero": cues.push({ at: 14, type: "whip" }, { at: 40, type: "shutter" }); break;
