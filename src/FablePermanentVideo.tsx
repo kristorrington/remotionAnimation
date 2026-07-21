@@ -211,7 +211,7 @@ const BEATS: { scene: string; from: number; dur: number; fullscreen?: boolean }[
   { scene: "pricing", from: 5640, dur: 660 }, // "$10 per million input, $50 per million output (5940-6300)"
   { scene: "costClimb", from: 6300, dur: 560, fullscreen: true }, // "Claude Code generates large outputs — tokens accumulate quickly in long agentic sessions (6100-6860)"
   { scene: "predictable", from: 6870, dur: 240, fullscreen: true }, // "predictable allowance — but still metered after the included capacity (6510-7050)"
-  { scene: "launchClip", from: 7112, dur: 88 }, // OFFICIAL FILM — "Fable 5 originally launched on June 9th (7115)"
+  { scene: "launchClip", from: 7112, dur: 88, fullscreen: true }, // OFFICIAL FILM — "Fable 5 originally launched on June 9th (7115)" (fullscreen: no PiP decode over the clip)
   { scene: "suspendTweet", from: 7200, dur: 252 }, // "only three days later, US export controls suspended access globally (7200)"
   { scene: "forbesSuspend", from: 7452, dur: 358 }, // "could not verify nationality in real time, so removed access for everyone (7452)"
   { scene: "redeploy", from: 7815, dur: 435 }, // "improved classifier blocks it in 99% of cases — Fable 5 returned globally July 1 (7815-8250)"

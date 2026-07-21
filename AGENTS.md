@@ -396,7 +396,20 @@ Transitions (reference: [CutFlash.tsx](src/components/CutFlash.tsx) +
   concurrency or orphaned `chrome-headless-shell` processes). Fixes, in order:
   the config sets `Config.setTimeoutInMilliseconds(300000)` (or pass
   `--timeout=300000`); kill orphaned render processes; drop `--concurrency`
-  (e.g. 8 → 4) if it recurs.
+  (e.g. 8 → 4) if it recurs. **If the stall is at a frame inside an
+  official-video CLIP beat** (07/2026, Fable-permanent): the clip was cut
+  with a sparse GOP, so seeking to a mid-clip frame decodes a long chain —
+  under the footage+PiP decode load it blows the timeout. Fix: (1) re-encode
+  every `assets/external/clips/*.mp4` with DENSE keyframes + faststart
+  (`-c:v libx264 -crf 21 -g 12 -keyint_min 12 -sc_threshold 0 -pix_fmt
+  yuv420p -movflags +faststart -an`) so any-frame seeking is cheap; (2) mark
+  film-clip beats `fullscreen` so the corner PiP is not decoded ON TOP of
+  the clip (one fewer simultaneous video) — which is also the correct
+  film-card treatment. **Orphaned render processes also make git/filesystem
+  ops crawl** (a killed render left `remotion.exe`/`chrome-headless-shell.exe`
+  thrashing the disk; `git commit` and even `ls` hung for minutes) — clear
+  them BEFORE retrying anything: `taskkill //F //IM remotion.exe //IM
+  chrome-headless-shell.exe //IM ffmpeg.exe`.
 - **`public/` holds ONLY the CURRENT + PREVIOUS footage proxies** (07/2026):
   every render re-copies public/ into the bundle, so old rotated proxies bloat
   every bundle and can starve browser setup past its timeout when renders are
