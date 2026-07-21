@@ -90,7 +90,7 @@ const HalfMeterScene: React.FC<{ durationInFrames: number; kicker: string; title
         <div style={{ position: "relative", width: barW, height: 130 }}>
           {/* the full weekly bar */}
           <div style={{ position: "absolute", inset: 0, borderRadius: 20, ...glassCard("rgba(120,112,102,0.5)", 2) }} />
-          <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 24, letterSpacing: 2, color: "rgba(255,255,255,0.55)", position: "absolute", top: -40, left: 6, transform: "translateZ(0)" }}>YOUR WEEKLY ALLOWANCE</div>
+          <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 24, letterSpacing: 2, color: "rgba(31,30,29,0.55)", position: "absolute", top: -40, left: 6, transform: "translateZ(0)" }}>YOUR WEEKLY ALLOWANCE</div>
           {/* Fable's 50% fill */}
           <div style={{ position: "absolute", top: 8, left: 8, bottom: 8, width: `calc(${fill}% - 12px)`, borderRadius: 14, background: `linear-gradient(90deg, ${CYAN}, ${GOLD})`, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: `0 0 30px ${CYAN}66` }}>
             <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 40, color: "#fff", transform: "translateZ(0)", opacity: fill > 30 ? 1 : 0 }}>FABLE 5</span>
@@ -246,7 +246,7 @@ export const FablePermanentVisuals: React.FC = () => {
       </Sequence>
       {/* 0:47 — TechTimes: permanent for Max, credits for Pro */}
       <Sequence from={1410} durationInFrames={410} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={410} kicker="TECHTIMES · JUL 18" title="THE LIMBO ENDS" fullBleed={false} tint={GREEN} src={`${SHOT}/fable-techtimes-wide.png`} url="techtimes.com" imageW={3840} imageH={2400} cardW={1500} cardH={840} from={{ x: 500, y: 20, w: 3000, h: 1600 }} to={{ x: 600, y: 40, w: 2620, h: 1400 }} zoomAt={20} notes={[{ at: 40, rect: { x: 660, y: 90, w: 2440, h: 250 }, kind: "box" }]} />
+        <ScreenshotReceiptScene durationInFrames={410} kicker="TECHTIMES · JUL 18" title="THE LIMBO ENDS" fullBleed={false} tint={GREEN} src={`${SHOT}/fable-techtimes-wide.png`} url="techtimes.com" imageW={3840} imageH={2400} cardW={1500} cardH={840} from={{ x: 500, y: 20, w: 3000, h: 1600 }} to={{ x: 600, y: 40, w: 2620, h: 1400 }} zoomAt={20} notes={[{ at: 40, rect: { x: 660, y: 96, w: 2440, h: 208 }, kind: "box" }]} />
       </Sequence>
       {/* 1:00 — availability ≠ unlimited */}
       <Sequence from={1824} durationInFrames={230} premountFor={30}>
@@ -302,15 +302,15 @@ export const FablePermanentVisuals: React.FC = () => {
       </Sequence>
       {/* 4:08 — Forbes: couldn't verify nationality, removed for all */}
       <Sequence from={7452} durationInFrames={358} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={358} kicker="FORBES · EXPORT ORDER" title="OFF FOR EVERYONE" fullBleed={false} tint={RED} src={`${SHOT}/fable-forbes-suspend-wide.png`} url="forbes.com" imageW={3840} imageH={2200} cardW={1500} cardH={840} from={{ x: 300, y: 20, w: 3100, h: 1650 }} to={{ x: 340, y: 30, w: 2900, h: 1550 }} zoomAt={20} notes={[{ at: 40, rect: { x: 360, y: 80, w: 2500, h: 380 }, kind: "box" }]} />
+        <ScreenshotReceiptScene durationInFrames={358} kicker="FORBES · EXPORT ORDER" title="OFF FOR EVERYONE" fullBleed={false} tint={RED} src={`${SHOT}/fable-forbes-suspend-wide.png`} url="forbes.com" imageW={3840} imageH={2200} cardW={1500} cardH={840} from={{ x: 300, y: 20, w: 3100, h: 1650 }} to={{ x: 340, y: 30, w: 2900, h: 1550 }} zoomAt={20} notes={[{ at: 40, rect: { x: 360, y: 80, w: 2500, h: 335 }, kind: "box" }]} />
       </Sequence>
       {/* 4:20 — restored July 1 with an improved classifier */}
       <Sequence from={7815} durationInFrames={435} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={435} kicker="ANTHROPIC · REDEPLOY" title="BACK JULY 1 · 99% BLOCKED" fullBleed={false} tint={GREEN} src={`${SHOT}/fable-redeploy-wide.png`} url="anthropic.com/news" imageW={3840} imageH={2400} cardW={1500} cardH={840} from={{ x: 360, y: 200, w: 3100, h: 1650 }} to={{ x: 440, y: 240, w: 2900, h: 1550 }} zoomAt={20} />
+        <ScreenshotReceiptScene durationInFrames={435} kicker="ANTHROPIC · REDEPLOY" title="BACK JULY 1 · 99% BLOCKED" fullBleed={false} tint={GREEN} src={`${SHOT}/fable-redeploy-wide.png`} url="anthropic.com/news" imageW={3840} imageH={2400} cardW={1500} cardH={840} from={{ x: 480, y: 780, w: 2600, h: 1390 }} to={{ x: 520, y: 820, w: 2500, h: 1330 }} zoomAt={20} />
       </Sequence>
       {/* 4:35 — BleepingComputer: extended access, buying time */}
       <Sequence from={8250} durationInFrames={246} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={246} kicker="BLEEPINGCOMPUTER" title="ONE MORE EXTENSION" fullBleed={false} tint={AMBER} src={`${SHOT}/fable-bleeping-wide.png`} url="bleepingcomputer.com" imageW={3840} imageH={2400} cardW={1500} cardH={840} from={{ x: 560, y: 720, w: 2900, h: 1550 }} to={{ x: 640, y: 760, w: 2560, h: 1370 }} zoomAt={20} notes={[{ at: 40, rect: { x: 700, y: 810, w: 2400, h: 200 }, kind: "box" }]} />
+        <ScreenshotReceiptScene durationInFrames={246} kicker="BLEEPINGCOMPUTER" title="ONE MORE EXTENSION" fullBleed={false} tint={AMBER} src={`${SHOT}/fable-bleeping-wide.png`} url="bleepingcomputer.com" imageW={3840} imageH={2400} cardW={1500} cardH={840} from={{ x: 560, y: 720, w: 2900, h: 1550 }} to={{ x: 640, y: 760, w: 2560, h: 1370 }} zoomAt={20} notes={[{ at: 40, rect: { x: 700, y: 810, w: 1730, h: 200 }, kind: "box" }]} />
       </Sequence>
       {/* 4:43 — TechCrunch: Mythos kept scarce (150 orgs) */}
       <Sequence from={8496} durationInFrames={164} premountFor={30}>
