@@ -11,6 +11,96 @@ pattern"). Copy-paste at upload time. Rules used here:
 
 ---
 
+# Qwen 3.8 Max — "second only to Fable 5"? (2026-07-22)
+
+## Short-SecondOnly (THE HOOK — the unverifiable claim)
+
+**Title**
+```
+Alibaba Says Qwen 3.8 Is Second Only To Fable 5. Prove It #Shorts
+```
+
+**Description**
+```
+Alibaba just called Qwen 3.8 Max the second most powerful AI model available — second only to Claude Fable 5. Big claim for a 2.4-trillion-parameter model.
+
+But try finding the benchmark that proves it. Alibaba hasn't published the benchmark names, scores, prompts or testing method behind the ranking.
+
+Would you trust an unverifiable ranking? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Qwen #Alibaba #Fable5 #LLM #Shorts
+```
+
+---
+
+## Short-KimiTest (the only real head-to-head)
+
+**Title**
+```
+Qwen 3.8 vs Kimi K3 — The Only Real Head-To-Head So Far #Shorts
+```
+
+**Description**
+```
+An independent tester ran Qwen 3.8 Max Preview and Moonshot's Kimi K3 through the same software-architecture task — both inspecting the same 269 files, blind-reviewed.
+
+Kimi finished three points ahead: faster, fewer tokens, more complete on lifecycle changes. Qwen made fewer tool calls and described the system boundary better. Close — but no crown.
+
+Which would you bet on? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Qwen #KimiK3 #Benchmarks #LLM #Shorts
+```
+
+---
+
+## Short-PriceMess (the cost comparison is broken)
+
+**Title**
+```
+Kimi Costs $3. Fable Costs $10. Qwen 3.8? No Price. #Shorts
+```
+
+**Description**
+```
+Kimi K3 has normal API pricing: $3 per million input tokens, $15 out. Claude Fable 5: $10 in, $50 out. Qwen 3.8 Max? No ordinary published per-token price at all — access runs through Token Plan subscriptions and credits.
+
+Credits depend on usage, caching, reasoning and tool calls — so you can't compare the subscription price with API rates. You have to run the same task and measure what each completed result costs.
+
+Do you track cost per completed task? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Qwen #APIcosts #Fable5 #KimiK3 #Shorts
+```
+
+---
+
+## Short-ThreeQuestions (the framework)
+
+**Title**
+```
+3 Questions Before You Trust Any AI Model Launch #Shorts
+```
+
+**Description**
+```
+Run every "beats X" model launch through three questions. One: compared under what conditions — benchmark names, versions, prompts, settings? Two: what does one completed task cost — tokens, retries, human review? Three: can you actually deploy it — API limits, weights, licence, where your data goes?
+
+If a launch can't answer all three, it's a starting point for curiosity — not a purchase decision.
+
+What's your test before switching models? 👇
+
+Follow @kristorrington for AI automation that survives the real world.
+
+#AI #Qwen #LLM #AIAutomation #TechStrategy #Shorts
+```
+
+---
+
 # Claude Fable 5 is now permanent (2026-07-21)
 
 ## Short-FiftyPercent (THE HOOK — the 50% catch)
