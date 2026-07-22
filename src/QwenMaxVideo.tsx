@@ -318,7 +318,7 @@ export const QwenMaxVisuals: React.FC = () => {
       </Sequence>
       {/* 4:35 — the Qwen price table with no 3.8 row */}
       <Sequence from={8275} durationInFrames={330} premountFor={30}>
-        <ScreenshotReceiptScene durationInFrames={330} kicker="EESEL · QWEN API RATE CARD" title="NO 3.8 ROW YET" fullBleed={false} tint={AMBER} src={`${SHOT}/qwen-eesel-table-wide.png`} url="eesel.ai/blog" imageW={1520} imageH={1800} cardW={1080} cardH={764} from={{ x: 0, y: 0, w: 1520, h: 1400 }} to={{ x: 0, y: 60, w: 1520, h: 1000 }} zoomAt={16} notes={[{ at: 30, rect: { x: 30, y: 130, w: 1460, h: 700 }, kind: "box" }]} />
+        <ScreenshotReceiptScene durationInFrames={330} kicker="EESEL · QWEN API RATE CARD" title="NO 3.8 ROW YET" fullBleed={false} tint={AMBER} src={`${SHOT}/qwen-eesel-table-wide.png`} url="eesel.ai/blog" imageW={1520} imageH={1800} cardW={1080} cardH={764} from={{ x: 0, y: 0, w: 1520, h: 1400 }} to={{ x: 0, y: 60, w: 1520, h: 1000 }} zoomAt={16} notes={[{ at: 30, rect: { x: 30, y: 255, w: 1460, h: 575 }, kind: "box" }]} />
       </Sequence>
       {/* 4:49 — 'open' needs the same caution */}
       <Sequence from={8693} durationInFrames={280} premountFor={30}>
