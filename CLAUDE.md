@@ -401,6 +401,17 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   look. Never bare white text on the backdrop.
 - Do NOT make the edit mostly talking head — talking head is corner PiP / a quick
   reaction / an emphasis beat; motion graphics drive the visuals.
+- **Top progress + chapter bar** (Kris, July 2026): every long-form Final carries
+  `TopProgressBar` (`src/components/TopProgressBar.tsx`) — a thin ~5px strip flush
+  with the top edge that fills left→right with viewer progress (NEVER a countdown /
+  elapsed / remaining time). Split it into the video's chapters as segments
+  proportional to their length (so the fill edge moves at constant real speed),
+  divided by 2px gaps; dark understated track, one brand-accent fill (terracotta
+  #D97757). When a chapter begins, its name fades in at top-left in a small dark
+  chip (bold, uppercase, accent dot) for ~2s then fades out — an understated
+  chapter indicator, not a title. Mount it OUTSIDE `SlideLeftPush` (persistent
+  chrome, never slides on a cut) and LAST (on top, crisp through `CutFlash`). Pass
+  a `sections: {label, from}[]` mapped to the transcript's structure.
 - **No dead-face stretches; no blank+PiP flashes** (Kris, July 2026 — "a screen
   with my face and a blank animation" / "spaces where it's my face talking too
   long"): (1) any span the overlay leaves uncovered for **> ~8s** reads as

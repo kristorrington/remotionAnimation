@@ -6,7 +6,19 @@ import { FootageDirector } from "./components/FootageDirector";
 import { CornerPip } from "./components/CornerPip";
 import { AnimatedBackground } from "./components/AnimatedBackground";
 import { SlideLeftPush } from "./motion/transitions";
+import { TopProgressBar, Chapter } from "./components/TopProgressBar";
 import { ThemeProvider } from "./theme";
+
+// Chapter markers for the top progress bar — mapped to the transcript's
+// structure (What Happened → the launch/what was released; The Evidence → the
+// benchmark claim + independent comparisons; The Catch → cost + access; What
+// It Means → the three questions + verdict).
+const CHAPTERS: Chapter[] = [
+  { label: "What Happened", from: 0 },
+  { label: "The Evidence", from: 2545 },
+  { label: "The Catch", from: 7420 },
+  { label: "What It Means", from: 9695 },
+];
 
 // Final combined cut: talking head + the Qwen-3.8-Max receipt track + per-span
 // PiP. Face-first punch-in open (the presenter delivers the hook, first cover
@@ -95,6 +107,8 @@ export const QwenMaxFinal: React.FC = () => {
       </SlideLeftPush>
       {/* face → first cover (the Alibaba launch tweet) at ~88 */}
       <CutFlash at={88} peak={0.5} />
+      {/* persistent top progress + chapter markers (outside the push, on top) */}
+      <TopProgressBar sections={CHAPTERS} accent="#D97757" />
     </AbsoluteFill>
     </ThemeProvider>
   );
