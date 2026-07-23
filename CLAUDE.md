@@ -411,7 +411,12 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   chip (bold, uppercase, accent dot) for ~2s then fades out — an understated
   chapter indicator, not a title. Mount it OUTSIDE `SlideLeftPush` (persistent
   chrome, never slides on a cut) and LAST (on top, crisp through `CutFlash`). Pass
-  a `sections: {label, from}[]` mapped to the transcript's structure.
+  a `sections: {label, from}[]` mapped to the transcript's structure. **CARD-mode
+  receipts must cap `cardH` ≈ 760** (Kris still-audit, July 2026): a
+  `ScreenshotReceiptScene fullBleed={false}` centres its `SceneHeadline` + card as
+  one column, so a tall card (`cardH` ≥ ~800) pushes the kicker UP under the
+  progress bar and clips it — crop the receipt's `to` SHORTER (a wide-short region)
+  rather than growing the card, and audit the kicker clearance in a still.
 - **No dead-face stretches; no blank+PiP flashes** (Kris, July 2026 — "a screen
   with my face and a blank animation" / "spaces where it's my face talking too
   long"): (1) any span the overlay leaves uncovered for **> ~8s** reads as

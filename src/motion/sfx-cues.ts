@@ -313,6 +313,26 @@ export const sceneActionCues = (scene: string, from: number, dur: number): Actio
     case "qwenHome": cues.push({ at: 14, type: "shutter" }, { at: 30, type: "swish" }); break;
     case "chatUi": cues.push({ at: 14, type: "pageTurn" }, { at: 30, type: "swish" }); break;
     case "verdict": cues.push({ at: 140, type: "boom" }); break; // boom 3/3: the verdict stamp
+    // ── OpenAI-rogue-agent video (July 2026) — 3 booms: 17k events land, the BREAK-OUT reaches HF, containment-failure ──
+    case "breakoutHook": cues.push({ at: 40, type: "whip" }, { at: 90, type: "whoosh" }, { at: 150, type: "boom" }); break; // crack, escape, reach HF
+    case "breakout": cues.push({ at: 70, type: "whip" }, { at: 200, type: "whoosh" }, { at: 340, type: "boom" }); break; // the signature break-out
+    case "lateralMove": [24, 70, 116, 162].forEach((s) => cues.push({ at: s, type: "switch" })); break; // node→node hops
+    case "swarm": cues.push({ at: 200, type: "boom" }); break; // boom 1/3: 17,000 events land
+    case "permissions": [20, 60, 100].forEach((s) => cues.push({ at: s, type: "switch" })); break; // three risk cards
+    case "notGhost": cues.push({ at: 50, type: "whip" }, { at: 82, type: "pluck" }); break; // malice struck out, GOAL slams
+    case "containmentFail": cues.push({ at: 180, type: "boom" }); break; // boom 3/3: containment failure
+    // rogue receipts: shutter/page-turn on the zoom, swish/switch on the note draw
+    case "openaiTweet": cues.push({ at: 16, type: "shutter" }, { at: 210, type: "switch" }); break;
+    case "hfDisclosure": cues.push({ at: 16, type: "pageTurn" }, { at: 40, type: "swish" }); break;
+    case "hfHappened": cues.push({ at: 16, type: "paperSlide" }, { at: 40, type: "swish" }); break;
+    case "openaiReport": cues.push({ at: 14, type: "shutter" }, { at: 40, type: "swish" }); break;
+    case "deploySafety": cues.push({ at: 16, type: "pageTurn" }, { at: 40, type: "swish" }); break;
+    case "altmanTweet": cues.push({ at: 14, type: "shutter" }, { at: 40, type: "swish" }); break;
+    case "delangueTweet": cues.push({ at: 14, type: "paperSlide" }, { at: 40, type: "swish" }); break;
+    case "exploitgym": cues.push({ at: 14, type: "pageTurn" }, { at: 300, type: "swish" }); break;
+    case "hfTarget": cues.push({ at: 16, type: "shutter" }, { at: 40, type: "swish" }); break;
+    case "brockmanTweet": cues.push({ at: 14, type: "paperSlide" }, { at: 40, type: "swish" }); break;
+    case "openaiRogue": cues.push({ at: 16, type: "shutter" }, { at: 40, type: "swish" }); break;
     // ── Kimi K3 video (July 2026) — palette spread wide, 3 booms:
     //    catches chip 3 / MoE 16-flare / the WEIGHTS gate slam ──
     case "kimiHero": cues.push({ at: 14, type: "whip" }, { at: 40, type: "shutter" }); break;

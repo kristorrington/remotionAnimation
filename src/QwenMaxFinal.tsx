@@ -23,7 +23,7 @@ const CHAPTERS: Chapter[] = [
 // Final combined cut: talking head + the Qwen-3.8-Max receipt track + per-span
 // PiP. Face-first punch-in open (the presenter delivers the hook, first cover
 // — the Alibaba launch tweet — cuts in at ~88f). Transitions v2 (pull-left).
-const FOOTAGE = "talking-head.mp4"; // Qwen-3.8-Max recording (2026-07-22)
+const FOOTAGE = "talking-head-220726.mp4"; // Qwen-3.8-Max recording (2026-07-22, rotated 07-24)
 
 const PIP_GAP_MAX = 90; // 3s — a longer VO-only gap BREAKS the span back to full footage
 const PIP_MIN = 90; // never show a PiP segment shorter than 3s (flicker)

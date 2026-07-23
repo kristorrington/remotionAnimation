@@ -115,6 +115,12 @@ const main = async () => {
     [["lm", "arena"], "LMArena"],
     [["l", "m", "arena"], "LMArena"],
     [["qoder", "work"], "QoderWork"],
+    // OpenAI-rogue-agent video (07/2026)
+    [["hugging", "face"], "Hugging Face"],
+    [["hugging", "faces"], "Hugging Face's"],
+    [["open", "ai"], "OpenAI"],
+    [["exploit", "gym"], "Exploit Gym"],
+    [["gpt", "5.6", "cell"], "GPT-5.6 Sol"],
   ];
   const norm = (s) => s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
   for (const [parts, joined] of JOINS) {
@@ -130,6 +136,7 @@ const main = async () => {
     anthropic: "Anthropic", anthropics: "Anthropic", thorpek: "Anthropic", thorpey: "Anthropic",
     anthropix: "Anthropic", anthropik: "Anthropic", thoropik: "Anthropic", // Fable-permanent video (07/2026)
     coda: "Qoder", macs: "Max", // Qwen-3.8-Max video (07/2026): "CODA and CODA work" = Qoder/QoderWork; "Macs" = Max
+    klem: "Clem", delange: "Delangue", exploitgim: "Exploit Gym", brockman: "Brockman", // OpenAI-rogue-agent (07/2026)
     anthorpey: "Anthropic", fable: "Fable", mythos: "Mythos", miffos: "Mythos", mifos: "Mythos",
     misaris: "Messaros", claude: "Claude",
     // ChatGPT Work video (07/2026)

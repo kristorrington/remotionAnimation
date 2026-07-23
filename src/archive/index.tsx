@@ -44,6 +44,8 @@ import { AgenticPricingVideo, AGP_DUR } from "../AgenticPricingVideo";
 import { AgenticPricingFinal } from "../AgenticPricingFinal";
 import { FablePermanentVideo, FP_DUR } from "../FablePermanentVideo";
 import { FablePermanentFinal } from "../FablePermanentFinal";
+import { QwenMaxVideo, QWEN_DUR } from "../QwenMaxVideo";
+import { QwenMaxFinal } from "../QwenMaxFinal";
 
 // ============================================================================
 // THE ARCHIVE — compositions from PREVIOUS videos. When a new video starts,
@@ -67,6 +69,10 @@ const transparentDefaults: CalculateMetadataFunction<
 export const ArchivedVideoCompositions: React.FC = () => {
   return (
     <>
+      {/* ── Qwen 3.8 Max — "second only to Fable 5" (July 2026) ── */}
+      <Composition id="QwenMaxVideo" component={QwenMaxVideo} durationInFrames={QWEN_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="QwenMaxFinal" component={QwenMaxFinal} durationInFrames={QWEN_DUR} fps={30} width={1920} height={1080} />
+
       {/* ── Claude Fable 5 is now permanent (July 2026) ── */}
       <Composition id="FablePermanentVideo" component={FablePermanentVideo} durationInFrames={FP_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
       <Composition id="FablePermanentFinal" component={FablePermanentFinal} durationInFrames={FP_DUR} fps={30} width={1920} height={1080} />

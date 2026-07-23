@@ -5,8 +5,8 @@ import { StyleDemo } from "./StyleDemo";
 import { TemplateLab, TEMPLATE_LAB_DUR } from "./TemplateLab";
 import { ArchivedVideoCompositions, SHOW_ARCHIVE } from "./archive";
 import { CalculateMetadataFunction } from "remotion";
-import { QwenMaxVideo, QWEN_DUR } from "./QwenMaxVideo";
-import { QwenMaxFinal } from "./QwenMaxFinal";
+import { RogueAgentVideo, ROGUE_DUR } from "./RogueAgentVideo";
+import { RogueAgentFinal } from "./RogueAgentFinal";
 
 export const transparentDefaults: CalculateMetadataFunction<
   Record<string, unknown>
@@ -51,9 +51,9 @@ export const RemotionRoot: React.FC = () => {
 
 
 
-      {/* ── CURRENT: Qwen 3.8 Max — "second only to Fable 5" (July 2026) ── */}
-      <Composition id="QwenMaxVideo" component={QwenMaxVideo} durationInFrames={QWEN_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
-      <Composition id="QwenMaxFinal" component={QwenMaxFinal} durationInFrames={QWEN_DUR} fps={30} width={1920} height={1080} />
+      {/* ── CURRENT: OpenAI admits rogue agent hacked Hugging Face (July 2026) ── */}
+      <Composition id="RogueAgentVideo" component={RogueAgentVideo} durationInFrames={ROGUE_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="RogueAgentFinal" component={RogueAgentFinal} durationInFrames={ROGUE_DUR} fps={30} width={1920} height={1080} />
 
       {/* Previous videos — hidden unless SHOW_ARCHIVE (src/archive) is true */}
       {SHOW_ARCHIVE && <ArchivedVideoCompositions />}

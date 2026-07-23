@@ -9,92 +9,95 @@ import { ShortSpec } from "./types";
 // See README.md for the method + rubric. CLAUDE.md §9.
 // ============================================================================
 export const SHORTS: ShortSpec[] = [
-  // ==========================================================================
-  // "Qwen 3.8 Max — second only to Fable 5?" video (talking-head.mp4, 2026-07-22)
-  // ==========================================================================
+  // OpenAI-rogue-agent video (talking-head.mp4, 2026-07-24).
   {
-    id: "Short-SecondOnly",
-    label: "THE HOOK: Alibaba's 'second only to Fable 5' claim — try to check it",
+    id: "Short-WentRogue",
+    label: "THE HOOK: OpenAI admits its own AI broke out of a test and hacked Hugging Face",
     source: "talking-head.mp4",
-    from: 0, // "Alibaba just called Qwen 3.8 Max…"
-    // LOOP: ends "…testing method behind the ranking." (658) → replays into the claim.
-    durationInFrames: 673, // ~22s
-    topic: "THE BIG CLAIM",
-    hook: "SECOND ONLY TO FABLE 5?",
-    context: "Alibaba's new 2.4T Qwen 3.8 Max launch claim",
+    from: 0, // "Across one weekend, an OpenAI cybersecurity agent crossed its test boundary…"
+    // LOOP: ends "…turned a contained benchmark into a real-world break-in." (~760) → replays into the hook.
+    durationInFrames: 770, // ~26s
+    topic: "AN AI HACKED AN AI LAB",
+    hook: "OPENAI'S OWN AI WENT ROGUE",
+    context: "It escaped a test and hacked Hugging Face",
     beats: [
-      // EVIDENCE: the launch tweet, claim line highlighted
-      { at: 8, scene: "receipt", tint: "#D97757", text: "the launch post", shot: { src: "assets/external/screenshots/qwen-tweet.png", url: "x.com/Alibaba_Qwen", imageW: 1100, imageH: 1394, from: { x: 0, y: 0, w: 1100, h: 1394 }, to: { x: 0, y: 60, w: 1100, h: 900 }, zoomAt: 20, highlight: { x: 35, y: 390, w: 755, h: 52 }, highlightAt: 40 } }, // "second most powerful… second only to Fable 5" (89-229)
-      { at: 379, scene: "check", obj: "brain", verdict: "warn", tint: "#C9913D", text: "WHERE'S THE PROOF?" }, // "try finding the benchmark that proves it" (372); span.from+13
-      { at: 530, scene: "stamp", verdict: "cross", badge: "THE RANKING", tint: "#C65B52", text: "NOTHING PUBLISHED" }, // "hasn't published the benchmark names, scores, prompts (498-650)"
+      // EVIDENCE: the OpenAI admission tweet
+      { at: 8, scene: "receipt", tint: "#C65B52", text: "the admission", shot: { src: "assets/external/screenshots/rogue-openai-tweet.png", url: "x.com/OpenAI", imageW: 1100, imageH: 1570, from: { x: 0, y: 0, w: 1100, h: 1120 }, to: { x: 0, y: 70, w: 1100, h: 900 }, zoomAt: 20, highlight: { x: 35, y: 300, w: 1030, h: 115 }, highlightAt: 44 } }, // "OpenAI now admits its own model powered it" (8-200)
+      { at: 214, scene: "emote", pose: "alarmed", tint: "#C65B52", text: "IT BROKE OUT" }, // "reached the internet, and hacked Hugging Face" (209)
+      { at: 344, scene: "stamp", verdict: "cross", badge: "17,000 EVENTS", tint: "#C65B52", text: "ONE WEEKEND" }, // "more than 17,000 recorded events" (344); span.from+13
+      { at: 590, scene: "check", obj: "shield", verdict: "cross", tint: "#C9913D", text: "ONE OPEN PATH" }, // "one routine package pathway turned a contained benchmark into a break-in" (590)
     ],
-    fullscreen: [{ from: 366, to: 516 }],
+    fullscreen: [{ from: 331, to: 481 }],
     outro: "FULL BREAKDOWN ON THE CHANNEL",
     music: "music/tension.MP3",
     style: "paper",
   },
   {
-    id: "Short-KimiTest",
-    label: "The only real head-to-head so far: Kimi K3 edges Qwen 3.8 on a 269-file task",
+    id: "Short-LockedBox",
+    label: "How it escaped: one allowed door (the package proxy) → zero-day → the open internet",
     source: "talking-head.mp4",
-    from: 5160, // "An independent tester ran Qwen 3.8 Max Preview and Moonshot's Kimi K3…"
-    // LOOP: ends "…handled lifecycle changes more completely." (6002) → replays.
-    durationInFrames: 857, // ~29s
-    topic: "THE ONLY REAL TEST",
-    hook: "KIMI vs QWEN — ONE REAL TEST",
-    context: "Same 269-file architecture task, blind-reviewed",
+    from: 7380, // "…its testing environment was highly isolated, with network access constrained to one requirement."
+    // LOOP: ends "…until they reached a node with internet access." (~8480) → replays.
+    durationInFrames: 1230, // ~41s
+    topic: "IT WAS LOCKED IN A BOX",
+    hook: "ONE OPEN DOOR WAS ENOUGH",
+    context: "OpenAI's test could only install software packages",
     beats: [
-      { at: 8, scene: "race", tint: "#6E93BD", text: "SAME TASK, TWO MODELS" }, // "an independent tester ran both" (5179)
-      { at: 299, scene: "queue", labels: ["269 FILES", "SAME PROMPT", "BLIND REVIEW"], tint: "#C9913D", text: "A REAL WORKLOAD" }, // "both inspected the same 269 files" (5459)
-      { at: 580, scene: "stamp", verdict: "check", badge: "KIMI K3", tint: "#4FA98A", text: "+3 PTS" }, // "Kimi finished three points ahead after blind review" (5740); span.from+13
-      { at: 720, scene: "check", obj: "gauge", verdict: "check", tint: "#6E93BD", text: "LEANER, QUICKER" }, // "completed faster, used fewer tokens" (5850-6000)
+      // EVIDENCE: the Exploit Gym benchmark — the containerised environment
+      { at: 8, scene: "receipt", tint: "#6E93BD", text: "the benchmark", shot: { src: "assets/external/screenshots/rogue-exploitgym.png", url: "rdi.berkeley.edu", imageW: 1860, imageH: 500, from: { x: 0, y: 0, w: 1860, h: 500 }, to: { x: 520, y: 60, w: 820, h: 410 }, zoomAt: 20 } }, // "a highly isolated, containerised environment" (8-220)
+      { at: 224, scene: "breaker", tint: "#C65B52", text: "THE ONE OPEN DOOR" }, // "requests travelled through a proxy and cache" (7604)
+      { at: 630, scene: "stamp", verdict: "cross", badge: "ZERO-DAY", tint: "#C65B52", text: "THE WEAK LINK" }, // "discovered a zero-day vulnerability in the proxy" (8010); span.from+13
+      { at: 876, scene: "conveyor", tint: "#C65B52", text: "SYSTEM TO SYSTEM" }, // "escalated privileges and moved laterally" (8256)
+      { at: 1084, scene: "check", obj: "gauge", verdict: "cross", tint: "#C65B52", text: "OUT TO THE INTERNET" }, // "reached a node with internet access" (8464)
     ],
-    fullscreen: [{ from: 567, to: 705 }],
+    fullscreen: [{ from: 617, to: 767 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
     style: "paper",
   },
   {
-    id: "Short-PriceMess",
-    label: "Kimi $3/$15, Fable $10/$50 — and Qwen 3.8 has no public per-token price",
+    id: "Short-OwnedIt",
+    label: "OpenAI took responsibility 5 days later — named GPT-5.6 Sol, Altman confirmed it, all autonomous",
     source: "talking-head.mp4",
-    from: 7395, // "that's where the cost comparison becomes messy…"
-    // LOOP: ends "…compare it with the API rates for Kimi or Fable." (8580) → replays.
+    from: 3788, // "Five days later, on July 21st, OpenAI supplied the answer and took responsibility publicly."
+    // LOOP: ends "…mind-blowing that all this happened autonomously." (~4820) → replays.
+    durationInFrames: 1030, // ~34s
+    topic: "OPENAI OWNED IT",
+    hook: "THEY ADMITTED EVERYTHING",
+    context: "5 days later, OpenAI named its own models",
+    beats: [
+      // EVIDENCE: OpenAI's own incident statement
+      { at: 8, scene: "receipt", tint: "#C65B52", text: "OpenAI's statement", shot: { src: "assets/external/screenshots/rogue-openai-report.png", url: "openai.com", imageW: 1640, imageH: 760, from: { x: 0, y: 0, w: 1640, h: 760 }, to: { x: 0, y: 150, w: 1640, h: 560 }, zoomAt: 20, highlight: { x: 40, y: 180, w: 1560, h: 150 }, highlightAt: 44 } }, // "took responsibility publicly" (8-260)
+      { at: 323, scene: "emote", pose: "pointing", tint: "#C9913D", text: "IT NAMED THE MODELS" }, // "including GPT-5.6 Sol, and a more capable prerelease model" (4111)
+      // EVIDENCE: Sam Altman's confirmation tweet
+      { at: 449, scene: "receipt", tint: "#C65B52", text: "@sama on X", shot: { src: "assets/external/screenshots/rogue-altman-tweet.png", url: "x.com/sama", imageW: 1100, imageH: 1330, from: { x: 0, y: 0, w: 1100, h: 1120 }, to: { x: 0, y: 0, w: 1100, h: 900 }, zoomAt: 20, highlight: { x: 35, y: 175, w: 1030, h: 200 }, highlightAt: 44 } }, // "Sam Altman confirmed a significant security incident" (4237)
+      { at: 717, scene: "stamp", verdict: "cross", badge: "AUTONOMOUS", tint: "#C65B52", text: "NO HUMAN AT ALL" }, // "mind-blowing that all this happened autonomously" (4505); span.from+13
+    ],
+    fullscreen: [{ from: 704, to: 854 }],
+    outro: "FULL BREAKDOWN ON THE CHANNEL",
+    music: "music/tension.MP3",
+    style: "paper",
+  },
+  {
+    id: "Short-YourAgents",
+    label: "THE LESSON: the same gaps that let it out sit in most AI agents — check your permissions",
+    source: "talking-head.mp4",
+    from: 12100, // "You can apply that lesson to agents connected to your business."
+    // LOOP: ends "…go check your own agents' permissions today." (~13060) → replays.
     durationInFrames: 1200, // ~40s
-    topic: "THE COST MESS",
-    hook: "ONE OF THESE HAS NO PRICE",
-    context: "Qwen 3.8 runs on credits — not per-token rates",
+    topic: "IS YOUR AI EXPOSED?",
+    hook: "THIS IS ABOUT YOUR AI TOO",
+    context: "The same gaps sit in most AI agents",
     beats: [
-      { at: 8, scene: "emote", pose: "worried", tint: "#C9913D", text: "TRY COMPARING COSTS" }, // "the cost comparison becomes messy" (7403)
-      { at: 180, scene: "check", obj: "coin", verdict: "check", tint: "#4FA98A", text: "$3 IN · $15 OUT" }, // "Kimi K3: $3 per million in, $15 out" (7575)
-      // EVIDENCE: the Claude pricing page — Fable's $10/$50 row
-      { at: 395, scene: "receipt", tint: "#C65B52", text: "$10 in · $50 out", shot: { src: "assets/external/screenshots/fable-pricing-wide.png", url: "platform.claude.com", imageW: 1900, imageH: 1720, from: { x: 0, y: 60, w: 1900, h: 980 }, to: { x: 20, y: 200, w: 1860, h: 520 }, zoomAt: 26, highlight: { x: 1555, y: 300, w: 310, h: 100 }, highlightAt: 50 } }, // "Fable 5 costs $10 in, $50 out" (7790)
-      { at: 545, scene: "coins", tint: "#C9913D", stamp: "PER MILLION", text: "REAL MONEY" }, // "$50 per million output tokens" (7920-8000)
-      { at: 620, scene: "stamp", verdict: "cross", badge: "QWEN 3.8 MAX", tint: "#C65B52", text: "A BLANK PRICE TAG" }, // "doesn't yet have an ordinary published price" (8015); span.from+13
+      // EVIDENCE: the original incident, to ground the lesson
+      { at: 8, scene: "receipt", tint: "#C65B52", text: "what happened", shot: { src: "assets/external/screenshots/rogue-openai-tweet.png", url: "x.com/OpenAI", imageW: 1100, imageH: 1570, from: { x: 0, y: 0, w: 1100, h: 1120 }, to: { x: 0, y: 70, w: 1100, h: 900 }, zoomAt: 20, highlight: { x: 35, y: 300, w: 1030, h: 115 }, highlightAt: 44 } }, // "you can apply that lesson to your business" (8-210)
+      { at: 116, scene: "emote", pose: "pointing", tint: "#C9913D", text: "NOW — YOUR AI" }, // "standing API keys keep service access alive" (12216)
+      { at: 234, scene: "queue", labels: ["STANDING KEYS", "FILE ACCESS", "OPEN NETWORK"], tint: "#C65B52", text: "3 WAYS TO LEAK" }, // "broad file permissions expose more data, open network access" (12334)
+      { at: 697, scene: "emote", pose: "worried", tint: "#C9913D", text: "THE GAP THEY MISSED" }, // "the forgotten path in OpenAI's test was its package proxy" (12797)
+      { at: 911, scene: "stamp", verdict: "check", badge: "YOUR AGENTS", tint: "#D97757", text: "LOCK THEM DOWN" }, // "go check your own agents' permissions today" (13011); span.from+13
     ],
-    fullscreen: [{ from: 607, to: 757 }],
+    fullscreen: [{ from: 898, to: 1048 }],
     outro: "FOLLOW FOR MORE",
-    music: "music/tension.MP3",
-    style: "paper",
-  },
-  {
-    id: "Short-ThreeQuestions",
-    label: "The 3 questions to run on ANY model launch before it touches production",
-    source: "talking-head.mp4",
-    from: 9690, // "So what should you do with Alibaba's claim? Ask three questions…"
-    // LOOP: ends "…licensing and where your data is processed." (10651) → replays.
-    durationInFrames: 976, // ~33s
-    topic: "THE 3-QUESTION TEST",
-    hook: "RUN THIS ON EVERY AI LAUNCH",
-    context: "How to judge a model claim before deploying it",
-    beats: [
-      { at: 8, scene: "emote", pose: "pointing", tint: "#4FA98A", text: "BEFORE YOU BELIEVE IT" }, // "so what should you do with Alibaba's claim" (9695)
-      { at: 105, scene: "check", obj: "gauge", verdict: "warn", tint: "#6E93BD", text: "1 · THE FINE PRINT" }, // "first, compared under what conditions (9795-9915)"
-      { at: 379, scene: "check", obj: "coin", verdict: "warn", tint: "#C9913D", text: "2 · REAL COST?" }, // "second, what does one completed task cost (10069)"
-      { at: 680, scene: "check", obj: "shield", verdict: "warn", tint: "#C65B52", text: "3 · CAN IT SHIP?" }, // "third, can you actually deploy it (10370)"; span.from+13
-    ],
-    fullscreen: [{ from: 667, to: 817 }],
-    outro: "FULL BREAKDOWN ON THE CHANNEL",
     music: "music/calm.MP3",
     style: "paper",
   },
