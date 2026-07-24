@@ -207,6 +207,40 @@ positive), `tension.MP3` (stakes / deadline), `outro.MP3` (payoff / subscribe).
   Use **system ffmpeg** (`/c/ProgramData/chocolatey/bin/ffmpeg`) — Remotion's
   bundled ffmpeg is built without the `loudnorm`/`volumedetect`/`ebur128` filters.
 
+### Mix targets (model-review edits — Kris, 2026)
+Prioritise **speech intelligibility**. Aim for: integrated loudness ≈ −14 LUFS
+(YouTube); **voice true-peak ≤ ~−3 dBTP**; **music ~20–30 dB below the voice**
+(the `volume` 0.06–0.09 range already lands here after the VO boost); SFX clearly
+audible but under the narration. **Duck** the music under speech, and duck it
+**further** during dense benchmark explanations, safety caveats, and the final
+decision rule; allow a brief lift during transitions and visual-only gaps
+(`MusicController` handles the envelope — see §12). Smooth fades, no clicks.
+Do **not** destructively compress/process the VO if the source is already clean.
+
+### Generated SFX (deterministic — `scripts/gen-sfx.mjs`)
+Reuse existing `public/sfx/*.wav` first (the table above covers most needs). Only
+when a needed effect is missing, **generate it** — never download copyrighted
+audio. `node scripts/gen-sfx.mjs` synthesises a small royalty-free set into
+**`public/audio/sfx/`** deterministically (system ffmpeg: filtered
+`anoisesrc`/`sine`/`aevalsrc` + short pitch sweeps + smooth attack/decay
+envelopes — no `Math.random`, so re-runs are byte-stable). The named set (keyed
+in `SFX` as `soft*`, wired via `SoundCue`/`SfxCue`):
+`soft-whoosh` · `interface-click` · `low-impact` · `short-riser` ·
+`transition-sweep` · `confirmation` · `warning-pulse`. Fire them ONLY on:
+important text entrances, model-card animations, price changes, benchmark
+reveals, major section transitions, the final recommendation — **not on every
+animation**. No loud cinematic booms, gaming SFX, meme stings or glitch spam.
+
+### Two music energy states
+`public/music/` already holds licensed beds — **use them** (don't synthesise if a
+suitable track exists). For the model-review edit map to two named energy states:
+**main analytical bed** = `tension.MP3` at low energy (`volume` ≈ 0.07–0.08), and
+the **caveat/safety bed** = `calm.MP3` (`volume` ≈ 0.05–0.06). Both are minimal /
+non-melodic enough to sit under narration. If a future video genuinely needs a
+purpose-built ambient pad (warm synth pad + restrained low pulse + light filtered
+texture, no melody/vocals/drums), `gen-sfx.mjs --music` can synthesise a loopable
+WAV bed — but prefer the existing licensed tracks first.
+
 ---
 
 ## 7. Rendering & registration
@@ -656,3 +690,56 @@ Everything lives in [src/shorts/](src/shorts/) and is data-driven — you write
       no orphans, all `staticFile("assets/external/…")` references resolve).
 - [ ] `npx tsc --noEmit` clean; deliverables in `out/`, versioned, never
       overwriting a previous cut.
+
+---
+
+## 12. Edit-craft implementation (the `editkit` — Kris, 2026)
+
+The editorial half of a model-review edit (camera, cuts, comparison graphics,
+transitions, sound cues) is codified in **CLAUDE.md §15**. This is the code home.
+
+### The kit (`src/motion/editkit/`)
+Reusable, frame-driven components — build the edit from these, not one-off JSX:
+- `CameraPunchIn` — wraps the footage layer; `level` (`emphasis` 104–107% /
+  `strong` 108–112% / a raw number), `at`, `hold`, `ramp` (8–14f), optional
+  `xShift` for a horizontal reframe. Eased, no overshoot, auto-returns to 100%.
+- `KineticText` — 2–5 word phrase; enters 6–10f (opacity+position+scale), holds,
+  exits clean; safe-margin aware; no bounce.
+- `ModelComparison` — two premium model cards → side-by-side (Opus orange
+  `#D97757` / Fable muted purple `#8A7CA8`).
+- `PriceComparison` — API $/M rows; one price counts DOWN into the other +
+  a "HALF THE PRICE" payoff. Prices are props (fill from transcript).
+- `EffortSelector` — stepped Low·Medium·High·X-high·Max selector; `value` steps.
+- `DecisionFramework` — 3 columns revealed on cue (`revealAts`), one highlighted.
+- `SectionTransition` — `kind: evidence | counterpoint | section | verdict`
+  (§15.5). `BenchmarkBar` reuses `charts.tsx` (`BarsIn` + `SourceChip`);
+  `SoundCue` = `SfxCue`; `MusicController` wraps `MusicBed` with speech ducking
+  + the two energy beds (§6).
+- `EditKitDemo` composition (registered in `Root.tsx`, catalog-style like
+  `TemplateLab`) previews every piece ~2–3s — scrub it in Studio.
+
+### The edit map (`src/motion/editkit/editMap.ts`)
+One typed row per beat: `{ from, to, effect, text?, visual?, sound?, zoom?,
+transition? }`. Wire `from`/`to` to sentence-level whisper timestamps so timings
+move without touching components. The `<Slug>Video` overlay maps rows → the kit
+components + `SoundCue`s. Keep a single `PALETTE`, `MUSIC_VOL`, `SFX_VOL`,
+`ZOOM_INTENSITY`, `ANIM_SPEED` constants block at the top of the map so those are
+one-line adjustable (the deliverable "easiest config values").
+
+### Remotion discipline (enforced)
+Frame-driven & DETERMINISTIC only: `useCurrentFrame`/`useVideoConfig`/
+`interpolate`(always clamp)/`spring`/`Sequence`/`AbsoluteFill`/`Audio`/
+`OffthreadVideo`. **No** CSS transitions, `setTimeout`, wall-clock timing, or
+unseeded `Math.random()` (seed every stochastic value — Studio + render must
+match). 1920×1080 @ the project's 30fps. Avoid full-res blur that tanks render
+speed (mask/opacity instead); keep the bottom-right ~15% clear (YouTube UI);
+never let a graphic cover the face unintentionally; text must not overflow.
+
+### Validation gate (before declaring an edit done)
+`npx tsc --noEmit` clean · `npx remotion compositions` lists the comp ·
+`check-assets.mjs` passes (no missing assets / duration errors) · render preview
+STILLS of the hook, a benchmark beat, the price comparison, the safety beat and
+the final recommendation, then LOOK for clipping / text overflow / weak hierarchy
+· confirm SFX cues don't pile on one frame · confirm **no invented stat or claim**
+was introduced (every number traces to the transcript/a manifested source). Fix
+before stopping.

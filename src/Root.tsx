@@ -3,6 +3,7 @@ import { Composition } from "remotion";
 import { ShortsCompositions, SHORTS_ENABLED } from "./shorts";
 import { StyleDemo } from "./StyleDemo";
 import { TemplateLab, TEMPLATE_LAB_DUR } from "./TemplateLab";
+import { EditKitDemo, EDITKIT_DEMO_DUR } from "./EditKitDemo";
 import { ArchivedVideoCompositions, SHOW_ARCHIVE } from "./archive";
 import { CalculateMetadataFunction } from "remotion";
 import { RogueAgentVideo, ROGUE_DUR } from "./RogueAgentVideo";
@@ -44,6 +45,18 @@ export const RemotionRoot: React.FC = () => {
         id="TemplateLab"
         component={TemplateLab}
         durationInFrames={TEMPLATE_LAB_DUR}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      <Composition
+        // Model-review edit-kit catalog (CameraPunchIn, ModelComparison,
+        // PriceComparison, BenchmarkBar, EffortSelector, DecisionFramework,
+        // KineticText, SectionTransition) — ~3s each. CLAUDE.md §15.
+        id="EditKitDemo"
+        component={EditKitDemo}
+        durationInFrames={EDITKIT_DEMO_DUR}
         fps={30}
         width={1920}
         height={1080}

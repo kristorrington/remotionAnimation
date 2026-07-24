@@ -1163,5 +1163,115 @@ For **all future Remotion work in this project**, Claude Code MUST apply this
 framework before creating or editing scenes: **run the asset research pass (§10)
 → classify the beat (§3) → pick the mode (§2) and metaphor (§4) → give it a
 subject that DOES something (§1) → apply the text-density rules (§5) → use the
-component library (§7) → run the checklist (§6).** When in doubt, fewer words +
-a stronger visual + a subject acting it out.
+component library (§7) → run the checklist (§6) → hold every cut to the
+edit-craft discipline (§15).** When in doubt, fewer words + a stronger visual +
+a subject acting it out.
+
+---
+
+## 15. Edit-craft & effects discipline (Kris, 2026 — the "model-review" edit)
+
+The house edit is **restrained and editorial**, not maximalist. This section
+governs the CUTS, CAMERA, TYPOGRAPHY, TRANSITIONS and comparison graphics of the
+talking-head-driven model-review videos (Opus-vs-Fable class). It sits on top of
+§8 (long-form) and §13 (premium pass) and wins on any conflict about *effects*.
+The reusable pieces live in **`src/motion/editkit/`** (+ the `editMap` timeline
+config); the SFX/music/mix/validation half is in **AGENTS.md §6 + §12**.
+
+### 15.1 Effect discipline (the gate every effect must pass)
+Every effect must do at least ONE of: **emphasise a claim · make evidence
+clearer · signal a subject change · reset attention · clarify a model
+comparison.** If it does none, cut it. **Never add an effect just because a few
+seconds passed.** Direct cuts are the DEFAULT; reserve a *noticeable* transition
+(§15.5) for a genuine change between major sections. Density target: most of the
+runtime is direct cuts + subtle punch-ins; noticeable transitions are the
+exception, not the rhythm.
+
+### 15.2 Camera punch-ins (`CameraPunchIn`)
+Professional digital camera movement synthesised from the talking-head footage —
+`CameraPunchIn` wraps the footage layer (never a CSS transition).
+- **Scale ramps:** standard emphasis **104–107%**, strong claim **108–112%**,
+  then return **smoothly to 100%** after the emphasis. Ramp **8–14 frames**,
+  smooth easing or a controlled NO-overshoot spring (stiffness ~110, damping
+  ~20). Never zoom past ~112% (the crop is already tight).
+- **Framing:** keep the eyes correctly framed; never crop chin, forehead or an
+  important gesture awkwardly. Prefer punching toward the eyeline, not dead
+  centre. Occasionally use a subtle **horizontal reframe** (a few % x-shift)
+  instead of another punch-in.
+- **Rate:** selective — roughly **once every 15–30s**, on the lines that matter
+  (the opening contradiction, "half the API price", a major benchmark result,
+  the key counterpoint, the final verdict). NEVER constant zooming or fake
+  handheld jitter. This supersedes any older "jump-cut framing on every sentence
+  gap" habit for these review edits.
+
+### 15.3 Hook editing (first 20 seconds)
+Strongest pacing of the whole video. ~**three meaningful visual beats**, e.g.:
+(1) establish the two competing models, (2) emphasise the price gap ("half"),
+(3) pose the open question ("still worth it?"). One **restrained bass/tonal hit**
+on the opening contradiction + one short **riser** into the main question (§AGENTS
+§6 SFX). Bold on-screen phrases only where they reinforce the VO (`KineticText`,
+§15.4) — **never more than one major text statement on screen at once**
+(e.g. `MODEL X IS HERE` → `HALF THE PRICE` → `STILL WORTH IT?`, one at a time).
+
+### 15.4 Kinetic typography (`KineticText`)
+Kinetic type is for the MOST IMPORTANT phrases only — do NOT caption every
+sentence. **~2–5 words** per animation. Enter in **6–10f** (opacity + position +
+slight scale), hold long enough to read, exit cleanly. **No elastic/cartoon
+bounce.** Stay inside YouTube-safe margins, readable at mobile size, and clear of
+the **bottom-right** timestamp/overlay zone (§Perf). **Use exact transcript
+wording — never invent quotes, stats or claims.**
+
+### 15.5 The transition system (`SectionTransition` — four named, reused)
+A SMALL reusable set, not a bespoke transition per section. Most edits stay
+direct cuts; use these only where they earn it:
+- **`evidence`** — fast **6–10f** directional blur / orange light-sweep, claim → its supporting evidence.
+- **`counterpoint`** — brief tonal drop + subtle desaturation + clean cut, before an important limitation/caveat.
+- **`section`** — restrained **10–16f** dark wipe or soft orange gradient wipe, ONLY between major chapters.
+- **`verdict`** — clean zoom-out / visual reset before the final recommendation.
+Banned: spins, page curls, camera shakes, full-screen glitch wipes. (The
+CapCut pull-left `SlideLeftPush` in §8 remains the fullscreen-span cut; these four
+are the *editorial* transitions layered on top.)
+
+### 15.6 Supporting comparison graphics (build from the transcript, never fabricate)
+Reusable premium components in `src/motion/editkit/` — reveal each element as the
+VO mentions it:
+- **`ModelComparison`** — two clean model cards animating into a side-by-side.
+  House model colours: **Opus = orange (terracotta `#D97757`)**, **Fable =
+  restrained muted purple (`#8A7CA8`)** (desaturated per §13.8; never a toy
+  #FF/neon purple). Simple and premium — no clutter.
+- **`PriceComparison`** — API $/million tokens, with one price **reducing into**
+  the other and a **"HALF THE PRICE"** payoff. Show only the numbers that
+  matter; no unnecessary fine print. (Fill the exact prices from the transcript.)
+- **`BenchmarkBar`** — reuse `charts.tsx` (`BarsIn` + `SourceChip`); clean
+  horizontal bars / score counters / ranking cards **only when the transcript
+  states an exact result**. Never fabricate a value; keep benchmark names
+  readable. **Clearly distinguish** the brand's INTERNAL evals vs INDEPENDENT
+  evals vs the creator's INTERPRETATION — never present internal results as
+  independent evidence (label the source with `SourceChip`).
+- **`EffortSelector`** — a stepped selector **Low · Medium · High · X-high ·
+  Max** to explain that headline performance depends on how much inference
+  effort/cost the model is allowed to spend.
+- **`DecisionFramework`** — the closing three-column recommendation, each column
+  revealed as spoken, e.g. **SONNET** (routine / high-volume) · **OPUS**
+  (difficult practical work — the practical middle choice, highlighted) ·
+  **FABLE** (highest-stakes autonomous projects). End on a clean final frame
+  that holds long enough to read.
+- Evidence screenshots stay on `ScreenshotReceiptScene`/`SourceScreenshot` (§10)
+  — that IS the `EvidenceCard`.
+
+### 15.7 Safety-section treatment (quieter, not scary)
+When the VO turns to safety, shift DOWN, don't dramatise: slightly darker
+background, **lower music energy** (swap to the caveat bed, §AGENTS §6), slower
+animation, one restrained warning accent — **no dramatic cyberattack imagery**.
+A simple shield / classifier / intervention-rate visual ONLY if it supports the
+actual narration. (`counterpoint` transition into it.)
+
+### 15.8 The edit map + Remotion discipline
+Drive timings from a central **`editMap`** (`src/motion/editkit/editMap.ts`):
+one row per beat = `{ from, to, effect, text?, visual?, sound?, zoom?,
+transition? }`, wired to sentence-level transcript timestamps where available, so
+timings adjust without rewriting components. Everything is **frame-driven &
+deterministic** (`useCurrentFrame`/`interpolate`/`spring`/`Sequence`, clamp
+interpolations, no `setTimeout`/CSS transitions/unseeded `Math.random()`). Build
+reusable components over one-off JSX. Full technical standards + the validation
+gate are in **AGENTS.md §12**.
