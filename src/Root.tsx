@@ -6,8 +6,8 @@ import { TemplateLab, TEMPLATE_LAB_DUR } from "./TemplateLab";
 import { EditKitDemo, EDITKIT_DEMO_DUR } from "./EditKitDemo";
 import { ArchivedVideoCompositions, SHOW_ARCHIVE } from "./archive";
 import { CalculateMetadataFunction } from "remotion";
-import { RogueAgentVideo, ROGUE_DUR } from "./RogueAgentVideo";
-import { RogueAgentFinal } from "./RogueAgentFinal";
+import { Opus5Video, OPUS5_DUR } from "./Opus5Video";
+import { Opus5Final } from "./Opus5Final";
 
 export const transparentDefaults: CalculateMetadataFunction<
   Record<string, unknown>
@@ -64,9 +64,9 @@ export const RemotionRoot: React.FC = () => {
 
 
 
-      {/* ── CURRENT: OpenAI admits rogue agent hacked Hugging Face (July 2026) ── */}
-      <Composition id="RogueAgentVideo" component={RogueAgentVideo} durationInFrames={ROGUE_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
-      <Composition id="RogueAgentFinal" component={RogueAgentFinal} durationInFrames={ROGUE_DUR} fps={30} width={1920} height={1080} />
+      {/* ── CURRENT: Anthropic releases Claude Opus 5 (July 2026) ── */}
+      <Composition id="Opus5Video" component={Opus5Video} durationInFrames={OPUS5_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="Opus5Final" component={Opus5Final} durationInFrames={OPUS5_DUR} fps={30} width={1920} height={1080} />
 
       {/* Previous videos — hidden unless SHOW_ARCHIVE (src/archive) is true */}
       {SHOW_ARCHIVE && <ArchivedVideoCompositions />}

@@ -8,95 +8,93 @@ import { ShortSpec } from "./types";
 // (BeatScenes.tsx); `text` is a label (1–4 words) — captions carry the speech.
 // See README.md for the method + rubric. CLAUDE.md §9.
 // ============================================================================
+const AA = "assets/external/screenshots/opus5-aa-top.png";
+
 export const SHORTS: ShortSpec[] = [
-  // OpenAI-rogue-agent video (talking-head.mp4, 2026-07-24).
+  // Claude Opus 5 video (talking-head.mp4, 2026-07-26).
   {
-    id: "Short-WentRogue",
-    label: "THE HOOK: OpenAI admits its own AI broke out of a test and hacked Hugging Face",
+    id: "Short-HalfPrice",
+    label: "THE HOOK: Opus 5 costs half of Fable 5 — and independently ranks #1",
     source: "talking-head.mp4",
-    from: 0, // "Across one weekend, an OpenAI cybersecurity agent crossed its test boundary…"
-    // LOOP: ends "…turned a contained benchmark into a real-world break-in." (~760) → replays into the hook.
-    durationInFrames: 770, // ~26s
-    topic: "AN AI HACKED AN AI LAB",
-    hook: "OPENAI'S OWN AI WENT ROGUE",
-    context: "It escaped a test and hacked Hugging Face",
+    from: 0, // "Anthropic has just released Claude Opus 5…"
+    // LOOP: ends "…one point ahead of Fable 5." (~915) → replays into the hook.
+    durationInFrames: 950, // ~32s
+    topic: "OPUS 5 vs FABLE 5",
+    hook: "CHEAPER THAN THE FLAGSHIP",
+    context: "Opus 5 costs half of Fable 5 — Anthropic's own top model",
     beats: [
-      // EVIDENCE: the OpenAI admission tweet
-      { at: 8, scene: "receipt", tint: "#C65B52", text: "the admission", shot: { src: "assets/external/screenshots/rogue-openai-tweet.png", url: "x.com/OpenAI", imageW: 1100, imageH: 1570, from: { x: 0, y: 0, w: 1100, h: 1120 }, to: { x: 0, y: 70, w: 1100, h: 900 }, zoomAt: 20, highlight: { x: 35, y: 300, w: 1030, h: 115 }, highlightAt: 44 } }, // "OpenAI now admits its own model powered it" (8-200)
-      { at: 214, scene: "emote", pose: "alarmed", tint: "#C65B52", text: "IT BROKE OUT" }, // "reached the internet, and hacked Hugging Face" (209)
-      { at: 344, scene: "stamp", verdict: "cross", badge: "17,000 EVENTS", tint: "#C65B52", text: "ONE WEEKEND" }, // "more than 17,000 recorded events" (344); span.from+13
-      { at: 590, scene: "check", obj: "shield", verdict: "cross", tint: "#C9913D", text: "ONE OPEN PATH" }, // "one routine package pathway turned a contained benchmark into a break-in" (590)
+      // EVIDENCE: the independent Artificial Analysis dashboard (#1 + $5/$25)
+      { at: 8, scene: "receipt", tint: "#6E93BD", text: "independently tested", shot: { src: AA, url: "artificialanalysis.ai", imageW: 3840, imageH: 1600, from: { x: 300, y: 300, w: 1500, h: 920 }, to: { x: 300, y: 300, w: 1500, h: 920 }, zoomAt: 0, highlight: { x: 500, y: 330, w: 520, h: 520 }, highlightAt: 44 } }, // "#1 on its Intelligence Index" (8-230)
+      { at: 296, scene: "emote", pose: "confused", tint: "#C9913D", text: "NOT THE FLAGSHIP?" }, // "Fable 5 still holds that title" (296)
+      { at: 565, scene: "stamp", verdict: "check", badge: "HALF THE PRICE", tint: "#4FA98A", text: "vs FABLE 5" }, // "costing half as much through the API" (565); span.from+13
+      { at: 715, scene: "check", obj: "brain", verdict: "check", tint: "#6E93BD", text: "AND RANKED #1" }, // "one point ahead of Fable 5" (866)
     ],
-    fullscreen: [{ from: 331, to: 481 }],
+    fullscreen: [{ from: 552, to: 702 }],
     outro: "FULL BREAKDOWN ON THE CHANNEL",
     music: "music/tension.MP3",
     style: "paper",
   },
   {
-    id: "Short-LockedBox",
-    label: "How it escaped: one allowed door (the package proxy) → zero-day → the open internet",
+    id: "Short-HiddenBill",
+    label: "The catch: a low token price still runs up a huge bill at max effort",
     source: "talking-head.mp4",
-    from: 7380, // "…its testing environment was highly isolated, with network access constrained to one requirement."
-    // LOOP: ends "…until they reached a node with internet access." (~8480) → replays.
-    durationInFrames: 1230, // ~41s
-    topic: "IT WAS LOCKED IN A BOX",
-    hook: "ONE OPEN DOOR WAS ENOUGH",
-    context: "OpenAI's test could only install software packages",
+    from: 8940, // "Max effort also exposes the hidden cost behind the headline token price."
+    // LOOP: ends "…produces more tokens or takes more agentic turns." (~10040) → replays.
+    durationInFrames: 1120, // ~37s
+    topic: "IS IT ACTUALLY CHEAP?",
+    hook: "CHEAP TOKENS, PRICEY TASKS",
+    context: "Opus 5's $5/$25 price hides a catch at max effort",
     beats: [
-      // EVIDENCE: the Exploit Gym benchmark — the containerised environment
-      { at: 8, scene: "receipt", tint: "#6E93BD", text: "the benchmark", shot: { src: "assets/external/screenshots/rogue-exploitgym.png", url: "rdi.berkeley.edu", imageW: 1860, imageH: 500, from: { x: 0, y: 0, w: 1860, h: 500 }, to: { x: 520, y: 60, w: 820, h: 410 }, zoomAt: 20 } }, // "a highly isolated, containerised environment" (8-220)
-      { at: 224, scene: "breaker", tint: "#C65B52", text: "THE ONE OPEN DOOR" }, // "requests travelled through a proxy and cache" (7604)
-      { at: 630, scene: "stamp", verdict: "cross", badge: "ZERO-DAY", tint: "#C65B52", text: "THE WEAK LINK" }, // "discovered a zero-day vulnerability in the proxy" (8010); span.from+13
-      { at: 876, scene: "conveyor", tint: "#C65B52", text: "SYSTEM TO SYSTEM" }, // "escalated privileges and moved laterally" (8256)
-      { at: 1084, scene: "check", obj: "gauge", verdict: "cross", tint: "#C65B52", text: "OUT TO THE INTERNET" }, // "reached a node with internet access" (8464)
+      // EVIDENCE: Artificial Analysis' own cost summary
+      { at: 8, scene: "receipt", tint: "#C65B52", text: "the eval receipt", shot: { src: AA, url: "artificialanalysis.ai", imageW: 3840, imageH: 1600, from: { x: 440, y: 900, w: 2100, h: 640 }, to: { x: 440, y: 900, w: 2100, h: 640 }, zoomAt: 0, highlight: { x: 490, y: 1225, w: 1970, h: 120 }, highlightAt: 44 } }, // "100 million output tokens" (9046)
+      { at: 106, scene: "coins", tint: "#C9913D", stamp: "100M TOKENS", text: "ONE EVALUATION" }, // "around 100 million output tokens" (9046)
+      { at: 405, scene: "stamp", verdict: "cross", badge: "≈ $4,000", tint: "#C65B52", text: "FOR ONE RUN" }, // "almost $4,000 to complete" (9345); span.from+13
+      { at: 620, scene: "emote", pose: "worried", tint: "#C9913D", text: "IT THINKS LONGER" }, // "slower and more verbose than average" (~9600)
+      { at: 980, scene: "check", obj: "coin", verdict: "cross", tint: "#C65B52", text: "NOT ALWAYS CHEAP" }, // "doesn't make every completed task cheaper" (9920)
     ],
-    fullscreen: [{ from: 617, to: 767 }],
+    fullscreen: [{ from: 392, to: 542 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
     style: "paper",
   },
   {
-    id: "Short-OwnedIt",
-    label: "OpenAI took responsibility 5 days later — named GPT-5.6 Sol, Altman confirmed it, all autonomous",
+    id: "Short-Passwords",
+    label: "The safety caveat: the system card logged rare workaround + password attempts",
     source: "talking-head.mp4",
-    from: 3788, // "Five days later, on July 21st, OpenAI supplied the answer and took responsibility publicly."
-    // LOOP: ends "…mind-blowing that all this happened autonomously." (~4820) → replays.
-    durationInFrames: 1030, // ~34s
-    topic: "OPENAI OWNED IT",
-    hook: "THEY ADMITTED EVERYTHING",
-    context: "5 days later, OpenAI named its own models",
+    from: 12700, // "But 'most aligned' does not mean error-free or safe to operate without supervision."
+    // LOOP: ends "…rather than proof the released model behaves that way." (~13900) → replays.
+    durationInFrames: 1080, // ~36s
+    topic: "MOST ALIGNED — BUT?",
+    hook: "IT TRIED TO GUESS PASSWORDS",
+    context: "Opus 5's system card logged rare workaround attempts",
     beats: [
-      // EVIDENCE: OpenAI's own incident statement
-      { at: 8, scene: "receipt", tint: "#C65B52", text: "OpenAI's statement", shot: { src: "assets/external/screenshots/rogue-openai-report.png", url: "openai.com", imageW: 1640, imageH: 760, from: { x: 0, y: 0, w: 1640, h: 760 }, to: { x: 0, y: 150, w: 1640, h: 560 }, zoomAt: 20, highlight: { x: 40, y: 180, w: 1560, h: 150 }, highlightAt: 44 } }, // "took responsibility publicly" (8-260)
-      { at: 323, scene: "emote", pose: "pointing", tint: "#C9913D", text: "IT NAMED THE MODELS" }, // "including GPT-5.6 Sol, and a more capable prerelease model" (4111)
-      // EVIDENCE: Sam Altman's confirmation tweet
-      { at: 449, scene: "receipt", tint: "#C65B52", text: "@sama on X", shot: { src: "assets/external/screenshots/rogue-altman-tweet.png", url: "x.com/sama", imageW: 1100, imageH: 1330, from: { x: 0, y: 0, w: 1100, h: 1120 }, to: { x: 0, y: 0, w: 1100, h: 900 }, zoomAt: 20, highlight: { x: 35, y: 175, w: 1030, h: 200 }, highlightAt: 44 } }, // "Sam Altman confirmed a significant security incident" (4237)
-      { at: 717, scene: "stamp", verdict: "cross", badge: "AUTONOMOUS", tint: "#C65B52", text: "NO HUMAN AT ALL" }, // "mind-blowing that all this happened autonomously" (4505); span.from+13
+      { at: 8, scene: "emote", pose: "alarmed", tint: "#C9913D", text: "SAFEST CLAUDE YET?" }, // "most aligned does not mean error-free" (12700)
+      { at: 428, scene: "reject", badge: "SAFETY LIMITS", tint: "#C65B52", text: "IT WORKED AROUND THEM" }, // "work around the safety classifiers or network restrictions" (13128)
+      { at: 710, scene: "stamp", verdict: "cross", badge: "TRIED PASSWORDS", tint: "#C65B52", text: "TO REGAIN ACCESS" }, // "tried common passwords in an attempt to log back in" (13410); span.from+13
+      { at: 900, scene: "emote", pose: "thinking", tint: "#4FA98A", text: "A TRAINING SNAPSHOT" }, // "involved an intermediate snapshot, not the released model" (~13700)
     ],
-    fullscreen: [{ from: 704, to: 854 }],
+    fullscreen: [{ from: 697, to: 847 }],
     outro: "FULL BREAKDOWN ON THE CHANNEL",
     music: "music/tension.MP3",
     style: "paper",
   },
   {
-    id: "Short-YourAgents",
-    label: "THE LESSON: the same gaps that let it out sit in most AI agents — check your permissions",
+    id: "Short-WhichClaude",
+    label: "THE VERDICT: which Claude to use — Sonnet, Opus 5 or Fable 5",
     source: "talking-head.mp4",
-    from: 12100, // "You can apply that lesson to agents connected to your business."
-    // LOOP: ends "…go check your own agents' permissions today." (~13060) → replays.
-    durationInFrames: 1200, // ~40s
-    topic: "IS YOUR AI EXPOSED?",
-    hook: "THIS IS ABOUT YOUR AI TOO",
-    context: "The same gaps sit in most AI agents",
+    from: 15760, // "For difficult coding… Opus 5 looks like the new strongest default."
+    // LOOP: ends "…even a small improvement can justify paying twice." (~16860) → replays.
+    durationInFrames: 1150, // ~38s
+    topic: "WHICH CLAUDE NOW?",
+    hook: "OPUS 5 IS THE NEW DEFAULT",
+    context: "For difficult work — but not for everything",
     beats: [
-      // EVIDENCE: the original incident, to ground the lesson
-      { at: 8, scene: "receipt", tint: "#C65B52", text: "what happened", shot: { src: "assets/external/screenshots/rogue-openai-tweet.png", url: "x.com/OpenAI", imageW: 1100, imageH: 1570, from: { x: 0, y: 0, w: 1100, h: 1120 }, to: { x: 0, y: 70, w: 1100, h: 900 }, zoomAt: 20, highlight: { x: 35, y: 300, w: 1030, h: 115 }, highlightAt: 44 } }, // "you can apply that lesson to your business" (8-210)
-      { at: 116, scene: "emote", pose: "pointing", tint: "#C9913D", text: "NOW — YOUR AI" }, // "standing API keys keep service access alive" (12216)
-      { at: 234, scene: "queue", labels: ["STANDING KEYS", "FILE ACCESS", "OPEN NETWORK"], tint: "#C65B52", text: "3 WAYS TO LEAK" }, // "broad file permissions expose more data, open network access" (12334)
-      { at: 697, scene: "emote", pose: "worried", tint: "#C9913D", text: "THE GAP THEY MISSED" }, // "the forgotten path in OpenAI's test was its package proxy" (12797)
-      { at: 911, scene: "stamp", verdict: "check", badge: "YOUR AGENTS", tint: "#D97757", text: "LOCK THEM DOWN" }, // "go check your own agents' permissions today" (13011); span.from+13
+      { at: 8, scene: "emote", pose: "pointing", tint: "#D97757", text: "FOR THE HARD STUFF" }, // "Opus 5 looks like the new strongest default" (15786)
+      { at: 404, scene: "check", obj: "coin", verdict: "check", tint: "#6E93BD", text: "SONNET = CHEAPEST" }, // "Sonnet 5 remains the more economical choice" (16275)
+      { at: 604, scene: "doors", labels: ["SONNET 5", "OPUS 5", "FABLE 5"], value: 1, tint: "#D97757", text: "PICK BY THE JOB" }, // "Fable 5 still makes sense for the longest projects" (16362); span.from+13
+      { at: 900, scene: "stamp", verdict: "check", badge: "OPUS 5", tint: "#D97757", text: "START HERE" }, // verdict payoff
     ],
-    fullscreen: [{ from: 898, to: 1048 }],
+    fullscreen: [{ from: 591, to: 741 }],
     outro: "FOLLOW FOR MORE",
     music: "music/calm.MP3",
     style: "paper",

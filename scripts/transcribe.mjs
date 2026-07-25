@@ -121,6 +121,19 @@ const main = async () => {
     [["open", "ai"], "OpenAI"],
     [["exploit", "gym"], "Exploit Gym"],
     [["gpt", "5.6", "cell"], "GPT-5.6 Sol"],
+    // Opus-5 video (07/2026) — benchmark names whisper base.en mangles
+    [["swe", "bench"], "SWE-bench"],
+    [["sweep", "bench"], "SWE-bench"],
+    [["swee", "bench"], "SWE-bench"],
+    [["s", "w", "e", "bench"], "SWE-bench"],
+    [["frontier", "bench"], "FrontierBench"],
+    [["os", "world"], "OSWorld"],
+    [["o", "s", "world"], "OSWorld"],
+    [["oswall", "2.0"], "OSWorld 2.0"],
+    [["program", "bench"], "ProgramBench"],
+    [["automation", "bench"], "AutomationBench"],
+    [["gpt", "5.6", "soul"], "GPT-5.6 Sol"],
+    [["gpt", "5.6", "sole"], "GPT-5.6 Sol"],
   ];
   const norm = (s) => s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
   for (const [parts, joined] of JOINS) {
@@ -134,9 +147,12 @@ const main = async () => {
   }
   const FIX = {
     anthropic: "Anthropic", anthropics: "Anthropic", thorpek: "Anthropic", thorpey: "Anthropic",
+    antropic: "Anthropic", antropics: "Anthropic", anthropc: "Anthropic", // missing-h mishears (Opus-5, 07/2026)
     anthropix: "Anthropic", anthropik: "Anthropic", thoropik: "Anthropic", // Fable-permanent video (07/2026)
     coda: "Qoder", macs: "Max", // Qwen-3.8-Max video (07/2026): "CODA and CODA work" = Qoder/QoderWork; "Macs" = Max
     klem: "Clem", delange: "Delangue", exploitgim: "Exploit Gym", brockman: "Brockman", // OpenAI-rogue-agent (07/2026)
+    opus: "Opus", opis: "Opus", opos: "Opus", sonnet: "Sonnet", sonet: "Sonnet", // Opus-5 (07/2026)
+    frontierbench: "FrontierBench", osworld: "OSWorld", programbench: "ProgramBench", automationbench: "AutomationBench",
     anthorpey: "Anthropic", fable: "Fable", mythos: "Mythos", miffos: "Mythos", mifos: "Mythos",
     misaris: "Messaros", claude: "Claude",
     // ChatGPT Work video (07/2026)
