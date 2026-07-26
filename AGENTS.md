@@ -651,6 +651,18 @@ bridge backgrounds → `<Slug>Video` → per-span `CornerPip`s] → `CutFlash`.
      orphaned `chrome-headless-shell`/node render processes and kill them.
 8. **Verify the file:** `ffprobe` shows video + audio streams; `ebur128` shows
    ≈ −14 LUFS; spot-check a talking frame and a card frame.
+9. **Subtitles (RULE, Kris 07/2026 — every long-form Final ships an SRT):**
+   generate a YouTube-ready `.srt` from the footage's word-level captions and
+   upload it with the video (never rely on YouTube auto-captions — the VO has
+   product names whisper mangles). Run AFTER `transcribe.mjs` has captioned THIS
+   footage, passing the Final's total frame count so the last cue clamps to the
+   video end:
+   `node scripts/make-srt.mjs <source>.mp4 out/<Slug>-final.srt <DUR>`
+   (e.g. `talking-head.mp4 out/habits-final.srt 25749`). It groups words into
+   ≤9-word / ≤3.6s cues, breaks on sentence punctuation and >0.5s pauses, wraps
+   at 42 chars, and strips whisper artifacts (`[BLANK_AUDIO]`). The `.srt` is a
+   deliverable in `out/` (gitignored) — spot-check the first/last cue for word
+   order and timing before uploading.
 
 ### Phase 3 — Shorts (3–4 per video)
 
@@ -704,6 +716,8 @@ Everything lives in [src/shorts/](src/shorts/) and is data-driven — you write
       no orphans, all `staticFile("assets/external/…")` references resolve).
 - [ ] `npx tsc --noEmit` clean; deliverables in `out/`, versioned, never
       overwriting a previous cut.
+- [ ] Long-form Final has a matching `out/<Slug>-final.srt` (Phase 2.9) — first
+      and last cue spot-checked for word order + timing, clamped to the video end.
 
 ---
 

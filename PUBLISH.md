@@ -90,6 +90,11 @@ Long-form (chunked; the proxy is dense-keyframe so seeks are cheap):
 node scripts/render-long.mjs HabitsFinal out/habits-final.mp4 25749 3500
 ```
 
+Subtitles (upload with the long-form video — don't rely on YouTube auto-captions):
+```
+node scripts/make-srt.mjs talking-head.mp4 out/habits-final.srt 25749
+```
+
 Shorts (each ~1080×1920):
 ```
 npx remotion render Short-VagueBrief      out/short-vague-brief.mp4
