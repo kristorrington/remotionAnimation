@@ -380,11 +380,25 @@ Transitions (reference: [CutFlash.tsx](src/components/CutFlash.tsx) +
   subsets** (`◆`, `↗` — draw shapes with CSS instead; `→`/`—`/`✓` are proven
   safe) and keep bare text spans at **fontWeight ≥ 600**. If text is missing in
   a still, suspect these three in that order.
-- **Heavy source footage → make a proxy.** A 4K HEVC file decodes far too slowly
-  to render (minutes → hours) and bloats every bundle copy. Transcode once to a
-  1080p H.264 proxy and point the composition at it:
-  `npx remotion ffmpeg -y -i _source-4k.mp4 -vf scale=1920:1080 -c:v libx264 -crf 20 -preset veryfast -c:a aac -b:a 192k public/talking-head.mp4`.
-  Keep the 4K original as a backup **outside** `public/`.
+- **Heavy source footage → make a proxy WITH DENSE KEYFRAMES.** A 4K HEVC file
+  decodes far too slowly to render and bloats every bundle copy. Transcode once
+  to a 1080p H.264 proxy — but the proxy MUST have dense keyframes and no
+  B-frames, or long finals STALL. `FootageDirector` AND `CornerPip` both seek the
+  proxy (jump-cuts + per-span PiP), and with the libx264 DEFAULT GOP (~250f /
+  8.3s) + B-frames each seek decodes up to 250 frames; on a 15k–18k-frame comp
+  the seeking + compositor cache pile up until the render hangs and never
+  finishes (Opus-5 final, 07/2026 — the longest comp yet, was the first to fully
+  stall). Force `-g 12 -keyint_min 12 -sc_threshold 0 -bf 0 -movflags +faststart`
+  so every seek is a ≤12-frame decode:
+  `<ffmpeg> -y -i _source-4k.mp4 -vf scale=1920:1080 -r 30 -c:v libx264 -crf 20 -preset veryfast -g 12 -keyint_min 12 -sc_threshold 0 -bf 0 -pix_fmt yuv420p -movflags +faststart -c:a aac -b:a 192k public/talking-head.mp4`.
+  (Same dense-keyframe rule as OffthreadVideo clips, §9.) Verify:
+  `ffprobe -select_streams v:0 -skip_frame nokey -show_entries frame=pts_time …`
+  should show ~0.4s spacing. If an existing proxy stalls a render, re-encode it
+  from the backup master with these flags — no comp changes needed. Keep the 4K
+  original as a backup **outside** `public/`. **Always render the long final via
+  `node scripts/render-long.mjs <Comp> <out> <frames> 3500`** (chunked video +
+  separate low-concurrency audio mix) — a single-pass `remotion render` of a
+  10-min comp also burst-spawns ffmpeg on the ~60-tag audio graph.
 - **Probe every new recording ACROSS the timeline before building** (go-local,
   15/07/26): extract frames at ~6 spread timestamps
   (`ffmpeg -ss <t> -i proxy -frames:v 1 …`) and LOOK at them — that recording's
