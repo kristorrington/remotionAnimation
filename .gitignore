@@ -16,3 +16,6 @@ out
 
 # Local whisper.cpp tool clone (large, machine-specific)
 /whisper.cpp/
+
+# Social publisher local state (captions, times, remote IDs) — machine-specific
+/social-queue.json
