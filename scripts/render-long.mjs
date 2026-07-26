@@ -51,8 +51,11 @@ run(`npx remotion ffmpeg -y -f concat -safe 0 -i "${listFile}" -c copy "${videoO
 const audio = path.join(TMP, "audio.wav");
 if (!existsSync(audio)) run(`npx remotion render ${COMP} "${audio}" --concurrency=4`);
 
-// 4) mux
-run(`npx remotion ffmpeg -y -i "${videoOnly}" -i "${audio}" -c:v copy -c:a aac -b:a 320k "${OUT}"`);
+// 4) mux + MASTER to ~-14 LUFS. Must use SYSTEM ffmpeg — Remotion's bundled
+// ffmpeg is built without the loudnorm filter, and a raw mux lands ~-23 LUFS
+// (quiet: YouTube attenuates loud audio but never boosts quiet audio).
+const SYS_FF = "C:/ProgramData/chocolatey/bin/ffmpeg.exe";
+run(`"${SYS_FF}" -y -hide_banner -loglevel error -i "${videoOnly}" -i "${audio}" -c:v copy -af loudnorm=I=-14:TP=-1.0:LRA=11 -c:a aac -b:a 320k "${OUT}"`);
 
 rmSync(TMP, { recursive: true, force: true });
 console.log(`\ndone -> ${OUT}`);
