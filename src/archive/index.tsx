@@ -48,6 +48,8 @@ import { QwenMaxVideo, QWEN_DUR } from "../QwenMaxVideo";
 import { QwenMaxFinal } from "../QwenMaxFinal";
 import { RogueAgentVideo, ROGUE_DUR } from "../RogueAgentVideo";
 import { RogueAgentFinal } from "../RogueAgentFinal";
+import { Opus5Video, OPUS5_DUR } from "../Opus5Video";
+import { Opus5Final } from "../Opus5Final";
 
 // ============================================================================
 // THE ARCHIVE — compositions from PREVIOUS videos. When a new video starts,
@@ -76,6 +78,8 @@ export const ArchivedVideoCompositions: React.FC = () => {
       <Composition id="QwenMaxFinal" component={QwenMaxFinal} durationInFrames={QWEN_DUR} fps={30} width={1920} height={1080} />
       <Composition id="RogueAgentVideo" component={RogueAgentVideo} durationInFrames={ROGUE_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
       <Composition id="RogueAgentFinal" component={RogueAgentFinal} durationInFrames={ROGUE_DUR} fps={30} width={1920} height={1080} />
+      <Composition id="Opus5Video" component={Opus5Video} durationInFrames={OPUS5_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="Opus5Final" component={Opus5Final} durationInFrames={OPUS5_DUR} fps={30} width={1920} height={1080} />
 
       {/* ── Claude Fable 5 is now permanent (July 2026) ── */}
       <Composition id="FablePermanentVideo" component={FablePermanentVideo} durationInFrames={FP_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />

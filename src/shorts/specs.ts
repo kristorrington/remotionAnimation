@@ -8,91 +8,86 @@ import { ShortSpec } from "./types";
 // (BeatScenes.tsx); `text` is a label (1–4 words) — captions carry the speech.
 // See README.md for the method + rubric. CLAUDE.md §9.
 // ============================================================================
-const AA = "assets/external/screenshots/opus5-aa-top.png";
-
 export const SHORTS: ShortSpec[] = [
-  // Claude Opus 5 video (talking-head.mp4, 2026-07-26).
+  // The-5-habits video (talking-head.mp4, 2026-07-26).
   {
-    id: "Short-HalfPrice",
-    label: "THE HOOK: Opus 5 costs half of Fable 5 — and independently ranks #1",
+    id: "Short-VagueBrief",
+    label: "THE HOOK: managing agents like interns you brief once and abandon",
     source: "talking-head.mp4",
-    from: 0, // "Anthropic has just released Claude Opus 5…"
-    // LOOP: ends "…one point ahead of Fable 5." (~915) → replays into the hook.
-    durationInFrames: 950, // ~32s
-    topic: "OPUS 5 vs FABLE 5",
-    hook: "CHEAPER THAN THE FLAGSHIP",
-    context: "Opus 5 costs half of Fable 5 — Anthropic's own top model",
+    from: 0, // "Imagine hiring five brilliant interns…"
+    // LOOP: ends "…the fix is a management system built from five habits." (~820) → replays.
+    durationInFrames: 900, // ~30s
+    topic: "WHY YOUR AGENTS FAIL",
+    hook: "YOU'RE MANAGING THEM WRONG",
+    context: "Most agent 'unreliability' is really weak management",
     beats: [
-      // EVIDENCE: the independent Artificial Analysis dashboard (#1 + $5/$25)
-      { at: 8, scene: "receipt", tint: "#6E93BD", text: "independently tested", shot: { src: AA, url: "artificialanalysis.ai", imageW: 3840, imageH: 1600, from: { x: 300, y: 300, w: 1500, h: 920 }, to: { x: 300, y: 300, w: 1500, h: 920 }, zoomAt: 0, highlight: { x: 500, y: 330, w: 520, h: 520 }, highlightAt: 44 } }, // "#1 on its Intelligence Index" (8-230)
-      { at: 296, scene: "emote", pose: "confused", tint: "#C9913D", text: "NOT THE FLAGSHIP?" }, // "Fable 5 still holds that title" (296)
-      { at: 565, scene: "stamp", verdict: "check", badge: "HALF THE PRICE", tint: "#4FA98A", text: "vs FABLE 5" }, // "costing half as much through the API" (565); span.from+13
-      { at: 715, scene: "check", obj: "brain", verdict: "check", tint: "#6E93BD", text: "AND RANKED #1" }, // "one point ahead of Fable 5" (866)
+      { at: 8, scene: "emote", pose: "pointing", tint: "#C9913D", text: "ONE VAGUE SENTENCE" }, // "one vague instruction... walk away" (10-140)
+      { at: 191, scene: "stamp", verdict: "cross", badge: "THE INTERNS", tint: "#C65B52", text: "GET THE BLAME" }, // "blaming them when the project falls apart" (191); span.from+13
+      { at: 500, scene: "reject", badge: "SMARTER MODEL", tint: "#C65B52", text: "WON'T FIX IT" }, // "everyone searches for a smarter model" (498-649)
+      { at: 748, scene: "check", obj: "brain", verdict: "check", tint: "#4FA98A", text: "MANAGE, DON'T SWAP" }, // "the fix is a management system" (748)
     ],
-    fullscreen: [{ from: 552, to: 702 }],
+    fullscreen: [{ from: 178, to: 328 }],
     outro: "FULL BREAKDOWN ON THE CHANNEL",
     music: "music/tension.MP3",
     style: "paper",
   },
   {
-    id: "Short-HiddenBill",
-    label: "The catch: a low token price still runs up a huge bill at max effort",
+    id: "Short-CleanMeans",
+    label: "Habit 1: 'clean up this spreadsheet' means four different jobs",
     source: "talking-head.mp4",
-    from: 8940, // "Max effort also exposes the hidden cost behind the headline token price."
-    // LOOP: ends "…produces more tokens or takes more agentic turns." (~10040) → replays.
-    durationInFrames: 1120, // ~37s
-    topic: "IS IT ACTUALLY CHEAP?",
-    hook: "CHEAP TOKENS, PRICEY TASKS",
-    context: "Opus 5's $5/$25 price hides a catch at max effort",
+    from: 1900, // "A lot of people type 'clean up this spreadsheet'…"
+    // LOOP: ends "…same spreadsheet, far less guessing." (~4900) → replays.
+    durationInFrames: 1150, // ~38s
+    topic: "WHAT DOES 'CLEAN' MEAN?",
+    hook: "YOUR AGENT IS JUST GUESSING",
+    context: "Habit 1: brief it like a new employee on day one",
     beats: [
-      // EVIDENCE: Artificial Analysis' own cost summary
-      { at: 8, scene: "receipt", tint: "#C65B52", text: "the eval receipt", shot: { src: AA, url: "artificialanalysis.ai", imageW: 3840, imageH: 1600, from: { x: 440, y: 900, w: 2100, h: 640 }, to: { x: 440, y: 900, w: 2100, h: 640 }, zoomAt: 0, highlight: { x: 490, y: 1225, w: 1970, h: 120 }, highlightAt: 44 } }, // "100 million output tokens" (9046)
-      { at: 106, scene: "coins", tint: "#C9913D", stamp: "100M TOKENS", text: "ONE EVALUATION" }, // "around 100 million output tokens" (9046)
-      { at: 405, scene: "stamp", verdict: "cross", badge: "≈ $4,000", tint: "#C65B52", text: "FOR ONE RUN" }, // "almost $4,000 to complete" (9345); span.from+13
-      { at: 620, scene: "emote", pose: "worried", tint: "#C9913D", text: "IT THINKS LONGER" }, // "slower and more verbose than average" (~9600)
-      { at: 980, scene: "check", obj: "coin", verdict: "cross", tint: "#C65B52", text: "NOT ALWAYS CHEAP" }, // "doesn't make every completed task cheaper" (9920)
+      { at: 217, scene: "queue", labels: ["DELETE DUPES?", "FIX FORMATS?", "REBUILD IT?"], tint: "#C9913D", text: "ONE WORD, FOUR JOBS" }, // "clean could mean..." (2117-2394)
+      { at: 682, scene: "emote", pose: "confused", tint: "#C9913D", text: "NO BUSINESS CONTEXT" }, // "the agent only has the words you gave it" (~2582)
+      { at: 950, scene: "check", obj: "gauge", verdict: "warn", tint: "#6E93BD", text: "OUTCOME · LIMITS · PROOF" }, // "define finished, protected, approval" (span); span.from+13
+      { at: 1060, scene: "stamp", verdict: "check", badge: "A REAL BRIEF", tint: "#4FA98A", text: "FAR LESS GUESSING" }, // "far less guessing" (loop close)
     ],
-    fullscreen: [{ from: 392, to: 542 }],
+    fullscreen: [{ from: 937, to: 1087 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
     style: "paper",
   },
   {
-    id: "Short-Passwords",
-    label: "The safety caveat: the system card logged rare workaround + password attempts",
+    id: "Short-WrongRow",
+    label: "Habit 3: a confident answer is worthless until you trace the source",
     source: "talking-head.mp4",
-    from: 12700, // "But 'most aligned' does not mean error-free or safe to operate without supervision."
-    // LOOP: ends "…rather than proof the released model behaves that way." (~13900) → replays.
-    durationInFrames: 1080, // ~36s
-    topic: "MOST ALIGNED — BUT?",
-    hook: "IT TRIED TO GUESS PASSWORDS",
-    context: "Opus 5's system card logged rare workaround attempts",
+    from: 10850, // "You've seen an agent deliver a polished answer…"
+    // LOOP: ends "…trace the figure back to its origin." (~12900) → replays.
+    durationInFrames: 1130, // ~38s
+    topic: "IS THE ANSWER REAL?",
+    hook: "CONFIDENT ISN'T CORRECT",
+    context: "Habit 3: reward evidence, not confident wording",
     beats: [
-      { at: 8, scene: "emote", pose: "alarmed", tint: "#C9913D", text: "SAFEST CLAUDE YET?" }, // "most aligned does not mean error-free" (12700)
-      { at: 428, scene: "reject", badge: "SAFETY LIMITS", tint: "#C65B52", text: "IT WORKED AROUND THEM" }, // "work around the safety classifiers or network restrictions" (13128)
-      { at: 710, scene: "stamp", verdict: "cross", badge: "TRIED PASSWORDS", tint: "#C65B52", text: "TO REGAIN ACCESS" }, // "tried common passwords in an attempt to log back in" (13410); span.from+13
-      { at: 900, scene: "emote", pose: "thinking", tint: "#4FA98A", text: "A TRAINING SNAPSHOT" }, // "involved an intermediate snapshot, not the released model" (~13700)
+      { at: 85, scene: "emote", pose: "thinking", tint: "#6E93BD", text: "IT SOUNDS RIGHT" }, // "polished answer... number, explanation" (10935)
+      { at: 355, scene: "stamp", verdict: "cross", badge: "WRONG ROW", tint: "#C65B52", text: "CHECK ONE DETAIL" }, // "the number came from the wrong row" (11205); span.from+13
+      { at: 700, scene: "check", obj: "brain", verdict: "warn", tint: "#C9913D", text: "'ARE YOU SURE?' FAILS" }, // "asking are you sure gets confidence" (~11550)
+      { at: 950, scene: "check", obj: "shield", verdict: "check", tint: "#4FA98A", text: "ASK FOR THE SOURCE" }, // "trace the figure back to its origin" (12773)
     ],
-    fullscreen: [{ from: 697, to: 847 }],
+    fullscreen: [{ from: 342, to: 492 }],
     outro: "FULL BREAKDOWN ON THE CHANNEL",
     music: "music/tension.MP3",
     style: "paper",
   },
   {
-    id: "Short-WhichClaude",
-    label: "THE VERDICT: which Claude to use — Sonnet, Opus 5 or Fable 5",
+    id: "Short-EarnedAutonomy",
+    label: "Habit 5: the Earned Autonomy Rule — expand freedom only after proof",
     source: "talking-head.mp4",
-    from: 15760, // "For difficult coding… Opus 5 looks like the new strongest default."
-    // LOOP: ends "…even a small improvement can justify paying twice." (~16860) → replays.
+    from: 20400, // "Habit five is expanding autonomy only after the agent earns it."
+    // LOOP: ends "…reduce oversight for that specific task." (~22400) → replays.
     durationInFrames: 1150, // ~38s
-    topic: "WHICH CLAUDE NOW?",
-    hook: "OPUS 5 IS THE NEW DEFAULT",
-    context: "For difficult work — but not for everything",
+    topic: "WHEN TO TRUST YOUR AGENT",
+    hook: "THE EARNED AUTONOMY RULE",
+    context: "Habit 5: expand freedom only after proven success",
     beats: [
-      { at: 8, scene: "emote", pose: "pointing", tint: "#D97757", text: "FOR THE HARD STUFF" }, // "Opus 5 looks like the new strongest default" (15786)
-      { at: 404, scene: "check", obj: "coin", verdict: "check", tint: "#6E93BD", text: "SONNET = CHEAPEST" }, // "Sonnet 5 remains the more economical choice" (16275)
-      { at: 604, scene: "doors", labels: ["SONNET 5", "OPUS 5", "FABLE 5"], value: 1, tint: "#D97757", text: "PICK BY THE JOB" }, // "Fable 5 still makes sense for the longest projects" (16362); span.from+13
-      { at: 900, scene: "stamp", verdict: "check", badge: "OPUS 5", tint: "#D97757", text: "START HERE" }, // verdict payoff
+      { at: 126, scene: "emote", pose: "pointing", tint: "#D97757", text: "ONE WIN ISN'T PROOF" }, // "one successful run = one observation" (20585)
+      { at: 400, scene: "check", obj: "gauge", verdict: "warn", tint: "#6E93BD", text: "REPEATED · TRACED · EARNED" }, // "repeated, evidence-backed success" (~20800)
+      { at: 604, scene: "doors", labels: ["SUPERVISED", "FEWER CHECKS", "AUTONOMOUS"], value: 0, tint: "#D97757", text: "MOVE UP ON PROOF" }, // "weekly report perfect — still one run" (21479); span.from+13
+      { at: 900, scene: "stamp", verdict: "check", badge: "EARN IT FIRST", tint: "#D97757", text: "THEN EXPAND" }, // verdict payoff
     ],
     fullscreen: [{ from: 591, to: 741 }],
     outro: "FOLLOW FOR MORE",

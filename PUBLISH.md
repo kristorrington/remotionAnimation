@@ -1,106 +1,102 @@
-# Publish copy — "Anthropic releases Claude Opus 5" (2026-07-26)
+# Publish copy — "The 5 habits of people who manage AI agents well" (2026-07-26)
 
-Footage: `talking-head.mp4` · Long-form: `Opus5Final` (18069f ≈ 10:02) ·
-Shorts: `Short-HalfPrice`, `Short-HiddenBill`, `Short-Passwords`, `Short-WhichClaude`.
+Footage: `talking-head.mp4` · Long-form: `HabitsFinal` (25749f ≈ 14:18) ·
+Shorts: `Short-VagueBrief`, `Short-CleanMeans`, `Short-WrongRow`, `Short-EarnedAutonomy`.
 
 ---
 
 ## Long-form (YouTube)
 
 **Title**
-> Claude Opus 5: Cheaper Than the Flagship — and Somehow #1
+> The 5 Habits of People Who Manage AI Agents Well
 
 **Alt titles**
-- Opus 5 vs Fable 5: Anthropic's Middle Model Beats Its Own Flagship
-- Claude Opus 5 Review: Half the Price, Frontier Performance, One Big Catch
+- Stop Blaming the Model: The 5 Habits That Make AI Agents Reliable
+- Manage AI Agents Like a Great Boss — Not a Vague One
 
 **Description**
-> Anthropic just shipped Claude Opus 5 — and the strange part is it isn't meant
-> to be the company's most powerful model. Fable 5 still holds that title. Yet in
-> Anthropic's own testing Opus 5 beats Fable on several coding, computer-use and
-> automation benchmarks at half the API price, and Artificial Analysis
-> independently ranks it #1 on its Intelligence Index — one point ahead of Fable.
+> Most people manage AI agents like an intern they brief once and abandon — then
+> call the agent "unreliable" and go hunting for a smarter model. The real fix
+> isn't a bigger model; it's a management system built from five habits, used in
+> order: the brief, the checkpoint, the evidence, the correction, and the
+> permission level.
 >
-> So has Anthropic made its own flagship hard to justify? This is the full
-> breakdown: the specs and pricing, every benchmark (with the fine print on how
-> the scores were made), the hidden cost of "max effort," the safety story from
-> the system card, and exactly which Claude to reach for now.
->
-> The real takeaway: intelligence, cost and effort are becoming a dial inside one
-> model — which makes the effort setting almost as important as the model name.
+> This is the full system, with Anthropic's own guidance as the backbone:
+> brief the agent like a new employee, review the plan before consequential
+> actions, reward evidence over confident wording, turn repeat corrections into
+> standing rules (CLAUDE.md), and expand autonomy only after proven success —
+> the Earned Autonomy Rule.
 >
 > Chapters:
-> 0:00 The Claim
-> 0:41 What It Is
-> 2:04 The Benchmarks
-> 4:26 The Catch
-> 6:18 Safety
-> 8:04 The Verdict
+> 0:00 The Setup
+> 0:49 Habit 1 — The Brief
+> 3:34 Habit 2 — The Checkpoint
+> 5:53 Habit 3 — The Evidence
+> 8:10 Habit 4 — The Correction
+> 10:33 Habit 5 — Earned Autonomy
+> 13:03 The Payoff
 >
-> Sources: Anthropic Opus 5 launch + system card (anthropic.com) · Artificial
-> Analysis Intelligence Index (artificialanalysis.ai) · Claude Platform pricing
-> (platform.claude.com). All benchmark figures are stated as Anthropic's own
-> internal evals except where labelled independent. Footage/screenshots used for
-> commentary and reference.
+> Sources: Anthropic prompt-engineering, Building Effective Agents, reduce-
+> hallucinations, Claude Code permission modes + memory docs, and the Auto Mode
+> launch (docs.claude.com, anthropic.com, code.claude.com, claude.com) · the
+> official "Introducing Claude Code" film. Used for commentary/reference.
 
-**Tags:** Claude Opus 5, Anthropic, Fable 5, Sonnet 5, AI models, LLM benchmarks,
-Artificial Analysis, SWE-bench, AI coding, model comparison, AI pricing
+**Tags:** AI agents, Claude, Claude Code, prompt engineering, agent management,
+CLAUDE.md, Auto Mode, AI automation, AI reliability, agentic workflows
 
 **Pinned comment**
-> The plot twist isn't "Opus 5 is smarter" — it's that intelligence, cost and
-> effort are now a dial inside ONE model. Max effort reaches Fable; medium keeps
-> most of it for a fraction of the cost. So: what are you actually optimising
-> for? 👇
+> The order matters: brief → checkpoint → evidence → correction → permission.
+> The first four habits create the proof; the fifth spends it. Which habit are
+> you skipping right now? 👇
 
 ---
 
 ## Shorts
 
-### 1 · `Short-HalfPrice`  (~32s)
-**Title:** Anthropic's Cheaper Model Beat Its Flagship
+### 1 · `Short-VagueBrief`  (~30s)
+**Title:** You're Managing AI Agents Wrong
 **Description:**
-> Claude Opus 5 costs half of Fable 5 — Anthropic's own top model — and
-> Artificial Analysis independently ranks it #1. Full breakdown on the channel.
-> #ClaudeOpus5 #Anthropic #AI #LLM #AInews
+> Hire five brilliant interns, give one vague instruction, walk away, then blame
+> them — that's how most people run AI agents. The fix isn't a smarter model.
+> #AIagents #Claude #AIautomation #promptengineering #AI
 
-### 2 · `Short-HiddenBill`  (~37s)
-**Title:** Why "Cheap" AI Tokens Can Still Cost $4,000
+### 2 · `Short-CleanMeans`  (~38s)
+**Title:** Your AI Agent Is Just Guessing
 **Description:**
-> Opus 5's $5/$25 price looks cheap — until max effort burns 100M tokens and
-> ~$4,000 on a single evaluation. A low token price ≠ a cheap task.
-> #ClaudeOpus5 #AIcostS #Anthropic #LLM #AInews
+> "Clean up this spreadsheet" means four different jobs. The agent only has your
+> words — so brief it like a new employee: outcome, boundaries, proof of done.
+> #AIagents #Claude #promptengineering #AItips #automation
 
-### 3 · `Short-Passwords`  (~36s)
-**Title:** Anthropic's "Most Aligned" Model Tried Guessing Passwords
+### 3 · `Short-WrongRow`  (~38s)
+**Title:** Confident AI Answers Aren't Correct Answers
 **Description:**
-> Opus 5 is Anthropic's most aligned model yet — but its own system card logged
-> rare cases where a training snapshot worked around safety limits and tried
-> passwords to log back in. #ClaudeOpus5 #AIsafety #Anthropic #AI #LLM
+> A polished answer with a number and a recommendation — from the wrong row.
+> "Are you sure?" just gets more confidence. Ask where the claim came from.
+> #AIagents #Claude #AIhallucinations #dataanalysis #AItips
 
-### 4 · `Short-WhichClaude`  (~38s)
-**Title:** Sonnet, Opus 5 or Fable 5 — Which Should You Use?
+### 4 · `Short-EarnedAutonomy`  (~38s)
+**Title:** The Rule for Trusting an AI Agent
 **Description:**
-> Opus 5 is the new default for difficult work. Sonnet 5 for routine, high-volume
-> tasks. Fable 5 for the longest autonomous runs. Pick by the job.
-> #ClaudeOpus5 #Anthropic #AItools #LLM #AInews
+> One good run is one data point. The Earned Autonomy Rule: expand freedom only
+> after repeated, evidence-backed success at the current level. Earn it, then
+> expand it. #AIagents #Claude #ClaudeCode #AIautomation #AI
 
 ---
 
 ## Render commands (RUN BY KRIS — renders are user-gated)
 
-Long-form (chunked, muted chunks → concat → audio mix → mux; ~18k frames):
+Long-form (chunked; the proxy is dense-keyframe so seeks are cheap):
 ```
-node scripts/render-long.mjs Opus5Final out/opus5-final.mp4 18069 3500
+node scripts/render-long.mjs HabitsFinal out/habits-final.mp4 25749 3500
 ```
 
 Shorts (each ~1080×1920):
 ```
-npx remotion render Short-HalfPrice   out/short-half-price.mp4
-npx remotion render Short-HiddenBill   out/short-hidden-bill.mp4
-npx remotion render Short-Passwords    out/short-passwords.mp4
-npx remotion render Short-WhichClaude  out/short-which-claude.mp4
+npx remotion render Short-VagueBrief      out/short-vague-brief.mp4
+npx remotion render Short-CleanMeans      out/short-clean-means.mp4
+npx remotion render Short-WrongRow        out/short-wrong-row.mp4
+npx remotion render Short-EarnedAutonomy  out/short-earned-autonomy.mp4
 ```
 
-**Preview first:** `npx remotion studio` → scrub `Opus5Final` and the four
-`Short-*` comps. Master the long-form to ~−14 LUFS at mux time (render-long does
-this); if rendering shorts raw, loudnorm-master before posting (AGENTS.md §6).
+Preview first: `npx remotion studio` → scrub `HabitsFinal` + the four `Short-*`
+comps. VO boost is 2.4× (source peaked −10.7 dB); render-long masters to ≈ −14 LUFS.

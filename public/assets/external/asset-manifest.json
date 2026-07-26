@@ -2529,6 +2529,104 @@
       ],
       "attributionRequired": false,
       "concerns": null
+    },
+    {
+      "filename": "habits-clear-direct.png",
+      "localPath": "public/assets/external/screenshots/habits-clear-direct.png",
+      "type": "screenshot",
+      "sourceUrl": "https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct",
+      "sourceName": "Claude Docs",
+      "dateAccessed": "2026-07-25",
+      "usageNote": "H1: be clear/direct + brilliant-new-employee framing",
+      "usedIn": [
+        "HabitsVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "habits-agents-hero.png",
+      "localPath": "public/assets/external/screenshots/habits-agents-hero.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.anthropic.com/engineering/building-effective-agents",
+      "sourceName": "Anthropic Engineering",
+      "dateAccessed": "2026-07-25",
+      "usageNote": "H2: Building Effective Agents guidance (checkpoints/human review)",
+      "usedIn": [
+        "HabitsVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "habits-permission-modes.png",
+      "localPath": "public/assets/external/screenshots/habits-permission-modes.png",
+      "type": "screenshot",
+      "sourceUrl": "https://code.claude.com/docs/en/permission-modes",
+      "sourceName": "Claude Code Docs",
+      "dateAccessed": "2026-07-25",
+      "usageNote": "H2 Plan Mode row + H5 graduated permission modes table",
+      "usedIn": [
+        "HabitsVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "habits-hallucinations.png",
+      "localPath": "public/assets/external/screenshots/habits-hallucinations.png",
+      "type": "screenshot",
+      "sourceUrl": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations",
+      "sourceName": "Claude Docs",
+      "dateAccessed": "2026-07-25",
+      "usageNote": "H3: ground responses in quotes/citations",
+      "usedIn": [
+        "HabitsVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "habits-memory.png",
+      "localPath": "public/assets/external/screenshots/habits-memory.png",
+      "type": "screenshot",
+      "sourceUrl": "https://code.claude.com/docs/en/memory",
+      "sourceName": "Claude Code Docs",
+      "dateAccessed": "2026-07-25",
+      "usageNote": "H4: same mistake a second time -> add to CLAUDE.md",
+      "usedIn": [
+        "HabitsVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "habits-automode-hero.png",
+      "localPath": "public/assets/external/screenshots/habits-automode-hero.png",
+      "type": "screenshot",
+      "sourceUrl": "https://claude.com/blog/auto-mode",
+      "sourceName": "Claude Blog",
+      "dateAccessed": "2026-07-25",
+      "usageNote": "H5: Auto Mode graduated-trust launch",
+      "usedIn": [
+        "HabitsVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "habits-cc-montage.mp4",
+      "localPath": "public/assets/external/clips/habits-cc-montage.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=AJpK3YTTKZ4",
+      "sourceName": "Anthropic — Introducing Claude Code (official film)",
+      "dateAccessed": "2026-07-25",
+      "usageNote": "Muted 3-scene montage, film-card treatment (CLAUDE.md §10)",
+      "usedIn": [
+        "HabitsVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
     }
   ]
 }

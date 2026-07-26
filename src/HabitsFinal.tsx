@@ -1,6 +1,6 @@
 import React from "react";
 import { AbsoluteFill, Easing, interpolate, Sequence, useCurrentFrame } from "remotion";
-import { Opus5Video, OPUS5_WINDOWS, OPUS5_FULLSCREEN, OPUS5_EXTRA_CUTS } from "./Opus5Video";
+import { HabitsVideo, HABITS_WINDOWS, HABITS_FULLSCREEN, HABITS_EXTRA_CUTS } from "./HabitsVideo";
 import { CutFlash } from "./components/CutFlash";
 import { FootageDirector } from "./components/FootageDirector";
 import { CornerPip } from "./components/CornerPip";
@@ -10,32 +10,33 @@ import { TopProgressBar, Chapter } from "./components/TopProgressBar";
 import { CameraPunchIn, SectionTransition } from "./motion/editkit";
 import { ThemeProvider } from "./theme";
 
-// Chapters for the top progress bar — the six movements of the review.
+// Chapter markers — the hook, the five habits, the payoff.
 const CHAPTERS: Chapter[] = [
-  { label: "The Claim", from: 0 },
-  { label: "What It Is", from: 1252 },
-  { label: "The Benchmarks", from: 3720 },
-  { label: "The Catch", from: 7980 },
-  { label: "Safety", from: 11340 },
-  { label: "The Verdict", from: 14520 },
+  { label: "The Setup", from: 0 },
+  { label: "1 · The Brief", from: 1480 },
+  { label: "2 · The Checkpoint", from: 6424 },
+  { label: "3 · The Evidence", from: 10603 },
+  { label: "4 · The Correction", from: 14714 },
+  { label: "5 · Earned Autonomy", from: 18988 },
+  { label: "The Payoff", from: 23493 },
 ];
 
-// Final combined cut: talking head + the Opus-5 editkit/receipt track + per-span
-// PiP. Face-first punch-in open; first cover (Opus vs Fable) at ~150f. §15
-// model-review edit: CameraPunchIn emphasis on the face, four named
-// SectionTransitions at the chapter turns, minimal pull-left cuts otherwise.
-const FOOTAGE = "talking-head-260726.mp4"; // Claude Opus 5 recording (rotated 2026-07-26)
+// Final combined cut: talking head + the habits subject-scene/receipt track +
+// per-span PiP. Face-first punch-in open; first cover (the interns) at ~90f.
+// §15 model-review edit grammar: selective CameraPunchIns, the four named
+// SectionTransitions at chapter turns, pull-left on fullscreen-span starts.
+const FOOTAGE = "talking-head.mp4"; // 5-habits recording (2026-07-26)
 
 const PIP_GAP_MAX = 90;
 const PIP_MIN = 90;
-const COVERS = [...OPUS5_WINDOWS].sort((a, b) => a.from - b.from);
+const COVERS = [...HABITS_WINDOWS].sort((a, b) => a.from - b.from);
 const SPANS: { from: number; to: number }[] = [];
 for (const c of COVERS) {
   const last = SPANS[SPANS.length - 1];
   if (last && c.from - last.to <= PIP_GAP_MAX) last.to = Math.max(last.to, c.from + c.dur);
   else SPANS.push({ from: c.from, to: c.from + c.dur });
 }
-const FULL = [...OPUS5_FULLSCREEN].sort((a, b) => a.from - b.from);
+const FULL = [...HABITS_FULLSCREEN].sort((a, b) => a.from - b.from);
 const PIP_SEGMENTS: { from: number; to: number }[] = [];
 for (const s of SPANS) {
   let cursor = s.from;
@@ -46,30 +47,32 @@ for (const s of SPANS) {
   }
   if (s.to - cursor >= PIP_MIN) PIP_SEGMENTS.push({ from: cursor, to: s.to });
 }
-const CUTS = [...new Set([...FULL.map((f) => f.from), ...OPUS5_EXTRA_CUTS])].sort((a, b) => a - b);
+const CUTS = [...new Set([...FULL.map((f) => f.from), ...HABITS_EXTRA_CUTS])].sort((a, b) => a - b);
 
-// §15.2 emphasis punch-ins — selective, on the lines that matter, during the
-// full-face windows (the open + inter-beat gaps). Nested so at most one is >100%.
+// §15.2 punch-ins — selective, on the lines that matter, inside face windows.
 const PUNCHES: { at: number; level: "emphasis" | "strong"; hold: number }[] = [
-  { at: 55, level: "strong", hold: 60 }, // the opening contradiction, on the face
-  { at: 1000, level: "emphasis", hold: 40 }, // "should Opus 5 become your default?"
-  { at: 1740, level: "emphasis", hold: 50 }, // "the specifications are substantial"
-  { at: 7620, level: "strong", hold: 44 }, // "genuinely operating at the frontier"
-  { at: 9080, level: "emphasis", hold: 40 }, // into the hidden cost
-  { at: 17090, level: "emphasis", hold: 44 }, // "not the right model for every prompt"
-  { at: 17640, level: "strong", hold: 60 }, // the final verdict recap
+  { at: 500, level: "strong", hold: 50 }, // "the output comes back wrong…"
+  { at: 2600, level: "emphasis", hold: 44 }, // "the agent only has the words you gave it"
+  { at: 4500, level: "emphasis", hold: 44 }, // "now it understands what success means"
+  { at: 8000, level: "emphasis", hold: 40 }, // "your project may rely on…"
+  { at: 10100, level: "emphasis", hold: 40 }, // "polished language can hide a terrible decision"
+  { at: 13450, level: "emphasis", hold: 44 }, // "checking should follow the consequence"
+  { at: 15250, level: "strong", hold: 44 }, // "blame the agent for forgetting"
+  { at: 18800, level: "emphasis", hold: 40 }, // "ready for more responsibility"
+  { at: 23050, level: "strong", hold: 50 }, // "reducing authority is competent management"
+  { at: 24880, level: "emphasis", hold: 40 }, // into "the actual fix"
 ];
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
-export const Opus5Final: React.FC = () => {
+export const HabitsFinal: React.FC = () => {
   const frame = useCurrentFrame();
   const introZoom = interpolate(frame, [0, 22], [0.5, 1], { ...CLAMP, easing: Easing.out(Easing.cubic) });
   const introRadius = interpolate(frame, [0, 22], [40, 0], CLAMP);
 
-  // fold the emphasis punch-ins around the footage (audio lives in FootageDirector)
+  // fold the punch-ins around the footage layer
   let footage: React.ReactNode = (
-    <FootageDirector footage={FOOTAGE} volume={1.2} framing={[{ at: 0, scale: 1.03, y: 0 }]} />
+    <FootageDirector footage={FOOTAGE} volume={2.4} framing={[{ at: 0, scale: 1.03, y: 0 }]} />
   );
   for (const p of PUNCHES) {
     footage = (
@@ -85,7 +88,7 @@ export const Opus5Final: React.FC = () => {
         <AbsoluteFill style={{ backgroundColor: "#F0EEE6" }} />
         {frame < 26 && <AnimatedBackground durationInFrames={30} fade={false} />}
         <SlideLeftPush cuts={CUTS}>
-          {/* VO boost 1.2× (source peaks ≈ −2.8 dB — probed 2026-07-26) */}
+          {/* VO boost 2.4× (source peaks ≈ −10.7 dB — probed 2026-07-26) */}
           <AbsoluteFill
             style={{
               transform: `scale(${introZoom})`,
@@ -105,22 +108,24 @@ export const Opus5Final: React.FC = () => {
             </Sequence>
           ))}
 
-          <Opus5Video />
+          <HabitsVideo />
 
           {PIP_SEGMENTS.map((s) => (
             <CornerPip key={`pip-${s.from}`} footage={FOOTAGE} from={s.from} dur={s.to - s.from} />
           ))}
         </SlideLeftPush>
 
-        {/* face → first cover (Opus vs Fable) at ~148 */}
-        <CutFlash at={148} peak={0.5} />
+        {/* face → first cover (the interns) at ~88 */}
+        <CutFlash at={88} peak={0.5} />
 
-        {/* §15.5 editorial transitions at the chapter turns (over the pull-left) */}
-        <Sequence from={7050} durationInFrames={10}><SectionTransition kind="evidence" /></Sequence>
-        <Sequence from={3712} durationInFrames={16}><SectionTransition kind="section" /></Sequence>
-        <Sequence from={7992} durationInFrames={14}><SectionTransition kind="counterpoint" /></Sequence>
-        <Sequence from={11332} durationInFrames={14}><SectionTransition kind="counterpoint" /></Sequence>
-        <Sequence from={14512} durationInFrames={12}><SectionTransition kind="verdict" /></Sequence>
+        {/* §15.5 editorial transitions at the chapter turns */}
+        <Sequence from={1472} durationInFrames={14}><SectionTransition kind="section" /></Sequence>
+        <Sequence from={3117} durationInFrames={10}><SectionTransition kind="evidence" /></Sequence>
+        <Sequence from={6416} durationInFrames={14}><SectionTransition kind="section" /></Sequence>
+        <Sequence from={10595} durationInFrames={14}><SectionTransition kind="section" /></Sequence>
+        <Sequence from={14706} durationInFrames={14}><SectionTransition kind="section" /></Sequence>
+        <Sequence from={18980} durationInFrames={14}><SectionTransition kind="counterpoint" /></Sequence>
+        <Sequence from={23485} durationInFrames={12}><SectionTransition kind="verdict" /></Sequence>
 
         {/* persistent top progress + chapter markers (outside the push, on top) */}
         <TopProgressBar sections={CHAPTERS} accent="#D97757" />
