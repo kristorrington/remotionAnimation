@@ -152,4 +152,8 @@ export type ShortSpec = {
   outro: string; // CTA shown in the last ~3s (e.g. "FOLLOW FOR MORE")
   music?: string; // optional low bed in public/music/ (e.g. "music/tension.MP3")
   style?: VideoStyle; // brand look — "paper" (shorts default look), "cinematic", "bold"
+  // VO boost on the face stage — tune to the recording. Default 3 (older quiet
+  // footage); a HOT recording (peaks near 0 dB) needs ~1.3 or the boost clips
+  // before mastering. Set to match the source's measured peak (volumedetect).
+  voice?: number;
 };

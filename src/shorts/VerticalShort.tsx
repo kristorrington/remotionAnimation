@@ -183,7 +183,7 @@ export const VerticalShort: React.FC<{ spec: ShortSpec; showSafeZones?: boolean 
               boxShadow: introZoom * faceScale < 1 ? (paper ? "0 24px 70px rgba(31,30,29,0.30)" : "0 30px 90px rgba(0,0,0,0.55)") : undefined,
             }}
           >
-            <VerticalStage source={spec.source} from={spec.from} />
+            <VerticalStage source={spec.source} from={spec.from} volume={spec.voice} />
           </AbsoluteFill>
         </div>
 

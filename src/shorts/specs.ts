@@ -29,6 +29,7 @@ export const SHORTS: ShortSpec[] = [
     fullscreen: [{ from: 560, to: 760 }],
     outro: "FULL BREAKDOWN ON THE CHANNEL",
     music: "music/tension.MP3",
+    voice: 1.3,
     style: "paper",
   },
   {
@@ -50,6 +51,7 @@ export const SHORTS: ShortSpec[] = [
     fullscreen: [{ from: 203, to: 403 }],
     outro: "FOLLOW FOR MORE",
     music: "music/tension.MP3",
+    voice: 1.3,
     style: "paper",
   },
   {
@@ -71,6 +73,7 @@ export const SHORTS: ShortSpec[] = [
     fullscreen: [{ from: 550, to: 750 }],
     outro: "FULL BREAKDOWN ON THE CHANNEL",
     music: "music/tension.MP3",
+    voice: 1.3,
     style: "paper",
   },
   {
@@ -92,6 +95,7 @@ export const SHORTS: ShortSpec[] = [
     fullscreen: [{ from: 190, to: 390 }],
     outro: "FOLLOW FOR THE WEEKLY BREAKDOWN",
     music: "music/calm.MP3",
+    voice: 1.3,
     style: "paper",
   },
 ];
