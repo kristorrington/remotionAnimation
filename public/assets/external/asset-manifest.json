@@ -2707,7 +2707,7 @@
       "sourceUrl": "https://x.com/claudeai/status/2080699495453528290",
       "sourceName": "Claude (X)",
       "dateAccessed": "2026-07-27",
-      "usageNote": "Opus 5 launch: near-Fable-5 intelligence, price unchanged from Opus 4.8 — Opus 5 pricing receipt.",
+      "usageNote": "Claude launch tweet (text only, broken embed cropped out): near-Fable-5 intelligence at half the price.",
       "usedIn": [
         "AiWeeklyFinal Opus 5",
         "Short"
@@ -2810,6 +2810,20 @@
       "usageNote": "Muted 3-scene montage from the official NVIDIA keynote — open-weights beat b-roll (Jensen Huang backing open models).",
       "usedIn": [
         "AiWeeklyFinal open weights"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "ainews-opus5-cyber.png",
+      "localPath": "public/assets/external/screenshots/ainews-opus5-cyber.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/claudeai/status/2080699515271528827",
+      "sourceName": "Claude (X)",
+      "dateAccessed": "2026-07-27",
+      "usageNote": "Claude: Opus 5 stronger than 4.8 on cyber but behind Mythos 5 at exploits, with OSS-Fuzz chart — the cyber-trails receipt.",
+      "usedIn": [
+        "AiWeeklyFinal Opus 5"
       ],
       "attributionRequired": false,
       "concerns": null

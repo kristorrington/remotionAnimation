@@ -1,85 +1,92 @@
-# Publish copy — "The 5 habits of people who manage AI agents well" (2026-07-26)
+# Publish copy — "AI news this week: 3 stories that matter, 2 that don't" (2026-07-27)
 
-Footage: `talking-head.mp4` · Long-form: `HabitsFinal` (25749f ≈ 14:18) ·
-Shorts: `Short-VagueBrief`, `Short-CleanMeans`, `Short-WrongRow`, `Short-EarnedAutonomy`.
+Footage: `talking-head.mp4` · Long-form: `AiWeeklyFinal` (14613f ≈ 8:07) ·
+Shorts: `Short-BenchmarkBreach`, `Short-CompletionCost`, `Short-OpenWeights`, `Short-NewsFilter`.
 
 ---
 
 ## Long-form (YouTube)
 
 **Title**
-> The 5 Habits of People Who Manage AI Agents Well
+> The AI News That Actually Mattered This Week (and 2 Stories That Didn't)
 
 **Alt titles**
-- Stop Blaming the Model: The 5 Habits That Make AI Agents Reliable
-- Manage AI Agents Like a Great Boss — Not a Vague One
+- A Benchmark Breached a Real Company, Opus 5 Landed, and Open Weights Got Backers
+- 3 AI Stories That Change What You Can Build, Break and Afford
 
 **Description**
-> Most people manage AI agents like an intern they brief once and abandon — then
-> call the agent "unreliable" and go hunting for a smarter model. The real fix
-> isn't a bigger model; it's a management system built from five habits, used in
-> order: the brief, the checkpoint, the evidence, the correction, and the
-> permission level.
+> Three stories this week actually changed what you can build, break, and afford —
+> and two more made headlines without earning it yet. First: a Hugging Face
+> security eval gave models internet access with the guardrails off, and they
+> chained real weaknesses into an attack path against Hugging Face itself — a
+> 17,000-event forensic trail their own defensive agents rebuilt in hours.
+> Capability and risk move together, so if you run agents, three gates are now
+> non-negotiable: network egress, credential scope, and tool permissions.
 >
-> This is the full system, with Anthropic's own guidance as the backbone:
-> brief the agent like a new employee, review the plan before consequential
-> actions, reward evidence over confident wording, turn repeat corrections into
-> standing rules (CLAUDE.md), and expand autonomy only after proven success —
-> the Earned Autonomy Rule.
+> Second: Anthropic's Opus 5 holds the same per-token price as Opus 4.8 — but
+> price per token is only half the story. What actually costs you is retries,
+> extra tool calls, stalled runs, and the human fix at the end. Judge Opus 5 by
+> completion cost on work that looks like yours (and note it still trails Mythos
+> 5 on cybersecurity). Third: a coalition — including Jensen Huang — pushed for
+> open, downloadable weights. It's a market story about leverage, routing, and
+> avoiding lock-in, not a guarantee. Then the watchlist: Gemini 3.5 Pro and
+> OpenAI Presence — no confirmed release, no outside evidence yet.
+>
+> The filter I run on every announcement: did it change capability, risk, or cost
+> and access — today, not eventually?
 >
 > Chapters:
-> 0:00 The Setup
-> 0:49 Habit 1 — The Brief
-> 3:34 Habit 2 — The Checkpoint
-> 5:53 Habit 3 — The Evidence
-> 8:10 Habit 4 — The Correction
-> 10:33 Habit 5 — Earned Autonomy
-> 13:03 The Payoff
+> 0:00 The Feed
+> 0:24 Hugging Face — a benchmark that breached a real company
+> 2:12 Opus 5 — completion cost is the real story
+> 3:54 Open Weights — access becomes strategy
+> 5:35 The Watchlist — Gemini 3.5 Pro & OpenAI Presence
+> 7:10 The Filter — how to judge any AI drop
 >
-> Sources: Anthropic prompt-engineering, Building Effective Agents, reduce-
-> hallucinations, Claude Code permission modes + memory docs, and the Auto Mode
-> launch (docs.claude.com, anthropic.com, code.claude.com, claude.com) · the
-> official "Introducing Claude Code" film. Used for commentary/reference.
+> Sources (commentary/reference): huggingface.co, openai.com, anthropic.com,
+> artificialanalysis.ai, x.com/ClementDelangue, x.com/claudeai, x.com/JensenHuang,
+> ai.google.dev, venturebeat.com, github.com/MoonshotAI · NVIDIA GTC keynote.
 
-**Tags:** AI agents, Claude, Claude Code, prompt engineering, agent management,
-CLAUDE.md, Auto Mode, AI automation, AI reliability, agentic workflows
+**Tags:** AI news, Claude Opus 5, Hugging Face security, open weights, Jensen Huang,
+AI agents, agent security, completion cost, Gemini 3.5 Pro, OpenAI Presence
 
 **Pinned comment**
-> The order matters: brief → checkpoint → evidence → correction → permission.
-> The first four habits create the proof; the fifth spends it. Which habit are
-> you skipping right now? 👇
+> The filter: did it change capability, risk, or cost & access — TODAY, not
+> eventually? Run it on the next thing that drops. Which of these three actually
+> changes what you're building? 👇
 
 ---
 
 ## Shorts
 
-### 1 · `Short-VagueBrief`  (~30s)
-**Title:** You're Managing AI Agents Wrong
+### 1 · `Short-BenchmarkBreach`  (~35s)
+**Title:** A Benchmark Hacked a Real Company
 **Description:**
-> Hire five brilliant interns, give one vague instruction, walk away, then blame
-> them — that's how most people run AI agents. The fix isn't a smarter model.
-> #AIagents #Claude #AIautomation #promptengineering #AI
+> Hugging Face ran a cyber eval with the guardrails off — and the models chained
+> real weaknesses into an attack path against Hugging Face itself. If you run
+> agents: lock egress, credential scope, and tool permissions.
+> #AIsecurity #AIagents #HuggingFace #AInews #cybersecurity
 
-### 2 · `Short-CleanMeans`  (~38s)
-**Title:** Your AI Agent Is Just Guessing
+### 2 · `Short-CompletionCost`  (~37s)
+**Title:** Cheap AI Tokens Aren't Cheap Tasks
 **Description:**
-> "Clean up this spreadsheet" means four different jobs. The agent only has your
-> words — so brief it like a new employee: outcome, boundaries, proof of done.
-> #AIagents #Claude #promptengineering #AItips #automation
+> Opus 5 holds the same token price as Opus 4.8 — but the sticker price lies.
+> Retries, extra tool calls and stalled runs are the real bill. Judge a model by
+> completion cost on work like yours. #Opus5 #Claude #AIagents #AInews #AIcost
 
-### 3 · `Short-WrongRow`  (~38s)
-**Title:** Confident AI Answers Aren't Correct Answers
+### 3 · `Short-OpenWeights`  (~38s)
+**Title:** Why Open Weights Are a Money Story
 **Description:**
-> A polished answer with a number and a recommendation — from the wrong row.
-> "Are you sure?" just gets more confidence. Ask where the claim came from.
-> #AIagents #Claude #AIhallucinations #dataanalysis #AItips
+> A coalition — including Jensen Huang — is pushing for open, downloadable weights.
+> It's about leverage: more suppliers, more hosting, and routing each task to the
+> model that fits. Stay portable. #openweights #AI #JensenHuang #AInews #opensource
 
-### 4 · `Short-EarnedAutonomy`  (~38s)
-**Title:** The Rule for Trusting an AI Agent
+### 4 · `Short-NewsFilter`  (~30s)
+**Title:** Judge Any AI News in One Question
 **Description:**
-> One good run is one data point. The Earned Autonomy Rule: expand freedom only
-> after repeated, evidence-backed success at the current level. Earn it, then
-> expand it. #AIagents #Claude #ClaudeCode #AIautomation #AI
+> The only test I run on every AI announcement: did it change capability, risk,
+> or cost and access — today, not eventually? Run it on the next drop.
+> #AInews #AIstrategy #Claude #AItips #artificialintelligence
 
 ---
 
@@ -87,21 +94,21 @@ CLAUDE.md, Auto Mode, AI automation, AI reliability, agentic workflows
 
 Long-form (chunked; the proxy is dense-keyframe so seeks are cheap):
 ```
-node scripts/render-long.mjs HabitsFinal out/habits-final.mp4 25749 3500
+node scripts/render-long.mjs AiWeeklyFinal out/ai-weekly-final.mp4 14613 3500
 ```
 
 Subtitles (upload with the long-form video — don't rely on YouTube auto-captions):
 ```
-node scripts/make-srt.mjs talking-head.mp4 out/habits-final.srt 25749
+node scripts/make-srt.mjs talking-head.mp4 out/ai-weekly-final.srt 14613
 ```
 
 Shorts (each ~1080×1920):
 ```
-npx remotion render Short-VagueBrief      out/short-vague-brief.mp4
-npx remotion render Short-CleanMeans      out/short-clean-means.mp4
-npx remotion render Short-WrongRow        out/short-wrong-row.mp4
-npx remotion render Short-EarnedAutonomy  out/short-earned-autonomy.mp4
+npx remotion render Short-BenchmarkBreach out/short-benchmark-breach.mp4
+npx remotion render Short-CompletionCost  out/short-completion-cost.mp4
+npx remotion render Short-OpenWeights     out/short-open-weights.mp4
+npx remotion render Short-NewsFilter      out/short-news-filter.mp4
 ```
 
-Preview first: `npx remotion studio` → scrub `HabitsFinal` + the four `Short-*`
-comps. VO boost is 2.4× (source peaked −10.7 dB); render-long masters to ≈ −14 LUFS.
+Preview first: `npx remotion studio` → scrub `AiWeeklyFinal` + the four `Short-*`
+comps. VO boost is 1.3× (source peaked −3.9 dB); render-long masters to ≈ −14 LUFS.

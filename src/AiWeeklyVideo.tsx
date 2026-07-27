@@ -39,7 +39,8 @@ const IMG: Record<string, Shot> = {
   delangue: { w: 1100, h: 1440 },
   opus5: { w: 3840, h: 1400 },
   effort: { w: 3840, h: 1150 },
-  halfprice: { w: 1100, h: 1500 },
+  halfprice: { w: 1100, h: 475 },
+  cyber: { w: 1100, h: 925 },
   aa: { w: 3840, h: 950 },
   jensen: { w: 1100, h: 1300 },
   kimi: { w: 3840, h: 1450 },
@@ -183,18 +184,13 @@ const BEATS: Beat[] = [
     </SceneShell>
   ) },
   { key: "s2evidence", from: 4700, dur: 340, receipt: true, node: receipt(340, "effort", "ainews-opus5-effort.png", "anthropic.com/news/claude-opus-5", "THE EVIDENCE THAT COUNTS", "SCORED ON WHOLE TASKS", OPUS) },
-  { key: "s2live", from: 5040, dur: 300, receipt: true, node: receipt(300, "halfprice", "ainews-opus5-halfprice.png", "x.com/claudeai", "CLAUDE · ON X", "LIVE TODAY", GREEN) },
-  { key: "s2honest", from: 5290, dur: 250, fullscreen: true, node: (
-    <SceneShell durationInFrames={250} particleSeed={0x14} tint={AMBER}>
-      <KineticText text="MOSTLY ANTHROPIC'S OWN DATA" durationInFrames={250} highlight="OWN" y={520} size={72} />
+  { key: "s2live", from: 5040, dur: 250, receipt: true, node: receipt(250, "halfprice", "ainews-opus5-halfprice.png", "x.com/claudeai", "CLAUDE · LAUNCH", "NEAR-FABLE, HALF THE COST", GREEN) },
+  { key: "s2honest", from: 5290, dur: 300, fullscreen: true, node: (
+    <SceneShell durationInFrames={300} particleSeed={0x14} tint={AMBER}>
+      <KineticText text="MOSTLY ANTHROPIC'S OWN DATA" durationInFrames={300} highlight="OWN" y={520} size={72} />
     </SceneShell>
   ) },
-  { key: "s2aa", from: 5566, dur: 300, receipt: true, node: receipt(300, "aa", "ainews-aa-opus5.png", "artificialanalysis.ai/models/claude-opus-5", "INDEPENDENT · ARTIFICIAL ANALYSIS", "AN OUTSIDE CHECK", SONNET) },
-  { key: "s2trails", from: 5880, dur: 240, fullscreen: true, node: (
-    <SceneShell durationInFrames={240} particleSeed={0x15} tint={RED}>
-      <KineticText text="STILL TRAILS ON CYBER" durationInFrames={240} highlight="TRAILS" y={520} size={82} />
-    </SceneShell>
-  ) },
+  { key: "s2trails", from: 5663, dur: 320, receipt: true, node: receipt(320, "cyber", "ainews-opus5-cyber.png", "x.com/claudeai", "THE HONEST CAVEAT · ON X", "STILL TRAILS ON CYBER", RED) },
   { key: "s2tworuns", from: 6146, dur: 420, fullscreen: true, node: <TwoRuns durationInFrames={420} tint={AMBER} /> },
   { key: "s2verdict", from: 6600, dur: 320, fullscreen: true, node: (
     <SceneShell durationInFrames={320} particleSeed={0x16} tint={GREEN}>
