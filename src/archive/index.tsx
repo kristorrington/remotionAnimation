@@ -50,6 +50,8 @@ import { RogueAgentVideo, ROGUE_DUR } from "../RogueAgentVideo";
 import { RogueAgentFinal } from "../RogueAgentFinal";
 import { Opus5Video, OPUS5_DUR } from "../Opus5Video";
 import { Opus5Final } from "../Opus5Final";
+import { HabitsVideo, HABITS_DUR } from "../HabitsVideo";
+import { HabitsFinal } from "../HabitsFinal";
 
 // ============================================================================
 // THE ARCHIVE — compositions from PREVIOUS videos. When a new video starts,
@@ -73,6 +75,10 @@ const transparentDefaults: CalculateMetadataFunction<
 export const ArchivedVideoCompositions: React.FC = () => {
   return (
     <>
+      {/* ── The 5 habits of managing AI agents well (July 2026) ── */}
+      <Composition id="HabitsVideo" component={HabitsVideo} durationInFrames={HABITS_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="HabitsFinal" component={HabitsFinal} durationInFrames={HABITS_DUR} fps={30} width={1920} height={1080} />
+
       {/* ── Qwen 3.8 Max — "second only to Fable 5" (July 2026) ── */}
       <Composition id="QwenMaxVideo" component={QwenMaxVideo} durationInFrames={QWEN_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
       <Composition id="QwenMaxFinal" component={QwenMaxFinal} durationInFrames={QWEN_DUR} fps={30} width={1920} height={1080} />

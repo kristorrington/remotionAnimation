@@ -139,6 +139,14 @@ const main = async () => {
     [["cloud", "md"], "CLAUDE.md"],
     [["plan", "mode"], "Plan Mode"],
     [["auto", "mode"], "Auto Mode"],
+    // AI-news-this-week video (07/2026)
+    [["jensen", "huang"], "Jensen Huang"],
+    [["jensen", "wang"], "Jensen Huang"],
+    [["g", "l", "m"], "GLM"],
+    [["gemini", "3.5", "pro"], "Gemini 3.5 Pro"],
+    [["kimi", "k2.5"], "Kimi K2.5"],
+    [["open", "weight"], "open-weight"],
+    [["open", "weights"], "open weights"],
   ];
   const norm = (s) => s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
   for (const [parts, joined] of JOINS) {
@@ -180,6 +188,9 @@ const main = async () => {
     // GitHub-repos video (07/2026)
     milvus: "Milvus", melvis: "Milvus", milbus: "Milvus",
     claudemd: "CLAUDE.md", cloudmd: "CLAUDE.md", skillmd: "SKILL.md", organized: "organised",
+    // AI-news-this-week video (07/2026)
+    huang: "Huang", jensen: "Jensen", sovereignty: "sovereignty", behavior: "behaviour",
+    glm: "GLM", gemini: "Gemini", moonshotai: "MoonshotAI",
   };
   for (const w of words) {
     const base = norm(w.text);

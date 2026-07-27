@@ -2627,6 +2627,192 @@
       ],
       "attributionRequired": false,
       "concerns": null
+    },
+    {
+      "filename": "ainews-hf-blog.png",
+      "localPath": "public/assets/external/screenshots/ainews-hf-blog.png",
+      "type": "screenshot",
+      "sourceUrl": "https://huggingface.co/blog/security-incident-july-2026",
+      "sourceName": "Hugging Face blog",
+      "dateAccessed": "2026-07-27",
+      "usageNote": "Security-incident disclosure page (title + What happened) — story-1 hero receipt.",
+      "usedIn": [
+        "AiWeeklyFinal HF breach",
+        "Short"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "ainews-openai-eval.png",
+      "localPath": "public/assets/external/screenshots/ainews-openai-eval.png",
+      "type": "screenshot",
+      "sourceUrl": "https://openai.com/index/hugging-face-model-evaluation-security-incident/",
+      "sourceName": "OpenAI",
+      "dateAccessed": "2026-07-27",
+      "usageNote": "Eval gave models internet access without production classifiers — story-1 setup receipt.",
+      "usedIn": [
+        "AiWeeklyFinal HF breach"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "ainews-delangue-hf.png",
+      "localPath": "public/assets/external/screenshots/ainews-delangue-hf.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/ClementDelangue/status/2079913058554585089",
+      "sourceName": "Clement Delangue (X)",
+      "dateAccessed": "2026-07-27",
+      "usageNote": "HF CEO: caught/contained an attack at record speed; credits GLM 5.2 open weights — story-1 + open-weights receipt.",
+      "usedIn": [
+        "AiWeeklyFinal HF breach",
+        "AiWeeklyFinal open weights"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "ainews-opus5-hero.png",
+      "localPath": "public/assets/external/screenshots/ainews-opus5-hero.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.anthropic.com/news/claude-opus-5",
+      "sourceName": "Anthropic",
+      "dateAccessed": "2026-07-27",
+      "usageNote": "Introducing Claude Opus 5 — story-2 hero receipt.",
+      "usedIn": [
+        "AiWeeklyFinal Opus 5"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "ainews-opus5-effort.png",
+      "localPath": "public/assets/external/screenshots/ainews-opus5-effort.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.anthropic.com/news/claude-opus-5",
+      "sourceName": "Anthropic",
+      "dateAccessed": "2026-07-27",
+      "usageNote": "Agentic coding by effort level (Frontier-Bench) chart — Opus 5 completion-cost evidence.",
+      "usedIn": [
+        "AiWeeklyFinal Opus 5"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "ainews-opus5-halfprice.png",
+      "localPath": "public/assets/external/screenshots/ainews-opus5-halfprice.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/claudeai/status/2080699495453528290",
+      "sourceName": "Claude (X)",
+      "dateAccessed": "2026-07-27",
+      "usageNote": "Opus 5 launch: near-Fable-5 intelligence, price unchanged from Opus 4.8 — Opus 5 pricing receipt.",
+      "usedIn": [
+        "AiWeeklyFinal Opus 5",
+        "Short"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "ainews-aa-opus5.png",
+      "localPath": "public/assets/external/screenshots/ainews-aa-opus5.png",
+      "type": "screenshot",
+      "sourceUrl": "https://artificialanalysis.ai/models/claude-opus-5",
+      "sourceName": "Artificial Analysis",
+      "dateAccessed": "2026-07-27",
+      "usageNote": "Independent Opus 5 intelligence/price analysis header — Opus 5 independent-eval receipt.",
+      "usedIn": [
+        "AiWeeklyFinal Opus 5"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "ainews-jensen.png",
+      "localPath": "public/assets/external/screenshots/ainews-jensen.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/JensenHuang/status/2080643682408321103",
+      "sourceName": "Jensen Huang (X)",
+      "dateAccessed": "2026-07-27",
+      "usageNote": "Open models strengthen safety, accelerate innovation, enable sovereignty — open-weights receipt.",
+      "usedIn": [
+        "AiWeeklyFinal open weights",
+        "Short"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "ainews-kimi.png",
+      "localPath": "public/assets/external/screenshots/ainews-kimi.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/MoonshotAI/Kimi-K2.5",
+      "sourceName": "MoonshotAI (GitHub)",
+      "dateAccessed": "2026-07-27",
+      "usageNote": "Kimi K2.5 open-weight model README banner + summary — open-weights receipt.",
+      "usedIn": [
+        "AiWeeklyFinal open weights"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "ainews-gemini-api.png",
+      "localPath": "public/assets/external/screenshots/ainews-gemini-api.png",
+      "type": "screenshot",
+      "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+      "sourceName": "Google AI for Developers",
+      "dateAccessed": "2026-07-27",
+      "usageNote": "Current Gemini lineup (no 3.5 Pro row yet) — watchlist Gemini receipt.",
+      "usedIn": [
+        "AiWeeklyFinal watchlist Gemini"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "ainews-presence-vb.png",
+      "localPath": "public/assets/external/screenshots/ainews-presence-vb.png",
+      "type": "screenshot",
+      "sourceUrl": "https://venturebeat.com/orchestration/openai-unveils-presence-a-new-platform-that-lets-enterprises-launch-and-manage-realtime-voice-agents-and-chatbots",
+      "sourceName": "VentureBeat",
+      "dateAccessed": "2026-07-27",
+      "usageNote": "OpenAI unveils Presence — watchlist Presence receipt.",
+      "usedIn": [
+        "AiWeeklyFinal watchlist Presence"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "ainews-openai-presence.png",
+      "localPath": "public/assets/external/screenshots/ainews-openai-presence.png",
+      "type": "screenshot",
+      "sourceUrl": "https://openai.com/index/introducing-openai-presence/",
+      "sourceName": "OpenAI",
+      "dateAccessed": "2026-07-27",
+      "usageNote": "Official OpenAI Presence announcement hero — watchlist Presence support.",
+      "usedIn": [
+        "AiWeeklyFinal watchlist Presence"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "ainews-nvidia-openweights.mp4",
+      "localPath": "public/assets/external/clips/ainews-nvidia-openweights.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=11Y3B33oCLE",
+      "sourceName": "NVIDIA GTC Taipei 2026 Keynote (Jensen Huang)",
+      "dateAccessed": "2026-07-27",
+      "usageNote": "Muted 3-scene montage from the official NVIDIA keynote — open-weights beat b-roll (Jensen Huang backing open models).",
+      "usedIn": [
+        "AiWeeklyFinal open weights"
+      ],
+      "attributionRequired": false,
+      "concerns": null
     }
   ]
 }
