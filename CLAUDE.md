@@ -214,6 +214,31 @@ every frame has at least two fixable weaknesses — if a scene genuinely can't
 be improved, say why. Record the per-scene critique (QC notes or the commit
 message) so the trail survives. Re-run the pass after any later scene change.
 
+**The every-5-seconds sweep (Kris, July 2026 — MANDATORY before shipping any
+Final).** The settled-state audit above is not enough on its own: also render a
+STILL every **~150 frames (5s)** across the WHOLE Final (`npx remotion still
+<Comp> f.png --frame=N` in a loop), then LOOK at every image in order and check
+each for the recurring failure classes that keep slipping through:
+1. **Blank / failed b-roll** — a receipt showing an empty page, a loading
+   spinner, "media could not be played", or any capture that never rendered its
+   content. EVERY receipt must show real, readable page content; if a capture
+   came back blank (JS SPA / bot wall), replace it with a different real source
+   or an animated scene — NEVER ship the empty page.
+2. **Misplaced annotation** — a note box / underline / highlight that does not
+   TIGHTLY frame its claim (framing empty margin, slicing a headline, sitting on
+   the wrong line). Reposition off a settled still, or remove it (the title
+   sticker usually already carries the point).
+3. **Clipped / overlapping text** — anything sliced at a card edge, overlapping a
+   neighbour, or clipped by the top progress bar.
+4. **Dead face** — a face stretch > ~8s with no cutaway.
+5. **Repeated layout / sound** — two receipts or scenes with the same layout
+   back-to-back; AND a section-transition or per-beat SFX that fires on EVERY
+   story (Kris: "that noise effect for each story is distracting") — reserve SFX
+   for meaning, not for marking that time passed; the music beds carry the
+   section feel.
+Fix every hit and re-render that exact frame to confirm. Name what you checked —
+"looks fine" is not a sweep result. Run this sweep again after any scene change.
+
 ---
 
 ## 7. Visual component library (reuse/extend before writing one-offs)

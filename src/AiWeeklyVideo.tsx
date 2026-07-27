@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, Sequence, OffthreadVideo, staticFile, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { Fable5Outro } from "./components/Fable5Outro";
-import { SFX, SfxCue, SFX_POOLS, pick, vary } from "./components/Sfx";
+import { SFX, SfxCue, vary } from "./components/Sfx";
 import { FinalTakeawayScene } from "./scenes/FinalTakeawayScene";
 import { ScreenshotReceiptScene } from "./scenes/SourceCardScene";
 import { SceneShell, SceneHeadline } from "./scenes/SceneShell";
@@ -144,6 +144,35 @@ const TwoRuns: React.FC<{ durationInFrames: number; tint: string }> = ({ duratio
   );
 };
 
+// ── SetupToggles — the eval set-up as two switches: internet ON, guards OFF ──
+const SetupToggles: React.FC<{ durationInFrames: number; tint: string }> = ({ durationInFrames, tint }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const Toggle: React.FC<{ at: number; label: string; on: boolean }> = ({ at, label, on }) => {
+    const e = spring({ frame: frame - at, fps, config: { stiffness: 120, damping: 18 }, durationInFrames: 24 });
+    const flip = spring({ frame: frame - at - 10, fps, config: { stiffness: 150, damping: 15 }, durationInFrames: 22 });
+    const col = on ? GREEN : RED;
+    return (
+      <div style={{ display: "flex", alignItems: "center", gap: 28, width: 860, padding: "24px 34px", borderRadius: 16, ...glassCard(col + "cc", 2.5), transform: `translateY(${interpolate(e, [0, 1], [40, 0])}px)`, opacity: interpolate(frame, [at, at + 8], [0, 1], CLAMP) }}>
+        <span style={{ flex: 1, fontFamily: FONT, fontWeight: 800, fontSize: 38, color: "#fff", transform: "translateZ(0)" }}>{label}</span>
+        <span style={{ fontFamily: FONT, fontWeight: 900, fontSize: 30, letterSpacing: 2, color: col, width: 78, textAlign: "right", transform: "translateZ(0)" }}>{on ? "ON" : "OFF"}</span>
+        <div style={{ position: "relative", width: 108, height: 52, borderRadius: 26, background: `${col}33`, border: `2px solid ${col}` }}>
+          <div style={{ position: "absolute", top: 5, left: 5, width: 42, height: 42, borderRadius: "50%", background: col, boxShadow: `0 0 16px ${col}`, transform: `translateX(${interpolate(on ? flip : 1 - flip, [0, 1], [0, 54])}px)` }} />
+        </div>
+      </div>
+    );
+  };
+  return (
+    <SceneShell durationInFrames={durationInFrames} particleSeed={0x7a} tint={tint} mood="danger">
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 22 }}>
+        <Toggle at={12} label="INTERNET ACCESS" on />
+        <Toggle at={70} label="SAFETY CLASSIFIERS" on={false} />
+        <SceneHeadline kicker="OPENAI'S EVAL SET-UP" title="INTERNET ON, GUARDS OFF" titleSize={56} accent={tint} />
+      </div>
+    </SceneShell>
+  );
+};
+
 // ── BEATS — from ≈ spokenFrame − 6 (SRT-pinned). node carries the scene so the
 //    windows / fullscreen spans / cut list can never drift from the visuals. ──
 type Beat = { key: string; from: number; dur: number; fullscreen?: boolean; receipt?: boolean; node: React.ReactNode };
@@ -155,9 +184,9 @@ const BEATS: Beat[] = [
   { key: "hookWatch", from: 462, dur: 150, fullscreen: true, node: (<SceneShell durationInFrames={150} particleSeed={0x11} tint={AMBER}><KineticText text="2 ON THE WATCHLIST" durationInFrames={150} highlight="WATCHLIST" y={520} size={92} /></SceneShell>) },
 
   // ── STORY 1 · HUGGING FACE (a benchmark that breached a real company) ──
-  { key: "s1hero", from: 744, dur: 320, receipt: true, node: receipt(320, "hf", "ainews-hf-blog.png", "huggingface.co/blog/security-incident-july-2026", "HUGGING FACE · DISCLOSURE", "17,000 EVENTS REBUILT", RED, { notes: [{ at: 60, rect: { x: 300, y: 250, w: 2900, h: 150 }, kind: "box" }] }) },
+  { key: "s1hero", from: 744, dur: 320, receipt: true, node: receipt(320, "hf", "ainews-hf-blog.png", "huggingface.co/blog/security-incident-july-2026", "HUGGING FACE · DISCLOSURE", "17,000 EVENTS REBUILT", RED) },
   { key: "s1trail", from: 1048, dur: 300, receipt: true, node: receipt(300, "delangue", "ainews-delangue-hf.png", "x.com/ClementDelangue", "HF CEO · ON X", "CAUGHT AT RECORD SPEED", SONNET) },
-  { key: "s1eval", from: 1445, dur: 300, receipt: true, node: receipt(300, "eval", "ainews-openai-eval.png", "openai.com/index/hugging-face-model-evaluation-security-incident", "THE SET-UP · OPENAI", "INTERNET ON, GUARDS OFF", AMBER) },
+  { key: "s1eval", from: 1445, dur: 340, fullscreen: true, node: <SetupToggles durationInFrames={340} tint={AMBER} /> },
   { key: "s1chain", from: 1824, dur: 470, fullscreen: true, node: (
     <SystemBreakScene durationInFrames={470} kicker="HOW A TEST BECAME A BREACH" title="WEAKNESSES, CHAINED" tint={RED}
       badges={[{ label: "TARGET REACHABLE", at: 30 }, { label: "LOOKED USEFUL", at: 120 }, { label: "CHAINED EXPLOITS", at: 210 }, { label: "→ HUGGING FACE", at: 320 }]} errorAt={360} />
@@ -312,21 +341,14 @@ export const AiWeeklyVideo: React.FC = () => {
       <MusicController state="caveat" from={10047} durationInFrames={2830} volume={0.06} duck={[{ from: 10269, to: 10629 }, { from: 10932, to: 11292 }]} />
       <MusicController state="main" from={12921} durationInFrames={AI_WEEKLY_DUR - 12921} volume={0.065} />
 
-      {/* ===== SFX — restrained: entrance per beat, accents on key beats ===== */}
-      {BEATS.map((b, i) => (
-        <SfxCue key={`w-${b.from}`} from={b.from} src={b.fullscreen ? SFX.softWhoosh : pick(SFX_POOLS.entry, i)} volume={0.4} rate={vary(i)} />
+      {/* ===== SFX — RESTRAINED (Kris, 07/2026: the per-story hit was distracting).
+          NO section booms, NO receipt pings, NO entry whoosh on cards. A single
+          soft whoosh only on the big FULLSCREEN animated reveals, and ONE
+          warning accent on the breach. The music beds carry the section feel. */}
+      {BEATS.filter((b) => b.fullscreen).map((b, i) => (
+        <SfxCue key={`w-${b.from}`} from={b.from} src={SFX.softWhoosh} volume={0.22} rate={vary(i)} />
       ))}
-      {/* receipts settle — a soft camera shutter */}
-      {BEATS.filter((b) => b.receipt).map((b, i) => (
-        <SfxCue key={`r-${b.from}`} from={b.from + 22} src={SFX.confirmation} volume={0.34} rate={vary(i)} />
-      ))}
-      {/* section starts — one low impact */}
-      {[744, 3986, 7037, 10047, 12921].map((f) => (
-        <SfxCue key={`sec-${f}`} from={f} src={SFX.lowImpact} volume={0.4} />
-      ))}
-      {/* the breach + the balance tip — a warning pulse */}
-      <SfxCue from={1824 + 360} src={SFX.warningPulse} volume={0.4} />
-      <SfxCue from={3450 + 150} src={SFX.warningPulse} volume={0.36} />
+      <SfxCue from={1824 + 360} src={SFX.warningPulse} volume={0.28} />
     </AbsoluteFill>
   );
 };

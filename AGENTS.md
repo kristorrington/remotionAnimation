@@ -718,6 +718,10 @@ Everything lives in [src/shorts/](src/shorts/) and is data-driven — you write
       overwriting a previous cut.
 - [ ] Long-form Final has a matching `out/<Slug>-final.srt` (Phase 2.9) — first
       and last cue spot-checked for word order + timing, clamped to the video end.
+- [ ] **Every-5s still sweep of the Final passed** (CLAUDE.md §6.1): a still every
+      ~150f, reviewed in order — NO blank/failed b-roll receipts (empty pages,
+      spinners, broken embeds), NO misplaced annotations, NO clipped/overlapping
+      text, NO face stretch >8s, NO repeated layout or per-story SFX.
 
 ---
 
