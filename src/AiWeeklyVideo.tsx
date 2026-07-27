@@ -45,7 +45,7 @@ const IMG: Record<string, Shot> = {
   jensen: { w: 1100, h: 1300 },
   kimi: { w: 3840, h: 1450 },
   gemini: { w: 3840, h: 900 },
-  presence: { w: 3840, h: 1000 },
+  presence: { w: 3840, h: 1400 },
 };
 const receipt = (
   dur: number, key: keyof typeof IMG, file: string, url: string,
@@ -278,6 +278,11 @@ const BEATS: Beat[] = [
       <FinalTakeawayScene durationInFrames={380} kicker="ITS STRONGEST REPORTED NUMBER" title="75% RESOLVED, NO HUMAN" stamp="…IN OPENAI'S OWN DEPLOYMENT" stampAt={230} accent={GREEN} />
     </SceneShell>
   ) },
+  { key: "wPresenceCaveat", from: 11962, dur: 300, fullscreen: true, node: (
+    <SceneShell durationInFrames={300} particleSeed={0x2b} tint={AMBER}>
+      <FinalTakeawayScene durationInFrames={300} kicker="BUT — READ THE FINE PRINT" title="OPENAI'S OWN DEPLOYMENT" stamp="ACCESS STILL LIMITED" stampAt={180} accent={AMBER} />
+    </SceneShell>
+  ) },
   { key: "wStandard", from: 12262, dur: 380, fullscreen: true, node: (
     <SceneShell durationInFrames={380} particleSeed={0x1d} tint={AMBER}>
       <FinalTakeawayScene durationInFrames={380} kicker="A PRESS-RELEASE NUMBER ISN'T EVIDENCE" title="OUTSIDE PROOF BEATS PR" stamp="SAME STANDARD, BOTH TIMES" stampAt={230} accent={AMBER} />
@@ -285,18 +290,18 @@ const BEATS: Beat[] = [
   ) },
 
   // ── THE FILTER (the rule + the close) ──
-  { key: "fRule", from: 12921, dur: 560, fullscreen: true, node: (
-    <SceneShell durationInFrames={560} particleSeed={0x1e} tint={OPUS}>
-      <DecisionFramework title="JUDGE EVERY ANNOUNCEMENT" revealAts={[30, 170, 320]} columns={[
+  { key: "fRule", from: 12921, dur: 199, fullscreen: true, node: (
+    <SceneShell durationInFrames={199} particleSeed={0x1e} tint={OPUS}>
+      <DecisionFramework title="JUDGE EVERY ANNOUNCEMENT" revealAts={[20, 70, 120]} columns={[
         { name: "CAPABILITY", use: "Can it do more — today?", accent: OPUS, highlight: true },
         { name: "RISK", use: "What can it now break?", accent: RED },
         { name: "COST & ACCESS", use: "Cheaper? In your hands?", accent: GREEN },
       ]} />
     </SceneShell>
   ) },
-  { key: "fToday", from: 13120, dur: 260, node: (
-    <SceneShell durationInFrames={260} particleSeed={0x1f} tint={OPUS}>
-      <KineticText text="TODAY — NOT EVENTUALLY" durationInFrames={260} highlight="TODAY" y={520} size={92} />
+  { key: "fToday", from: 13120, dur: 300, fullscreen: true, node: (
+    <SceneShell durationInFrames={300} particleSeed={0x1f} tint={OPUS}>
+      <KineticText text="TODAY — NOT EVENTUALLY" durationInFrames={300} highlight="TODAY" y={520} size={92} />
     </SceneShell>
   ) },
   { key: "fRecap", from: 13483, dur: 460, fullscreen: true, node: (

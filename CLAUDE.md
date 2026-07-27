@@ -215,10 +215,27 @@ be improved, say why. Record the per-scene critique (QC notes or the commit
 message) so the trail survives. Re-run the pass after any later scene change.
 
 **The every-5-seconds sweep (Kris, July 2026 — MANDATORY before shipping any
-Final).** The settled-state audit above is not enough on its own: also render a
-STILL every **~150 frames (5s)** across the WHOLE Final (`npx remotion still
-<Comp> f.png --frame=N` in a loop), then LOOK at every image in order and check
-each for the recurring failure classes that keep slipping through:
+Final).** The settled-state audit above is not enough on its own: also sweep a
+STILL every **~150 frames (5s)** across the WHOLE Final, then LOOK at every image
+in order and check each for the recurring failure classes that keep slipping
+through:
+
+**Do it in BULK — never one still at a time** (Kris, July 2026: "is there a way
+to bulk review multiple scenes?"). One `npx remotion still` per frame re-bundles
+every call (~97 bundles for an 8-min cut = far too slow). Instead: (1) render the
+Final MUTED + low-res in CHUNKS — `npx remotion render <Final> out/_sweep/c-$from.mp4
+--frames=$from-$to --muted --scale=0.5 --concurrency=8` in a loop (diagnostic
+chunk renders are allowed even though full renders are user-gated; a failed chunk
+re-runs alone); (2) concat the chunks (`ffmpeg -f concat -c copy`); (3) extract a
+frame every 5s (`ffmpeg -i sweep.mp4 -vf "fps=1/5,scale=480:-1" f_%03d.png`); (4)
+TILE them into CONTACT SHEETS (`ffmpeg -pattern_type sequence -i f_%03d.png -vf
+"tile=6x4:padding=6" sheet_%02d.png`) — 24 scenes per image. Review the SHEETS
+(the whole cut in ~4–5 looks), and when a thumbnail looks wrong DRILL IN with a
+full-res `remotion still` at that exact frame — tile several drill-downs into ONE
+sheet too. Thumbnails read light: a "blank" tile is often just faint content, so
+confirm at full res before "fixing" it. This whole method IS the sweep — use it.
+
+The failure classes to catch on every sheet:
 1. **Blank / failed b-roll** — a receipt showing an empty page, a loading
    spinner, "media could not be played", or any capture that never rendered its
    content. EVERY receipt must show real, readable page content; if a capture
