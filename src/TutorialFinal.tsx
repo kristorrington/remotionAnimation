@@ -1,7 +1,11 @@
 import React from "react";
 import { AbsoluteFill, Sequence, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { TutorialReframe, Shot, R } from "./motion/ReframeDirector";
-import { FONT } from "./components/overlayUI";
+import { FONT, SERIF } from "./components/overlayUI";
+import { SfxCue, SFX } from "./components/Sfx";
+import { TopProgressBar, Chapter } from "./components/TopProgressBar";
+import { CutFlash } from "./components/CutFlash";
+import { TUTORIAL_CAPTIONS } from "./tutorialCaptionPhrases";
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
@@ -57,11 +61,10 @@ const SRC = "claude-code-tutorial-final.mp4";
 const SHOTS: Shot[] = [
   // ── INTRO (face hook → teaser of the finished app → into it) ──
   { from: 0, to: 290, layout: "face", label: "HOW TO USE CLAUDE CODE" }, // "build a working password generator / for beginners"
-  { from: 290, to: 410, layout: "screen", showFrame: 5100, label: "THE FINISHED APP" }, // teaser: the settled app (right side of the demo)
-  { from: 410, to: 454, layout: "face" }, // "so let's get into it"
+  { from: 290, to: 454, layout: "appteaser", label: "THE FINISHED APP" }, // teaser: face live + app card zooms in on the right (+ whoosh); holds through "so let's get into it" (no double-cut)
 
   // ── STARTING POINT (presenter PIP while he introduces the empty project) ──
-  { from: 454, to: 749, layout: "pip", pipCorner: "bl", label: "STARTING FROM AN EMPTY FOLDER" }, // "Claude Code open + empty folder"
+  { from: 454, to: 749, layout: "pip", pipCorner: "bl", screenFrozenImg: "assets/external/screenshots/tutorial-empty.png", label: "STARTING FROM AN EMPTY FOLDER" }, // frozen (source has a torn segment ~f470); screen is idle here
 
   // ── THE PROMPT (establish, then ZOOM in and highlight each line as read) ──
   { from: 749, to: 850, layout: "screen", label: "THE PROMPT" }, // typing begins (full window)
@@ -106,19 +109,106 @@ const SHOTS: Shot[] = [
     { rect: { x: 1600, y: 428, w: 120, h: 52 }, at: 750, dur: 80 }, // "copy it" — Copy button (5426)
   ] },
 
-  // ── PAYOFF + OUTRO (face) ──
-  { from: 5495, to: 5819, layout: "face", label: "KEY TAKEAWAY" }, // "that's how easy it is / just prompt Claude"
+  // ── PAYOFF + OUTRO (face + the finished app recap) ──
+  { from: 5495, to: 5819, layout: "appteaser", label: "YOU BUILT THIS" }, // "that's how easy it is / just prompt Claude" — recap the app
+
   { from: 5819, to: TUTORIAL_DUR, layout: "face", label: "SUBSCRIBE" }, // "subscribe / full Claude guide coming"
 ];
+
+// Top progress bar chapters (viewer-facing steps).
+const CHAPTERS: Chapter[] = [
+  { label: "Intro", from: 0 },
+  { label: "The Prompt", from: 749 },
+  { label: "Pick Model", from: 2168 },
+  { label: "Claude Builds", from: 2681 },
+  { label: "Run", from: 4187 },
+  { label: "Test", from: 4676 },
+  { label: "Done", from: 5495 },
+];
+
+// Opening title over the hook.
+const IntroTitle: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const e = spring({ frame, fps, config: { stiffness: 120, damping: 18 }, durationInFrames: 24 });
+  const op = Math.min(interpolate(frame, [6, 20], [0, 1], CLAMP), interpolate(frame, [120, 138], [1, 0], CLAMP));
+  return (
+    <AbsoluteFill style={{ justifyContent: "flex-end", alignItems: "center", paddingBottom: 150, opacity: op, pointerEvents: "none" }}>
+      <div style={{ transform: `translateY(${interpolate(e, [0, 1], [26, 0])}px)`, textAlign: "center" }}>
+        <div style={{ fontFamily: SERIF, fontWeight: 800, fontSize: 76, color: "#fff", textShadow: "0 4px 24px rgba(0,0,0,0.8)", letterSpacing: 0.5 }}>Build a Password Generator</div>
+        <div style={{ marginTop: 14, display: "inline-flex", alignItems: "center", gap: 12, padding: "8px 20px", borderRadius: 10, background: "rgba(217,119,87,0.92)", boxShadow: "0 8px 30px rgba(0,0,0,0.5)" }}>
+          <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 26, letterSpacing: 2, color: "#fff", textTransform: "uppercase" }}>with Claude Code · no coding</span>
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// Burned-in captions — the current phrase, docked low (muted-viewing / retention).
+const TutorialCaptions: React.FC = () => {
+  const frame = useCurrentFrame();
+  const cap = TUTORIAL_CAPTIONS.find((c) => frame >= c.from - 4 && frame <= c.to + 8);
+  if (!cap) return null;
+  const op = Math.min(interpolate(frame, [cap.from - 4, cap.from + 3], [0, 1], CLAMP), interpolate(frame, [cap.to, cap.to + 8], [1, 0], CLAMP));
+  return (
+    <AbsoluteFill style={{ justifyContent: "flex-end", alignItems: "center", paddingBottom: 44, pointerEvents: "none" }}>
+      <div style={{ maxWidth: 1180, opacity: op, padding: "12px 30px", borderRadius: 12, background: "rgba(12,11,10,0.82)", border: "1px solid rgba(255,255,255,0.1)" }}>
+        <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: 34, lineHeight: 1.15, color: "#fff", textAlign: "center", display: "block" }}>{cap.text}</span>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// A click ripple at a screen point (output px) at a frame.
+const ClickRipple: React.FC<{ x: number; y: number }> = ({ x, y }) => {
+  const frame = useCurrentFrame();
+  const t = interpolate(frame, [0, 24], [0, 1], CLAMP);
+  const op = interpolate(frame, [0, 4, 24], [0, 0.7, 0], CLAMP);
+  if (frame > 26) return null;
+  return (
+    <div style={{ position: "absolute", left: x, top: y, width: 120, height: 120, marginLeft: -60, marginTop: -60, borderRadius: "50%", border: "5px solid #fff", transform: `scale(${interpolate(t, [0, 1], [0.2, 1.6])})`, opacity: op, pointerEvents: "none", boxShadow: "0 0 20px rgba(255,255,255,0.6)" }} />
+  );
+};
 
 export const TutorialFinal: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: "#000" }}>
       <TutorialReframe src={SRC} shots={SHOTS} volume={1.0} />
-      {/* SUBSCRIBE — springs in over the outro on "make sure to subscribe" (~5850) */}
-      <Sequence from={5880} durationInFrames={TUTORIAL_DUR - 5880}>
-        <SubscribeCTA />
-      </Sequence>
+
+      {/* burned-in captions (hidden under the subscribe CTA) */}
+      <Sequence from={0} durationInFrames={5840}><TutorialCaptions /></Sequence>
+
+      {/* click ripples on the key actions */}
+      <Sequence from={5320} durationInFrames={28}><ClickRipple x={1545} y={748} /></Sequence>{/* Generate */}
+      <Sequence from={5426} durationInFrames={28}><ClickRipple x={1700} y={452} /></Sequence>{/* Copy */}
+
+      {/* opening title over the hook */}
+      <Sequence from={30} durationInFrames={140}><IntroTitle /></Sequence>
+
+      {/* SUBSCRIBE — springs in over the outro */}
+      <Sequence from={5880} durationInFrames={TUTORIAL_DUR - 5880}><SubscribeCTA /></Sequence>
+
+      {/* ── SOUND DESIGN ── */}
+      <SfxCue from={293} src={SFX.whoosh} volume={0.5} />{/* app teaser zoom-in */}
+      {/* subtle whoosh on each section change */}
+      {[454, 749, 2168, 2681, 4187, 4676, 5495].map((f) => (
+        <SfxCue key={`w-${f}`} from={f} src={SFX.softWhoosh} volume={0.3} />
+      ))}
+      <SfxCue from={2549} src={SFX.switch} volume={0.4} />{/* model select */}
+      <SfxCue from={2686} src={SFX.click} volume={0.45} />{/* click go */}
+      <SfxCue from={5320} src={SFX.click} volume={0.5} />{/* generate click */}
+      <SfxCue from={5372} src={SFX.ding} volume={0.5} />{/* password appears — success chime */}
+      <SfxCue from={5426} src={SFX.click} volume={0.5} />{/* copy click */}
+      <SfxCue from={5440} src={SFX.pluck} volume={0.4} />{/* copied confirm */}
+      <SfxCue from={5880} src={SFX.pop} volume={0.45} />{/* subscribe pops */}
+
+      {/* subtle flashes at the chapter turns for snap */}
+      {[454, 749, 2168, 2681, 4187, 5495].map((f) => (
+        <CutFlash key={`f-${f}`} at={f} peak={0.22} />
+      ))}
+
+      {/* persistent top progress + step chapters */}
+      <TopProgressBar sections={CHAPTERS} accent="#D97757" />
     </AbsoluteFill>
   );
 };
