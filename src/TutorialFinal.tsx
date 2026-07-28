@@ -33,11 +33,11 @@ const SHOTS: Shot[] = [
   { from: 2168, to: 2468, layout: "screen", label: "PICK THE MODEL" }, // "/model → Fable/Opus/Sonnet/Haiku"
   { from: 2468, to: 2681, layout: "pip", pipCorner: "br" }, // "default recommendation, Opus 4.8"
 
-  // ── CLAUDE BUILDS IT ──
+  // ── CLAUDE BUILDS IT (presenter PIP while he narrates the build) ──
   { from: 2681, to: 2846, layout: "pip", pipCorner: "br", label: "CLAUDE BUILDS IT" }, // "click go and watch"
-  { from: 2846, to: 3431, layout: "screen" }, // thinking / creating index.html, style.css, script.js
+  { from: 2846, to: 3431, layout: "pip", pipCorner: "br" }, // "thinking / creating index.html, style.css, script.js"
   { from: 3431, to: 3662, layout: "pip", pipCorner: "br" }, // "created the files in the project"
-  { from: 3662, to: 4187, layout: "screen" }, // reading what each file does
+  { from: 3662, to: 4187, layout: "screen" }, // reading what each file does (full read)
 
   // ── RUNNING THE APP ──
   { from: 4187, to: 4676, layout: "screen", label: "RUNNING THE APP" }, // "how to run it / open the file" → the app appears
