@@ -14,6 +14,10 @@ out
 /public/talking-head*.mp4
 /_footage-backup/
 
+# Tutorial / demo composite footage — large, keep local (see AGENTS.md §13)
+/claude-code-tutorial*.mp4
+/public/claude-code-tutorial*.mp4
+
 # Local whisper.cpp tool clone (large, machine-specific)
 /whisper.cpp/
 

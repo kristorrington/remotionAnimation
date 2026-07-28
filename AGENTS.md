@@ -778,3 +778,55 @@ the final recommendation, then LOOK for clipping / text overflow / weak hierarch
 · confirm SFX cues don't pile on one frame · confirm **no invented stat or claim**
 was introduced (every number traces to the transcript/a manifested source). Fix
 before stopping.
+
+---
+
+## 13. How-to / demo reframing — the build (ultra-wide composite → 16:9)
+
+The *design* rules (which layout when, zoom/pan discipline, structure) are
+**CLAUDE.md §16**. This is the technical HOW for the tutorial footage model, which
+is DIFFERENT from the talking-head model in §8/§11 — there is no PiP-over-paper,
+no shorts crop of a single centred face; instead ONE ultra-wide file is reframed
+into four 16:9 layouts.
+
+**Source shape.** `public/claude-code-tutorial-final.mp4` = **3840×1080, 32:9,
+60fps**, split exactly at x=1920. Two clean 16:9 regions: SCREEN `crop(1920,1080,
+0,0)`, FACE `crop(1920,1080,1920,0)`. Keep it in `public/` (gitignored like the
+other footage); back the master up per §8 rotation if it rotates.
+- **Frame rate:** the source is 60fps. Either author the comp at `fps=60` (match
+  the source — preferred; OffthreadVideo stays in sync) OR transcode a 30fps
+  proxy first (`-r 30`) and run the comp at 30. Do NOT mix 60fps source into a
+  30fps comp without deciding — set the Composition `fps` to whatever you commit
+  to. Dense-keyframe the proxy (§9) if you transcode.
+
+**A `ReframeDirector` (build it in `src/motion/`, reuse thereafter).** One
+component that owns the reframe, driven by a `reframeMap` (like `editMap`): a row
+per shot = `{ from, to, layout, zoom?, pan?, pipCorner?, label? }`. It renders the
+one source video through crop/scale transforms per layout — NEVER two decoded
+copies where one will do; use a single `<OffthreadVideo>` positioned/scaled inside
+an `overflow:hidden` 16:9 stage, and for PIP/split a second `<OffthreadVideo
+trimBefore=…>` cropped to the other region.
+- **Full-screen SCREEN / FACE:** scale the chosen 1920×1080 region to the canvas
+  (1:1 at 1080p, ×2 at 2160). Region crop = translate the 3840-wide video so the
+  wanted half fills the stage. FACE: additionally inset-crop to ~mid-chest and
+  re-centre on the face (region B sits presenter-right).
+- **Screen + PIP:** SCREEN fills; a second decode cropped to FACE, scaled to
+  15–25% width, rounded corners + soft shadow, docked to a corner clear of active
+  UI (drive the corner from `pipCorner` per shot).
+- **Split:** two crops side by side (50/50 or 60/40), each `object-fit`-filled to
+  its half — no leftover black, never the raw 32:9.
+- **Zoom/pan:** a nested transform on the SCREEN crop — `scale` 1.1–1.6 with
+  `translate` to the target panel, eased in/out (spring stiffness ~110 damping ~20
+  or `Easing.inOut(cubic)`), clamped; hold, then ease back. Pans = translate
+  between panel rects on a specific action; settle before the next.
+- **Transitions (0.2–0.5s):** hard cut (default), short crossfade, or a crop
+  animation (animate the crop rect between layouts). The `SlideLeftPush` kit is
+  available but keep it subtle; NEVER glitch/spin/wipe over the UI.
+- **Audio:** the presenter VO is the source audio — set the video `volume` from a
+  measured peak (§8.0 boost math) and master to −14 LUFS at the mux (§6). J/L
+  cuts: keep the audio running across a visual layout change (audio and video
+  Sequences need not share boundaries).
+
+**QC:** run the every-5s bulk sweep (CLAUDE.md §6.1) — for tutorials also confirm
+every full-screen SCREEN shot is READABLE at mobile size, no layout is held the
+whole video, PIP never covers active UI, and no shot preserves the raw ultra-wide.

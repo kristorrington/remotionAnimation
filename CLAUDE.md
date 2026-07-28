@@ -1317,3 +1317,84 @@ deterministic** (`useCurrentFrame`/`interpolate`/`spring`/`Sequence`, clamp
 interpolations, no `setTimeout`/CSS transitions/unseeded `Math.random()`). Build
 reusable components over one-off JSX. Full technical standards + the validation
 gate are in **AGENTS.md §12**.
+
+---
+
+## 16. How-to / demo reframing — ultra-wide composite → 16:9 (Kris, 2026)
+
+A SECOND footage model, distinct from the talking-head cuts above. The tutorial
+source (`claude-code-tutorial-final.mp4`) is **one ultra-wide 3840×1080 (32:9)
+composite**: the LEFT half is the software demo (VS Code · Claude Code · terminal
+· browser · the finished app), the RIGHT half is the presenter's talking-head
+camera. **This layout must NOT survive into the final cut.** The job is to
+reframe it into a deliberately produced **16:9** tutorial — never the raw
+ultra-wide dropped inside black bars, never both halves permanently visible at
+one size. The final must FILL the 16:9 frame, never stretch/distort, preserve the
+presenter's facial proportions, and keep screen text readable (mobile too). The
+build mechanics (a `ReframeDirector`, region crops, PIP, zoom/pan, J/L cuts) live
+in **AGENTS.md §13**; this is the WHAT and WHEN.
+
+### 16.1 The two source regions (one file, two clean crops)
+The split is exact, so both regions are already a clean **1920×1080 (16:9)** — no
+distortion when either fills the frame:
+- **REGION A — SCREEN** = `crop x0 y0 1920×1080` (left). VS Code, Claude Code,
+  terminal, prompts, files, browser previews, the password-generator result.
+- **REGION B — TALKING HEAD** = `crop x1920 y0 1920×1080` (right). Presenter, RODE
+  mic, studio background, reactions. Tighten to ~mid-chest-up (e.g. bias the crop
+  in ~`x2050 w1620`) and re-centre on the FACE — the raw half sits presenter-right
+  with studio on the left; never assume the region centre is the shot centre.
+
+### 16.2 The four layouts (switch by what's being said — never one all through)
+| Layout | Use for |
+|---|---|
+| **1 · Full-screen talking head** (Region B, enlarged) | opening hook · what the video achieves · the challenge · context before a step · a key lesson · the final verdict · outro/CTA. Eyes on the upper third; keep some studio; never crop through head/chin/mic; don't upscale so far quality drops. Bias the presenter to one side and put a short label/visual in the empty space when useful. |
+| **2 · Full-screen demonstration** (Region A, enlarged) | pasting prompts · reading Claude output · files created/opened · running commands · errors · testing · the final result — ANY moment viewers must read the UI. Prioritise readability; controlled digital zoom into the active panel; never leave the screen half-width during detailed steps. |
+| **3 · Screen + presenter PIP** | narrating a screen action · a reaction that adds value · introducing the next step while the screen stays up · reacting to Claude's result. PIP = **15–25%** of frame, clean rounded rect, subtle shadow only, in a corner that covers NO important UI; reposition shot-by-shot; never so big it hurts readability; drop it entirely when a prompt/command must be read. |
+| **4 · Split screen** (ONLY when both matter equally) | introducing the task beside the empty project · reacting to the finished app · start-vs-finished comparison · a major decision with the relevant screen up. Clean **50/50 or 60/40**, each crop resized/repositioned to FILL its area (no leftover black, no original ultra-wide), screen big enough to read, face clearly visible. NEVER split while small prompts/commands/code must be read. |
+
+### 16.3 Zoom & pan (direct attention; don't stimulate)
+Digital zoom targets: the prompt field, the submitted prompt, file explorer, new
+files, Claude's plan, a permission request, a terminal command, an error, the
+browser preview, the Generate button, the length slider, Copy, the result.
+Rules: establish wide → ease in → hold to read → ease back out; **~110–160%** for
+most emphasis (stronger only where source resolution allows without softening);
+never punch in suddenly, never zoom every few seconds, never cut off the cursor
+or a relevant control, never zoom past readable sharpness, keep key elements off
+the frame edges. **Pans** follow a specific action (prompt→files, terminal→
+browser, files→running app); never pan continuously; let the frame settle before
+the next action.
+
+### 16.4 Structure & transitions
+- **Open:** full-screen talking-head hook → quick cut to the finished password
+  generator working → back to presenter or straight into the empty Claude Code
+  project → begin. NEVER open on the ultra-wide-in-black-bars or a generic title
+  card.
+- **Demo arc:** empty project (full screen, label "STARTING FROM AN EMPTY
+  FOLDER") → prompt (screen+PIP, then full screen + zoom the key requirements) →
+  Claude building (screen primary + PIP while narrating, speed up long processing,
+  drop PIP when it covers output, zoom new files) → run the app (full screen,
+  VS Code → browser, app large + centred) → test (slider · checkboxes · Generate ·
+  the password · Copy — preserve visual proof it works) → **final verdict**
+  (full-screen talking head, cleanest crop).
+- **Transitions:** hard cut · short crossfade · smooth crop animation · subtle
+  push/slide · controlled zoom — **0.2–0.5s**. BANNED: glitch, spins, flashy
+  wipes, heavy motion blur, template transitions, anything that obscures the UI.
+- **J/L cuts:** let the presenter start explaining the next step before the visual
+  switches to the screen, and return to the face just before a takeaway. Cut on
+  MEANING, not on every sentence end.
+
+### 16.5 Labels & readability
+Viewer-facing labels only, short: STARTING POINT · THE PROMPT · CLAUDE BUILDS IT ·
+TESTING THE APP · FINAL RESULT · KEY TAKEAWAY. Never on-screen production tags
+("INTRO/DEMO/OUTRO"). If source UI text is too small: crop in + enlarge, or add a
+clean overlay reproducing ONLY the essential command/prompt line — never invent or
+alter the real content, never show the whole desktop when one panel matters.
+
+### 16.6 Acceptance (how-to cut)
+16:9, fills the frame, no stray black bars; presenter full-screen where it earns
+it; demo full-screen whenever text must be read; PIP used selectively; split used
+sparingly; controlled zooms on the important actions; the source reframed
+dynamically throughout so it reads like a **deliberately produced tutorial** — as
+if the screen and camera were separate sources — never an ultra-wide recording
+parked in a YouTube canvas. Run the every-5s bulk sweep (§6.1) on the finished
+cut like any other Final.
