@@ -23,3 +23,6 @@ out
 
 # Social publisher local state (captions, times, remote IDs) — machine-specific
 /social-queue.json
+
+# Raw b-roll captures (moved out of public/ so renders don't copy them)
+/_broll-raw/
