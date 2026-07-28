@@ -25,6 +25,7 @@ const totalFrames = process.argv[4] ? Number(process.argv[4]) : null;
 // map footage file -> its captions .ts (talking-head.mp4 = the live captionsData)
 function captionsFile(src) {
   if (src === "talking-head.mp4") return "src/shorts/captionsData.ts";
+  if (src === "claude-code-tutorial-final.mp4") return "src/tutorial-captions.ts";
   const m = src.match(/^talking-head-(\d{6})\.mp4$/);
   if (m) return `src/shorts/captions-${m[1]}.ts`;
   throw new Error(`no captions file mapping for "${src}"`);
