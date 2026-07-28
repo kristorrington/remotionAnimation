@@ -19,12 +19,13 @@ export type Rect = { x: number; y: number; w: number; h: number };
 // SCREEN fills 16:9 at ~1:1 — sharp and readable WITHOUT zooming (Kris, July 2026:
 // "just a full frame of the demo" — zooms upscaled + mis-centred, so they're gone).
 export const R = {
-  // The screen/face split is NOT a clean vertical line: the studio (mic boom +
-  // bookshelf) overhangs the TOP-RIGHT of the screen half, and the recording's
-  // Windows TASKBAR sits along the bottom. So crop a clean 16:9 INSIDE those
-  // bleeds — drop the top menu/tab strip (+ overhang), the bottom taskbar, and
-  // the side edges. Fills the frame at ~1.09× with pure demo, no studio bleed.
-  SCREEN: { x: 56, y: 48, w: 1760, h: 990 } as Rect, // the whole demo (bleeds excluded)
+  // Show the ENTIRE VS Code window (Kris): the window is a clean rectangle to
+  // x≈1880 (the studio bookshelf/mic/lamp are all to the RIGHT of that), with a
+  // thin Windows taskbar at the very bottom. Crop to the window edge (1876, a
+  // 4px margin off the studio) × height 1055 (drops the bottom taskbar) — 16:9,
+  // fills the frame at ~1.02×, whole window visible (menu · tabs · status), no
+  // studio, no taskbar.
+  SCREEN: { x: 0, y: 0, w: 1876, h: 1055 } as Rect, // the entire demo window
   FACE: { x: 1920, y: 0, w: 1920, h: 1080 } as Rect, // full talking head (already framed)
   FACE_PIP: { x: 2120, y: 60, w: 1440, h: 810 } as Rect, // tighter face for the small PIP box
 };
