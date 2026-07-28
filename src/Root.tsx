@@ -8,6 +8,7 @@ import { ArchivedVideoCompositions, SHOW_ARCHIVE } from "./archive";
 import { CalculateMetadataFunction } from "remotion";
 import { AiWeeklyVideo, AI_WEEKLY_DUR } from "./AiWeeklyVideo";
 import { AiWeeklyFinal } from "./AiWeeklyFinal";
+import { TutorialFinal, TUTORIAL_DUR } from "./TutorialFinal";
 
 export const transparentDefaults: CalculateMetadataFunction<
   Record<string, unknown>
@@ -67,6 +68,9 @@ export const RemotionRoot: React.FC = () => {
       {/* ── CURRENT: AI news this week — 3 stories that matter, 2 that don't (July 2026) ── */}
       <Composition id="AiWeeklyVideo" component={AiWeeklyVideo} durationInFrames={AI_WEEKLY_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
       <Composition id="AiWeeklyFinal" component={AiWeeklyFinal} durationInFrames={AI_WEEKLY_DUR} fps={30} width={1920} height={1080} />
+
+      {/* ── HOW-TO: Claude Code password-generator tutorial — reframed 16:9 (July 2026) ── */}
+      <Composition id="TutorialFinal" component={TutorialFinal} durationInFrames={TUTORIAL_DUR} fps={30} width={1920} height={1080} />
 
       {/* Previous videos — hidden unless SHOW_ARCHIVE (src/archive) is true */}
       {SHOW_ARCHIVE && <ArchivedVideoCompositions />}
