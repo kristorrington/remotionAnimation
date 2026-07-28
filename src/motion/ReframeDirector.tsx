@@ -24,6 +24,11 @@ export const R = {
   FACE_PIP: { x: 2120, y: 60, w: 1440, h: 810 } as Rect, // tighter face for the small PIP box
 };
 
+// A draw-on highlight pinned to a SCREEN-source rect, timed to the VO. `at`/`dur`
+// are beat-local frames; rect is in screen-source px (0–1872). Boxes the UI
+// element as the presenter talks about it (Kris, July 2026).
+export type HL = { rect: Rect; at: number; dur?: number };
+
 export type Layout = "screen" | "face" | "pip" | "split";
 export type Shot = {
   from: number;
@@ -34,11 +39,34 @@ export type Shot = {
   pipCorner?: "tl" | "tr" | "bl" | "br";
   push?: boolean; // subtle documentary push-in (screen shots)
   label?: string; // viewer-facing chip (STARTING POINT / THE PROMPT / …)
+  highlights?: HL[]; // draw-on boxes on the screen, timed to the VO
+};
+
+// One highlight box, drawn in the video's source-pixel space (so it tracks the crop).
+const Highlight: React.FC<{ h: HL; scale: number; frame: number }> = ({ h, scale, frame }) => {
+  const t = frame - h.at;
+  const dur = h.dur ?? 85;
+  if (t < -8 || t > dur + 14) return null;
+  const draw = interpolate(t, [0, 10], [0, 1], CLAMP);
+  const out = interpolate(t, [dur, dur + 14], [1, 0], CLAMP);
+  const op = Math.min(draw, out);
+  const s = interpolate(draw, [0, 1], [1.06, 1], CLAMP);
+  return (
+    <div style={{
+      position: "absolute", left: h.rect.x * scale, top: h.rect.y * scale,
+      width: h.rect.w * scale, height: h.rect.h * scale,
+      border: "3px solid #D97757", borderRadius: 6,
+      boxShadow: "0 0 22px rgba(217,119,87,0.65), inset 0 0 14px rgba(217,119,87,0.2)",
+      background: "rgba(217,119,87,0.08)", opacity: op,
+      transform: `scale(${s})`, transformOrigin: "center", pointerEvents: "none",
+    }} />
+  );
 };
 
 // Fill on-screen `box` with source-region `rect` (cover), from one muted decode.
-const RegionView: React.FC<{ src: string; showFrame: number; rect: Rect; box: Rect; radius?: number; scaleBoost?: number }>
-  = ({ src, showFrame, rect, box, radius = 0, scaleBoost = 1 }) => {
+const RegionView: React.FC<{ src: string; showFrame: number; rect: Rect; box: Rect; radius?: number; scaleBoost?: number; highlights?: HL[] }>
+  = ({ src, showFrame, rect, box, radius = 0, scaleBoost = 1, highlights }) => {
+  const frame = useCurrentFrame();
   const base = Math.max(box.w / rect.w, box.h / rect.h);
   const scale = base * scaleBoost;
   const vidW = SRC_W * scale;
@@ -49,6 +77,7 @@ const RegionView: React.FC<{ src: string; showFrame: number; rect: Rect; box: Re
     <div style={{ position: "absolute", left: box.x, top: box.y, width: box.w, height: box.h, overflow: "hidden", borderRadius: radius }}>
       <div style={{ position: "absolute", width: vidW, height: vidH, left: offX, top: offY }}>
         <OffthreadVideo src={staticFile(src)} muted trimBefore={showFrame > 0 ? showFrame : undefined} style={{ width: "100%", height: "100%" }} />
+        {highlights?.map((h, i) => <Highlight key={i} h={h} scale={scale} frame={frame} />)}
       </div>
     </div>
   );
@@ -96,14 +125,14 @@ const ShotView: React.FC<{ src: string; shot: Shot }> = ({ src, shot }) => {
     const pb = PIP_BOX[shot.pipCorner ?? "br"];
     body = (
       <>
-        <RegionView src={src} showFrame={show} rect={shot.zoom ?? R.SCREEN} box={FULL} scaleBoost={push} />
+        <RegionView src={src} showFrame={show} rect={shot.zoom ?? R.SCREEN} box={FULL} scaleBoost={push} highlights={shot.highlights} />
         <div style={{ position: "absolute", left: pb.x, top: pb.y, width: pb.w, height: pb.h, borderRadius: 16, overflow: "hidden", border: "2px solid rgba(255,255,255,0.9)", boxShadow: "0 16px 40px rgba(0,0,0,0.5)" }}>
           <RegionView src={src} showFrame={show} rect={R.FACE_PIP} box={{ x: 0, y: 0, w: pb.w, h: pb.h }} />
         </div>
       </>
     );
   } else {
-    body = <RegionView src={src} showFrame={show} rect={shot.zoom ?? R.SCREEN} box={FULL} scaleBoost={push} />;
+    body = <RegionView src={src} showFrame={show} rect={shot.zoom ?? R.SCREEN} box={FULL} scaleBoost={push} highlights={shot.highlights} />;
   }
 
   return (
