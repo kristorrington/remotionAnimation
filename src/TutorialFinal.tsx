@@ -21,14 +21,15 @@ const SHOTS: Shot[] = [
   // ── STARTING POINT ──
   { from: 454, to: 749, layout: "screen", push: true, label: "STARTING FROM AN EMPTY FOLDER" }, // "Claude Code open + empty folder / CLI in the middle"
 
-  // ── THE PROMPT (full-screen, readable; content types in progressively) ──
-  { from: 749, to: 1010, layout: "screen", zoom: R.PROMPT, push: true, label: "THE PROMPT" }, // "build a simple password generator…"
-  { from: 1010, to: 1367, layout: "screen", zoom: R.PROMPT, push: true }, // "create index, styles, script.js"
+  // ── THE PROMPT (establish full, then zoom to read as it types in) ──
+  { from: 749, to: 1010, layout: "screen", push: true, label: "THE PROMPT" }, // establish: typing begins
+  { from: 1010, to: 1367, layout: "screen", zoom: R.PROMPT, push: true }, // read the prompt + file list
   { from: 1367, to: 1835, layout: "screen", zoom: R.PROMPT, push: true }, // the RULES: slider 8–32, options, buttons, dark UI
   { from: 1835, to: 2168, layout: "pip", pipCorner: "br" }, // "keep it beginner friendly / explain how to run"
 
-  // ── PICK THE MODEL ──
-  { from: 2168, to: 2468, layout: "screen", zoom: R.MODEL, push: true, label: "PICK THE MODEL" }, // "/model → Fable/Opus/Sonnet/Haiku"
+  // ── PICK THE MODEL (establish as he clicks /, then zoom the open list) ──
+  { from: 2168, to: 2346, layout: "screen", push: true, label: "PICK THE MODEL" }, // "click the forward slash, select our model"
+  { from: 2346, to: 2468, layout: "screen", zoom: R.MODEL, push: true }, // the open list: Fable/Opus/Sonnet/Haiku
   { from: 2468, to: 2681, layout: "pip", pipCorner: "br" }, // "default recommendation, Opus 4.8"
 
   // ── CLAUDE BUILDS IT ──

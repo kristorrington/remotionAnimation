@@ -13,14 +13,16 @@ export const SRC_W = 3840;
 export const SRC_H = 1080;
 export type Rect = { x: number; y: number; w: number; h: number };
 
-// Source-region presets (px in the 3840×1080 file).
+// Source-region presets (px in the 3840×1080 file). SCREEN region is x0–1920;
+// EVERY screen rect stays inside [0,1920] or the studio (x>1920) bleeds in.
+// Rects read off a 240px grid on the settled screen frames.
 export const R = {
   SCREEN: { x: 0, y: 0, w: 1920, h: 1080 } as Rect, // whole demo
-  PROMPT: { x: 800, y: 540, w: 1120, h: 630 } as Rect, // Claude Code prompt box (bottom-centre-right)
-  MODEL: { x: 1140, y: 460, w: 780, h: 439 } as Rect, // the /model dropdown (right)
-  BUILD: { x: 240, y: 150, w: 1400, h: 788 } as Rect, // Claude output + editor (centre-left)
-  APP: { x: 1330, y: 260, w: 780, h: 439 } as Rect, // the app card in the browser preview
-  APP_WIDE: { x: 950, y: 150, w: 970, h: 546 } as Rect, // wider browser establish
+  PROMPT: { x: 460, y: 560, w: 840, h: 473 } as Rect, // Claude Code prompt box (below the promo notice)
+  MODEL: { x: 740, y: 440, w: 760, h: 428 } as Rect, // the open model list (Default/Opus/Fable/Sonnet/Haiku)
+  BUILD: { x: 200, y: 110, w: 1300, h: 731 } as Rect, // Claude output + files (left/centre)
+  APP: { x: 820, y: 140, w: 1000, h: 563 } as Rect, // the whole app card in the browser preview
+  APP_WIDE: { x: 760, y: 120, w: 1120, h: 630 } as Rect, // wider browser establish
   FACE: { x: 1920, y: 0, w: 1920, h: 1080 } as Rect, // full talking head (already framed)
   FACE_PIP: { x: 2120, y: 60, w: 1440, h: 810 } as Rect, // tighter face for the small PIP box
 };
