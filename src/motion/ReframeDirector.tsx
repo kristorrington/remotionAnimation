@@ -26,6 +26,8 @@ export const R = {
   // fills the frame at ~1.02×, whole window visible (menu · tabs · status), no
   // studio, no taskbar.
   SCREEN: { x: 0, y: 0, w: 1876, h: 1055 } as Rect, // the entire demo window
+  PROMPT: { x: 700, y: 590, w: 820, h: 461 } as Rect, // zoom into the Claude Code prompt box (read it big)
+  MODEL: { x: 720, y: 420, w: 800, h: 450 } as Rect, // zoom into the /model list
   FACE: { x: 1920, y: 0, w: 1920, h: 1080 } as Rect, // full talking head (already framed)
   FACE_PIP: { x: 2120, y: 60, w: 1440, h: 810 } as Rect, // tighter face for the small PIP box
 };
