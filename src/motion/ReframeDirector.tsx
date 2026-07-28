@@ -13,16 +13,13 @@ export const SRC_W = 3840;
 export const SRC_H = 1080;
 export type Rect = { x: number; y: number; w: number; h: number };
 
-// Source-region presets (px in the 3840×1080 file). SCREEN region is x0–1920;
-// EVERY screen rect stays inside [0,1920] or the studio (x>1920) bleeds in.
-// Rects read off a 240px grid on the settled screen frames.
+// Source-region presets (px in the 3840×1080 file). CRITICAL: the screen recording
+// ends at ~x1885 (the RODE mic / studio starts there — the split is NOT at 1920),
+// so SCREEN stops at 1872 to keep the mic out. The screen is 1920 native, so
+// SCREEN fills 16:9 at ~1:1 — sharp and readable WITHOUT zooming (Kris, July 2026:
+// "just a full frame of the demo" — zooms upscaled + mis-centred, so they're gone).
 export const R = {
-  SCREEN: { x: 0, y: 0, w: 1920, h: 1080 } as Rect, // whole demo
-  PROMPT: { x: 460, y: 560, w: 840, h: 473 } as Rect, // Claude Code prompt box (below the promo notice)
-  MODEL: { x: 740, y: 440, w: 760, h: 428 } as Rect, // the open model list (Default/Opus/Fable/Sonnet/Haiku)
-  BUILD: { x: 200, y: 110, w: 1300, h: 731 } as Rect, // Claude output + files (left/centre)
-  APP: { x: 820, y: 140, w: 1000, h: 563 } as Rect, // the whole app card in the browser preview
-  APP_WIDE: { x: 760, y: 120, w: 1120, h: 630 } as Rect, // wider browser establish
+  SCREEN: { x: 0, y: 0, w: 1872, h: 1080 } as Rect, // the whole demo (mic excluded)
   FACE: { x: 1920, y: 0, w: 1920, h: 1080 } as Rect, // full talking head (already framed)
   FACE_PIP: { x: 2120, y: 60, w: 1440, h: 810 } as Rect, // tighter face for the small PIP box
 };
