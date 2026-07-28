@@ -60,8 +60,8 @@ const SHOTS: Shot[] = [
   { from: 290, to: 410, layout: "screen", showFrame: 5100, label: "THE FINISHED APP" }, // teaser: the settled app (right side of the demo)
   { from: 410, to: 454, layout: "face" }, // "so let's get into it"
 
-  // ── STARTING POINT ──
-  { from: 454, to: 749, layout: "screen", label: "STARTING FROM AN EMPTY FOLDER" }, // "Claude Code open + empty folder"
+  // ── STARTING POINT (presenter PIP while he introduces the empty project) ──
+  { from: 454, to: 749, layout: "pip", pipCorner: "bl", label: "STARTING FROM AN EMPTY FOLDER" }, // "Claude Code open + empty folder"
 
   // ── THE PROMPT (establish, then ZOOM in and highlight each line as read) ──
   { from: 749, to: 850, layout: "screen", label: "THE PROMPT" }, // typing begins (full window)
@@ -69,9 +69,9 @@ const SHOTS: Shot[] = [
     // box shows the TOP first (build a → create → files)…
     { rect: { x: 748, y: 762, w: 740, h: 26 }, at: 20, dur: 80 }, // "build a simple password generator…" (~870)
     { rect: { x: 748, y: 800, w: 160, h: 24 }, at: 150, dur: 60 }, // "Create:" (~1000)
-    { rect: { x: 748, y: 819, w: 240, h: 24 }, at: 200, dur: 60 }, // "index.html" (~1050)
-    { rect: { x: 748, y: 838, w: 220, h: 24 }, at: 250, dur: 60 }, // "styles.css" (~1100)
-    { rect: { x: 748, y: 858, w: 200, h: 24 }, at: 300, dur: 70 }, // "script.js" (~1150)
+    { rect: { x: 748, y: 819, w: 240, h: 24 }, at: 200, dur: 45 }, // "index.html" (~1050)
+    { rect: { x: 748, y: 838, w: 220, h: 24 }, at: 250, dur: 40 }, // "styles.css" (~1100)
+    { rect: { x: 748, y: 858, w: 200, h: 24 }, at: 295, dur: 28 }, // "script.js" — ends before the box scrolls to the rules
     // …then it scrolls to the rules (measured at f1424, stable through 1787)
     { rect: { x: 748, y: 817, w: 500, h: 24 }, at: 574, dur: 100 }, // "password length slider from 8 to 32" (1424)
     { rect: { x: 748, y: 836, w: 670, h: 24 }, at: 690, dur: 70 }, // "options for uppercase, lowercase, numbers, symbols" (1540)
@@ -79,24 +79,24 @@ const SHOTS: Shot[] = [
     { rect: { x: 748, y: 874, w: 370, h: 24 }, at: 821, dur: 70 }, // "a copy password button" (1671)
     { rect: { x: 748, y: 894, w: 330, h: 24 }, at: 937, dur: 100 }, // "a clean, dark interface" (1787)
   ] },
-  { from: 1835, to: 2168, layout: "pip", pipCorner: "br" }, // "keep it beginner friendly / explain how to run"
+  { from: 1835, to: 2168, layout: "pip", pipCorner: "bl" }, // "keep it beginner friendly / explain how to run"
 
-  // ── PICK THE MODEL (establish, then zoom the open list) ──
-  { from: 2168, to: 2346, layout: "screen", label: "PICK THE MODEL" }, // "click the forward slash, select our model"
+  // ── PICK THE MODEL (presenter PIP as he explains, then zoom the open list) ──
+  { from: 2168, to: 2346, layout: "pip", pipCorner: "bl", label: "PICK THE MODEL" }, // "click the forward slash, select our model"
   { from: 2346, to: 2468, layout: "screen", zoom: R.MODEL }, // zoom the open list: Fable/Opus/Sonnet/Haiku
-  { from: 2468, to: 2681, layout: "pip", pipCorner: "br" }, // "default recommendation, Opus 4.8"
+  { from: 2468, to: 2681, layout: "pip", pipCorner: "bl" }, // "default recommendation, Opus 4.8"
 
   // ── CLAUDE BUILDS IT (presenter PIP while he narrates the build) ──
-  { from: 2681, to: 2846, layout: "pip", pipCorner: "br", label: "CLAUDE BUILDS IT" }, // "click go and watch"
-  { from: 2846, to: 3431, layout: "pip", pipCorner: "br" }, // "thinking / creating index.html, style.css, script.js"
-  { from: 3431, to: 3662, layout: "pip", pipCorner: "br" }, // "created the files in the project"
-  { from: 3662, to: 4187, layout: "screen", highlights: [
+  { from: 2681, to: 2846, layout: "pip", pipCorner: "bl", label: "CLAUDE BUILDS IT" }, // "click go and watch"
+  { from: 2846, to: 3431, layout: "pip", pipCorner: "bl" }, // "thinking / creating index.html, style.css, script.js"
+  { from: 3431, to: 3662, layout: "pip", pipCorner: "bl" }, // "created the files in the project"
+  { from: 3662, to: 4187, layout: "pip", pipCorner: "bl", highlights: [
     { rect: { x: 405, y: 474, w: 600, h: 28 }, at: 12, dur: 200 }, // index.html — structure (3674)
     { rect: { x: 405, y: 492, w: 420, h: 26 }, at: 241, dur: 120 }, // styles.css — dark theme (3903)
     { rect: { x: 405, y: 510, w: 580, h: 26 }, at: 375, dur: 130 }, // script.js — generation logic (4037)
   ] }, // reading what each file does
 
-  // ── RUNNING THE APP (presenter PIP while the demo works — bottom-left, clear of the app on the right) ──
+  // ── RUNNING THE APP (presenter PIP bottom-right, same as the rest; app card sits above it) ──
   { from: 4187, to: 4676, layout: "pip", pipCorner: "bl", label: "RUNNING THE APP" }, // "how to run it / open the file" → the app appears
 
   // ── TESTING THE APP (PIP + highlight each control as he uses it) ──
