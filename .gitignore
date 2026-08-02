@@ -4,7 +4,12 @@ dist
 .env
 
 # Ignore the output video from Git but not videos you import into src/.
-out
+# EXCEPTION: out/shorts/*.mp4 are committed — the GitHub Actions cloud
+# dispatcher (social-dispatch.yml) posts them from the runner.
+out/*
+!out/shorts/
+out/shorts/*
+!out/shorts/*.mp4
 
 # Local Claude settings (machine-specific)
 .claude/settings.local.json
@@ -21,8 +26,8 @@ out
 # Local whisper.cpp tool clone (large, machine-specific)
 /whisper.cpp/
 
-# Social publisher local state (captions, times, remote IDs) — machine-specific
-/social-queue.json
+# Social queue is COMMITTED (no secrets — captions/times/statuses) so the
+# GitHub Actions cloud dispatcher shares state with this machine.
 
 # Raw b-roll captures (moved out of public/ so renders don't copy them)
 /_broll-raw/

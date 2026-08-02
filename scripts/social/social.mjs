@@ -30,18 +30,23 @@ const ALIAS = { yt: "youtube", youtube: "youtube", tt: "tiktok", tiktok: "tiktok
 // posted) platforms contribute a tag; a failed/pending platform adds nothing.
 const PLATFORM_TAG = { youtube: "YT", tiktok: "TIK", instagram: "IG" };
 const TAG_ORDER = ["youtube", "tiktok", "instagram"];
-const SCHEDULED_STATUSES = new Set(["scheduled", "drafted", "posted"]);
+const SCHEDULED_STATUSES = new Set(["scheduled", "drafted", "posted", "published"]);
+
+// Queue entries written on Windows carry backslash paths; normalize so the
+// same queue works on a Linux runner (GitHub Actions cloud dispatch).
+const rel = (p) => String(p).replace(/\\/g, "/");
 
 function applyScheduledPrefix(e) {
   const tags = TAG_ORDER
     .filter((p) => e.platforms[p]?.remoteId && SCHEDULED_STATUSES.has(e.platforms[p].status))
     .map((p) => PLATFORM_TAG[p]);
   if (!tags.length) return;
-  const dir = path.dirname(e.file);
-  const base = path.basename(e.file).replace(/^(YT_|TIK_|IG_)+/, "");
-  const nextRel = dir === "." ? `${tags.join("_")}_${base}` : path.join(dir, `${tags.join("_")}_${base}`);
-  if (nextRel === e.file) return;
-  const from = path.join(ROOT, e.file);
+  const cur = rel(e.file);
+  const dir = path.posix.dirname(cur);
+  const base = path.posix.basename(cur).replace(/^(YT_|TIK_|IG_)+/, "");
+  const nextRel = dir === "." ? `${tags.join("_")}_${base}` : `${dir}/${tags.join("_")}_${base}`;
+  if (nextRel === cur) { e.file = cur; return; }
+  const from = path.join(ROOT, cur);
   const to = path.join(ROOT, nextRel);
   if (existsSync(from)) {
     renameSync(from, to);
@@ -240,13 +245,13 @@ async function cmdDispatch(flags) {
     for (const p of only) {
       const pl = e.platforms[p];
       if (!pl.enabled || pl.status !== "approved") continue;
-      if (!existsSync(path.join(ROOT, e.file))) { console.log(`  ${e.id}/${p}: SKIP — file missing (${e.file})`); continue; }
+      if (!existsSync(path.join(ROOT, rel(e.file)))) { console.log(`  ${e.id}/${p}: SKIP — file missing (${e.file})`); continue; }
       // Instagram has no native scheduling: only fire when due.
       if (p === "instagram" && pl.publishAt && new Date(pl.publishAt).getTime() > now && !flags.force && !dryRun) {
         console.log(`  ${e.id}/${p}: waiting until ${pl.publishAt} (IG fires when due; run scheduler or dispatch at that time)`);
         continue;
       }
-      const entry = { file: path.join(ROOT, e.file), caption: pl.caption, title: e.title, publishAt: pl.publishAt, tags: e.tags, categoryId: e.categoryId };
+      const entry = { file: path.join(ROOT, rel(e.file)), caption: pl.caption, title: e.title, publishAt: pl.publishAt, tags: e.tags, categoryId: e.categoryId };
       try {
         const res = await ADAPTERS[p](entry, env, dryRun);
         acted++;

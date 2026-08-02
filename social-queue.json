@@ -1,0 +1,229 @@
+{
+  "entries": [
+    {
+      "id": "Short-DeepSeekCost",
+      "file": "out/shorts/YT_TIK_Short-DeepSeekCost.mp4",
+      "title": "This AI Fixed a Bug for 2¢ — Its Rival Charged $4 #Shorts",
+      "tags": [
+        "DeepSeek",
+        "DeepSeek V4 Flash",
+        "GLM",
+        "AI coding",
+        "AI cost",
+        "cheap AI",
+        "AI news",
+        "LLM pricing",
+        "AI models",
+        "coding AI",
+        "artificial intelligence"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "DeepSeek V4 Flash fixed the same software bug for ~2 cents that GLM charged ~$4 for — same result, ~200× cheaper. But it’s one bug, one test, and V4 Flash is API-only for now. ▶ Full AI-news breakdown on the channel.\n\n#AInews #DeepSeek #AI #LLM #Shorts",
+          "publishAt": "2026-08-03T07:00:00.000Z",
+          "status": "scheduled",
+          "remoteId": "ccVE07XjYhA",
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "DeepSeek V4 Flash fixed the same software bug for ~2 cents that GLM charged ~$4 for — same result, ~200× cheaper. But it’s one bug, one test, and V4 Flash is API-only for now. ▶ Full AI-news breakdown on the channel.\n\n#AInews #DeepSeek #AI #LLM #Shorts",
+          "publishAt": "2026-08-02T02:00:00.000Z",
+          "status": "pending",
+          "remoteId": "v_inbox_file~v2.7669328027066697745",
+          "error": "TikTok init failed: {\"code\":\"spam_risk_too_many_pending_share\",\"message\":\"spam_risk_too_many_pending_share\",\"log_id\":\"2026080215232883341E5A87506C8D6A66\"}"
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "DeepSeek V4 Flash fixed the same software bug for ~2 cents that GLM charged ~$4 for — same result, ~200× cheaper. But it’s one bug, one test, and V4 Flash is API-only for now. ▶ Full AI-news breakdown on the channel.\n\n#AInews #DeepSeek #AI #LLM #Shorts",
+          "publishAt": "2026-08-03T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "Short-OpenAIPriceCut",
+      "file": "out/shorts/YT_TIK_Short-OpenAIPriceCut.mp4",
+      "title": "OpenAI Just Cut Its Cheapest AI 80% #Shorts",
+      "tags": [
+        "OpenAI",
+        "GPT-5.6",
+        "GPT-5.6 Luna",
+        "AI price cut",
+        "AI price war",
+        "DeepSeek",
+        "AI news",
+        "LLM pricing",
+        "ChatGPT",
+        "AI models",
+        "artificial intelligence"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "OpenAI cut GPT-5.6 Luna’s price by 80% (and Terra 20%) right after DeepSeek launched a low-cost model — the AI price war is heating up. ▶ Full breakdown on the channel.\n\n#AInews #OpenAI #GPT #AI #Shorts",
+          "publishAt": "2026-08-04T07:00:00.000Z",
+          "status": "scheduled",
+          "remoteId": "WNzGGqRsS2s",
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "OpenAI cut GPT-5.6 Luna’s price by 80% (and Terra 20%) right after DeepSeek launched a low-cost model — the AI price war is heating up. ▶ Full breakdown on the channel.\n\n#AInews #OpenAI #GPT #AI #Shorts",
+          "publishAt": "2026-08-03T07:00:00.000Z",
+          "status": "drafted",
+          "remoteId": "v_inbox_file~v2.7669319994706167824",
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "OpenAI cut GPT-5.6 Luna’s price by 80% (and Terra 20%) right after DeepSeek launched a low-cost model — the AI price war is heating up. ▶ Full breakdown on the channel.\n\n#AInews #OpenAI #GPT #AI #Shorts",
+          "publishAt": "2026-08-04T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "Short-120Typo",
+      "file": "out/shorts/YT_TIK_Short-120Typo.mp4",
+      "title": "No, This AI Doesn’t Cost $120 — It’s a Typo #Shorts",
+      "tags": [
+        "OpenAI",
+        "GPT-5.6 Luna",
+        "AI pricing",
+        "AI news",
+        "LLM tokens",
+        "fact check",
+        "AI myths",
+        "ChatGPT",
+        "tokens",
+        "AI cost",
+        "artificial intelligence"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "A viral post claims GPT-5.6 Luna costs $120 per million output tokens. It doesn’t add up next to its input price — the real figure is $1.20. Almost certainly a typo. ▶ Full breakdown on the channel.\n\n#AInews #OpenAI #AI #factcheck #Shorts",
+          "publishAt": "2026-08-05T07:00:00.000Z",
+          "status": "scheduled",
+          "remoteId": "euwWG9oT8zs",
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "A viral post claims GPT-5.6 Luna costs $120 per million output tokens. It doesn’t add up next to its input price — the real figure is $1.20. Almost certainly a typo. ▶ Full breakdown on the channel.\n\n#AInews #OpenAI #AI #factcheck #Shorts",
+          "publishAt": "2026-08-04T02:00:00.000Z",
+          "status": "drafted",
+          "remoteId": "v_inbox_file~v2.7669320382666950672",
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "A viral post claims GPT-5.6 Luna costs $120 per million output tokens. It doesn’t add up next to its input price — the real figure is $1.20. Almost certainly a typo. ▶ Full breakdown on the channel.\n\n#AInews #OpenAI #AI #factcheck #Shorts",
+          "publishAt": "2026-08-05T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "Short-Mew3",
+      "file": "out/shorts/YT_TIK_Short-Mew3.mp4",
+      "title": "OpenAI Flashed a Secret Model Name, Then Deleted It #Shorts",
+      "tags": [
+        "OpenAI",
+        "Mew3",
+        "GPT-6",
+        "AI rumours",
+        "AI leak",
+        "AI news",
+        "ChatGPT",
+        "next model",
+        "OpenAI leak",
+        "AI",
+        "artificial intelligence"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "A mystery model “Mew3” appeared in an OpenAI promo video — then the clip was pulled. People are already calling it GPT-6, but a hidden name is not a launch. Still a rumour. ▶ Full breakdown on the channel.\n\n#AInews #OpenAI #GPT6 #AI #Shorts",
+          "publishAt": "2026-08-06T07:00:00.000Z",
+          "status": "scheduled",
+          "remoteId": "9Wh1X4AAjA0",
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "A mystery model “Mew3” appeared in an OpenAI promo video — then the clip was pulled. People are already calling it GPT-6, but a hidden name is not a launch. Still a rumour. ▶ Full breakdown on the channel.\n\n#AInews #OpenAI #GPT6 #AI #Shorts",
+          "publishAt": "2026-08-04T07:00:00.000Z",
+          "status": "drafted",
+          "remoteId": "v_inbox_file~v2.7669319994706233360",
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "A mystery model “Mew3” appeared in an OpenAI promo video — then the clip was pulled. People are already calling it GPT-6, but a hidden name is not a launch. Still a rumour. ▶ Full breakdown on the channel.\n\n#AInews #OpenAI #GPT6 #AI #Shorts",
+          "publishAt": "2026-08-06T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "Short-EvidenceRule",
+      "file": "out/shorts/YT_TIK_Short-EvidenceRule.mp4",
+      "title": "How to Spot Fake AI News (3-Level Rule) #Shorts",
+      "tags": [
+        "AI news",
+        "fake news",
+        "media literacy",
+        "AI hype",
+        "how to spot fake news",
+        "AI rumours",
+        "AI headlines",
+        "evidence",
+        "AI",
+        "tech news",
+        "artificial intelligence"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "A simple 3-level rule for every AI headline: Level 1 official → state it. Level 2 reported / self-tested → cite it. Level 3 leak / rumour → ignore it until proven. ▶ Full weekly breakdown on the channel.\n\n#AInews #AI #medialiteracy #Shorts",
+          "publishAt": "2026-08-07T07:00:00.000Z",
+          "status": "scheduled",
+          "remoteId": "q5zkMReZIZM",
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "A simple 3-level rule for every AI headline: Level 1 official → state it. Level 2 reported / self-tested → cite it. Level 3 leak / rumour → ignore it until proven. ▶ Full weekly breakdown on the channel.\n\n#AInews #AI #medialiteracy #Shorts",
+          "publishAt": "2026-08-05T02:00:00.000Z",
+          "status": "drafted",
+          "remoteId": "v_inbox_file~v2.7669320382667016208",
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "A simple 3-level rule for every AI headline: Level 1 official → state it. Level 2 reported / self-tested → cite it. Level 3 leak / rumour → ignore it until proven. ▶ Full weekly breakdown on the channel.\n\n#AInews #AI #medialiteracy #Shorts",
+          "publishAt": "2026-08-07T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    }
+  ]
+}

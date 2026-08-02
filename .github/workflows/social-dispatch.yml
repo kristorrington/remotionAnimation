@@ -1,0 +1,49 @@
+# Cloud social dispatcher — posts time-due queue entries (Instagram now;
+# TikTok Direct Post once approved) from GitHub's runners, so no PC needs to
+# be on. YouTube needs nothing here (native publishAt scheduling).
+#
+# Runs hourly at :10 UTC + on demand (Actions tab → Run workflow). Secrets
+# needed (repo Settings → Secrets and variables → Actions):
+#   IG_USER_ID, IG_ACCESS_TOKEN            — Instagram Graph publishing
+#   TIKTOK_CLIENT_KEY/SECRET/REFRESH_TOKEN — only once Direct Post is approved
+# After posting, the updated social-queue.json (+ renamed YT_TIK_IG_ files)
+# is committed back so state stays in sync and nothing double-posts.
+name: social-dispatch
+on:
+  schedule:
+    - cron: "10 * * * *"
+  workflow_dispatch: {}
+
+concurrency: social-dispatch # never two dispatchers at once
+
+permissions:
+  contents: write
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Dispatch time-due posts
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
+          TIKTOK_DIRECT_POST: ${{ vars.TIKTOK_DIRECT_POST || '0' }}
+          TIKTOK_PRIVACY: ${{ vars.TIKTOK_PRIVACY || 'PUBLIC_TO_EVERYONE' }}
+          # Linux runner: $FILE env var (the .env on Windows uses %FILE%)
+          SOCIAL_UPLOAD_CMD: curl -s -F "reqtype=fileupload" -F "time=24h" -F "fileToUpload=@$FILE" https://litterbox.catbox.moe/resources/internals/api.php
+        run: node scripts/social/social.mjs dispatch --go
+
+      - name: Commit queue state back
+        run: |
+          git config user.name "social-dispatch bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A social-queue.json out/shorts
+          git diff --cached --quiet && echo "no state changes" || (git commit -m "social-dispatch: state update [skip ci]" && git push)
