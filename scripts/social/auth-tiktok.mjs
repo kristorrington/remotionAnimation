@@ -21,7 +21,9 @@ for (const k of ["TIKTOK_CLIENT_KEY", "TIKTOK_CLIENT_SECRET"]) {
 
 const PORT = 4600;
 const REDIRECT = env.TIKTOK_REDIRECT_URI || `http://localhost:${PORT}/callback/`;
-const SCOPE = "video.upload"; // inbox/draft flow (video.publish needs TikTok audit)
+// upload = inbox/drafts; publish = Direct Post (works in sandbox too, but
+// unaudited posts are forced SELF_ONLY/private until TikTok approves review).
+const SCOPE = "video.upload,video.publish";
 
 // PKCE — verifier is unreserved chars; TikTok wants the challenge in HEX.
 const verifier = crypto.randomBytes(48).toString("base64").replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");

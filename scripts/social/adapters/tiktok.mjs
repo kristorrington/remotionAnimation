@@ -24,9 +24,44 @@ async function accessToken(env) {
   return j.access_token;
 }
 
-// entry: { file, caption }  (caption is shown to you in-app before you post)
+// entry: { file, caption, publishAt }  (caption shown in-app before you post —
+// or posted directly when TIKTOK_DIRECT_POST=1).
 export async function dispatch(entry, env, dryRun) {
   const size = (await stat(entry.file)).size;
+  // ── DIRECT POST (audited apps: video.publish scope; set TIKTOK_DIRECT_POST=1
+  // after TikTok approves the app review). Posts WITH the caption, no manual
+  // step. TikTok has no future-publish field, so social.mjs fires this when the
+  // scheduled time is DUE (same pattern as Instagram). While the app is
+  // unaudited TikTok forces privacy SELF_ONLY — public after approval.
+  if (env.TIKTOK_DIRECT_POST === "1") {
+    if (entry.publishAt && new Date(entry.publishAt).getTime() > Date.now() && !dryRun) {
+      return { status: "approved", remoteId: null, detail: `waiting until ${entry.publishAt} (direct post fires when due)` };
+    }
+    if (dryRun) {
+      return { status: "posted", remoteId: "(dry-run)", detail: `would DIRECT POST ${entry.file} (${(size / 1e6).toFixed(1)}MB) with caption` };
+    }
+    const token = await accessToken(env);
+    const title = (entry.caption || "").slice(0, 2200);
+    const init = await fetch("https://open.tiktokapis.com/v2/post/publish/video/init/", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json; charset=UTF-8" },
+      body: JSON.stringify({
+        post_info: { title, privacy_level: env.TIKTOK_PRIVACY || "PUBLIC_TO_EVERYONE", disable_duet: false, disable_comment: false, disable_stitch: false },
+        source_info: { source: "FILE_UPLOAD", video_size: size, chunk_size: size, total_chunk_count: 1 },
+      }),
+    });
+    const j = await init.json();
+    if (j?.error?.code && j.error.code !== "ok") throw new Error(`TikTok direct-post init failed: ${JSON.stringify(j.error)}`);
+    const uploadUrl = j?.data?.upload_url;
+    const publishId = j?.data?.publish_id;
+    if (!uploadUrl) throw new Error(`TikTok direct-post init returned no upload_url: ${JSON.stringify(j)}`);
+    const bytes = await readFile(entry.file);
+    const put = await fetch(uploadUrl, { method: "PUT", headers: { "Content-Type": "video/mp4", "Content-Range": `bytes 0-${size - 1}/${size}` }, body: bytes });
+    if (!put.ok) throw new Error(`TikTok direct-post upload failed ${put.status}: ${await put.text()}`);
+    return { status: "posted", remoteId: publishId, detail: "direct-posted to TikTok (caption included)" };
+  }
+
+  // ── INBOX flow (unaudited default): lands in your drafts, you post in-app.
   if (dryRun) {
     return { status: "drafted", remoteId: "(dry-run)", detail: `would push ${entry.file} (${(size / 1e6).toFixed(1)}MB) to your TikTok drafts` };
   }
