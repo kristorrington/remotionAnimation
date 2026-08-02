@@ -2,8 +2,27 @@
 // app, review, and post (or use TikTok's own web scheduler). True unattended API
 // scheduling needs an audited app (video.publish / Direct Post); this uses the
 // inbox flow which any app can do.
-// Needs (in .env): TIKTOK_ACCESS_TOKEN (from your TikTok OAuth; refresh as needed).
+// Auth (in .env): either TIKTOK_ACCESS_TOKEN (quick, expires ~24h), OR
+// TIKTOK_CLIENT_KEY + TIKTOK_CLIENT_SECRET + TIKTOK_REFRESH_TOKEN (from
+// scripts/social/auth-tiktok.mjs) — the adapter then refreshes the access token
+// automatically on every run.
 import { readFile, stat } from "node:fs/promises";
+
+// Prefer a static access token if present; otherwise mint a fresh one from the
+// refresh token so you never re-paste an expired token.
+async function accessToken(env) {
+  if (env.TIKTOK_ACCESS_TOKEN) return env.TIKTOK_ACCESS_TOKEN;
+  for (const k of ["TIKTOK_CLIENT_KEY", "TIKTOK_CLIENT_SECRET", "TIKTOK_REFRESH_TOKEN"]) {
+    if (!env[k]) throw new Error(`missing ${k} in .env (run scripts/social/auth-tiktok.mjs), or set TIKTOK_ACCESS_TOKEN`);
+  }
+  const r = await fetch("https://open.tiktokapis.com/v2/oauth/token/", {
+    method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ client_key: env.TIKTOK_CLIENT_KEY, client_secret: env.TIKTOK_CLIENT_SECRET, grant_type: "refresh_token", refresh_token: env.TIKTOK_REFRESH_TOKEN }),
+  });
+  const j = await r.json();
+  if (!j.access_token) throw new Error(`TikTok token refresh failed: ${JSON.stringify(j)}`);
+  return j.access_token;
+}
 
 // entry: { file, caption }  (caption is shown to you in-app before you post)
 export async function dispatch(entry, env, dryRun) {
@@ -11,11 +30,11 @@ export async function dispatch(entry, env, dryRun) {
   if (dryRun) {
     return { status: "drafted", remoteId: "(dry-run)", detail: `would push ${entry.file} (${(size / 1e6).toFixed(1)}MB) to your TikTok drafts` };
   }
-  if (!env.TIKTOK_ACCESS_TOKEN) throw new Error("missing TIKTOK_ACCESS_TOKEN in .env");
+  const token = await accessToken(env);
   // 1) init an inbox upload (single chunk — shorts are < 64MB)
   const init = await fetch("https://open.tiktokapis.com/v2/post/publish/inbox/video/init/", {
     method: "POST",
-    headers: { Authorization: `Bearer ${env.TIKTOK_ACCESS_TOKEN}`, "Content-Type": "application/json; charset=UTF-8" },
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json; charset=UTF-8" },
     body: JSON.stringify({ source_info: { source: "FILE_UPLOAD", video_size: size, chunk_size: size, total_chunk_count: 1 } }),
   });
   const j = await init.json();

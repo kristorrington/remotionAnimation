@@ -112,7 +112,13 @@ nothing.
 2. **YouTube:** Google Cloud project → enable *YouTube Data API v3* → OAuth
    *Desktop app* client → put `YT_CLIENT_ID`/`YT_CLIENT_SECRET` in `.env` →
    `node scripts/social/auth-youtube.mjs` → paste the printed `YT_REFRESH_TOKEN`.
-3. **TikTok:** TikTok for Developers app (Content Posting API) → `TIKTOK_ACCESS_TOKEN`.
+3. **TikTok:** TikTok for Developers app → add **Content Posting API** (scope
+   `video.upload`), register redirect `http://localhost:4600`, add yourself as a
+   Sandbox target user → put `TIKTOK_CLIENT_KEY`/`TIKTOK_CLIENT_SECRET` in
+   `.env` → `node scripts/social/auth-tiktok.mjs` → paste the printed
+   `TIKTOK_REFRESH_TOKEN` (the adapter refreshes the ~24h access token itself).
+   Uploads land in your TikTok **drafts** (unattended auto-post needs TikTok's
+   app audit). A one-off `TIKTOK_ACCESS_TOKEN` also works but expires ~24h.
 4. **Instagram:** Business/Creator account + linked FB Page + Meta app with
    `instagram_content_publish` → `IG_USER_ID`, `IG_ACCESS_TOKEN`, and a
    `SOCIAL_UPLOAD_CMD` that puts the file at a public URL (see `.env.example`).

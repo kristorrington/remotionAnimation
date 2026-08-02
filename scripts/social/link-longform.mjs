@@ -52,30 +52,39 @@ const main = async () => {
 
   for (const e of shorts) {
     const vid = e.platforms.youtube.remoteId;
-    // fetch current snippet (videos.update replaces it, so preserve required fields)
-    const gr = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${vid}`, { headers: { Authorization: `Bearer ${token}` } });
+    // fetch current snippet + status (update replaces snippet, so preserve fields;
+    // status tells us whether the video is PUBLIC yet — you can't comment on a
+    // private/scheduled video, only edit its description).
+    const gr = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet,status&id=${vid}`, { headers: { Authorization: `Bearer ${token}` } });
     const gj = await gr.json();
     const snip = gj.items?.[0]?.snippet;
+    const isPublic = gj.items?.[0]?.status?.privacyStatus === "public";
     if (!snip) { console.log(`  ${e.id}: SKIP — could not read snippet (${JSON.stringify(gj).slice(0, 160)})`); continue; }
     const desc = /▶ Full[^\n]*/.test(snip.description || "") ? snip.description.replace(/▶ Full[^\n]*/, linkLine) : `${linkLine}\n\n${snip.description || ""}`;
     const commentText = `▶ Watch the full breakdown → ${url}`;
-    if (!go) { console.log(`  ${e.id} (${vid}): would set description link + post comment`); continue; }
-    // 1) update description (preserve title/category/tags/lang)
+    if (!go) { console.log(`  ${e.id} (${vid}): would set description link${isPublic ? " + post comment" : " (scheduled — comment deferred until it's public)"}`); continue; }
+    // 1) update description — works on scheduled/private videos (owner edit)
     const up = await fetch("https://www.googleapis.com/youtube/v3/videos?part=snippet", {
       method: "PUT", headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
       body: JSON.stringify({ id: vid, snippet: { title: snip.title, categoryId: snip.categoryId, description: desc, tags: snip.tags, defaultLanguage: snip.defaultLanguage || "en" } }),
     });
     if (!up.ok) { console.log(`  ${e.id}: description update FAILED ${up.status}: ${(await up.text()).slice(0, 200)}`); continue; }
-    // 2) post a comment with the link
-    const cm = await fetch("https://www.googleapis.com/youtube/v3/commentThreads?part=snippet", {
-      method: "POST", headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ snippet: { videoId: vid, topLevelComment: { snippet: { textOriginal: commentText } } } }),
-    });
-    const cmOk = cm.ok;
-    if (!cmOk) console.log(`     comment failed ${cm.status}: ${(await cm.text()).slice(0, 160)}`);
     e.platforms.youtube.caption = desc;
+    e.platforms.youtube.commentPending = !isPublic; // post the comment on a later run, once public
+    // 2) comment — ONLY if the video is already public (can't comment on private/scheduled)
+    let note = "";
+    if (isPublic) {
+      const cm = await fetch("https://www.googleapis.com/youtube/v3/commentThreads?part=snippet", {
+        method: "POST", headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ snippet: { videoId: vid, topLevelComment: { snippet: { textOriginal: commentText } } } }),
+      });
+      if (cm.ok) { note = " + comment posted"; e.platforms.youtube.commentPending = false; }
+      else note = ` (comment failed ${cm.status})`;
+    } else {
+      note = " (comment deferred — re-run this after it publishes)";
+    }
     saveQueue(queue, ROOT);
-    console.log(`  ${e.id} (${vid}): description linked${cmOk ? " + comment posted" : " (comment failed — pin manually)"}`);
+    console.log(`  ${e.id} (${vid}): description linked${note}`);
   }
   console.log(`\ndone. NOTE: the clickable end-screen "Related video" is Studio-only — add it there if you want the on-player element.`);
 };
