@@ -246,7 +246,7 @@ async function cmdDispatch(flags) {
         console.log(`  ${e.id}/${p}: waiting until ${pl.publishAt} (IG fires when due; run scheduler or dispatch at that time)`);
         continue;
       }
-      const entry = { file: path.join(ROOT, e.file), caption: pl.caption, title: e.title, publishAt: pl.publishAt };
+      const entry = { file: path.join(ROOT, e.file), caption: pl.caption, title: e.title, publishAt: pl.publishAt, tags: e.tags, categoryId: e.categoryId };
       try {
         const res = await ADAPTERS[p](entry, env, dryRun);
         acted++;

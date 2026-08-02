@@ -14,7 +14,9 @@ for (const k of ["YT_CLIENT_ID", "YT_CLIENT_SECRET"]) {
 
 const PORT = 4599;
 const REDIRECT = `http://localhost:${PORT}`;
-const SCOPE = "https://www.googleapis.com/auth/youtube.upload";
+// upload = insert videos; force-ssl = edit descriptions + post comments + search
+// your own uploads (needed to link the long-form into each short after upload).
+const SCOPE = "https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube.force-ssl";
 const authUrl =
   "https://accounts.google.com/o/oauth2/v2/auth?" +
   new URLSearchParams({

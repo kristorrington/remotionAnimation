@@ -20,15 +20,23 @@ async function accessToken(env) {
   return j.access_token;
 }
 
-// entry: { file, caption, title, publishAt (ISO, future) }
+// entry: { file, caption, title, publishAt (ISO, future), tags?, categoryId? }
 export async function dispatch(entry, env, dryRun) {
   const title = (entry.title || entry.caption || "Untitled").split("\n")[0].slice(0, 100);
+  const snippet = {
+    title,
+    description: entry.caption || "",
+    categoryId: entry.categoryId || "28", // 28 = Science & Technology
+    defaultLanguage: "en",
+    defaultAudioLanguage: "en",
+  };
+  if (Array.isArray(entry.tags) && entry.tags.length) snippet.tags = entry.tags.slice(0, 40);
   const body = {
-    snippet: { title, description: entry.caption || "", categoryId: "22" },
+    snippet,
     status: { privacyStatus: "private", publishAt: entry.publishAt, selfDeclaredMadeForKids: false },
   };
   if (dryRun) {
-    return { status: "scheduled", remoteId: "(dry-run)", detail: `would upload ${entry.file} as PRIVATE, publishAt=${entry.publishAt}, title="${title}"` };
+    return { status: "scheduled", remoteId: "(dry-run)", detail: `would upload ${entry.file} as PRIVATE, publishAt=${entry.publishAt}, title="${title}", tags=${(entry.tags || []).length}` };
   }
   for (const k of ["YT_CLIENT_ID", "YT_CLIENT_SECRET", "YT_REFRESH_TOKEN"]) {
     if (!env[k]) throw new Error(`missing ${k} in .env`);
