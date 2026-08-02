@@ -2,7 +2,7 @@
   "entries": [
     {
       "id": "Short-DeepSeekCost",
-      "file": "out/shorts/YT_IG_Short-DeepSeekCost.mp4",
+      "file": "out/shorts/YT_TIK_IG_Short-DeepSeekCost.mp4",
       "title": "This AI Fixed a Bug for 2¢ — Its Rival Charged $4 #Shorts",
       "tags": [
         "DeepSeek",
@@ -31,7 +31,7 @@
           "enabled": true,
           "caption": "DeepSeek V4 Flash fixed the same software bug for ~2 cents that GLM charged ~$4 for — same result, ~200× cheaper. But it’s one bug, one test, and V4 Flash is API-only for now. ▶ Full AI-news breakdown on the channel.\n\n#AInews #DeepSeek #AI #LLM #Shorts",
           "publishAt": "2026-08-02T02:00:00.000Z",
-          "status": "pending",
+          "status": "drafted",
           "remoteId": "v_inbox_file~v2.7669328027066697745",
           "error": "TikTok init failed: {\"code\":\"spam_risk_too_many_pending_share\",\"message\":\"spam_risk_too_many_pending_share\",\"log_id\":\"2026080215232883341E5A87506C8D6A66\"}"
         },
