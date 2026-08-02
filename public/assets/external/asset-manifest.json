@@ -3143,6 +3143,65 @@
       ],
       "attributionRequired": false,
       "concerns": null
+    },
+    {
+      "filename": "ai2-gemini-robotics.mp4",
+      "localPath": "public/assets/external/clips/ai2-gemini-robotics.mp4",
+      "type": "reference",
+      "sourceUrl": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/",
+      "sourceName": "Google DeepMind — Gemini Robotics 2 (official)",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "Muted official demo montage b-roll (commentary/reference): whole-body reach, multi-robot workbench, dexterous grasp",
+      "usedIn": [
+        "AiNews2"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "durationSec": 8.5
+    },
+    {
+      "filename": "ai2-seedance.mp4",
+      "localPath": "public/assets/external/clips/ai2-seedance.mp4",
+      "type": "reference",
+      "sourceUrl": "https://dreamina.capcut.com/seedance/seedance-2-5",
+      "sourceName": "Dreamina (ByteDance/CapCut) — Seedance 2.5 (official)",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "Muted official Seedance 2.5 sample montage b-roll (commentary/reference): Chinese opera performer (720p), needle-felt animals, lantern-festival cinematic",
+      "usedIn": [
+        "AiNews2"
+      ],
+      "attributionRequired": false,
+      "concerns": "Two of three source segments are 640x360 official web samples upscaled to 720p; used only as brief film-card b-roll",
+      "durationSec": 8.63
+    },
+    {
+      "filename": "ai2-minimax-h3.mp4",
+      "localPath": "public/assets/external/clips/ai2-minimax-h3.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.minimax.io/blog/minimax-h3",
+      "sourceName": "MiniMax — H3 (official blog)",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "Muted official MiniMax H3 sample-output montage b-roll (commentary/reference): photorealistic human, macro nature, anime title sequence, 3D game character",
+      "usedIn": [
+        "AiNews2"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "durationSec": 9.07
+    },
+    {
+      "filename": "ai2-alsoweek-montage.mp4",
+      "localPath": "public/assets/external/clips/ai2-alsoweek-montage.mp4",
+      "type": "reference",
+      "sourceUrl": null,
+      "sourceName": "Montage of official Gemini Robotics 2 / MiniMax H3 / Seedance 2.5 demos",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "Combined muted official-demo montage for the Also-This-Week beat",
+      "usedIn": [
+        "AiNews2"
+      ],
+      "attributionRequired": false,
+      "concerns": "Concatenation of the three official demo clips (see their entries for sources)"
     }
   ]
 }

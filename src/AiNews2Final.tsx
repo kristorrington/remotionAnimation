@@ -76,7 +76,7 @@ export const AiNews2Final: React.FC = () => {
   return (
     <ThemeProvider style="paper">
       <AbsoluteFill style={{ backgroundColor: "black" }}>
-        <AbsoluteFill style={{ backgroundColor: "#F0EEE6" }} />
+        <AbsoluteFill style={{ backgroundColor: "#FBFAF7" }} />
         {frame < 26 && <AnimatedBackground durationInFrames={30} fade={false} />}
         <SlideLeftPush cuts={CUTS}>
           {/* VO boost 1.3× (source peaks ≈ −4.1 dB — probed 2026-08-02) */}
