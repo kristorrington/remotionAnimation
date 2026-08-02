@@ -10,7 +10,7 @@
 //   node scripts/social/social.mjs dispatch --go       # actually schedules/posts
 //   node scripts/social/social.mjs status
 //
-import { readdirSync, existsSync, readFileSync, statSync } from "node:fs";
+import { readdirSync, existsSync, readFileSync, statSync, renameSync } from "node:fs";
 import path from "node:path";
 import { loadEnv } from "./lib/env.mjs";
 import { loadQueue, saveQueue, findEntry, newEntry, PLATFORMS } from "./lib/store.mjs";
@@ -21,6 +21,34 @@ import { dispatch as igDispatch } from "./adapters/instagram.mjs";
 const ROOT = process.cwd();
 const ADAPTERS = { youtube: ytDispatch, tiktok: ttDispatch, instagram: igDispatch };
 const ALIAS = { yt: "youtube", youtube: "youtube", tt: "tiktok", tiktok: "tiktok", ig: "instagram", insta: "instagram", instagram: "instagram" };
+
+// RULE (Kris, Aug 2026): once a short is SCHEDULED to a platform, PREFIX its
+// rendered file with a platform tag so you can see at a glance where it has been
+// sent — YT_ → YT_TIK_ → YT_TIK_IG_ (canonical order YouTube, TikTok, Instagram,
+// regardless of dispatch order). Rebuilt from the queue on every successful
+// dispatch and kept in sync with e.file. Only successful (scheduled/drafted/
+// posted) platforms contribute a tag; a failed/pending platform adds nothing.
+const PLATFORM_TAG = { youtube: "YT", tiktok: "TIK", instagram: "IG" };
+const TAG_ORDER = ["youtube", "tiktok", "instagram"];
+const SCHEDULED_STATUSES = new Set(["scheduled", "drafted", "posted"]);
+
+function applyScheduledPrefix(e) {
+  const tags = TAG_ORDER
+    .filter((p) => e.platforms[p]?.remoteId && SCHEDULED_STATUSES.has(e.platforms[p].status))
+    .map((p) => PLATFORM_TAG[p]);
+  if (!tags.length) return;
+  const dir = path.dirname(e.file);
+  const base = path.basename(e.file).replace(/^(YT_|TIK_|IG_)+/, "");
+  const nextRel = dir === "." ? `${tags.join("_")}_${base}` : path.join(dir, `${tags.join("_")}_${base}`);
+  if (nextRel === e.file) return;
+  const from = path.join(ROOT, e.file);
+  const to = path.join(ROOT, nextRel);
+  if (existsSync(from)) {
+    renameSync(from, to);
+    e.file = nextRel;
+    console.log(`      renamed → ${nextRel}`);
+  }
+}
 
 // ---------- arg parsing ----------
 function parseArgs(argv) {
@@ -227,6 +255,7 @@ async function cmdDispatch(flags) {
           pl.status = res.status;
           pl.remoteId = res.remoteId;
           pl.error = null;
+          applyScheduledPrefix(e); // prefix the file: YT_ → YT_TIK_ → YT_TIK_IG_
           saveQueue(queue, ROOT);
         }
       } catch (err) {
