@@ -147,6 +147,20 @@ const main = async () => {
     [["kimi", "k2.5"], "Kimi K2.5"],
     [["open", "weight"], "open-weight"],
     [["open", "weights"], "open weights"],
+    // AI-news DeepSeek/OpenAI/Qwen video (08/2026)
+    [["v4", "flash"], "V4 Flash"],
+    [["before", "flash"], "V4 Flash"],
+    [["v4", "pro"], "V4 Pro"],
+    [["gpt", "5.6", "luna"], "GPT-5.6 Luna"],
+    [["gpt", "5.6", "terra"], "GPT-5.6 Terra"],
+    [["gpt", "5.6", "tara"], "GPT-5.6 Terra"],
+    [["mew", "three"], "Mew3"],
+    [["mu", "three"], "Mu3"],
+    [["gemini", "robotics"], "Gemini Robotics"],
+    [["sea", "dance"], "Seedance"],
+    [["seed", "ance"], "Seedance"],
+    [["seed", "dance"], "Seedance"],
+    [["lm", "arena"], "LM Arena"],
   ];
   const norm = (s) => s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
   for (const [parts, joined] of JOINS) {
@@ -191,6 +205,10 @@ const main = async () => {
     // AI-news-this-week video (07/2026)
     huang: "Huang", jensen: "Jensen", sovereignty: "sovereignty", behavior: "behaviour",
     glm: "GLM", gemini: "Gemini", moonshotai: "MoonshotAI",
+    // AI-news DeepSeek/OpenAI/Qwen video (08/2026)
+    kinsley: "Kinsley", kingsley: "Kinsley", kinsey: "Kinsley", kingsly: "Kinsley",
+    terra: "Terra", tara: "Terra", luna: "Luna", seedance: "Seedance", seadance: "Seedance",
+    mewthree: "Mew3", mew3: "Mew3", deepseek: "DeepSeek", minimax: "MiniMax", qwen: "Qwen",
   };
   for (const w of words) {
     const base = norm(w.text);

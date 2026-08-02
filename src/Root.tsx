@@ -9,6 +9,8 @@ import { CalculateMetadataFunction } from "remotion";
 import { AiWeeklyVideo, AI_WEEKLY_DUR } from "./AiWeeklyVideo";
 import { AiWeeklyFinal } from "./AiWeeklyFinal";
 import { TutorialFinal, TUTORIAL_DUR } from "./TutorialFinal";
+import { AiNews2Video, AI_NEWS2_DUR } from "./AiNews2Video";
+import { AiNews2Final } from "./AiNews2Final";
 
 export const transparentDefaults: CalculateMetadataFunction<
   Record<string, unknown>
@@ -65,7 +67,11 @@ export const RemotionRoot: React.FC = () => {
 
 
 
-      {/* ── CURRENT: AI news this week — 3 stories that matter, 2 that don't (July 2026) ── */}
+      {/* ── CURRENT: AI news — 5 labs, one day; which stories are real? (Aug 2026) ── */}
+      <Composition id="AiNews2Video" component={AiNews2Video} durationInFrames={AI_NEWS2_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="AiNews2Final" component={AiNews2Final} durationInFrames={AI_NEWS2_DUR} fps={30} width={1920} height={1080} />
+
+      {/* ── AI news this week — 3 stories that matter, 2 that don't (July 2026) ── */}
       <Composition id="AiWeeklyVideo" component={AiWeeklyVideo} durationInFrames={AI_WEEKLY_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
       <Composition id="AiWeeklyFinal" component={AiWeeklyFinal} durationInFrames={AI_WEEKLY_DUR} fps={30} width={1920} height={1080} />
 

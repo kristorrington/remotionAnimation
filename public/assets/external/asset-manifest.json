@@ -2827,6 +2827,322 @@
       ],
       "attributionRequired": false,
       "concerns": null
+    },
+    {
+      "filename": "deepseek.svg",
+      "localPath": "public/assets/external/logos/deepseek.svg",
+      "type": "logo",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ec/DeepSeek_logo.svg",
+      "sourceName": "Wikimedia Commons — DeepSeek official logo",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "Official DeepSeek logo, commentary/product identification",
+      "usedIn": [
+        "AiNews2 DeepSeek story"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "openai.svg",
+      "localPath": "public/assets/external/logos/openai.svg",
+      "type": "logo",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/66/OpenAI_logo_2025_%28symbol%29.svg",
+      "sourceName": "Wikimedia Commons — OpenAI official logo (2025 symbol)",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "Official OpenAI logo, commentary/product identification. Near-black mark — sits on ivory fine, or a white sticker card for the house look",
+      "usedIn": [
+        "AiNews2 OpenAI story"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "qwen.svg",
+      "localPath": "public/assets/external/logos/qwen.svg",
+      "type": "logo",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/65/Qwen_Logo.svg",
+      "sourceName": "Wikimedia Commons — Qwen official logo",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "Official Qwen (Alibaba) logo, commentary/product identification. Purple mark with a white sub-element that drops out on ivory",
+      "usedIn": [
+        "AiNews2 Qwen story"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "glm-zai.svg",
+      "localPath": "public/assets/external/logos/glm-zai.svg",
+      "type": "logo",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Z.ai_%28company_logo%29.svg",
+      "sourceName": "Wikimedia Commons — Z.ai (Zhipu AI / GLM) official logo",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "Official Z.ai (GLM / Zhipu) logo, commentary/product identification. Multi-colour mark with dark and light-grey elements",
+      "usedIn": [
+        "AiNews2 GLM / Z.ai story"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "minimax.svg",
+      "localPath": "public/assets/external/logos/minimax.svg",
+      "type": "logo",
+      "sourceUrl": "https://huggingface.co/MiniMaxAI/MiniMax-VL-01/resolve/main/figures/minimax.svg",
+      "sourceName": "Hugging Face — MiniMaxAI official repo logo",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "Official MiniMax logo, commentary/product identification. Pink-to-red gradient mark, reads on ivory",
+      "usedIn": [
+        "AiNews2 MiniMax story"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "google.svg",
+      "localPath": "public/assets/external/logos/google.svg",
+      "type": "logo",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg",
+      "sourceName": "Wikimedia Commons — Google \"G\" official logo",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "Official Google \"G\" logo, commentary/product identification (Google/Gemini). Four-colour mark, reads on ivory",
+      "usedIn": [
+        "AiNews2 Google/Gemini story"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "dreamina.png",
+      "localPath": "public/assets/external/logos/dreamina.png",
+      "type": "logo",
+      "sourceUrl": "https://sf16-web-login-neutral.capcutstatic.com/obj/capcut-web-login-static/growth/dreamina/landing_page/static/image/logo-dark.e06f7c0d.png",
+      "sourceName": "Dreamina (ByteDance / CapCut) official site logo",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "Official Dreamina logo, commentary/product identification. 'logo-dark' variant: colourful star icon + WHITE wordmark — the wordmark is invisible on ivory, needs a dark tile or crop to the star icon",
+      "usedIn": [
+        "AiNews2 Dreamina story"
+      ],
+      "attributionRequired": false,
+      "concerns": "White wordmark drops out on the light ivory backdrop; place on a dark tile or use only the coloured star icon"
+    },
+    {
+      "filename": "anthropic-claude.png",
+      "localPath": "public/assets/external/logos/anthropic-claude.png",
+      "type": "logo",
+      "sourceUrl": null,
+      "sourceName": "Uploaded by Kris (Anthropic/Claude logo)",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "Anthropic/Claude coral sunburst mark, commentary/product identification. Terracotta on transparent, reads on ivory",
+      "usedIn": [
+        "AiNews2 Anthropic/Claude story"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "ai2-openai-chatgptwork.mp4",
+      "localPath": "public/assets/external/clips/ai2-openai-chatgptwork.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=Wq45rvPGNHs",
+      "sourceName": "OpenAI — Introducing ChatGPT Work (official)",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "Muted montage segments used as official-film b-roll (commentary/reference). Segments: 0:02 branding open, 5:00 ChatGPT Work Finance UI, 15:00 'One launch, in orbit' demo",
+      "usedIn": [
+        "AiNews2 OpenAI story"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "ai2-ds-tweet.png",
+      "localPath": "public/assets/external/screenshots/ai2-ds-tweet.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/deepseek_ai/status/2083084415157022911",
+      "sourceName": "DeepSeek (official X account)",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "receipt crop — DeepSeek V4-Flash Official API now live in public beta with agent-capability upgrades (tweet card + benchmark table)",
+      "usedIn": [
+        "AiNews2"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "width": 1100,
+      "height": 1150
+    },
+    {
+      "filename": "ai2-altman.png",
+      "localPath": "public/assets/external/screenshots/ai2-altman.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/sama/status/2082880720989532597",
+      "sourceName": "Sam Altman (official X account)",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "receipt crop — GPT-5.6 Luna 80% price cut ($0.20 in / $1.20 out) and Terra 20% cut, plus AA intelligence-vs-cost chart",
+      "usedIn": [
+        "AiNews2"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "width": 1100,
+      "height": 1330
+    },
+    {
+      "filename": "ai2-dreamina.png",
+      "localPath": "public/assets/external/screenshots/ai2-dreamina.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/dreamina_ai/status/2083056471147958714",
+      "sourceName": "Dreamina AI (official X account)",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "receipt crop — Dreamina Seedance 2.5 global launch (cinematic AI video model); broken media embed excluded",
+      "usedIn": [
+        "AiNews2"
+      ],
+      "attributionRequired": false,
+      "concerns": "broken video embed dropped per house rules, so the crop is landscape rather than portrait",
+      "width": 1100,
+      "height": 490
+    },
+    {
+      "filename": "ai2-ds-updates.png",
+      "localPath": "public/assets/external/screenshots/ai2-ds-updates.png",
+      "type": "screenshot",
+      "sourceUrl": "https://api-docs.deepseek.com/updates/",
+      "sourceName": "DeepSeek API Docs — Change Log",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "receipt crop — 2026-07-31 DeepSeek-V4-Flash public beta launch entry + benchmark bullets (DeepSWE 54.4)",
+      "usedIn": [
+        "AiNews2"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "width": 1950,
+      "height": 930
+    },
+    {
+      "filename": "ai2-ds-pricing.png",
+      "localPath": "public/assets/external/screenshots/ai2-ds-pricing.png",
+      "type": "screenshot",
+      "sourceUrl": "https://api-docs.deepseek.com/quick_start/pricing",
+      "sourceName": "DeepSeek API Docs — Models & Pricing",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "receipt crop — DeepSeek Model Details/pricing table (v4-flash: $0.14 in / $0.28 out per 1M, $0.0028 cache hit)",
+      "usedIn": [
+        "AiNews2"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "width": 1560,
+      "height": 1800
+    },
+    {
+      "filename": "ai2-aa-v4flash.png",
+      "localPath": "public/assets/external/screenshots/ai2-aa-v4flash.png",
+      "type": "screenshot",
+      "sourceUrl": "https://artificialanalysis.ai/models/deepseek-v4-flash",
+      "sourceName": "Artificial Analysis (independent analysis)",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "receipt crop — INDEPENDENT ranking: DeepSeek V4 Flash Intelligence Index 50, #3 of 101; #1 cache-hit price; title cards + technical specs",
+      "usedIn": [
+        "AiNews2"
+      ],
+      "attributionRequired": false,
+      "concerns": "minor page-chrome buttons (Compare / AI Provider Benchmarks / search) intrude in the top-right corner",
+      "width": 3060,
+      "height": 1575
+    },
+    {
+      "filename": "ai2-aa-cost.png",
+      "localPath": "public/assets/external/screenshots/ai2-aa-cost.png",
+      "type": "screenshot",
+      "sourceUrl": "https://artificialanalysis.ai/models/deepseek-v4-flash",
+      "sourceName": "Artificial Analysis (independent analysis)",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "receipt crop — INDEPENDENT Intelligence Index vs Cost per Task scatter: DeepSeek V4 Flash 0731 in the 'most attractive quadrant' (~$0.03) vs GPT-5.6/Claude Opus 5 far right ($1-$3)",
+      "usedIn": [
+        "AiNews2"
+      ],
+      "attributionRequired": false,
+      "concerns": "minor page-chrome (model-count dropdown/filter icons) in the top-right of the chart card",
+      "width": 2380,
+      "height": 1250
+    },
+    {
+      "filename": "ai2-openai-luna.png",
+      "localPath": "public/assets/external/screenshots/ai2-openai-luna.png",
+      "type": "screenshot",
+      "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+      "sourceName": "OpenAI Developer Docs — GPT-5.6 Luna",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "receipt crop — GPT-5.6 Luna text-token pricing: Input $0.20 / Cached $0.02 / Output $1.20 per 1M, plus quick-comparison bars (Luna $0.20 vs Terra $2.00)",
+      "usedIn": [
+        "AiNews2"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "width": 2010,
+      "height": 800
+    },
+    {
+      "filename": "ai2-minimax-h3.png",
+      "localPath": "public/assets/external/screenshots/ai2-minimax-h3.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.minimax.io/blog/minimax-h3",
+      "sourceName": "MiniMax (official blog)",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "receipt crop — MiniMax H3 launch headline (open multimodal model) + tags + intro paragraphs",
+      "usedIn": [
+        "AiNews2"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "width": 2400,
+      "height": 840
+    },
+    {
+      "filename": "ai2-gemini35.png",
+      "localPath": "public/assets/external/screenshots/ai2-gemini35.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.igeekphone.com/googles-gemini-3-5-pro-briefly-appears-on-ai-arena-platform-before-being-removed/",
+      "sourceName": "iGeekPhone (article)",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "receipt crop — 'Google's Gemini 3.5 Pro Briefly Appears on AI Arena Platform Before Being Removed' headline + Arena/gemini-3.5-pro embed",
+      "usedIn": [
+        "AiNews2"
+      ],
+      "attributionRequired": false,
+      "concerns": "~10% ad-sidebar sliver on the far right in the lower rows (headline overhangs the sidebar gutter; unavoidable rectangular crop — no claim glyph sliced)",
+      "width": 2110,
+      "height": 1385
+    },
+    {
+      "filename": "ai2-gemini-robotics.png",
+      "localPath": "public/assets/external/screenshots/ai2-gemini-robotics.png",
+      "type": "screenshot",
+      "sourceUrl": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/",
+      "sourceName": "Google DeepMind (official blog)",
+      "dateAccessed": "2026-08-02",
+      "usageNote": "receipt crop — 'Gemini Robotics 2 brings whole body intelligence to robots' headline + robot hero image + caption",
+      "usedIn": [
+        "AiNews2"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "width": 2680,
+      "height": 2560
+    },
+    {
+      "filename": "tutorial-empty.png",
+      "localPath": "public/assets/external/screenshots/tutorial-empty.png",
+      "type": "screenshot",
+      "sourceUrl": null,
+      "sourceName": "Frozen still from claude-code-tutorial-final.mp4 (clean empty-project frame)",
+      "dateAccessed": "2026-08-01",
+      "usageNote": "Frozen SCREEN still used to skip a torn source segment on the idle empty-project beat (TutorialFinal)",
+      "usedIn": [
+        "TutorialFinal"
+      ],
+      "attributionRequired": false,
+      "concerns": null
     }
   ]
 }
