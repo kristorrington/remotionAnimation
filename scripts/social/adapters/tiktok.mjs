@@ -62,6 +62,11 @@ export async function dispatch(entry, env, dryRun) {
   }
 
   // ── INBOX flow (unaudited default): lands in your drafts, you post in-app.
+  // Fire-when-due (like Instagram): with a future publishAt the push waits, so
+  // the cloud dispatcher delivers each video to the phone ON its posting day.
+  if (entry.publishAt && new Date(entry.publishAt).getTime() > Date.now() && !dryRun) {
+    return { status: "approved", remoteId: null, detail: `waiting until ${entry.publishAt} (inbox push fires when due)` };
+  }
   if (dryRun) {
     return { status: "drafted", remoteId: "(dry-run)", detail: `would push ${entry.file} (${(size / 1e6).toFixed(1)}MB) to your TikTok drafts` };
   }
