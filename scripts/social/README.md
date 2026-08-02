@@ -113,15 +113,15 @@ nothing.
    *Desktop app* client → put `YT_CLIENT_ID`/`YT_CLIENT_SECRET` in `.env` →
    `node scripts/social/auth-youtube.mjs` → paste the printed `YT_REFRESH_TOKEN`.
 3. **TikTok:** TikTok for Developers app → add **Login Kit + Content Posting
-   API** (scope `video.upload`). TikTok needs an **HTTPS redirect on a verified
-   domain** (no `http://localhost`): verify your domain under **URL properties**,
-   then register a redirect like `https://yourdomain.com/`. Put
-   `TIKTOK_CLIENT_KEY`, `TIKTOK_CLIENT_SECRET`, and `TIKTOK_REDIRECT_URI` (that
-   exact HTTPS URL) in `.env` → `node scripts/social/auth-tiktok.mjs` → open the
-   printed URL, approve, paste the redirected URL back → paste the printed
-   `TIKTOK_REFRESH_TOKEN` (the adapter refreshes the ~24h access token itself).
-   Uploads land in your TikTok **drafts** (unattended auto-post needs TikTok's
-   app audit). A one-off `TIKTOK_ACCESS_TOKEN` also works but expires ~24h.
+   API** (scope `video.upload`). Use the **Desktop** flow (no domain needed):
+   in Login Kit toggle **Configure for Desktop** and register the exact redirect
+   `http://localhost:4600/callback/` (desktop allows localhost+port). Put
+   `TIKTOK_CLIENT_KEY` + `TIKTOK_CLIENT_SECRET` in `.env` → `node
+   scripts/social/auth-tiktok.mjs` (opens browser, localhost callback, hex-PKCE)
+   → paste the printed `TIKTOK_REFRESH_TOKEN` (the adapter refreshes the ~24h
+   access token itself). Uploads land in your TikTok **drafts** (unattended
+   auto-post needs TikTok's app audit). Add yourself as a **Sandbox** target
+   user so it works without full app review.
 4. **Instagram:** Business/Creator account + linked FB Page + Meta app with
    `instagram_content_publish` → `IG_USER_ID`, `IG_ACCESS_TOKEN`, and a
    `SOCIAL_UPLOAD_CMD` that puts the file at a public URL (see `.env.example`).
