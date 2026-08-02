@@ -67,7 +67,11 @@ const server = http.createServer(async (req, res) => {
   res.end("Done — you can close this tab and return to the terminal.");
   server.close();
   if (!j.refresh_token) { console.error(`\nNo refresh_token returned: ${JSON.stringify(j)}`); process.exit(1); }
-  console.log(`\nAdd this line to your .env:\n\nTIKTOK_REFRESH_TOKEN=${j.refresh_token}\n`);
+  // --mask: for screen-recorded demos — never show the real token on camera.
+  const mask = process.argv.includes("--mask");
+  const shown = mask ? j.refresh_token.slice(0, 4) + "****************(hidden for recording)" : j.refresh_token;
+  console.log(`\nAuthorization successful.`);
+  console.log(`\nAdd this line to your .env:\n\nTIKTOK_REFRESH_TOKEN=${shown}\n`);
   console.log(`(access token expires ~${Math.round((j.expires_in || 86400) / 3600)}h; the adapter refreshes it. refresh token lasts ~${Math.round((j.refresh_expires_in || 0) / 86400)} days.)`);
 });
 
