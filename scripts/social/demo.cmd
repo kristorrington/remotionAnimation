@@ -13,19 +13,19 @@ echo   $ node scripts/social/auth-tiktok.mjs
 echo.
 node scripts\social\auth-tiktok.mjs --mask
 echo.
-timeout /t 4 /nobreak >nul
+%SystemRoot%System32	imeout.exe /t 4 /nobreak >nul
 echo [2/4] The publishing queue (my own rendered videos + captions)
 echo   $ node scripts/social/social.mjs list
 echo.
 node scripts\social\social.mjs list
 echo.
-timeout /t 6 /nobreak >nul
+%SystemRoot%System32	imeout.exe /t 6 /nobreak >nul
 echo [3/4] Upload one video to MY OWN account's inbox (video.upload)
 echo   $ node scripts/social/social.mjs dispatch --platform tiktok --id Short-DeepSeekCost --go
 echo.
 node scripts\social\social.mjs dispatch --platform tiktok --id Short-DeepSeekCost --go
 echo.
-timeout /t 4 /nobreak >nul
+%SystemRoot%System32	imeout.exe /t 4 /nobreak >nul
 echo [4/4] Publish status straight from the TikTok API
 echo   $ node scripts/social/tiktok-status.mjs
 echo.
