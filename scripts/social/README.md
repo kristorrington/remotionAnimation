@@ -112,10 +112,13 @@ nothing.
 2. **YouTube:** Google Cloud project → enable *YouTube Data API v3* → OAuth
    *Desktop app* client → put `YT_CLIENT_ID`/`YT_CLIENT_SECRET` in `.env` →
    `node scripts/social/auth-youtube.mjs` → paste the printed `YT_REFRESH_TOKEN`.
-3. **TikTok:** TikTok for Developers app → add **Content Posting API** (scope
-   `video.upload`), register redirect `http://localhost:4600`, add yourself as a
-   Sandbox target user → put `TIKTOK_CLIENT_KEY`/`TIKTOK_CLIENT_SECRET` in
-   `.env` → `node scripts/social/auth-tiktok.mjs` → paste the printed
+3. **TikTok:** TikTok for Developers app → add **Login Kit + Content Posting
+   API** (scope `video.upload`). TikTok needs an **HTTPS redirect on a verified
+   domain** (no `http://localhost`): verify your domain under **URL properties**,
+   then register a redirect like `https://yourdomain.com/`. Put
+   `TIKTOK_CLIENT_KEY`, `TIKTOK_CLIENT_SECRET`, and `TIKTOK_REDIRECT_URI` (that
+   exact HTTPS URL) in `.env` → `node scripts/social/auth-tiktok.mjs` → open the
+   printed URL, approve, paste the redirected URL back → paste the printed
    `TIKTOK_REFRESH_TOKEN` (the adapter refreshes the ~24h access token itself).
    Uploads land in your TikTok **drafts** (unattended auto-post needs TikTok's
    app audit). A one-off `TIKTOK_ACCESS_TOKEN` also works but expires ~24h.
