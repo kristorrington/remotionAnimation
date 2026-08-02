@@ -218,8 +218,8 @@ const BEATS: Beat[] = [
       <KineticText text="A NUMBER THAT LOOKS WRONG" durationInFrames={166} highlight="WRONG" y={520} size={72} />
     </SceneShell>
   ) },
-  { key: "oaTypo", from: 5632, dur: 408, fullscreen: true, node: <TypoScene durationInFrames={408} tint={AMBER} strikeAt={20} fixAt={388} /> },
-  { key: "oaLuna", from: 6040, dur: 248, receipt: true, node: receipt(248, "luna", "ai2-openai-luna.png", "developers.openai.com/api/docs/models/gpt-5.6-luna", "OPENAI · DEVELOPER DOCS", "THE REAL PRICE: $1.20", GREEN) },
+  { key: "oaTypo", from: 5632, dur: 500, node: <TypoScene durationInFrames={500} tint={AMBER} strikeAt={20} fixAt={388} /> },
+  { key: "oaLuna", from: 6132, dur: 156, receipt: true, node: receipt(156, "luna", "ai2-openai-luna.png", "developers.openai.com/api/docs/models/gpt-5.6-luna", "OPENAI · DEVELOPER DOCS", "THE REAL PRICE: $1.20", GREEN) },
 
   // ── THE RUMOURS (Mew3 + Kinsley) ──
   { key: "ruMew", from: 6284, dur: 500, fullscreen: true, node: (
