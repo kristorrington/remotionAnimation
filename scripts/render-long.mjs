@@ -51,11 +51,23 @@ run(`npx remotion ffmpeg -y -f concat -safe 0 -i "${listFile}" -c copy "${videoO
 const audio = path.join(TMP, "audio.wav");
 if (!existsSync(audio)) run(`npx remotion render ${COMP} "${audio}" --concurrency=4`);
 
-// 4) mux + MASTER to ~-14 LUFS. Must use SYSTEM ffmpeg — Remotion's bundled
-// ffmpeg is built without the loudnorm filter, and a raw mux lands ~-23 LUFS
-// (quiet: YouTube attenuates loud audio but never boosts quiet audio).
+// 4) mux + MASTER to ~-14 LUFS with TWO-PASS *linear* loudnorm (measure, then
+// apply a single linear gain + true-peak limit). Single-pass loudnorm applies
+// dynamic normalization that audibly PUMPS speech ("doesn't sound right", Kris
+// Aug 2026); linear mode is transparent. TP=-1.5 leaves headroom so loud
+// speech never near-clips. Must use SYSTEM ffmpeg — Remotion's bundled ffmpeg
+// lacks the loudnorm filter, and a raw mux lands ~-23 LUFS (too quiet).
 const SYS_FF = "C:/ProgramData/chocolatey/bin/ffmpeg.exe";
-run(`"${SYS_FF}" -y -hide_banner -loglevel error -i "${videoOnly}" -i "${audio}" -c:v copy -af loudnorm=I=-14:TP=-1.0:LRA=11 -c:a aac -b:a 320k "${OUT}"`);
+let af = "loudnorm=I=-14:TP=-1.5:LRA=11";
+try {
+  const meas = execSync(`"${SYS_FF}" -hide_banner -i "${audio}" -af loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json -f null - 2>&1`, { cwd: ROOT }).toString();
+  const j = JSON.parse(meas.slice(meas.lastIndexOf("{"), meas.lastIndexOf("}") + 1));
+  af = `loudnorm=I=-14:TP=-1.5:LRA=11:measured_I=${j.input_i}:measured_TP=${j.input_tp}:measured_LRA=${j.input_lra}:measured_thresh=${j.input_thresh}:offset=${j.target_offset}:linear=true`;
+  console.log(">>> loudnorm measured — applying transparent linear normalization");
+} catch (e) {
+  console.warn(">>> loudnorm measure failed, falling back to single-pass:", e?.message ?? e);
+}
+run(`"${SYS_FF}" -y -hide_banner -loglevel error -i "${videoOnly}" -i "${audio}" -c:v copy -af "${af}" -c:a aac -b:a 320k "${OUT}"`);
 
 rmSync(TMP, { recursive: true, force: true });
 console.log(`\ndone -> ${OUT}`);

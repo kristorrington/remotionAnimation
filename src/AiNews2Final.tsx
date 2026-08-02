@@ -1,6 +1,6 @@
 import React from "react";
 import { AbsoluteFill, Easing, interpolate, Sequence, useCurrentFrame } from "remotion";
-import { AiNews2Video, AI_NEWS2_WINDOWS, AI_NEWS2_FULLSCREEN, AI_NEWS2_EXTRA_CUTS } from "./AiNews2Video";
+import { AiNews2Video, AI_NEWS2_WINDOWS, AI_NEWS2_FULLSCREEN, AI_NEWS2_EXTRA_CUTS, AI_NEWS2_PIP } from "./AiNews2Video";
 import { CutFlash } from "./components/CutFlash";
 import { FootageDirector } from "./components/FootageDirector";
 import { CornerPip } from "./components/CornerPip";
@@ -63,7 +63,7 @@ export const AiNews2Final: React.FC = () => {
   const introRadius = interpolate(frame, [0, 22], [40, 0], CLAMP);
 
   let footage: React.ReactNode = (
-    <FootageDirector footage={FOOTAGE} volume={1.3} framing={[{ at: 0, scale: 1.03, y: 0 }]} />
+    <FootageDirector footage={FOOTAGE} volume={1.15} framing={[{ at: 0, scale: 1.03, y: 0 }]} />
   );
   for (const p of PUNCHES) {
     footage = (
@@ -103,6 +103,10 @@ export const AiNews2Final: React.FC = () => {
 
           {PIP_SEGMENTS.map((s) => (
             <CornerPip key={`pip-${s.from}`} footage={FOOTAGE} from={s.from} dur={s.to - s.from} />
+          ))}
+          {/* extra PiP on explanation/verdict/data/list fullscreen scenes (more face) */}
+          {AI_NEWS2_PIP.map((s) => (
+            <CornerPip key={`pipf-${s.from}`} footage={FOOTAGE} from={s.from} dur={s.to - s.from} />
           ))}
         </SlideLeftPush>
 

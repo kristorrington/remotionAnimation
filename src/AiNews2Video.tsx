@@ -74,21 +74,18 @@ const ThreeTiers: React.FC<{ durationInFrames: number; tint: string; ats: number
     { label: "Rumour", sub: "Screenshots & leaks", col: RED },
   ];
   return (
-    <NewsShell durationInFrames={durationInFrames} tint={tint}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 44 }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          {tiers.map((t, i) => {
-            const at = ats[i];
-            const e = spring({ frame: frame - at, fps, config: { stiffness: 110, damping: 18 }, durationInFrames: 24 });
-            return (
-              <div key={t.label} style={{ width: 780, padding: "18px 30px", background: NEWS.dark, borderRadius: 12, borderLeft: `10px solid ${t.col}`, display: "flex", alignItems: "center", gap: 22, boxShadow: "0 14px 34px rgba(20,18,16,0.16)", transform: `translateX(${interpolate(e, [0, 1], [-44, 0])}px)`, opacity: interpolate(frame, [at, at + 8], [0, 1], CLAMP) }}>
-                <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 40, letterSpacing: 1, textTransform: "uppercase", color: "#fff", width: 340, transform: "translateZ(0)" }}>{t.label}</span>
-                <span style={{ flex: 1, fontFamily: DISPLAY, fontWeight: 500, fontSize: 25, color: t.col, transform: "translateZ(0)" }}>{t.sub}</span>
-              </div>
-            );
-          })}
-        </div>
-        <NewsHeadline kicker="Three very different things" title="NOT ALL NEWS IS EQUAL" titleSize={82} accent={BRAND} />
+    <NewsShell durationInFrames={durationInFrames} tint={tint} header={<NewsHeadline kicker="Three very different things" title="NOT ALL NEWS IS EQUAL" titleSize={82} accent={BRAND} />}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+        {tiers.map((t, i) => {
+          const at = ats[i];
+          const e = spring({ frame: frame - at, fps, config: { stiffness: 110, damping: 18 }, durationInFrames: 24 });
+          return (
+            <div key={t.label} style={{ width: 780, padding: "18px 30px", background: NEWS.dark, borderRadius: 12, borderLeft: `10px solid ${t.col}`, display: "flex", alignItems: "center", gap: 22, boxShadow: "0 14px 34px rgba(20,18,16,0.16)", transform: `translateX(${interpolate(e, [0, 1], [-44, 0])}px)`, opacity: interpolate(frame, [at, at + 8], [0, 1], CLAMP) }}>
+              <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 40, letterSpacing: 1, textTransform: "uppercase", color: "#fff", width: 340, transform: "translateZ(0)" }}>{t.label}</span>
+              <span style={{ flex: 1, fontFamily: DISPLAY, fontWeight: 500, fontSize: 25, color: t.col, transform: "translateZ(0)" }}>{t.sub}</span>
+            </div>
+          );
+        })}
       </div>
     </NewsShell>
   );
@@ -111,13 +108,10 @@ const RumourPile: React.FC<{ durationInFrames: number; tint: string; ats: number
     );
   };
   return (
-    <NewsShell durationInFrames={durationInFrames} tint={tint}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 40 }}>
-        <div style={{ display: "flex", gap: 46 }}>
-          <Card name="Mew3" logo="openai" at={ats[0]} tilt={-3} />
-          <Card name="Kinsley" logo="qwen" at={ats[1]} tilt={3} />
-        </div>
-        <NewsHeadline kicker="A mystery name is still a mystery name" title="THE RUMOUR PILE" titleSize={80} accent={BRAND} />
+    <NewsShell durationInFrames={durationInFrames} tint={tint} header={<NewsHeadline kicker="A mystery name is still a mystery name" title="THE RUMOUR PILE" titleSize={80} accent={BRAND} />}>
+      <div style={{ display: "flex", gap: 46 }}>
+        <Card name="Mew3" logo="openai" at={ats[0]} tilt={-3} />
+        <Card name="Kinsley" logo="qwen" at={ats[1]} tilt={3} />
       </div>
     </NewsShell>
   );
@@ -129,28 +123,25 @@ const ChangeConditions: React.FC<{ durationInFrames: number; tint: string; ats: 
   const { fps } = useVideoConfig();
   const items = ["Independent test", "Official confirmation"];
   return (
-    <NewsShell durationInFrames={durationInFrames} tint={tint}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 40 }}>
-        <div style={{ display: "flex", gap: 30 }}>
-          {items.map((c, i) => {
-            const at = ats[i];
-            const e = spring({ frame: frame - at, fps, config: { stiffness: 120, damping: 18 }, durationInFrames: 24 });
-            return (
-              <div key={c} style={{ width: 460, padding: "34px 30px", background: NEWS.dark, borderRadius: 12, borderTop: `4px solid ${BLUE}`, display: "flex", flexDirection: "column", alignItems: "center", gap: 14, boxShadow: "0 14px 34px rgba(20,18,16,0.16)", transform: `translateY(${interpolate(e, [0, 1], [40, 0])}px)`, opacity: interpolate(frame, [at, at + 8], [0, 1], CLAMP) }}>
-                <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 74, lineHeight: 0.9, color: BLUE, transform: "translateZ(0)" }}>{i + 1}</span>
-                <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 40, letterSpacing: 1, textTransform: "uppercase", color: "#fff", textAlign: "center", transform: "translateZ(0)" }}>{c}</span>
-              </div>
-            );
-          })}
-        </div>
-        <NewsHeadline kicker="What would change the ranking" title="TWO THINGS" titleSize={80} accent={BRAND} />
+    <NewsShell durationInFrames={durationInFrames} tint={tint} header={<NewsHeadline kicker="What would change the ranking" title="TWO THINGS" titleSize={80} accent={BRAND} />}>
+      <div style={{ display: "flex", gap: 30 }}>
+        {items.map((c, i) => {
+          const at = ats[i];
+          const e = spring({ frame: frame - at, fps, config: { stiffness: 120, damping: 18 }, durationInFrames: 24 });
+          return (
+            <div key={c} style={{ width: 460, padding: "34px 30px", background: NEWS.dark, borderRadius: 12, borderTop: `4px solid ${BLUE}`, display: "flex", flexDirection: "column", alignItems: "center", gap: 14, boxShadow: "0 14px 34px rgba(20,18,16,0.16)", transform: `translateY(${interpolate(e, [0, 1], [40, 0])}px)`, opacity: interpolate(frame, [at, at + 8], [0, 1], CLAMP) }}>
+              <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 74, lineHeight: 0.9, color: BLUE, transform: "translateZ(0)" }}>{i + 1}</span>
+              <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 40, letterSpacing: 1, textTransform: "uppercase", color: "#fff", textAlign: "center", transform: "translateZ(0)" }}>{c}</span>
+            </div>
+          );
+        })}
       </div>
     </NewsShell>
   );
 };
 
 // ── BEATS — from ≈ spokenFrame − 6 (whisper-pinned). ──
-type Beat = { key: string; from: number; dur: number; fullscreen?: boolean; receipt?: boolean; node: React.ReactNode };
+type Beat = { key: string; from: number; dur: number; fullscreen?: boolean; receipt?: boolean; pip?: boolean; node: React.ReactNode };
 const BEATS: Beat[] = [
   // ── THE FEED (hook) ──
   { key: "hookGrid", from: 100, dur: 378, fullscreen: true, node: (
@@ -277,6 +268,16 @@ const BEATS: Beat[] = [
 export const AI_NEWS2_WINDOWS: { from: number; dur: number }[] = BEATS.map((b) => ({ from: b.from, dur: b.dur }));
 export const AI_NEWS2_FULLSCREEN: { from: number; to: number }[] = BEATS.filter((b) => b.fullscreen).map((b) => ({ from: b.from, to: b.from + b.dur }));
 export const AI_NEWS2_EXTRA_CUTS = BEATS.filter((b) => b.receipt).map((b) => b.from);
+
+// Fullscreen scenes that ALSO carry the corner PiP (Kris: more face throughout).
+// Explanation / verdict / data / list beats keep the presenter in the corner;
+// hero lineups, kinetic punches, title cards, gags and the film montages stay
+// clean. Receipts already get a PiP via PIP_SEGMENTS below.
+const PIP_KEYS = new Set([
+  "hookTiers", "dsBars", "dsCost", "dsCaveat", "dsVerdict", "oaCuts", "oaWar", "oaTerra",
+  "ruHype", "ruKinsley", "ruPile", "lvl1", "lvl2", "lvl3", "recap", "ruleGates", "watch", "dont",
+]);
+export const AI_NEWS2_PIP: { from: number; to: number }[] = BEATS.filter((b) => PIP_KEYS.has(b.key)).map((b) => ({ from: b.from, to: b.from + b.dur }));
 
 const OUTRO_FROM = 13030;
 

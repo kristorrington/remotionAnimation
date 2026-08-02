@@ -36,16 +36,21 @@ const block = (accent: string): React.CSSProperties => ({
 });
 
 // Near-white newsroom stage: faint dot grid + light brand-tint corner wash,
-// impact shake + a slow push. Flat (no aurora/particles).
-export const NewsShell: React.FC<{ durationInFrames: number; children: React.ReactNode; tint?: string; impacts?: number[] }>
-  = ({ children, tint = NEWS.brand, impacts }) => {
+// impact shake + a slow push. Flat (no aurora/particles). `header` (the
+// headline) sits pinned at the TOP; `children` (the image / b-roll) sit in the
+// centred area below it (Kris: text above the visual).
+export const NewsShell: React.FC<{ durationInFrames: number; children: React.ReactNode; header?: React.ReactNode; tint?: string; impacts?: number[] }>
+  = ({ children, header, tint = NEWS.brand, impacts }) => {
   const shake = useImpactShake(impacts ?? []);
   return (
     <AbsoluteFill style={{ backgroundColor: NEWS.bg, justifyContent: "center", alignItems: "center" }}>
       <AbsoluteFill style={{ backgroundImage: "radial-gradient(rgba(20,18,16,0.06) 1px, transparent 1px)", backgroundSize: "26px 26px", opacity: 0.7 }} />
       <AbsoluteFill style={{ background: `radial-gradient(ellipse 80% 60% at 50% 116%, ${tint}14, transparent 70%)`, pointerEvents: "none" }} />
       <SceneCameraPush>
-        <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", transform: `translate(${shake.x}px, ${shake.y}px)` }}>{children}</AbsoluteFill>
+        <AbsoluteFill style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: header ? "flex-start" : "center", padding: header ? "96px 80px 92px" : 0, transform: `translate(${shake.x}px, ${shake.y}px)` }}>
+          {header}
+          <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", width: "100%" }}>{children}</div>
+        </AbsoluteFill>
       </SceneCameraPush>
     </AbsoluteFill>
   );
@@ -83,13 +88,14 @@ export const NewsKinetic: React.FC<{ durationInFrames: number; tint?: string; te
   const { fps } = useVideoConfig();
   const slam = spring({ frame: frame - 4, fps, config: { stiffness: 190, damping: 22, mass: 0.9 }, durationInFrames: 28 });
   const words = text.split(" ");
+  const hnorm = (highlight ?? "").replace(/[^A-Za-z0-9]/g, "").toUpperCase();
   return (
     <NewsShell durationInFrames={0} tint={tint}>
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: "0.24em", maxWidth: 1500, transform: `scale(${interpolate(slam, [0, 1], [1.18, 1])})`, opacity: interpolate(frame, [4, 16], [0, 1], CLAMP) }}>
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: Math.round(size * 0.26), maxWidth: 1560, transform: `scale(${interpolate(slam, [0, 1], [1.18, 1])})`, opacity: interpolate(frame, [4, 16], [0, 1], CLAMP) }}>
         {words.map((w, i) => {
-          const hot = highlight && w.replace(/[^A-Za-z0-9]/g, "").toUpperCase() === highlight.toUpperCase();
+          const hot = !!hnorm && w.replace(/[^A-Za-z0-9]/g, "").toUpperCase() === hnorm;
           return (
-            <span key={i} style={{ fontFamily: HERO, fontWeight: 400, fontSize: size, lineHeight: 1.02, letterSpacing: 1, textTransform: "uppercase", color: hot ? "#fff" : NEWS.ink, background: hot ? NEWS.brand : "transparent", padding: hot ? "0 0.18em" : 0, borderRadius: hot ? 8 : 0 }}>{w}</span>
+            <span key={i} style={{ fontFamily: HERO, fontWeight: 400, fontSize: size, lineHeight: 1.02, letterSpacing: 1, textTransform: "uppercase", color: hot ? "#fff" : NEWS.ink, background: hot ? NEWS.brand : "transparent", padding: hot ? "2px 0.2em" : 0, borderRadius: hot ? 8 : 0 }}>{w}</span>
           );
         })}
       </div>
@@ -123,19 +129,16 @@ export const NewsClipCard: React.FC<{ durationInFrames: number; tint?: string; k
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const e = spr(frame, fps, 4, 26);
-  const cardW = 1200, cardH = 674;
+  const cardW = 1180, cardH = 620;
   return (
-    <NewsShell durationInFrames={durationInFrames} tint={tint}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 28 }}>
-        <div style={{ position: "relative", width: cardW, height: cardH, borderRadius: 14, overflow: "hidden", background: NEWS.dark, border: `1px solid rgba(20,18,16,0.14)`, boxShadow: "0 22px 54px rgba(20,18,16,0.28)", transform: `scale(${interpolate(e, [0, 1], [0.92, 1])})`, opacity: interpolate(frame, [4, 16], [0, 1], CLAMP) }}>
-          <OffthreadVideo src={staticFile(clip)} muted style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-          <div style={{ position: "absolute", top: 16, left: 16, display: "flex", alignItems: "center", gap: 10, padding: "7px 14px", borderRadius: 8, background: "rgba(10,9,8,0.66)", border: `1px solid ${NEWS.brand}` }}>
-            <div style={{ width: 9, height: 9, borderRadius: "50%", background: NEWS.red }} />
-            <span style={{ fontFamily: DISPLAY, fontWeight: 600, fontSize: 18, letterSpacing: 2, textTransform: "uppercase", color: "#fff" }}>· Official film</span>
-          </div>
-          <div style={{ position: "absolute", bottom: 12, right: 16, fontFamily: DISPLAY, fontWeight: 500, fontSize: 17, color: "rgba(255,255,255,0.7)" }}>{source}</div>
+    <NewsShell durationInFrames={durationInFrames} tint={tint} header={<NewsHeadline kicker={kicker} title={title} titleSize={66} accent={NEWS.brand} />}>
+      <div style={{ position: "relative", width: cardW, height: cardH, borderRadius: 14, overflow: "hidden", background: NEWS.dark, border: `1px solid rgba(20,18,16,0.14)`, boxShadow: "0 22px 54px rgba(20,18,16,0.28)", transform: `scale(${interpolate(e, [0, 1], [0.92, 1])})`, opacity: interpolate(frame, [4, 16], [0, 1], CLAMP) }}>
+        <OffthreadVideo src={staticFile(clip)} muted style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        <div style={{ position: "absolute", top: 16, left: 16, display: "flex", alignItems: "center", gap: 10, padding: "7px 14px", borderRadius: 8, background: "rgba(10,9,8,0.66)", border: `1px solid ${NEWS.brand}` }}>
+          <div style={{ width: 9, height: 9, borderRadius: "50%", background: NEWS.red }} />
+          <span style={{ fontFamily: DISPLAY, fontWeight: 600, fontSize: 18, letterSpacing: 2, textTransform: "uppercase", color: "#fff" }}>· Official film</span>
         </div>
-        <NewsHeadline kicker={kicker} title={title} titleSize={72} accent={NEWS.brand} />
+        <div style={{ position: "absolute", bottom: 12, right: 16, fontFamily: DISPLAY, fontWeight: 500, fontSize: 17, color: "rgba(255,255,255,0.7)" }}>{source}</div>
       </div>
     </NewsShell>
   );
@@ -208,14 +211,11 @@ export const LogoGrid: React.FC<{
   titleSize?: number; tileH?: number; maxW?: number;
   items: { logo: LogoKey; at: number; label?: string; tilt?: number }[];
 }> = ({ durationInFrames, tint = NEWS.brand, kicker, title, titleSize = 92, tileH = 150, maxW = 1560, items }) => (
-  <NewsShell durationInFrames={durationInFrames} tint={tint}>
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 54 }}>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 34, maxWidth: maxW, justifyContent: "center", alignItems: "flex-start" }}>
-        {items.map((it) => (
-          <LabTile key={it.logo + it.at} logo={it.logo} h={tileH} at={it.at} label={it.label} tilt={it.tilt ?? 0} />
-        ))}
-      </div>
-      <NewsHeadline kicker={kicker} title={title} titleSize={titleSize} accent={NEWS.brand} />
+  <NewsShell durationInFrames={durationInFrames} tint={tint} header={<NewsHeadline kicker={kicker} title={title} titleSize={titleSize} accent={NEWS.brand} />}>
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 34, maxWidth: maxW, justifyContent: "center", alignItems: "flex-start" }}>
+      {items.map((it) => (
+        <LabTile key={it.logo + it.at} logo={it.logo} h={tileH} at={it.at} label={it.label} tilt={it.tilt ?? 0} />
+      ))}
     </div>
   </NewsShell>
 );
@@ -224,11 +224,8 @@ export const LogoGrid: React.FC<{
 export const LogoTitle: React.FC<{
   durationInFrames: number; particleSeed?: number; tint?: string; logo: LogoKey; kicker: string; title: string; titleSize?: number;
 }> = ({ durationInFrames, tint = NEWS.brand, logo, kicker, title, titleSize = 84 }) => (
-  <NewsShell durationInFrames={durationInFrames} tint={tint}>
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 40 }}>
-      <LabTile logo={logo} h={210} at={6} />
-      <NewsHeadline kicker={kicker} title={title} titleSize={titleSize} accent={NEWS.brand} />
-    </div>
+  <NewsShell durationInFrames={durationInFrames} tint={tint} header={<NewsHeadline kicker={kicker} title={title} titleSize={titleSize} accent={NEWS.brand} />}>
+    <LabTile logo={logo} h={220} at={6} />
   </NewsShell>
 );
 
@@ -252,8 +249,8 @@ export const CostFaceoff: React.FC<{
   const fx = spr(frame, fps, fixedAt, 22);
   const stampS = spring({ frame: frame - stampAt, fps, config: { stiffness: 200, damping: 15 }, durationInFrames: 20 });
   return (
-    <NewsShell durationInFrames={durationInFrames} tint={NEWS.brand} impacts={[stampAt]}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 28 }}>
+    <NewsShell durationInFrames={durationInFrames} tint={NEWS.brand} impacts={[stampAt]} header={<NewsHeadline kicker={kicker} title={title} titleSize={78} accent={NEWS.brand} />}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 26 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 22px", borderRadius: 999, background: NEWS.green, opacity: interpolate(frame, [fixedAt, fixedAt + 8], [0, 1], CLAMP), transform: `scale(${interpolate(fx, [0, 1], [0.8, 1])})` }}>
           <Tick size={28} color={NEWS.dark} />
           <span style={{ fontFamily: DISPLAY, fontWeight: 600, fontSize: 26, letterSpacing: 1, textTransform: "uppercase", color: "#fff" }}>Same bug · both fixed</span>
@@ -266,7 +263,6 @@ export const CostFaceoff: React.FC<{
         <div style={{ marginTop: 2, padding: "12px 30px", borderRadius: 10, background: NEWS.brand, transform: `rotate(-2deg) scale(${interpolate(stampS, [0, 1], [1.5, 1])})`, opacity: interpolate(frame, [stampAt, stampAt + 8], [0, 1], CLAMP), boxShadow: `0 14px 36px ${NEWS.brand}55` }}>
           <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 46, letterSpacing: 1, textTransform: "uppercase", color: "#fff" }}>{stampText}</span>
         </div>
-        <NewsHeadline kicker={kicker} title={title} titleSize={80} accent={NEWS.brand} />
       </div>
     </NewsShell>
   );
@@ -292,13 +288,10 @@ export const VerdictSplit: React.FC<{
     );
   };
   return (
-    <NewsShell durationInFrames={durationInFrames} tint={tint}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 36 }}>
-        <div style={{ display: "flex", gap: 34 }}>
-          <Chip at={leftAt} col={NEWS.green} ok tag={leftLabel} sub={leftSub} />
-          <Chip at={rightAt} col={NEWS.red} ok={false} tag={rightLabel} sub={rightSub} />
-        </div>
-        <NewsHeadline kicker={kicker} title={title} titleSize={78} accent={NEWS.brand} />
+    <NewsShell durationInFrames={durationInFrames} tint={tint} header={<NewsHeadline kicker={kicker} title={title} titleSize={78} accent={NEWS.brand} />}>
+      <div style={{ display: "flex", gap: 34 }}>
+        <Chip at={leftAt} col={NEWS.green} ok tag={leftLabel} sub={leftSub} />
+        <Chip at={rightAt} col={NEWS.red} ok={false} tag={rightLabel} sub={rightSub} />
       </div>
     </NewsShell>
   );
@@ -321,12 +314,11 @@ export const PriceCutsScene: React.FC<{ durationInFrames: number; tint?: string;
     );
   };
   return (
-    <NewsShell durationInFrames={durationInFrames} tint={tint}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 34 }}>
-        <LabTile logo="openai" h={128} at={4} />
+    <NewsShell durationInFrames={durationInFrames} tint={tint} header={<NewsHeadline kicker="OpenAI · Official" title="TWO PRICE CUTS" titleSize={70} accent={NEWS.brand} />}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 22 }}>
+        <LabTile logo="openai" h={116} at={4} />
         <Row at={at1} name="GPT-5.6 Luna" pct="80" big />
         <Row at={at2} name="GPT-5.6 Terra" pct="20" big={false} />
-        <NewsHeadline kicker="OpenAI · Official" title="TWO PRICE CUTS" titleSize={70} accent={NEWS.brand} />
       </div>
     </NewsShell>
   );
@@ -341,8 +333,8 @@ export const PriceWarScene: React.FC<{ durationInFrames: number; tint?: string; 
   const stampS = spring({ frame: frame - stampAt, fps, config: { stiffness: 200, damping: 15 }, durationInFrames: 20 });
   const barH = interpolate(drop, [0, 1], [280, 70]);
   return (
-    <NewsShell durationInFrames={durationInFrames} tint={tint} impacts={[stampAt]}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 34 }}>
+    <NewsShell durationInFrames={durationInFrames} tint={tint} impacts={[stampAt]} header={<NewsHeadline kicker="Timing is no accident" title="THE RACE TO THE BOTTOM" titleSize={72} accent={NEWS.brand} />}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 30 }}>
         <div style={{ display: "flex", alignItems: "flex-end", gap: 60 }}>
           <LabTile logo="deepseek" h={140} at={8} label="Low-cost model" labelSize={22} />
           {/* falling price bar */}
@@ -356,7 +348,6 @@ export const PriceWarScene: React.FC<{ durationInFrames: number; tint?: string; 
         <div style={{ padding: "12px 34px", borderRadius: 10, background: NEWS.red, transform: `rotate(-2deg) scale(${interpolate(stampS, [0, 1], [1.6, 1])})`, opacity: interpolate(frame, [stampAt, stampAt + 8], [0, 1], CLAMP), boxShadow: `0 14px 40px ${NEWS.red}55` }}>
           <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 50, letterSpacing: 2, textTransform: "uppercase", color: "#fff" }}>Price War</span>
         </div>
-        <NewsHeadline kicker="Timing is no accident" title="THE RACE TO THE BOTTOM" titleSize={72} accent={NEWS.brand} />
       </div>
     </NewsShell>
   );
@@ -379,14 +370,13 @@ export const TokenPriceScene: React.FC<{
     );
   };
   return (
-    <NewsShell durationInFrames={durationInFrames} tint={tint}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 32 }}>
-        <LabTile logo={logo} h={120} at={4} label={model} labelSize={24} />
+    <NewsShell durationInFrames={durationInFrames} tint={tint} header={<NewsHeadline kicker={kicker} title={title} titleSize={72} accent={NEWS.brand} />}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 28 }}>
+        <LabTile logo={logo} h={116} at={4} label={model} labelSize={24} />
         <div style={{ display: "flex", gap: 34 }}>
           <Chip label="Input" val={inCost} a={at} />
           <Chip label="Output" val={outCost} a={at + 12} />
         </div>
-        <NewsHeadline kicker={kicker} title={title} titleSize={72} accent={NEWS.brand} />
       </div>
     </NewsShell>
   );
@@ -399,23 +389,18 @@ export const TypoScene: React.FC<{ durationInFrames: number; tint?: string; stri
   const { fps } = useVideoConfig();
   const strike = interpolate(frame, [strikeAt, strikeAt + 16], [0, 1], CLAMP);
   const fixE = spr(frame, fps, fixAt, 24);
-  const stampS = spring({ frame: frame - fixAt - 6, fps, config: { stiffness: 200, damping: 15 }, durationInFrames: 20 });
   return (
-    <NewsShell durationInFrames={durationInFrames} tint={tint}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 34 }}>
-        <LabTile logo="openai" h={116} at={4} label="GPT-5.6 Luna · Output" labelSize={22} />
-        <div style={{ display: "flex", alignItems: "center", gap: 40 }}>
+    <NewsShell durationInFrames={durationInFrames} tint={tint} header={<NewsHeadline kicker="A number going round that looks wrong" title="IT'S A TYPO" titleSize={82} accent={NEWS.brand} />}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 26 }}>
+        <LabTile logo="openai" h={100} at={4} label="GPT-5.6 Luna · Output" labelSize={20} />
+        <div style={{ display: "flex", alignItems: "center", gap: 44 }}>
           <div style={{ position: "relative" }}>
-            <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 128, lineHeight: 1, color: NEWS.inkDim, transform: "translateZ(0)" }}>$120</span>
+            <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 132, lineHeight: 1, color: NEWS.inkDim, transform: "translateZ(0)" }}>$120</span>
             <div style={{ position: "absolute", top: "52%", left: -6, width: `${strike * 112}%`, height: 8, background: NEWS.red, borderRadius: 4 }} />
           </div>
           <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 56, color: NEWS.inkDim, opacity: interpolate(frame, [fixAt - 6, fixAt + 4], [0, 1], CLAMP) }}>→</span>
-          <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 140, lineHeight: 1, color: NEWS.green, transform: `scale(${interpolate(fixE, [0, 1], [0.7, 1])})`, opacity: interpolate(frame, [fixAt, fixAt + 6], [0, 1], CLAMP) }}>$1.20</span>
+          <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 150, lineHeight: 1, color: NEWS.green, transform: `scale(${interpolate(fixE, [0, 1], [0.7, 1])})`, opacity: interpolate(frame, [fixAt, fixAt + 6], [0, 1], CLAMP) }}>$1.20</span>
         </div>
-        <div style={{ padding: "10px 26px", borderRadius: 10, background: NEWS.red, transform: `rotate(-2deg) scale(${interpolate(stampS, [0, 1], [1.5, 1])})`, opacity: interpolate(frame, [fixAt + 6, fixAt + 14], [0, 1], CLAMP) }}>
-          <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 40, letterSpacing: 1, textTransform: "uppercase", color: "#fff" }}>Almost certainly a typo</span>
-        </div>
-        <NewsHeadline kicker="A number going round that looks wrong" title="$120? IT'S $1.20" titleSize={74} accent={NEWS.brand} />
       </div>
     </NewsShell>
   );
@@ -434,9 +419,9 @@ export const MysteryModelScene: React.FC<{ durationInFrames: number; tint?: stri
   const gone = interpolate(frame, [vanishAt + 20, vanishAt + 34], [1, 0], CLAMP);
   const qOp = interpolate(frame, [vanishAt + 24, vanishAt + 40], [0, 1], CLAMP);
   return (
-    <NewsShell durationInFrames={durationInFrames} tint={tint}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 34 }}>
-        <LabTile logo={logo} h={120} at={4} label="In a promotional video" labelSize={22} />
+    <NewsShell durationInFrames={durationInFrames} tint={tint} header={<NewsHeadline kicker={kicker} title={title} titleSize={74} accent={NEWS.brand} />}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 28 }}>
+        <LabTile logo={logo} h={116} at={4} label="In a promotional video" labelSize={22} />
         <div style={{ position: "relative", width: 640, height: 220, display: "flex", alignItems: "center", justifyContent: "center" }}>
           {/* the name card */}
           <div style={{ position: "absolute", padding: "26px 60px", ...block(NEWS.brand), transform: `translateX(${jitter}px) scale(${interpolate(appear, [0, 1], [0.7, 1])})`, opacity: Math.min(interpolate(frame, [showAt, showAt + 8], [0, 1], CLAMP), gone) * flick }}>
@@ -445,7 +430,6 @@ export const MysteryModelScene: React.FC<{ durationInFrames: number; tint?: stri
           {/* the "?" that remains */}
           <span style={{ position: "absolute", fontFamily: HERO, fontWeight: 400, fontSize: 160, color: NEWS.inkDim, opacity: qOp, transform: "translateZ(0)" }}>?</span>
         </div>
-        <NewsHeadline kicker={kicker} title={title} titleSize={74} accent={NEWS.brand} />
       </div>
     </NewsShell>
   );
@@ -463,9 +447,9 @@ export const LeaderboardLeakScene: React.FC<{ durationInFrames: number; tint?: s
   ];
   const claim = spr(frame, fps, claimAt, 22);
   return (
-    <NewsShell durationInFrames={durationInFrames} tint={tint}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 28 }}>
-        <span style={{ fontFamily: DISPLAY, fontWeight: 600, fontSize: 25, letterSpacing: 4, textTransform: "uppercase", color: NEWS.inkDim, opacity: interpolate(frame, [rowsAt - 6, rowsAt + 6], [0, 1], CLAMP) }}>Anonymous AI leaderboard</span>
+    <NewsShell durationInFrames={durationInFrames} tint={tint} header={<NewsHeadline kicker="Qwen's mystery model" title="AN ANONYMOUS ENTRY" titleSize={76} accent={NEWS.brand} />}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 24 }}>
+        <span style={{ fontFamily: DISPLAY, fontWeight: 600, fontSize: 24, letterSpacing: 4, textTransform: "uppercase", color: NEWS.inkDim, opacity: interpolate(frame, [rowsAt - 6, rowsAt + 6], [0, 1], CLAMP) }}>Anonymous AI leaderboard</span>
         <div style={{ width: 860, display: "flex", flexDirection: "column", gap: 12 }}>
           {rows.map((r, i) => {
             const at = rowsAt + i * 10;
@@ -524,7 +508,7 @@ export const LevelCard: React.FC<{
           })}
         </div>
         {logos && (
-          <div style={{ display: "flex", gap: 22, alignItems: "center" }}>
+          <div style={{ display: "flex", gap: 22, alignItems: "center", opacity: interpolate(frame, [tagAt - 8, tagAt], [0, 1], CLAMP) }}>
             {logos.map((lg, i) => (
               <div key={lg} style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <LabTile logo={lg} h={66} at={tagAt - 6 + i * 6} />
@@ -567,14 +551,11 @@ export const EvidenceRecap: React.FC<{
     </div>
   );
   return (
-    <NewsShell durationInFrames={durationInFrames} tint={tint}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 40 }}>
-        <div style={{ display: "flex", gap: 30, alignItems: "flex-start" }}>
-          <Col n={1} head="Official" col={NEWS.green} items={level1} ok />
-          <Col n={2} head="Reported" col={NEWS.amber} items={level2} ok={false} />
-          <Col n={3} head="Rumour" col={NEWS.red} items={level3} ok={false} />
-        </div>
-        <NewsHeadline kicker="This week, sorted by evidence" title={title} titleSize={76} accent={NEWS.brand} />
+    <NewsShell durationInFrames={durationInFrames} tint={tint} header={<NewsHeadline kicker="This week, sorted by evidence" title={title} titleSize={76} accent={NEWS.brand} />}>
+      <div style={{ display: "flex", gap: 30, alignItems: "flex-start" }}>
+        <Col n={1} head="Official" col={NEWS.green} items={level1} ok />
+        <Col n={2} head="Reported" col={NEWS.amber} items={level2} ok={false} />
+        <Col n={3} head="Rumour" col={NEWS.red} items={level3} ok={false} />
       </div>
     </NewsShell>
   );
@@ -586,21 +567,18 @@ export const Watchlist: React.FC<{ durationInFrames: number; tint?: string; item
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   return (
-    <NewsShell durationInFrames={durationInFrames} tint={tint}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 32 }}>
-        <div style={{ width: 920, display: "flex", flexDirection: "column", gap: 14 }}>
-          {items.map((it) => {
-            const e = spr(frame, fps, it.at, 24);
-            return (
-              <div key={it.text} style={{ display: "flex", alignItems: "center", gap: 20, padding: "16px 26px", ...block(NEWS.brand), transform: `translateX(${interpolate(e, [0, 1], [-42, 0])}px)`, opacity: interpolate(frame, [it.at, it.at + 8], [0, 1], CLAMP) }}>
-                <div style={{ width: 30, height: 30, borderRadius: 7, border: "2.5px solid rgba(255,255,255,0.7)" }} />
-                <LabTile logo={it.logo} h={58} at={it.at + 4} />
-                <span style={{ flex: 1, fontFamily: DISPLAY, fontWeight: 600, fontSize: 32, letterSpacing: 0.5, textTransform: "uppercase", color: "#fff", transform: "translateZ(0)" }}>{it.text}</span>
-              </div>
-            );
-          })}
-        </div>
-        <NewsHeadline kicker="The next official post changes everything" title="WHAT I'M WATCHING NEXT" titleSize={72} accent={NEWS.brand} />
+    <NewsShell durationInFrames={durationInFrames} tint={tint} header={<NewsHeadline kicker="The next official post changes everything" title="WHAT I'M WATCHING NEXT" titleSize={72} accent={NEWS.brand} />}>
+      <div style={{ width: 920, display: "flex", flexDirection: "column", gap: 14 }}>
+        {items.map((it) => {
+          const e = spr(frame, fps, it.at, 24);
+          return (
+            <div key={it.text} style={{ display: "flex", alignItems: "center", gap: 20, padding: "16px 26px", ...block(NEWS.brand), transform: `translateX(${interpolate(e, [0, 1], [-42, 0])}px)`, opacity: interpolate(frame, [it.at, it.at + 8], [0, 1], CLAMP) }}>
+              <div style={{ width: 30, height: 30, borderRadius: 7, border: "2.5px solid rgba(255,255,255,0.7)" }} />
+              <LabTile logo={it.logo} h={58} at={it.at + 4} />
+              <span style={{ flex: 1, fontFamily: DISPLAY, fontWeight: 600, fontSize: 32, letterSpacing: 0.5, textTransform: "uppercase", color: "#fff", transform: "translateZ(0)" }}>{it.text}</span>
+            </div>
+          );
+        })}
       </div>
     </NewsShell>
   );
@@ -612,21 +590,18 @@ export const DontChips: React.FC<{ durationInFrames: number; tint?: string; item
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   return (
-    <NewsShell durationInFrames={durationInFrames} tint={tint}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 32 }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          {items.map((it) => {
-            const e = spr(frame, fps, it.at, 24);
-            return (
-              <div key={it.a} style={{ display: "flex", alignItems: "center", gap: 22, padding: "16px 34px", ...block(NEWS.red), transform: `translateX(${interpolate(e, [0, 1], [-44, 0])}px)`, opacity: interpolate(frame, [it.at, it.at + 8], [0, 1], CLAMP) }}>
-                <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 40, letterSpacing: 1, textTransform: "uppercase", color: "#fff", width: 420, textAlign: "right", transform: "translateZ(0)" }}>{it.a}</span>
-                <Cross size={40} color={NEWS.red} />
-                <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 40, letterSpacing: 1, textTransform: "uppercase", color: "#fff", width: 320, transform: "translateZ(0)" }}>{it.b}</span>
-              </div>
-            );
-          })}
-        </div>
-        <NewsHeadline kicker="Until something stronger appears" title="DON'T CONFUSE THESE" titleSize={72} accent={NEWS.brand} />
+    <NewsShell durationInFrames={durationInFrames} tint={tint} header={<NewsHeadline kicker="Until something stronger appears" title="DON'T CONFUSE THESE" titleSize={72} accent={NEWS.brand} />}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+        {items.map((it) => {
+          const e = spr(frame, fps, it.at, 24);
+          return (
+            <div key={it.a} style={{ display: "flex", alignItems: "center", gap: 22, padding: "16px 34px", ...block(NEWS.red), transform: `translateX(${interpolate(e, [0, 1], [-44, 0])}px)`, opacity: interpolate(frame, [it.at, it.at + 8], [0, 1], CLAMP) }}>
+              <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 40, letterSpacing: 1, textTransform: "uppercase", color: "#fff", width: 420, textAlign: "right", transform: "translateZ(0)" }}>{it.a}</span>
+              <Cross size={40} color={NEWS.red} />
+              <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 40, letterSpacing: 1, textTransform: "uppercase", color: "#fff", width: 320, transform: "translateZ(0)" }}>{it.b}</span>
+            </div>
+          );
+        })}
       </div>
     </NewsShell>
   );
