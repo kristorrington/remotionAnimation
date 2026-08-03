@@ -19,6 +19,7 @@ import { CAPTIONS_240726 } from "./captions-240726";
 import { CAPTIONS_260726 } from "./captions-260726";
 import { CAPTIONS_HABITS } from "./captions-habits";
 import { CAPTIONS_020826 } from "./captions-020826";
+import { CAPTIONS_030826 } from "./captions-030826";
 
 // Per-source caption lookup: captionsData.ts always holds the CURRENT footage
 // (scripts/transcribe.mjs overwrites it); older videos keep a frozen copy here
@@ -45,6 +46,7 @@ const REGISTRY: Record<string, CaptionWord[]> = {
   "talking-head-260726.mp4": CAPTIONS_260726, // Claude-Opus-5 (rotated 2026-07-26)
   "talking-head-habits-260726.mp4": CAPTIONS_HABITS, // 5-habits (rotated 2026-07-27)
   "talking-head-020826.mp4": CAPTIONS_020826, // AI-news DeepSeek/OpenAI/Qwen (2026-08-02)
+  "talking-head-030826.mp4": CAPTIONS_030826, // Gemini Robotics 2 (2026-08-03)
 };
 
 export const captionsFor = (source: string): CaptionWord[] => REGISTRY[source] ?? CAPTIONS;

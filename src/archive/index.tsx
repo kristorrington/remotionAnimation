@@ -52,6 +52,10 @@ import { Opus5Video, OPUS5_DUR } from "../Opus5Video";
 import { Opus5Final } from "../Opus5Final";
 import { HabitsVideo, HABITS_DUR } from "../HabitsVideo";
 import { HabitsFinal } from "../HabitsFinal";
+import { AiWeeklyVideo, AI_WEEKLY_DUR } from "../AiWeeklyVideo";
+import { AiWeeklyFinal } from "../AiWeeklyFinal";
+import { AiNews2Video, AI_NEWS2_DUR } from "../AiNews2Video";
+import { AiNews2Final } from "../AiNews2Final";
 
 // ============================================================================
 // THE ARCHIVE — compositions from PREVIOUS videos. When a new video starts,
@@ -75,6 +79,14 @@ const transparentDefaults: CalculateMetadataFunction<
 export const ArchivedVideoCompositions: React.FC = () => {
   return (
     <>
+      {/* ── AI news #2 — DeepSeek/OpenAI/Qwen, 3-level evidence rule (Aug 2026) ── */}
+      <Composition id="AiNews2Video" component={AiNews2Video} durationInFrames={AI_NEWS2_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="AiNews2Final" component={AiNews2Final} durationInFrames={AI_NEWS2_DUR} fps={30} width={1920} height={1080} />
+
+      {/* ── AI news this week — 3 stories that matter, 2 that don't (July 2026) ── */}
+      <Composition id="AiWeeklyVideo" component={AiWeeklyVideo} durationInFrames={AI_WEEKLY_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="AiWeeklyFinal" component={AiWeeklyFinal} durationInFrames={AI_WEEKLY_DUR} fps={30} width={1920} height={1080} />
+
       {/* ── The 5 habits of managing AI agents well (July 2026) ── */}
       <Composition id="HabitsVideo" component={HabitsVideo} durationInFrames={HABITS_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
       <Composition id="HabitsFinal" component={HabitsFinal} durationInFrames={HABITS_DUR} fps={30} width={1920} height={1080} />

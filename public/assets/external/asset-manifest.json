@@ -3202,6 +3202,134 @@
       ],
       "attributionRequired": false,
       "concerns": "Concatenation of the three official demo clips (see their entries for sources)"
+    },
+    {
+      "filename": "rob2-hero.mp4",
+      "localPath": "public/assets/external/clips/rob2-hero.mp4",
+      "type": "reference",
+      "sourceUrl": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/",
+      "sourceName": "Google DeepMind — Gemini Robotics 2 (official)",
+      "dateAccessed": "2026-08-03",
+      "usageNote": "Muted official demo clip (commentary/reference)",
+      "usedIn": [
+        "GemRobotics"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "durationSec": 13.5,
+      "shows": "Branded cold-open: robot finger starts a boombox, 'Gemini Robotics 2' title card in the workshop, Apollo walks across the warehouse and bends to pick up a watering can"
+    },
+    {
+      "filename": "rob2-lightbulb.mp4",
+      "localPath": "public/assets/external/clips/rob2-lightbulb.mp4",
+      "type": "reference",
+      "sourceUrl": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/",
+      "sourceName": "Google DeepMind — Gemini Robotics 2 (official)",
+      "dateAccessed": "2026-08-03",
+      "usageNote": "Muted official demo clip (commentary/reference)",
+      "usedIn": [
+        "GemRobotics"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "durationSec": 9.8,
+      "shows": "Close-up: robot fingers unscrew the spherical bulb from a desk lamp shade until it comes free"
+    },
+    {
+      "filename": "rob2-knot.mp4",
+      "localPath": "public/assets/external/clips/rob2-knot.mp4",
+      "type": "reference",
+      "sourceUrl": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/",
+      "sourceName": "Google DeepMind — Gemini Robotics 2 (official)",
+      "dateAccessed": "2026-08-03",
+      "usageNote": "Muted official demo clip (commentary/reference)",
+      "usedIn": [
+        "GemRobotics"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "durationSec": 19,
+      "shows": "Apollo ties a knot with a blue twist-tie around a white trash bag over a bin, two-handed fine manipulation"
+    },
+    {
+      "filename": "rob2-packing.mp4",
+      "localPath": "public/assets/external/clips/rob2-packing.mp4",
+      "type": "reference",
+      "sourceUrl": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/",
+      "sourceName": "Google DeepMind — Gemini Robotics 2 (official)",
+      "dateAccessed": "2026-08-03",
+      "usageNote": "Muted official demo clip (commentary/reference)",
+      "usedIn": [
+        "GemRobotics"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "durationSec": 16,
+      "shows": "Robot hands pack grapes into a resealable zip bag, press it shut and set it by the lunch bag"
+    },
+    {
+      "filename": "rob2-garage.mp4",
+      "localPath": "public/assets/external/clips/rob2-garage.mp4",
+      "type": "reference",
+      "sourceUrl": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/",
+      "sourceName": "Google DeepMind — Gemini Robotics 2 (official)",
+      "dateAccessed": "2026-08-03",
+      "usageNote": "Muted official demo clip (commentary/reference); 2-scene montage from the official Multi-Robot Collaboration film",
+      "usedIn": [
+        "GemRobotics"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "durationSec": 17.8,
+      "shows": "Messy-garage wide shot with both robots (Apollo + Duo), then Apollo assigns tasks via chat bubbles and Duo places tools back into the toolbox"
+    },
+    {
+      "filename": "rob2-extra-wholebody.mp4",
+      "localPath": "public/assets/external/clips/rob2-extra-wholebody.mp4",
+      "type": "reference",
+      "sourceUrl": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/",
+      "sourceName": "Google DeepMind — Gemini Robotics 2 (official)",
+      "dateAccessed": "2026-08-03",
+      "usageNote": "Muted official demo clip (commentary/reference)",
+      "usedIn": [
+        "GemRobotics"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "durationSec": 14,
+      "shows": "Whole-body shelf tidying: Apollo lifts items from a laundry basket, bends, squats and places them on garage shelves"
+    },
+    {
+      "filename": "rob2-extra-sweeping.mp4",
+      "localPath": "public/assets/external/clips/rob2-extra-sweeping.mp4",
+      "type": "reference",
+      "sourceUrl": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/",
+      "sourceName": "Google DeepMind — Gemini Robotics 2 (official)",
+      "dateAccessed": "2026-08-03",
+      "usageNote": "Muted official demo clip (commentary/reference)",
+      "usedIn": [
+        "GemRobotics"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "durationSec": 10,
+      "shows": "Apollo sweeps the workshop floor with a broom alongside a person, guides debris into a dustpan basket and lifts it"
+    },
+    {
+      "filename": "rob2-extra-sixgrid.mp4",
+      "localPath": "public/assets/external/clips/rob2-extra-sixgrid.mp4",
+      "type": "reference",
+      "sourceUrl": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/",
+      "sourceName": "Google DeepMind — Gemini Robotics 2 (official)",
+      "dateAccessed": "2026-08-03",
+      "usageNote": "Muted official demo clip (commentary/reference); direct page embed (on-device model section)",
+      "usedIn": [
+        "GemRobotics"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "durationSec": 20,
+      "shows": "Six-up grid of different robot arms running autonomously at once: bookshelf, chess board, chat UI, tea tray, prosthetic hand, toy assembly"
     }
   ]
 }
