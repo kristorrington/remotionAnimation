@@ -85,11 +85,11 @@ export const GemRoboticsFinal: React.FC = () => {
           <GemRoboticsVideo />
 
           {PIP_SEGMENTS.map((s) => (
-            <CornerPip key={`pip-${s.from}`} footage={FOOTAGE} from={s.from} dur={s.to - s.from} />
+            <CornerPip key={`pip-${s.from}`} footage={FOOTAGE} from={s.from} dur={s.to - s.from} faceX={-7} />
           ))}
           {/* face presence on the long film cards + diagram scenes */}
           {GEMROB_PIP.filter((s) => FULL.some((f) => f.from === s.from)).map((s) => (
-            <CornerPip key={`pipf-${s.from}`} footage={FOOTAGE} from={s.from} dur={s.to - s.from} />
+            <CornerPip key={`pipf-${s.from}`} footage={FOOTAGE} from={s.from} dur={s.to - s.from} faceX={-7} />
           ))}
         </SlideLeftPush>
 

@@ -6,7 +6,7 @@ import { ScreenshotReceiptScene } from "./scenes/SourceCardScene";
 import { ThemeProvider } from "./theme";
 import { MusicController } from "./motion/editkit";
 import { NEWS, NewsKinetic, NewsTakeaway } from "./scenes/AiNews2Scenes";
-import { MontageClipCard, AnnotatedClipCard, OneBrainScene, HandoffsScene, HardwareVsAI, MissingProofScene, JointsStat } from "./scenes/GemRoboticsScenes";
+import { MontageClipCard, AnnotatedClipCard, ClipTakeaway, OneBrainScene, HandoffsScene, HardwareVsAI, MissingProofScene, JointsStat } from "./scenes/GemRoboticsScenes";
 
 // GemRoboticsVideo — the cutaway overlay for the Gemini Robotics 2 breakdown
 // (~5m41s, 10242f @ 30fps). FOOTAGE-FIRST (Kris: "use as much video footage as
@@ -53,15 +53,15 @@ const BEATS: Beat[] = [
       cardW={796} cardH={760} from={{ x: 0, y: 0, w: 2680, h: 2560 }} to={{ x: 0, y: 0, w: 2680, h: 2560 }} zoomAt={0} />
   ) },
   { key: "oneBrain", from: 1148, dur: 412, fullscreen: true, pip: true, node: (
-    <OneBrainScene durationInFrames={412} tint={BLUE} coreAt={12} partAts={[142, 167, 200, 233]} tagAt={272} />
+    <OneBrainScene durationInFrames={412} tint={BLUE} coreAt={12} partAts={[142, 167, 200, 233]} tagAt={272} clip={`${CLIPS}/rob2-extra-wholebody.mp4`} clipDur={420} />
   ) },
   { key: "handoffs", from: 1734, dur: 666, fullscreen: true, pip: true, node: (
-    <HandoffsScene durationInFrames={666} tint={AMBER} rowAts={[20, 76, 126]} sparkAt={167} unifyAt={411} />
+    <HandoffsScene durationInFrames={666} tint={AMBER} rowAts={[20, 76, 126]} sparkAt={167} unifyAt={411} clip={`${CLIPS}/rob2-extra-sixgrid.mp4`} clipDur={600} />
   ) },
 
   // ── THE DEMOS ──
   { key: "selected", from: 2400, dur: 264, fullscreen: true, pip: true, node: (
-    <NewsTakeaway durationInFrames={264} tint={AMBER} kicker="This is Google's own footage" title="CAREFULLY SELECTED" stamp="Not an independent test" stampAt={112} titleSize={84} />
+    <ClipTakeaway durationInFrames={264} tint={AMBER} kicker="This is Google's own footage" title="CAREFULLY SELECTED" stamp="Not an independent test" stampAt={112} titleSize={78} clip={`${CLIPS}/rob2-packing.mp4`} clipDur={480} />
   ) },
   { key: "tasksMontage", from: 2664, dur: 400, fullscreen: true, node: (
     <MontageClipCard durationInFrames={400} tint={GREEN} kicker="The demo reel" title="SMART CHOICES — FAILURE IS OBVIOUS" source={DM}
@@ -84,9 +84,9 @@ const BEATS: Beat[] = [
   { key: "notPickPlace", from: 4088, dur: 252, fullscreen: true, node: (
     <NewsKinetic durationInFrames={252} tint={BRAND} text="NOT JUST PICK AND PLACE" highlight="PLACE" size={100} />
   ) },
-  { key: "joints", from: 4340, dur: 300, fullscreen: true, pip: true, node: <JointsStat durationInFrames={300} tint={BLUE} numAt={20} /> },
+  { key: "joints", from: 4340, dur: 300, fullscreen: true, pip: true, node: <JointsStat durationInFrames={300} tint={BLUE} numAt={20} clip={`${CLIPS}/rob2-lightbulb.mp4`} clipDur={294} /> },
   { key: "handsHard", from: 4640, dur: 390, fullscreen: true, pip: true, node: (
-    <NewsTakeaway durationInFrames={390} tint={AMBER} kicker="Walking got solved — hands didn't" title="HANDS ARE THE HARD PART" stamp="Slippery · fragile · changing shape" stampAt={250} titleSize={80} />
+    <ClipTakeaway durationInFrames={390} tint={AMBER} kicker="Walking got solved — hands didn't" title="HANDS ARE THE HARD PART" stamp="Slippery · fragile · changing" stampAt={250} titleSize={72} clip={`${CLIPS}/rob2-knot.mp4`} clipDur={570} />
   ) },
 
   // ── THE GARAGE ──
@@ -100,18 +100,18 @@ const BEATS: Beat[] = [
       ]} />
   ) },
   { key: "planned", from: 6360, dur: 340, fullscreen: true, pip: true, node: (
-    <NewsTakeaway durationInFrames={340} tint={AMBER} kicker="The footage doesn't say" title="HOW MUCH WAS PLANNED?" stamp="Maybe just separate jobs" stampAt={240} titleSize={82} />
+    <ClipTakeaway durationInFrames={340} tint={AMBER} kicker="The footage doesn't say" title="HOW MUCH WAS PLANNED?" stamp="Maybe just separate jobs" stampAt={240} titleSize={72} clip={`${CLIPS}/rob2-garage.mp4`} clipDur={534} />
   ) },
   { key: "forgiving", from: 6700, dur: 400, fullscreen: true, pip: true, node: (
-    <NewsTakeaway durationInFrames={400} tint={AMBER} kicker="No exact order required" title="TIDYING IS FORGIVING" stamp="Smooth ≠ coordinated" stampAt={250} titleSize={84} />
+    <ClipTakeaway durationInFrames={400} tint={AMBER} kicker="No exact order required" title="TIDYING IS FORGIVING" stamp="Smooth ≠ coordinated" stampAt={250} titleSize={76} clip={`${CLIPS}/rob2-extra-sweeping.mp4`} clipDur={300} />
   ) },
   { key: "hardware", from: 7150, dur: 410, fullscreen: true, pip: true, node: (
-    <HardwareVsAI durationInFrames={410} tint={BLUE} leftAt={88} rightAt={250} />
+    <HardwareVsAI durationInFrames={410} tint={BLUE} leftAt={88} rightAt={250} clip={`${CLIPS}/rob2-garage.mp4`} clipDur={534} />
   ) },
 
   // ── THE GAPS ──
   { key: "missing", from: 7690, dur: 890, fullscreen: true, pip: true, node: (
-    <MissingProofScene durationInFrames={890} tint={RED} items={[
+    <MissingProofScene durationInFrames={890} tint={RED} clip={`${CLIPS}/rob2-hero.mp4`} clipDur={405} items={[
       { at: 178, label: "Success rates", sub: "1 in 10? 9 in 10?" },
       { at: 461, label: "Independent testing" },
       { at: 566, label: "A fair comparison", sub: "Optimus · Figure · 1X" },
@@ -135,7 +135,7 @@ const BEATS: Beat[] = [
     <NewsTakeaway durationInFrames={354} tint={RED} kicker="Does this prove “most advanced”?" title="“MOST ADVANCED” IS A COMPARISON" stamp="Google hasn't shown it" stampAt={280} titleSize={74} />
   ) },
   { key: "demoNotProduct", from: 9704, dur: 380, fullscreen: true, pip: true, node: (
-    <NewsTakeaway durationInFrames={380} tint={BRAND} kicker="Where this actually lands" title="A BREAKTHROUGH DEMO" stamp="Not yet a proven product" stampAt={165} titleSize={86} />
+    <ClipTakeaway durationInFrames={380} tint={BRAND} kicker="Where this actually lands" title="A BREAKTHROUGH DEMO" stamp="Not yet a proven product" stampAt={165} titleSize={78} clip={`${CLIPS}/rob2-hero.mp4`} clipDur={405} />
   ) },
 ];
 

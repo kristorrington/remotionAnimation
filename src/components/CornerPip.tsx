@@ -8,7 +8,10 @@ const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 // never fully absent. `from` is the absolute start frame: because this lives in a
 // <Sequence from={from}>, the video would otherwise restart at 0:00, so we
 // `trimBefore={from}` to keep it playing in lock-step with the main footage/VO.
-const Pip: React.FC<{ footage: string; from: number; dur: number }> = ({ footage, from, dur }) => {
+// `faceX` recentres the crop on the presenter (% of width; negative shifts the
+// image LEFT for footage where the face sits right-of-center). Default 0 keeps
+// the archived finals' original center crop.
+const Pip: React.FC<{ footage: string; from: number; dur: number; faceX?: number }> = ({ footage, from, dur, faceX = 0 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -40,7 +43,7 @@ const Pip: React.FC<{ footage: string; from: number; dur: number }> = ({ footage
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            transform: "scale(1.18)", // punch in so the face reads in the small box
+            transform: `scale(1.18) translateX(${faceX}%)`, // punch in + recentre on the face
             filter: "contrast(1.06) saturate(1.1) brightness(1.02)",
           }}
         />
@@ -49,8 +52,8 @@ const Pip: React.FC<{ footage: string; from: number; dur: number }> = ({ footage
   );
 };
 
-export const CornerPip: React.FC<{ footage: string; from: number; dur: number }> = ({ footage, from, dur }) => (
+export const CornerPip: React.FC<{ footage: string; from: number; dur: number; faceX?: number }> = ({ footage, from, dur, faceX }) => (
   <Sequence from={from} durationInFrames={dur}>
-    <Pip footage={footage} from={from} dur={dur} />
+    <Pip footage={footage} from={from} dur={dur} faceX={faceX} />
   </Sequence>
 );
