@@ -1026,6 +1026,18 @@ a logo/brand asset, doc screenshot, or source page that is fair to reference?
 clear licence or brand-usage page? attribution required? likely copyrighted
 editorial/stock/creator content?
 
+**B-ROLL RIGHTS-HYGIENE TREATMENT (Kris, Aug 2026 — apply to ALL third-party
+clips, even brand-official):** (1) clips always MUTED (audio is the top
+Content-ID trigger); (2) constant commentary VO + presenter PiP over the
+footage (transformative signal); (3) play b-roll at ~1.05× with a mild grade
+and a slow documentary push-in/drift — editorial motion that also moves the
+clip away from a verbatim copy; (4) on-screen © source tag ("© <owner> —
+commentary & criticism"); (5) a credits + fair-dealing note in the upload
+description listing each source; (6) brand-official footage of the subject
+being reviewed ONLY — never other creators' videos. These reduce automated
+matches and strengthen manual review; the legal basis remains the commentary
+itself.
+
 **Avoid:** random Google Images results · copyrighted photos · paid stock ·
 news images · other creators' thumbnails · other creators' charts unless clearly
 licensed · assets with unclear origin · watermarked images · low-res/suspicious

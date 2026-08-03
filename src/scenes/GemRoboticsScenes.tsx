@@ -14,10 +14,14 @@ const KICK = "#FF8A5C"; // brand kicker, brightened for dark scrims
 const spr = (frame: number, fps: number, at: number, dur = 26) =>
   spring({ frame: frame - at, fps, config: { stiffness: 110, damping: 18 }, durationInFrames: dur });
 
-// looped muted clip element
+// looped muted clip element. B-ROLL TREATMENT (rights hygiene, Kris Aug 2026):
+// 1.05x playback + mild grade — editorial motion that also shifts the clip
+// fingerprint away from a verbatim copy. Loop window shrinks to match rate.
+const BROLL_RATE = 1.05;
 const ClipVid: React.FC<{ clip: string; clipDur?: number }> = ({ clip, clipDur }) => {
-  const vid = <OffthreadVideo src={staticFile(clip)} muted style={{ width: "100%", height: "100%", objectFit: "cover" }} />;
-  return clipDur ? <Loop durationInFrames={clipDur} layout="none">{vid}</Loop> : vid;
+  const vid = <OffthreadVideo src={staticFile(clip)} muted playbackRate={BROLL_RATE} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "contrast(1.05) saturate(1.08) brightness(1.02)" }} />;
+  const eff = clipDur ? Math.max(1, Math.floor(clipDur / BROLL_RATE)) : undefined;
+  return eff ? <Loop durationInFrames={eff} layout="none">{vid}</Loop> : vid;
 };
 
 const FilmPill: React.FC = () => (
@@ -27,7 +31,7 @@ const FilmPill: React.FC = () => (
   </div>
 );
 const SourceTag: React.FC<{ source: string }> = ({ source }) => (
-  <div style={{ position: "absolute", bottom: 16, right: 22, fontFamily: DISPLAY, fontWeight: 500, fontSize: 17, color: "rgba(255,255,255,0.75)" }}>{source}</div>
+  <div style={{ position: "absolute", bottom: 16, right: 22, fontFamily: DISPLAY, fontWeight: 500, fontSize: 16, color: "rgba(255,255,255,0.78)" }}>© {source} — commentary & criticism</div>
 );
 
 // The full-bleed stage: clip covers the frame; scrim carries the text.
@@ -39,10 +43,15 @@ const FullBleed: React.FC<{ clip: string; clipDur?: number; scrim?: string; chil
   const scale = punchIn ? interpolate(e, [0, 1], [0.72, 1]) : 1;
   const radius = punchIn ? interpolate(e, [0, 1], [30, 0]) : 0;
   const op = punchIn ? interpolate(frame, [0, 6], [0.55, 1], CLAMP) : 1;
+  // documentary push-in + drift (also part of the b-roll treatment)
+  const push = interpolate(frame, [0, 480], [1.04, 1.12], CLAMP);
+  const driftX = Math.sin(frame * 0.008) * 10;
   return (
     <AbsoluteFill style={{ backgroundColor: "#0B0A09" }}>
       <AbsoluteFill style={{ transform: `scale(${scale})`, borderRadius: radius, overflow: "hidden", opacity: op }}>
-        <ClipVid clip={clip} clipDur={clipDur} />
+        <AbsoluteFill style={{ transform: `scale(${push}) translateX(${driftX}px)` }}>
+          <ClipVid clip={clip} clipDur={clipDur} />
+        </AbsoluteFill>
         <AbsoluteFill style={{ background: scrim ?? "linear-gradient(180deg, rgba(10,9,8,0.74) 0%, rgba(10,9,8,0.28) 24%, rgba(10,9,8,0.12) 58%, rgba(10,9,8,0.62) 100%)", pointerEvents: "none" }} />
         {children}
       </AbsoluteFill>

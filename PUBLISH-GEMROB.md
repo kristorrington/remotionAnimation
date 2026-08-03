@@ -44,8 +44,13 @@ Video: `GemRoboticsFinal` → `out/gemini-robotics.mp4` (~5:41, 1920×1080). SRT
 > • A fair comparison vs Tesla Optimus, Figure, 1X
 > • A release date or broad API access
 >
-> All robot footage: Google DeepMind's official Gemini Robotics 2 release
-> (used for commentary and analysis).
+> 📎 Footage credits & fair dealing
+> All robot footage © Google DeepMind, from the official Gemini Robotics 2
+> announcement (deepmind.google/blog) and the official Google DeepMind YouTube
+> channel. Short muted excerpts are used under continuous commentary for the
+> purposes of criticism, review and news reporting (fair use / fair dealing).
+> No endorsement implied. Original:
+> https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/
 >
 > 🔔 Subscribe if you want the evidence, not just the highlight reel.
 >
