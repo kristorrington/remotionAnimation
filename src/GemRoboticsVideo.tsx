@@ -52,8 +52,11 @@ const BEATS: Beat[] = [
   { key: "oneBrain", from: 1083, dur: 389, fullscreen: true, pip: true, node: (
     <OneBrainScene durationInFrames={389} tint={BLUE} coreAt={11} partAts={[134, 158, 189, 220]} tagAt={257} clip={`${CLIPS}/rob2-extra-wholebody.mp4`} clipDur={420} />
   ) },
-  { key: "handoffs", from: 1636, dur: 628, fullscreen: true, pip: true, node: (
-    <HandoffsScene durationInFrames={628} tint={AMBER} rowAts={[19, 72, 119]} sparkAt={158} unifyAt={388} clip={`${CLIPS}/rob2-extra-sixgrid.mp4`} clipDur={600} />
+  { key: "handoffs", from: 1636, dur: 464, fullscreen: true, pip: true, node: (
+    <HandoffsScene durationInFrames={464} tint={AMBER} rowAts={[19, 72, 119]} sparkAt={158} unifyAt={388} clip={`${CLIPS}/rob2-extra-sixgrid.mp4`} clipDur={600} />
+  ) },
+  { key: "handoffsPayoff", from: 2100, dur: 164, fullscreen: true, node: (
+    <NewsKinetic durationInFrames={164} tint={GREEN} text="ONE SYSTEM. FEWER HANDOFFS." highlight="FEWER" size={92} />
   ) },
 
   // ── THE DEMOS ──
@@ -69,14 +72,15 @@ const BEATS: Beat[] = [
       ]}
       chips={[{ at: 279, label: "A dropped bulb can't hide" }]} />
   ) },
-  { key: "bulbDeep", from: 3136, dur: 721, fullscreen: true, pip: true, node: (
-    <AnnotatedClipCard durationInFrames={721} tint={BRAND} kicker="The hardest demo" title="GRIP · TURN · RELEASE" clip={`${CLIPS}/rob2-lightbulb.mp4`} source={DM} clipDur={294}
+  { key: "bulbDeep", from: 3136, dur: 364, fullscreen: true, pip: true, node: (
+    <AnnotatedClipCard durationInFrames={364} tint={BRAND} kicker="The hardest demo" title="GRIP · TURN · RELEASE" clip={`${CLIPS}/rob2-lightbulb.mp4`} source={DM} clipDur={294}
       chips={[
         { at: 155, label: "Grip — round & fragile" },
         { at: 262, label: "Pressure, not crushing" },
-        { at: 418, label: "Fingers reposition" },
-        { at: 624, label: "Knows it's loose" },
       ]} />
+  ) },
+  { key: "bulbFinish", from: 3500, dur: 357, fullscreen: true, pip: true, node: (
+    <ClipTakeaway durationInFrames={357} tint={BRAND} kicker="Fingers reposition as it turns" title="IT KNOWS WHEN IT'S LOOSE" stamp="Not a fixed routine" stampAt={270} titleSize={64} clip={`${CLIPS}/rob2-lightbulb.mp4`} clipDur={294} />
   ) },
   { key: "notPickPlace", from: 3857, dur: 238, fullscreen: true, node: (
     <NewsKinetic durationInFrames={238} tint={BRAND} text="NOT JUST PICK AND PLACE" highlight="PLACE" size={100} />
@@ -87,14 +91,19 @@ const BEATS: Beat[] = [
   ) },
 
   // ── THE GARAGE ──
-  { key: "garage", from: 5094, dur: 906, fullscreen: true, pip: true, node: (
-    <AnnotatedClipCard durationInFrames={906} tint={BLUE} kicker="Two robots, one garage" title="APOLLO & DUO" clip={`${CLIPS}/rob2-garage.mp4`} source={DM} clipDur={534}
+  { key: "garage", from: 5094, dur: 446, fullscreen: true, pip: true, node: (
+    <AnnotatedClipCard durationInFrames={446} tint={BLUE} kicker="Two robots, one garage" title="APOLLO & DUO" clip={`${CLIPS}/rob2-garage.mp4`} source={DM} clipDur={534}
       chips={[
         { at: 73, label: "Apollo" },
         { at: 104, label: "Duo" },
-        { at: 351, label: "Separate copies — no hive mind" },
-        { at: 575, label: "No stopping to negotiate" },
+        { at: 351, label: "Separate copies" },
       ]} />
+  ) },
+  { key: "garageHive", from: 5540, dur: 320, fullscreen: true, pip: true, node: (
+    <ClipTakeaway durationInFrames={320} tint={BLUE} kicker="Each robot runs its own copy" title="NO HIVE MIND" stamp="No stopping to negotiate" stampAt={130} titleSize={84} clip={`${CLIPS}/rob2-garage.mp4`} clipDur={534} />
+  ) },
+  { key: "garageAware", from: 5860, dur: 140, fullscreen: true, node: (
+    <NewsKinetic durationInFrames={140} tint={BLUE} text="AWARE — AND THEY KEEP WORKING" highlight="WORKING" size={84} />
   ) },
   { key: "planned", from: 6000, dur: 321, fullscreen: true, pip: true, node: (
     <ClipTakeaway durationInFrames={321} tint={AMBER} kicker="The footage doesn't say" title="HOW MUCH WAS PLANNED?" stamp="Maybe just separate jobs" stampAt={226} titleSize={72} clip={`${CLIPS}/rob2-extra-wholebody.mp4`} clipDur={420} />
@@ -107,25 +116,29 @@ const BEATS: Beat[] = [
   ) },
 
   // ── THE GAPS ──
-  { key: "missing", from: 7255, dur: 840, fullscreen: true, pip: true, node: (
-    <MissingProofScene durationInFrames={840} tint={RED} clip={`${CLIPS}/rob2-extra-sixgrid.mp4`} clipDur={600} items={[
+  { key: "missing", from: 7255, dur: 445, fullscreen: true, pip: true, node: (
+    <MissingProofScene durationInFrames={445} tint={RED} clip={`${CLIPS}/rob2-extra-sixgrid.mp4`} clipDur={600} items={[
       { at: 168, label: "Success rates", sub: "1 in 10? 9 in 10?" },
       { at: 435, label: "Independent testing" },
-      { at: 534, label: "A fair comparison", sub: "Optimus · Figure · 1X" },
-      { at: 684, label: "Release date / API access" },
+    ]} />
+  ) },
+  { key: "missing2", from: 7700, dur: 395, fullscreen: true, pip: true, node: (
+    <MissingProofScene durationInFrames={395} tint={RED} clip={`${CLIPS}/rob2-hero.mp4`} clipDur={405} items={[
+      { at: 89, label: "A fair comparison", sub: "Optimus · Figure · 1X" },
+      { at: 239, label: "Release date / API access" },
     ]} />
   ) },
 
   // ── VERDICT ──
-  { key: "verdict", from: 8094, dur: 726, fullscreen: true, pip: true, node: (
-    <MontageClipCard durationInFrames={726} tint={GREEN} kicker="So — is it a breakthrough?" title="YES. NOT FOR THE REEL." source={DM}
-      parts={[
-        { src: `${CLIPS}/rob2-hero.mp4`, at: 0, clipDur: 405 },
-        { src: `${CLIPS}/rob2-extra-wholebody.mp4`, at: 377, label: "Whole-body control", clipDur: 420 },
-      ]}
+  { key: "verdict", from: 8094, dur: 377, fullscreen: true, pip: true, node: (
+    <MontageClipCard durationInFrames={377} tint={GREEN} kicker="So — is it a breakthrough?" title="YES. NOT FOR THE REEL." source={DM}
+      parts={[{ src: `${CLIPS}/rob2-hero.mp4`, at: 0, clipDur: 405 }]} />
+  ) },
+  { key: "verdictBody", from: 8471, dur: 349, fullscreen: true, pip: true, node: (
+    <AnnotatedClipCard durationInFrames={349} tint={GREEN} kicker="The real story" title="ONE BRAIN, WHOLE BODY" clip={`${CLIPS}/rob2-extra-wholebody.mp4`} source={DM} clipDur={420}
       chips={[
-        { at: 443, label: "One brain, whole body" },
-        { at: 538, label: "Adapts to the space" },
+        { at: 66, label: "One brain, whole body" },
+        { at: 161, label: "Adapts to the space" },
       ]} />
   ) },
   { key: "comparison", from: 8821, dur: 334, fullscreen: true, pip: true, node: (

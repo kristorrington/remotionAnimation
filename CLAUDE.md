@@ -513,11 +513,12 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   scattered offsets) — never a flat fading row. Camera `impacts` + a subject
   hop/kick on every landing, bolt, stamp and check.
 - **PACE & FRAME-DENSITY RULE (Kris, Aug 2026 — ALL future edits):**
-  (1) **Fill the frame.** No sea of empty backdrop: the visual payload (film
-  cards, receipts, diagrams, stat blocks) dominates — film/receipt cards
-  ≥ ~1400px wide, side-clip panels ≥ ~720px, headline + payload composed so no
-  more than ~25% of the frame reads as bare background. Audit stills for dead
-  real estate like any other defect.
+  (1) **Fill the frame.** No sea of empty backdrop. Video b-roll renders
+  FULL-BLEED — the clip covers the whole 1920×1080 and headlines/chips/
+  diagrams sit on dark scrims OVER the footage (white Anton on scrim), never a
+  small card floating on bare paper. Receipts/diagram-only beats keep cards but
+  ≥ ~1400px wide with ≤ ~25% bare background. Audit stills for dead real
+  estate like any other defect.
   (2) **Tempo the VO.** If the delivery is measured, re-time the proxy
   globally ~1.05–1.08× with PITCH-PRESERVED audio (ffmpeg `setpts=PTS/R` +
   `atempo=R`) BEFORE transcription so whisper anchors line up natively; if
@@ -528,6 +529,13 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   (alternating ~1.0 ↔ 1.08–1.12), so the talking head keeps changing view.
   (4) **Keep the cut moving.** Target a visual change (cover, cut, framing
   jump, chip landing) every few seconds; a long static hold is a QA defect.
+  (5) **Scene-length cap (Kris, Aug 2026).** A single scene/layout holds
+  **≤ ~10–12s**. A longer narration stretch is SPLIT into sub-beats with
+  DISTINCT compositions (full film card → side-clip takeaway → kinetic /
+  different clip), not one scene left running — an internal montage hard-cut
+  counts as a change, timed chips alone do not. Scene transitions stay fast
+  (the ~18f pull-left); never let the viewer sit on the same screen long
+  enough to get bored. Applies to every future edit.
 - **Pacing breathes too**: element entrances settle in ~0.7–1.2s (default
   spring stiffness ~110, damping ~18 — NO overshoot; §13.16 reserves bounce
   for designated gag scenes) — never everything snapping in under half a
