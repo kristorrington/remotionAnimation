@@ -1,6 +1,7 @@
 import React from "react";
-import { AbsoluteFill, Sequence } from "remotion";
+import { AbsoluteFill, Easing, interpolate, Sequence, useCurrentFrame } from "remotion";
 import { GemRoboticsVideo, GEMROB_WINDOWS, GEMROB_FULLSCREEN, GEMROB_EXTRA_CUTS, GEMROB_PIP } from "./GemRoboticsVideo";
+import { CutFlash } from "./components/CutFlash";
 import { FootageDirector } from "./components/FootageDirector";
 import { CornerPip } from "./components/CornerPip";
 import { AnimatedBackground } from "./components/AnimatedBackground";
@@ -10,11 +11,10 @@ import { CameraPunchIn, SectionTransition } from "./motion/editkit";
 import { ThemeProvider } from "./theme";
 
 // Final combined cut: talking head + the footage-first Gemini Robotics 2
-// overlay. COLD OPEN (§8 exception — the hook narrates the lightbulb demo):
-// the film card owns frame 0 with its own punch-in, the face rides the corner
-// PiP from the start, and there is NO footage intro-zoom or face→cover
-// CutFlash. §15 edit: selective punch-ins on the face gaps, named transitions
-// at chapter turns, pull-left cuts otherwise.
+// overlay. OPEN (Kris): the FACE full-frame with the standard punch-in
+// (0.5→1.0 card zoom), then the lightbulb film card cuts in at ~90f (first
+// phrase break) with a CutFlash. §15 edit: selective punch-ins on the face
+// gaps, named transitions at chapter turns, pull-left cuts otherwise.
 const FOOTAGE = "talking-head-030826.mp4"; // Gemini Robotics 2 (2026-08-03)
 
 const CHAPTERS: Chapter[] = [
@@ -57,6 +57,10 @@ const PUNCHES: { at: number; level: "emphasis" | "strong"; hold: number }[] = [
 ];
 
 export const GemRoboticsFinal: React.FC = () => {
+  const frame = useCurrentFrame();
+  const introZoom = interpolate(frame, [0, 22], [0.5, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+  const introRadius = interpolate(frame, [0, 22], [40, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+
   let footage: React.ReactNode = (
     // VO boost 1.15× (hot recording; two-pass linear loudnorm masters at export)
     <FootageDirector footage={FOOTAGE} volume={1.15} framing={[{ at: 0, scale: 1.03, y: 0 }]} />
@@ -71,9 +75,21 @@ export const GemRoboticsFinal: React.FC = () => {
 
   return (
     <ThemeProvider style="paper">
-      <AbsoluteFill style={{ backgroundColor: "#FBFAF7" }}>
+      <AbsoluteFill style={{ backgroundColor: "black" }}>
+        <AbsoluteFill style={{ backgroundColor: "#FBFAF7" }} />
+        {frame < 26 && <AnimatedBackground durationInFrames={30} fade={false} />}
         <SlideLeftPush cuts={CUTS}>
-          {footage}
+          <AbsoluteFill
+            style={{
+              transform: `scale(${introZoom})`,
+              transformOrigin: "50% 40%",
+              borderRadius: introRadius,
+              overflow: "hidden",
+              boxShadow: introZoom < 1 ? "0 24px 70px rgba(31,30,29,0.30)" : undefined,
+            }}
+          >
+            {footage}
+          </AbsoluteFill>
 
           {/* one continuous paper bridge per span, UNDER the cards */}
           {SPANS.map((s) => (
@@ -85,13 +101,16 @@ export const GemRoboticsFinal: React.FC = () => {
           <GemRoboticsVideo />
 
           {PIP_SEGMENTS.map((s) => (
-            <CornerPip key={`pip-${s.from}`} footage={FOOTAGE} from={s.from} dur={s.to - s.from} faceX={-7} />
+            <CornerPip key={`pip-${s.from}`} footage={FOOTAGE} from={s.from} dur={s.to - s.from} faceX={4} />
           ))}
           {/* face presence on the long film cards + diagram scenes */}
           {GEMROB_PIP.filter((s) => FULL.some((f) => f.from === s.from)).map((s) => (
-            <CornerPip key={`pipf-${s.from}`} footage={FOOTAGE} from={s.from} dur={s.to - s.from} faceX={-7} />
+            <CornerPip key={`pipf-${s.from}`} footage={FOOTAGE} from={s.from} dur={s.to - s.from} faceX={4} />
           ))}
         </SlideLeftPush>
+
+        {/* face → first cover (the lightbulb film card) at ~90 */}
+        <CutFlash at={90} peak={0.5} />
 
         {/* §15.5 editorial transitions at the chapter turns */}
         <Sequence from={1140} durationInFrames={16}><SectionTransition kind="section" /></Sequence>

@@ -15,9 +15,9 @@ import { MontageClipCard, AnnotatedClipCard, ClipTakeaway, OneBrainScene, Handof
 // timed annotations, the Apollo & Duo garage take, and the hero shot on the
 // verdict. Animation covers only what footage can't: the one-brain claim, the
 // handoff problem, hardware-vs-AI, and the missing-proof checklist. Bold
-// newsroom style shared with AiNews2. COLD OPEN (§8 exception): the hook
-// narrates the lightbulb demo, so the film card is on screen from frame 0 and
-// the face rides the corner PiP.
+// newsroom style shared with AiNews2. OPEN (Kris): FACE full-frame with the
+// punch-in, then the lightbulb film card cuts in at the first phrase break
+// (~90f) with a CutFlash.
 
 export const GEMROB_DUR = 10242;
 
@@ -34,13 +34,13 @@ const DM = "DeepMind — Gemini Robotics 2";
 type Beat = { key: string; from: number; dur: number; fullscreen?: boolean; receipt?: boolean; pip?: boolean; node: React.ReactNode };
 const BEATS: Beat[] = [
   // ── THE REEL (cold open on the footage the hook narrates) ──
-  { key: "coldOpen", from: 0, dur: 384, pip: true, node: (
-    <MontageClipCard durationInFrames={384} tint={BRAND} punchIn kicker="Google DeepMind · July 30" title="WATCH THE HANDS" source={DM}
+  { key: "coldOpen", from: 90, dur: 294, pip: true, node: (
+    <MontageClipCard durationInFrames={294} tint={BRAND} punchIn kicker="Google DeepMind · July 30" title="WATCH THE HANDS" source={DM}
       parts={[
         { src: `${CLIPS}/rob2-lightbulb.mp4`, at: 0, label: "Unscrewing a lightbulb" },
-        { src: `${CLIPS}/rob2-knot.mp4`, at: 160, label: "Tying a trash-bag knot" },
+        { src: `${CLIPS}/rob2-knot.mp4`, at: 70, label: "Tying a trash-bag knot" },
       ]}
-      chips={[{ at: 227, label: "“Most advanced ever” — Google" }]} />
+      chips={[{ at: 137, label: "“Most advanced ever” — Google" }]} />
   ) },
   { key: "hookKinetic", from: 530, dur: 190, fullscreen: true, node: (
     <NewsKinetic durationInFrames={190} tint={AMBER} text="BREAKTHROUGH OR GOOD EDITING?" highlight="EDITING?" size={96} />
@@ -61,7 +61,7 @@ const BEATS: Beat[] = [
 
   // ── THE DEMOS ──
   { key: "selected", from: 2400, dur: 264, fullscreen: true, pip: true, node: (
-    <ClipTakeaway durationInFrames={264} tint={AMBER} kicker="This is Google's own footage" title="CAREFULLY SELECTED" stamp="Not an independent test" stampAt={112} titleSize={78} clip={`${CLIPS}/rob2-packing.mp4`} clipDur={480} />
+    <ClipTakeaway durationInFrames={264} tint={AMBER} kicker="This is Google's own footage" title="CAREFULLY SELECTED" stamp="Not an independent test" stampAt={112} titleSize={78} clip={`${CLIPS}/rob2-extra-sweeping.mp4`} clipDur={300} />
   ) },
   { key: "tasksMontage", from: 2664, dur: 400, fullscreen: true, node: (
     <MontageClipCard durationInFrames={400} tint={GREEN} kicker="The demo reel" title="SMART CHOICES — FAILURE IS OBVIOUS" source={DM}
@@ -84,7 +84,7 @@ const BEATS: Beat[] = [
   { key: "notPickPlace", from: 4088, dur: 252, fullscreen: true, node: (
     <NewsKinetic durationInFrames={252} tint={BRAND} text="NOT JUST PICK AND PLACE" highlight="PLACE" size={100} />
   ) },
-  { key: "joints", from: 4340, dur: 300, fullscreen: true, pip: true, node: <JointsStat durationInFrames={300} tint={BLUE} numAt={20} clip={`${CLIPS}/rob2-lightbulb.mp4`} clipDur={294} /> },
+  { key: "joints", from: 4340, dur: 300, fullscreen: true, pip: true, node: <JointsStat durationInFrames={300} tint={BLUE} numAt={20} clip={`${CLIPS}/rob2-packing.mp4`} clipDur={480} /> },
   { key: "handsHard", from: 4640, dur: 390, fullscreen: true, pip: true, node: (
     <ClipTakeaway durationInFrames={390} tint={AMBER} kicker="Walking got solved — hands didn't" title="HANDS ARE THE HARD PART" stamp="Slippery · fragile · changing" stampAt={250} titleSize={72} clip={`${CLIPS}/rob2-knot.mp4`} clipDur={570} />
   ) },
@@ -100,7 +100,7 @@ const BEATS: Beat[] = [
       ]} />
   ) },
   { key: "planned", from: 6360, dur: 340, fullscreen: true, pip: true, node: (
-    <ClipTakeaway durationInFrames={340} tint={AMBER} kicker="The footage doesn't say" title="HOW MUCH WAS PLANNED?" stamp="Maybe just separate jobs" stampAt={240} titleSize={72} clip={`${CLIPS}/rob2-garage.mp4`} clipDur={534} />
+    <ClipTakeaway durationInFrames={340} tint={AMBER} kicker="The footage doesn't say" title="HOW MUCH WAS PLANNED?" stamp="Maybe just separate jobs" stampAt={240} titleSize={72} clip={`${CLIPS}/rob2-extra-wholebody.mp4`} clipDur={420} />
   ) },
   { key: "forgiving", from: 6700, dur: 450, fullscreen: true, pip: true, node: (
     <ClipTakeaway durationInFrames={450} tint={AMBER} kicker="No exact order required" title="TIDYING IS FORGIVING" stamp="Smooth ≠ coordinated" stampAt={250} titleSize={76} clip={`${CLIPS}/rob2-extra-sweeping.mp4`} clipDur={300} />
@@ -111,7 +111,7 @@ const BEATS: Beat[] = [
 
   // ── THE GAPS ──
   { key: "missing", from: 7690, dur: 890, fullscreen: true, pip: true, node: (
-    <MissingProofScene durationInFrames={890} tint={RED} clip={`${CLIPS}/rob2-hero.mp4`} clipDur={405} items={[
+    <MissingProofScene durationInFrames={890} tint={RED} clip={`${CLIPS}/rob2-extra-sixgrid.mp4`} clipDur={600} items={[
       { at: 178, label: "Success rates", sub: "1 in 10? 9 in 10?" },
       { at: 461, label: "Independent testing" },
       { at: 566, label: "A fair comparison", sub: "Optimus · Figure · 1X" },
@@ -135,7 +135,7 @@ const BEATS: Beat[] = [
     <NewsTakeaway durationInFrames={354} tint={RED} kicker="Does this prove “most advanced”?" title="“MOST ADVANCED” IS A COMPARISON" stamp="Google hasn't shown it" stampAt={280} titleSize={74} />
   ) },
   { key: "demoNotProduct", from: 9704, dur: 380, fullscreen: true, pip: true, node: (
-    <ClipTakeaway durationInFrames={380} tint={BRAND} kicker="Where this actually lands" title="A BREAKTHROUGH DEMO" stamp="Not yet a proven product" stampAt={165} titleSize={78} clip={`${CLIPS}/rob2-hero.mp4`} clipDur={405} />
+    <ClipTakeaway durationInFrames={380} tint={BRAND} kicker="Where this actually lands" title="A BREAKTHROUGH DEMO" stamp="Not yet a proven product" stampAt={165} titleSize={78} clip={`${CLIPS}/rob2-lightbulb.mp4`} clipDur={294} />
   ) },
 ];
 
@@ -180,7 +180,7 @@ export const GemRoboticsVideo: React.FC = () => {
       {BEATS.filter((b) => b.fullscreen).map((b, i) => (
         <SfxCue key={`w-${b.from}`} from={b.from} src={SFX.softWhoosh} volume={0.2} rate={vary(i)} />
       ))}
-      <SfxCue from={0 + 160} src={SFX.swish} volume={0.3} />
+      <SfxCue from={90 + 70} src={SFX.swish} volume={0.3} />
       <SfxCue from={2664 + 137} src={SFX.swish} volume={0.3} rate={1.06} />
       <SfxCue from={2664 + 188} src={SFX.swish} volume={0.3} rate={0.96} />
     </AbsoluteFill>
