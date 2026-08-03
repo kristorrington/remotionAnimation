@@ -1,5 +1,6 @@
 import React from "react";
 import { AbsoluteFill, interpolate, Loop, OffthreadVideo, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { fitText } from "@remotion/layout-utils";
 import { NEWS, DISPLAY, HERO, NewsShell, NewsHeadline, LabTile } from "./AiNews2Scenes";
 
 // GemRoboticsScenes — the FOOTAGE-FIRST kit for the Gemini Robotics 2 video
@@ -140,12 +141,16 @@ export const ClipTakeaway: React.FC<{
   const stampS = spring({ frame: frame - stampAt, fps, config: { stiffness: 200, damping: 15 }, durationInFrames: 20 });
   const kOp = interpolate(frame, [0, 12], [0, 1], CLAMP);
   const slam = spring({ frame: frame - 6, fps, config: { stiffness: 190, damping: 24, mass: 0.9 }, durationInFrames: 30 });
+  const fitted = React.useMemo(
+    () => Math.min(titleSize, fitText({ text: title, withinWidth: 660, fontFamily: HERO, fontWeight: 400, letterSpacing: "1px" }).fontSize * 1.9),
+    [title, titleSize],
+  );
   return (
     <NewsShell durationInFrames={durationInFrames} tint={tint} impacts={stamp ? [stampAt] : undefined}>
-      <div style={{ display: "flex", alignItems: "center", gap: 60 }}>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 18, width: 720 }}>
+      <div style={{ width: 1640, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 60 }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 18, width: 700, minWidth: 700, maxWidth: 700 }}>
           <span style={{ fontFamily: DISPLAY, fontWeight: 600, fontSize: 26, letterSpacing: 5, textTransform: "uppercase", color: NEWS.brand, opacity: kOp }}>{kicker}</span>
-          <div style={{ fontFamily: HERO, fontWeight: 400, fontSize: titleSize, letterSpacing: 1, color: NEWS.ink, lineHeight: 1.02, textTransform: "uppercase", transform: `scale(${interpolate(slam, [0, 1], [1.12, 1])})`, transformOrigin: "left center", opacity: interpolate(frame, [6, 20], [0, 1], CLAMP) }}>{title}</div>
+          <div style={{ fontFamily: HERO, fontWeight: 400, fontSize: fitted, letterSpacing: 1, color: NEWS.ink, lineHeight: 1.02, textTransform: "uppercase", transform: `scale(${interpolate(slam, [0, 1], [1.12, 1])})`, transformOrigin: "left center", opacity: interpolate(frame, [6, 20], [0, 1], CLAMP) }}>{title}</div>
           <div style={{ width: interpolate(slam, [0, 1], [40, 190]), height: 6, background: NEWS.brand, borderRadius: 3 }} />
           {stamp ? (
             <div style={{ marginTop: 8, padding: "12px 28px", borderRadius: 10, background: NEWS.dark, transform: `rotate(-1.5deg) scale(${interpolate(stampS, [0, 1], [1.5, 1])})`, transformOrigin: "left center", opacity: interpolate(frame, [stampAt, stampAt + 8], [0, 1], CLAMP), boxShadow: "0 14px 36px rgba(20,18,16,0.24)" }}>
