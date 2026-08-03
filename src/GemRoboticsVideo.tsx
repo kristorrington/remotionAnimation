@@ -105,8 +105,8 @@ const BEATS: Beat[] = [
   { key: "forgiving", from: 6700, dur: 400, fullscreen: true, pip: true, node: (
     <NewsTakeaway durationInFrames={400} tint={AMBER} kicker="No exact order required" title="TIDYING IS FORGIVING" stamp="Smooth ≠ coordinated" stampAt={250} titleSize={84} />
   ) },
-  { key: "hardware", from: 7100, dur: 460, fullscreen: true, pip: true, node: (
-    <HardwareVsAI durationInFrames={460} tint={BLUE} leftAt={120} rightAt={340} />
+  { key: "hardware", from: 7150, dur: 410, fullscreen: true, pip: true, node: (
+    <HardwareVsAI durationInFrames={410} tint={BLUE} leftAt={88} rightAt={250} />
   ) },
 
   // ── THE GAPS ──
@@ -131,8 +131,8 @@ const BEATS: Beat[] = [
         { at: 570, label: "Adapts to the space" },
       ]} />
   ) },
-  { key: "comparison", from: 9350, dur: 354, fullscreen: true, node: (
-    <NewsKinetic durationInFrames={354} tint={RED} text="“MOST ADVANCED” NEEDS A COMPARISON" highlight="COMPARISON" size={82} />
+  { key: "comparison", from: 9350, dur: 354, fullscreen: true, pip: true, node: (
+    <NewsTakeaway durationInFrames={354} tint={RED} kicker="Does this prove “most advanced”?" title="“MOST ADVANCED” IS A COMPARISON" stamp="Google hasn't shown it" stampAt={280} titleSize={74} />
   ) },
   { key: "demoNotProduct", from: 9704, dur: 380, fullscreen: true, pip: true, node: (
     <NewsTakeaway durationInFrames={380} tint={BRAND} kicker="Where this actually lands" title="A BREAKTHROUGH DEMO" stamp="Not yet a proven product" stampAt={165} titleSize={86} />
