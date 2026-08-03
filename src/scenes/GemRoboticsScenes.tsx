@@ -32,7 +32,7 @@ const ClipVid: React.FC<{ clip: string; clipDur?: number }> = ({ clip, clipDur }
 
 // ── SideClip — the live footage panel that rides beside diagrams/takeaways ───
 export const SideClip: React.FC<{ clip: string; clipDur?: number; w?: number; h?: number; at?: number; source?: string }>
-  = ({ clip, clipDur, w = 560, h = 340, at = 6, source = "DeepMind" }) => {
+  = ({ clip, clipDur, w = 720, h = 430, at = 6, source = "DeepMind" }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const e = spr(frame, fps, at, 26);
@@ -55,7 +55,7 @@ export const MontageClipCard: React.FC<{
   const e = spring({ frame, fps, config: { stiffness: 120, damping: 20, mass: 0.9 }, durationInFrames: 24 });
   const scale = punchIn ? interpolate(e, [0, 1], [0.62, 1]) : interpolate(e, [0, 1], [0.92, 1]);
   const op = punchIn ? interpolate(frame, [0, 6], [0.55, 1], CLAMP) : interpolate(frame, [2, 12], [0, 1], CLAMP);
-  const cardW = 1240, cardH = 640;
+  const cardW = 1460, cardH = 700;
   const active = parts.filter((p) => frame >= p.at);
   const cur = active.length ? active[active.length - 1] : parts[0];
   const cutT = frame - cur.at;
@@ -116,7 +116,7 @@ export const AnnotatedClipCard: React.FC<{
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const e = spr(frame, fps, 4, 26);
-  const cardW = 1240, cardH = 620;
+  const cardW = 1460, cardH = 700;
   return (
     <NewsShell durationInFrames={durationInFrames} tint={tint} header={<NewsHeadline kicker={kicker} title={title} titleSize={64} accent={NEWS.brand} />}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
@@ -143,7 +143,7 @@ export const ClipTakeaway: React.FC<{
   return (
     <NewsShell durationInFrames={durationInFrames} tint={tint} impacts={stamp ? [stampAt] : undefined}>
       <div style={{ display: "flex", alignItems: "center", gap: 60 }}>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 18, width: 760 }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 18, width: 720 }}>
           <span style={{ fontFamily: DISPLAY, fontWeight: 600, fontSize: 26, letterSpacing: 5, textTransform: "uppercase", color: NEWS.brand, opacity: kOp }}>{kicker}</span>
           <div style={{ fontFamily: HERO, fontWeight: 400, fontSize: titleSize, letterSpacing: 1, color: NEWS.ink, lineHeight: 1.02, textTransform: "uppercase", transform: `scale(${interpolate(slam, [0, 1], [1.12, 1])})`, transformOrigin: "left center", opacity: interpolate(frame, [6, 20], [0, 1], CLAMP) }}>{title}</div>
           <div style={{ width: interpolate(slam, [0, 1], [40, 190]), height: 6, background: NEWS.brand, borderRadius: 3 }} />
@@ -153,7 +153,7 @@ export const ClipTakeaway: React.FC<{
             </div>
           ) : null}
         </div>
-        <SideClip clip={clip} clipDur={clipDur} w={620} h={382} />
+        <SideClip clip={clip} clipDur={clipDur} w={860} h={520} />
       </div>
     </NewsShell>
   );
@@ -171,7 +171,7 @@ export const OneBrainScene: React.FC<{ durationInFrames: number; tint?: string; 
   return (
     <NewsShell durationInFrames={durationInFrames} tint={tint} header={<NewsHeadline kicker="Google's claim" title="ONE MODEL RUNS THE WHOLE BODY" titleSize={64} accent={NEWS.brand} />}>
       <div style={{ display: "flex", alignItems: "center", gap: 56 }}>
-        <SideClip clip={clip} clipDur={clipDur} w={600} h={400} />
+        <SideClip clip={clip} clipDur={clipDur} w={680} h={440} />
         <div style={{ position: "relative", width: 760, height: 440 }}>
           <svg width={760} height={440} style={{ position: "absolute", inset: 0 }}>
             {pos.map((p, i) => {
@@ -237,7 +237,7 @@ export const HandoffsScene: React.FC<{ durationInFrames: number; tint?: string; 
             <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 27, letterSpacing: 0.5, textTransform: "uppercase", color: "#fff" }}>One system — fewer handoffs</span>
           </div>
         </div>
-        <SideClip clip={clip} clipDur={clipDur} w={620} h={420} />
+        <SideClip clip={clip} clipDur={clipDur} w={720} h={470} />
       </div>
     </NewsShell>
   );
@@ -253,8 +253,8 @@ export const HardwareVsAI: React.FC<{ durationInFrames: number; tint?: string; l
   return (
     <NewsShell durationInFrames={durationInFrames} tint={tint} header={<NewsHeadline kicker="Worth separating" title="THE BODIES AREN'T THE STORY" titleSize={66} accent={NEWS.brand} />}>
       <div style={{ display: "flex", gap: 40, alignItems: "stretch" }}>
-        <div style={{ width: 560, borderRadius: 12, background: NEWS.dark, borderTop: `5px solid ${NEWS.inkDim}`, overflow: "hidden", display: "flex", flexDirection: "column", boxShadow: "0 16px 40px rgba(20,18,16,0.2)", transform: `translateY(${interpolate(eL, [0, 1], [40, 0])}px)`, opacity: interpolate(frame, [leftAt, leftAt + 8], [0, 1], CLAMP) }}>
-          <div style={{ position: "relative", width: "100%", height: 260 }}>
+        <div style={{ width: 660, borderRadius: 12, background: NEWS.dark, borderTop: `5px solid ${NEWS.inkDim}`, overflow: "hidden", display: "flex", flexDirection: "column", boxShadow: "0 16px 40px rgba(20,18,16,0.2)", transform: `translateY(${interpolate(eL, [0, 1], [40, 0])}px)`, opacity: interpolate(frame, [leftAt, leftAt + 8], [0, 1], CLAMP) }}>
+          <div style={{ position: "relative", width: "100%", height: 320 }}>
             <ClipVid clip={clip} clipDur={clipDur} />
           </div>
           <div style={{ padding: "16px 22px", display: "flex", flexDirection: "column", gap: 4 }}>
@@ -262,7 +262,7 @@ export const HardwareVsAI: React.FC<{ durationInFrames: number; tint?: string; l
             <span style={{ fontFamily: DISPLAY, fontWeight: 500, fontSize: 23, color: "rgba(255,255,255,0.8)" }}>Apollo & Duo — third-party humanoid platforms</span>
           </div>
         </div>
-        <div style={{ width: 470, padding: "32px 30px", borderRadius: 12, background: NEWS.dark, borderTop: `5px solid ${NEWS.brand}`, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 14, boxShadow: "0 16px 40px rgba(20,18,16,0.2)", transform: `translateY(${interpolate(eR, [0, 1], [40, 0])}px)`, opacity: interpolate(frame, [rightAt, rightAt + 8], [0, 1], CLAMP) }}>
+        <div style={{ width: 540, padding: "32px 30px", borderRadius: 12, background: NEWS.dark, borderTop: `5px solid ${NEWS.brand}`, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 14, boxShadow: "0 16px 40px rgba(20,18,16,0.2)", transform: `translateY(${interpolate(eR, [0, 1], [40, 0])}px)`, opacity: interpolate(frame, [rightAt, rightAt + 8], [0, 1], CLAMP) }}>
           <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 44, letterSpacing: 1, textTransform: "uppercase", color: "#fff" }}>The brain</span>
           <LabTile logo="google" h={64} at={rightAt + 6} />
           <span style={{ fontFamily: DISPLAY, fontWeight: 500, fontSize: 25, textAlign: "center", color: "rgba(255,255,255,0.8)" }}>Google's contribution: the intelligence</span>
@@ -293,7 +293,7 @@ export const MissingProofScene: React.FC<{ durationInFrames: number; tint?: stri
           })}
         </div>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
-          <SideClip clip={clip} clipDur={clipDur} w={520} h={330} />
+          <SideClip clip={clip} clipDur={clipDur} w={640} h={400} />
           <span style={{ fontFamily: DISPLAY, fontWeight: 600, fontSize: 21, letterSpacing: 2, textTransform: "uppercase", color: NEWS.inkDim }}>What we got instead: the reel</span>
         </div>
       </div>
@@ -316,7 +316,7 @@ export const JointsStat: React.FC<{ durationInFrames: number; tint?: string; num
           <span style={{ fontFamily: DISPLAY, fontWeight: 600, fontSize: 32, letterSpacing: 4, textTransform: "uppercase", color: NEWS.brand }}>Articulated joints</span>
           <span style={{ fontFamily: DISPLAY, fontWeight: 500, fontSize: 22, color: NEWS.inkDim }}>the dexterity target Google is chasing</span>
         </div>
-        <SideClip clip={clip} clipDur={clipDur} w={600} h={400} />
+        <SideClip clip={clip} clipDur={clipDur} w={760} h={470} />
       </div>
     </NewsShell>
   );

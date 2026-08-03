@@ -512,6 +512,22 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   rotated STICKERS that spring-slam in (scale ~1.5–1.8 → 1, ±2–5° tilt,
   scattered offsets) — never a flat fading row. Camera `impacts` + a subject
   hop/kick on every landing, bolt, stamp and check.
+- **PACE & FRAME-DENSITY RULE (Kris, Aug 2026 — ALL future edits):**
+  (1) **Fill the frame.** No sea of empty backdrop: the visual payload (film
+  cards, receipts, diagrams, stat blocks) dominates — film/receipt cards
+  ≥ ~1400px wide, side-clip panels ≥ ~720px, headline + payload composed so no
+  more than ~25% of the frame reads as bare background. Audit stills for dead
+  real estate like any other defect.
+  (2) **Tempo the VO.** If the delivery is measured, re-time the proxy
+  globally ~1.05–1.08× with PITCH-PRESERVED audio (ffmpeg `setpts=PTS/R` +
+  `atempo=R`) BEFORE transcription so whisper anchors line up natively; if
+  already transcribed, scale the captions and every timeline anchor by 1/R
+  (a uniform scale keeps all sync exact). Speech should feel brisk.
+  (3) **Alternate the face views.** Full-face stretches never hold one
+  framing: jump-cut the FootageDirector framing schedule every ~4–6s
+  (alternating ~1.0 ↔ 1.08–1.12), so the talking head keeps changing view.
+  (4) **Keep the cut moving.** Target a visual change (cover, cut, framing
+  jump, chip landing) every few seconds; a long static hold is a QA defect.
 - **Pacing breathes too**: element entrances settle in ~0.7–1.2s (default
   spring stiffness ~110, damping ~18 — NO overshoot; §13.16 reserves bounce
   for designated gag scenes) — never everything snapping in under half a

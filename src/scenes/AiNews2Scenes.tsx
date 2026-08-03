@@ -47,7 +47,7 @@ export const NewsShell: React.FC<{ durationInFrames: number; children: React.Rea
       <AbsoluteFill style={{ backgroundImage: "radial-gradient(rgba(20,18,16,0.06) 1px, transparent 1px)", backgroundSize: "26px 26px", opacity: 0.7 }} />
       <AbsoluteFill style={{ background: `radial-gradient(ellipse 80% 60% at 50% 116%, ${tint}14, transparent 70%)`, pointerEvents: "none" }} />
       <SceneCameraPush>
-        <AbsoluteFill style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: header ? "flex-start" : "center", padding: header ? "96px 80px 92px" : 0, transform: `translate(${shake.x}px, ${shake.y}px)` }}>
+        <AbsoluteFill style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: header ? "flex-start" : "center", padding: header ? "60px 60px 52px" : 0, transform: `translate(${shake.x}px, ${shake.y}px)` }}>
           {header}
           <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", width: "100%" }}>{children}</div>
         </AbsoluteFill>
