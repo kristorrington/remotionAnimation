@@ -102,8 +102,8 @@ const BEATS: Beat[] = [
   { key: "planned", from: 6360, dur: 340, fullscreen: true, pip: true, node: (
     <ClipTakeaway durationInFrames={340} tint={AMBER} kicker="The footage doesn't say" title="HOW MUCH WAS PLANNED?" stamp="Maybe just separate jobs" stampAt={240} titleSize={72} clip={`${CLIPS}/rob2-garage.mp4`} clipDur={534} />
   ) },
-  { key: "forgiving", from: 6700, dur: 400, fullscreen: true, pip: true, node: (
-    <ClipTakeaway durationInFrames={400} tint={AMBER} kicker="No exact order required" title="TIDYING IS FORGIVING" stamp="Smooth ≠ coordinated" stampAt={250} titleSize={76} clip={`${CLIPS}/rob2-extra-sweeping.mp4`} clipDur={300} />
+  { key: "forgiving", from: 6700, dur: 450, fullscreen: true, pip: true, node: (
+    <ClipTakeaway durationInFrames={450} tint={AMBER} kicker="No exact order required" title="TIDYING IS FORGIVING" stamp="Smooth ≠ coordinated" stampAt={250} titleSize={76} clip={`${CLIPS}/rob2-extra-sweeping.mp4`} clipDur={300} />
   ) },
   { key: "hardware", from: 7150, dur: 410, fullscreen: true, pip: true, node: (
     <HardwareVsAI durationInFrames={410} tint={BLUE} leftAt={88} rightAt={250} clip={`${CLIPS}/rob2-garage.mp4`} clipDur={534} />
