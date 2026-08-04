@@ -224,6 +224,231 @@
           "error": null
         }
       }
+    },
+    {
+      "id": "Short-LightbulbTest",
+      "file": "out/shorts/Short-LightbulbTest.mp4",
+      "title": "The Hardest Thing in Robotics? (Gemini Robotics 2) #Shorts",
+      "tags": [
+        "robotics",
+        "Gemini Robotics 2",
+        "Google DeepMind",
+        "humanoid robots",
+        "AI",
+        "Apollo robot",
+        "robot AI",
+        "AI news",
+        "Tesla Optimus",
+        "Figure robot",
+        "artificial intelligence"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "Google's Gemini Robotics 2 unscrews a spherical lightbulb — grip it, hold the pressure, reposition as it turns, and know when it's loose. Far harder than 'pick up a box.' ▶ Full breakdown on the channel.\n\n#robotics #AI #GeminiRobotics #GoogleDeepMind #Shorts",
+          "publishAt": "2026-08-08T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "Google's Gemini Robotics 2 unscrews a spherical lightbulb — grip it, hold the pressure, reposition as it turns, and know when it's loose. Far harder than 'pick up a box.' ▶ Full breakdown on the channel.\n\n#robotics #AI #GeminiRobotics #GoogleDeepMind #Shorts",
+          "publishAt": "2026-08-08T02:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "Google's Gemini Robotics 2 unscrews a spherical lightbulb — grip it, hold the pressure, reposition as it turns, and know when it's loose. Far harder than 'pick up a box.' ▶ Full breakdown on the channel.\n\n#robotics #AI #GeminiRobotics #GoogleDeepMind #Shorts",
+          "publishAt": "2026-08-08T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "Short-OneBrain",
+      "file": "out/shorts/Short-OneBrain.mp4",
+      "title": "One AI Now Runs a Robot's Whole Body #Shorts",
+      "tags": [
+        "robotics",
+        "Gemini Robotics 2",
+        "Google DeepMind",
+        "humanoid robots",
+        "AI",
+        "Apollo robot",
+        "robot AI",
+        "AI news",
+        "Tesla Optimus",
+        "Figure robot",
+        "artificial intelligence"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "The real story of Gemini Robotics 2 isn't the lightbulb — one model coordinates the arms, hands, movement and balance together. Fewer handoffs, fewer ways to break. ▶ Full breakdown on the channel.\n\n#robotics #AI #GeminiRobotics #GoogleDeepMind #Shorts",
+          "publishAt": "2026-08-09T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "The real story of Gemini Robotics 2 isn't the lightbulb — one model coordinates the arms, hands, movement and balance together. Fewer handoffs, fewer ways to break. ▶ Full breakdown on the channel.\n\n#robotics #AI #GeminiRobotics #GoogleDeepMind #Shorts",
+          "publishAt": "2026-08-08T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "The real story of Gemini Robotics 2 isn't the lightbulb — one model coordinates the arms, hands, movement and balance together. Fewer handoffs, fewer ways to break. ▶ Full breakdown on the channel.\n\n#robotics #AI #GeminiRobotics #GoogleDeepMind #Shorts",
+          "publishAt": "2026-08-09T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "Short-ApolloDuo",
+      "file": "out/shorts/Short-ApolloDuo.mp4",
+      "title": "Two Robots, One Garage — Real Teamwork? #Shorts",
+      "tags": [
+        "robotics",
+        "Gemini Robotics 2",
+        "Google DeepMind",
+        "humanoid robots",
+        "AI",
+        "Apollo robot",
+        "robot AI",
+        "AI news",
+        "Tesla Optimus",
+        "Figure robot",
+        "artificial intelligence"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "Google showed Apollo and Duo tidying a garage at once. But each runs its OWN copy of Gemini Robotics 2 — real coordination, or just two robots given separate jobs? ▶ Full breakdown on the channel.\n\n#robotics #AI #GeminiRobotics #humanoidrobots #Shorts",
+          "publishAt": "2026-08-10T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "Google showed Apollo and Duo tidying a garage at once. But each runs its OWN copy of Gemini Robotics 2 — real coordination, or just two robots given separate jobs? ▶ Full breakdown on the channel.\n\n#robotics #AI #GeminiRobotics #humanoidrobots #Shorts",
+          "publishAt": "2026-08-09T02:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "Google showed Apollo and Duo tidying a garage at once. But each runs its OWN copy of Gemini Robotics 2 — real coordination, or just two robots given separate jobs? ▶ Full breakdown on the channel.\n\n#robotics #AI #GeminiRobotics #humanoidrobots #Shorts",
+          "publishAt": "2026-08-10T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "Short-MissingProof",
+      "file": "out/shorts/Short-MissingProof.mp4",
+      "title": "What Google's Robot Demo Doesn't Show You #Shorts",
+      "tags": [
+        "robotics",
+        "Gemini Robotics 2",
+        "Google DeepMind",
+        "humanoid robots",
+        "AI",
+        "Apollo robot",
+        "robot AI",
+        "AI news",
+        "Tesla Optimus",
+        "Figure robot",
+        "artificial intelligence"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "The Gemini Robotics 2 reel looks incredible — but there's no success rate, no independent test, and no comparison against Optimus, Figure or 1X. Impressive demo, missing proof. ▶ Full breakdown on the channel.\n\n#robotics #AI #GeminiRobotics #GoogleDeepMind #Shorts",
+          "publishAt": "2026-08-11T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "The Gemini Robotics 2 reel looks incredible — but there's no success rate, no independent test, and no comparison against Optimus, Figure or 1X. Impressive demo, missing proof. ▶ Full breakdown on the channel.\n\n#robotics #AI #GeminiRobotics #GoogleDeepMind #Shorts",
+          "publishAt": "2026-08-09T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "The Gemini Robotics 2 reel looks incredible — but there's no success rate, no independent test, and no comparison against Optimus, Figure or 1X. Impressive demo, missing proof. ▶ Full breakdown on the channel.\n\n#robotics #AI #GeminiRobotics #GoogleDeepMind #Shorts",
+          "publishAt": "2026-08-11T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "Short-DemoNotProduct",
+      "file": "out/shorts/Short-DemoNotProduct.mp4",
+      "title": "Is Gemini Robotics 2 a Real Breakthrough? #Shorts",
+      "tags": [
+        "robotics",
+        "Gemini Robotics 2",
+        "Google DeepMind",
+        "humanoid robots",
+        "AI",
+        "Apollo robot",
+        "robot AI",
+        "AI news",
+        "Tesla Optimus",
+        "Figure robot",
+        "artificial intelligence"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "Yes — but not for the reason the highlight reel suggests. One AI coordinating a robot's whole body is the real advance. 'Most advanced ever' still needs a comparison Google hasn't shown. ▶ Full breakdown on the channel.\n\n#robotics #AI #GeminiRobotics #humanoidrobots #Shorts",
+          "publishAt": "2026-08-12T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "Yes — but not for the reason the highlight reel suggests. One AI coordinating a robot's whole body is the real advance. 'Most advanced ever' still needs a comparison Google hasn't shown. ▶ Full breakdown on the channel.\n\n#robotics #AI #GeminiRobotics #humanoidrobots #Shorts",
+          "publishAt": "2026-08-10T02:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "Yes — but not for the reason the highlight reel suggests. One AI coordinating a robot's whole body is the real advance. 'Most advanced ever' still needs a comparison Google hasn't shown. ▶ Full breakdown on the channel.\n\n#robotics #AI #GeminiRobotics #humanoidrobots #Shorts",
+          "publishAt": "2026-08-12T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
     }
   ]
 }
