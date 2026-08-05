@@ -4,16 +4,32 @@ Video: `GemRoboticsFinal` → `out/gemini-robotics.mp4` (~5:41, 1920×1080). SRT
 
 ---
 
-## Title (pick one)
+## Title — A/B set v2 (re-upload; lead with the TENSION, not the press release)
 
-**Primary:**
-> Google's Robot Just Unscrewed a Lightbulb — Here's What They're Not Showing
+**A — skeptic (recommended primary):**
+> Google's New Robot Looks Incredible — Here's What They're Not Showing
 
-**Alternatives:**
-- Gemini Robotics 2: Breakthrough or Just Google's Best Clips?
-- Google's New Robot AI Is Impressive — But Look What's Missing
-- One AI Now Controls a Robot's Whole Body (If You Believe the Demo)
-- Gemini Robotics 2 Explained: What Google Proved and What It Didn't
+**B — concrete feat:**
+> This Robot Unscrewed a Lightbulb. That's Harder Than It Sounds
+
+**C — claim challenge:**
+> "Most Advanced Robot Ever"? Google Hasn't Shown the Proof
+
+Thumbnail text pairs (same layout, swap only the two lines):
+A: LOOKS REAL. / PROVE IT. · B: HARDER THAN / IT LOOKS · C: MOST ADVANCED? / SHOW THE PROOF
+
+**Thumbnail prompt (one layout, three text variants):**
+> YouTube thumbnail, 16:9, 1920×1080, ultra high contrast, dark charcoal
+> background with a subtle orange rim-light. RIGHT SIDE: a real white-and-black
+> Apptronik Apollo humanoid robot mid-action, delicately unscrewing a glowing
+> lightbulb from a desk lamp with articulated black fingers — photorealistic,
+> slightly desaturated documentary grade, NOT a chrome sci-fi render. LEFT
+> THIRD: a man in a maroon hoodie leaning in with a skeptical squint and slight
+> smirk (one raised eyebrow, arms crossed), studio lighting, warm rim light.
+> Between them, bold condensed white uppercase text on two lines with a thin
+> black outline: "LOOKS REAL." on line one, and "PROVE IT." in a solid orange
+> (#D9502E) box on line two. Small white text badge top-left: "GEMINI ROBOTICS
+> 2". Sharp focus, no clutter, mobile-readable.
 
 ---
 
@@ -58,7 +74,8 @@ Video: `GemRoboticsFinal` → `out/gemini-robotics.mp4` (~5:41, 1920×1080). SRT
 
 **Tags:** Gemini Robotics 2, Google DeepMind, humanoid robots, robot AI, Apollo
 robot, Apptronik Apollo, robotics breakthrough, AI news, Tesla Optimus, Figure
-robot, 1X, robot demo, whole body control, AI robotics
+robot, 1X, robot demo, whole body control, AI robotics, humanoid robot 2026,
+Gemini robot demo, robot dexterity, Google robot lightbulb
 
 **Pinned comment:**
 > The real story isn't the lightbulb — it's one model coordinating the whole

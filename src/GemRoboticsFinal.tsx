@@ -48,6 +48,40 @@ for (const s of SPANS) {
 }
 const CUTS = [...new Set([...FULL.map((f) => f.from), ...GEMROB_EXTRA_CUTS])].sort((a, b) => a - b);
 
+// Keyword captions on the FACE-ONLY stretches (retention pass, Aug 2026):
+// 1-4 word "active caption" pops on the emphasised whisper words — a visual
+// pulse where the frame is otherwise static. Keywords, never transcripts
+// (full sentences would fight the cover headlines). Whisper-pinned.
+const FACE_CAPTIONS: { at: number; dur: number; text: string }[] = [
+  { at: 20, dur: 66, text: "UNSCREWED A LIGHTBULB" },
+  { at: 410, dur: 44, text: "LOOKS INCREDIBLE…" },
+  { at: 458, dur: 66, text: "THE REAL QUESTION" },
+  { at: 748, dur: 34, text: "WHAT'S IMPRESSIVE —" },
+  { at: 786, dur: 70, text: "WHAT'S NOT PROVED" },
+  { at: 1566, dur: 72, text: "ROBOTICS GETS MESSY" },
+  { at: 1644, dur: 76, text: "DIFFERENT SYSTEMS, SAME TASK" },
+  { at: 3100, dur: 82, text: "A DROP IS A DROP" },
+  { at: 3258, dur: 62, text: "NO CAMERA TRICKS" },
+  { at: 5204, dur: 70, text: "ONE ROBOT ISN'T THE STORY" },
+  { at: 7598, dur: 72, text: "THE BRAIN, NOT THE BODY" },
+];
+
+const FaceCaption: React.FC<{ dur: number; text: string }> = ({ dur, text }) => {
+  const frame = useCurrentFrame();
+  const pop = interpolate(frame, [0, 7], [1.28, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+  const op = Math.min(
+    interpolate(frame, [0, 6], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
+    interpolate(frame, [dur - 10, dur - 2], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
+  );
+  return (
+    <AbsoluteFill style={{ alignItems: "center", justifyContent: "flex-end", paddingBottom: 150, pointerEvents: "none" }}>
+      <div style={{ padding: "14px 34px", borderRadius: 12, background: "rgba(16,14,12,0.92)", borderBottom: "5px solid #D9502E", boxShadow: "0 14px 40px rgba(0,0,0,0.45)", transform: `scale(${pop})`, opacity: op }}>
+        <span style={{ fontFamily: "Anton", fontWeight: 400, fontSize: 46, letterSpacing: 1.5, textTransform: "uppercase", color: "#fff" }}>{text}</span>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 // §15.2 punch-ins on the face gaps (selective)
 const PUNCHES: { at: number; level: "emphasis" | "strong"; hold: number }[] = [
   { at: 400, level: "emphasis", hold: 44 }, // "the footage looks incredible — but…"
@@ -124,6 +158,13 @@ export const GemRoboticsFinal: React.FC = () => {
             <CornerPip key={`pipf-${s.from}`} footage={FOOTAGE} from={s.from} dur={s.to - s.from} faceX={4} />
           ))}
         </SlideLeftPush>
+
+        {/* keyword captions on the face-only stretches */}
+        {FACE_CAPTIONS.map((c) => (
+          <Sequence key={`fc-${c.at}`} from={c.at} durationInFrames={c.dur}>
+            <FaceCaption dur={c.dur} text={c.text} />
+          </Sequence>
+        ))}
 
         {/* face → first cover (the lightbulb film card) at ~90 */}
         <CutFlash at={90} peak={0.5} />
