@@ -238,9 +238,9 @@ export const HandoffsScene: React.FC<{ durationInFrames: number; tint?: string; 
   const uni = spr(frame, fps, unifyAt, 26);
   return (
     <AbsoluteFill>
-      <FullBleed clip={clip} clipDur={clipDur} scrim="linear-gradient(180deg, rgba(10,9,8,0.8) 0%, rgba(10,9,8,0.6) 30%, rgba(10,9,8,0.68) 100%)" />
+      <FullBleed clip={clip} clipDur={clipDur} scrim="linear-gradient(180deg, rgba(10,9,8,0.76) 0%, rgba(10,9,8,0.3) 28%, rgba(10,9,8,0.24) 62%, rgba(10,9,8,0.6) 100%)" />
       <OverlayHeadline kicker="Why robots get messy" title="EVERY HANDOFF CAN BREAK" titleSize={68} />
-      <div style={{ position: "absolute", top: 300, left: 0, right: 0, display: "flex", alignItems: "center", justifyContent: "center", gap: 0 }}>
+      <div style={{ position: "absolute", bottom: 250, left: 0, right: 0, display: "flex", alignItems: "center", justifyContent: "center", gap: 0 }}>
         {systems.map((s, i) => {
           const at = rowAts[i] ?? 0;
           const e = spr(frame, fps, at, 24);
@@ -248,8 +248,8 @@ export const HandoffsScene: React.FC<{ durationInFrames: number; tint?: string; 
           const pulse = sparkOn ? 0.6 + 0.4 * Math.abs(Math.sin((frame - sparkAt) * 0.35)) : 0;
           return (
             <React.Fragment key={s}>
-              <div style={{ width: 380, padding: "30px 18px", borderRadius: 12, background: "rgba(16,14,12,0.92)", borderTop: `4px solid ${NEWS.amber}`, textAlign: "center", boxShadow: "0 14px 34px rgba(0,0,0,0.4)", transform: `translateY(${interpolate(e, [0, 1], [34, 0])}px)`, opacity: interpolate(frame, [at, at + 8], [0, 1], CLAMP) }}>
-                <span style={{ fontFamily: DISPLAY, fontWeight: 700, fontSize: 30, letterSpacing: 0.5, textTransform: "uppercase", color: "#fff" }}>{s}</span>
+              <div style={{ width: 300, padding: "18px 14px", borderRadius: 12, background: "rgba(16,14,12,0.92)", borderTop: `4px solid ${NEWS.amber}`, textAlign: "center", boxShadow: "0 14px 34px rgba(0,0,0,0.4)", transform: `translateY(${interpolate(e, [0, 1], [34, 0])}px)`, opacity: interpolate(frame, [at, at + 8], [0, 1], CLAMP) }}>
+                <span style={{ fontFamily: DISPLAY, fontWeight: 700, fontSize: 25, letterSpacing: 0.5, textTransform: "uppercase", color: "#fff" }}>{s}</span>
               </div>
               {i < systems.length - 1 && (
                 <div style={{ width: 110, display: "flex", flexDirection: "column", alignItems: "center", gap: 4, opacity: interpolate(frame, [(rowAts[i + 1] ?? 0), (rowAts[i + 1] ?? 0) + 8], [0, 1], CLAMP) }}>
@@ -261,9 +261,9 @@ export const HandoffsScene: React.FC<{ durationInFrames: number; tint?: string; 
           );
         })}
       </div>
-      <div style={{ position: "absolute", left: "50%", bottom: 110, width: 1240, marginLeft: -620, padding: "22px 0", borderRadius: 12, background: "rgba(16,14,12,0.94)", borderTop: `5px solid ${NEWS.green}`, display: "flex", alignItems: "center", justifyContent: "center", gap: 18, boxShadow: `0 16px 44px rgba(0,0,0,0.45), 0 0 40px ${NEWS.green}44`, transform: `translateY(${interpolate(uni, [0, 1], [40, 0])}px) scale(${interpolate(uni, [0, 1], [0.94, 1])})`, opacity: interpolate(frame, [unifyAt, unifyAt + 8], [0, 1], CLAMP) }}>
+      <div style={{ position: "absolute", left: "50%", bottom: 110, width: 1040, marginLeft: -520, padding: "15px 0", borderRadius: 12, background: "rgba(16,14,12,0.94)", borderTop: `5px solid ${NEWS.green}`, display: "flex", alignItems: "center", justifyContent: "center", gap: 18, boxShadow: `0 16px 44px rgba(0,0,0,0.45), 0 0 40px ${NEWS.green}44`, transform: `translateY(${interpolate(uni, [0, 1], [40, 0])}px) scale(${interpolate(uni, [0, 1], [0.94, 1])})`, opacity: interpolate(frame, [unifyAt, unifyAt + 8], [0, 1], CLAMP) }}>
         <LabTile logo="google" h={50} at={unifyAt + 4} />
-        <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 38, letterSpacing: 1, textTransform: "uppercase", color: "#fff" }}>Gemini Robotics 2 — one system, fewer handoffs</span>
+        <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 30, letterSpacing: 1, textTransform: "uppercase", color: "#fff" }}>Gemini Robotics 2 — one system, fewer handoffs</span>
       </div>
       <FilmPill />
     </AbsoluteFill>

@@ -2,11 +2,10 @@ import React from "react";
 import { AbsoluteFill, Sequence } from "remotion";
 import { Fable5Outro } from "./components/Fable5Outro";
 import { SFX, SfxCue, vary } from "./components/Sfx";
-import { ScreenshotReceiptScene } from "./scenes/SourceCardScene";
 import { ThemeProvider } from "./theme";
 import { MusicController } from "./motion/editkit";
 import { NEWS, NewsKinetic } from "./scenes/AiNews2Scenes";
-import { MontageClipCard, AnnotatedClipCard, ClipTakeaway, OneBrainScene, HandoffsScene, HardwareVsAI, MissingProofScene, JointsStat } from "./scenes/GemRoboticsScenes";
+import { MontageClipCard, AnnotatedClipCard, ClipTakeaway, HandoffsScene, HardwareVsAI, MissingProofScene, JointsStat } from "./scenes/GemRoboticsScenes";
 
 // GemRoboticsVideo — the cutaway overlay for the Gemini Robotics 2 breakdown
 // (~5m41s, 10242f @ 30fps — NATURAL speed; the 1.06× re-time was REVERTED,
@@ -24,7 +23,6 @@ const GREEN = NEWS.green;
 const AMBER = NEWS.amber;
 const RED = NEWS.red;
 const BLUE = NEWS.blue;
-const SHOT = "assets/external/screenshots";
 const CLIPS = "assets/external/clips";
 const DM = "DeepMind — Gemini Robotics 2";
 
@@ -45,13 +43,19 @@ const BEATS: Beat[] = [
   ) },
 
   // ── ONE BRAIN ──
-  { key: "announce", from: 888, dur: 260, receipt: true, node: (
-    <ScreenshotReceiptScene durationInFrames={260} kicker="DEEPMIND · OFFICIAL" title="GEMINI ROBOTICS 2" fullBleed={false} tint={BLUE}
-      src={`${SHOT}/ai2-gemini-robotics.png`} url="deepmind.google/blog" imageW={2680} imageH={2560}
-      cardW={796} cardH={760} from={{ x: 0, y: 0, w: 2680, h: 2560 }} to={{ x: 0, y: 0, w: 2680, h: 2560 }} zoomAt={0} />
+  { key: "announce", from: 888, dur: 260, fullscreen: true, pip: true, node: (
+    <MontageClipCard durationInFrames={260} tint={BLUE} kicker="July 30 · official release" title="GEMINI ROBOTICS 2 IS HERE" source={DM}
+      parts={[{ src: `${CLIPS}/rob2-packing.mp4`, at: 0, label: "Packing a lunch bag", clipDur: 480 }]} />
   ) },
   { key: "oneBrain", from: 1148, dur: 412, fullscreen: true, pip: true, node: (
-    <OneBrainScene durationInFrames={412} tint={BLUE} coreAt={12} partAts={[142, 167, 200, 233]} tagAt={272} clip={`${CLIPS}/rob2-extra-wholebody.mp4`} clipDur={420} />
+    <AnnotatedClipCard durationInFrames={412} tint={BLUE} kicker="Google's claim" title="ONE MODEL RUNS THE WHOLE BODY" clip={`${CLIPS}/rob2-extra-wholebody.mp4`} source={DM} clipDur={420}
+      chips={[
+        { at: 142, label: "Arms" },
+        { at: 167, label: "Hands" },
+        { at: 200, label: "Movement" },
+        { at: 233, label: "Balance" },
+        { at: 272, label: "One behaviour" },
+      ]} />
   ) },
   { key: "handoffs", from: 1734, dur: 492, fullscreen: true, pip: true, node: (
     <HandoffsScene durationInFrames={492} tint={AMBER} rowAts={[20, 76, 126]} sparkAt={167} unifyAt={411} clip={`${CLIPS}/rob2-extra-sixgrid.mp4`} clipDur={600} />
