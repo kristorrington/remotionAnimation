@@ -519,11 +519,12 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   small card floating on bare paper. Receipts/diagram-only beats keep cards but
   ≥ ~1400px wide with ≤ ~25% bare background. Audit stills for dead real
   estate like any other defect.
-  (2) **Tempo the VO.** If the delivery is measured, re-time the proxy
-  globally ~1.05–1.08× with PITCH-PRESERVED audio (ffmpeg `setpts=PTS/R` +
-  `atempo=R`) BEFORE transcription so whisper anchors line up natively; if
-  already transcribed, scale the captions and every timeline anchor by 1/R
-  (a uniform scale keeps all sync exact). Speech should feel brisk.
+  (2) **Tempo comes from the EDIT, never from resampling** (amended after the
+  GemRobotics revert, Aug 2026: a post-hoc 1.06× re-time conformed 31.8→30fps
+  and produced visible lip-sync drift on the face — Kris had it reverted).
+  NEVER speed-change talking-head footage in post. Brisk pace comes from:
+  tight scene turnover (rule 5), silence-trimmed jump cuts, alternating
+  framings (rule 3), and Kris delivering faster at RECORD time.
   (3) **Alternate the face views.** Full-face stretches never hold one
   framing: jump-cut the FootageDirector framing schedule every ~4–6s
   (alternating ~1.0 ↔ 1.08–1.12), so the talking head keeps changing view.
