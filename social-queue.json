@@ -137,7 +137,7 @@
     },
     {
       "id": "Short-Mew3",
-      "file": "out/shorts/YT_TIK_Short-Mew3.mp4",
+      "file": "out/shorts/YT_TIK_IG_Short-Mew3.mp4",
       "title": "OpenAI Flashed a Secret Model Name, Then Deleted It #Shorts",
       "tags": [
         "OpenAI",
@@ -174,8 +174,8 @@
           "enabled": true,
           "caption": "A mystery model “Mew3” appeared in an OpenAI promo video — then the clip was pulled. People are already calling it GPT-6, but a hidden name is not a launch. Still a rumour. ▶ Full breakdown on the channel.\n\n#AInews #OpenAI #GPT6 #AI #Shorts",
           "publishAt": "2026-08-06T07:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "published",
+          "remoteId": "17982403545024608",
           "error": null
         }
       }
