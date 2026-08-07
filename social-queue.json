@@ -182,7 +182,7 @@
     },
     {
       "id": "Short-EvidenceRule",
-      "file": "out/shorts/YT_TIK_Short-EvidenceRule.mp4",
+      "file": "out/shorts/YT_TIK_IG_Short-EvidenceRule.mp4",
       "title": "How to Spot Fake AI News (3-Level Rule) #Shorts",
       "tags": [
         "AI news",
@@ -219,8 +219,8 @@
           "enabled": true,
           "caption": "A simple 3-level rule for every AI headline: Level 1 official → state it. Level 2 reported / self-tested → cite it. Level 3 leak / rumour → ignore it until proven. ▶ Full weekly breakdown on the channel.\n\n#AInews #AI #medialiteracy #Shorts",
           "publishAt": "2026-08-07T07:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "published",
+          "remoteId": "18025894661680922",
           "error": null
         }
       }
