@@ -227,7 +227,7 @@
     },
     {
       "id": "Short-LightbulbTest",
-      "file": "out/shorts/YT_TIK_Short-LightbulbTest.mp4",
+      "file": "out/shorts/YT_TIK_IG_Short-LightbulbTest.mp4",
       "title": "The Hardest Thing in Robotics? (Gemini Robotics 2) #Shorts",
       "tags": [
         "robotics",
@@ -264,8 +264,8 @@
           "enabled": true,
           "caption": "Google's Gemini Robotics 2 unscrews a spherical lightbulb — grip it, hold the pressure, reposition as it turns, and know when it's loose. Far harder than 'pick up a box.' ▶ Full breakdown on the channel.\n\n#robotics #AI #GeminiRobotics #GoogleDeepMind #Shorts",
           "publishAt": "2026-08-08T07:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "published",
+          "remoteId": "18477615208111942",
           "error": null
         }
       }
