@@ -3582,6 +3582,22 @@
       "concerns": null,
       "durationSec": 15,
       "shows": "Host close-up, no on-screen text (12:00-12:15)"
+    },
+    {
+      "filename": "astra-pod-e.mp4",
+      "localPath": "public/assets/external/clips/astra-pod-e.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=wNWz5Hbh5VQ",
+      "sourceName": "OpenAI Podcast Ep. 20 (official)",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Muted official clip — episode title card (80-year-old framing)",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "durationSec": 4,
+      "shows": "Episode title card: How a reasoning model cracked an 80-year-old math problem"
     }
   ]
 }

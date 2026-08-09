@@ -9,6 +9,7 @@ import { NEWS, DISPLAY, HERO } from "./AiNews2Scenes";
 // split, the system-card fork and the closing rule. All anchors whisper-pinned.
 
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+const KICK = "#FF8A5C"; // brand kicker, brightened for dark scenes
 const spr = (frame: number, fps: number, at: number, dur = 26) =>
   spring({ frame: frame - at, fps, config: { stiffness: 110, damping: 18 }, durationInFrames: dur });
 
@@ -261,5 +262,182 @@ export const RuleScene: React.FC<{ durationInFrames: number; mathAt: number; bri
         <Row at={briefAt} color={NEWS.amber} icon="wait" text="The jobs briefing" stamp="Still waiting on its footnote" />
       </div>
     </Stage>
+  );
+};
+
+// ── PagesScene — the 249-page manuscript stacks up, Lean stamp lands ─────────
+export const PagesScene: React.FC<{ durationInFrames: number; countTo?: number; stampAt: number }> = ({ countTo = 249, stampAt }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const n = Math.round(interpolate(frame, [10, 100], [0, countTo], CLAMP));
+  const st = spring({ frame: frame - stampAt, fps, config: { stiffness: 200, damping: 15 }, durationInFrames: 20 });
+  const sheets = 14;
+  return (
+    <AbsoluteFill style={{ backgroundColor: "#141210" }}>
+      <AbsoluteFill style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)", backgroundSize: "26px 26px" }} />
+      <AbsoluteFill style={{ background: `radial-gradient(ellipse 70% 55% at 50% 60%, ${NEWS.blue}18, transparent 70%)` }} />
+      <div style={{ position: "absolute", top: 64, left: 0, right: 0, textAlign: "center" }}>
+        <span style={{ fontFamily: DISPLAY, fontWeight: 600, fontSize: 25, letterSpacing: 5, textTransform: "uppercase", color: KICK }}>Dropped the same day — no tease</span>
+      </div>
+      <div style={{ position: "absolute", left: 330, bottom: 200, width: 560, height: 520 }}>
+        {Array.from({ length: sheets }).map((_, i) => {
+          const at = 8 + i * 6;
+          const e = spr(frame, fps, at, 18);
+          return (
+            <div key={i} style={{ position: "absolute", bottom: i * 26, left: (i % 3) * 8 - 8, width: 520, height: 320, borderRadius: 8, background: "#F5F2EC", border: "1px solid rgba(20,18,16,0.25)", boxShadow: "0 10px 26px rgba(0,0,0,0.45)", transform: `translateY(${interpolate(e, [0, 1], [-620, 0])}px) rotate(${(i % 2 ? 1 : -1) * 0.8}deg)`, opacity: interpolate(frame, [at, at + 4], [0, 1], CLAMP) }}>
+              <div style={{ padding: "22px 26px", display: "flex", flexDirection: "column", gap: 10 }}>
+                {Array.from({ length: 6 }).map((_, r) => (
+                  <div key={r} style={{ height: 9, width: `${88 - r * 9}%`, borderRadius: 5, background: "rgba(20,18,16,0.18)" }} />
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div style={{ position: "absolute", right: 240, top: 250, display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 4 }}>
+        <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 330, lineHeight: 0.9, color: "#fff", textShadow: "0 8px 44px rgba(0,0,0,0.5)" }}>{n}</span>
+        <span style={{ fontFamily: DISPLAY, fontWeight: 700, fontSize: 40, letterSpacing: 4, textTransform: "uppercase", color: KICK }}>pages</span>
+        <div style={{ marginTop: 14, padding: "12px 26px", borderRadius: 10, background: NEWS.green, transform: `rotate(-1.5deg) scale(${interpolate(st, [0, 1], [1.5, 1], CLAMP)})`, transformOrigin: "left center", opacity: interpolate(frame, [stampAt, stampAt + 8], [0, 1], CLAMP), boxShadow: "0 14px 36px rgba(0,0,0,0.4)" }}>
+          <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 36, letterSpacing: 1, textTransform: "uppercase", color: "#fff" }}>Machine-checked, all of it</span>
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// ── LeanRejectScene — a "TRUST ME" card tries the gate and gets thrown back ──
+export const LeanRejectScene: React.FC<{ durationInFrames: number; tryAt: number; stampAt: number }> = ({ tryAt, stampAt }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = interpolate(frame, [tryAt, tryAt + 60], [0, 1], CLAMP);
+  const x = t < 0.5 ? interpolate(t, [0, 0.5], [-360, 590]) : interpolate(t, [0.5, 1], [590, -160]);
+  const rejected = t >= 0.5;
+  const flash = interpolate(frame, [tryAt + 30, tryAt + 42], [0.9, 0], CLAMP);
+  const st = spring({ frame: frame - stampAt, fps, config: { stiffness: 200, damping: 15 }, durationInFrames: 20 });
+  return (
+    <AbsoluteFill style={{ backgroundColor: "#141210" }}>
+      <AbsoluteFill style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)", backgroundSize: "26px 26px" }} />
+      <AbsoluteFill style={{ background: `radial-gradient(ellipse 70% 55% at 50% 55%, ${NEWS.red}14, transparent 70%)` }} />
+      <div style={{ position: "absolute", top: 54, left: 0, right: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: 8, textAlign: "center" }}>
+        <span style={{ fontFamily: DISPLAY, fontWeight: 600, fontSize: 25, letterSpacing: 5, textTransform: "uppercase", color: KICK }}>It re-derives every logical step</span>
+        <div style={{ fontFamily: HERO, fontWeight: 400, fontSize: 66, letterSpacing: 1, color: "#fff", textTransform: "uppercase" }}>CAN'T BE SWEET-TALKED</div>
+        <div style={{ width: 190, height: 6, background: NEWS.brand, borderRadius: 3 }} />
+      </div>
+      <div style={{ position: "absolute", left: 960 - 170, top: 330, width: 340, height: 430, borderRadius: 22, background: "#1E1B18", border: `2px solid ${NEWS.green}66`, borderTop: `8px solid ${rejected && flash > 0 ? NEWS.red : NEWS.green}`, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 16, boxShadow: `0 24px 60px rgba(0,0,0,0.5), 0 0 80px ${rejected && flash > 0 ? NEWS.red : NEWS.green}2E`, zIndex: 3 }}>
+        <Img src={staticFile("assets/external/logos/lean.svg")} style={{ height: 100, filter: "brightness(0) invert(1)" }} />
+        <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 46, letterSpacing: 1, textTransform: "uppercase", color: "#fff" }}>Lean 4</span>
+      </div>
+      <AbsoluteFill style={{ background: NEWS.red, opacity: flash * 0.22, pointerEvents: "none" }} />
+      <div style={{ position: "absolute", left: x, top: rejected ? 470 + Math.sin(Math.min(Math.max(t * 2 - 1, 0), 1) * Math.PI) * -60 : 470, transform: `rotate(${rejected ? interpolate(t, [0.5, 1], [0, -14]) : 0}deg)`, opacity: interpolate(frame, [tryAt, tryAt + 6], [0, 1], CLAMP), zIndex: 2 }}>
+        <div style={{ padding: "20px 32px", borderRadius: 12, background: "#26221E", border: `3px solid ${rejected ? NEWS.red : "rgba(255,255,255,0.2)"}`, boxShadow: "0 12px 30px rgba(0,0,0,0.45)", display: "flex", alignItems: "center", gap: 14 }}>
+          <span style={{ fontFamily: DISPLAY, fontWeight: 700, fontSize: 34, letterSpacing: 1, color: "#fff" }}>"TRUST ME"</span>
+          {rejected && (
+            <svg width={40} height={40} viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill={NEWS.red} /><path d="M7.5 7.5l9 9M16.5 7.5l-9 9" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" /></svg>
+          )}
+        </div>
+      </div>
+      <div style={{ position: "absolute", left: "50%", bottom: 96, transform: `translateX(-50%) rotate(-1.5deg) scale(${interpolate(st, [0, 1], [1.5, 1], CLAMP)})`, padding: "13px 30px", borderRadius: 10, background: NEWS.green, opacity: interpolate(frame, [stampAt, stampAt + 8], [0, 1], CLAMP), boxShadow: "0 12px 34px rgba(0,0,0,0.4)", whiteSpace: "nowrap" }}>
+        <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 38, letterSpacing: 1, textTransform: "uppercase", color: "#fff" }}>Approved = proven</span>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// ── SignalSoloScene — one signal card, full attention (capability / stakes) ──
+export const SignalSoloScene: React.FC<{ durationInFrames: number; kind: "capability" | "stakes"; stampAt: number }> = ({ kind, stampAt }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const cap = kind === "capability";
+  const color = cap ? NEWS.green : NEWS.amber;
+  const e = spr(frame, fps, 8, 28);
+  const st = spring({ frame: frame - stampAt, fps, config: { stiffness: 200, damping: 15 }, durationInFrames: 20 });
+  const chips = cap ? ["Sphere packing ✓", "Ramsey numbers ✓", "Quantum repetition ✓"] : ["Hiring plans", "Automation rollouts", "Your codebase?"];
+  return (
+    <AbsoluteFill style={{ backgroundColor: "#141210" }}>
+      <AbsoluteFill style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)", backgroundSize: "26px 26px" }} />
+      <AbsoluteFill style={{ background: `radial-gradient(ellipse 70% 55% at 50% 55%, ${color}16, transparent 70%)` }} />
+      <div style={{ position: "absolute", top: 54, left: 0, right: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: 8, textAlign: "center" }}>
+        <span style={{ fontFamily: DISPLAY, fontWeight: 600, fontSize: 25, letterSpacing: 5, textTransform: "uppercase", color: KICK }}>{cap ? "Ten solved theorems" : "The briefing — if it's accurate"}</span>
+        <div style={{ fontFamily: HERO, fontWeight: 400, fontSize: 78, letterSpacing: 1, color: "#fff", textTransform: "uppercase" }}>{cap ? "A CAPABILITY SIGNAL" : "A STAKES SIGNAL"}</div>
+        <div style={{ width: 190, height: 6, background: color, borderRadius: 3 }} />
+      </div>
+      <div style={{ position: "absolute", left: "50%", top: 330, transform: `translateX(-50%) translateY(${interpolate(e, [0, 1], [50, 0])}px)`, width: 1080, padding: "44px 50px", borderRadius: 18, background: "#1E1B18", borderTop: `7px solid ${color}`, display: "flex", flexDirection: "column", alignItems: "center", gap: 26, boxShadow: `0 26px 64px rgba(0,0,0,0.5), 0 0 90px ${color}22`, opacity: interpolate(frame, [8, 18], [0, 1], CLAMP) }}>
+        {cap ? (
+          <Img src={staticFile("assets/external/logos/lean.svg")} style={{ height: 88, filter: "brightness(0) invert(1)" }} />
+        ) : (
+          <svg width={88} height={88} viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="2" fill="none" stroke="#fff" strokeWidth="1.7" /><path d="M9 8V6.4A2.4 2.4 0 0111.4 4h1.2A2.4 2.4 0 0115 6.4V8M3 13h18" fill="none" stroke="#fff" strokeWidth="1.7" /></svg>
+        )}
+        <div style={{ display: "flex", gap: 18 }}>
+          {chips.map((c, i) => {
+            const at = 40 + i * 34;
+            const ce = spr(frame, fps, at, 20);
+            return (
+              <div key={c} style={{ padding: "13px 26px", borderRadius: 10, background: "rgba(255,255,255,0.08)", border: `2px solid ${color}AA`, transform: `scale(${interpolate(ce, [0, 1], [0.7, 1])})`, opacity: interpolate(frame, [at, at + 8], [0, 1], CLAMP) }}>
+                <span style={{ fontFamily: DISPLAY, fontWeight: 700, fontSize: 28, letterSpacing: 0.5, textTransform: "uppercase", color: "#fff", whiteSpace: "nowrap" }}>{c}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div style={{ position: "absolute", left: "50%", bottom: 100, transform: `translateX(-50%) rotate(-1.5deg) scale(${interpolate(st, [0, 1], [1.5, 1], CLAMP)})`, padding: "13px 30px", borderRadius: 10, background: color, opacity: interpolate(frame, [stampAt, stampAt + 8], [0, 1], CLAMP), boxShadow: "0 12px 34px rgba(0,0,0,0.4)", whiteSpace: "nowrap" }}>
+        <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 38, letterSpacing: 1, textTransform: "uppercase", color: "#fff" }}>{cap ? "Strong — somewhere" : "Reaches hiring & rollouts"}</span>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// ── SystemCardScene — the missing document itself, big and empty ─────────────
+export const SystemCardScene: React.FC<{ durationInFrames: number; stampAt: number }> = ({ stampAt }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const e = spr(frame, fps, 10, 28);
+  const st = spring({ frame: frame - stampAt, fps, config: { stiffness: 200, damping: 15 }, durationInFrames: 20 });
+  return (
+    <AbsoluteFill style={{ backgroundColor: "#141210" }}>
+      <AbsoluteFill style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)", backgroundSize: "26px 26px" }} />
+      <AbsoluteFill style={{ background: `radial-gradient(ellipse 70% 55% at 50% 55%, ${NEWS.blue}16, transparent 70%)` }} />
+      <div style={{ position: "absolute", top: 54, left: 0, right: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: 8, textAlign: "center" }}>
+        <span style={{ fontFamily: DISPLAY, fontWeight: 600, fontSize: 25, letterSpacing: 5, textTransform: "uppercase", color: KICK }}>One document ends the guessing</span>
+        <div style={{ fontFamily: HERO, fontWeight: 400, fontSize: 78, letterSpacing: 1, color: "#fff", textTransform: "uppercase" }}>THE SYSTEM CARD</div>
+        <div style={{ width: 190, height: 6, background: NEWS.brand, borderRadius: 3 }} />
+      </div>
+      <div style={{ position: "absolute", left: "50%", top: 300, transform: `translateX(-50%) translateY(${interpolate(e, [0, 1], [50, 0])}px)`, width: 620, height: 560, borderRadius: 16, background: "rgba(255,255,255,0.045)", border: "3px dashed rgba(255,255,255,0.4)", display: "flex", flexDirection: "column", alignItems: "center", padding: "40px 44px", gap: 18, opacity: interpolate(frame, [10, 22], [0, 1], CLAMP) }}>
+        <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 40, letterSpacing: 1, textTransform: "uppercase", color: "rgba(255,255,255,0.85)" }}>System card</span>
+        {Array.from({ length: 7 }).map((_, r) => (
+          <div key={r} style={{ height: 12, width: `${92 - (r % 3) * 14}%`, borderRadius: 6, background: "rgba(255,255,255,0.12)" }} />
+        ))}
+        <div style={{ marginTop: 10, transform: `rotate(-6deg) scale(${interpolate(st, [0, 1], [1.6, 1], CLAMP)})`, padding: "14px 30px", borderRadius: 10, border: `4px solid ${NEWS.red}`, opacity: interpolate(frame, [stampAt, stampAt + 8], [0, 1], CLAMP) }}>
+          <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 44, letterSpacing: 2, textTransform: "uppercase", color: NEWS.red }}>Not published</span>
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// ── ImageTakeaway — takeaway text over a full-bleed dimmed SCREENSHOT ────────
+export const ImageTakeaway: React.FC<{ durationInFrames: number; img: string; kicker: string; title: string; stamp?: string; stampAt?: number; titleSize?: number }>
+  = ({ img, kicker, title, stamp, stampAt = 60, titleSize = 72 }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const st = spring({ frame: frame - stampAt, fps, config: { stiffness: 200, damping: 15 }, durationInFrames: 20 });
+  const slam = spring({ frame: frame - 6, fps, config: { stiffness: 190, damping: 24, mass: 0.9 }, durationInFrames: 30 });
+  const push = interpolate(frame, [0, 420], [1.04, 1.1], CLAMP);
+  return (
+    <AbsoluteFill style={{ backgroundColor: "#0B0A09" }}>
+      <AbsoluteFill style={{ transform: `scale(${push})` }}>
+        <Img src={staticFile(img)} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "blur(2px) brightness(0.55)" }} />
+      </AbsoluteFill>
+      <AbsoluteFill style={{ background: "linear-gradient(90deg, rgba(10,9,8,0.86) 0%, rgba(10,9,8,0.6) 40%, rgba(10,9,8,0.25) 70%)" }} />
+      <div style={{ position: "absolute", left: 84, top: 0, bottom: 0, width: 900, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-start", gap: 20 }}>
+        <span style={{ fontFamily: DISPLAY, fontWeight: 600, fontSize: 27, letterSpacing: 5, textTransform: "uppercase", color: KICK, opacity: interpolate(frame, [0, 12], [0, 1], CLAMP) }}>{kicker}</span>
+        <div style={{ fontFamily: HERO, fontWeight: 400, fontSize: titleSize, letterSpacing: 1, color: "#fff", lineHeight: 1.02, textTransform: "uppercase", maxWidth: 880, transform: `scale(${interpolate(slam, [0, 1], [1.1, 1])})`, transformOrigin: "left center", opacity: interpolate(frame, [6, 20], [0, 1], CLAMP), textShadow: "0 4px 24px rgba(0,0,0,0.5)" }}>{title}</div>
+        <div style={{ width: interpolate(slam, [0, 1], [40, 190], CLAMP), height: 6, background: NEWS.brand, borderRadius: 3 }} />
+        {stamp ? (
+          <div style={{ marginTop: 10, padding: "13px 30px", borderRadius: 10, background: NEWS.brand, transform: `rotate(-1.5deg) scale(${interpolate(st, [0, 1], [1.5, 1], CLAMP)})`, transformOrigin: "left center", opacity: interpolate(frame, [stampAt, stampAt + 8], [0, 1], CLAMP), boxShadow: "0 14px 36px rgba(0,0,0,0.4)" }}>
+            <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 40, letterSpacing: 1, textTransform: "uppercase", color: "#fff" }}>{stamp}</span>
+          </div>
+        ) : null}
+      </div>
+    </AbsoluteFill>
   );
 };

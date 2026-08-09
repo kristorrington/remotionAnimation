@@ -6,8 +6,8 @@ import { ScreenshotReceiptScene } from "./scenes/SourceCardScene";
 import { ThemeProvider } from "./theme";
 import { MusicController } from "./motion/editkit";
 import { NEWS, NewsKinetic } from "./scenes/AiNews2Scenes";
-import { ClipTakeaway, MissingProofScene } from "./scenes/GemRoboticsScenes";
-import { LeanGateScene, TenGridScene, Counter27Scene, TwoChecksScene, TwoSignalsScene, TwoPathScene, RuleScene } from "./scenes/AstraScenes";
+import { MontageClipCard, MissingProofScene } from "./scenes/GemRoboticsScenes";
+import { LeanGateScene, LeanRejectScene, PagesScene, SignalSoloScene, SystemCardScene, ImageTakeaway, TenGridScene, Counter27Scene, TwoChecksScene, TwoSignalsScene, TwoPathScene, RuleScene } from "./scenes/AstraScenes";
 
 // AstraVideo — the Astra ten-proofs fact-check (~5m29s, 9864f @ 30fps, natural
 // speed). RECEIPT-DRIVEN: the OpenAI Aug 1 post, the May Erdős post, the arXiv
@@ -47,13 +47,13 @@ const BEATS: Beat[] = [
 
   // ── THE PROOF ──
   { key: "manuscript249", from: 1395, dur: 235, fullscreen: true, pip: true, node: (
-    <ClipTakeaway durationInFrames={235} tint={BLUE} kicker="Dropped the same day — no tease" title="249 PAGES" stamp="Machine-checked, all of it" stampAt={130} titleSize={110} clip={`${CLIPS}/astra-pod-d.mp4`} clipDur={450} />
+    <PagesScene durationInFrames={235} stampAt={130} />
   ) },
   { key: "leanGate", from: 1630, dur: 370, fullscreen: true, pip: true, node: (
     <LeanGateScene durationInFrames={370} passAts={[140, 205, 270]} tagAt={9999} />
   ) },
   { key: "leanTalk", from: 2000, dur: 325, fullscreen: true, pip: true, node: (
-    <ClipTakeaway durationInFrames={325} tint={GREEN} kicker="It re-derives every logical step" title="CAN'T BE SWEET-TALKED" stamp="Approved = proven" stampAt={169} titleSize={74} clip={`${CLIPS}/astra-pod-b.mp4`} clipDur={390} />
+    <LeanRejectScene durationInFrames={325} tryAt={30} stampAt={169} />
   ) },
   { key: "tenGrid", from: 2325, dur: 335, fullscreen: true, pip: true, node: (
     <TenGridScene durationInFrames={335} startAt={15} fieldAts={[15, 110, 163]} checkAt={230} />
@@ -67,7 +67,8 @@ const BEATS: Beat[] = [
 
   // ── THE WRONG NUMBER ──
   { key: "eightyKinetic", from: 3369, dur: 150, fullscreen: true, node: (
-    <NewsKinetic durationInFrames={150} tint={RED} text="AN 80-YEAR-OLD PROBLEM?" highlight="80-YEAR-OLD" size={92} />
+    <MontageClipCard durationInFrames={150} tint={RED} kicker="Even OpenAI's own podcast says it" title="AN 80-YEAR-OLD PROBLEM?" source="OpenAI Podcast · Ep. 20"
+      parts={[{ src: `${CLIPS}/astra-pod-e.mp4`, at: 0, clipDur: 120 }]} />
   ) },
   { key: "nonsoficReceipt", from: 3519, dur: 270, receipt: true, pip: true, node: (
     <ScreenshotReceiptScene durationInFrames={270} kicker="THE ACTUAL LIST" title="THE HARDEST ONE IN THE BATCH" tint={RED} fullBleed={false}
@@ -84,8 +85,11 @@ const BEATS: Beat[] = [
       from={{ x: 154, y: 82, w: 3532, h: 1888 }} to={{ x: 1011, y: 287, w: 1822, h: 974 }} zoomAt={24} titlePos="left" titleTop={740}
       notes={[{ at: 238, rect: { x: 1676, y: 307, w: 185, h: 35 }, kind: "box" }]} />
   ) },
-  { key: "gowersAgain", from: 4320, dur: 200, fullscreen: true, pip: true, node: (
-    <ClipTakeaway durationInFrames={200} tint={GREEN} kicker="Same setup, same co-author" title="GOWERS. AGAIN." stamp="arXiv paper №2" stampAt={80} titleSize={92} clip={`${CLIPS}/astra-pod-c.mp4`} clipDur={360} />
+  { key: "gowersAgain", from: 4320, dur: 200, receipt: true, pip: true, node: (
+    <ScreenshotReceiptScene durationInFrames={200} kicker="SAME SETUP, SAME CO-AUTHOR" title="GOWERS. AGAIN." tint={GREEN}
+      src={`${SHOT}/astra-arxiv-wide.png`} url="arxiv.org/abs/2605.20695" imageW={3840} imageH={2160}
+      from={{ x: 0, y: 140, w: 2200, h: 1176 }} to={{ x: 0, y: 190, w: 1400, h: 748 }} zoomAt={14} titlePos="right" titleTop={470}
+      notes={[{ at: 21, rect: { x: 460, y: 288, w: 210, h: 54 }, kind: "box" }]} />
   ) },
   { key: "versionsKinetic", from: 4520, dur: 180, fullscreen: true, node: (
     <NewsKinetic durationInFrames={180} tint={AMBER} text="THE MILESTONE SHIPPED TWO VERSIONS EARLIER" highlight="EARLIER" size={72} />
@@ -94,7 +98,7 @@ const BEATS: Beat[] = [
     <TwoChecksScene durationInFrames={310} leftAt={20} rightAt={70} hopAt={229} />
   ) },
   { key: "sloppy", from: 5010, dur: 280, fullscreen: true, pip: true, node: (
-    <ClipTakeaway durationInFrames={280} tint={AMBER} kicker="A checkable number, wrong" title="HOW CAREFUL WAS THE REST?" stamp="Check the checkable first" stampAt={170} titleSize={68} clip={`${CLIPS}/astra-pod-d.mp4`} clipDur={450} />
+    <ImageTakeaway durationInFrames={280} img={`${SHOT}/astra-tweet-ric.png`} kicker="A checkable number, wrong" title="HOW CAREFUL WAS THE REST?" stamp="Check the checkable first" stampAt={170} titleSize={68} />
   ) },
 
   // ── TWO STORIES ──
@@ -105,7 +109,7 @@ const BEATS: Beat[] = [
       notes={[{ at: 66, rect: { x: 35, y: 145, w: 1020, h: 300 }, kind: "underline" }]} />
   ) },
   { key: "missingDocs", from: 5838, dur: 234, fullscreen: true, pip: true, node: (
-    <MissingProofScene durationInFrames={234} tint={AMBER} kicker="But that's all there is" title="STILL MISSING" clip={`${CLIPS}/astra-pod-b.mp4`} clipDur={390} items={[
+    <MissingProofScene durationInFrames={234} tint={AMBER} kicker="But that's all there is" title="STILL MISSING" items={[
       { at: 6, label: "System card" },
       { at: 62, label: "Model page" },
       { at: 142, label: "A confirmed flagship link" },
@@ -121,10 +125,10 @@ const BEATS: Beat[] = [
     <TwoSignalsScene durationInFrames={406} leftAt={70} rightAt={198} />
   ) },
   { key: "capability", from: 6860, dur: 270, fullscreen: true, pip: true, node: (
-    <ClipTakeaway durationInFrames={270} tint={GREEN} kicker="Ten solved theorems" title="A CAPABILITY SIGNAL" stamp="Strong — somewhere" stampAt={120} titleSize={80} clip={`${CLIPS}/astra-pod-c.mp4`} clipDur={360} />
+    <SignalSoloScene durationInFrames={270} kind="capability" stampAt={120} />
   ) },
   { key: "stakes", from: 7130, dur: 304, fullscreen: true, pip: true, node: (
-    <ClipTakeaway durationInFrames={304} tint={AMBER} kicker="The briefing — if it's accurate" title="A STAKES SIGNAL" stamp="Reaches hiring & rollouts" stampAt={48} titleSize={80} clip={`${CLIPS}/astra-pod-b.mp4`} clipDur={390} />
+    <SignalSoloScene durationInFrames={304} kind="stakes" stampAt={48} />
   ) },
   { key: "codebaseKinetic", from: 7434, dur: 136, fullscreen: true, node: (
     <NewsKinetic durationInFrames={136} tint={BRAND} text="10 THEOREMS ≠ YOUR CODEBASE" highlight="CODEBASE" size={84} />
@@ -138,7 +142,7 @@ const BEATS: Beat[] = [
 
   // ── THE TEST ──
   { key: "systemCard", from: 8060, dur: 340, fullscreen: true, pip: true, node: (
-    <ClipTakeaway durationInFrames={340} tint={BLUE} kicker="One document ends the guessing" title="THE SYSTEM CARD" stamp="It doesn't exist yet" stampAt={145} titleSize={84} clip={`${CLIPS}/astra-pod-c.mp4`} clipDur={360} />
+    <SystemCardScene durationInFrames={340} stampAt={145} />
   ) },
   { key: "namingTweet", from: 8400, dur: 208, receipt: true, pip: true, node: (
     <ScreenshotReceiptScene durationInFrames={208} kicker="TESTINGCATALOG · REPORTING" title="EVEN THE NAME IS UNDECIDED" tint={AMBER} fullBleed={false}
