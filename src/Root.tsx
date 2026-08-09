@@ -7,8 +7,8 @@ import { EditKitDemo, EDITKIT_DEMO_DUR } from "./EditKitDemo";
 import { ArchivedVideoCompositions, SHOW_ARCHIVE } from "./archive";
 import { CalculateMetadataFunction } from "remotion";
 import { TutorialFinal, TUTORIAL_DUR } from "./TutorialFinal";
-import { GemRoboticsVideo, GEMROB_DUR } from "./GemRoboticsVideo";
-import { GemRoboticsFinal } from "./GemRoboticsFinal";
+import { AstraVideo, ASTRA_DUR } from "./AstraVideo";
+import { AstraFinal } from "./AstraFinal";
 
 export const transparentDefaults: CalculateMetadataFunction<
   Record<string, unknown>
@@ -65,9 +65,9 @@ export const RemotionRoot: React.FC = () => {
 
 
 
-      {/* ── CURRENT: Gemini Robotics 2 — breakthrough demo or highlight reel? (Aug 2026) ── */}
-      <Composition id="GemRoboticsVideo" component={GemRoboticsVideo} durationInFrames={GEMROB_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
-      <Composition id="GemRoboticsFinal" component={GemRoboticsFinal} durationInFrames={GEMROB_DUR} fps={30} width={1920} height={1080} />
+      {/* ── CURRENT: Astra ten-proofs fact-check — right claim, wrong headline (Aug 2026) ── */}
+      <Composition id="AstraVideo" component={AstraVideo} durationInFrames={ASTRA_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="AstraFinal" component={AstraFinal} durationInFrames={ASTRA_DUR} fps={30} width={1920} height={1080} />
 
       {/* ── HOW-TO: Claude Code password-generator tutorial — reframed 16:9 (July 2026) ── */}
       <Composition id="TutorialFinal" component={TutorialFinal} durationInFrames={TUTORIAL_DUR} fps={30} width={1920} height={1080} />

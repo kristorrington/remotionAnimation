@@ -34,43 +34,48 @@ const Head: React.FC<{ kicker: string; title: string; size?: number }> = ({ kick
   );
 };
 
-// ── LeanGateScene — proof lines pass the Lean gate; it re-derives each one ───
+// ── LeanGateScene — proof cards pass the Lean gate and stack up CHECKED ─────
 export const LeanGateScene: React.FC<{ durationInFrames: number; passAts: number[]; tagAt: number }> = ({ passAts, tagAt }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const tag = spr(frame, fps, tagAt, 22);
   return (
-    <Stage tint={NEWS.green} header={<Head kicker="Machine-checked in Lean 4" title="THE STRICTEST INSPECTOR ON SITE" size={62} />}>
-      <div style={{ position: "relative", width: 1500, height: 470 }}>
-        {/* the gate */}
-        <div style={{ position: "absolute", left: 750 - 130, top: 40, width: 260, height: 330, borderRadius: 18, background: NEWS.dark, borderTop: `6px solid ${NEWS.green}`, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 14, boxShadow: `0 20px 50px rgba(20,18,16,0.28), 0 0 50px ${NEWS.green}33`, zIndex: 3 }}>
-          <Img src={staticFile("assets/external/logos/lean.svg")} style={{ height: 84, filter: "brightness(0) invert(1)" }} />
-          <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 34, letterSpacing: 1, textTransform: "uppercase", color: "#fff" }}>Lean 4</span>
-          <span style={{ fontFamily: DISPLAY, fontWeight: 600, fontSize: 19, letterSpacing: 2, textTransform: "uppercase", color: "rgba(255,255,255,0.7)" }}>re-derives every step</span>
-        </div>
-        {/* proof lines flying through */}
-        {passAts.map((at, i) => {
-          const t = interpolate(frame, [at, at + 46], [0, 1], CLAMP);
-          const x = interpolate(t, [0, 0.42, 0.58, 1], [-40, 560, 940, 1560]);
-          const y = 120 + i * 90;
-          const checked = t > 0.58;
-          return (
-            <div key={i} style={{ position: "absolute", left: x, top: y, display: "flex", alignItems: "center", gap: 12, opacity: interpolate(frame, [at, at + 6], [0, 1], CLAMP), zIndex: 2 }}>
-              <div style={{ padding: "12px 22px", borderRadius: 10, background: checked ? "#FFFFFF" : "rgba(16,14,12,0.9)", border: checked ? `2px solid ${NEWS.green}` : "1px solid rgba(20,18,16,0.2)", boxShadow: "0 10px 24px rgba(20,18,16,0.16)" }}>
-                <span style={{ fontFamily: DISPLAY, fontWeight: 700, fontSize: 24, letterSpacing: 1, color: checked ? NEWS.ink : "#fff" }}>{["THEOREM", "LEMMA", "PROOF STEP"][i % 3]} {i + 1}</span>
-              </div>
-              {checked && (
-                <svg width={30} height={30} viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill={NEWS.green} /><path d="M6.5 12.5l3.5 3.5 7-8" stroke="#fff" strokeWidth="2.6" fill="none" strokeLinecap="round" /></svg>
-              )}
-            </div>
-          );
-        })}
-        {/* payoff tag */}
-        <div style={{ position: "absolute", left: "50%", bottom: -6, transform: `translateX(-50%) rotate(-1.5deg) scale(${interpolate(tag, [0, 1], [1.4, 1])})`, padding: "11px 28px", borderRadius: 10, background: NEWS.dark, opacity: interpolate(frame, [tagAt, tagAt + 8], [0, 1], CLAMP), boxShadow: "0 12px 30px rgba(20,18,16,0.26)", whiteSpace: "nowrap" }}>
-          <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 34, letterSpacing: 1, textTransform: "uppercase", color: "#fff" }}>It can't be talked into approving</span>
-        </div>
+    <AbsoluteFill style={{ backgroundColor: "#141210" }}>
+      <AbsoluteFill style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)", backgroundSize: "26px 26px" }} />
+      <AbsoluteFill style={{ background: `radial-gradient(ellipse 70% 55% at 50% 55%, ${NEWS.green}14, transparent 70%)` }} />
+      <div style={{ position: "absolute", top: 54, left: 0, right: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: 8, textAlign: "center", zIndex: 5 }}>
+        <span style={{ fontFamily: DISPLAY, fontWeight: 600, fontSize: 25, letterSpacing: 5, textTransform: "uppercase", color: "#FF8A5C" }}>Machine-checked in Lean 4</span>
+        <div style={{ fontFamily: HERO, fontWeight: 400, fontSize: 66, letterSpacing: 1, color: "#fff", textTransform: "uppercase" }}>THE STRICTEST INSPECTOR ON SITE</div>
+        <div style={{ width: 190, height: 6, background: NEWS.brand, borderRadius: 3 }} />
       </div>
-    </Stage>
+      {/* the gate */}
+      <div style={{ position: "absolute", left: 960 - 190, top: 330, width: 380, height: 470, borderRadius: 22, background: "#1E1B18", border: `2px solid ${NEWS.green}66`, borderTop: `8px solid ${NEWS.green}`, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 18, boxShadow: `0 24px 60px rgba(0,0,0,0.5), 0 0 80px ${NEWS.green}2E`, zIndex: 3 }}>
+        <Img src={staticFile("assets/external/logos/lean.svg")} style={{ height: 120, filter: "brightness(0) invert(1)" }} />
+        <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 52, letterSpacing: 1, textTransform: "uppercase", color: "#fff" }}>Lean 4</span>
+        <span style={{ fontFamily: DISPLAY, fontWeight: 600, fontSize: 24, letterSpacing: 2, textTransform: "uppercase", color: "rgba(255,255,255,0.72)" }}>re-derives every step</span>
+      </div>
+      {/* proof cards: fly in from the left, scan at the gate, STACK checked on the right */}
+      {passAts.map((at, i) => {
+        const t = interpolate(frame, [at, at + 52], [0, 1], CLAMP);
+        const x = interpolate(t, [0, 0.4, 0.6, 1], [-360, 610, 1180, 1400]);
+        const y = interpolate(t, [0.6, 1], [430 + i * 40, 390 + i * 128], CLAMP);
+        const atGate = t >= 0.4 && t < 0.6;
+        const checked = t >= 0.6;
+        return (
+          <div key={i} style={{ position: "absolute", left: x, top: t < 0.6 ? 430 + i * 40 : y, display: "flex", alignItems: "center", gap: 14, opacity: interpolate(frame, [at, at + 6], [0, 1], CLAMP), zIndex: 2 }}>
+            <div style={{ padding: "18px 30px", borderRadius: 12, background: checked ? "#FFFFFF" : "#26221E", border: atGate ? `3px solid ${NEWS.green}` : checked ? `2px solid ${NEWS.green}` : "1px solid rgba(255,255,255,0.18)", boxShadow: atGate ? `0 0 44px ${NEWS.green}66` : "0 12px 30px rgba(0,0,0,0.4)" }}>
+              <span style={{ fontFamily: DISPLAY, fontWeight: 700, fontSize: 34, letterSpacing: 1, color: checked ? NEWS.ink : "#fff" }}>{["THEOREM " + (i + 1), "LEMMA " + (i + 1), "PROOF " + (i + 1)][i % 3]}</span>
+            </div>
+            {checked && (
+              <svg width={42} height={42} viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill={NEWS.green} /><path d="M6.5 12.5l3.5 3.5 7-8" stroke="#fff" strokeWidth="2.6" fill="none" strokeLinecap="round" /></svg>
+            )}
+          </div>
+        );
+      })}
+      <div style={{ position: "absolute", left: "50%", bottom: 90, transform: `translateX(-50%) rotate(-1.5deg) scale(${interpolate(tag, [0, 1], [1.4, 1])})`, padding: "13px 30px", borderRadius: 10, background: NEWS.brand, opacity: interpolate(frame, [tagAt, tagAt + 8], [0, 1], CLAMP), boxShadow: "0 12px 34px rgba(0,0,0,0.4)", whiteSpace: "nowrap" }}>
+        <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 38, letterSpacing: 1, textTransform: "uppercase", color: "#fff" }}>It can't be talked into approving</span>
+      </div>
+    </AbsoluteFill>
   );
 };
 
@@ -97,8 +102,8 @@ export const TenGridScene: React.FC<{ durationInFrames: number; startAt: number;
                 const e = spr(frame, fps, at, 22);
                 const checked = frame >= checkAt + idx * 4;
                 return (
-                  <div key={i} style={{ width: 148, height: 110, borderRadius: 12, background: NEWS.dark, borderTop: `4px solid ${f.color}`, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 6, boxShadow: "0 12px 28px rgba(20,18,16,0.18)", transform: `scale(${interpolate(e, [0, 1], [0.6, 1])})`, opacity: interpolate(frame, [at, at + 6], [0, 1], CLAMP) }}>
-                    <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 40, color: "#fff" }}>{idx + 1}</span>
+                  <div key={i} style={{ width: 176, height: 132, borderRadius: 12, background: NEWS.dark, borderTop: `4px solid ${f.color}`, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 6, boxShadow: "0 12px 28px rgba(20,18,16,0.18)", transform: `scale(${interpolate(e, [0, 1], [0.6, 1])})`, opacity: interpolate(frame, [at, at + 6], [0, 1], CLAMP) }}>
+                    <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 48, color: "#fff" }}>{idx + 1}</span>
                     {checked ? (
                       <svg width={26} height={26} viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill={NEWS.green} /><path d="M6.5 12.5l3.5 3.5 7-8" stroke="#fff" strokeWidth="2.6" fill="none" strokeLinecap="round" /></svg>
                     ) : (
@@ -123,15 +128,15 @@ export const Counter27Scene: React.FC<{ durationInFrames: number; strikeAt: numb
   const strike = interpolate(frame, [strikeAt, strikeAt + 12], [0, 1], CLAMP);
   return (
     <Stage tint={NEWS.red} header={<Head kicker="1999 → 2026 · do the math" title="THE HARDEST ONE IN THE BATCH" size={58} />}>
-      <div style={{ display: "flex", alignItems: "center", gap: 90 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 110 }}>
         <div style={{ position: "relative" }}>
-          <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 230, color: "rgba(20,18,16,0.35)", lineHeight: 1 }}>80</span>
-          <div style={{ position: "absolute", left: "-6%", top: "48%", width: `${strike * 112}%`, height: 14, background: NEWS.red, borderRadius: 7, transform: "rotate(-8deg)" }} />
+          <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 330, color: "rgba(20,18,16,0.35)", lineHeight: 1 }}>80</span>
+          <div style={{ position: "absolute", left: "-6%", top: "48%", width: `${strike * 112}%`, height: 20, background: NEWS.red, borderRadius: 10, transform: "rotate(-8deg)" }} />
           <span style={{ position: "absolute", left: 8, bottom: -34, fontFamily: DISPLAY, fontWeight: 600, fontSize: 24, letterSpacing: 3, textTransform: "uppercase", color: "rgba(20,18,16,0.5)" }}>the headline</span>
         </div>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", transform: `scale(${interpolate(slam, [0, 1], [1.6, 1])})`, opacity: interpolate(frame, [slamAt, slamAt + 6], [0, 1], CLAMP) }}>
-          <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 300, color: NEWS.ink, lineHeight: 0.95, textShadow: "0 6px 0 rgba(217,80,46,0.25)" }}>27</span>
-          <span style={{ fontFamily: DISPLAY, fontWeight: 700, fontSize: 32, letterSpacing: 4, textTransform: "uppercase", color: NEWS.brand }}>years, actually</span>
+          <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 470, color: NEWS.ink, lineHeight: 0.95, textShadow: "0 6px 0 rgba(217,80,46,0.25)" }}>27</span>
+          <span style={{ fontFamily: DISPLAY, fontWeight: 700, fontSize: 44, letterSpacing: 4, textTransform: "uppercase", color: NEWS.brand }}>years, actually</span>
         </div>
       </div>
     </Stage>
@@ -148,7 +153,7 @@ export const TwoChecksScene: React.FC<{ durationInFrames: number; leftAt: number
   const Card: React.FC<{ at: number; title: string; sub: string; date: string }> = ({ at, title, sub, date }) => {
     const e = spr(frame, fps, at, 26);
     return (
-      <div style={{ width: 560, padding: "34px 32px", borderRadius: 14, background: NEWS.dark, borderTop: `5px solid ${NEWS.green}`, display: "flex", flexDirection: "column", alignItems: "center", gap: 10, boxShadow: "0 16px 40px rgba(20,18,16,0.22)", transform: `translateY(${interpolate(e, [0, 1], [40, 0])}px)`, opacity: interpolate(frame, [at, at + 8], [0, 1], CLAMP) }}>
+      <div style={{ width: 640, padding: "40px 36px", borderRadius: 14, background: NEWS.dark, borderTop: `5px solid ${NEWS.green}`, display: "flex", flexDirection: "column", alignItems: "center", gap: 10, boxShadow: "0 16px 40px rgba(20,18,16,0.22)", transform: `translateY(${interpolate(e, [0, 1], [40, 0])}px)`, opacity: interpolate(frame, [at, at + 8], [0, 1], CLAMP) }}>
         <span style={{ fontFamily: DISPLAY, fontWeight: 600, fontSize: 23, letterSpacing: 3, textTransform: "uppercase", color: "rgba(255,255,255,0.65)" }}>{date}</span>
         <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 46, letterSpacing: 1, textTransform: "uppercase", color: "#fff", textAlign: "center", lineHeight: 1.05 }}>{title}</span>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -181,12 +186,12 @@ export const TwoSignalsScene: React.FC<{ durationInFrames: number; leftAt: numbe
   return (
     <Stage tint={NEWS.amber} header={<Head kicker="Sit with this gap" title="ONE STORY, TWO STANDARDS" size={66} />}>
       <div style={{ display: "flex", gap: 44 }}>
-        <div style={{ width: 620, padding: "36px 34px", borderRadius: 14, background: NEWS.dark, borderTop: `6px solid ${NEWS.green}`, display: "flex", flexDirection: "column", alignItems: "center", gap: 14, boxShadow: "0 16px 44px rgba(20,18,16,0.22)", transform: `translateY(${interpolate(eL, [0, 1], [40, 0])}px)`, opacity: interpolate(frame, [leftAt, leftAt + 8], [0, 1], CLAMP) }}>
+        <div style={{ width: 700, padding: "44px 40px", borderRadius: 14, background: NEWS.dark, borderTop: `6px solid ${NEWS.green}`, display: "flex", flexDirection: "column", alignItems: "center", gap: 14, boxShadow: "0 16px 44px rgba(20,18,16,0.22)", transform: `translateY(${interpolate(eL, [0, 1], [40, 0])}px)`, opacity: interpolate(frame, [leftAt, leftAt + 8], [0, 1], CLAMP) }}>
           <Img src={staticFile("assets/external/logos/lean.svg")} style={{ height: 58, filter: "brightness(0) invert(1)" }} />
           <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 44, letterSpacing: 1, textTransform: "uppercase", color: "#fff" }}>The math</span>
           <span style={{ fontFamily: DISPLAY, fontWeight: 500, fontSize: 25, textAlign: "center", color: "rgba(255,255,255,0.85)" }}>re-check it on your own laptop tonight</span>
         </div>
-        <div style={{ width: 620, padding: "36px 34px", borderRadius: 14, background: NEWS.dark, borderTop: `6px solid ${NEWS.amber}`, display: "flex", flexDirection: "column", alignItems: "center", gap: 14, boxShadow: "0 16px 44px rgba(20,18,16,0.22)", transform: `translateY(${interpolate(eR, [0, 1], [40, 0])}px)`, opacity: interpolate(frame, [rightAt, rightAt + 8], [0, 1], CLAMP) }}>
+        <div style={{ width: 700, padding: "44px 40px", borderRadius: 14, background: NEWS.dark, borderTop: `6px solid ${NEWS.amber}`, display: "flex", flexDirection: "column", alignItems: "center", gap: 14, boxShadow: "0 16px 44px rgba(20,18,16,0.22)", transform: `translateY(${interpolate(eR, [0, 1], [40, 0])}px)`, opacity: interpolate(frame, [rightAt, rightAt + 8], [0, 1], CLAMP) }}>
           <svg width={58} height={58} viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2.4" fill="none" stroke="#fff" strokeWidth="1.8" /><path d="M8 10V7a4 4 0 018 0v3" fill="none" stroke="#fff" strokeWidth="1.8" /></svg>
           <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 44, letterSpacing: 1, textTransform: "uppercase", color: "#fff" }}>The briefing</span>
           <span style={{ fontFamily: DISPLAY, fontWeight: 500, fontSize: 25, textAlign: "center", color: "rgba(255,255,255,0.85)" }}>nobody outside the room can verify it</span>
@@ -204,7 +209,7 @@ export const TwoPathScene: React.FC<{ durationInFrames: number; docAt: number; l
   const Path: React.FC<{ at: number; color: string; title: string; sub: string; x: number }> = ({ at, color, title, sub, x }) => {
     const e = spr(frame, fps, at, 26);
     return (
-      <div style={{ position: "absolute", left: x, top: 250, width: 560, padding: "28px 30px", borderRadius: 14, background: NEWS.dark, borderTop: `6px solid ${color}`, display: "flex", flexDirection: "column", alignItems: "center", gap: 8, boxShadow: "0 16px 40px rgba(20,18,16,0.22)", transform: `translateY(${interpolate(e, [0, 1], [40, 0])}px)`, opacity: interpolate(frame, [at, at + 8], [0, 1], CLAMP) }}>
+      <div style={{ position: "absolute", left: x, top: 250, width: 620, padding: "34px 32px", borderRadius: 14, background: NEWS.dark, borderTop: `6px solid ${color}`, display: "flex", flexDirection: "column", alignItems: "center", gap: 8, boxShadow: "0 16px 40px rgba(20,18,16,0.22)", transform: `translateY(${interpolate(e, [0, 1], [40, 0])}px)`, opacity: interpolate(frame, [at, at + 8], [0, 1], CLAMP) }}>
         <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 40, letterSpacing: 1, textTransform: "uppercase", color: "#fff", textAlign: "center", lineHeight: 1.05 }}>{title}</span>
         <span style={{ fontFamily: DISPLAY, fontWeight: 500, fontSize: 24, textAlign: "center", color: "rgba(255,255,255,0.85)" }}>{sub}</span>
       </div>
@@ -236,7 +241,7 @@ export const RuleScene: React.FC<{ durationInFrames: number; mathAt: number; bri
     const e = spr(frame, fps, at, 24);
     const st = spring({ frame: frame - at - 16, fps, config: { stiffness: 200, damping: 15 }, durationInFrames: 20 });
     return (
-      <div style={{ display: "flex", alignItems: "center", gap: 24, padding: "24px 34px", borderRadius: 14, background: NEWS.dark, borderTop: `5px solid ${color}`, boxShadow: "0 14px 34px rgba(20,18,16,0.2)", transform: `translateX(${interpolate(e, [0, 1], [-44, 0])}px)`, opacity: interpolate(frame, [at, at + 8], [0, 1], CLAMP), width: 1180 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 24, padding: "24px 34px", borderRadius: 14, background: NEWS.dark, borderTop: `5px solid ${color}`, boxShadow: "0 14px 34px rgba(20,18,16,0.2)", transform: `translateX(${interpolate(e, [0, 1], [-44, 0])}px)`, opacity: interpolate(frame, [at, at + 8], [0, 1], CLAMP), width: 1420 }}>
         {icon === "check" ? (
           <svg width={40} height={40} viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill={NEWS.green} /><path d="M6.5 12.5l3.5 3.5 7-8" stroke="#fff" strokeWidth="2.6" fill="none" strokeLinecap="round" /></svg>
         ) : (

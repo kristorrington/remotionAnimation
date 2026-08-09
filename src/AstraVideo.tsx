@@ -33,7 +33,7 @@ const BEATS: Beat[] = [
   { key: "hookReceipt", from: 242, dur: 198, receipt: true, pip: true, node: (
     <ScreenshotReceiptScene durationInFrames={198} kicker="OPENAI.COM · AUG 1" title="THE POST EVERYONE SCREENSHOTTED" tint={BLUE}
       src={`${SHOT}/astra-ten-advances-wide.png`} url="openai.com/index/ten-advances-in-mathematics" imageW={3840} imageH={2052}
-      from={{ x: 154, y: 82, w: 3532, h: 1888 }} to={{ x: 1049, y: 287, w: 1744, h: 932 }} zoomAt={20} titlePos="left" />
+      from={{ x: 154, y: 82, w: 3532, h: 1888 }} to={{ x: 1049, y: 287, w: 1744, h: 932 }} zoomAt={20} titlePos="left" titleTop={330} />
   ) },
   { key: "ricTweet", from: 520, dur: 260, receipt: true, pip: true, node: (
     <ScreenshotReceiptScene durationInFrames={260} kicker="THE CLAIM, SPREADING" title="SAME PARAGRAPH, EVERY REPOST" tint={AMBER} fullBleed={false}
