@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, Img, interpolate, Loop, OffthreadVideo, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { NEWS, DISPLAY, HERO } from "./AiNews2Scenes";
 
 // AstraScenes — native scenes for the Astra ten-proofs fact-check (Aug 2026).
@@ -438,6 +438,33 @@ export const ImageTakeaway: React.FC<{ durationInFrames: number; img: string; ki
           </div>
         ) : null}
       </div>
+    </AbsoluteFill>
+  );
+};
+
+// ── KineticClip — full-bleed dimmed footage + one big highlighted line ───────
+export const KineticClip: React.FC<{ durationInFrames: number; clip: string; clipDur?: number; text: string; highlight?: string; size?: number; source?: string }>
+  = ({ clip, clipDur, text, highlight, size = 96, source }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const slam = spring({ frame: frame - 4, fps, config: { stiffness: 190, damping: 22, mass: 0.9 }, durationInFrames: 28 });
+  const push = interpolate(frame, [0, 200], [1.04, 1.1], CLAMP);
+  const words = text.split(" ");
+  const hnorm = (highlight ?? "").replace(/[^A-Za-z0-9]/g, "").toUpperCase();
+  const vid = <OffthreadVideo src={staticFile(clip)} muted playbackRate={1.05} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.5) contrast(1.06) saturate(1.05)" }} />;
+  return (
+    <AbsoluteFill style={{ backgroundColor: "#0B0A09" }}>
+      <AbsoluteFill style={{ transform: `scale(${push})` }}>{clipDur ? <Loop durationInFrames={clipDur} layout="none">{vid}</Loop> : vid}</AbsoluteFill>
+      <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(10,9,8,0.5) 0%, rgba(10,9,8,0.4) 50%, rgba(10,9,8,0.55) 100%)" }} />
+      <AbsoluteFill style={{ alignItems: "center", justifyContent: "center" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: Math.round(size * 0.26), maxWidth: 1600, transform: `scale(${interpolate(slam, [0, 1], [1.18, 1])})`, opacity: interpolate(frame, [4, 16], [0, 1], CLAMP) }}>
+          {words.map((w, i) => {
+            const hot = !!hnorm && w.replace(/[^A-Za-z0-9]/g, "").toUpperCase() === hnorm;
+            return <span key={i} style={{ fontFamily: HERO, fontWeight: 400, fontSize: size, lineHeight: 1.02, letterSpacing: 1, textTransform: "uppercase", color: "#fff", background: hot ? NEWS.brand : "transparent", padding: hot ? "2px 0.2em" : 0, borderRadius: hot ? 8 : 0, textShadow: hot ? "none" : "0 4px 26px rgba(0,0,0,0.65)" }}>{w}</span>;
+          })}
+        </div>
+      </AbsoluteFill>
+      {source ? <div style={{ position: "absolute", bottom: 16, right: 22, fontFamily: DISPLAY, fontWeight: 500, fontSize: 16, color: "rgba(255,255,255,0.72)" }}>© {source}</div> : null}
     </AbsoluteFill>
   );
 };

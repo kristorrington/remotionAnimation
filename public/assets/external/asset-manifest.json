@@ -3598,6 +3598,244 @@
       "concerns": null,
       "durationSec": 4,
       "shows": "Episode title card: How a reasoning model cracked an 80-year-old math problem"
+    },
+    {
+      "filename": "astra-broll-chalkboard.mp4",
+      "localPath": "public/assets/external/clips/astra-broll-chalkboard.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=5X5CALvYvp0",
+      "sourceName": "OpenAI (official YouTube channel @OpenAI)",
+      "license": "OpenAI-official footage of the subject; muted, used for commentary/criticism per CLAUDE.md 10.2",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Mathematician writing algebraic-curve equations on a green chalkboard. Fits the 'machine-checked proofs / working out the math' beats. From the official OpenAI film 'Meet a mathematician solving previously unsolvable math problems with GPT-5.6' (Jul 9, 2026).",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": "OpenAI-owned footage. Add on-screen source tag ('© OpenAI — commentary & criticism'); keep muted; slow push-in/grade per rights-hygiene 10.2.",
+      "durationSec": 7.47,
+      "shows": "Man in maroon shirt writing math equations across a green chalkboard, close-to-mid shot."
+    },
+    {
+      "filename": "astra-broll-reading-paper.mp4",
+      "localPath": "public/assets/external/clips/astra-broll-reading-paper.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=5X5CALvYvp0",
+      "sourceName": "OpenAI (official YouTube channel @OpenAI)",
+      "license": "OpenAI-official footage of the subject; muted, used for commentary/criticism per CLAUDE.md 10.2",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Over-the-shoulder shot of a mathematician reading a dense text/results page on a laptop. Fits 'I pulled the actual 249-page document' and the reading-the-manuscript/paper beats.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": "OpenAI-owned footage. Add on-screen source tag; keep muted; grade + push-in per 10.2.",
+      "durationSec": 7.5,
+      "shows": "Over-shoulder view of a laptop screen full of a text/results document, hands near keyboard."
+    },
+    {
+      "filename": "astra-broll-whiteboard.mp4",
+      "localPath": "public/assets/external/clips/astra-broll-whiteboard.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=5X5CALvYvp0",
+      "sourceName": "OpenAI (official YouTube channel @OpenAI)",
+      "license": "OpenAI-official footage of the subject; muted, used for commentary/criticism per CLAUDE.md 10.2",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Mathematicians working a proof on a glass whiteboard by a window, then two collaborating at a green chalkboard. Fits the 'theoretical computer science / collaboration / working the proof' beats.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": "OpenAI-owned footage. Contains one internal hard cut (glass board -> green board) - it reads as a coherent board-work montage. Add source tag; muted; per 10.2.",
+      "durationSec": 6.47,
+      "shows": "Person writing equations on a glass whiteboard, then two people at a green chalkboard collaborating."
+    },
+    {
+      "filename": "astra-broll-library.mp4",
+      "localPath": "public/assets/external/clips/astra-broll-library.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=5X5CALvYvp0",
+      "sourceName": "OpenAI (official YouTube channel @OpenAI)",
+      "license": "OpenAI-official footage of the subject; muted, used for commentary/criticism per CLAUDE.md 10.2",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Establishing shot walking through a university math library reading room. Academia/credibility bridge beat; alternates with the face to avoid dead-face stretches.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": "OpenAI-owned footage. Add source tag; muted; per 10.2.",
+      "durationSec": 4,
+      "shows": "Wide shot of a person walking between tall bookshelves in a bright academic library."
+    },
+    {
+      "filename": "astra-broll-building.mp4",
+      "localPath": "public/assets/external/clips/astra-broll-building.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=5X5CALvYvp0",
+      "sourceName": "OpenAI (official YouTube channel @OpenAI)",
+      "license": "OpenAI-official footage of the subject; muted, used for commentary/criticism per CLAUDE.md 10.2",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "'COLLEGIUM MATHEMATICUM' math-faculty signage and building exterior. Establishing shot for the academic/institutional half of the story.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": "OpenAI-owned footage. Add source tag; muted; per 10.2.",
+      "durationSec": 3.97,
+      "shows": "Blue 'Collegium Mathematicum' sign and a modern university math-department building exterior."
+    },
+    {
+      "filename": "astra-broll-interview.mp4",
+      "localPath": "public/assets/external/clips/astra-broll-interview.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=5X5CALvYvp0",
+      "sourceName": "OpenAI (official YouTube channel @OpenAI)",
+      "license": "OpenAI-official footage of the subject; muted, used for commentary/criticism per CLAUDE.md 10.2",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Interview single of computational mathematician Bartosz Naskrecki in a book-lined office. A fresh expert talking-head cutaway - alternative to the repetitive OpenAI Podcast Ep.20 two-shots. Muted (VO leads).",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": "OpenAI-owned footage. Add source tag; muted; per 10.2. Subject identified on-camera lower-third elsewhere as Adam Mickiewicz University / CCAI Warsaw.",
+      "durationSec": 3.97,
+      "shows": "Bearded mathematician in maroon shirt speaking to camera, seated in front of full bookshelves."
+    },
+    {
+      "filename": "astra-stock-code.mp4",
+      "localPath": "public/assets/external/clips/astra-stock-code.mp4",
+      "type": "reference",
+      "sourceUrl": "https://mixkit.co/free-stock-video/green-computer-code-scrolling-22760/",
+      "sourceName": "Mixkit",
+      "license": "Mixkit Free License (free for commercial use, no attribution required)",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Green code scrolling on black. Fits the Lean 4 'strict inspector re-derives every logical step / machine-checked' beats.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "durationSec": 10,
+      "shows": "Lines of green monospaced code scrolling upward on a black terminal-style background."
+    },
+    {
+      "filename": "astra-stock-datacenter.mp4",
+      "localPath": "public/assets/external/clips/astra-stock-datacenter.mp4",
+      "type": "reference",
+      "sourceUrl": "https://mixkit.co/free-stock-video/bluish-data-center-hallway-23282/",
+      "sourceName": "Mixkit",
+      "license": "Mixkit Free License (free for commercial use, no attribution required)",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Blue-lit data-center hallway lined with server racks. Fits the model/compute/capability beats ('$2,000 of tokens', 'capability signal').",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "durationSec": 10,
+      "shows": "Camera moving down a moody blue data-center corridor flanked by tall server racks."
+    },
+    {
+      "filename": "astra-stock-datacenter2.mp4",
+      "localPath": "public/assets/external/clips/astra-stock-datacenter2.mp4",
+      "type": "reference",
+      "sourceUrl": "https://mixkit.co/free-stock-video/close-up-of-server-racks-lights-23215/",
+      "sourceName": "Mixkit",
+      "license": "Mixkit Free License (free for commercial use, no attribution required)",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Close-up of blinking server-rack LEDs. Variant of the datacenter beat so two compute shots never repeat back-to-back.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "durationSec": 9.97,
+      "shows": "Tight shot of server-rack panels with rows of cyan/blue status LEDs blinking."
+    },
+    {
+      "filename": "astra-stock-network.mp4",
+      "localPath": "public/assets/external/clips/astra-stock-network.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.pexels.com/video/plexus-of-abstract-neon-geometrical-lines-with-moving-triangles-and-dots-3129595/",
+      "sourceName": "Pexels",
+      "license": "Pexels License (free for commercial use, no attribution required)",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Abstract node-graph / connected-dots plexus. Visual metaphor for the graph-theory problems (unit-distance conjecture, Ramsey/graph structures).",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": "Nodes are magenta/pink (off the terracotta brand hue); fine when dimmed behind white text, or recolor in comp.",
+      "durationSec": 10,
+      "shows": "Glowing magenta dots connected by thin lines forming a shifting network graph on black."
+    },
+    {
+      "filename": "astra-stock-dc.mp4",
+      "localPath": "public/assets/external/clips/astra-stock-dc.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.pexels.com/video/sunrise-over-united-states-capitol-6133588/",
+      "sourceName": "Pexels",
+      "license": "Pexels License (free for commercial use, no attribution required)",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "US Capitol dome at sunrise, wide aerial. Fits the lawmaker/White-House-briefing half of the story ('lawmakers getting briefed', 'closed-door briefing').",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "durationSec": 10,
+      "shows": "Aerial wide of the US Capitol dome at dawn with an orange sunrise horizon behind it."
+    },
+    {
+      "filename": "astra-stock-papers.mp4",
+      "localPath": "public/assets/external/clips/astra-stock-papers.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.pexels.com/video/turning-pages-856242/",
+      "sourceName": "Pexels",
+      "license": "Pexels License (free for commercial use, no attribution required)",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Hands flipping through a printed document full of text. Fits the '249-page manuscript / the full document' beats.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": "Text on the pages is a generic (Spanish-language) book, not a math paper; reads fine as 'a long document', especially dimmed.",
+      "durationSec": 9,
+      "shows": "Close-up of hands turning the pages of a thick text-filled book."
+    },
+    {
+      "filename": "astra-stock-math.mp4",
+      "localPath": "public/assets/external/clips/astra-stock-math.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.pexels.com/video/a-man-writing-mathematical-equation-on-a-blackboard-3196292/",
+      "sourceName": "Pexels",
+      "license": "Pexels License (free for commercial use, no attribution required)",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Tight close-up of a hand chalking an equation on a blackboard. Handwritten-math texture for proof/theorem beats; complements the authentic OpenAI chalkboard clip.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": "Somewhat redundant with astra-broll-chalkboard (real footage) - use for a different beat or as a tight insert.",
+      "durationSec": 10,
+      "shows": "Close-up of a hand writing a chalk equation (h=(ab+ac)) on a blackboard."
+    },
+    {
+      "filename": "astra-stock-abstract.mp4",
+      "localPath": "public/assets/external/clips/astra-stock-abstract.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.pexels.com/video/animated-abstract-blue-glowing-line-particles-wave-dark-background-abstract-pattern-futuristic-hi-tech-particles-background-28561463/",
+      "sourceName": "Pexels",
+      "license": "Pexels License (free for commercial use, no attribution required)",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Clean dark abstract tech motion background. Spare bed for a takeaway/transition beat under white text.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "durationSec": 10,
+      "shows": "Dark background with a glowing teal particle wave curving across the frame."
     }
   ]
 }

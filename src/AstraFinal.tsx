@@ -47,6 +47,24 @@ for (const s of SPANS) {
 }
 const CUTS = [...new Set([...FULL.map((f) => f.from), ...ASTRA_EXTRA_CUTS])].sort((a, b) => a - b);
 
+// Hide the corner PiP where the stray retake phrase was MUTED (~1:40) — the
+// audio is silent there, so the face must not be seen mouthing it (Kris).
+const PIP_HIDE = [{ from: 2980, to: 3034 }];
+const punch = (segs: { from: number; to: number }[]) =>
+  segs.flatMap((s) => {
+    let parts = [s];
+    for (const h of PIP_HIDE) {
+      parts = parts.flatMap((p) => {
+        if (h.to <= p.from || h.from >= p.to) return [p];
+        const out: { from: number; to: number }[] = [];
+        if (h.from > p.from) out.push({ from: p.from, to: h.from });
+        if (h.to < p.to) out.push({ from: h.to, to: p.to });
+        return out;
+      });
+    }
+    return parts;
+  }).filter((p) => p.to - p.from >= 20);
+
 // §15.2 punch-ins on the face gaps (selective)
 const PUNCHES: { at: number; level: "emphasis" | "strong"; hold: number }[] = [
   { at: 452, level: "emphasis", hold: 44 }, // "a second claim… never confirmed"
@@ -146,11 +164,11 @@ export const AstraFinal: React.FC = () => {
 
           <AstraVideo />
 
-          {PIP_SEGMENTS.map((s) => (
+          {punch(PIP_SEGMENTS).map((s) => (
             <CornerPip key={`pip-${s.from}`} footage={FOOTAGE} from={s.from} dur={s.to - s.from} faceX={0} />
           ))}
           {/* face presence on the fullscreen scenes flagged pip */}
-          {ASTRA_PIP.filter((s) => FULL.some((f) => f.from === s.from)).map((s) => (
+          {punch(ASTRA_PIP.filter((s) => FULL.some((f) => f.from === s.from))).map((s) => (
             <CornerPip key={`pipf-${s.from}`} footage={FOOTAGE} from={s.from} dur={s.to - s.from} faceX={0} />
           ))}
         </SlideLeftPush>

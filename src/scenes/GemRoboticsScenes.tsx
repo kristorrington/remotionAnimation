@@ -162,8 +162,8 @@ export const AnnotatedClipCard: React.FC<{
 // ── ClipTakeaway — FULL-BLEED clip; text block on a left scrim ────────────────
 export const ClipTakeaway: React.FC<{
   durationInFrames: number; tint?: string; kicker: string; title: string; stamp?: string; stampAt?: number;
-  clip: string; clipDur?: number; titleSize?: number;
-}> = ({ kicker, title, stamp, stampAt = 60, clip, clipDur, titleSize = 72 }) => {
+  clip: string; clipDur?: number; titleSize?: number; source?: string; official?: boolean;
+}> = ({ kicker, title, stamp, stampAt = 60, clip, clipDur, titleSize = 72, source = "DeepMind — Gemini Robotics 2", official = true }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const stampS = spring({ frame: frame - stampAt, fps, config: { stiffness: 200, damping: 15 }, durationInFrames: 20 });
@@ -181,8 +181,8 @@ export const ClipTakeaway: React.FC<{
           </div>
         ) : null}
       </div>
-      <FilmPill />
-      <SourceTag source="DeepMind — Gemini Robotics 2" />
+      {official ? <FilmPill /> : null}
+      {source ? <SourceTag source={source} /> : null}
     </AbsoluteFill>
   );
 };

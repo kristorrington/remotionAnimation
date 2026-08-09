@@ -5,9 +5,9 @@ import { SFX, SfxCue, vary } from "./components/Sfx";
 import { ScreenshotReceiptScene } from "./scenes/SourceCardScene";
 import { ThemeProvider } from "./theme";
 import { MusicController } from "./motion/editkit";
-import { NEWS, NewsKinetic } from "./scenes/AiNews2Scenes";
-import { MontageClipCard, MissingProofScene } from "./scenes/GemRoboticsScenes";
-import { LeanGateScene, LeanRejectScene, PagesScene, SignalSoloScene, SystemCardScene, ImageTakeaway, TenGridScene, Counter27Scene, TwoChecksScene, TwoSignalsScene, TwoPathScene, RuleScene } from "./scenes/AstraScenes";
+import { NEWS } from "./scenes/AiNews2Scenes";
+import { MontageClipCard, ClipTakeaway, MissingProofScene } from "./scenes/GemRoboticsScenes";
+import { LeanGateScene, LeanRejectScene, PagesScene, SystemCardScene, ImageTakeaway, KineticClip, TenGridScene, Counter27Scene, TwoChecksScene, TwoSignalsScene, TwoPathScene, RuleScene } from "./scenes/AstraScenes";
 
 // AstraVideo — the Astra ten-proofs fact-check (~5m29s, 9864f @ 30fps, natural
 // speed). RECEIPT-DRIVEN: the OpenAI Aug 1 post, the May Erdős post, the arXiv
@@ -23,7 +23,6 @@ const AMBER = NEWS.amber;
 const RED = NEWS.red;
 const BLUE = NEWS.blue;
 const GREEN = NEWS.green;
-const BRAND = NEWS.brand;
 const SHOT = "assets/external/screenshots";
 const CLIPS = "assets/external/clips";
 
@@ -42,7 +41,7 @@ const BEATS: Beat[] = [
       notes={[{ at: 130, rect: { x: 33, y: 440, w: 990, h: 95 }, kind: "underline" }]} />
   ) },
   { key: "shippedKinetic", from: 1071, dur: 164, fullscreen: true, node: (
-    <NewsKinetic durationInFrames={164} tint={BLUE} text="WHAT ACTUALLY SHIPPED" highlight="SHIPPED" size={100} />
+    <KineticClip durationInFrames={164} clip={`${CLIPS}/astra-broll-reading-paper.mp4`} clipDur={225} text="WHAT ACTUALLY SHIPPED" highlight="SHIPPED" size={100} source="OpenAI" />
   ) },
 
   // ── THE PROOF ──
@@ -92,7 +91,7 @@ const BEATS: Beat[] = [
       notes={[{ at: 21, rect: { x: 460, y: 288, w: 210, h: 54 }, kind: "box" }]} />
   ) },
   { key: "versionsKinetic", from: 4520, dur: 180, fullscreen: true, node: (
-    <NewsKinetic durationInFrames={180} tint={AMBER} text="THE MILESTONE SHIPPED TWO VERSIONS EARLIER" highlight="EARLIER" size={72} />
+    <KineticClip durationInFrames={180} clip={`${CLIPS}/astra-broll-whiteboard.mp4`} clipDur={195} text="THE MILESTONE SHIPPED TWO VERSIONS EARLIER" highlight="EARLIER" size={72} source="OpenAI" />
   ) },
   { key: "twoChecks", from: 4700, dur: 310, fullscreen: true, pip: true, node: (
     <TwoChecksScene durationInFrames={310} leftAt={20} rightAt={70} hopAt={229} />
@@ -125,13 +124,13 @@ const BEATS: Beat[] = [
     <TwoSignalsScene durationInFrames={406} leftAt={70} rightAt={198} />
   ) },
   { key: "capability", from: 6860, dur: 270, fullscreen: true, pip: true, node: (
-    <SignalSoloScene durationInFrames={270} kind="capability" stampAt={120} />
+    <ClipTakeaway durationInFrames={270} tint={GREEN} kicker="Ten solved theorems" title="A CAPABILITY SIGNAL" stamp="Strong — somewhere" stampAt={120} titleSize={80} clip={`${CLIPS}/astra-broll-chalkboard.mp4`} clipDur={225} source="OpenAI" />
   ) },
   { key: "stakes", from: 7130, dur: 304, fullscreen: true, pip: true, node: (
-    <SignalSoloScene durationInFrames={304} kind="stakes" stampAt={48} />
+    <ClipTakeaway durationInFrames={304} tint={AMBER} kicker="The briefing — if it's accurate" title="A STAKES SIGNAL" stamp="Reaches hiring & rollouts" stampAt={48} titleSize={80} clip={`${CLIPS}/astra-stock-dc.mp4`} clipDur={300} official={false} source="" />
   ) },
   { key: "codebaseKinetic", from: 7434, dur: 136, fullscreen: true, node: (
-    <NewsKinetic durationInFrames={136} tint={BRAND} text="10 THEOREMS ≠ YOUR CODEBASE" highlight="CODEBASE" size={84} />
+    <KineticClip durationInFrames={136} clip={`${CLIPS}/astra-stock-code.mp4`} clipDur={300} text="10 THEOREMS ≠ YOUR CODEBASE" highlight="CODEBASE" size={84} />
   ) },
   { key: "pymntsReceipt", from: 7686, dur: 374, receipt: true, pip: true, node: (
     <ScreenshotReceiptScene durationInFrames={374} kicker="PYMNTS · REPORTING" title="NOT ONE PUBLISHED STATEMENT" tint={RED}
@@ -151,7 +150,7 @@ const BEATS: Beat[] = [
       notes={[{ at: 90, rect: { x: 545, y: 612, w: 510, h: 125 }, kind: "box" }]} />
   ) },
   { key: "deliveryKinetic", from: 8608, dur: 156, fullscreen: true, node: (
-    <NewsKinetic durationInFrames={156} tint={AMBER} text="«OUT FOR DELIVERY» — THREE DAYS" highlight="DELIVERY»" size={76} />
+    <KineticClip durationInFrames={156} clip={`${CLIPS}/astra-stock-abstract.mp4`} clipDur={300} text="«OUT FOR DELIVERY» — THREE DAYS" highlight="DELIVERY»" size={76} />
   ) },
   { key: "fork", from: 8764, dur: 426, fullscreen: true, pip: true, node: (
     <TwoPathScene durationInFrames={426} docAt={10} leftAt={30} rightAt={181} />
