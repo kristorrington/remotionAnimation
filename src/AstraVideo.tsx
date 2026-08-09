@@ -33,7 +33,7 @@ const BEATS: Beat[] = [
   { key: "hookReceipt", from: 242, dur: 198, receipt: true, pip: true, node: (
     <ScreenshotReceiptScene durationInFrames={198} kicker="OPENAI.COM · AUG 1" title="THE POST EVERYONE SCREENSHOTTED" tint={BLUE}
       src={`${SHOT}/astra-ten-advances-wide.png`} url="openai.com/index/ten-advances-in-mathematics" imageW={3840} imageH={2052}
-      from={{ x: 154, y: 82, w: 3532, h: 1888 }} to={{ x: 1049, y: 287, w: 1744, h: 932 }} zoomAt={20} titlePos="left" titleTop={330} />
+      from={{ x: 154, y: 82, w: 3532, h: 1888 }} to={{ x: 1049, y: 287, w: 1744, h: 932 }} zoomAt={20} titlePos="left" titleTop={740} />
   ) },
   { key: "ricTweet", from: 520, dur: 260, receipt: true, pip: true, node: (
     <ScreenshotReceiptScene durationInFrames={260} kicker="THE CLAIM, SPREADING" title="SAME PARAGRAPH, EVERY REPOST" tint={AMBER} fullBleed={false}
@@ -47,7 +47,7 @@ const BEATS: Beat[] = [
 
   // ── THE PROOF ──
   { key: "manuscript249", from: 1395, dur: 235, fullscreen: true, pip: true, node: (
-    <ClipTakeaway durationInFrames={235} tint={BLUE} kicker="Dropped the same day — no tease" title="249 PAGES" stamp="Machine-checked, all of it" stampAt={130} titleSize={110} clip={`${CLIPS}/astra-pod-a.mp4`} clipDur={450} />
+    <ClipTakeaway durationInFrames={235} tint={BLUE} kicker="Dropped the same day — no tease" title="249 PAGES" stamp="Machine-checked, all of it" stampAt={130} titleSize={110} clip={`${CLIPS}/astra-pod-d.mp4`} clipDur={450} />
   ) },
   { key: "leanGate", from: 1630, dur: 370, fullscreen: true, pip: true, node: (
     <LeanGateScene durationInFrames={370} passAts={[140, 205, 270]} tagAt={9999} />
@@ -61,7 +61,7 @@ const BEATS: Beat[] = [
   { key: "arxivReceipt", from: 2660, dur: 367, receipt: true, pip: true, node: (
     <ScreenshotReceiptScene durationInFrames={367} kicker="ARXIV · 2605.20695" title="A FIELDS MEDALIST ON THE PAPER" tint={GREEN}
       src={`${SHOT}/astra-arxiv-wide.png`} url="arxiv.org/abs/2605.20695" imageW={3840} imageH={2160}
-      from={{ x: 0, y: 0, w: 3840, h: 2160 }} to={{ x: 0, y: 140, w: 2200, h: 1176 }} zoomAt={24} titlePos="right"
+      from={{ x: 0, y: 0, w: 3840, h: 2160 }} to={{ x: 0, y: 140, w: 2200, h: 1176 }} zoomAt={24}
       notes={[{ at: 135, rect: { x: 460, y: 288, w: 210, h: 54 }, kind: "box" }]} />
   ) },
 
@@ -81,7 +81,7 @@ const BEATS: Beat[] = [
   { key: "mayReceipt", from: 3934, dur: 386, receipt: true, pip: true, node: (
     <ScreenshotReceiptScene durationInFrames={386} kicker="OPENAI.COM · MAY 20" title="THE REAL 80-YEAR RESULT" tint={GREEN}
       src={`${SHOT}/astra-may-erdos-wide.png`} url="openai.com/index/model-disproves-discrete-geometry-conjecture" imageW={3840} imageH={2052}
-      from={{ x: 154, y: 82, w: 3532, h: 1888 }} to={{ x: 1011, y: 287, w: 1822, h: 974 }} zoomAt={24} titlePos="left"
+      from={{ x: 154, y: 82, w: 3532, h: 1888 }} to={{ x: 1011, y: 287, w: 1822, h: 974 }} zoomAt={24} titlePos="left" titleTop={740}
       notes={[{ at: 238, rect: { x: 1676, y: 307, w: 185, h: 35 }, kind: "box" }]} />
   ) },
   { key: "gowersAgain", from: 4320, dur: 200, fullscreen: true, pip: true, node: (
@@ -94,7 +94,7 @@ const BEATS: Beat[] = [
     <TwoChecksScene durationInFrames={310} leftAt={20} rightAt={70} hopAt={229} />
   ) },
   { key: "sloppy", from: 5010, dur: 280, fullscreen: true, pip: true, node: (
-    <ClipTakeaway durationInFrames={280} tint={AMBER} kicker="A checkable number, wrong" title="HOW CAREFUL WAS THE REST?" stamp="Check the checkable first" stampAt={170} titleSize={68} clip={`${CLIPS}/astra-pod-a.mp4`} clipDur={450} />
+    <ClipTakeaway durationInFrames={280} tint={AMBER} kicker="A checkable number, wrong" title="HOW CAREFUL WAS THE REST?" stamp="Check the checkable first" stampAt={170} titleSize={68} clip={`${CLIPS}/astra-pod-d.mp4`} clipDur={450} />
   ) },
 
   // ── TWO STORIES ──
@@ -114,7 +114,7 @@ const BEATS: Beat[] = [
   { key: "briefingReceipt", from: 6072, dur: 382, receipt: true, pip: true, node: (
     <ScreenshotReceiptScene durationInFrames={382} kicker="THE-DECODER · REPORTING" title="THE BRIEFING STORY" tint={AMBER}
       src={`${SHOT}/astra-decoder-wide.png`} url="the-decoder.com" imageW={3200} imageH={1710}
-      from={{ x: 128, y: 68, w: 2944, h: 1573 }} to={{ x: 477, y: 299, w: 1350, h: 721 }} zoomAt={24} titlePos="right"
+      from={{ x: 128, y: 68, w: 2944, h: 1573 }} to={{ x: 477, y: 299, w: 1350, h: 721 }} zoomAt={24} titlePos="right" titleTop={540}
       notes={[{ at: 190, rect: { x: 557, y: 379, w: 1190, h: 215 }, kind: "underline" }]} />
   ) },
   { key: "twoSignals", from: 6454, dur: 406, fullscreen: true, pip: true, node: (
@@ -138,7 +138,7 @@ const BEATS: Beat[] = [
 
   // ── THE TEST ──
   { key: "systemCard", from: 8060, dur: 340, fullscreen: true, pip: true, node: (
-    <ClipTakeaway durationInFrames={340} tint={BLUE} kicker="One document ends the guessing" title="THE SYSTEM CARD" stamp="It doesn't exist yet" stampAt={145} titleSize={84} clip={`${CLIPS}/astra-pod-a.mp4`} clipDur={450} />
+    <ClipTakeaway durationInFrames={340} tint={BLUE} kicker="One document ends the guessing" title="THE SYSTEM CARD" stamp="It doesn't exist yet" stampAt={145} titleSize={84} clip={`${CLIPS}/astra-pod-c.mp4`} clipDur={360} />
   ) },
   { key: "namingTweet", from: 8400, dur: 208, receipt: true, pip: true, node: (
     <ScreenshotReceiptScene durationInFrames={208} kicker="TESTINGCATALOG · REPORTING" title="EVEN THE NAME IS UNDECIDED" tint={AMBER} fullBleed={false}

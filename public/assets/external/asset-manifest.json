@@ -3566,6 +3566,22 @@
       ],
       "attributionRequired": false,
       "concerns": null
+    },
+    {
+      "filename": "astra-pod-d.mp4",
+      "localPath": "public/assets/external/clips/astra-pod-d.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=wNWz5Hbh5VQ",
+      "sourceName": "OpenAI Podcast Ep. 20 (official)",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Muted official clip (commentary/reference) — clean host segment",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "durationSec": 15,
+      "shows": "Host close-up, no on-screen text (12:00-12:15)"
     }
   ]
 }

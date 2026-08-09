@@ -209,7 +209,7 @@ export const TwoPathScene: React.FC<{ durationInFrames: number; docAt: number; l
   const Path: React.FC<{ at: number; color: string; title: string; sub: string; x: number }> = ({ at, color, title, sub, x }) => {
     const e = spr(frame, fps, at, 26);
     return (
-      <div style={{ position: "absolute", left: x, top: 250, width: 620, padding: "34px 32px", borderRadius: 14, background: NEWS.dark, borderTop: `6px solid ${color}`, display: "flex", flexDirection: "column", alignItems: "center", gap: 8, boxShadow: "0 16px 40px rgba(20,18,16,0.22)", transform: `translateY(${interpolate(e, [0, 1], [40, 0])}px)`, opacity: interpolate(frame, [at, at + 8], [0, 1], CLAMP) }}>
+      <div style={{ position: "absolute", left: x, top: 230, width: 700, padding: "40px 36px", borderRadius: 14, background: NEWS.dark, borderTop: `6px solid ${color}`, display: "flex", flexDirection: "column", alignItems: "center", gap: 8, boxShadow: "0 16px 40px rgba(20,18,16,0.22)", transform: `translateY(${interpolate(e, [0, 1], [40, 0])}px)`, opacity: interpolate(frame, [at, at + 8], [0, 1], CLAMP) }}>
         <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 40, letterSpacing: 1, textTransform: "uppercase", color: "#fff", textAlign: "center", lineHeight: 1.05 }}>{title}</span>
         <span style={{ fontFamily: DISPLAY, fontWeight: 500, fontSize: 24, textAlign: "center", color: "rgba(255,255,255,0.85)" }}>{sub}</span>
       </div>
@@ -219,15 +219,15 @@ export const TwoPathScene: React.FC<{ durationInFrames: number; docAt: number; l
     <Stage tint={NEWS.blue} header={<Head kicker="The next flagship release" title="THE FORK THIS STORY SITS ON" size={62} />}>
       <div style={{ position: "relative", width: 1500, height: 480 }}>
         <svg width={1500} height={480} style={{ position: "absolute", inset: 0 }}>
-          <line x1={750} y1={140} x2={430} y2={250} stroke={NEWS.green} strokeWidth={4} opacity={interpolate(frame, [leftAt, leftAt + 10], [0, 0.8], CLAMP)} />
-          <line x1={750} y1={140} x2={1070} y2={250} stroke={NEWS.red} strokeWidth={4} opacity={interpolate(frame, [rightAt, rightAt + 10], [0, 0.8], CLAMP)} />
+          <line x1={750} y1={150} x2={440} y2={235} stroke={NEWS.green} strokeWidth={4} opacity={interpolate(frame, [leftAt, leftAt + 10], [0, 0.8], CLAMP)} />
+          <line x1={750} y1={150} x2={1060} y2={235} stroke={NEWS.red} strokeWidth={4} opacity={interpolate(frame, [rightAt, rightAt + 10], [0, 0.8], CLAMP)} />
         </svg>
         <div style={{ position: "absolute", left: 750 - 130, top: 10, width: 260, padding: "20px 0", borderRadius: 14, background: "#FFFFFF", border: `2px dashed ${NEWS.inkDim}`, display: "flex", flexDirection: "column", alignItems: "center", gap: 4, transform: `scale(${interpolate(doc, [0, 1], [0.7, 1])})`, opacity: interpolate(frame, [docAt, docAt + 8], [0, 1], CLAMP) }}>
           <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 32, letterSpacing: 1, textTransform: "uppercase", color: NEWS.ink }}>System card</span>
           <span style={{ fontFamily: DISPLAY, fontWeight: 600, fontSize: 18, letterSpacing: 2, textTransform: "uppercase", color: NEWS.brand }}>not published yet</span>
         </div>
-        <Path at={leftAt} color={NEWS.green} title="Cites the ten proofs" sub="the naming held up" x={150} />
-        <Path at={rightAt} color={NEWS.red} title="Zero mention" sub="never the same model" x={790} />
+        <Path at={leftAt} color={NEWS.green} title="Cites the ten proofs" sub="the naming held up" x={90} />
+        <Path at={rightAt} color={NEWS.red} title="Zero mention" sub="never the same model" x={1130 - 320} />
       </div>
     </Stage>
   );
@@ -241,14 +241,14 @@ export const RuleScene: React.FC<{ durationInFrames: number; mathAt: number; bri
     const e = spr(frame, fps, at, 24);
     const st = spring({ frame: frame - at - 16, fps, config: { stiffness: 200, damping: 15 }, durationInFrames: 20 });
     return (
-      <div style={{ display: "flex", alignItems: "center", gap: 24, padding: "24px 34px", borderRadius: 14, background: NEWS.dark, borderTop: `5px solid ${color}`, boxShadow: "0 14px 34px rgba(20,18,16,0.2)", transform: `translateX(${interpolate(e, [0, 1], [-44, 0])}px)`, opacity: interpolate(frame, [at, at + 8], [0, 1], CLAMP), width: 1420 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 24, padding: "24px 34px", borderRadius: 14, background: NEWS.dark, borderTop: `5px solid ${color}`, boxShadow: "0 14px 34px rgba(20,18,16,0.2)", transform: `translateX(${interpolate(e, [0, 1], [-44, 0])}px)`, opacity: interpolate(frame, [44, 52], [0, 1], CLAMP), width: 1420 }}>
         {icon === "check" ? (
           <svg width={40} height={40} viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill={NEWS.green} /><path d="M6.5 12.5l3.5 3.5 7-8" stroke="#fff" strokeWidth="2.6" fill="none" strokeLinecap="round" /></svg>
         ) : (
           <svg width={40} height={40} viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.4" fill="none" stroke={NEWS.amber} strokeWidth="2.2" /><path d="M12 6.5V12l3.6 2.4" fill="none" stroke={NEWS.amber} strokeWidth="2.2" strokeLinecap="round" /></svg>
         )}
         <span style={{ fontFamily: DISPLAY, fontWeight: 700, fontSize: 34, letterSpacing: 0.5, textTransform: "uppercase", color: "#fff", flex: 1 }}>{text}</span>
-        <div style={{ padding: "9px 20px", borderRadius: 9, background: color, transform: `rotate(-1.5deg) scale(${interpolate(st, [0, 1], [1.5, 1], CLAMP)})`, opacity: interpolate(frame, [at + 16, at + 24], [0, 1], CLAMP) }}>
+        <div style={{ padding: "9px 20px", borderRadius: 9, background: color, transform: `rotate(-1.5deg) scale(${interpolate(st, [0, 1], [1.5, 1], CLAMP)})`, opacity: interpolate(frame, [at, at + 8], [0, 1], CLAMP) }}>
           <span style={{ fontFamily: HERO, fontWeight: 400, fontSize: 27, letterSpacing: 1, textTransform: "uppercase", color: "#fff" }}>{stamp}</span>
         </div>
       </div>
