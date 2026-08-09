@@ -449,6 +449,236 @@
           "error": null
         }
       }
+    },
+    {
+      "id": "Short-Astra27",
+      "file": "out/shorts/Short-Astra27.mp4",
+      "title": "No, OpenAI Didn't Solve an 80-Year-Old Problem #Shorts",
+      "tags": [
+        "OpenAI Astra",
+        "GPT-6",
+        "OpenAI math",
+        "Lean 4",
+        "ten advances in mathematics",
+        "Timothy Gowers",
+        "Erdos conjecture",
+        "AI news",
+        "artificial intelligence",
+        "AI fact check",
+        "math AI",
+        "OpenAI next model"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "Everyone's repeating that OpenAI's model solved an 80-year-old math problem. The hardest one in the batch — non-sofic groups — has been open since 1999. That's 27 years, not 80. (The real 80-year result was a separate post.) ▶ Full fact-check on the channel.\n\n#OpenAI #AI #math #GPT6 #Shorts",
+          "publishAt": "2026-08-13T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "Everyone's repeating that OpenAI's model solved an 80-year-old math problem. The hardest one in the batch — non-sofic groups — has been open since 1999. That's 27 years, not 80. (The real 80-year result was a separate post.) ▶ Full fact-check on the channel.\n\n#OpenAI #AI #math #GPT6 #Shorts",
+          "publishAt": "2026-08-13T02:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "Everyone's repeating that OpenAI's model solved an 80-year-old math problem. The hardest one in the batch — non-sofic groups — has been open since 1999. That's 27 years, not 80. (The real 80-year result was a separate post.) ▶ Full fact-check on the channel.\n\n#OpenAI #AI #math #GPT6 #Shorts",
+          "publishAt": "2026-08-13T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "Short-AstraLean",
+      "file": "out/shorts/Short-AstraLean.mp4",
+      "title": "Why OpenAI's Math Can't Be Faked (Lean 4) #Shorts",
+      "tags": [
+        "OpenAI Astra",
+        "GPT-6",
+        "OpenAI math",
+        "Lean 4",
+        "ten advances in mathematics",
+        "Timothy Gowers",
+        "Erdos conjecture",
+        "AI news",
+        "artificial intelligence",
+        "AI fact check",
+        "math AI",
+        "OpenAI next model"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "OpenAI's ten results were machine-checked in Lean 4 — a proof checker that re-derives every logical step and can't be talked into approving anything. Approved = proven. ▶ Full breakdown on the channel.\n\n#OpenAI #AI #Lean4 #math #Shorts",
+          "publishAt": "2026-08-14T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "OpenAI's ten results were machine-checked in Lean 4 — a proof checker that re-derives every logical step and can't be talked into approving anything. Approved = proven. ▶ Full breakdown on the channel.\n\n#OpenAI #AI #Lean4 #math #Shorts",
+          "publishAt": "2026-08-13T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "OpenAI's ten results were machine-checked in Lean 4 — a proof checker that re-derives every logical step and can't be talked into approving anything. Approved = proven. ▶ Full breakdown on the channel.\n\n#OpenAI #AI #Lean4 #math #Shorts",
+          "publishAt": "2026-08-14T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "Short-AstraWrongPost",
+      "file": "out/shorts/Short-AstraWrongPost.mp4",
+      "title": "The 80-Year Math Headline Is on the Wrong Post #Shorts",
+      "tags": [
+        "OpenAI Astra",
+        "GPT-6",
+        "OpenAI math",
+        "Lean 4",
+        "ten advances in mathematics",
+        "Timothy Gowers",
+        "Erdos conjecture",
+        "AI news",
+        "artificial intelligence",
+        "AI fact check",
+        "math AI",
+        "OpenAI next model"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "Both OpenAI results are real — but the viral '80-year-old problem' belongs to a SEPARATE post from May 20, not the August one. Somebody hung the headline on the wrong announcement. ▶ Full fact-check on the channel.\n\n#OpenAI #AI #GPT6 #math #Shorts",
+          "publishAt": "2026-08-15T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "Both OpenAI results are real — but the viral '80-year-old problem' belongs to a SEPARATE post from May 20, not the August one. Somebody hung the headline on the wrong announcement. ▶ Full fact-check on the channel.\n\n#OpenAI #AI #GPT6 #math #Shorts",
+          "publishAt": "2026-08-14T02:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "Both OpenAI results are real — but the viral '80-year-old problem' belongs to a SEPARATE post from May 20, not the August one. Somebody hung the headline on the wrong announcement. ▶ Full fact-check on the channel.\n\n#OpenAI #AI #GPT6 #math #Shorts",
+          "publishAt": "2026-08-15T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "Short-AstraTwoStandards",
+      "file": "out/shorts/Short-AstraTwoStandards.mp4",
+      "title": "OpenAI's Astra: One Story, Two Standards #Shorts",
+      "tags": [
+        "OpenAI Astra",
+        "GPT-6",
+        "OpenAI math",
+        "Lean 4",
+        "ten advances in mathematics",
+        "Timothy Gowers",
+        "Erdos conjecture",
+        "AI news",
+        "artificial intelligence",
+        "AI fact check",
+        "math AI",
+        "OpenAI next model"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "One half of the Astra story is public, Lean-checked math you can re-run tonight. The other half — a lawmaker briefing — has zero published sources. Don't treat them the same. ▶ Full breakdown on the channel.\n\n#OpenAI #Astra #AI #AInews #Shorts",
+          "publishAt": "2026-08-16T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "One half of the Astra story is public, Lean-checked math you can re-run tonight. The other half — a lawmaker briefing — has zero published sources. Don't treat them the same. ▶ Full breakdown on the channel.\n\n#OpenAI #Astra #AI #AInews #Shorts",
+          "publishAt": "2026-08-14T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "One half of the Astra story is public, Lean-checked math you can re-run tonight. The other half — a lawmaker briefing — has zero published sources. Don't treat them the same. ▶ Full breakdown on the channel.\n\n#OpenAI #Astra #AI #AInews #Shorts",
+          "publishAt": "2026-08-16T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "Short-AstraSystemCard",
+      "file": "out/shorts/Short-AstraSystemCard.mp4",
+      "title": "How to Tell If OpenAI's 'Astra' Is Real #Shorts",
+      "tags": [
+        "OpenAI Astra",
+        "GPT-6",
+        "OpenAI math",
+        "Lean 4",
+        "ten advances in mathematics",
+        "Timothy Gowers",
+        "Erdos conjecture",
+        "AI news",
+        "artificial intelligence",
+        "AI fact check",
+        "math AI",
+        "OpenAI next model"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "Is 'Astra' really OpenAI's next flagship? One document settles it — the system card — and it doesn't exist yet. Until it does: treat the math as proven, the briefing as a rumour. ▶ Subscribe for the system-card breakdown.\n\n#OpenAI #Astra #GPT6 #AI #Shorts",
+          "publishAt": "2026-08-17T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "Is 'Astra' really OpenAI's next flagship? One document settles it — the system card — and it doesn't exist yet. Until it does: treat the math as proven, the briefing as a rumour. ▶ Subscribe for the system-card breakdown.\n\n#OpenAI #Astra #GPT6 #AI #Shorts",
+          "publishAt": "2026-08-15T02:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "Is 'Astra' really OpenAI's next flagship? One document settles it — the system card — and it doesn't exist yet. Until it does: treat the math as proven, the briefing as a rumour. ▶ Subscribe for the system-card breakdown.\n\n#OpenAI #Astra #GPT6 #AI #Shorts",
+          "publishAt": "2026-08-17T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
     }
   ]
 }
