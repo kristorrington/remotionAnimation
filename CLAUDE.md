@@ -525,6 +525,11 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   NEVER speed-change talking-head footage in post. Brisk pace comes from:
   tight scene turnover (rule 5), silence-trimmed jump cuts, alternating
   framings (rule 3), and Kris delivering faster at RECORD time.
+  (2b) **Lip-sync check on EVERY new recording** (Kris, Aug 2026 — the 090826
+  OBS capture had audio leading video ~133ms at the source): before building,
+  eyeball a plosive-heavy face stretch of the PROXY; a constant offset is
+  fixed by remuxing audio with -itsoffset (fix the PROXY so renders + shorts
+  inherit it; 090826 needed +0.133s). Never ship a cut without this check.
   (3) **Alternate the face views.** Full-face stretches never hold one
   framing: jump-cut the FootageDirector framing schedule every ~4–6s
   (alternating ~1.0 ↔ 1.08–1.12), so the talking head keeps changing view.
