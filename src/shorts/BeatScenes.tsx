@@ -1137,9 +1137,11 @@ const ClipBeat: React.FC<{ beat: Beat }> = ({ beat }) => {
     <AbsoluteFill style={{ transform: `translateY(${-shift}px) scale(${1 / zoom})` }}>
       <div style={{ position: "absolute", left: (1080 - cardW) / 2, top: bannerZone + Math.max(0, (availH - cardH) / 2), width: cardW, height: cardH, borderRadius: 16, overflow: "hidden", border: "2px solid rgba(217,119,87,0.92)", boxShadow: "0 18px 44px rgba(31,30,29,0.32)", background: "#0e0d0c" }}>
         <OffthreadVideo src={staticFile(c.src)} muted style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        {/* Only claim "OFFICIAL FILM" on real brand footage — stock clips
+            (…/astra-stock-…) get a neutral "B-ROLL" label instead (honesty). */}
         <div style={{ position: "absolute", left: 18, top: 18, display: "flex", alignItems: "center", gap: 8, padding: "7px 14px", borderRadius: 9, background: "rgba(14,13,12,0.74)", border: "1px solid rgba(255,255,255,0.18)" }}>
           <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#E03E36", boxShadow: "0 0 8px #E03E36" }} />
-          <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 22, letterSpacing: 2, color: "#fff", transform: "translateZ(0)" }}>OFFICIAL FILM</span>
+          <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: 22, letterSpacing: 2, color: "#fff", transform: "translateZ(0)" }}>{/stock/.test(c.src) ? "B-ROLL" : "OFFICIAL FILM"}</span>
         </div>
       </div>
     </AbsoluteFill>
