@@ -298,14 +298,14 @@ export const HardwareVsAI: React.FC<{ durationInFrames: number; tint?: string; l
 };
 
 // ── MissingProofScene — red-cross rows ON the dimmed reel ────────────────────
-export const MissingProofScene: React.FC<{ durationInFrames: number; tint?: string; items: { at: number; label: string; sub?: string }[]; clip: string; clipDur?: number }>
-  = ({ items, clip, clipDur }) => {
+export const MissingProofScene: React.FC<{ durationInFrames: number; tint?: string; items: { at: number; label: string; sub?: string }[]; clip: string; clipDur?: number; kicker?: string; title?: string }>
+  = ({ items, clip, clipDur, kicker = "What Google hasn't shown", title = "THE MISSING PROOF" }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   return (
     <AbsoluteFill>
       <FullBleed clip={clip} clipDur={clipDur} scrim="linear-gradient(180deg, rgba(10,9,8,0.82) 0%, rgba(10,9,8,0.62) 30%, rgba(10,9,8,0.66) 100%)" />
-      <OverlayHeadline kicker="What Google hasn't shown" title="THE MISSING PROOF" titleSize={72} />
+      <OverlayHeadline kicker={kicker} title={title} titleSize={72} />
       <div style={{ position: "absolute", top: 330, left: "50%", width: 1100, marginLeft: -550, display: "flex", flexDirection: "column", gap: 18 }}>
         {items.map((it) => {
           const e = spr(frame, fps, it.at, 24);

@@ -3330,6 +3330,242 @@
       "concerns": null,
       "durationSec": 20,
       "shows": "Six-up grid of different robot arms running autonomously at once: bookshelf, chess board, chat UI, tea tray, prosthetic hand, toy assembly"
+    },
+    {
+      "filename": "astra-ten-advances-wide.png",
+      "localPath": "public/assets/external/screenshots/astra-ten-advances-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://openai.com/index/ten-advances-in-mathematics/",
+      "sourceName": "OpenAI",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Page top of the Aug 1, 2026 OpenAI post: chrome + 'Ten advances in mathematics and theoretical computer science' title + date + Read the paper button. First official 'Astra' naming post.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "imageW": 3840,
+      "imageH": 2052
+    },
+    {
+      "filename": "astra-ten-results.png",
+      "localPath": "public/assets/external/screenshots/astra-ten-results.png",
+      "type": "screenshot",
+      "sourceUrl": "https://openai.com/index/ten-advances-in-mathematics/",
+      "sourceName": "OpenAI",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "'The results' section: intro paragraph ($2,000 at Sol API rates, Lean certificate) + the full numbered list of the ten solved problems.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "imageW": 1500,
+      "imageH": 2070
+    },
+    {
+      "filename": "astra-nonsofic.png",
+      "localPath": "public/assets/external/screenshots/astra-nonsofic.png",
+      "type": "screenshot",
+      "sourceUrl": "https://openai.com/index/ten-advances-in-mathematics/",
+      "sourceName": "OpenAI",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Tight crop of results items 1-5 with item 3 'Non-sofic groups' (the real hardest problem, 1999) centered; feeds a zoom waypoint.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "imageW": 1500,
+      "imageH": 750
+    },
+    {
+      "filename": "astra-may-erdos-wide.png",
+      "localPath": "public/assets/external/screenshots/astra-may-erdos-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://openai.com/index/model-disproves-discrete-geometry-conjecture/",
+      "sourceName": "OpenAI",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Page top of the SEPARATE May 20, 2026 OpenAI post ('An OpenAI model has disproved a central conjecture in discrete geometry') - the actual 80-year-old 1946 Erdos unit-distance result.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "imageW": 3840,
+      "imageH": 2052
+    },
+    {
+      "filename": "astra-arxiv-wide.png",
+      "localPath": "public/assets/external/screenshots/astra-arxiv-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://arxiv.org/abs/2605.20695",
+      "sourceName": "arXiv",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Companion arXiv abstract page 'Remarks on the disproof of the unit distance conjecture' - authors line includes Noga Alon and W. T. Gowers (Fields Medalist), verifying the May Erdos result. Full short page kept (no 1.871 crop possible without slicing).",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "imageW": 3840,
+      "imageH": 2160
+    },
+    {
+      "filename": "astra-decoder-wide.png",
+      "localPath": "public/assets/external/screenshots/astra-decoder-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://the-decoder.com/openai-is-reportedly-building-astra-a-model-family-designed-to-work-on-problems-for-hours-or-days/",
+      "sourceName": "THE DECODER",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Headline 'OpenAI announces its \"next major model\" Astra by dropping ten previously unsolved math solutions' + Aug 6 update box. Astra existence + reporting-sourced details; empty top ad frame trimmed.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "imageW": 3200,
+      "imageH": 1710
+    },
+    {
+      "filename": "astra-pymnts-wide.png",
+      "localPath": "public/assets/external/screenshots/astra-pymnts-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.pymnts.com/news/artificial-intelligence/2026/sam-altman-to-brief-white-house-on-openai-models-impact-on-work/",
+      "sourceName": "PYMNTS",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Headline 'Sam Altman to Brief White House on OpenAI Models' Impact on Work' (July 21, 2026) + first paragraph. Lawmaker-briefing half of the story - reported, not OpenAI-confirmed; article never names Astra. Top ad banner + nav trimmed.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "imageW": 2943,
+      "imageH": 1573
+    },
+    {
+      "filename": "astra-tweet-noam.png",
+      "localPath": "public/assets/external/screenshots/astra-tweet-noam.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/polynoamial/status/2083467194663571701",
+      "sourceName": "Noam Brown (@polynoamial) on X",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Official OpenAI researcher confirming Astra + the ten results on Aug 1, 2026, with the paper's results-list image embedded. Cropped above the quoted-tweet card (X-truncated text).",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "imageW": 1100,
+      "imageH": 1490
+    },
+    {
+      "filename": "astra-tweet-testingcatalog.png",
+      "localPath": "public/assets/external/screenshots/astra-tweet-testingcatalog.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/testingcatalog/status/2083472959218340231",
+      "sourceName": "TestingCatalog (@testingcatalog) on X",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "GPT-6 = Astra NOT confirmed: right media panel reads 'OpenAI also hasn't decided whether Astra would be labeled GPT 6... such as GPT 5.7'. Includes Greg Brockman quote card + Aug 1, 2026 timestamp; engagement chrome cropped.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "imageW": 1100,
+      "imageH": 1550
+    },
+    {
+      "filename": "astra-tweet-ric.png",
+      "localPath": "public/assets/external/screenshots/astra-tweet-ric.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/Ric_RTP/status/2083911012932091906",
+      "sourceName": "Ricardo (@Ric_RTP) on X",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Community reaction: '$2,000 to solve 10 problems... 249-page report... a name: Astra'. Cropped above a broken 'media could not be played' embed per house tweet rules.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "imageW": 1100,
+      "imageH": 640
+    },
+    {
+      "filename": "astra-pod-a.mp4",
+      "localPath": "public/assets/external/clips/astra-pod-a.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=wNWz5Hbh5VQ",
+      "sourceName": "The OpenAI Podcast Ep. 20 (official OpenAI channel)",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Muted 1280x720@30 clip (src 18.5s-33.5s): branded title sequence - wide studio shot, 'The OpenAI Podcast' title, guest name card 'Alexander Wei, Hongxun Wu, and Lijie Chen', episode title card 'How a reasoning model cracked an 80-year-old math problem'. Official footage, commentary use.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "durationSec": 15,
+      "shows": "OpenAI Podcast intro: wide studio shot, show branding, guest name card, episode title card"
+    },
+    {
+      "filename": "astra-pod-b.mp4",
+      "localPath": "public/assets/external/clips/astra-pod-b.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=wNWz5Hbh5VQ",
+      "sourceName": "The OpenAI Podcast Ep. 20 (official OpenAI channel)",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Muted 1280x720@30 clip (src 40:06-40:19): two-shot of the two OpenAI researchers, the one in beige gesturing while explaining, the other listening. Official footage, commentary use.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "durationSec": 13,
+      "shows": "Two-shot of the two OpenAI researchers talking and gesturing in the studio"
+    },
+    {
+      "filename": "astra-pod-c.mp4",
+      "localPath": "public/assets/external/clips/astra-pod-c.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=wNWz5Hbh5VQ",
+      "sourceName": "The OpenAI Podcast Ep. 20 (official OpenAI channel)",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Muted 1280x720@30 clip (src 25:05-25:17): host close-up talking with animated hand gestures, internal hard cut to the wide four-shot near the end. Official footage, commentary use.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null,
+      "durationSec": 12,
+      "shows": "Host close-up gesturing while talking, ending on the wide studio four-shot"
+    },
+    {
+      "filename": "lean.svg",
+      "localPath": "public/assets/external/logos/lean.svg",
+      "type": "logo",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Lean_logo2.svg",
+      "sourceName": "Wikimedia Commons",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "Lean (Lean 4 theorem prover) logo - the post's proofs were formalized as Lean certificates. Used for commentary/reference.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "arxiv.svg",
+      "localPath": "public/assets/external/logos/arxiv.svg",
+      "type": "logo",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bc/ArXiv_logo_2022.svg",
+      "sourceName": "Wikimedia Commons",
+      "dateAccessed": "2026-08-09",
+      "usageNote": "arXiv logo for the companion-paper receipt beat. Used for commentary/reference.",
+      "usedIn": [
+        "Astra"
+      ],
+      "attributionRequired": false,
+      "concerns": null
     }
   ]
 }

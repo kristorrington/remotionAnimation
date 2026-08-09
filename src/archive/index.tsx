@@ -52,6 +52,8 @@ import { Opus5Video, OPUS5_DUR } from "../Opus5Video";
 import { Opus5Final } from "../Opus5Final";
 import { HabitsVideo, HABITS_DUR } from "../HabitsVideo";
 import { HabitsFinal } from "../HabitsFinal";
+import { GemRoboticsVideo, GEMROB_DUR } from "../GemRoboticsVideo";
+import { GemRoboticsFinal } from "../GemRoboticsFinal";
 import { AiWeeklyVideo, AI_WEEKLY_DUR } from "../AiWeeklyVideo";
 import { AiWeeklyFinal } from "../AiWeeklyFinal";
 import { AiNews2Video, AI_NEWS2_DUR } from "../AiNews2Video";
@@ -79,6 +81,10 @@ const transparentDefaults: CalculateMetadataFunction<
 export const ArchivedVideoCompositions: React.FC = () => {
   return (
     <>
+      {/* ── Gemini Robotics 2 — breakthrough demo or highlight reel? (Aug 2026) ── */}
+      <Composition id="GemRoboticsVideo" component={GemRoboticsVideo} durationInFrames={GEMROB_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="GemRoboticsFinal" component={GemRoboticsFinal} durationInFrames={GEMROB_DUR} fps={30} width={1920} height={1080} />
+
       {/* ── AI news #2 — DeepSeek/OpenAI/Qwen, 3-level evidence rule (Aug 2026) ── */}
       <Composition id="AiNews2Video" component={AiNews2Video} durationInFrames={AI_NEWS2_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
       <Composition id="AiNews2Final" component={AiNews2Final} durationInFrames={AI_NEWS2_DUR} fps={30} width={1920} height={1080} />
