@@ -474,9 +474,9 @@
           "enabled": true,
           "caption": "Everyone's repeating that OpenAI's model solved an 80-year-old math problem. The hardest one in the batch — non-sofic groups — has been open since 1999. That's 27 years, not 80. (The real 80-year result was a separate post.) ▶ Full fact-check on the channel.\n\n#OpenAI #AI #math #GPT6 #Shorts",
           "publishAt": "2026-08-13T07:00:00.000Z",
-          "status": "approved",
+          "status": "failed",
           "remoteId": null,
-          "error": null
+          "error": "missing YT_CLIENT_ID in .env"
         },
         "tiktok": {
           "enabled": true,
@@ -520,9 +520,9 @@
           "enabled": true,
           "caption": "OpenAI's ten results were machine-checked in Lean 4 — a proof checker that re-derives every logical step and can't be talked into approving anything. Approved = proven. ▶ Full breakdown on the channel.\n\n#OpenAI #AI #Lean4 #math #Shorts",
           "publishAt": "2026-08-14T07:00:00.000Z",
-          "status": "approved",
+          "status": "failed",
           "remoteId": null,
-          "error": null
+          "error": "missing YT_CLIENT_ID in .env"
         },
         "tiktok": {
           "enabled": true,
@@ -566,9 +566,9 @@
           "enabled": true,
           "caption": "Both OpenAI results are real — but the viral '80-year-old problem' belongs to a SEPARATE post from May 20, not the August one. Somebody hung the headline on the wrong announcement. ▶ Full fact-check on the channel.\n\n#OpenAI #AI #GPT6 #math #Shorts",
           "publishAt": "2026-08-15T07:00:00.000Z",
-          "status": "approved",
+          "status": "failed",
           "remoteId": null,
-          "error": null
+          "error": "missing YT_CLIENT_ID in .env"
         },
         "tiktok": {
           "enabled": true,
@@ -612,9 +612,9 @@
           "enabled": true,
           "caption": "One half of the Astra story is public, Lean-checked math you can re-run tonight. The other half — a lawmaker briefing — has zero published sources. Don't treat them the same. ▶ Full breakdown on the channel.\n\n#OpenAI #Astra #AI #AInews #Shorts",
           "publishAt": "2026-08-16T07:00:00.000Z",
-          "status": "approved",
+          "status": "failed",
           "remoteId": null,
-          "error": null
+          "error": "missing YT_CLIENT_ID in .env"
         },
         "tiktok": {
           "enabled": true,
@@ -658,9 +658,9 @@
           "enabled": true,
           "caption": "Is 'Astra' really OpenAI's next flagship? One document settles it — the system card — and it doesn't exist yet. Until it does: treat the math as proven, the briefing as a rumour. ▶ Subscribe for the system-card breakdown.\n\n#OpenAI #Astra #GPT6 #AI #Shorts",
           "publishAt": "2026-08-17T07:00:00.000Z",
-          "status": "approved",
+          "status": "failed",
           "remoteId": null,
-          "error": null
+          "error": "missing YT_CLIENT_ID in .env"
         },
         "tiktok": {
           "enabled": true,
