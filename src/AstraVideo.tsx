@@ -61,7 +61,7 @@ const BEATS: Beat[] = [
   { key: "arxivReceipt", from: 2660, dur: 367, receipt: true, pip: true, node: (
     <ScreenshotReceiptScene durationInFrames={367} kicker="ARXIV · 2605.20695" title="A FIELDS MEDALIST ON THE PAPER" tint={GREEN}
       src={`${SHOT}/astra-arxiv-wide.png`} url="arxiv.org/abs/2605.20695" imageW={3840} imageH={2160}
-      from={{ x: 0, y: 0, w: 3840, h: 2160 }} to={{ x: 0, y: 140, w: 2200, h: 1176 }} zoomAt={24}
+      from={{ x: 0, y: 0, w: 3840, h: 2160 }} to={{ x: 0, y: 140, w: 2200, h: 1176 }} zoomAt={24} titlePos="right" titleTop={470}
       notes={[{ at: 135, rect: { x: 460, y: 288, w: 210, h: 54 }, kind: "box" }]} />
   ) },
 
