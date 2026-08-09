@@ -272,7 +272,7 @@
     },
     {
       "id": "Short-OneBrain",
-      "file": "out/shorts/YT_TIK_Short-OneBrain.mp4",
+      "file": "out/shorts/YT_TIK_IG_Short-OneBrain.mp4",
       "title": "One AI Now Runs a Robot's Whole Body #Shorts",
       "tags": [
         "robotics",
@@ -309,8 +309,8 @@
           "enabled": true,
           "caption": "The real story of Gemini Robotics 2 isn't the lightbulb — one model coordinates the arms, hands, movement and balance together. Fewer handoffs, fewer ways to break. ▶ Full breakdown on the channel.\n\n#robotics #AI #GeminiRobotics #GoogleDeepMind #Shorts",
           "publishAt": "2026-08-09T07:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "published",
+          "remoteId": "17970975902932558",
           "error": null
         }
       }
