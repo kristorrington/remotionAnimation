@@ -156,4 +156,7 @@ export type ShortSpec = {
   // footage); a HOT recording (peaks near 0 dB) needs ~1.3 or the boost clips
   // before mastering. Set to match the source's measured peak (volumedetect).
   voice?: number;
+  // Horizontal face-crop bias for the 9:16 talking-head (percent). Default 48;
+  // set ~51 when the face is centred in the source so it sits dead-centre.
+  faceX?: number;
 };

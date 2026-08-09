@@ -6,10 +6,11 @@ import { AbsoluteFill, OffthreadVideo, staticFile } from "remotion";
 // `objectPosition` biases up so the face sits in the upper third. `from` windows
 // the footage to the clip's moment (trimBefore = absolute start frame) and the VO
 // is boosted the same way as the landscape cut.
-export const VerticalStage: React.FC<{ source: string; from: number; volume?: number }> = ({
+export const VerticalStage: React.FC<{ source: string; from: number; volume?: number; faceX?: number }> = ({
   source,
   from,
   volume = 3,
+  faceX = 48,
 }) => {
   return (
     <AbsoluteFill style={{ backgroundColor: "black", overflow: "hidden" }}>
@@ -21,10 +22,10 @@ export const VerticalStage: React.FC<{ source: string; from: number; volume?: nu
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          // 48% horizontal: the presenter sits slightly LEFT of frame centre
-          // in the current recording, so the crop window shifts with him —
-          // re-tune this per recording if the face reads off-centre
-          objectPosition: "48% 30%",
+          // Horizontal crop bias per recording (ShortSpec.faceX): default 48%
+          // (presenter slightly left of centre); set 50–51 when the face reads
+          // centred in the source so the talking head sits dead-centre.
+          objectPosition: `${faceX}% 30%`,
           // No continuous zoom: per-frame sub-pixel scaling reads as a subtle
           // shake/shimmer on the face. The footage stays locked still.
           filter: "contrast(1.06) saturate(1.1) brightness(1.02)",
