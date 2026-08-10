@@ -317,7 +317,7 @@
     },
     {
       "id": "Short-ApolloDuo",
-      "file": "out/shorts/YT_TIK_Short-ApolloDuo.mp4",
+      "file": "out/shorts/YT_TIK_IG_Short-ApolloDuo.mp4",
       "title": "Two Robots, One Garage — Real Teamwork? #Shorts",
       "tags": [
         "robotics",
@@ -354,8 +354,8 @@
           "enabled": true,
           "caption": "Google showed Apollo and Duo tidying a garage at once. But each runs its OWN copy of Gemini Robotics 2 — real coordination, or just two robots given separate jobs? ▶ Full breakdown on the channel.\n\n#robotics #AI #GeminiRobotics #humanoidrobots #Shorts",
           "publishAt": "2026-08-10T07:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "published",
+          "remoteId": "18121617016884666",
           "error": null
         }
       }
