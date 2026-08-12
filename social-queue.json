@@ -407,7 +407,7 @@
     },
     {
       "id": "Short-DemoNotProduct",
-      "file": "out/shorts/YT_TIK_Short-DemoNotProduct.mp4",
+      "file": "out/shorts/YT_TIK_IG_Short-DemoNotProduct.mp4",
       "title": "Is Gemini Robotics 2 a Real Breakthrough? #Shorts",
       "tags": [
         "robotics",
@@ -444,8 +444,8 @@
           "enabled": true,
           "caption": "Yes — but not for the reason the highlight reel suggests. One AI coordinating a robot's whole body is the real advance. 'Most advanced ever' still needs a comparison Google hasn't shown. ▶ Full breakdown on the channel.\n\n#robotics #AI #GeminiRobotics #humanoidrobots #Shorts",
           "publishAt": "2026-08-12T07:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "published",
+          "remoteId": "18104774570331647",
           "error": null
         }
       }
