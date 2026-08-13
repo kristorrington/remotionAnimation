@@ -452,7 +452,7 @@
     },
     {
       "id": "Short-Astra27",
-      "file": "out/shorts/Short-Astra27.mp4",
+      "file": "out/shorts/TIK_Short-Astra27.mp4",
       "title": "No, OpenAI Didn't Solve an 80-Year-Old Problem #Shorts",
       "tags": [
         "OpenAI Astra",
@@ -482,8 +482,8 @@
           "enabled": true,
           "caption": "Everyone's repeating that OpenAI's model solved an 80-year-old math problem. The hardest one in the batch — non-sofic groups — has been open since 1999. That's 27 years, not 80. (The real 80-year result was a separate post.) ▶ Full fact-check on the channel.\n\n#OpenAI #AI #math #GPT6 #Shorts",
           "publishAt": "2026-08-13T02:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "drafted",
+          "remoteId": "v_inbox_file~v2.7673340679615137800",
           "error": null
         },
         "instagram": {
