@@ -544,7 +544,7 @@
     },
     {
       "id": "Short-AstraWrongPost",
-      "file": "out/shorts/Short-AstraWrongPost.mp4",
+      "file": "out/shorts/TIK_Short-AstraWrongPost.mp4",
       "title": "The 80-Year Math Headline Is on the Wrong Post #Shorts",
       "tags": [
         "OpenAI Astra",
@@ -574,8 +574,8 @@
           "enabled": true,
           "caption": "Both OpenAI results are real — but the viral '80-year-old problem' belongs to a SEPARATE post from May 20, not the August one. Somebody hung the headline on the wrong announcement. ▶ Full fact-check on the channel.\n\n#OpenAI #AI #GPT6 #math #Shorts",
           "publishAt": "2026-08-14T02:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "drafted",
+          "remoteId": "v_inbox_file~v2.7673711433443690513",
           "error": null
         },
         "instagram": {
