@@ -636,7 +636,7 @@
     },
     {
       "id": "Short-AstraSystemCard",
-      "file": "out/shorts/Short-AstraSystemCard.mp4",
+      "file": "out/shorts/TIK_Short-AstraSystemCard.mp4",
       "title": "How to Tell If OpenAI's 'Astra' Is Real #Shorts",
       "tags": [
         "OpenAI Astra",
@@ -666,8 +666,8 @@
           "enabled": true,
           "caption": "Is 'Astra' really OpenAI's next flagship? One document settles it — the system card — and it doesn't exist yet. Until it does: treat the math as proven, the briefing as a rumour. ▶ Subscribe for the system-card breakdown.\n\n#OpenAI #Astra #GPT6 #AI #Shorts",
           "publishAt": "2026-08-15T02:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "drafted",
+          "remoteId": "v_inbox_file~v2.7674088176176154625",
           "error": null
         },
         "instagram": {
