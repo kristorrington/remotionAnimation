@@ -590,7 +590,7 @@
     },
     {
       "id": "Short-AstraTwoStandards",
-      "file": "out/shorts/TIK_Short-AstraTwoStandards.mp4",
+      "file": "out/shorts/YT_TIK_IG_Short-AstraTwoStandards.mp4",
       "title": "OpenAI's Astra: One Story, Two Standards #Shorts",
       "tags": [
         "OpenAI Astra",
@@ -628,8 +628,8 @@
           "enabled": true,
           "caption": "One half of the Astra story is public, Lean-checked math you can re-run tonight. The other half — a lawmaker briefing — has zero published sources. Don't treat them the same. ▶ Full breakdown on the channel.\n\n#OpenAI #Astra #AI #AInews #Shorts",
           "publishAt": "2026-08-16T07:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "published",
+          "remoteId": "18153131908509797",
           "error": null
         }
       }
