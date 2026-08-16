@@ -52,6 +52,8 @@ import { Opus5Video, OPUS5_DUR } from "../Opus5Video";
 import { Opus5Final } from "../Opus5Final";
 import { HabitsVideo, HABITS_DUR } from "../HabitsVideo";
 import { HabitsFinal } from "../HabitsFinal";
+import { AstraVideo, ASTRA_DUR } from "../AstraVideo";
+import { AstraFinal } from "../AstraFinal";
 import { GemRoboticsVideo, GEMROB_DUR } from "../GemRoboticsVideo";
 import { GemRoboticsFinal } from "../GemRoboticsFinal";
 import { AiWeeklyVideo, AI_WEEKLY_DUR } from "../AiWeeklyVideo";
@@ -81,6 +83,10 @@ const transparentDefaults: CalculateMetadataFunction<
 export const ArchivedVideoCompositions: React.FC = () => {
   return (
     <>
+      {/* ── Astra ten-proofs fact-check (Aug 2026) ── */}
+      <Composition id="AstraVideo" component={AstraVideo} durationInFrames={ASTRA_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="AstraFinal" component={AstraFinal} durationInFrames={ASTRA_DUR} fps={30} width={1920} height={1080} />
+
       {/* ── Gemini Robotics 2 — breakthrough demo or highlight reel? (Aug 2026) ── */}
       <Composition id="GemRoboticsVideo" component={GemRoboticsVideo} durationInFrames={GEMROB_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
       <Composition id="GemRoboticsFinal" component={GemRoboticsFinal} durationInFrames={GEMROB_DUR} fps={30} width={1920} height={1080} />
