@@ -3836,6 +3836,394 @@
       "concerns": null,
       "durationSec": 10,
       "shows": "Dark background with a glowing teal particle wave curving across the frame."
+    },
+    {
+      "filename": "ge-langchain-blog-wide.png",
+      "localPath": "public/assets/external/screenshots/ge-langchain-blog-wide.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.langchain.com/blog/3-years-of-graph-engineering-with-langgraph",
+      "sourceName": "LangChain blog (official)",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "Hero banner '3 Years of Graph Engineering with LangGraph' -- receipt that the IDEA is ~3 years old, not new (only the name is new).",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Official LangChain blog; brand/editorial screenshot used for commentary & reference.",
+      "imageW": 1884,
+      "imageH": 1007
+    },
+    {
+      "filename": "ge-pypistats.png",
+      "localPath": "public/assets/external/screenshots/ge-pypistats.png",
+      "type": "screenshot",
+      "sourceUrl": "https://pypistats.org/packages/langgraph",
+      "sourceName": "PyPI Stats",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "langgraph metadata + Downloads last month 72,706,816 (~73M/mo) and v1.2.11 -- proves scale/maturity of the real package.",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Public statistics page; reference use.",
+      "imageW": 1000,
+      "imageH": 645
+    },
+    {
+      "filename": "ge-tweet-steipete.png",
+      "localPath": "public/assets/external/screenshots/ge-tweet-steipete.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/steipete/status/2078277297791189132",
+      "sourceName": "Peter Steinberger (@steipete) on X",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "The viral trigger tweet 'Are we still talking loops or did we shift to graphs yet?' (Jul 18 2026) -- the naming-trend spark.",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Third-party tweet; commentary/criticism. Clean crop, no media.",
+      "imageW": 1100,
+      "imageH": 450
+    },
+    {
+      "filename": "ge-tweet-anthropic.png",
+      "localPath": "public/assets/external/screenshots/ge-tweet-anthropic.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/AnthropicAI/status/2036481033621623056",
+      "sourceName": "Anthropic (@AnthropicAI) on X",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "Official Anthropic tweet on a multi-agent harness (node-graph preview image) -- the real engineering behind the buzzword.",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Official brand tweet incl. clean on-theme node-graph link-preview (not broken media); engagement bar trimmed.",
+      "imageW": 1100,
+      "imageH": 1350
+    },
+    {
+      "filename": "ge-tweet-0xmovez.png",
+      "localPath": "public/assets/external/screenshots/ge-tweet-0xmovez.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/0xMovez/status/2086481283404710047",
+      "sourceName": "Movez (@0xMovez) on X",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "Viral hype tweet ('At OpenAI, 85% of engineers... the way you do it is graph engineering') for the 'internet losing its mind' hook montage.",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Third-party tweet; unverified viral claim shown as an example of hype; cropped above broken-media embed.",
+      "imageW": 1170,
+      "imageH": 590
+    },
+    {
+      "filename": "ge-tweet-goyal.png",
+      "localPath": "public/assets/external/screenshots/ge-tweet-goyal.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/goyalshaliniuk/status/2081190264673321040",
+      "sourceName": "Shalini Goyal (@goyalshaliniuk) on X",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "Viral tweet promoting an 'Anthropic 2-hour Graph Engineering workshop' for the hook montage.",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Third-party tweet; unverified viral claim shown as an example of hype; cropped above broken-media embed.",
+      "imageW": 1160,
+      "imageH": 915
+    },
+    {
+      "filename": "ge-langgraph-github.png",
+      "localPath": "public/assets/external/screenshots/ge-langgraph-github.png",
+      "type": "screenshot",
+      "sourceUrl": "https://github.com/langchain-ai/langgraph",
+      "sourceName": "GitHub - langchain-ai/langgraph",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "Repo top: README hero (511M downloads badge, v1.2.11, 'Trusted by Klarna, Replit, Elastic') + LICENSE '2 years ago' -- real + longstanding.",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Public GitHub repo; reference/proof use.",
+      "imageW": 2020,
+      "imageH": 1080
+    },
+    {
+      "filename": "ge-turingpost.png",
+      "localPath": "public/assets/external/screenshots/ge-turingpost.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.turingpost.com/p/is-graph-engineering-real-why-everyone-is-talking-about-it",
+      "sourceName": "Turing Post (FOD#159)",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "KEY DEBUNK receipt: headline 'FOD#159: Is Graph Engineering Real? Why Everyone Is Talking About It' (Ksenia Se, Jul 21 2026) + subtitle.",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Third-party editorial; public title/byline region captured (deeper article may be paywalled below fold). Commentary & reference.",
+      "imageW": 1796,
+      "imageH": 960
+    },
+    {
+      "filename": "ge-josh-simmons.png",
+      "localPath": "public/assets/external/screenshots/ge-josh-simmons.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.drjoshcsimmons.com/writing/we-are-entering-the-graph-engineering-phase",
+      "sourceName": "Josh C. Simmons (personal blog)",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "Origin post 'We Are Entering the Graph Engineering Phase' dated JUL 04 2026 -- earliest documented use of the term.",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Third-party blog; title/subtitle screenshot used for commentary & reference.",
+      "imageW": 1446,
+      "imageH": 773
+    },
+    {
+      "filename": "ge-adk.png",
+      "localPath": "public/assets/external/screenshots/ge-adk.png",
+      "type": "screenshot",
+      "sourceUrl": "https://developers.googleblog.com/announcing-adk-go-20/",
+      "sourceName": "Google Developers Blog - Announcing ADK Go 2.0",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "Official Google post: headline names a 'graph-based workflow engine' -- Google shipped graph-based agent workflows before the 'graph engineering' label.",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "DATE NOTE: this clean official page is dated JUNE 30 2026 (ADK Go 2.0). The ADK PYTHON 2.0 GA date May 19 2026 (matching narration) appears only on google.github.io/adk-docs/2.0/, which rendered dimmed behind a modal scrim (see report).",
+      "imageW": 2300,
+      "imageH": 1229
+    },
+    {
+      "filename": "ge-hamel.png",
+      "localPath": "public/assets/external/screenshots/ge-hamel.png",
+      "type": "screenshot",
+      "sourceUrl": "https://x.com/HamelHusain/article/2078346425621237935",
+      "sourceName": "Hamel Husain (@HamelHusain) on X (Article)",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "Article title 'Loop Engineering Is Dead. Enter Graph Engineering' + loop->graph illustration + byline 2026-07-18 (title-only capture).",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "X Premium article body is paywalled (renders blank); only the public title/hero/byline captured. Third-party, commentary/reference.",
+      "imageW": 1300,
+      "imageH": 760
+    },
+    {
+      "filename": "ge-langgraph-a.mp4",
+      "localPath": "public/assets/external/clips/ge-langgraph-a.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=29XE10U6ooc",
+      "sourceName": "LangChain - 'Introduction to LangGraph' (LangChain Academy)",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "Harrison Chase line -> LangChain Academy end card with the ANIMATED NODE GRAPH revealing. The one true graph visual in the supplied footage.",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Brand-official LangChain YouTube footage; MUTED; use under commentary/criticism (CLAUDE.md 10.2). Source 640x360 upscaled to 720p (slightly soft).",
+      "durationSec": 8.9,
+      "shows": "animated node graph; LangChain Academy 'Introduction to LangGraph' end card"
+    },
+    {
+      "filename": "ge-langgraph-b.mp4",
+      "localPath": "public/assets/external/clips/ge-langgraph-b.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=29XE10U6ooc",
+      "sourceName": "LangChain - 'Introduction to LangGraph' (LangChain Academy)",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "Harrison Chase talking-head with lower-third 'Harrison Chase, CEO & Co-Founder, LangChain' + 'Introduction to LangGraph is now available' caption.",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Brand-official LangChain YouTube footage; MUTED; commentary/criticism (10.2). 640x360 upscaled.",
+      "durationSec": 9,
+      "shows": "Harrison Chase (LangChain CEO) intro with name lower-third"
+    },
+    {
+      "filename": "ge-langgraph-c.mp4",
+      "localPath": "public/assets/external/clips/ge-langgraph-c.mp4",
+      "type": "reference",
+      "sourceUrl": "https://www.youtube.com/watch?v=r5Z_gYZb4Ns",
+      "sourceName": "LangChain - 'Building LangChain and LangGraph 1.0'",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "LangChain team round-table interview establishing shot (distinct studio look) -- the people building the real thing.",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Brand-official LangChain YouTube footage; MUTED; commentary/criticism (10.2). 640x360 upscaled. NOTE: this source video is entirely talking-head -- no graph/code/UI available.",
+      "durationSec": 8,
+      "shows": "LangChain team round-table interview (studio, branded mugs)"
+    },
+    {
+      "filename": "ge-stock-kitchen.mp4",
+      "localPath": "public/assets/external/clips/ge-stock-kitchen.mp4",
+      "type": "reference",
+      "sourceUrl": "https://mixkit.co/free-stock-video/chef-cooking-on-a-large-grill-4678/",
+      "sourceName": "Mixkit (free stock)",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "Restaurant grill/kitchen -- for the 'same kitchen, same food' analogy.",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Mixkit Free License: free for commercial use, no attribution required.",
+      "durationSec": 9,
+      "shows": "chef cooking on a large restaurant grill"
+    },
+    {
+      "filename": "ge-stock-dish.mp4",
+      "localPath": "public/assets/external/clips/ge-stock-dish.mp4",
+      "type": "reference",
+      "sourceUrl": "https://mixkit.co/free-stock-video/dish-of-meat-potatoes-and-salad-in-a-restaurant-32457/",
+      "sourceName": "Mixkit (free stock)",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "Plated restaurant dish -- the 'same food' half of the analogy.",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Mixkit Free License: free for commercial use, no attribution required.",
+      "durationSec": 9,
+      "shows": "plated dish (meat, potatoes, salad) in a restaurant"
+    },
+    {
+      "filename": "ge-stock-menu.mp4",
+      "localPath": "public/assets/external/clips/ge-stock-menu.mp4",
+      "type": "reference",
+      "sourceUrl": "https://mixkit.co/free-stock-video/a-man-walking-by-the-side-of-a-coffee-shop-1748/",
+      "sourceName": "Mixkit (free stock)",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "Fancy cafe menu board (styled item names + prices) -- the 'French menu' re-labeling half of the analogy.",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Mixkit Free License: free for commercial use, no attribution required.",
+      "durationSec": 7.47,
+      "shows": "dark cafe menu board with fancy item names and prices; passerby"
+    },
+    {
+      "filename": "ge-stock-boardroom.mp4",
+      "localPath": "public/assets/external/clips/ge-stock-boardroom.mp4",
+      "type": "reference",
+      "sourceUrl": "https://mixkit.co/free-stock-video/business-man-exposing-graphs-42648/",
+      "sourceName": "Mixkit (free stock)",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "Businessman presenting analysis GRAPHS in a meeting room -- for the 'cited in a client deck' analogy.",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Mixkit Free License: free for commercial use, no attribution required.",
+      "durationSec": 6.17,
+      "shows": "businessman presenting graphs/charts on a screen in a meeting room"
+    },
+    {
+      "filename": "ge-stock-code.mp4",
+      "localPath": "public/assets/external/clips/ge-stock-code.mp4",
+      "type": "reference",
+      "sourceUrl": "https://mixkit.co/free-stock-video/computer-screens-display-green-text-and-matrix-like-scrolling-50748/",
+      "sourceName": "Mixkit (free stock)",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "Dark screens with green scrolling code/terminal -- generic engineering b-roll (the LangGraph clips have no code).",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Mixkit Free License: free for commercial use, no attribution required.",
+      "durationSec": 9,
+      "shows": "dark monitors with green scrolling code/text"
+    },
+    {
+      "filename": "langgraph.svg",
+      "localPath": "public/assets/external/logos/langgraph.svg",
+      "type": "logo",
+      "sourceUrl": "https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@latest/icons/langgraph-color.svg",
+      "sourceName": "LobeHub icons (LangGraph mark)",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "LangGraph brand icon (parrot-in-pill mark).",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Brand logo via LobeHub icon set; identification/reference use."
+    },
+    {
+      "filename": "langchain.svg",
+      "localPath": "public/assets/external/logos/langchain.svg",
+      "type": "logo",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/60/LangChain_Logo.svg",
+      "sourceName": "Wikimedia Commons",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "LangChain wordmark logo.",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Brand logo; identification/reference use."
+    },
+    {
+      "filename": "google-deepmind.svg",
+      "localPath": "public/assets/external/logos/google-deepmind.svg",
+      "type": "logo",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Google_DeepMind_logo.svg",
+      "sourceName": "Wikimedia Commons",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "Google DeepMind wordmark logo (for the ADK/Google beat).",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Brand logo; identification/reference use."
+    },
+    {
+      "filename": "medium.svg",
+      "localPath": "public/assets/external/logos/medium.svg",
+      "type": "logo",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/35/Medium_%28website%29_logo_2024.svg",
+      "sourceName": "Wikimedia Commons",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "Medium wordmark (for blog-commentary sourcing).",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Brand logo; identification/reference use."
+    },
+    {
+      "filename": "x-logo.svg",
+      "localPath": "public/assets/external/logos/x-logo.svg",
+      "type": "logo",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg",
+      "sourceName": "Wikimedia Commons",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "X (Twitter) logo (for tweet/commentary beats).",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Brand logo; identification/reference use."
+    },
+    {
+      "filename": "anthropic.svg",
+      "localPath": "public/assets/external/logos/anthropic.svg",
+      "type": "logo",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg",
+      "sourceName": "Wikimedia Commons",
+      "dateAccessed": "2026-08-16",
+      "usageNote": "Anthropic wordmark logo.",
+      "usedIn": [
+        "GraphEng"
+      ],
+      "attributionRequired": false,
+      "concerns": "Brand logo; identification/reference use."
     }
   ]
 }
