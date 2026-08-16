@@ -70,43 +70,43 @@ export const FlowScene: React.FC<{ durationInFrames: number; mode: "prompt" | "l
   const kickMap = { prompt: "One instruction, one answer", loop: "Run until a check passes", graph: "Any step can point anywhere" };
   return (
     <Stage tint={tint} header={<Head kicker={kickMap[mode]} title={titleMap[mode]} accent={mode === "graph" ? NEWS.brand : NEWS.blue} />}>
-      <svg width={1920} height={720} style={{ position: "absolute", inset: 0, top: 120 }}>
+      <svg width={1920} height={960} style={{ position: "absolute", inset: 0 }}>
         {mode === "prompt" && (<>
-          <Arrow x1={cx} y1={210} x2={cx} y2={270} at={ats[0] + 20} />
-          <Arrow x1={cx} y1={370} x2={cx} y2={430} at={ats[1] + 20} />
+          <Arrow x1={cx} y1={330} x2={cx} y2={400} at={ats[0] + 20} />
+          <Arrow x1={cx} y1={510} x2={cx} y2={580} at={ats[1] + 20} />
         </>)}
         {mode === "loop" && (<>
-          <Arrow x1={cx} y1={210} x2={cx} y2={270} at={ats[0] + 20} />
-          <Arrow x1={cx} y1={370} x2={cx} y2={430} at={ats[1] + 20} />
-          <Arrow x1={cx + 100} y1={470} x2={cx + 320} y2={310} at={ats[2]} color={NEWS.brand} curve={180} />
-          <Arrow x1={cx + 320} y1={290} x2={cx + 100} y2={190} at={ats[2] + 4} color={NEWS.brand} curve={180} />
+          <Arrow x1={cx} y1={330} x2={cx} y2={400} at={ats[0] + 20} />
+          <Arrow x1={cx} y1={510} x2={cx} y2={580} at={ats[1] + 20} />
+          <Arrow x1={cx + 110} y1={620} x2={cx + 360} y2={450} at={ats[2]} color={NEWS.brand} curve={200} />
+          <Arrow x1={cx + 360} y1={430} x2={cx + 110} y2={300} at={ats[2] + 4} color={NEWS.brand} curve={200} />
         </>)}
         {mode === "graph" && (<>
-          <Arrow x1={cx - 360} y1={200} x2={cx - 120} y2={200} at={ats[1]} />
-          <Arrow x1={cx + 80} y1={200} x2={cx + 320} y2={130} at={ats[2]} color={NEWS.brand} />
-          <Arrow x1={cx + 80} y1={220} x2={cx + 320} y2={330} at={ats[2] + 6} color={NEWS.brand} />
-          <Arrow x1={cx + 520} y1={130} x2={cx + 620} y2={230} at={ats[3]} color={NEWS.green} />
-          <Arrow x1={cx + 520} y1={330} x2={cx + 620} y2={250} at={ats[3] + 4} color={NEWS.green} />
-          <Arrow x1={cx + 180} y1={250} x2={cx - 340} y2={250} at={ats[4]} color="#C9913D" curve={-260} />
+          <Arrow x1={cx - 405} y1={520} x2={cx - 250} y2={520} at={ats[1]} />
+          <Arrow x1={cx - 60} y1={510} x2={cx + 140} y2={430} at={ats[2]} color={NEWS.brand} />
+          <Arrow x1={cx - 60} y1={530} x2={cx + 140} y2={610} at={ats[2] + 6} color={NEWS.brand} />
+          <Arrow x1={cx + 320} y1={430} x2={cx + 430} y2={510} at={ats[3]} color={NEWS.green} />
+          <Arrow x1={cx + 320} y1={610} x2={cx + 430} y2={530} at={ats[3] + 4} color={NEWS.green} />
+          <Arrow x1={cx - 160} y1={575} x2={cx - 500} y2={575} at={ats[4]} color="#C9913D" curve={-220} />
         </>)}
       </svg>
       {mode === "prompt" && (<>
-        <Node x={cx} y={290} label="Input" at={ats[0]} />
-        <Node x={cx} y={450} label="AI" at={ats[1]} color={NEWS.blue} />
-        <Node x={cx} y={610} label="Output" at={ats[2]} />
+        <Node x={cx} y={410} label="Input" at={ats[0]} />
+        <Node x={cx} y={570} label="AI" at={ats[1]} color={NEWS.blue} />
+        <Node x={cx} y={730} label="Output" at={ats[2]} />
       </>)}
       {mode === "loop" && (<>
-        <Node x={cx} y={290} label="Try" at={ats[0]} />
-        <Node x={cx} y={450} label="Check" at={ats[1]} color={NEWS.blue} />
-        <Node x={cx} y={610} label="Pass?" at={ats[2]} color={NEWS.green} />
-        <div style={{ position: "absolute", left: cx + 250, top: 430, fontFamily: DISPLAY, fontWeight: 700, fontSize: 24, letterSpacing: 1, color: NEWS.brand, textTransform: "uppercase", opacity: interpolate(frame, [ats[2] + 6, ats[2] + 16], [0, 1], CLAMP) }}>↺ try again</div>
+        <Node x={cx} y={410} label="Try" at={ats[0]} />
+        <Node x={cx} y={570} label="Check" at={ats[1]} color={NEWS.blue} />
+        <Node x={cx} y={730} label="Pass?" at={ats[2]} color={NEWS.green} />
+        <div style={{ position: "absolute", left: cx + 300, top: 560, fontFamily: DISPLAY, fontWeight: 700, fontSize: 26, letterSpacing: 1, color: NEWS.brand, textTransform: "uppercase", opacity: interpolate(frame, [ats[2] + 6, ats[2] + 16], [0, 1], CLAMP) }}>↺ try again</div>
       </>)}
       {mode === "graph" && (<>
-        <Node x={cx - 440} y={320} label="Research" at={ats[0]} w={210} />
-        <Node x={cx} y={320} label="Dead end" at={ats[1]} color={NEWS.red} w={200} />
-        <Node x={cx + 420} y={250} label="Tool A" at={ats[2]} color={NEWS.blue} w={180} />
-        <Node x={cx + 420} y={450} label="Tool B" at={ats[2] + 6} color={NEWS.blue} w={180} />
-        <Node x={cx + 720} y={370} label="Merge" at={ats[3]} color={NEWS.green} w={190} />
+        <Node x={cx - 500} y={520} label="Research" at={ats[0]} w={230} />
+        <Node x={cx - 160} y={520} label="Dead end" at={ats[1]} color={NEWS.red} w={220} />
+        <Node x={cx + 230} y={430} label="Tool A" at={ats[2]} color={NEWS.blue} w={200} />
+        <Node x={cx + 230} y={610} label="Tool B" at={ats[2] + 6} color={NEWS.blue} w={200} />
+        <Node x={cx + 540} y={520} label="Merge" at={ats[3]} color={NEWS.green} w={210} />
       </>)}
     </Stage>
   );
