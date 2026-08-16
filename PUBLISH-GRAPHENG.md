@@ -34,8 +34,8 @@ In this breakdown: what graph engineering actually means (prompt → loop → gr
 0:00 The hype
 0:43 Prompt → Loop → Graph
 1:53 None of this is new
-2:45 Where the phrase came from
-4:08 The stat that was never real
+2:41 Where the phrase came from
+4:05 The stat that was never real
 5:54 The rule
 
 ✅ What it actually is

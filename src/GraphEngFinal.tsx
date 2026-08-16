@@ -21,9 +21,9 @@ const CHAPTERS: Chapter[] = [
   { label: "The Hype", from: 0 },
   { label: "Line → Loop → Graph", from: 1297 },
   { label: "Not New", from: 3392 },
-  { label: "Where It Came From", from: 4972 },
-  { label: "The False Stat", from: 7460 },
-  { label: "The Rule", from: 10635 },
+  { label: "Where It Came From", from: 4844 },
+  { label: "The False Stat", from: 7352 },
+  { label: "The Rule", from: 10633 },
 ];
 
 const PIP_GAP_MAX = 90;
@@ -51,22 +51,28 @@ const CUTS = [...new Set([...FULL.map((f) => f.from), ...GE_EXTRA_CUTS])].sort((
 // §15.2 punch-ins on the face gaps / key lines (selective)
 const PUNCHES: { at: number; level: "emphasis" | "strong"; hold: number }[] = [
   { at: 100, level: "emphasis", hold: 46 }, // hook
-  { at: 940, level: "emphasis", hold: 60 }, // "give me five minutes… one simple rule"
-  { at: 2470, level: "emphasis", hold: 44 }, // "here's what that looks like in practice"
-  { at: 7043, level: "strong", hold: 48 }, // "just a good day for a phrase"
-  { at: 8500, level: "emphasis", hold: 42 }, // "not ideal"
+  { at: 1160, level: "emphasis", hold: 50 }, // "sounds way more complicated than the idea"
+  { at: 2035, level: "emphasis", hold: 44 }, // "takes that one step further"
+  { at: 4690, level: "emphasis", hold: 48 }, // "why did an old idea need a new name?"
+  { at: 6230, level: "strong", hold: 48 }, // "2.8 million views"
+  { at: 7170, level: "emphasis", hold: 46 }, // "viral isn't the proof"
+  { at: 8770, level: "strong", hold: 44 }, // "not ideal"
+  { at: 11960, level: "emphasis", hold: 46 }, // "hasn't earned your trust"
 ];
 
 // Keyword captions on FACE-ONLY stretches (keywords, not transcripts)
 const FACE_CAPTIONS: { at: number; dur: number; text: string }[] = [
   { at: 30, dur: 80, text: "BEFORE THE CUTE NAMES" },
-  { at: 210, dur: 66, text: "THE INTERNET LOST IT" },
-  { at: 940, dur: 70, text: "FIVE MINUTES" },
-  { at: 1030, dur: 74, text: "ONE SIMPLE RULE" },
-  { at: 2470, dur: 70, text: "HERE'S THE REAL SHAPE" },
-  { at: 7043, dur: 78, text: "A GOOD DAY FOR A PHRASE" },
-  { at: 8760, dur: 60, text: "NOT IDEAL." },
+  { at: 1150, dur: 70, text: "THE PLAIN-ENGLISH VERSION" },
+  { at: 2030, dur: 72, text: "ONE STEP FURTHER" },
+  { at: 3830, dur: 76, text: "LANGCHAIN'S OWN REPORT" },
+  { at: 4680, dur: 78, text: "WHY A NEW NAME?" },
+  { at: 6210, dur: 90, text: "2.8M VIEWS IN DAYS" },
+  { at: 7150, dur: 80, text: "VIRAL ≠ PROOF" },
+  { at: 8620, dur: 70, text: "TWO DAYS LATER…" },
+  { at: 8770, dur: 60, text: "NOT IDEAL." },
   { at: 11960, dur: 78, text: "IT HASN'T EARNED YOUR TRUST" },
+  { at: 12300, dur: 76, text: "THE REAL SKILL" },
 ];
 
 const FaceCaption: React.FC<{ dur: number; text: string }> = ({ dur, text }) => {
@@ -96,16 +102,32 @@ export const GraphEngFinal: React.FC = () => {
       { at: 0, scale: 1.03, y: 0 },
       { at: 100, scale: 1.1, y: -1 },
       { at: 240, scale: 1.0, y: 0 },
-      { at: 940, scale: 1.09, y: -1 },
-      { at: 1120, scale: 1.0, y: 0 },
-      { at: 2470, scale: 1.1, y: -1 },
-      { at: 2560, scale: 1.0, y: 0 },
-      { at: 7043, scale: 1.1, y: -1 },
-      { at: 7300, scale: 1.0, y: 0 },
-      { at: 8500, scale: 1.09, y: -1 },
-      { at: 8790, scale: 1.0, y: 0 },
-      { at: 11960, scale: 1.08, y: -1 },
-      { at: 12120, scale: 1.0, y: 0 },
+      { at: 1086, scale: 1.09, y: -1 },
+      { at: 1210, scale: 1.0, y: 0 },
+      { at: 2015, scale: 1.1, y: -1 },
+      { at: 3235, scale: 1.0, y: 0 },
+      { at: 3800, scale: 1.09, y: -1 },
+      { at: 4602, scale: 1.0, y: 0 },
+      { at: 4720, scale: 1.1, y: -1 },
+      { at: 5460, scale: 1.0, y: 0 },
+      { at: 6198, scale: 1.1, y: -1 },
+      { at: 6908, scale: 1.0, y: 0 },
+      { at: 7131, scale: 1.08, y: -1 },
+      { at: 7250, scale: 1.0, y: 0 },
+      { at: 7781, scale: 1.09, y: -1 },
+      { at: 8590, scale: 1.0, y: 0 },
+      { at: 8720, scale: 1.1, y: -1 },
+      { at: 8850, scale: 1.0, y: 0 },
+      { at: 9791, scale: 1.08, y: -1 },
+      { at: 9900, scale: 1.0, y: 0 },
+      { at: 10998, scale: 1.09, y: -1 },
+      { at: 11100, scale: 1.0, y: 0 },
+      { at: 11862, scale: 1.08, y: -1 },
+      { at: 12000, scale: 1.0, y: 0 },
+      { at: 12287, scale: 1.08, y: -1 },
+      { at: 12380, scale: 1.0, y: 0 },
+      { at: 12580, scale: 1.06, y: -1 },
+      { at: 12760, scale: 1.0, y: 0 },
     ]} />
   );
   for (const p of PUNCHES) {
@@ -156,13 +178,13 @@ export const GraphEngFinal: React.FC = () => {
           </Sequence>
         ))}
 
-        <CutFlash at={296} peak={0.5} />
+        <CutFlash at={200} peak={0.5} />
 
         <Sequence from={1289} durationInFrames={16}><SectionTransition kind="section" /></Sequence>
         <Sequence from={3384} durationInFrames={14}><SectionTransition kind="evidence" /></Sequence>
-        <Sequence from={4964} durationInFrames={16}><SectionTransition kind="section" /></Sequence>
-        <Sequence from={7452} durationInFrames={14}><SectionTransition kind="counterpoint" /></Sequence>
-        <Sequence from={10627} durationInFrames={12}><SectionTransition kind="verdict" /></Sequence>
+        <Sequence from={4836} durationInFrames={16}><SectionTransition kind="section" /></Sequence>
+        <Sequence from={7344} durationInFrames={14}><SectionTransition kind="counterpoint" /></Sequence>
+        <Sequence from={10625} durationInFrames={12}><SectionTransition kind="verdict" /></Sequence>
 
         <TopProgressBar sections={CHAPTERS} accent="#D97757" />
       </AbsoluteFill>
