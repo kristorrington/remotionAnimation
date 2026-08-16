@@ -6,14 +6,14 @@ Video: `GraphEngFinal` → `out/graph-engineering.mp4` (~7:20, 1920×1080). SRT:
 
 ## Titles — A/B set (lead with the "you're being sold a repackaged idea" tension)
 
-**A — the debunk (recommended primary):**
-> "Graph Engineering" Is the Hottest AI Term of 2026 — And It's 2 Years Old
+**A — the fake stat (recommended primary, pairs with the "THE STAT LIED" thumb):**
+> The AI Stat Everyone Cited — and Nobody Checked
 
-**B — the fake stat:**
-> The Viral "Graph Engineering" Stat Everyone Cited Was Never Real
+**B — the rename (pairs with the "2.5 YEARS OLD" thumb):**
+> They Renamed an Old AI Idea — and the Internet Lost Its Mind
 
-**C — the rule:**
-> How to Spot a Fake AI Buzzword (The "Graph Engineering" Case)
+**C — the definitions (pairs with the "PICK A LANE" thumb):**
+> Nobody Agrees What "Graph Engineering" Actually Means
 
 Thumbnail text pairs (swap the two lines, same layout):
 A: NEW IDEA? / 2 YEARS OLD · B: THE PROOF / WAS FAKE · C: PICK A LANE / (3 definitions)
@@ -26,9 +26,9 @@ A: NEW IDEA? / 2 YEARS OLD · B: THE PROOF / WAS FAKE · C: PICK A LANE / (3 def
 ## Description
 
 ```
-Everyone's feed blew up over "graph engineering" this month. Here's what's strange: the idea is about two and a half years old, the name is about three weeks old, and the stat everyone kept repeating as proof was never real.
+A stat went viral claiming "graph engineering" replaced RAG at Microsoft, Stanford and Anthropic — +18% accuracy, −85% cost. Thousands cited it. Turing Post checked it: none of those institutions produced that result. It was never real.
 
-In this breakdown: what graph engineering actually means (prompt → loop → graph, explained simply), where the term really came from, the viral "+18% accuracy / −85% cost" claim that didn't survive a fact-check, and one simple rule you can use to judge any AI buzzword that shows up next.
+That fake number props up the hottest AI term of 2026 — a technique that's actually 2½ years old, wearing a 3-week-old name. In this breakdown: what graph engineering actually means (prompt → loop → graph, in plain English), who coined the term and how it caught fire in one afternoon, the anatomy of the fake stat, and the one rule that protects you from every AI buzzword that comes next.
 
 ⏱️ Chapters
 0:00 The hype
@@ -49,14 +49,18 @@ LangGraph: github.com/langchain-ai/langgraph · langchain.com/blog · pypistats.
 🔧 Automation Vault — free n8n workflows: [link in bio]
 🔔 Subscribe for more builds where I separate what's actually shipping from what's just hype.
 
-#AI #GraphEngineering #LangGraph #AItools #promptengineering
+#AI #GraphEngineering #AIfactcheck #LangGraph #promptengineering
 ```
 
-**Tags:** graph engineering, what is graph engineering, LangGraph, prompt engineering, loop engineering, AI agents, agent frameworks, AI buzzword, LangChain, Google ADK, AI hype, is graph engineering real, AI agent workflows, Hamel Husain, Turing Post, AI news, agentic AI, multi-agent systems
+**Tags:** graph engineering, what is graph engineering, graph engineering explained, fake AI statistics, AI fact check, AI stat debunked, LangGraph, LangChain, prompt engineering, loop engineering, AI buzzword, AI hype, is graph engineering real, Turing Post, RAG, AI agents, agentic AI, multi-agent systems, agent frameworks, Google ADK, AI agent workflows, AI trends 2026, AI news, Hamel Husain, AI literacy
 
 **Pinned comment:**
 ```
-The rule that survives every AI buzzword: don't ask "is this the future?" — ask "who's actually shipping it?" Official docs + a product page beat a viral tweet every time. What's the most overhyped AI term you've seen this year? 👇
+Be honest — did the "+18% accuracy / −85% cost" stat cross your feed last month? 🙋 It traced back to a study that had nothing to do with the claim, and it was publicly debunked within 48 hours of going viral.
+
+The rule that catches every one of these: don't ask "is this the future?" — ask "who actually shipped it?" Official docs beat a viral tweet, every time.
+
+What's the most overhyped AI term you've seen this year? Best answer gets pinned under this. 👇
 ```
 
 ---
