@@ -98,7 +98,7 @@ const BEATS: Beat[] = [
       src={`${SHOT}/ge-hamel.png`} url="hamel.dev" imageW={1300} imageH={760} {...wide(1300, 760)} titlePos="left" />
   ) },
   { key: "noNotes", from: 6632, dur: 411, fullscreen: true, node: (
-    <RecapScene durationInFrames={411} rows={[
+    <RecapScene durationInFrames={411} kicker="No official signal" title="NOTHING SHIPPED" accent={AMBER} rows={[
       { at: 10, icon: "cross", title: "No release notes", sub: "" },
       { at: 90, icon: "cross", title: "No product launch", sub: "" },
       { at: 170, icon: "cross", title: "No LangChain / Google announcement", sub: "" },
@@ -127,7 +127,7 @@ const BEATS: Beat[] = [
 
   // ── DOCS SEARCH / THREE DEFINITIONS ──
   { key: "docs", from: 9440, dur: 545, fullscreen: true, pip: true, node: (
-    <RecapScene durationInFrames={545} rows={[
+    <RecapScene durationInFrames={545} kicker="Search the official docs" title="NONE OF THEM USE IT" accent={BLUE} rows={[
       { at: 20, icon: "cross", title: "Anthropic docs", sub: "not an official term" },
       { at: 150, icon: "cross", title: "OpenAI docs", sub: "not an official term" },
       { at: 280, icon: "cross", title: "Google docs", sub: "not an official term" },

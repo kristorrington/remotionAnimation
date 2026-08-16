@@ -266,14 +266,14 @@ export const ThreeDefsScene: React.FC<{ durationInFrames: number; ats: number[];
   );
 };
 
-// ── RecapScene — 3 stacked verdicts (real / new name / false proof) ───────────
-export const RecapScene: React.FC<{ durationInFrames: number; rows: { at: number; icon: "check" | "warn" | "cross"; title: string; sub: string }[] }>
-  = ({ rows }) => {
+// ── RecapScene — stacked rows with mixed verdict icons ───────────────────────
+export const RecapScene: React.FC<{ durationInFrames: number; rows: { at: number; icon: "check" | "warn" | "cross"; title: string; sub: string }[]; kicker?: string; title?: string; accent?: string }>
+  = ({ rows, kicker = "So, what is it really?", title = "THE VERDICT", accent = NEWS.brand }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const col = { check: NEWS.green, warn: "#C9913D", cross: NEWS.red } as const;
   return (
-    <Stage tint={NEWS.brand} header={<Head kicker="So, what is it really?" title="THE VERDICT" accent={NEWS.brand} />}>
+    <Stage tint={accent} header={<Head kicker={kicker} title={title} accent={accent} />}>
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
         {rows.map((r, i) => {
           const e = spr(frame, fps, r.at, 24);
