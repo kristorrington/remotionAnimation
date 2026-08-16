@@ -68,3 +68,18 @@ The rule that survives every AI buzzword: don't ask "is this the future?" — as
 3. **Prompt → Loop → Graph** — the diagram builds (line → loop → map).
 4. **The origin** — Josh Simmons Jul 4 → Steinberger viral Jul 18.
 5. **The rule** — "who's actually shipping it?" evidence vs commentary.
+
+---
+
+## Shorts — rendered + scheduled (Aug 2026)
+
+| ID | Title | YT + IG (17:00 AEST) | TikTok inbox (AEST) |
+|---|---|---|---|
+| Short-GraphFakeStat | The Viral "+18% / −85%" AI Stat Was Never Real | Aug 21 | Aug 17, 12:00 |
+| Short-GraphOld | "Graph Engineering" Is 2 Years Old — Not New | Aug 22 | Aug 17, 17:00 |
+| Short-GraphExplained | Graph Engineering Explained In One Agent Run | Aug 23 | Aug 18, 12:00 |
+| Short-GraphOrigin | Who Named "Graph Engineering"? It Has A Birthday | Aug 24 | Aug 18, 17:00 |
+| Short-GraphRule | One Rule Kills Every AI Buzzword | Aug 25 | Aug 19, 12:00 |
+
+Captions/tags live in social-queue.json (seeded from this pack). Newsiest first
+(FakeStat/Old while the trend is hot), evergreen Rule last.
