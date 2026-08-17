@@ -636,7 +636,7 @@
     },
     {
       "id": "Short-AstraSystemCard",
-      "file": "out/shorts/TIK_Short-AstraSystemCard.mp4",
+      "file": "out/shorts/YT_TIK_IG_Short-AstraSystemCard.mp4",
       "title": "How to Tell If OpenAI's 'Astra' Is Real #Shorts",
       "tags": [
         "OpenAI Astra",
@@ -674,8 +674,8 @@
           "enabled": true,
           "caption": "Is 'Astra' really OpenAI's next flagship? One document settles it — the system card — and it doesn't exist yet. Until it does: treat the math as proven, the briefing as a rumour. ▶ Subscribe for the system-card breakdown.\n\n#OpenAI #Astra #GPT6 #AI #Shorts",
           "publishAt": "2026-08-17T07:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "published",
+          "remoteId": "17910031449452742",
           "error": null
         }
       }
@@ -729,7 +729,7 @@
     },
     {
       "id": "Short-GraphOld",
-      "file": "out/shorts/YT_Short-GraphOld.mp4",
+      "file": "out/shorts/YT_TIK_Short-GraphOld.mp4",
       "title": "\"Graph Engineering\" Is 2 Years Old — Not New #Shorts",
       "tags": [
         "graph engineering",
@@ -759,8 +759,8 @@
           "enabled": true,
           "caption": "Everyone's calling graph engineering the next big AI skill. LangChain's own blog says they've been doing it for 3 years — LangGraph launched January 2024, and the live counter shows ~72M downloads a month. The idea is 2½ years old. The name is 3 weeks old. ▶ Full breakdown on the channel.\n\n#AI #GraphEngineering #LangGraph #LangChain #AInews #Shorts",
           "publishAt": "2026-08-17T07:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "drafted",
+          "remoteId": "v_inbox_file~v2.7674895345495001089",
           "error": null
         },
         "instagram": {
