@@ -682,7 +682,7 @@
     },
     {
       "id": "Short-GraphFakeStat",
-      "file": "out/shorts/YT_Short-GraphFakeStat.mp4",
+      "file": "out/shorts/YT_TIK_Short-GraphFakeStat.mp4",
       "title": "The Viral \"+18% / −85%\" AI Stat Was Never Real #Shorts",
       "tags": [
         "graph engineering",
@@ -713,8 +713,8 @@
           "enabled": true,
           "caption": "A claim spread that graph engineering replaced RAG at Microsoft, Stanford and Anthropic — with 18% better accuracy and 85% lower cost. Turing Post checked it: none of those institutions produced that result. The number traced back to a narrow, unrelated study. Cited day 1, debunked day 3. ▶ Full fact-check on the channel.\n\n#AI #GraphEngineering #AIfactcheck #RAG #AInews #Shorts",
           "publishAt": "2026-08-17T02:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "drafted",
+          "remoteId": "v_inbox_file~v2.7674832827305199634",
           "error": null
         },
         "instagram": {
