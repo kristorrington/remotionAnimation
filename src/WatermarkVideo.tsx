@@ -73,7 +73,7 @@ const BEATS: Beat[] = [
   ) },
   // "secret key (3110) gently favour (3150) / nothing obvious gets added (3300)"
   { key: "keyBars", from: 3059, dur: 450, fullscreen: true, pip: true, node: (
-    <KeyBarsScene durationInFrames={450} ats={[51, 91, 241]} />
+    <KeyBarsScene durationInFrames={450} ats={[10, 91, 241]} />
   ) },
   // SynthID sequence: DeepMind (3515) → docs → repo. Montage exception: 3 quick receipts.
   { key: "synthDeepmind", from: 3509, dur: 99, receipt: true, pip: true, node: (
