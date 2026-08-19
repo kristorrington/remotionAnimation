@@ -227,13 +227,17 @@ Final MUTED + low-res in CHUNKS — `npx remotion render <Final> out/_sweep/c-$f
 --frames=$from-$to --muted --scale=0.5 --concurrency=8` in a loop (diagnostic
 chunk renders are allowed even though full renders are user-gated; a failed chunk
 re-runs alone); (2) concat the chunks (`ffmpeg -f concat -c copy`); (3) extract a
-frame every 5s (`ffmpeg -i sweep.mp4 -vf "fps=1/5,scale=480:-1" f_%03d.png`); (4)
-TILE them into CONTACT SHEETS (`ffmpeg -pattern_type sequence -i f_%03d.png -vf
-"tile=6x4:padding=6" sheet_%02d.png`) — 24 scenes per image. Review the SHEETS
-(the whole cut in ~4–5 looks), and when a thumbnail looks wrong DRILL IN with a
-full-res `remotion still` at that exact frame — tile several drill-downs into ONE
-sheet too. Thumbnails read light: a "blank" tile is often just faint content, so
-confirm at full res before "fixing" it. This whole method IS the sweep — use it.
+frame every 5s (`ffmpeg -i sweep.mp4 -vf "fps=1/5,scale=920:-1" f_%03d.png`); (4)
+TILE them into CONTACT SHEETS of **FOUR frames MAX (2×2)** (`ffmpeg
+-pattern_type sequence -i f_%03d.png -vf "tile=2x2:padding=6" sheet_%02d.png`) —
+Kris, Aug 2026: the old 24-per-sheet grids let defects slip ("things are getting
+missed or not analysed properly — reduce the number of frames to 4"). Each tile
+must be big enough to actually READ (≥900px wide); analyse every tile
+INDIVIDUALLY — name what you checked in each — and when anything looks off,
+DRILL IN with a full-res `remotion still` at that exact frame. More sheets,
+fewer frames per sheet — never batch QA wider than 4-up. Thumbnails read light:
+a "blank" tile is often just faint content, so confirm at full res before
+"fixing" it. This whole method IS the sweep — use it.
 
 The failure classes to catch on every sheet:
 1. **Blank / failed b-roll** — a receipt showing an empty page, a loading
