@@ -4380,6 +4380,286 @@
       "usedIn": [],
       "attributionRequired": false,
       "concerns": null
+    },
+    {
+      "filename": "wmc-blog-hero.png",
+      "localPath": "public/assets/external/screenshots/wmc-blog-hero.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.anthropic.com/news/claude-text-watermark",
+      "sourceName": "Anthropic blog (recut)",
+      "dateAccessed": "2026-08-19",
+      "usageNote": "Hook receipt: title + Aug 14 date — commentary/criticism",
+      "usedIn": [
+        "WatermarkVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "wmc-blog-summary.png",
+      "localPath": "public/assets/external/screenshots/wmc-blog-summary.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.anthropic.com/news/claude-text-watermark",
+      "sourceName": "Anthropic blog (recut)",
+      "dateAccessed": "2026-08-19",
+      "usageNote": "Summary bullets — commentary/criticism",
+      "usedIn": [
+        "WatermarkVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "wmc-blog-greypassage.png",
+      "localPath": "public/assets/external/screenshots/wmc-blog-greypassage.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.anthropic.com/news/claude-text-watermark",
+      "sourceName": "Anthropic blog (recut)",
+      "dateAccessed": "2026-08-19",
+      "usageNote": "grey/overcast passage — commentary/criticism",
+      "usedIn": [
+        "WatermarkVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "wmc-blog-pi.png",
+      "localPath": "public/assets/external/screenshots/wmc-blog-pi.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.anthropic.com/news/claude-text-watermark",
+      "sourceName": "Anthropic blog (recut)",
+      "dateAccessed": "2026-08-19",
+      "usageNote": "digits-of-pi analogy passage — commentary/criticism",
+      "usedIn": [
+        "WatermarkVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "wmc-blog-traced.png",
+      "localPath": "public/assets/external/screenshots/wmc-blog-traced.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.anthropic.com/news/claude-text-watermark",
+      "sourceName": "Anthropic blog (recut)",
+      "dateAccessed": "2026-08-19",
+      "usageNote": "traced back to me? No — no-PII receipt — commentary/criticism",
+      "usedIn": [
+        "WatermarkVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "wmc-blog-whyeu.png",
+      "localPath": "public/assets/external/screenshots/wmc-blog-whyeu.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.anthropic.com/news/claude-text-watermark",
+      "sourceName": "Anthropic blog (recut)",
+      "dateAccessed": "2026-08-19",
+      "usageNote": "EU rationale + global-at-launch — commentary/criticism",
+      "usedIn": [
+        "WatermarkVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "wmc-blog-c2pa.png",
+      "localPath": "public/assets/external/screenshots/wmc-blog-c2pa.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.anthropic.com/news/claude-text-watermark",
+      "sourceName": "Anthropic blog (recut)",
+      "dateAccessed": "2026-08-19",
+      "usageNote": "C2PA metadata section — commentary/criticism",
+      "usedIn": [
+        "WatermarkVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "wmc-blog-cantedit.png",
+      "localPath": "public/assets/external/screenshots/wmc-blog-cantedit.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.anthropic.com/news/claude-text-watermark",
+      "sourceName": "Anthropic blog (recut)",
+      "dateAccessed": "2026-08-19",
+      "usageNote": "edit-around passage: light editing vs complete rewrite — commentary/criticism",
+      "usedIn": [
+        "WatermarkVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "wmc-blog-prove.png",
+      "localPath": "public/assets/external/screenshots/wmc-blog-prove.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.anthropic.com/news/claude-text-watermark",
+      "sourceName": "Anthropic blog (recut)",
+      "dateAccessed": "2026-08-19",
+      "usageNote": "what does a watermark actually prove — commentary/criticism",
+      "usedIn": [
+        "WatermarkVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "wmc-blog-oldermodels.png",
+      "localPath": "public/assets/external/screenshots/wmc-blog-oldermodels.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.anthropic.com/news/claude-text-watermark",
+      "sourceName": "Anthropic blog (recut)",
+      "dateAccessed": "2026-08-19",
+      "usageNote": "Aug 2 + older-models transition — commentary/criticism",
+      "usedIn": [
+        "WatermarkVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "wmc-support-cloud.png",
+      "localPath": "public/assets/external/screenshots/wmc-support-cloud.png",
+      "type": "screenshot",
+      "sourceUrl": "https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content",
+      "sourceName": "Claude support doc (recut)",
+      "dateAccessed": "2026-08-19",
+      "usageNote": "cloud partners + worldwide regions — commentary/criticism",
+      "usedIn": [
+        "WatermarkVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "wmc-support-limits.png",
+      "localPath": "public/assets/external/screenshots/wmc-support-limits.png",
+      "type": "screenshot",
+      "sourceUrl": "https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content",
+      "sourceName": "Claude support doc (recut)",
+      "dateAccessed": "2026-08-19",
+      "usageNote": "limitations: not fully conclusive — commentary/criticism",
+      "usedIn": [
+        "WatermarkVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "wmc-eu-header.png",
+      "localPath": "public/assets/external/screenshots/wmc-eu-header.png",
+      "type": "screenshot",
+      "sourceUrl": "https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai",
+      "sourceName": "EU Commission (recut)",
+      "dateAccessed": "2026-08-19",
+      "usageNote": "Code of Practice header/intro — commentary/criticism",
+      "usedIn": [
+        "WatermarkVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "wmc-eu-chapters.png",
+      "localPath": "public/assets/external/screenshots/wmc-eu-chapters.png",
+      "type": "screenshot",
+      "sourceUrl": "https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai",
+      "sourceName": "EU Commission (recut)",
+      "dateAccessed": "2026-08-19",
+      "usageNote": "3 chapters incl Transparency — commentary/criticism",
+      "usedIn": [
+        "WatermarkVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "wmc-eu-signatories.png",
+      "localPath": "public/assets/external/screenshots/wmc-eu-signatories.png",
+      "type": "screenshot",
+      "sourceUrl": "https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai",
+      "sourceName": "EU Commission (recut)",
+      "dateAccessed": "2026-08-19",
+      "usageNote": "signatories list — commentary/criticism",
+      "usedIn": [
+        "WatermarkVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "wmc-deepmind-hero.png",
+      "localPath": "public/assets/external/screenshots/wmc-deepmind-hero.png",
+      "type": "screenshot",
+      "sourceUrl": "https://deepmind.google/blog/watermarking-ai-generated-text-and-video-with-synthid/",
+      "sourceName": "DeepMind blog (recut)",
+      "dateAccessed": "2026-08-19",
+      "usageNote": "SynthID origin hero — commentary/criticism",
+      "usedIn": [
+        "WatermarkVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "wmc-forbes-headline.png",
+      "localPath": "public/assets/external/screenshots/wmc-forbes-headline.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.forbes.com/sites/maryroeloffs/2026/08/11/claude-will-put-invisible-watermarks-on-ai-text-and-images-and-the-internet-isnt-happy/",
+      "sourceName": "Forbes (recut)",
+      "dateAccessed": "2026-08-19",
+      "usageNote": "headline crop — commentary/criticism",
+      "usedIn": [
+        "WatermarkVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "wmc-forbes-keyfacts.png",
+      "localPath": "public/assets/external/screenshots/wmc-forbes-keyfacts.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.forbes.com/sites/maryroeloffs/2026/08/11/claude-will-put-invisible-watermarks-on-ai-text-and-images-and-the-internet-isnt-happy/",
+      "sourceName": "Forbes (recut)",
+      "dateAccessed": "2026-08-19",
+      "usageNote": "key facts: backlash/cancellations — commentary/criticism",
+      "usedIn": [
+        "WatermarkVideo"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "wm-claudecode-tutorial.mp4",
+      "localPath": "public/assets/external/clips/wm-claudecode-tutorial.mp4",
+      "type": "reference",
+      "sourceUrl": "own recording (claude-code-tutorial-280726)",
+      "sourceName": "Kris Torrington screen recording",
+      "dateAccessed": "2026-08-19",
+      "usageNote": "Real Claude Code product footage — own footage",
+      "usedIn": [
+        "WatermarkVideo c2pa split"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "wmc-blog-c2pa-panel.png",
+      "localPath": "public/assets/external/screenshots/wmc-blog-c2pa-panel.png",
+      "type": "screenshot",
+      "sourceUrl": "https://www.anthropic.com/news/claude-text-watermark",
+      "sourceName": "Anthropic blog (recut)",
+      "dateAccessed": "2026-08-19",
+      "usageNote": "C2PA panel crop for split scene — commentary/criticism",
+      "usedIn": [
+        "WatermarkVideo c2pa"
+      ],
+      "attributionRequired": false,
+      "concerns": null
     }
   ]
 }

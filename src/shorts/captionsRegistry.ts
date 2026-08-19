@@ -22,6 +22,7 @@ import { CAPTIONS_020826 } from "./captions-020826";
 import { CAPTIONS_030826 } from "./captions-030826";
 import { CAPTIONS_090826 } from "./captions-090826";
 import { CAPTIONS_160826 } from "./captions-160826";
+import { CAPTIONS_190826 } from "./captions-190826";
 
 // Per-source caption lookup: captionsData.ts always holds the CURRENT footage
 // (scripts/transcribe.mjs overwrites it); older videos keep a frozen copy here
@@ -51,6 +52,7 @@ const REGISTRY: Record<string, CaptionWord[]> = {
   "talking-head-030826.mp4": CAPTIONS_030826, // Gemini Robotics 2 (2026-08-03)
   "talking-head-090826.mp4": CAPTIONS_090826, // Astra ten-proofs fact-check (2026-08-09)
   "talking-head-160826.mp4": CAPTIONS_160826, // Graph engineering explainer (2026-08-16)
+  "talking-head-190826.mp4": CAPTIONS_190826, // Claude watermark explainer (2026-08-19)
 };
 
 export const captionsFor = (source: string): CaptionWord[] => REGISTRY[source] ?? CAPTIONS;

@@ -7,8 +7,8 @@ import { EditKitDemo, EDITKIT_DEMO_DUR } from "./EditKitDemo";
 import { ArchivedVideoCompositions, SHOW_ARCHIVE } from "./archive";
 import { CalculateMetadataFunction } from "remotion";
 import { TutorialFinal, TUTORIAL_DUR } from "./TutorialFinal";
-import { GraphEngVideo, GE_DUR } from "./GraphEngVideo";
-import { GraphEngFinal } from "./GraphEngFinal";
+import { WatermarkVideo, WM_DUR } from "./WatermarkVideo";
+import { WatermarkFinal } from "./WatermarkFinal";
 
 export const transparentDefaults: CalculateMetadataFunction<
   Record<string, unknown>
@@ -65,9 +65,9 @@ export const RemotionRoot: React.FC = () => {
 
 
 
-      {/* ── CURRENT: Graph engineering — old idea, new name (Aug 2026) ── */}
-      <Composition id="GraphEngVideo" component={GraphEngVideo} durationInFrames={GE_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
-      <Composition id="GraphEngFinal" component={GraphEngFinal} durationInFrames={GE_DUR} fps={30} width={1920} height={1080} />
+      {/* ── CURRENT: Claude's invisible watermark (Aug 2026) ── */}
+      <Composition id="WatermarkVideo" component={WatermarkVideo} durationInFrames={WM_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="WatermarkFinal" component={WatermarkFinal} durationInFrames={WM_DUR} fps={30} width={1920} height={1080} />
 
       {/* ── HOW-TO: Claude Code password-generator tutorial — reframed 16:9 (July 2026) ── */}
       <Composition id="TutorialFinal" component={TutorialFinal} durationInFrames={TUTORIAL_DUR} fps={30} width={1920} height={1080} />
