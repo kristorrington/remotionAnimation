@@ -498,7 +498,7 @@
     },
     {
       "id": "Short-AstraLean",
-      "file": "out/shorts/TIK_Short-AstraLean.mp4",
+      "file": "out/shorts/YT_TIK_IG_Short-AstraLean.mp4",
       "title": "Why OpenAI's Math Can't Be Faked (Lean 4) #Shorts",
       "tags": [
         "OpenAI Astra",
@@ -536,8 +536,8 @@
           "enabled": true,
           "caption": "OpenAI's ten results were machine-checked in Lean 4 — a proof checker that re-derives every logical step and can't be talked into approving anything. Approved = proven. ▶ Full breakdown on the channel.\n\n#OpenAI #AI #Lean4 #math #Shorts",
           "publishAt": "2026-08-19T07:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "published",
+          "remoteId": "18108141083166346",
           "error": null
         }
       }
