@@ -9,6 +9,9 @@ import { SlideLeftPush } from "./motion/transitions";
 import { TopProgressBar, Chapter } from "./components/TopProgressBar";
 import { CameraPunchIn, SectionTransition } from "./motion/editkit";
 import { ThemeProvider } from "./theme";
+import { loadFont as loadInter } from "@remotion/google-fonts/Inter";
+
+const { fontFamily: CAPTION_FONT } = loadInter("normal", { weights: ["600", "700"], subsets: ["latin"] });
 
 // Final combined cut (13476f, 7:29): the _cut_synced talking head + the
 // watermark investigation overlay. Kris's brief: face-led, evidence appears
@@ -61,33 +64,36 @@ const PUNCHES: { at: number; level: "emphasis" | "strong"; hold: number }[] = [
   { at: 12930, level: "strong", hold: 50 }, // "catching the watermark doesn't catch cheating"
 ];
 
-// Keyword captions on FACE-ONLY stretches (2-5 words, one at a time)
-const FACE_CAPTIONS: { at: number; dur: number; text: string }[] = [
-  { at: 372, dur: 70, text: "WHAT DOES IT PROVE?" },
-  { at: 1900, dur: 70, text: "NO EVIDENCE AT SCALE" },
-  { at: 2140, dur: 66, text: "MUCH NARROWER" },
-  { at: 6150, dur: 62, text: "WHY GLOBAL?" },
-  { at: 7330, dur: 66, text: "BACK TO THE QUESTION" },
-  { at: 8650, dur: 66, text: "WHICH ONE WAS IT?" },
-  { at: 9360, dur: 66, text: "THE BIG LIMITATION" },
-  { at: 10290, dur: 70, text: "UPFRONT ABOUT IT" },
-  { at: 11730, dur: 76, text: "ONE SIGNAL" },
-  { at: 11990, dur: 66, text: "HOW MUCH? UNKNOWN" },
-  { at: 12100, dur: 62, text: "WHO? UNKNOWN" },
-  { at: 12170, dur: 74, text: "AUTHORSHIP? NOT PROVEN" },
+// Keyword captions on FACE-ONLY stretches — BRAND v2: no pill, cream Inter
+// over the footage with ONE orange word, 4-6f fade + small rise, ~1.5-2s.
+const FACE_CAPTIONS: { at: number; dur: number; pre?: string; hot: string; post?: string }[] = [
+  { at: 372, dur: 56, pre: "WHAT DOES IT", hot: "PROVE?" },
+  { at: 1900, dur: 56, pre: "NO EVIDENCE", hot: "AT SCALE" },
+  { at: 2140, dur: 50, pre: "MUCH", hot: "NARROWER" },
+  { at: 6150, dur: 48, pre: "WHY", hot: "GLOBAL?" },
+  { at: 7330, dur: 54, pre: "BACK TO THE", hot: "QUESTION" },
+  { at: 8650, dur: 54, pre: "WHICH ONE", hot: "WAS IT?" },
+  { at: 9360, dur: 54, pre: "THE BIG", hot: "LIMITATION" },
+  { at: 10290, dur: 56, pre: "UPFRONT", hot: "ABOUT IT" },
+  { at: 11730, dur: 58, pre: "ONE", hot: "SIGNAL" },
+  { at: 11990, dur: 52, pre: "HOW MUCH?", hot: "UNKNOWN" },
+  { at: 12100, dur: 48, pre: "WHO?", hot: "UNKNOWN" },
+  { at: 12170, dur: 58, pre: "AUTHORSHIP?", hot: "NOT PROVEN" },
 ];
 
-const FaceCaption: React.FC<{ dur: number; text: string }> = ({ dur, text }) => {
+const FaceCaption: React.FC<{ dur: number; pre?: string; hot: string; post?: string }> = ({ dur, pre, hot, post }) => {
   const frame = useCurrentFrame();
-  const pop = interpolate(frame, [0, 7], [1.26, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+  const riseY = interpolate(frame, [0, 12], [12, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.bezier(0.33, 0, 0.2, 1) });
   const op = Math.min(
     interpolate(frame, [0, 6], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
-    interpolate(frame, [dur - 10, dur - 2], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
+    interpolate(frame, [dur - 8, dur - 1], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
   );
   return (
-    <AbsoluteFill style={{ alignItems: "center", justifyContent: "flex-end", paddingBottom: 150, pointerEvents: "none" }}>
-      <div style={{ padding: "13px 32px", borderRadius: 12, background: "rgba(16,14,12,0.92)", borderBottom: "5px solid #D9502E", boxShadow: "0 14px 40px rgba(0,0,0,0.45)", transform: `scale(${pop})`, opacity: op }}>
-        <span style={{ fontFamily: "Anton", fontWeight: 400, fontSize: 44, letterSpacing: 1.5, textTransform: "uppercase", color: "#fff" }}>{text}</span>
+    <AbsoluteFill style={{ justifyContent: "flex-end", alignItems: "flex-start", paddingLeft: 128, paddingBottom: 132, pointerEvents: "none" }}>
+      <div style={{ display: "flex", gap: "0.34em", transform: `translateY(${riseY}px)`, opacity: op, textShadow: "0 2px 18px rgba(0,0,0,0.75)" }}>
+        {pre ? <span style={{ fontFamily: CAPTION_FONT, fontWeight: 600, fontSize: 46, letterSpacing: 0.5, color: "#F2EEE6", textTransform: "uppercase" }}>{pre}</span> : null}
+        <span style={{ fontFamily: CAPTION_FONT, fontWeight: 700, fontSize: 46, letterSpacing: 0.5, color: "#D97745", textTransform: "uppercase" }}>{hot}</span>
+        {post ? <span style={{ fontFamily: CAPTION_FONT, fontWeight: 600, fontSize: 46, letterSpacing: 0.5, color: "#F2EEE6", textTransform: "uppercase" }}>{post}</span> : null}
       </div>
     </AbsoluteFill>
   );
@@ -139,9 +145,9 @@ export const WatermarkFinal: React.FC = () => {
   }
 
   return (
-    <ThemeProvider style="paper">
+    <ThemeProvider style="cinematic">
       <AbsoluteFill style={{ backgroundColor: "black" }}>
-        <AbsoluteFill style={{ backgroundColor: "#FBFAF7" }} />
+        <AbsoluteFill style={{ backgroundColor: "#0B0B0A" }} />
         {frame < 26 && <AnimatedBackground durationInFrames={30} fade={false} />}
         <SlideLeftPush cuts={CUTS}>
           <AbsoluteFill
@@ -174,7 +180,7 @@ export const WatermarkFinal: React.FC = () => {
 
         {FACE_CAPTIONS.map((c) => (
           <Sequence key={`fc-${c.at}`} from={c.at} durationInFrames={c.dur}>
-            <FaceCaption dur={c.dur} text={c.text} />
+            <FaceCaption dur={c.dur} pre={c.pre} hot={c.hot} post={c.post} />
           </Sequence>
         ))}
 
@@ -187,7 +193,7 @@ export const WatermarkFinal: React.FC = () => {
         <Sequence from={9329} durationInFrames={14}><SectionTransition kind="counterpoint" /></Sequence>
         <Sequence from={11692} durationInFrames={12}><SectionTransition kind="verdict" /></Sequence>
 
-        <TopProgressBar sections={CHAPTERS} accent="#D97757" />
+        <TopProgressBar sections={CHAPTERS} accent="#D97745" />
       </AbsoluteFill>
     </ThemeProvider>
   );

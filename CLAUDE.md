@@ -437,14 +437,58 @@ Keep everything render-safe (React/SVG/CSS, frame-driven, no heavy deps).
   explainer moments, object metaphors, workflow systems, UI simulations, and
   cause-and-effect animations. Talking head can appear as a supporting layer,
   but the main visual should usually be the animated concept.
-- **Long-form uses the PAPER theme, same as shorts** (Kris, July 2026 — one
-  aligned style): wrap the video's Visuals AND its Final in
-  `<ThemeProvider style="paper">`; SceneShell/SceneHeadline/AnimatedBackground
-  are theme-aware. Scene text on the backdrop must read on IVORY: headlines
-  near-black via `t.text`, captions ink-dim `rgba(31,30,29,0.6)`, structural
-  lines mid-grey `rgba(120,112,102,0.5)` (readable on both light and archived
-  dark comps). Dark glass cards/robots on the ivory are the house "sticker"
-  look. Never bare white text on the backdrop.
+- **BRAND SYSTEM v2 — DARK EDITORIAL (Kris, Aug 2026 — SUPERSEDES the ivory
+  "paper" look for ALL long-form graphics; shorts keep paper until Kris
+  converts them).** Premium technology journalism / AI-documentary: every
+  custom graphic must feel like an extension of Kris's dark-wood studio.
+  - **Palette:** bg `#0B0B0A` warm charcoal (subtle variation, never flat
+    black) · surface `#171714` (panels barely lighter than bg) · text
+    `#F2EEE6` warm cream (never harsh white) · secondary `#8E8B84` warm grey ·
+    accent `#D97745` burnt orange (10–15% of the frame MAX — highlight ONE
+    thing) · deep accent `#A94F2D`. Green is BANNED as a "correct" state; muted
+    red only where failure/danger is real (e.g. watermark removal). External
+    brands keep their real colours only INSIDE their own logos/pages —
+    never restyle a whole scene to a source's colour.
+  - **WHITE/CREAM full-screen custom graphics are PROHIBITED** (only real
+    light-background source pages may be light). The old white-canvas +
+    black-cards + tick/cross language is dead: no card grids, no giant
+    ✓/✗ (reduce ticks/crosses ~80% — use typography, strike-through, opacity,
+    position instead), no green confirmation blocks, no black caption pills.
+  - **Cards/boxes:** only when the content genuinely needs a container
+    (documents, real screenshots, film frames). Radius 6–12px, 1px subtle
+    borders, near-invisible shadows. Default to TYPOGRAPHY + spacing instead.
+  - **Type:** Inter (Google font, loaded) — headlines SemiBold/Bold sentence
+    case, eyebrows small tracked caps in grey ("SOURCE · ANTHROPIC" style),
+    body Regular/Medium, monospace only for code/repo names. Anton/condensed
+    caps are for THUMBNAILS (and rare chapter emphasis) — not in-video
+    graphics. Never three stacked all-caps tiers; minimal copy ("NARROWER."
+    not the whole sentence).
+  - **Emphasis captions (A-roll):** NO pill/box — cream Inter over footage,
+    the ONE key word in orange; 4–6f fade + 8–15px rise + 0.98→1 scale; hold
+    ~1–2s; positioned by composition (lower-left if Kris sits right, etc.),
+    clear of the YouTube timestamp corner; sparse and deliberate, never
+    subtitle-everything.
+  - **Motion:** fades, crop/mask reveals, restrained zooms, slow push-ins,
+    line draws, build-ons. NO bounce/overshoot/elastic/pops/spins/glitch.
+    Default transition = hard cut. Punch-ins 105–108%, max ~112%.
+  - **Receipts:** real screenshot cropped clean on the dark bg with a small
+    grey "SOURCE · <NAME>" label — the evidence is the hero; thin orange
+    underline / translucent orange wash / side marker for highlights (no
+    red boxes, no hand-drawn arrows). Show source → zoom to the exact
+    phrase → out. Quotes get large editorial type with orange on the quoted
+    phrase + small grey attribution — never a speech bubble.
+  - **Diagrams:** thin warm-grey connectors, small typographic labels, one
+    orange focus, dot nodes — architecture-diagram feel, not classroom mind
+    map. Charts: dark bg, cream labels, one orange series.
+  - **Composition:** one obvious focal point per frame; negative space is
+    premium; every graphic passes the ONE-SECOND test (main point readable
+    in 1s) and the mobile test. Full-screen custom graphics hold 2–6s or
+    keep building. PiP = editorial inset (small radius, subtle warm border,
+    no glow) and only when Kris's reaction adds something.
+  - **Quality filter before accepting any frame:** does it look like premium
+    tech journalism (not a Canva/PowerPoint template)? Does it belong beside
+    the dark studio footage? Could half the elements be removed? The viewer
+    should remember THE CLAIM, THE EVIDENCE, KRIS'S TAKE — never the boxes.
 - Do NOT make the edit mostly talking head — talking head is corner PiP / a quick
   reaction / an emphasis beat; motion graphics drive the visuals.
 - **Top progress + chapter bar** (Kris, July 2026): every long-form Final carries

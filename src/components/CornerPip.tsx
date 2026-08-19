@@ -27,12 +27,14 @@ const Pip: React.FC<{ footage: string; from: number; dur: number; faceX?: number
         style={{
           width: 384,
           height: 216,
-          borderRadius: 18,
+          // BRAND v2 (Aug 2026): editorial inset — small radius, subtle warm
+          // border, quiet shadow. No glow ring.
+          borderRadius: 10,
           overflow: "hidden",
           transform: `scale(${scale})`,
           transformOrigin: "bottom right",
-          border: "2px solid rgba(255,255,255,0.9)",
-          boxShadow: "0 20px 48px rgba(0,0,0,0.55), 0 0 0 4px rgba(217,119,87,0.35)",
+          border: "1px solid rgba(242,238,230,0.32)",
+          boxShadow: "0 10px 28px rgba(0,0,0,0.45)",
         }}
       >
         <OffthreadVideo
