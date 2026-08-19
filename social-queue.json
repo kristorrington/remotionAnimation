@@ -868,7 +868,7 @@
     },
     {
       "id": "Short-GraphRule",
-      "file": "out/shorts/YT_Short-GraphRule.mp4",
+      "file": "out/shorts/YT_TIK_Short-GraphRule.mp4",
       "title": "One Rule Kills Every AI Buzzword #Shorts",
       "tags": [
         "graph engineering",
@@ -898,8 +898,8 @@
           "enabled": true,
           "caption": "Next time an AI term floods your feed, don't ask 'is this the future?' Ask: who actually shipped it? In official product docs → evaluate it, test it, build with it. Only in tweets, blog posts and hot takes → treat it as commentary, not capability. ▶ Subscribe for hype-free AI news.\n\n#AI #AIbuzzwords #AIhype #GraphEngineering #AItips #Shorts",
           "publishAt": "2026-08-19T02:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "drafted",
+          "remoteId": "v_inbox_file~v2.7675574716417198081",
           "error": null
         },
         "instagram": {
