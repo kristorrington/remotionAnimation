@@ -911,6 +911,236 @@
           "error": null
         }
       }
+    },
+    {
+      "id": "Short-WmProvesLess",
+      "file": "out/shorts/YT_Short-WmProvesLess.mp4",
+      "title": "The Claude Watermark Doesn't Prove Claude Wrote It #Shorts",
+      "tags": [
+        "claude watermark",
+        "anthropic watermark",
+        "ai watermark",
+        "ai detection",
+        "claude ai",
+        "invisible watermark",
+        "synthid",
+        "eu ai act",
+        "ai news",
+        "artificial intelligence",
+        "ai authorship",
+        "watermark detection"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "Claude watermarks everything it writes now. But a positive hit only shows the text passed through Claude — proofreading, translating, editing and writing all leave the same kind of signal. Anthropic's own docs say it cannot distinguish 'Claude wrote this' from 'Claude heavily edited this.' ▶ Full breakdown on the channel.\n\n#Claude #Anthropic #AIwatermark #AIdetection #AI #Shorts",
+          "publishAt": "2026-08-26T07:00:00.000Z",
+          "status": "scheduled",
+          "remoteId": "FPFAUgzSapw",
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "Claude watermarks everything it writes now. But a positive hit only shows the text passed through Claude — proofreading, translating, editing and writing all leave the same kind of signal. Anthropic's own docs say it cannot distinguish 'Claude wrote this' from 'Claude heavily edited this.' ▶ Full breakdown on the channel.\n\n#Claude #Anthropic #AIwatermark #AIdetection #AI #Shorts",
+          "publishAt": "2026-08-21T02:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "Claude watermarks everything it writes now. But a positive hit only shows the text passed through Claude — proofreading, translating, editing and writing all leave the same kind of signal. Anthropic's own docs say it cannot distinguish 'Claude wrote this' from 'Claude heavily edited this.' ▶ Full breakdown on the channel.\n\n#Claude #Anthropic #AIwatermark #AIdetection #AI #Shorts",
+          "publishAt": "2026-08-26T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "Short-WmCantSeeIt",
+      "file": "out/shorts/YT_Short-WmCantSeeIt.mp4",
+      "title": "Claude Hides A Watermark In Its Word Choices #Shorts",
+      "tags": [
+        "claude watermark",
+        "anthropic watermark",
+        "ai watermark",
+        "ai detection",
+        "claude ai",
+        "invisible watermark",
+        "synthid",
+        "eu ai act",
+        "ai news",
+        "artificial intelligence",
+        "how ai watermarks work",
+        "word choice"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "No hidden characters, no metadata — Claude's new watermark lives in the words themselves. Where two words both fit (grey vs overcast), a secret key gently tips the choice. You can't see it, and it travels with the text when it's copied. ▶ Full explainer on the channel.\n\n#Claude #AIwatermark #SynthID #Anthropic #AI #Shorts",
+          "publishAt": "2026-08-27T07:00:00.000Z",
+          "status": "scheduled",
+          "remoteId": "bE2sbAS8_OE",
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "No hidden characters, no metadata — Claude's new watermark lives in the words themselves. Where two words both fit (grey vs overcast), a secret key gently tips the choice. You can't see it, and it travels with the text when it's copied. ▶ Full explainer on the channel.\n\n#Claude #AIwatermark #SynthID #Anthropic #AI #Shorts",
+          "publishAt": "2026-08-21T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "No hidden characters, no metadata — Claude's new watermark lives in the words themselves. Where two words both fit (grey vs overcast), a secret key gently tips the choice. You can't see it, and it travels with the text when it's copied. ▶ Full explainer on the channel.\n\n#Claude #AIwatermark #SynthID #Anthropic #AI #Shorts",
+          "publishAt": "2026-08-27T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "Short-WmStudentEssay",
+      "file": "out/shorts/YT_Short-WmStudentEssay.mp4",
+      "title": "Your Own Essay Could Get Flagged As AI-Written #Shorts",
+      "tags": [
+        "claude watermark",
+        "anthropic watermark",
+        "ai watermark",
+        "ai detection",
+        "claude ai",
+        "invisible watermark",
+        "synthid",
+        "eu ai act",
+        "ai news",
+        "artificial intelligence",
+        "ai cheating detection",
+        "students"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "Write an essay yourself, ask Claude to fix the grammar — and it can produce the same type of watermark detection as an essay Claude wrote from scratch. No user ID attached, nothing to trace, no way to tell which happened. One signal, not proof. ▶ Full story on the channel.\n\n#AIdetection #Claude #students #AIwatermark #AI #Shorts",
+          "publishAt": "2026-08-28T07:00:00.000Z",
+          "status": "scheduled",
+          "remoteId": "2iku7-1jtc0",
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "Write an essay yourself, ask Claude to fix the grammar — and it can produce the same type of watermark detection as an essay Claude wrote from scratch. No user ID attached, nothing to trace, no way to tell which happened. One signal, not proof. ▶ Full story on the channel.\n\n#AIdetection #Claude #students #AIwatermark #AI #Shorts",
+          "publishAt": "2026-08-22T02:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "Write an essay yourself, ask Claude to fix the grammar — and it can produce the same type of watermark detection as an essay Claude wrote from scratch. No user ID attached, nothing to trace, no way to tell which happened. One signal, not proof. ▶ Full story on the channel.\n\n#AIdetection #Claude #students #AIwatermark #AI #Shorts",
+          "publishAt": "2026-08-28T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "Short-WmEasyBreak",
+      "file": "out/shorts/YT_Short-WmEasyBreak.mp4",
+      "title": "Claude's Watermark Breaks With One Rewrite #Shorts",
+      "tags": [
+        "claude watermark",
+        "anthropic watermark",
+        "ai watermark",
+        "ai detection",
+        "claude ai",
+        "invisible watermark",
+        "synthid",
+        "eu ai act",
+        "ai news",
+        "artificial intelligence",
+        "watermark removal",
+        "github"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "Removal tools hit GitHub within days of Anthropic's announcement — the commit dates prove it. And running watermarked text through another model can break the signal entirely. Anthropic is upfront about this. ▶ Full breakdown on the channel.\n\n#Claude #AIwatermark #GitHub #Anthropic #AI #Shorts",
+          "publishAt": "2026-08-29T07:00:00.000Z",
+          "status": "scheduled",
+          "remoteId": "qgrj7VTK1bc",
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "Removal tools hit GitHub within days of Anthropic's announcement — the commit dates prove it. And running watermarked text through another model can break the signal entirely. Anthropic is upfront about this. ▶ Full breakdown on the channel.\n\n#Claude #AIwatermark #GitHub #Anthropic #AI #Shorts",
+          "publishAt": "2026-08-22T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "Removal tools hit GitHub within days of Anthropic's announcement — the commit dates prove it. And running watermarked text through another model can break the signal entirely. Anthropic is upfront about this. ▶ Full breakdown on the channel.\n\n#Claude #AIwatermark #GitHub #Anthropic #AI #Shorts",
+          "publishAt": "2026-08-29T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "Short-WmWhyNow",
+      "file": "out/shorts/YT_Short-WmWhyNow.mp4",
+      "title": "Why Every AI Lab Added Watermarks At The Same Time #Shorts",
+      "tags": [
+        "claude watermark",
+        "anthropic watermark",
+        "ai watermark",
+        "ai detection",
+        "claude ai",
+        "invisible watermark",
+        "synthid",
+        "eu ai act",
+        "ai news",
+        "artificial intelligence",
+        "eu regulation",
+        "ai policy"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "Anthropic, OpenAI, Google, Meta, Microsoft and Mistral all signed the same EU Code of Practice — and Article 50(2) of the EU AI Act requires machine-detectable AI output. Rather than run an EU-only build, Claude's watermark shipped worldwide, with no off switch. ▶ Subscribe for AI news without the hype.\n\n#EUAIAct #Claude #AIwatermark #regulation #AI #Shorts",
+          "publishAt": "2026-08-30T07:00:00.000Z",
+          "status": "scheduled",
+          "remoteId": "wmFdcex0K80",
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "Anthropic, OpenAI, Google, Meta, Microsoft and Mistral all signed the same EU Code of Practice — and Article 50(2) of the EU AI Act requires machine-detectable AI output. Rather than run an EU-only build, Claude's watermark shipped worldwide, with no off switch. ▶ Subscribe for AI news without the hype.\n\n#EUAIAct #Claude #AIwatermark #regulation #AI #Shorts",
+          "publishAt": "2026-08-23T02:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "Anthropic, OpenAI, Google, Meta, Microsoft and Mistral all signed the same EU Code of Practice — and Article 50(2) of the EU AI Act requires machine-detectable AI output. Rather than run an EU-only build, Claude's watermark shipped worldwide, with no off switch. ▶ Subscribe for AI news without the hype.\n\n#EUAIAct #Claude #AIwatermark #regulation #AI #Shorts",
+          "publishAt": "2026-08-30T07:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
     }
   ]
 }

@@ -68,11 +68,11 @@ Would you trust a watermark hit alone in a school or hiring decision? 👇
 
 ---
 
-## OPEN ITEM — "not highly robust" (VO ~5:33)
+## RESOLVED — "not highly robust" (VO ~5:33)
 
-Kris attributes the phrase "not highly robust" to Anthropic's write-up. The phrase
-appears in NO source (blog, support doc, TechCrunch, X FAQ, web search). Current
-edit shows Anthropic's REAL sentence instead ("Light editing probably won't remove
-the watermark completely; a complete rewrite where every word is replaced will.")
-with the sticker "THEIR OWN WORDS · A REWRITE REMOVES IT". Options: (A) cut the
-two VO sentences (~9998–10256); (B) ship as-is (built); (C) re-record one line.
+Kris chose option B (Aug 19): VO unchanged; the on-screen receipt shows
+Anthropic's REAL sentence ("Light editing probably won't remove the watermark
+completely; a complete rewrite where every word is replaced will.") with an
+orange wash, labelled SOURCE · ANTHROPIC · Their own words. The exact phrase
+"not highly robust" is not in any Anthropic source — noted here for the record
+in case a commenter raises it.

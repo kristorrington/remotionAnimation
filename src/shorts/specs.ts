@@ -2,122 +2,116 @@ import { ShortSpec } from "./types";
 
 // ============================================================================
 // THE SHORTS — CURRENT video only (previous videos live in archivedSpecs.ts).
-// Graph Engineering debunk (talking-head-160826.mp4, 2026-08-16). `from` =
-// start frame in the source (sec × 30); `beats[].at` is clip-local, anchored to
-// the WHISPER word times (captions-160826.ts — audio +133ms baked into the
-// proxy, so these captions run ~4f early: harmless lead). Every short OPENS on
-// the FACE hook, then an evidence receipt / official clip in the split band,
-// and a fullscreen span for the payoff stamp. faceX: 49 → the talking head is
-// CENTRED (this recording sits ~48.5% left-of-frame). voice 1.3. CLAUDE.md §9.
+// Claude invisible watermark (talking-head-190826.mp4, 2026-08-19 cut_synced).
+// `from` = start frame in the source (sec × 30); `beats[].at` is clip-local,
+// anchored to the WHISPER word times (captions-190826.ts). Every short OPENS
+// on the FACE hook, then an evidence receipt in the split band, and a
+// fullscreen span for the payoff. faceX: 49 (face sits ~48.5%). voice 1.3.
+// NOTE: shorts stay "paper" style until Kris converts them (brand v2 note).
 // ============================================================================
 const SHOT = "assets/external/screenshots";
-const CLIP = "assets/external/clips";
 
 export const SHORTS: ShortSpec[] = [
   {
-    id: "Short-GraphOld",
-    label: "The 'new' trend launched Jan 2024 — LangChain's own blog says 3 years",
-    source: "talking-head-160826.mp4",
-    from: 3392, // "None of this is new. LangGraph… launched in January 2024"
-    durationInFrames: 704, // ~23s
-    topic: "NEW… OR 2 YEARS OLD?",
-    hook: "THIS 'NEW' AI TREND IS 2 YEARS OLD.",
-    context: "Graph engineering = July's viral AI term",
+    id: "Short-WmProvesLess",
+    label: "The thesis: a hit shows contact, not authorship — 4 uses, same signal",
+    source: "talking-head-190826.mp4",
+    from: 7399, // "If somebody detects this watermark, what have they actually proven?"
+    durationInFrames: 859, // ~29s
+    topic: "WHAT'S IT PROVE?",
+    hook: "THE WATERMARK DOESN'T PROVE CLAUDE WROTE IT.",
+    context: "Claude now watermarks all its text",
     faceX: 49,
     beats: [
-      { at: 8, scene: "receipt", tint: "#6E93BD", text: "langchain's own blog", shot: { src: `${SHOT}/ge-langchain-blog-wide.png`, url: "langchain.com/blog", imageW: 1884, imageH: 1007, from: { x: 110, y: 340, w: 1330, h: 710 }, to: { x: 0, y: 0, w: 1884, h: 1007 }, zoomAt: 8 } }, // "3 Years of Graph Engineering with LangGraph"
-      { at: 253, scene: "stamp", verdict: "warn", badge: "SINCE JAN 2024", tint: "#C9913D", text: "BEFORE THE NAME" }, // span; "2.5 years before people started calling it this" (3649)
-      { at: 450, scene: "receipt", tint: "#4FA98A", text: "the live counter", shot: { src: `${SHOT}/ge-pypistats.png`, url: "pypistats.org/packages/langgraph", imageW: 1000, imageH: 645, from: { x: 20, y: 250, w: 960, h: 390 }, to: { x: 0, y: 0, w: 1000, h: 645 }, zoomAt: 8, highlight: { x: 35, y: 583, w: 520, h: 48 }, highlightAt: 110 } }, // "65 million downloads a month" (3950) → the 72.7M row, before the CTA
+      { at: 8, scene: "receipt", tint: "#C65B52", text: "anthropic's own answer", shot: { src: `${SHOT}/wmc-blog-prove.png`, url: "anthropic.com/news/claude-text-watermark", imageW: 3840, imageH: 1020, from: { x: 1180, y: 60, w: 1620, h: 918 }, to: { x: 1080, y: 0, w: 1800, h: 1020 }, zoomAt: 8, highlight: { x: 1190, y: 350, w: 1560, h: 260 }, highlightAt: 130 } }, // "cannot distinguish 'Claude wrote this' from 'Claude heavily edited this'"
+      { at: 253, scene: "stamp", verdict: "warn", badge: "CONTACT ONLY", tint: "#C9913D", text: "THAT'S ALL IT SHOWS" }, // span; "can show that the text passed through Claude" (7648)
+      { at: 540, scene: "queue", labels: ["Proofread", "Translate", "Edit", "Write"], tint: "#6E93BD", text: "ONE FLAG FITS ALL" }, // "proofread it… translate it… summarize or edit" (7943-8074)
     ],
-    fullscreen: [{ from: 240, to: 430 }],
+    fullscreen: [{ from: 240, to: 440 }],
     outro: "FULL BREAKDOWN ON THE CHANNEL",
     music: "music/tension.MP3",
     voice: 1.3,
     style: "paper",
   },
   {
-    id: "Short-GraphFakeStat",
-    label: "The +18%/−85% claim traced to nothing — Turing Post debunked it in 48h",
-    source: "talking-head-160826.mp4",
-    from: 7352, // "By July 19, a claim started spreading…"
-    durationInFrames: 906, // ~30s
-    topic: "WHO CHECKED IT?",
-    hook: "THE VIRAL AI STAT WAS NEVER REAL.",
-    context: "The +18%/−85% graph-engineering claim",
+    id: "Short-WmCantSeeIt",
+    label: "The mechanism: word forks + a secret key — invisible by design",
+    source: "talking-head-190826.mp4",
+    from: 2574, // "The watermark is created through the words Claude chooses"
+    durationInFrames: 707, // ~24s
+    topic: "CAN YOU SEE IT?",
+    hook: "THERE'S A PATTERN HIDDEN IN CLAUDE'S WORDS.",
+    context: "Claude watermarks text via word choice now",
     faceX: 49,
     beats: [
-      { at: 8, scene: "stamp", verdict: "cross", badge: "“REPLACED RAG”", tint: "#C9913D", text: "THE VIRAL CLAIM" }, // band lands as "had replaced RAG at Microsoft" (7484)
-      { at: 263, scene: "stamp", verdict: "cross", badge: "+18% / −85%", tint: "#C65B52", text: "THE PROOF?" }, // span; the numbers land ON "18%" (7609) / "85%" (7676)
-      { at: 599, scene: "receipt", tint: "#6E93BD", text: "the debunk", shot: { src: `${SHOT}/ge-turingpost.png`, url: "turingpost.com", imageW: 1796, imageH: 960, from: { x: 40, y: 0, w: 1520, h: 810 }, to: { x: 0, y: 0, w: 1796, h: 960 }, zoomAt: 8, highlight: { x: 50, y: 8, w: 1450, h: 180 }, highlightAt: 100 } }, // "Turing Post actually checked the claim" (7957)
-      { at: 720, scene: "stamp", verdict: "cross", badge: "DEBUNKED", tint: "#C65B52", text: "THE CLAIM COLLAPSED" }, // "published a debunk on July 20" (8059)
+      { at: 8, scene: "receipt", tint: "#6E93BD", text: "it travels with the text", shot: { src: `${SHOT}/wm-tweet-m1astra.png`, url: "x.com/M1Astra", imageW: 640, imageH: 1200, from: { x: 20, y: 40, w: 600, h: 700 }, to: { x: 0, y: 0, w: 640, h: 830 }, zoomAt: 8 } }, // public reaction: invisible, survives copy-paste
+      { at: 315, scene: "doors", labels: ["grey", "overcast"], value: 1, tint: "#C9913D", text: "BOTH FIT. ONE WINS." }, // span; "maybe grey or overcast" (2903)
+      { at: 505, scene: "stamp", verdict: "warn", badge: "A SECRET KEY", tint: "#C65B52", text: "TIPS THE CHOICE" }, // "uses a secret key to gently favour one" (3071)
     ],
-    fullscreen: [{ from: 250, to: 470 }],
-    outro: "FULL FACT-CHECK ON THE CHANNEL",
-    music: "music/tension.MP3",
-    voice: 1.3,
-    style: "paper",
-  },
-  {
-    id: "Short-GraphExplained",
-    label: "The explainer: one agent run — dead end, loop back, split, merge = a graph",
-    source: "talking-head-160826.mp4",
-    from: 2544, // "In an AI agent researching a question…"
-    durationInFrames: 772, // ~26s
-    topic: "WHAT IS IT REALLY?",
-    hook: "GRAPH ENGINEERING, IN ONE AGENT RUN.",
-    context: "The AI buzzword taking over your feed",
-    faceX: 49,
-    beats: [
-      { at: 8, scene: "clip", tint: "#6E93BD", text: "ONE AGENT. ONE RUN.", clip: { src: `${CLIP}/ge-langgraph-a.mp4` } }, // LangChain's own node-graph film (band)
-      { at: 143, scene: "retry", tint: "#C9913D", text: "DEAD END? GO AGAIN" }, // span; "so loops back, researches the problem again" (2681)
-      { at: 380, scene: "funnel", badge: "MERGED ✓", tint: "#4FA98A", text: "2 → 1" }, // "the agent combines both answers together" (2924)
-      { at: 505, scene: "stamp", verdict: "check", badge: "A GRAPH", tint: "#C65B52", text: "NOT A LINE" }, // "the whole shape, that's a graph" (3061)
-    ],
-    fullscreen: [{ from: 130, to: 330 }],
-    outro: "FOLLOW FOR AI EXPLAINERS",
+    fullscreen: [{ from: 305, to: 495 }],
+    outro: "FULL EXPLAINER ON THE CHANNEL",
     music: "music/calm.MP3",
     voice: 1.3,
     style: "paper",
   },
   {
-    id: "Short-GraphOrigin",
-    label: "Named in a quiet Jul 4 blog, ignored 2 weeks, then 2.8M views on Jul 18",
-    source: "talking-head-160826.mp4",
-    from: 5418, // "So who actually gave this thing a name?"
-    durationInFrames: 934, // ~31s
-    topic: "WHO NAMED IT?",
-    hook: "FROM A QUIET BLOG TO 2.8M VIEWS.",
-    context: "'Graph engineering' — named July 4, 2026",
+    id: "Short-WmStudentEssay",
+    label: "The stakes: your own essay + a grammar pass = same flag as AI-written",
+    source: "talking-head-190826.mp4",
+    from: 8252, // "So imagine that a student writes an essay entirely on their own…"
+    durationInFrames: 682, // ~23s
+    topic: "WHO WROTE IT?",
+    hook: "YOUR OWN ESSAY COULD GET FLAGGED AS AI.",
+    context: "Claude's invisible watermark, explained",
     faceX: 49,
     beats: [
-      { at: 8, scene: "receipt", tint: "#6E93BD", text: "jul 4 — nobody noticed", shot: { src: `${SHOT}/ge-josh-simmons.png`, url: "drjoshcsimmons.com", imageW: 1446, imageH: 773, from: { x: 50, y: 300, w: 1340, h: 470 }, to: { x: 0, y: 0, w: 1446, h: 773 }, zoomAt: 8 } }, // "Josh Simmons used the phrase in a blog post" (5573)
-      { at: 363, scene: "signal", verdict: "warn", sub: "14 days, 0 buzz", tint: "#C9913D", text: "STILL NOTHING" }, // span; static tower — "sat there for about two weeks" (5815)
-      { at: 560, scene: "receipt", tint: "#C65B52", text: "jul 18 — it catches fire", shot: { src: `${SHOT}/ge-tweet-steipete.png`, url: "x.com/steipete", imageW: 1100, imageH: 450, from: { x: 60, y: 20, w: 980, h: 401 }, to: { x: 0, y: 0, w: 1100, h: 450 }, zoomAt: 8, highlight: { x: 70, y: 145, w: 960, h: 95 }, highlightAt: 140 } }, // "Steinberger posted a question… loops or graphs" (6054)
+      { at: 8, scene: "receipt", tint: "#C9913D", text: "anthropic's own limitations", shot: { src: `${SHOT}/wmc-support-limits.png`, url: "support.claude.com", imageW: 3840, imageH: 1560, from: { x: 1100, y: 220, w: 1750, h: 1200 }, to: { x: 1050, y: 120, w: 1900, h: 1300 }, zoomAt: 8, highlight: { x: 1130, y: 560, w: 1700, h: 180 }, highlightAt: 120 } }, // "Claude may not be the original author…"
+      { at: 268, scene: "stamp", verdict: "cross", badge: "FLAGGED ANYWAY", tint: "#C65B52", text: "NO WAY TO KNOW" }, // span; "same type of detection as an essay Claude generated from scratch" (8516)
+      { at: 520, scene: "reject", badge: "USER ID", tint: "#4FA98A", text: "NOTHING TO TRACE" }, // "doesn't carry a user ID… trace it back" (8807)
     ],
-    fullscreen: [{ from: 350, to: 540 }],
-    outro: "FULL ORIGIN STORY ON THE CHANNEL",
+    fullscreen: [{ from: 255, to: 455 }],
+    outro: "FULL STORY ON THE CHANNEL",
     music: "music/tension.MP3",
     voice: 1.3,
     style: "paper",
   },
   {
-    id: "Short-GraphRule",
-    label: "The rule that survives every buzzword: who actually shipped it?",
-    source: "talking-head-160826.mp4",
-    from: 10992, // "If a new term shows up everywhere…"
-    durationInFrames: 876, // ~29s
-    topic: "HYPE OR REAL?",
-    hook: "ONE RULE KILLS EVERY AI BUZZWORD.",
-    context: "Works on any viral AI term",
+    id: "Short-WmEasyBreak",
+    label: "The weakness: removal repos in days; one rewrite kills the signal",
+    source: "talking-head-190826.mp4",
+    from: 9331, // "Then we get to the other big limitation."
+    durationInFrames: 667, // ~22s
+    topic: "HOW STRONG IS IT?",
+    hook: "THE CLAUDE WATERMARK BREAKS EASILY.",
+    context: "Removal tools appeared within days",
     faceX: 49,
     beats: [
-      { at: 8, scene: "receipt", tint: "#6E93BD", text: "what 'shipped' looks like", shot: { src: `${SHOT}/ge-adk.png`, url: "developers.googleblog.com", imageW: 2300, imageH: 1229, from: { x: 170, y: 300, w: 1560, h: 260 }, to: { x: 90, y: 20, w: 2120, h: 1060 }, zoomAt: 8 } }, // official docs = the bar (Google ADK blog)
-      { at: 209, scene: "stamp", verdict: "check", badge: "SHOW ME THE DOCS", tint: "#4FA98A", text: "NOT THE HYPE" }, // span; "start by asking who actually shipped it" (11198)
-      { at: 440, scene: "testbench", tint: "#C9913D", text: "PROVE IT WORKS" }, // "test it, build it, see what it does" (11432)
-      { at: 643, scene: "reject", badge: "JUST A TWEET", tint: "#C65B52", text: "TALK ≠ SHIPPING" }, // span 2; "only exists inside tweets, blog posts…" (11636)
+      { at: 8, scene: "receipt", tint: "#C65B52", text: "the removal repos, dated", shot: { src: `${SHOT}/wm-github-cleaner-commits.png`, url: "github.com/mikiane/claude-watermark-cleaner", imageW: 1920, imageH: 2000, from: { x: 130, y: 180, w: 1240, h: 500 }, to: { x: 0, y: 0, w: 1400, h: 760 }, zoomAt: 8, highlight: { x: 170, y: 315, w: 680, h: 110 }, highlightAt: 130 } }, // commits days after the blog
+      { at: 443, scene: "breaker", tint: "#C65B52", text: "ONE PASS KILLS IT" }, // span; "another model rewrite it… break the signal" (9779-9914)
     ],
-    fullscreen: [{ from: 196, to: 396 }, { from: 630, to: 730 }],
-    outro: "SUBSCRIBE — HYPE-FREE AI NEWS",
+    fullscreen: [{ from: 430, to: 527 }],
+    outro: "FULL BREAKDOWN ON THE CHANNEL",
+    music: "music/tension.MP3",
+    voice: 1.3,
+    style: "paper",
+  },
+  {
+    id: "Short-WmWhyNow",
+    label: "The why: EU Article 50(2) + six labs signed; one global system",
+    source: "talking-head-190826.mp4",
+    from: 6100, // "So why roll this out globally in the first place?"
+    durationInFrames: 928, // ~31s
+    topic: "WHY NOW?",
+    hook: "WHY DID EVERY AI LAB DO THIS AT ONCE?",
+    context: "Claude now watermarks all text worldwide",
+    faceX: 49,
+    beats: [
+      { at: 8, scene: "receipt", tint: "#6E93BD", text: "the actual regulation", shot: { src: `${SHOT}/wmc-eu-header.png`, url: "digital-strategy.ec.europa.eu", imageW: 3840, imageH: 1500, from: { x: 460, y: 100, w: 2200, h: 1290 }, to: { x: 420, y: 0, w: 2400, h: 1400 }, zoomAt: 8 } }, // EU Code of Practice page
+      { at: 553, scene: "queue", labels: ["OpenAI", "Google", "Meta", "Microsoft", "Mistral"], tint: "#C9913D", text: "SAME SIGNATURE" }, // span; the co-signatories as named (6720-6882)
+      { at: 715, scene: "stamp", verdict: "check", badge: "NO EU-ONLY BUILD", tint: "#4FA98A", text: "EVERYONE GETS IT" }, // "rather than maintaining one version for Europe…" (6882)
+    ],
+    fullscreen: [{ from: 540, to: 700 }],
+    outro: "SUBSCRIBE — AI NEWS WITHOUT THE HYPE",
     music: "music/calm.MP3",
     voice: 1.3,
     style: "paper",
