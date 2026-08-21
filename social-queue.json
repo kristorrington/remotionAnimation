@@ -682,7 +682,7 @@
     },
     {
       "id": "Short-GraphFakeStat",
-      "file": "out/shorts/YT_TIK_Short-GraphFakeStat.mp4",
+      "file": "out/shorts/YT_TIK_IG_Short-GraphFakeStat.mp4",
       "title": "The Viral \"+18% / −85%\" AI Stat Was Never Real #Shorts",
       "tags": [
         "graph engineering",
@@ -721,8 +721,8 @@
           "enabled": true,
           "caption": "A claim spread that graph engineering replaced RAG at Microsoft, Stanford and Anthropic — with 18% better accuracy and 85% lower cost. Turing Post checked it: none of those institutions produced that result. The number traced back to a narrow, unrelated study. Cited day 1, debunked day 3. ▶ Full fact-check on the channel.\n\n#AI #GraphEngineering #AIfactcheck #RAG #AInews #Shorts",
           "publishAt": "2026-08-21T07:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "published",
+          "remoteId": "17970436812131092",
           "error": null
         }
       }
@@ -960,7 +960,7 @@
     },
     {
       "id": "Short-WmCantSeeIt",
-      "file": "out/shorts/YT_Short-WmCantSeeIt.mp4",
+      "file": "out/shorts/YT_TIK_Short-WmCantSeeIt.mp4",
       "title": "Claude Hides A Watermark In Its Word Choices #Shorts",
       "tags": [
         "claude watermark",
@@ -990,8 +990,8 @@
           "enabled": true,
           "caption": "No hidden characters, no metadata — Claude's new watermark lives in the words themselves. Where two words both fit (grey vs overcast), a secret key gently tips the choice. You can't see it, and it travels with the text when it's copied. ▶ Full explainer on the channel.\n\n#Claude #AIwatermark #SynthID #Anthropic #AI #Shorts",
           "publishAt": "2026-08-21T07:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "drafted",
+          "remoteId": "v_inbox_file~v2.7676377442755364865",
           "error": null
         },
         "instagram": {
