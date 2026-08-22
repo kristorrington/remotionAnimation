@@ -729,7 +729,7 @@
     },
     {
       "id": "Short-GraphOld",
-      "file": "out/shorts/YT_TIK_Short-GraphOld.mp4",
+      "file": "out/shorts/YT_TIK_IG_Short-GraphOld.mp4",
       "title": "\"Graph Engineering\" Is 2 Years Old — Not New #Shorts",
       "tags": [
         "graph engineering",
@@ -767,8 +767,8 @@
           "enabled": true,
           "caption": "Everyone's calling graph engineering the next big AI skill. LangChain's own blog says they've been doing it for 3 years — LangGraph launched January 2024, and the live counter shows ~72M downloads a month. The idea is 2½ years old. The name is 3 weeks old. ▶ Full breakdown on the channel.\n\n#AI #GraphEngineering #LangGraph #LangChain #AInews #Shorts",
           "publishAt": "2026-08-22T07:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "published",
+          "remoteId": "18113690354053053",
           "error": null
         }
       }
@@ -1052,7 +1052,7 @@
     },
     {
       "id": "Short-WmEasyBreak",
-      "file": "out/shorts/YT_Short-WmEasyBreak.mp4",
+      "file": "out/shorts/YT_TIK_Short-WmEasyBreak.mp4",
       "title": "Claude's Watermark Breaks With One Rewrite #Shorts",
       "tags": [
         "claude watermark",
@@ -1082,8 +1082,8 @@
           "enabled": true,
           "caption": "Removal tools hit GitHub within days of Anthropic's announcement — the commit dates prove it. And running watermarked text through another model can break the signal entirely. Anthropic is upfront about this. ▶ Full breakdown on the channel.\n\n#Claude #AIwatermark #GitHub #Anthropic #AI #Shorts",
           "publishAt": "2026-08-22T07:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "drafted",
+          "remoteId": "v_inbox_file~v2.7676758618033506320",
           "error": null
         },
         "instagram": {
