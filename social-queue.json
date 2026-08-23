@@ -1098,7 +1098,7 @@
     },
     {
       "id": "Short-WmWhyNow",
-      "file": "out/shorts/YT_Short-WmWhyNow.mp4",
+      "file": "out/shorts/YT_TIK_Short-WmWhyNow.mp4",
       "title": "Why Every AI Lab Added Watermarks At The Same Time #Shorts",
       "tags": [
         "claude watermark",
@@ -1128,8 +1128,8 @@
           "enabled": true,
           "caption": "Anthropic, OpenAI, Google, Meta, Microsoft and Mistral all signed the same EU Code of Practice — and Article 50(2) of the EU AI Act requires machine-detectable AI output. Rather than run an EU-only build, Claude's watermark shipped worldwide, with no off switch. ▶ Subscribe for AI news without the hype.\n\n#EUAIAct #Claude #AIwatermark #regulation #AI #Shorts",
           "publishAt": "2026-08-23T02:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "drafted",
+          "remoteId": "v_inbox_file~v2.7677059837141813256",
           "error": null
         },
         "instagram": {
