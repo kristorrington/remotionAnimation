@@ -775,7 +775,7 @@
     },
     {
       "id": "Short-GraphExplained",
-      "file": "out/shorts/YT_TIK_Short-GraphExplained.mp4",
+      "file": "out/shorts/YT_TIK_IG_Short-GraphExplained.mp4",
       "title": "Graph Engineering Explained In One Agent Run #Shorts",
       "tags": [
         "graph engineering",
@@ -813,8 +813,8 @@
           "enabled": true,
           "caption": "An AI agent researches a question, hits a dead end, loops back, splits the work between two tools, then merges both answers. That whole shape — branches, loops, revisits — is a graph. That's all 'graph engineering' means. ▶ Full explainer on the channel.\n\n#AI #GraphEngineering #AIagents #LangGraph #AIexplained #Shorts",
           "publishAt": "2026-08-23T07:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "published",
+          "remoteId": "17933286264366970",
           "error": null
         }
       }
