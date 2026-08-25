@@ -1,9 +1,19 @@
 Background music for the videos.
 
-Drop your (royalty-free / licensed) tracks in this folder, e.g.:
-  public/music/calm.mp3
-  public/music/tension.mp3
-  public/music/outro.mp3
+Find royalty free music for the specific scene/atmosphere you want.
+
+CURRENT BEDS (Mixkit Free License — royalty-free, commercial + YouTube OK,
+NO attribution required; NOT for TV/radio broadcast, CDs/DVDs or video games).
+Source: https://mixkit.co/license/ · downloaded 2026-08-25, normalised to -16 LUFS.
+  tension.MP3  = "Kodama Night Town" (Electronic, 3:05)  — MAIN / hero bed
+                 https://mixkit.co/free-stock-music/  id 114
+  calm.MP3     = "Focus on Yourself" (Electronica, 4:46) — CAVEAT / underscore
+                 id 568
+  outro.MP3    = "Voxscape" (Ambient, 5:00)              — resolve/outro
+                 id 571
+  Shortlisted alternates (swap in if you want a different feel): Moon Walk (609),
+  Deep Techno Ambience (134), Minimal Emotion (160), Feedback Dreams (588),
+  Sonor #2 (570), Opalescent (593) — all Mixkit, same licence.
 
 mp3, wav, m4a all work. Keep them local (here) so Studio + render work offline.
 

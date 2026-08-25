@@ -4660,6 +4660,104 @@
       ],
       "attributionRequired": false,
       "concerns": null
+    },
+    {
+      "filename": "dsh-deepseek-logo.png",
+      "localPath": "public/assets/external/logos/dsh-deepseek-logo.png",
+      "type": "reference",
+      "sourceUrl": "https://logosandtypes.com/deepseek-logo/",
+      "sourceName": "DeepSeek",
+      "dateAccessed": "2026-08-25",
+      "usageNote": "Official DeepSeek whale mark — tutorial branding",
+      "usedIn": [
+        "DshFinal"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "dsh-nodejs-logo.png",
+      "localPath": "public/assets/external/logos/dsh-nodejs-logo.png",
+      "type": "reference",
+      "sourceUrl": "https://nodejs.org/en/about/branding",
+      "sourceName": "Node.js",
+      "dateAccessed": "2026-08-25",
+      "usageNote": "Node.js logo — prerequisite section",
+      "usedIn": [
+        "DshFinal"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "dsh-02-install.mp4",
+      "localPath": "public/assets/external/clips/dsh-02-install.mp4",
+      "type": "reference",
+      "sourceUrl": "own recording (2026-08-25)",
+      "sourceName": "Kris Torrington demo",
+      "dateAccessed": "2026-08-25",
+      "usageNote": "Real DeepSeek Harness install terminal footage",
+      "usedIn": [
+        "DshFinal"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "dsh-03-setup.mp4",
+      "localPath": "public/assets/external/clips/dsh-03-setup.mp4",
+      "type": "reference",
+      "sourceUrl": "own recording (2026-08-25)",
+      "sourceName": "Kris Torrington demo",
+      "dateAccessed": "2026-08-25",
+      "usageNote": "Real Harness first-run setup footage",
+      "usedIn": [
+        "DshFinal"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "dsh-04-using-it.mp4",
+      "localPath": "public/assets/external/clips/dsh-04-using-it.mp4",
+      "type": "reference",
+      "sourceUrl": "own recording (2026-08-25)",
+      "sourceName": "Kris Torrington demo",
+      "dateAccessed": "2026-08-25",
+      "usageNote": "Real Harness chat/trajectory/code footage",
+      "usedIn": [
+        "DshFinal"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "dsh-05-settings.mp4",
+      "localPath": "public/assets/external/clips/dsh-05-settings.mp4",
+      "type": "reference",
+      "sourceUrl": "own recording (2026-08-25)",
+      "sourceName": "Kris Torrington demo",
+      "dateAccessed": "2026-08-25",
+      "usageNote": "Real Harness permissions/models/presets/plugins footage",
+      "usedIn": [
+        "DshFinal"
+      ],
+      "attributionRequired": false,
+      "concerns": null
+    },
+    {
+      "filename": "dsh-06-websearch.mp4",
+      "localPath": "public/assets/external/clips/dsh-06-websearch.mp4",
+      "type": "reference",
+      "sourceUrl": "own recording (2026-08-25)",
+      "sourceName": "Kris Torrington demo",
+      "dateAccessed": "2026-08-25",
+      "usageNote": "Real Harness live web search footage",
+      "usedIn": [
+        "DshFinal"
+      ],
+      "attributionRequired": false,
+      "concerns": null
     }
   ]
 }

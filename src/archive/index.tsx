@@ -52,6 +52,8 @@ import { Opus5Video, OPUS5_DUR } from "../Opus5Video";
 import { Opus5Final } from "../Opus5Final";
 import { HabitsVideo, HABITS_DUR } from "../HabitsVideo";
 import { HabitsFinal } from "../HabitsFinal";
+import { WatermarkVideo, WM_DUR } from "../WatermarkVideo";
+import { WatermarkFinal } from "../WatermarkFinal";
 import { AstraVideo, ASTRA_DUR } from "../AstraVideo";
 import { GraphEngVideo, GE_DUR } from "../GraphEngVideo";
 import { GraphEngFinal } from "../GraphEngFinal";
@@ -88,6 +90,8 @@ export const ArchivedVideoCompositions: React.FC = () => {
       {/* ── Astra ten-proofs fact-check (Aug 2026) ── */}
       <Composition id="GraphEngVideo" component={GraphEngVideo} durationInFrames={GE_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
       <Composition id="GraphEngFinal" component={GraphEngFinal} durationInFrames={GE_DUR} fps={30} width={1920} height={1080} />
+      <Composition id="WatermarkVideo" component={WatermarkVideo} durationInFrames={WM_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
+      <Composition id="WatermarkFinal" component={WatermarkFinal} durationInFrames={WM_DUR} fps={30} width={1920} height={1080} />
       <Composition id="AstraVideo" component={AstraVideo} durationInFrames={ASTRA_DUR} fps={30} width={1920} height={1080} calculateMetadata={transparentDefaults} />
       <Composition id="AstraFinal" component={AstraFinal} durationInFrames={ASTRA_DUR} fps={30} width={1920} height={1080} />
 
