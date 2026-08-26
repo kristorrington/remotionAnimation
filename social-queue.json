@@ -914,7 +914,7 @@
     },
     {
       "id": "Short-WmProvesLess",
-      "file": "out/shorts/YT_TIK_Short-WmProvesLess.mp4",
+      "file": "out/shorts/YT_TIK_IG_Short-WmProvesLess.mp4",
       "title": "The Claude Watermark Doesn't Prove Claude Wrote It #Shorts",
       "tags": [
         "claude watermark",
@@ -952,8 +952,8 @@
           "enabled": true,
           "caption": "Claude watermarks everything it writes now. But a positive hit only shows the text passed through Claude — proofreading, translating, editing and writing all leave the same kind of signal. Anthropic's own docs say it cannot distinguish 'Claude wrote this' from 'Claude heavily edited this.' ▶ Full breakdown on the channel.\n\n#Claude #Anthropic #AIwatermark #AIdetection #AI #Shorts",
           "publishAt": "2026-08-26T07:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "published",
+          "remoteId": "17933719176122035",
           "error": null
         }
       }
