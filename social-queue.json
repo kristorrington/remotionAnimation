@@ -1141,6 +1141,223 @@
           "error": null
         }
       }
+    },
+    {
+      "id": "short-dsh-messy-code",
+      "file": "out/shorts/Short-DshMessyCode.mp4",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "This AI reads your WHOLE codebase and explains it\n\nPoint DeepSeek Harness at a project you don't understand — it reads every file (README, expenses.py, storage.py…) and explains how they fit together. A local AI coding agent. Full build on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-08-27T03:00:00.000Z",
+          "status": "scheduled",
+          "remoteId": "IqmsjExK6pE",
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "This AI reads your WHOLE codebase and explains it\n\nPoint DeepSeek Harness at a project you don't understand — it reads every file (README, expenses.py, storage.py…) and explains how they fit together. A local AI coding agent. Full build on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-08-27T03:30:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "This AI reads your WHOLE codebase and explains it\n\nPoint DeepSeek Harness at a project you don't understand — it reads every file (README, expenses.py, storage.py…) and explains how they fit together. A local AI coding agent. Full build on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-08-27T04:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      },
+      "title": "This AI reads your WHOLE codebase and explains it"
+    },
+    {
+      "id": "short-dsh-run-local",
+      "file": "out/shorts/Short-DshRunLocal.mp4",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "Run a coding agent 100% LOCALLY\n\nEveryone's on cloud AI coding tools. This one runs on your own machine — dsh web → localhost:3080. It reads files, writes code, and searches the web. Full walkthrough on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-08-28T03:00:00.000Z",
+          "status": "scheduled",
+          "remoteId": "AnjOijwpu60",
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "Run a coding agent 100% LOCALLY\n\nEveryone's on cloud AI coding tools. This one runs on your own machine — dsh web → localhost:3080. It reads files, writes code, and searches the web. Full walkthrough on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-08-28T03:30:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "Run a coding agent 100% LOCALLY\n\nEveryone's on cloud AI coding tools. This one runs on your own machine — dsh web → localhost:3080. It reads files, writes code, and searches the web. Full walkthrough on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-08-28T04:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      },
+      "title": "Run a coding agent 100% LOCALLY"
+    },
+    {
+      "id": "short-dsh-prime",
+      "file": "out/shorts/Short-DshPrime.mp4",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "This AI writes AND runs its own code\n\nI asked DeepSeek Harness to write a prime checker with three tests — it created the file, wrote the code, ran it, and reported all three passing. That's the point of an agent harness. Full build on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-08-29T03:00:00.000Z",
+          "status": "scheduled",
+          "remoteId": "zNq4GWcTnVY",
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "This AI writes AND runs its own code\n\nI asked DeepSeek Harness to write a prime checker with three tests — it created the file, wrote the code, ran it, and reported all three passing. That's the point of an agent harness. Full build on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-08-29T03:30:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "This AI writes AND runs its own code\n\nI asked DeepSeek Harness to write a prime checker with three tests — it created the file, wrote the code, ran it, and reported all three passing. That's the point of an agent harness. Full build on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-08-29T04:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      },
+      "title": "This AI writes AND runs its own code"
+    },
+    {
+      "id": "short-dsh-perms",
+      "file": "out/shorts/Short-DshPerms.mp4",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "Don't let an AI touch your files until you see this\n\nBefore you give an AI access to your machine — three permission modes: Read Only, Workspace Write, Full Access. Pick before it touches anything. DeepSeek Harness. Full guide on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-08-30T03:00:00.000Z",
+          "status": "scheduled",
+          "remoteId": "ApaMJ8j6Tlc",
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "Don't let an AI touch your files until you see this\n\nBefore you give an AI access to your machine — three permission modes: Read Only, Workspace Write, Full Access. Pick before it touches anything. DeepSeek Harness. Full guide on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-08-30T03:30:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "Don't let an AI touch your files until you see this\n\nBefore you give an AI access to your machine — three permission modes: Read Only, Workspace Write, Full Access. Pick before it touches anything. DeepSeek Harness. Full guide on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-08-30T04:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      },
+      "title": "Don't let an AI touch your files until you see this"
+    },
+    {
+      "id": "short-dsh-web",
+      "file": "out/shorts/Short-DshWeb.mp4",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "This LOCAL AI searches the live web\n\nThink local AI is stuck in the past? DeepSeek Harness invokes live web search mid-task — I asked for the latest Node.js version and it pulled v26.7.0 straight into the chat. Full walkthrough on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-08-31T03:00:00.000Z",
+          "status": "scheduled",
+          "remoteId": "cvS_vyLjEwc",
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "This LOCAL AI searches the live web\n\nThink local AI is stuck in the past? DeepSeek Harness invokes live web search mid-task — I asked for the latest Node.js version and it pulled v26.7.0 straight into the chat. Full walkthrough on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-08-31T03:30:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "This LOCAL AI searches the live web\n\nThink local AI is stuck in the past? DeepSeek Harness invokes live web search mid-task — I asked for the latest Node.js version and it pulled v26.7.0 straight into the chat. Full walkthrough on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-08-31T04:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      },
+      "title": "This LOCAL AI searches the live web"
+    },
+    {
+      "id": "short-dsh-one-cmd",
+      "file": "out/shorts/Short-DshOneCmd.mp4",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "Install a full AI coding agent in ONE command\n\nThe entire install: npm install -g @deepseek-ai/dsh. The -g makes the dsh command work from anywhere. A local AI coding agent. Full setup on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-09-01T03:00:00.000Z",
+          "status": "scheduled",
+          "remoteId": "tOiQFHl8mqM",
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "Install a full AI coding agent in ONE command\n\nThe entire install: npm install -g @deepseek-ai/dsh. The -g makes the dsh command work from anywhere. A local AI coding agent. Full setup on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-09-01T03:30:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "Install a full AI coding agent in ONE command\n\nThe entire install: npm install -g @deepseek-ai/dsh. The -g makes the dsh command work from anywhere. A local AI coding agent. Full setup on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-09-01T04:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      },
+      "title": "Install a full AI coding agent in ONE command"
+    },
+    {
+      "id": "short-dsh-trajectory",
+      "file": "out/shorts/Short-DshTrajectory.mp4",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "Finally — an AI that shows its work\n\nMost AI is a black box. DeepSeek Harness logs every step, tool, input, timing and token in a trajectory view — no guessing what happened underneath. Full walkthrough on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-09-02T03:00:00.000Z",
+          "status": "scheduled",
+          "remoteId": "TN8ybUEl94Y",
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "Finally — an AI that shows its work\n\nMost AI is a black box. DeepSeek Harness logs every step, tool, input, timing and token in a trajectory view — no guessing what happened underneath. Full walkthrough on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-09-02T03:30:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "Finally — an AI that shows its work\n\nMost AI is a black box. DeepSeek Harness logs every step, tool, input, timing and token in a trajectory view — no guessing what happened underneath. Full walkthrough on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
+          "publishAt": "2026-09-02T04:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      },
+      "title": "Finally — an AI that shows its work"
     }
   ]
 }
