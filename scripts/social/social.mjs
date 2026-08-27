@@ -10,7 +10,7 @@
 //   node scripts/social/social.mjs dispatch --go       # actually schedules/posts
 //   node scripts/social/social.mjs status
 //
-import { readdirSync, existsSync, readFileSync, statSync, renameSync } from "node:fs";
+import { readdirSync, existsSync, readFileSync, statSync, renameSync, unlinkSync } from "node:fs";
 import path from "node:path";
 import { loadEnv } from "./lib/env.mjs";
 import { loadQueue, saveQueue, findEntry, newEntry, PLATFORMS } from "./lib/store.mjs";
@@ -270,6 +270,37 @@ async function cmdDispatch(flags) {
     }
   }
   if (!acted) console.log("  (nothing approved to dispatch — schedule some first)");
+  pruneDoneMasters(queue, dryRun);
+}
+
+// STORAGE HYGIENE (Kris, Aug 2026): a rendered master is only needed until its
+// short has finished dispatching to every ENABLED platform. Once all of them are
+// in a terminal-success state (SCHEDULED_STATUSES), the file is dead weight in
+// the repo — delete it so the tree self-limits to in-flight shorts instead of
+// growing ~120MB per batch forever. The dispatch workflow's `git add -A out/shorts`
+// stages the deletion and commits it. A `failed`/`approved` platform keeps the
+// file (it may still be retried). Never touches the queue entry itself.
+function pruneDoneMasters(queue, dryRun) {
+  const isDone = (e) => {
+    const enabled = Object.values(e.platforms).filter((p) => p.enabled);
+    return enabled.length > 0 && enabled.every((p) => SCHEDULED_STATUSES.has(p.status));
+  };
+  // files still referenced by a not-yet-finished entry must be kept
+  const needed = new Set(queue.entries.filter((e) => !isDone(e)).map((e) => rel(e.file)));
+  let n = 0, freed = 0;
+  for (const e of queue.entries) {
+    if (!isDone(e)) continue;
+    const r = rel(e.file);
+    if (needed.has(r)) continue;
+    const abs = path.join(ROOT, r);
+    if (!existsSync(abs)) continue;
+    const mb = statSync(abs).size / 1048576;
+    if (dryRun) { console.log(`  prune (dry): ${r} (${mb.toFixed(1)}MB) — fully published`); n++; freed += mb; continue; }
+    unlinkSync(abs);
+    console.log(`  pruned published master: ${r} (${mb.toFixed(1)}MB)`);
+    n++; freed += mb;
+  }
+  if (n) console.log(`${dryRun ? "would prune" : "pruned"} ${n} fully-published master(s), ${freed.toFixed(1)}MB`);
 }
 
 function cmdStatus() {
