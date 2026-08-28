@@ -1175,7 +1175,7 @@
     },
     {
       "id": "short-dsh-run-local",
-      "file": "out/shorts/YT_Short-DshRunLocal.mp4",
+      "file": "out/shorts/YT_TIK_IG_Short-DshRunLocal.mp4",
       "platforms": {
         "youtube": {
           "enabled": true,
@@ -1189,16 +1189,16 @@
           "enabled": true,
           "caption": "Run a coding agent 100% LOCALLY\n\nEveryone's on cloud AI coding tools. This one runs on your own machine — dsh web → localhost:3080. It reads files, writes code, and searches the web. Full walkthrough on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
           "publishAt": "2026-08-28T03:30:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "drafted",
+          "remoteId": "v_inbox_file~v2.7678947881503541269",
           "error": null
         },
         "instagram": {
           "enabled": true,
           "caption": "Run a coding agent 100% LOCALLY\n\nEveryone's on cloud AI coding tools. This one runs on your own machine — dsh web → localhost:3080. It reads files, writes code, and searches the web. Full walkthrough on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
           "publishAt": "2026-08-28T04:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "published",
+          "remoteId": "18625371751017097",
           "error": null
         }
       },
