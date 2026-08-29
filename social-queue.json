@@ -1358,6 +1358,321 @@
         }
       },
       "title": "Finally — an AI that shows its work"
+    },
+    {
+      "id": "short-dsh-plugin-compose",
+      "file": "out/shorts/YT_TIK_IG_Short-DshPluginCompose.mp4",
+      "title": "This local AI used 2 tools from ONE prompt #Shorts",
+      "tags": [
+        "DeepSeek",
+        "DeepSeek Harness",
+        "local AI",
+        "AI agent",
+        "AI plugin",
+        "no code",
+        "AI coding",
+        "AI tools",
+        "artificial intelligence",
+        "LLM",
+        "AI news"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "I gave a LOCAL DeepSeek Harness agent a weather tool and a crypto tool — then asked one question, and it picked BOTH by itself and merged the answer. No orchestration, no glue code. ▶ Full no-code plugin build on the channel.\n\n#AI #DeepSeek #LocalAI #AIagents #coding #Shorts",
+          "publishAt": "2026-09-03T03:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "I gave a LOCAL DeepSeek Harness agent a weather tool and a crypto tool — then asked one question, and it picked BOTH by itself and merged the answer. No orchestration, no glue code. ▶ Full no-code plugin build on the channel.\n\n#AI #DeepSeek #LocalAI #AIagents #coding #Shorts",
+          "publishAt": "2026-09-03T03:30:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "I gave a LOCAL DeepSeek Harness agent a weather tool and a crypto tool — then asked one question, and it picked BOTH by itself and merged the answer. No orchestration, no glue code. ▶ Full no-code plugin build on the channel.\n\n#AI #DeepSeek #LocalAI #AIagents #coding #Shorts",
+          "publishAt": "2026-09-03T04:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "short-dsh-plugin-nocode",
+      "file": "out/shorts/YT_TIK_IG_Short-DshPluginNoCode.mp4",
+      "title": "I built an AI plugin with ZERO code #Shorts",
+      "tags": [
+        "DeepSeek",
+        "DeepSeek Harness",
+        "local AI",
+        "AI agent",
+        "AI plugin",
+        "no code",
+        "AI coding",
+        "AI tools",
+        "artificial intelligence",
+        "LLM",
+        "AI news"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "I didn't write a single line — I described the tool I wanted in plain English and the local AI agent wrote the whole plugin itself (~30 lines) and told me it was done. ▶ Full build on the channel.\n\n#AI #DeepSeek #NoCode #LocalAI #AIagents #Shorts",
+          "publishAt": "2026-09-04T03:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "I didn't write a single line — I described the tool I wanted in plain English and the local AI agent wrote the whole plugin itself (~30 lines) and told me it was done. ▶ Full build on the channel.\n\n#AI #DeepSeek #NoCode #LocalAI #AIagents #Shorts",
+          "publishAt": "2026-09-04T03:30:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "I didn't write a single line — I described the tool I wanted in plain English and the local AI agent wrote the whole plugin itself (~30 lines) and told me it was done. ▶ Full build on the channel.\n\n#AI #DeepSeek #NoCode #LocalAI #AIagents #Shorts",
+          "publishAt": "2026-09-04T04:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "short-dsh-plugin-liveweather",
+      "file": "out/shorts/YT_TIK_IG_Short-DshPluginLiveWeather.mp4",
+      "title": "I gave my local AI live weather (no cloud) #Shorts",
+      "tags": [
+        "DeepSeek",
+        "DeepSeek Harness",
+        "local AI",
+        "AI agent",
+        "AI plugin",
+        "no code",
+        "AI coding",
+        "AI tools",
+        "artificial intelligence",
+        "LLM",
+        "AI news"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "A LOCAL AI agent that pulls real weather off the internet the second you ask — not from stale training data. Built with a no-code plugin. ▶ Full walkthrough on the channel.\n\n#AI #DeepSeek #LocalAI #AIagents #Shorts",
+          "publishAt": "2026-09-05T03:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "A LOCAL AI agent that pulls real weather off the internet the second you ask — not from stale training data. Built with a no-code plugin. ▶ Full walkthrough on the channel.\n\n#AI #DeepSeek #LocalAI #AIagents #Shorts",
+          "publishAt": "2026-09-05T03:30:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "A LOCAL AI agent that pulls real weather off the internet the second you ask — not from stale training data. Built with a no-code plugin. ▶ Full walkthrough on the channel.\n\n#AI #DeepSeek #LocalAI #AIagents #Shorts",
+          "publishAt": "2026-09-05T04:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "short-dsh-plugin-permissions",
+      "file": "out/shorts/YT_TIK_IG_Short-DshPluginPermissions.mp4",
+      "title": "This AI runs REAL code on your PC — safely #Shorts",
+      "tags": [
+        "DeepSeek",
+        "DeepSeek Harness",
+        "local AI",
+        "AI agent",
+        "AI plugin",
+        "no code",
+        "AI coding",
+        "AI tools",
+        "artificial intelligence",
+        "LLM",
+        "AI news"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "Plugins are real code running on your own machine — so the agent stays sandboxed and asks you before it touches anything outside your workspace. You approve every action. ▶ Full build on the channel.\n\n#AI #DeepSeek #LocalAI #AIsafety #Shorts",
+          "publishAt": "2026-09-06T03:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "Plugins are real code running on your own machine — so the agent stays sandboxed and asks you before it touches anything outside your workspace. You approve every action. ▶ Full build on the channel.\n\n#AI #DeepSeek #LocalAI #AIsafety #Shorts",
+          "publishAt": "2026-09-06T03:30:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "Plugins are real code running on your own machine — so the agent stays sandboxed and asks you before it touches anything outside your workspace. You approve every action. ▶ Full build on the channel.\n\n#AI #DeepSeek #LocalAI #AIsafety #Shorts",
+          "publishAt": "2026-09-06T04:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "short-dsh-plugin-crypto",
+      "file": "out/shorts/YT_TIK_IG_Short-DshPluginCrypto.mp4",
+      "title": "My local AI pulls LIVE crypto prices #Shorts",
+      "tags": [
+        "DeepSeek",
+        "DeepSeek Harness",
+        "local AI",
+        "AI agent",
+        "AI plugin",
+        "no code",
+        "AI coding",
+        "AI tools",
+        "artificial intelligence",
+        "LLM",
+        "AI news"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "Gave a LOCAL DeepSeek Harness agent a crypto tool — BTC, ETH and SOL live prices plus 24h change, the second I ask. No coding, free API. ▶ Full no-code build on the channel.\n\n#AI #crypto #DeepSeek #LocalAI #Shorts",
+          "publishAt": "2026-09-07T03:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "Gave a LOCAL DeepSeek Harness agent a crypto tool — BTC, ETH and SOL live prices plus 24h change, the second I ask. No coding, free API. ▶ Full no-code build on the channel.\n\n#AI #crypto #DeepSeek #LocalAI #Shorts",
+          "publishAt": "2026-09-07T03:30:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "Gave a LOCAL DeepSeek Harness agent a crypto tool — BTC, ETH and SOL live prices plus 24h change, the second I ask. No coding, free API. ▶ Full no-code build on the channel.\n\n#AI #crypto #DeepSeek #LocalAI #Shorts",
+          "publishAt": "2026-09-07T04:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "short-dsh-plugin-debug",
+      "file": "out/shorts/YT_TIK_IG_Short-DshPluginDebug.mp4",
+      "title": "Why your AI plugin isn't working #Shorts",
+      "tags": [
+        "DeepSeek",
+        "DeepSeek Harness",
+        "local AI",
+        "AI agent",
+        "AI plugin",
+        "no code",
+        "AI coding",
+        "AI tools",
+        "artificial intelligence",
+        "LLM",
+        "AI news"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "Built a plugin but the agent won't use it? It's almost always this: you have to REGISTER it and RESTART — until then it just falls back to a plain web search. ▶ Full guide on the channel.\n\n#AI #DeepSeek #LocalAI #coding #Shorts",
+          "publishAt": "2026-09-08T03:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "Built a plugin but the agent won't use it? It's almost always this: you have to REGISTER it and RESTART — until then it just falls back to a plain web search. ▶ Full guide on the channel.\n\n#AI #DeepSeek #LocalAI #coding #Shorts",
+          "publishAt": "2026-09-08T03:30:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "Built a plugin but the agent won't use it? It's almost always this: you have to REGISTER it and RESTART — until then it just falls back to a plain web search. ▶ Full guide on the channel.\n\n#AI #DeepSeek #LocalAI #coding #Shorts",
+          "publishAt": "2026-09-08T04:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
+    },
+    {
+      "id": "short-dsh-plugin-toolbox",
+      "file": "out/shorts/YT_TIK_IG_Short-DshPluginToolbox.mp4",
+      "title": "This local AI has 160+ built-in tools #Shorts",
+      "tags": [
+        "DeepSeek",
+        "DeepSeek Harness",
+        "local AI",
+        "AI agent",
+        "AI plugin",
+        "no code",
+        "AI coding",
+        "AI tools",
+        "artificial intelligence",
+        "LLM",
+        "AI news"
+      ],
+      "categoryId": "28",
+      "platforms": {
+        "youtube": {
+          "enabled": true,
+          "caption": "DeepSeek Harness ships with 160+ built-in tools your local agent can call — and you can add your own with a no-code plugin in minutes. ▶ Full walkthrough on the channel.\n\n#AI #DeepSeek #LocalAI #AItools #Shorts",
+          "publishAt": "2026-09-09T03:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "tiktok": {
+          "enabled": true,
+          "caption": "DeepSeek Harness ships with 160+ built-in tools your local agent can call — and you can add your own with a no-code plugin in minutes. ▶ Full walkthrough on the channel.\n\n#AI #DeepSeek #LocalAI #AItools #Shorts",
+          "publishAt": "2026-09-09T03:30:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        },
+        "instagram": {
+          "enabled": true,
+          "caption": "DeepSeek Harness ships with 160+ built-in tools your local agent can call — and you can add your own with a no-code plugin in minutes. ▶ Full walkthrough on the channel.\n\n#AI #DeepSeek #LocalAI #AItools #Shorts",
+          "publishAt": "2026-09-09T04:00:00.000Z",
+          "status": "approved",
+          "remoteId": null,
+          "error": null
+        }
+      }
     }
   ]
 }
