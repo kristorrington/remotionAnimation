@@ -61,5 +61,13 @@ export async function dispatch(entry, env, dryRun) {
   const put = await fetch(uploadUrl, { method: "PUT", headers: { "Content-Type": "video/*" }, body: bytes });
   const res = await put.json();
   if (!res.id) throw new Error(`YouTube upload failed: ${JSON.stringify(res)}`);
-  return { status: "scheduled", remoteId: res.id, detail: `scheduled https://youtu.be/${res.id} for ${entry.publishAt}` };
+  if (entry.cover) {
+    try {
+      const img = await readFile(entry.cover);
+      const ct = String(entry.cover).toLowerCase().endsWith(".png") ? "image/png" : "image/jpeg";
+      const tr = await fetch(`https://www.googleapis.com/upload/youtube/v3/thumbnails/set?videoId=${res.id}&uploadType=media`, { method: "POST", headers: { Authorization: `Bearer ${token}`, "Content-Type": ct }, body: img });
+      if (!tr.ok) console.log("      (thumbnail skipped: " + tr.status + ")");
+    } catch (e) { console.log("      (thumbnail error: " + e.message + ")"); }
+  }
+  return { status: "scheduled", remoteId: res.id, detail: `scheduled https://youtu.be/${res.id} for ${entry.publishAt}` + (entry.cover ? " +thumb" : "") };
 }

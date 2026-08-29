@@ -46,7 +46,7 @@ export async function dispatch(entry, env, dryRun) {
       method: "POST",
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json; charset=UTF-8" },
       body: JSON.stringify({
-        post_info: { title, privacy_level: env.TIKTOK_PRIVACY || "PUBLIC_TO_EVERYONE", disable_duet: false, disable_comment: false, disable_stitch: false },
+        post_info: { title, privacy_level: env.TIKTOK_PRIVACY || "PUBLIC_TO_EVERYONE", disable_duet: false, disable_comment: false, disable_stitch: false, ...(Number.isFinite(entry.coverAtMs) ? { video_cover_timestamp_ms: entry.coverAtMs } : {}) },
         source_info: { source: "FILE_UPLOAD", video_size: size, chunk_size: size, total_chunk_count: 1 },
       }),
     });

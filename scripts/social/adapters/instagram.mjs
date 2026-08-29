@@ -20,7 +20,7 @@ export async function dispatch(entry, env, dryRun) {
     const create = await fetch(`${GRAPH}/${env.IG_USER_ID}/media`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({ media_type: "REELS", video_url: url, caption: entry.caption || "", access_token: env.IG_ACCESS_TOKEN }),
+      body: new URLSearchParams({ media_type: "REELS", video_url: url, caption: entry.caption || "", ...(Number.isFinite(entry.coverAtMs) ? { thumb_offset: String(entry.coverAtMs) } : {}), access_token: env.IG_ACCESS_TOKEN }),
     });
     const cj = await create.json();
     if (!cj.id) throw new Error(`IG container failed: ${JSON.stringify(cj)}`);

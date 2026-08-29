@@ -1402,7 +1402,9 @@
           "remoteId": null,
           "error": null
         }
-      }
+      },
+      "coverAtMs": 1300,
+      "cover": "out/shorts/covers/YT_TIK_IG_Short-DshPluginCompose.jpg"
     },
     {
       "id": "short-dsh-plugin-nocode",
@@ -1447,7 +1449,9 @@
           "remoteId": null,
           "error": null
         }
-      }
+      },
+      "coverAtMs": 1300,
+      "cover": "out/shorts/covers/YT_TIK_IG_Short-DshPluginNoCode.jpg"
     },
     {
       "id": "short-dsh-plugin-liveweather",
@@ -1492,7 +1496,9 @@
           "remoteId": null,
           "error": null
         }
-      }
+      },
+      "coverAtMs": 1300,
+      "cover": "out/shorts/covers/YT_TIK_IG_Short-DshPluginLiveWeather.jpg"
     },
     {
       "id": "short-dsh-plugin-permissions",
@@ -1537,7 +1543,9 @@
           "remoteId": null,
           "error": null
         }
-      }
+      },
+      "coverAtMs": 1300,
+      "cover": "out/shorts/covers/YT_TIK_IG_Short-DshPluginPermissions.jpg"
     },
     {
       "id": "short-dsh-plugin-crypto",
@@ -1582,7 +1590,9 @@
           "remoteId": null,
           "error": null
         }
-      }
+      },
+      "coverAtMs": 1300,
+      "cover": "out/shorts/covers/YT_TIK_IG_Short-DshPluginCrypto.jpg"
     },
     {
       "id": "short-dsh-plugin-debug",
@@ -1627,7 +1637,9 @@
           "remoteId": null,
           "error": null
         }
-      }
+      },
+      "coverAtMs": 1300,
+      "cover": "out/shorts/covers/YT_TIK_IG_Short-DshPluginDebug.jpg"
     },
     {
       "id": "short-dsh-plugin-toolbox",
@@ -1672,7 +1684,9 @@
           "remoteId": null,
           "error": null
         }
-      }
+      },
+      "coverAtMs": 1300,
+      "cover": "out/shorts/covers/YT_TIK_IG_Short-DshPluginToolbox.jpg"
     }
   ]
 }
