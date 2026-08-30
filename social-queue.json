@@ -1237,7 +1237,7 @@
     },
     {
       "id": "short-dsh-perms",
-      "file": "out/shorts/YT_Short-DshPerms.mp4",
+      "file": "out/shorts/YT_TIK_IG_Short-DshPerms.mp4",
       "platforms": {
         "youtube": {
           "enabled": true,
@@ -1251,16 +1251,16 @@
           "enabled": true,
           "caption": "Don't let an AI touch your files until you see this\n\nBefore you give an AI access to your machine — three permission modes: Read Only, Workspace Write, Full Access. Pick before it touches anything. DeepSeek Harness. Full guide on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
           "publishAt": "2026-08-30T03:30:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "drafted",
+          "remoteId": "v_inbox_file~v2.7679708976837150736",
           "error": null
         },
         "instagram": {
           "enabled": true,
           "caption": "Don't let an AI touch your files until you see this\n\nBefore you give an AI access to your machine — three permission modes: Read Only, Workspace Write, Full Access. Pick before it touches anything. DeepSeek Harness. Full guide on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
           "publishAt": "2026-08-30T04:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "published",
+          "remoteId": "18331340089287975",
           "error": null
         }
       },
