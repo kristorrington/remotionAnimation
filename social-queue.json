@@ -1268,7 +1268,7 @@
     },
     {
       "id": "short-dsh-web",
-      "file": "out/shorts/YT_Short-DshWeb.mp4",
+      "file": "out/shorts/YT_TIK_IG_Short-DshWeb.mp4",
       "platforms": {
         "youtube": {
           "enabled": true,
@@ -1282,16 +1282,16 @@
           "enabled": true,
           "caption": "This LOCAL AI searches the live web\n\nThink local AI is stuck in the past? DeepSeek Harness invokes live web search mid-task — I asked for the latest Node.js version and it pulled v26.7.0 straight into the chat. Full walkthrough on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
           "publishAt": "2026-08-31T03:30:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "drafted",
+          "remoteId": "v_inbox_file~v2.7680062299642906631",
           "error": null
         },
         "instagram": {
           "enabled": true,
           "caption": "This LOCAL AI searches the live web\n\nThink local AI is stuck in the past? DeepSeek Harness invokes live web search mid-task — I asked for the latest Node.js version and it pulled v26.7.0 straight into the chat. Full walkthrough on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
           "publishAt": "2026-08-31T04:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "published",
+          "remoteId": "17916199590241234",
           "error": null
         }
       },
