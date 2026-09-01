@@ -1299,7 +1299,7 @@
     },
     {
       "id": "short-dsh-one-cmd",
-      "file": "out/shorts/YT_Short-DshOneCmd.mp4",
+      "file": "out/shorts/YT_TIK_IG_Short-DshOneCmd.mp4",
       "platforms": {
         "youtube": {
           "enabled": true,
@@ -1313,16 +1313,16 @@
           "enabled": true,
           "caption": "Install a full AI coding agent in ONE command\n\nThe entire install: npm install -g @deepseek-ai/dsh. The -g makes the dsh command work from anywhere. A local AI coding agent. Full setup on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
           "publishAt": "2026-09-01T03:30:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "drafted",
+          "remoteId": "v_inbox_file~v2.7680427606252046354",
           "error": null
         },
         "instagram": {
           "enabled": true,
           "caption": "Install a full AI coding agent in ONE command\n\nThe entire install: npm install -g @deepseek-ai/dsh. The -g makes the dsh command work from anywhere. A local AI coding agent. Full setup on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
           "publishAt": "2026-09-01T04:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "published",
+          "remoteId": "18110859032116396",
           "error": null
         }
       },
