@@ -1330,7 +1330,7 @@
     },
     {
       "id": "short-dsh-trajectory",
-      "file": "out/shorts/YT_Short-DshTrajectory.mp4",
+      "file": "out/shorts/YT_TIK_IG_Short-DshTrajectory.mp4",
       "platforms": {
         "youtube": {
           "enabled": true,
@@ -1344,16 +1344,16 @@
           "enabled": true,
           "caption": "Finally — an AI that shows its work\n\nMost AI is a black box. DeepSeek Harness logs every step, tool, input, timing and token in a trajectory view — no guessing what happened underneath. Full walkthrough on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
           "publishAt": "2026-09-02T03:30:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "drafted",
+          "remoteId": "v_inbox_file~v2.7680791930393872405",
           "error": null
         },
         "instagram": {
           "enabled": true,
           "caption": "Finally — an AI that shows its work\n\nMost AI is a black box. DeepSeek Harness logs every step, tool, input, timing and token in a trajectory view — no guessing what happened underneath. Full walkthrough on my channel. #DeepSeek #AI #AIagents #coding #devtools #localAI #codingagent",
           "publishAt": "2026-09-02T04:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "published",
+          "remoteId": "18106568231177611",
           "error": null
         }
       },
