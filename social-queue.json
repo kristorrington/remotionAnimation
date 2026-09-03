@@ -1361,7 +1361,7 @@
     },
     {
       "id": "short-dsh-plugin-compose",
-      "file": "out/shorts/YT_TIK_IG_Short-DshPluginCompose.mp4",
+      "file": "out/shorts/TIK_IG_Short-DshPluginCompose.mp4",
       "title": "This local AI used 2 tools from ONE prompt #Shorts",
       "tags": [
         "DeepSeek",
@@ -1390,16 +1390,16 @@
           "enabled": true,
           "caption": "I gave a LOCAL DeepSeek Harness agent a weather tool and a crypto tool — then asked one question, and it picked BOTH by itself and merged the answer. No orchestration, no glue code. ▶ Full no-code plugin build on the channel.\n\n#AI #DeepSeek #LocalAI #AIagents #coding #Shorts",
           "publishAt": "2026-09-03T03:30:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "drafted",
+          "remoteId": "v_inbox_file~v2.7681180556290230293",
           "error": null
         },
         "instagram": {
           "enabled": true,
           "caption": "I gave a LOCAL DeepSeek Harness agent a weather tool and a crypto tool — then asked one question, and it picked BOTH by itself and merged the answer. No orchestration, no glue code. ▶ Full no-code plugin build on the channel.\n\n#AI #DeepSeek #LocalAI #AIagents #coding #Shorts",
           "publishAt": "2026-09-03T04:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "published",
+          "remoteId": "18002545958791911",
           "error": null
         }
       },
