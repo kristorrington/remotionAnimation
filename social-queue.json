@@ -1502,7 +1502,7 @@
     },
     {
       "id": "short-dsh-plugin-permissions",
-      "file": "out/shorts/YT_TIK_IG_Short-DshPluginPermissions.mp4",
+      "file": "out/shorts/TIK_IG_Short-DshPluginPermissions.mp4",
       "title": "This AI runs REAL code on your PC — safely #Shorts",
       "tags": [
         "DeepSeek",
@@ -1531,16 +1531,16 @@
           "enabled": true,
           "caption": "Plugins are real code running on your own machine — so the agent stays sandboxed and asks you before it touches anything outside your workspace. You approve every action. ▶ Full build on the channel.\n\n#AI #DeepSeek #LocalAI #AIsafety #Shorts",
           "publishAt": "2026-09-06T03:30:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "drafted",
+          "remoteId": "v_inbox_file~v2.7682275190109259797",
           "error": null
         },
         "instagram": {
           "enabled": true,
           "caption": "Plugins are real code running on your own machine — so the agent stays sandboxed and asks you before it touches anything outside your workspace. You approve every action. ▶ Full build on the channel.\n\n#AI #DeepSeek #LocalAI #AIsafety #Shorts",
           "publishAt": "2026-09-06T04:00:00.000Z",
-          "status": "approved",
-          "remoteId": null,
+          "status": "published",
+          "remoteId": "17950181982257948",
           "error": null
         }
       },
